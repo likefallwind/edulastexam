@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Edu Last Exam：共同短板突破口评估</title>
+<style>
+body{font-family:system-ui,"Noto Sans CJK SC",sans-serif;max-width:1100px;margin:32px auto;padding:0 24px;color:#17202a;line-height:1.65}
+h1{font-size:1.8rem} h2{margin-top:2rem;border-bottom:2px solid #d8dee4;padding-bottom:4px}
+table{border-collapse:collapse;width:100%;margin:12px 0 24px}th,td{border:1px solid #cbd5df;padding:8px;vertical-align:top}th{background:#f2f5f8}
+.callout{background:#eef6ff;border-left:5px solid #2878c8;padding:12px 16px;margin:16px 0}
+.warn{background:#fff7e6;border-left:5px solid #d99000;padding:12px 16px;margin:16px 0}
+code{background:#f4f4f4;padding:1px 4px}
+</style>
+</head>
+<body>
+<h1>Edu Last Exam：基于共同短板的出题突破口</h1>
+<p><strong>日期：</strong>2026-11-08</p>
+<p><strong>判断：</strong>可以，而且比继续增加普通学科题更有希望。但这些 benchmark 的低分只能作为“候选失败机制生成器”，不能直接把原 benchmark 题目搬过来。Edu Last Exam 应把共同短板组合成需要诊断、行动、验证和修正的闭环 case。</p>
+
+<div class="callout"><strong>核心建议：</strong>从“模型会不会回答一个教育问题”转向“模型能否在不完整、带噪声、会变化的学生证据上连续完成教育决策”。</div>
+
+<h2>证据应如何解释</h2>
+<table>
+<tr><th>候选来源</th><th>当前信号</th><th>适合抽取的能力</th><th>不能直接推出的结论</th></tr>
+<tr><td>LongTutor diagnosis</td><td>均值约 2.62/10</td><td>长历史中的错因、知识状态、证据定位</td><td>不能直接推出模型不会教学；它主要测诊断</td></tr>
+<tr><td>MathTutorBench Socratic / Scaffolding</td><td>约 2.80/10、3.10/10；hard 约 2.89/10</td><td>多轮提问、支架撤除、下一步教学动作</td><td>单轮低分可能混入对话协议或评分器问题</td></tr>
+<tr><td>MOOCCube prerequisite</td><td>约 3.99/10</td><td>知识依赖、学习路径规划</td><td>课程图推理不等于理解某个学生的当前状态</td></tr>
+<tr><td>P07 self-check / P08 calibration</td><td>约 5.21/10、6.40/10</td><td>主动复查、发现矛盾、修正置信度</td><td>自查分数不能自动证明教育反馈质量</td></tr>
+<tr><td>SAS-Bench ECS</td><td>约 5.06/10</td><td>错因和评分的一致性、同类答案的稳定处理</td><td>整体评分高不代表分步评分可靠</td></tr>
+<tr><td>ASAP holistic scoring</td><td>约 5.45/10</td><td>复杂 rubric 下的稳定评价</td><td>作文整体分不能覆盖所有教育评价任务</td></tr>
+</table>
+
+<h2>最值得做成 Last Exam case 的五个方向</h2>
+<table>
+<tr><th>方向</th><th>核心失败</th><th>题目必须强制的证据</th></tr>
+<tr><td>长历史诊断与状态更新</td><td>把最近一次错误当成能力结论，或找错首个错误</td><td>历史记录、提示条件、时间顺序、反证；要求诊断、下一步任务和新证据后的更新</td></tr>
+<tr><td>自适应脚手架与苏格拉底引导</td><td>直接讲答案、重复同一提示、未根据学生反应撤除或增加帮助</td><td>至少两轮学生回应；每轮必须选择动作并解释为什么；隐藏迁移题检查是否真正泛化</td></tr>
+<tr><td>先修关系与个性化路径</td><td>照搬课程图，不结合学生掌握状态和证据质量</td><td>课程图 + 学生历史 + 缺失/冲突记录；要求排序、理由、替代路径和一个反事实更新</td></tr>
+<tr><td>主动复查与错误修正</td><td>第一次结论写得很完整，但没有发现内部矛盾</td><td>让模型先提交结论，再给隐藏反例、改动一个条件或执行结果，检查是否主动改写原结论</td></tr>
+<tr><td>评分、错因和申诉一致性</td><td>按语气、最后答案或学生压力改变评分，或把算术错误和概念错误混为一谈</td><td>同构答案对、错因不同；rubric、学生申诉、教师规则；检查分数、理由和后续教学是否一致</td></tr>
+</table>
+
+<h2>真正的突破口：把五个方向串成一个 case</h2>
+<p>单独出五类题仍可能被模型逐题解决。更强的设计是一个 3–5 阶段的闭环：</p>
+<ol>
+<li>给出带噪声的学生历史，要求定位知识状态和首个可行动的错因；</li>
+<li>要求选择下一步问题或支架，而不是直接讲解；</li>
+<li>返回学生的新回答，可能显示部分改正、表面正确或新的错误；</li>
+<li>要求模型更新诊断、调整教学动作，并完成一项评分或路径决策；</li>
+<li>加入一个隐藏反事实或执行结果，检查它是否发现先前结论需要修正。</li>
+</ol>
+<p>这种 case 同时覆盖 S3 教学诊断、S4 评价、S5 学情与路径、S8 工作流价值，并把 P07/P08 的自查能力作为贯穿机制。它比“再给一个更难的数学题”更接近真实教育工作，也更可能产生稳定的模型差异。</p>
+
+<h2>当前仓库题目为什么显得容易</h2>
+<ul>
+<li>34 个 prompt 实际对应 21 个题目包，且不少是同一逻辑的变体，独立区分能力有限。</li>
+<li>多数任务允许模型一次性写出完整教师方案，没有真正的学生回应、工具执行或产物验收。</li>
+<li>图片、SVG、交互 HTML 在很多情况下只作为文本生成，尚未成为得分硬门槛。</li>
+<li>当前失败集中在两个局部判断点，说明题目能找到错误，但还没有把错误机制扩展成稳定的任务族。</li>
+</ul>
+
+<div class="warn"><strong>重要边界：</strong>低 benchmark 分数可能混入题面、数据、评分器、judge 或协议问题。每个方向进入 Last Exam 前，都需要保留若干真实失败案例，并证明失败不是格式或知识缺失造成的。</div>
+
+<h2>建议的测量合同</h2>
+<table>
+<tr><th>层级</th><th>要求</th></tr>
+<tr><td>Gate</td><td>基础知识、算术、读图和格式必须过关；否则不把后续失败解释成教育能力失败。</td></tr>
+<tr><td>Critical case pass</td><td>每个闭环 case 的诊断、动作、更新、验证均需通过；任何关键安全/评分/教学错误都判该 case 失败。</td></tr>
+<tr><td>Diagnostic profile</td><td>单独报告历史利用、错因诊断、脚手架、路径规划、自查、评价一致性和产物执行，不直接平均成一个能力分。</td></tr>
+<tr><td>Robustness</td><td>对历史顺序、等价表述、轻微噪声、反事实改动和模型重复运行保持一致。</td></tr>
+</table>
+
+<h2>覆盖判断</h2>
+<p>公共 benchmark 对 S3–S5 的“局部能力”已有较强信号，但对“长历史 + 多轮行动 + 反馈更新 + 产物执行”的端到端覆盖仍然不足。因此本方向属于<strong>needs custom benchmark/data</strong>，而不是简单复用 LongTutor、MathTutorBench 或 SAS-Bench。</p>
+<h2>2025–2026 研究核验</h2>
+<p>近两年的工作进一步支持这两个方向，但也要求把构念写得更窄。MathTutorBench 明确报告长对话中简单提问策略会失效；LongTutor 将教育长程任务拆成证据获取、状态诊断和教学行动；EduAgentBench 的前沿模型结果显示，有限教学判断尚可，但情境化多轮辅导和 LMS 工作流执行仍低于专业标准；SafeTutors 报告多轮情境下教学性失败从 17.7% 升到 77.8%。</p>
+<p>内容生成方面，PresentBench 的 238 个 slide 实例平均包含 22.2k tokens、34 页材料和 54.1 个实例化检查项；NotebookLM 总分 62.5，教育子域 55.0，Zhipu 的 layout/correctness/fidelity 分别为 40.6/47.1/44.1。EduIllustrate 的 230 道题显示，顺序锚定可使视觉一致性提高 13%，说明跨图、跨页和图文一致性是独立的可测瓶颈。另一方面，部分研究表明经过课程知识库、检索、人工审查和课堂验证后，教案或考试题可以达到可用水平，因此不能把问题概括成“模型不会生成教案”。</p>
+<p>研究链接：<a href="https://aclanthology.org/2025.emnlp-main.11/">MathTutorBench</a>、<a href="https://aclanthology.org/2026.acl-long.1371.pdf">LongTutor</a>、<a href="https://arxiv.org/abs/2605.14322">EduAgentBench</a>、<a href="https://arxiv.org/abs/2603.17373">SafeTutors</a>、<a href="https://presentbench.github.io/">PresentBench</a>、<a href="https://arxiv.org/abs/2604.05005">EduIllustrate</a>、<a href="https://arxiv.org/abs/2607.13041">LessonBench-V1</a>。</p>
+<p>相关本地证据：<a href="../atomic_ability_rebenchmark/12_benchmark_portfolio_review.md">Benchmark Portfolio Review</a>、<a href="../2026-05-13/ai_edu_unified_benchmark_framework_2026-05-13.md">统一框架</a>、<a href="../2026-11-04/edu-frontier-last-exam-design-2026-11-04.html">已有 Last Exam 设计审查</a>。</p>
+<h2>长周期能力的可实现测量协议</h2>
+<p>长周期不能通过把所有历史一次性拼进一个 prompt 来测；那仍然是单轮长上下文。应提供一个可复现的学生环境，模型每次提交教学动作后，环境根据隐藏的学生状态返回新的观察。</p>
+<table>
+<tr><th>层级</th><th>协议</th><th>用途</th></tr>
+<tr><td>Turn</td><td>保留当前单轮题作为基础锚点</td><td>检查学科知识、一次性诊断和格式门槛</td></tr>
+<tr><td>Session</td><td>3–8 次动作—学生反应循环；学生反应依赖模型动作</td><td>检查支架选择、追问、撤助和局部状态更新</td></tr>
+<tr><td>Episode</td><td>多个时间点、持久学生状态、作业/练习/后测；可模拟数天或数周</td><td>检查长期诊断、路径规划、学习增益、迁移和恢复</td></tr>
+</table>
+<p>每个 episode 至少保存五类隐藏状态：知识点掌握、误概念/错因、提示依赖、已完成任务和遗忘/保持状态。模型只能看到历史观察和允许的 LMS API，不能直接读取 gold 状态。环境应有固定随机种子，并用真实学生轨迹或知识追踪模型校准；否则应把结果标为 simulator-protocol evidence，而不是现实学习效果。</p>
+<p>评分不要只看最后一句话，而要记录轨迹：每一步的状态诊断 F1、教学动作是否适配、过早泄题率、状态更新是否一致、反事实恢复率、后测正确率、迁移题和延迟保持。case-level pass 应设置关键门槛，例如诊断错因、连续两轮仍使用错误支架或泄露答案都可直接判该 case 失败；轨迹分数只作为诊断，不替代关键门槛。</p>
+<p>第一版不必直接做 30 天。建议先做 6–10 个可完全复现的 session case，再做 3–5 个带延迟后测的 episode case；验证学生环境和人工 rubric 后，再扩展到更长 horizon。长的定义应由持久状态、延迟反馈和分支决策决定，而不是由对话轮数本身决定。</p>
+</body>
+</html>

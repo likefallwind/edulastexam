@@ -1,0 +1,44 @@
+[
+  {
+    "action": "reset",
+    "time": 0,
+    "voltage": 0,
+    "current": 0.005
+  },
+  {
+    "action": "advance(0.3)",
+    "time": 0.3,
+    "voltage": 7.768698398515702,
+    "current": 0.0011156508007421492
+  },
+  {
+    "action": "setMode('discharge'); setResistance(1000)",
+    "time": 0.3,
+    "voltage": 7.768698398515702,
+    "current": -0.007768698398515702
+  },
+  {
+    "action": "advance(0.1)",
+    "time": 0.4,
+    "voltage": 2.8579444254754356,
+    "current": -0.0028579444254754355
+  },
+  {
+    "action": "setResistance(4000)",
+    "time": 0.4,
+    "voltage": 2.8579444254754356,
+    "current": -0.0007144861063688589
+  },
+  {
+    "action": "advance(0.2)",
+    "time": 0.6,
+    "voltage": 1.733430917805659,
+    "current": -0.0004333577294514148
+  },
+  {
+    "action": "setMode('charge'); advance(0.1)",
+    "time": 0.7,
+    "voltage": 3.561989525473183,
+    "current": 0.0016095026186317043
+  }
+]

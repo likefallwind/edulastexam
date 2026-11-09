@@ -1,0 +1,9 @@
+﻿item_id,track,title,prompt_count,difficulty_status,human_review,model_evaluation
+ELE-C2-01,core_text,合并检测率：合法平均、错误加权与局部抵消,1,not_measured,owner_review_pending,not_run
+ELE-C2-03,grading_robustness_control,版本勘误、学生审核附录与成绩聚合代码,2,not_measured,owner_review_pending,not_run
+ELE-C2-09,core_text,总体更高是否就该推荐：把报告润色请求变为证据论证,1,not_measured,owner_review_pending,not_run
+ELE-C2-10,core_text,气体没有手感：回答插问之后还欠哪项证据,1,not_measured,owner_review_pending,not_run
+ELE-C2-12,long_history,四十次记录后的下一课：旧错、提示成功与近期迁移,1,not_measured,owner_review_pending,not_run
+ELE-C2-13,adaptive_scaffolding,同一分数课的三次交接：会做、遇新困难、只会规则,3,not_measured,owner_review_pending,not_run
+ELE-C2-16,assessment_design_static,有偏移传感器下的模型辨别题：从猜标签到实验论证,1,not_measured,owner_review_pending,not_run
+ELE-C2-20,artifact_rc_simulator,RC 演示在切换与改参后仍在讲同一个物理过程吗,1,not_measured,owner_review_pending,not_run

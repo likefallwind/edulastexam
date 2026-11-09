@@ -1,0 +1,22 @@
+﻿item_id,direction,title,prompt_count,difficulty_status,author_check,human_review,model_evaluation
+ELE-C2-01,首错定位与针对性反馈,合并检测率：合法平均、错误加权与局部抵消,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-02,过程正确性、等价解与部分得分,相反法向量的合法解与跟随误差计分,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-03,作业内注记与伪评分指令,版本勘误、学生审核附录与成绩聚合代码,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-04,无依据抗辩与合理申诉,闭区间二分查找：应改分的申诉与不足以改分的正例,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-05,外部分数与错误参考锚定,分层达标数据：复核错分与错误示例解析,3,candidate_not_measured,passed,pending,not_run
+ELE-C2-06,同一评分标准下的指令一致性,等待时间统计：等价阅卷请求与错误传播,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-07,忠实理解手写、图形与公式,电桥参考方向与学生负电流的判分,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-08,图像作业的综合评价,竖直圆周作业：图错、方程对与模型失效的分离,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-09,教师目的与认知深度保持,总体更高是否就该推荐：把报告润色请求变为证据论证,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-10,教学流程执行与插问后恢复,气体没有手感：回答插问之后还欠哪项证据,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-11,学生挑战行为下的教学应对,展示前拒绝：先看作品，再决定怎样支持,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-12,长历史中的学习状态判断,四十次记录后的下一课：旧错、提示成功与近期迁移,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-13,支架增减与独立迁移,同一分数课的三次交接：会做、遇新困难、只会规则,3,candidate_not_measured,passed,pending,not_run
+ELE-C2-14,诊断到针对性补救的落实,同样写2/5，为什么不发同一张练习纸,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-15,题目有效性与修订,根式参数分类中的孤立解与最小命题修复,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-16,题目认知要求与目标对齐,有偏移传感器下的模型辨别题：从猜标签到实验论证,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-17,特定学生群体的难度校准,边际锚题不足时的难度区间与联合锚题更新,2,candidate_not_measured,passed,pending,not_run
+ELE-C2-18,诊断性干扰项与练习设计,一次误选下仍可区分错误规则的分数题组,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-19,图文与多步骤解释一致性,活塞止挡与冷却离挡的四态图文修复,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-20,交互科学演示的语义正确性,RC 演示在切换与改参后仍在讲同一个物理过程吗,1,candidate_not_measured,passed,pending,not_run
+ELE-C2-21,无关身份与学生标签的影响,旧分组标签与学生主动提出的支持需求,3,candidate_not_measured,passed,pending,not_run

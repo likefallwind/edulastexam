@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Edu Last Exam：近两年证据与方案重审 · 2026-11-07</title>
+<style>
+:root{--ink:#172b37;--muted:#566c78;--line:#dce5e9;--bg:#f3f6f7;--accent:#12685f;--warn:#8b581d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,-apple-system,"Noto Sans SC","Microsoft YaHei",sans-serif}main{max-width:1180px;margin:32px auto;background:white;padding:40px 48px;border:1px solid var(--line);border-radius:14px}h1{font-size:30px;line-height:1.4}h2{font-size:23px;margin-top:42px;border-top:1px solid var(--line);padding-top:24px}h3{font-size:18px;margin-top:28px}p{margin:12px 0}a{color:var(--accent);text-underline-offset:3px}small,.meta{color:var(--muted)}.lead,.note{background:#edf7f4;border-left:4px solid var(--accent);padding:16px 20px;margin:20px 0}.warning{background:#fff8ed;border-left-color:var(--warn)}.table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.65}th,td{border:1px solid var(--line);padding:12px;vertical-align:top}th{background:#edf3f5;text-align:left}li{margin:9px 0}code{font-size:.92em;background:#f0f3f5;padding:2px 4px;border-radius:3px}.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:12px;background:#e7f2ef;color:var(--accent)}.card{padding:3px 18px 14px;border:1px solid var(--line);border-radius:8px;margin:16px 0}nav a{margin-right:16px;display:inline-block}@media(max-width:700px){main{margin:0;padding:22px 18px;border-radius:0}h1{font-size:25px}table{min-width:730px}}@media print{body{background:white}main{border:0;margin:0;padding:0}a{color:inherit}.card{break-inside:avoid}}
+</style>
+</head>
+<body><main>
+<h1>Edu Last Exam：近两年证据与方案重审</h1>
+<p class="meta">研究与讨论稿 · 核查日期：2026-11-07 · 文献窗口：2024-11-07—2026-11-07。记录论文版本、实测模型、协议和数据可用性；不是系统综述或穷尽性检索。本轮未调用评测模型 API，未修改既有题库、代码、映射或结果。</p>
+<div class="lead"><strong>结论：</strong>目标应是“专家能完成、结果有教育价值、成功可核验，而多数当前强 Agent 在正常工具条件下仍不能完成”的任务集。现有 12 题不能证明已经达到该目标。新证据支持先复测公开原例，再决定原创题方向；目前最值得投入的是<strong>忠实诊断与修复学生作业</strong>、<strong>科学上正确的可执行教学材料</strong>，以及有条件保留的<strong>证据驱动教学决策</strong>。</div>
+<nav><a href="#scope">目标与证据标准</a><a href="#old">原方案的问题</a><a href="#cases">可追索候选</a><a href="#counter">反证与筛除</a><a href="#design">建议形态</a><a href="#next">下一步</a><a href="#sources">来源与状态</a></nav>
+
+<h2 id="scope">一、先把“难”与“有意义”落实到可检查的条件</h2>
+<p>用户目标是寻找共同能力边界。全员失败可以成为正式挑战集的有效组成，不必为了当前模型排序而塞入大量中等难度题。容易题仍需要作为诊断对照，但不必计入挑战集主分。困难不能来自错误金标、缺失信息、隐藏措辞要求、任意加长任务，或禁止现实中正常可用的工具。</p>
+<p>评价单位应是<strong>模型＋Agent 实现＋工具＋运行条件</strong>。一篇 2026 年论文可能仍测试 2024 年模型；一个叫 Agent 的系统可能只是一个角色提示。必须同时记录论文日期、模型标识、是否允许执行/检索/浏览器、是否有反馈后修复。本报告中的“作者报告失败”均不是本地复现结果。</p>
+<div class="table"><table><thead><tr><th>必须成立的条件</th><th>可核验要求</th><th>不够充分的替代证据</th></tr></thead><tbody>
+<tr><td>教育价值</td><td>指出真实使用者、具体工作、错误后果；需要忠实处理学习者证据或形成有效教学产物</td><td>给普通数学/代码难题加“老师”角色</td></tr>
+<tr><td>可解性</td><td>领域教师/专家在相同可见信息与工具下独立完成；存在可接受参考结果及替代解</td><td>出题者知道隐藏答案，或某模型偶然命中标签</td></tr>
+<tr><td>可靠判分</td><td>用反例、执行、数值/几何约束、原始证据及专家复核判断实质错误</td><td>单一 LLM judge 的低分、唯一措辞、完整标签集合不一致</td></tr>
+<tr><td>前沿难度</td><td>多个不同家族的当前强系统在允许正常工具的条件下重复失败</td><td>旧模型单次失败，或一个模型的总体均分低</td></tr>
+<tr><td>研发指导</td><td>能分辨感知、证据整合、诊断、行动、产物核验中的失败位置，并测试有效补救</td><td>整题零分后给所有涉及能力都记低分</td></tr>
+</tbody></table></div>
+
+<h2 id="old">二、原方案：保留出发点，改变取题与验证顺序</h2>
+<p>复核材料包括 <a href="../../data/edu_last_exam_pilot_v1/README.md">pilot 说明</a>、<a href="../../data/edu_last_exam_pilot_v1/taxonomy.json">taxonomy</a>、<a href="../../data/edu_last_exam_pilot_v1/judge_contract.md">判分合同</a>、<a href="../../private/edu_last_exam_pilot_v1/items.jsonl">12 题原件</a>、<a href="edu-frontier-last-exam-design-2026-11-04.html">11 月 4 日设计稿</a>，以及本轮前段已检查的模型原始输出与 adapter。</p>
+<div class="table"><table><thead><tr><th>原设定</th><th>具体问题</th><th>建议</th></tr></thead><tbody>
+<tr><td>四类能力先定配额，再据论文概括出题</td><td>论文“发现某能力薄弱”不表示简单改写后的题仍保留困难；也不能据此预标 <code>frontier_hard</code></td><td>先收集保留原材料与失败输出的案例；审题、复测后再归类。允许某方向暂时没有合格题</td></tr>
+<tr><td>诊断、长历史、难度校准</td><td>DT-001 将诊断信息写进输入；DT-002 用短摘要代替长轨迹；AD-001 提供统计结果，测的是解读统计，不能承担预测学生难度的 claim</td><td>保留真实信息结构；将“已有数据的质量审查”和“未知群体难度预测”分开</td></tr>
+<tr><td>评分稳健性作为首要难题源</td><td>GR-002 已给空白卷 0 分，失败在反馈政策；GR-003 维持分数但少说一句理由，且原金标本身需复核。它们不直接证明受到操纵而错判</td><td>基础抗诱导作控制；主任务要求能拒绝无依据争分，也能根据真实新证据改正错误评分</td></tr>
+<tr><td>GR-001 只需将金标 5 改成 3</td><td>原书写中的合计等式不能唯一证明两个幂值分别被算反；另有“忽略附注”与扣分标准之间的冲突</td><td>暂列争议题，先澄清学生证据和评分语义，不能直接宣布修分后真实通过 10/12</td></tr>
+<tr><td>任何 hard gate 失败即整题 0</td><td>实质学科错误、遗漏理由、反馈风格可能被同等处理；严格规则不是难度效度</td><td>只有会破坏任务用途的失败进入关键门槛。格式、风格与实质任务结果分开报告</td></tr>
+<tr><td>纯文本先行，图像和交互一律暂缓</td><td>降低实现成本，也提前排除了真实手写作业与可执行产物中较有希望的困难</td><td>重新开放多模态和运行环境；是否入选由教育意义、可核验性和实测难度决定</td></tr>
+<tr><td>把两次 AD-002 判分差异解释成同答案 judge 翻转</td><td>已检查的两个运行有不同模型回复，也有 judge 身份差异</td><td>区分生成波动与判分波动。若研究 judge 稳定性，必须固定同一回复</td></tr>
+</tbody></table></div>
+<p>两模型原始记录均为 12 项完成、9 项通过；这是原合同下的探索结果，不是“真实教育能力 75%”。已发现的题目争议使有效通过率尚不能直接重算。adapter 也需在后续实验前补核判分身份/缓存与格式规则，但本轮不修改实现。</p>
+<p>原方案的文献分母也要纠正：<a href="https://arxiv.org/html/2610.23530v1">EduWild</a> 的 53.8% 是 900 条历史会话中的流程遗漏比例，导出时的模型配置不能代表每条旧会话；<a href="https://arxiv.org/html/2609.29993v2">Will It Teach as Intended?</a> 的 59.3% 是 27 个最终 bot 配置中 16 个通过目的对齐评价，不是某个模型的回复通过率。它们支持研究部署问题，尚不能直接支持当前强 Agent 的失败率。</p>
+<p><strong>需要撤回的实施预判：</strong>直接追加几道更复杂的申诉裁决、批改或命题修复题，还没有足够依据。申诉更多轮、合同更长不自动产生实质难度；合理工具和重新计算可能直接解决。应把“复测文献原例”放在原创命题之前。</p>
+
+<h2 id="cases">三、最值得追踪的原例：失败在哪里，证据又到哪里为止</h2>
+<div class="card"><h3>1. PyMETA：同一份学生代码中，被首个错误遮住的后续错误</h3>
+<p><span class="tag">可优先取原例</span> 2026-06 首发，09-15 v2。真实 Python 提交 48,646 份。GPT-5.5 等四个近期模型在首错误分类上 macro-F1 已达 87.5–93.8%；精选 97 份多错误提交的 exact-set 为 43.3–48.5%，但 sample-F1 仍约 79–81%。可追索样本包括 <code>Sample_Index 1885</code> 与 <code>3375</code>。</p>
+<p>价值在于修复顺序可能暴露新错误，教师需要解释真正阻断学习的原因。限制是 gold 只覆盖一条人工修复路径，不保证穷尽；模型未获执行工具。不能把多找一个合理错误算失败，也不能把标签集合不完全匹配等同无效辅导。<a href="https://arxiv.org/html/2606.30610v2">论文</a> · <a href="https://github.com/Circle-Cat/pymeta/blob/main/annotation/multi_error_subset_97.csv">97 项标签</a> · <a href="https://github.com/Circle-Cat/pymeta">官方代码</a>。</p>
+</div>
+<div class="card"><h3>2. HG-Bench：学生到底在哪一页、哪一步写了什么</h3>
+<p><span class="tag">真实共同失败，数据待发布</span> 2026-06 / EMNLP 2026。500 份真实 K–12 作业中，115 份在九种零样本设置下均未达到答案区域 F1≥0.5。官网 Case 2 是页号错配与跨页步骤乱序；Case 3/4 是过度切分和合并步骤。</p>
+<p>这直接影响反馈是否指向学生原来的作业。但原测是单次 VLM 定位，不是允许裁剪、OCR 和回看检查的 Agent；边框粒度也有标注约定。官网及仓库目前仅提供案例、脚本和少量示例，完整 500 份数据仍待发布。应关注证据归属导致的实质误批，不单纯以框坐标误差定义教育失败。<a href="https://aclanthology.org/2026.emnlp-main.2417/">论文</a> · <a href="https://hg-bench.github.io/">官方案例与数据状态</a>。</p>
+</div>
+<div class="card"><h3>3. LeanPRM：流畅证明尚未完成目标，却被当作正确</h3>
+<p><span class="tag">先独立重审金标</span> 2026-10-13 首发，11-03 v3。200 个证明里，四个商业模型的原始运行共同错标 26 个。附录 C Figure 7 中，论证只建立求和不等式，未完成要求的两个不同零点，模型仍接受。</p>
+<p>但无人工 gold；作者用另一模型审计时，两大“数学错误”类各有 13/30 被判为数学上成立，可能是形式化失败。该审计本身也不是人类真值。26 个共同错误只能作为候选，不能直接入库。另“全步骤标签一致”不同于正确指出关键缺陷；正式任务必须由专家重验自然语言证明与形式表达。<a href="https://arxiv.org/html/2610.17697v3">论文、Table 1 与 Appendix C</a> · <a href="https://rlafuente.com/lean-prm">项目入口</a>。</p>
+</div>
+<div class="card"><h3>4. 物理批改：数值相近掩盖受力对象错误</h3>
+<p><span class="tag">具体原例，版权限制</span> 2026-03 首发，09-26 v3。Figure 16 的 Q3 将塞子的额外受力算成整个壶底的额外受力，结果约 5882 N，参考为 5760 N；即使给出参考解，五模型仍满分。</p>
+<p>它提示要检查物理对象和推理，而非只看公式流畅或数字接近。但答卷由模型生成，非真实学生；原题因版权只公开改写说明。同论文结构化评分总体相关较高，不能据少数错例宣称批改普遍困难。该例适合复核与机制调查，改写后需重新建立难度证据。<a href="https://arxiv.org/html/2603.14732v3">最新论文 §V、Figure 16</a>。</p>
+</div>
+<div class="card"><h3>5. InteractScience：能运行的科学演示仍可能教错</h3>
+<p><span class="tag">可执行原例优先</span> 2025-10 首发，2026-05 v2。150 个科学交互任务、779 项功能测试；GPT-5 的 PFT 功能测试通过率 39.47%，PFT 功能测试全部通过的题目比例 16.08%；两者均不包含全部视觉质量检验。附录弹簧—质量—阻尼案例表现出视觉与科学含义脱节。</p>
+<p>仓库含任务、测试、参考图和输出；原协议是一次代码生成，不能作为今天带浏览器调试的代码 Agent 通过率。要进一步验证参数变化时数值、图形和解释是否一致，不能只查 DOM、截图相似度或美观。<a href="https://arxiv.org/html/2510.09724v2">论文</a> · <a href="https://github.com/open-compass/InteractScience">官方代码与材料</a>。</p>
+</div>
+<div class="card"><h3>6. TeachArena：已经有人在做完整教育工作流，不能忽略竞争基线</h3>
+<p><span class="tag">环境可借鉴，需逐题筛</span> 原 EduAgentBench 已在 2026-09-29 v4 更新为 TeachArena：354 项、17 个模型。最高工作流平均 reward .704；6 个长流程任务、跨 17 个系统的平均 reward 为 .321。这些是 reward，不是通过率。</p>
+<p>MM-04 要根据历史学习记录修改现有材料并配练习，文中 GLM-5.1 生成泛化新材料而失败，GPT-5.5 成功；EXAM-REV-03 要改微积分试题参数同时保持知识点和答案有效。公开数据含 mock LMS 状态和评估代码。不能再以“教育判断＋多轮辅导＋LMS 流程”本身作为新颖性；也不能沿用早期版本模型/任务数。<a href="https://arxiv.org/html/2605.14322v4">最新论文</a> · <a href="https://huggingface.co/datasets/CinderD/TeachArena">数据和环境</a>。</p>
+</div>
+<div class="card"><h3>7. TutorCaseBench：原方案有依据，但“复现既有有效干预”不等于唯一正确行动</h3>
+<p><span class="tag">保留教学决策候选</span> 2026-10-22。1,560 项开放回复中，Opus 4.7 / GPT-5.5 分别有 55.8% / 54.7% 至少满足一条案例 rubric。输入是六轮合成既有对话，输出一次续写或长期计划；“长期”不是实际执行数周。</p>
+<p>Table 2 分析的 50 个全模型失败样本中，有学生因误认作业错误而拒绝展示；模型安慰“犯错正常”，案例策略却是先核查作业正确性。这比泛化的“要有同理心”更有诊断价值。</p>
+<p>论文确实测试近期强模型；但 rubric 来自隐含的历史干预和比模型可见内容更完整的案例背景。需要检查：当前可见证据是否足够、其他合理策略是否被排除。它可以支持寻找复杂教学案例，不能把隐藏策略写进 system prompt 后再称测诊断，也不能将一次计划文本当作学习增益。<a href="https://arxiv.org/html/2610.30828">论文 §3–5</a> · <a href="https://github.com/kixlab/TutorCaseBench">官方数据</a>。</p>
+</div>
+
+<h2 id="counter">四、必须纳入的反证，以及暂不作为核心的方向</h2>
+<div class="table"><table><thead><tr><th>近两年工作</th><th>核实到的证据</th><th>对选题的影响</th></tr></thead><tbody>
+<tr><td><a href="https://arxiv.org/html/2609.28470v2">StudentBench</a><br>2026-09-30 v2</td><td>2,383 名真实成人；GRE 一小时教学的合并即时增益，AI 与人工在预设界内等效。分学科、长期保持等不能一并推定</td><td>必须撤去“AI 普遍不会教”的前提。实际对话中的争议可取例，但学生投诉不自动是真错误</td></tr>
+<tr><td><a href="https://arxiv.org/html/2603.00895v1">UC Irvine 手写微积分批改</a><br>2026-03-01</td><td>3,851 份人工复核：79.79% 完全正确，9.55% 可接受；主要用 GPT-4.1-mini。附录展示重索引等价解法和 OCR 自动纠正学生错误</td><td>“真实手写＋部分分＋不同解法”本身不能保证高难。保留具体剩余错误，避免仅把材料做得更乱</td></tr>
+<tr><td><a href="https://aclanthology.org/2026.emnlp-main.712/">MisconceptionBench</a><br>EMNLP 2026</td><td>真实学生分布；GPT-5.4 诊断 Hit@1 39.6%，但经固定检索器映射至 694 标签。抗生素案例存在邻近标签混淆</td><td>选错项不能唯一识别个人心理原因。<a href="https://github.com/wkeaner/MisconceptionBench/blob/main/README.md">10-26 仓库声明</a>已撤去数据和代码，当前不可按原论文开放状态安排复现</td></tr>
+<tr><td><a href="https://arxiv.org/html/2605.16207">Confirming Correct, Missing the Rest</a><br>2026-05-15</td><td>516 个命题逻辑状态；o3 对最优正确步骤 F1 .99，对非最优有效步骤明显降低。图示也把有效但冗余的一步当作不可应用</td><td>“合法”“有帮助”“最优”不能混标；所谓 agent 为提示角色。需审计逻辑 gold 后才取原例</td></tr>
+<tr><td><a href="https://arxiv.org/html/2608.03206">EduClaw-Bench</a><br>2026-08-04</td><td>30 虚拟日模拟；多个适配器共用桥接实现、主要变化在提示。学习变化接近噪声；部分“Codex”标签不是产品 Agent</td><td>53.3% 轨迹无增益不能当真实学生学习失败。可研究环境设计，暂不拿其 headline 证明强 Agent 边界</td></tr>
+<tr><td><a href="https://doi.org/10.1145/3772318.3791514">SimStep</a><br>CHI 2026</td><td>Claude 3.5 Sonnet 制作 66 个演示，32 个无人工修复；19 个数据—界面脱节，另有不可操作与科学错误</td><td>给出了有意义的失败类型，但不是当前强代码 Agent 结果。<a href="https://zoekaputa.github.io/simstep/">项目页</a>有案例，完整系统公开状态需进一步确认</td></tr>
+<tr><td><a href="https://www.dorademszky.com/publications/49731.pdf">MathemaTikZ</a><br>L@S 2025</td><td>50 个测试图：补全原来缺信息的描述后，成功率从约 12–15% 升至约 59–74%</td><td>缺题意会制造伪难。几何任务必须给足约束，容许不同正确画法；数据需申请</td></tr>
+<tr><td><a href="https://aclanthology.org/2025.findings-emnlp.889.pdf">VisualEDU</a><br>EMNLP 2025</td><td>数学视频生成包含执行、反馈、审美的加权指标；.6493 不能读成通过率。所测是较早模型</td><td>可从<a href="https://github.com/UchihaIchigo/VisualEDU">代码与任务</a>寻找时序科学错误；库 API 报错需先允许 Agent 调试</td></tr>
+<tr><td><a href="https://arxiv.org/html/2504.05570">Can LLMs Match Tutoring System Adaptivity?</a><br>2025-04-07</td><td>75 段真实代数片段，旧模型、信息消融；主要观察回复 embedding 的变化</td><td>可借“给/不给学生错误信息”的对照；文本发生变化不等于适配正确</td></tr>
+<tr><td><a href="https://arxiv.org/html/2602.10620">ISD-Agent-Bench</a><br>2026-02-11</td><td>正文与附录的模型 backbone/评估描述存在不一致</td><td>课程设计分类可参考，性能数字暂不用于判断当前强 Agent 边界</td></tr>
+</tbody></table></div>
+<p>近期方法论也提醒我们先审计再筛难：<a href="https://arxiv.org/html/2411.04872">FrontierMath（2024-11-07 首发）</a>将专家背景、洞察和执行成本分开；<a href="https://arxiv.org/html/2602.13964v4">HLE-Verified（2026-08 v4）</a>区分可验证、修订和不确定条目；<a href="https://arxiv.org/html/2605.26079v2">AutoBenchmarkAudit（2026-05）</a>区分指令、环境和判分器问题。这里借鉴构建与审计方法，不沿用它们旧版模型成绩；自动标记的问题也不等于已证实错误。</p>
+
+<h2 id="design">五、建议建设的 benchmark：两个主线，一个条件保留方向</h2>
+<div class="table"><table><thead><tr><th>方向与真实工作</th><th>任务成果与核验</th><th>教育特异性与主要风险</th><th>优先级</th></tr></thead><tbody>
+<tr><td>真实学生作业的忠实诊断与修复<br>教师需要知道学生做了什么、错在哪里、哪些推理还成立</td><td>原始作业→证据定位→实质错误及可核验理由→保持有效思路的修正/反馈。代码用执行与反例，证明用数学审查与适用的形式核验；同时放正确非标准解</td><td>重点是理解学生已有工作，不是另解一道题。不得自动纠正转录、靠通用重写绕过诊断，或为“多找错误”奖励误伤</td><td>主线 A。先 PyMETA；手写材料待可获得；LeanPRM 需先重审</td></tr>
+<tr><td>可执行教学材料的科学正确性与修改<br>教师需要一份能准确展示概念的演示、图示或题组</td><td>运行最终产物，在合法未见参数下检查数字、图像、动画和说明的一致性；修改题组后检查答案唯一性及目标保持</td><td>不是比界面漂亮或普通 CRUD。必须能指出错误如何误导学习。动作耦合若是真实工作所需，可以构成有效难度</td><td>主线 B。先 InteractScience；TeachArena 提供材料修订和流程参照</td></tr>
+<tr><td>在证据不充分时作出教学决定并继续获取证据</td><td>根据不同学生轨迹选择区分性追问，依据新回应更新判断；允许多种有效教学动作，记录关键证据与行动后果</td><td>不能由一个错选项唯一推断误概念，不能把案例里成功过的策略当唯一可行策略；模拟学生不自动证明真实学习</td><td>条件保留 C。TutorCaseBench、真实对话原例；先验证可识别性和教师一致性</td></tr>
+</tbody></table></div>
+<p>三条线不应预分固定题额，也不需要同时做大。如果带工具复测后 A 很容易、B 仍困难，就集中 B；若某类教师也无一致可行答案，则退回研究问题，而不是靠收紧 rubric 入库。</p>
+<p><strong>区别于已有工作的贡献应是什么：</strong>经过专家和判分器审计、仍能难住近期完整 Agent 的教育任务；每题保留真实证据结构、正常工具条件和可解释失败机制。仅换一个教育名称、重组现成低分 benchmark，或把公开题做同义改写，都不足以构成这项贡献。</p>
+<p>按仓库历史 D 体系，A 主要涉及 D11 分步评分、D12 错误定位/纠错、D06 多模态过程、D09 编程教育问答；B 涉及 D22 教学可视化、D23 交互科学演示；C 涉及 D13 辅导、D17 认知诊断。它们属于任务需求标签，不自动形成 P01–P21 的直接测量分数。本报告不修改当前 v7 映射。</p>
+
+<h2 id="next">六、下一步的具体顺序与停止条件</h2>
+<ol>
+<li><strong>建立 12–18 个原例的复核池。</strong>这是工作量上限建议，不是正式题量承诺。首先从 PyMETA、InteractScience、TeachArena、TutorCaseBench 取可获得的原例；LeanPRM 待重审、HG-Bench 待材料。每例保存原题、原材料、作者失败输出、来源版本、目标、金标依据、数据/许可状态。公开材料先用于发现机制，不直接伪装成全新测试集。</li>
+<li><strong>先验证题和判分。</strong>领域教师/专家独立完成并互审；关键争议要裁决。判分器必须接受至少一种正确替代解，并拒绝有关键错误的近似交付物。若无法区分有效替代方案和目标失败，该例暂不能成为硬门槛题。</li>
+<li><strong>先用两个强 Agent 做淘汰性复测。</strong>具备任务所需的终端、Python/CAS、OCR/裁剪、浏览器和运行反馈；允许正常自查和迭代。记录模型、harness、工具、版本、耗时和费用。依照仓库规则不人为设模型输出 token 上限。公开 ground truth/测试答案不作为 Agent 检索材料；内部核验测试与被测输出隔离。</li>
+<li><strong>只有幸存候选才扩大模型面板。</strong>例如五个不同家族/系统，分别运行三次，报告逐次完成数和错误类型。若至少四个系统反复存在实质失败，可以成为“该冻结面板下的共同难例”候选；小样本不能推断全球 80% Agent，更不能称未来不可解。至少保留一个未参与出题的系统或后续版本复验。</li>
+<li><strong>围绕验证过的失败机制原创。</strong>由作者/教师开发新的独立案例，保留实际困难，避免仅替换数字或表述；自建题沿用仓库既有出卡、编写、导出、自检与专家复核流程。记录真实来源、经转换的案例和专业挑战的区别，随后冻结第一版。</li>
+</ol>
+<div class="note"><strong>失败仍有价值的停止规则：</strong>若充分工具、清楚输入或可靠 rubric 使某类原例普遍通过，就将其转作控制/回归案例；不要通过禁工具、隐藏信息、扩大隐藏要求把它重新“做难”。若一轮复核后没有可信幸存案例，结论就是这些方向尚不支撑 Edu Last Exam，应改变任务来源，而不是继续堆题。</div>
+<h3>每个候选最少需要的记录</h3>
+<div class="table"><table><thead><tr><th>字段</th><th>内容</th></tr></thead><tbody>
+<tr><td>来源与构念</td><td>论文/现实案例、版本、原始 item ID、材料状态、真实使用者与后果、目标能力</td></tr>
+<tr><td>可见信息</td><td>被测系统能看到什么；哪些是仅供判分的参考；是否需要允许追问</td></tr>
+<tr><td>人类参考</td><td>独立完成结果、耗时、分歧、可接受替代方案、争议裁决</td></tr>
+<tr><td>成功合同</td><td>不可缺少的教育结果、可核验关键错误、非关键质量指标；不以固定措辞判正确</td></tr>
+<tr><td>运行与失败</td><td>系统/工具/环境、每次输出、执行轨迹、测试日志、失败证据，不仅总分</td></tr>
+<tr><td>诊断对照</td><td>原图/可靠转写；独立解题/诊断他人工作；真实历史/打乱历史；完整证据/不足证据；正常工具/原论文协议</td></tr>
+<tr><td>状态</td><td>待材料→待审题→可复测→共同难例候选→冻结；另列已解决控制、争议题、无法复现</td></tr>
+</tbody></table></div>
+<h3>如何计分，才不会为了零通过制造零分</h3>
+<p>主结果报告<strong>实质任务完成率</strong>，关键错误需能说明为什么破坏教学用途。另报正确作业误伤率、关键错误漏检、证据归属、有效修复、产物科学一致性以及运行成本。多项必须同时成立可以合理，但每项都应有独立教育理由；微小格式问题和风格偏好不应触发教学失败。</p>
+<p>难度筛选可以采用多数系统失败，不要求模型间形成漂亮排名；诊断对照单列。原协议成绩与带工具成绩分开，不把 F1、reward、rubric 均分都经 0.5 阈值变成同一种“没通过”。长期学习效果、延迟保持和迁移仍是另一个需要真实学生与研究设计的测量层。</p>
+
+<h2>七、可用性、现有能力与实施边界</h2>
+<div class="table"><table><thead><tr><th>层次</th><th>本轮判断</th></tr></thead><tbody>
+<tr><td>可直接用于本地研究</td><td>原例来源和公开评估逻辑足以开始小规模审题、协议对照与复测准备；“公开可读”不等于有权再分发全部原材料</td></tr>
+<tr><td>有条件的产品参考</td><td>结构化评分和有界辅导存在较好的近期证据；实际部署仍须按对应人群、材料和用途验证，不能由本报告推定全面可靠</td></tr>
+<tr><td>需要开发</td><td>可运行的产物核验、原始证据追踪、错误与有效替代解的判分、完整 Agent 协议；重用已有执行框架，不必先建大平台</td></tr>
+<tr><td>需要新证据/数据</td><td>当代强 Agent 的共同实质失败、同条件教师参考、后续版本留出验证、真实动态教学效果；目前公共证据为部分覆盖</td></tr>
+</tbody></table></div>
+<p>既有 <a href="../../benchmark-todo.md">benchmark-todo.md</a> 已记录真实材料、工具对照、多模态产物、专家复核及长期学习缺口，本轮不重复追加。该文件中 pilot 的“修金标即 10/12”“同预测 judge 翻转”等叙述与本轮审计不一致；本报告明确标出，不直接修改历史记录。</p>
+
+<h2 id="sources">八、来源使用与状态说明</h2>
+<p>核心证据只采用上述时间窗内的论文、作者项目页和官方代码/数据。优先核对最新版本及当前开放状态；检索结果和作者自称的“frontier”不等于当下最强系统的独立证明。对论文转述均保留协议边界。没有下载或运行这些新 benchmark 的完整数据集，不能把“发现公开入口”写成本地复现完成。</p>
+<p>本报告还参考了近两年的 <a href="https://arxiv.org/html/2501.14249">Humanity’s Last Exam</a> 与 <a href="https://arxiv.org/html/2510.04374">GDPval</a> 的专家任务与交付物评估方法；它们是方法参照，不构成教育能力证据。GPQA、早期 Dynabench 等窗口外工作不作为本轮文献依据。</p>
+<p class="meta">当前已完成：仓库方案与 pilot 审计、近两年文献及官方材料核查、原例线索与反证整理、复测方案。未完成：专家双评、公开原例本地复现、带工具强 Agent 面板实验、原创正式题与正式 benchmark 发布。</p>
+</main></body></html>

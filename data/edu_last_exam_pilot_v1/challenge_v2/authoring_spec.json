@@ -1,0 +1,103 @@
+{
+  "batch_id": "edu_last_exam_challenge_v2",
+  "location": "private/edu_last_exam_pilot_v1/challenge_v2",
+  "expected_direction_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "status": "authored_candidate",
+  "required_fields": [
+    "item_id",
+    "direction_id",
+    "direction_name",
+    "family",
+    "title",
+    "author",
+    "material_origin",
+    "source_evidence",
+    "challenge_rationale",
+    "prompts",
+    "gold",
+    "rubric",
+    "self_review"
+  ],
+  "author": "codex",
+  "material_origin": "synthetic_research_informed",
+  "prompt_schema": {
+    "prompt_id": "base or variant id",
+    "system_prompt": "visible tested-model system message",
+    "user_prompt": "complete visible request; disclose all substantive requirements",
+    "assets": [
+      "stimuli/NN/file.ext"
+    ],
+    "interaction_mode": "single_turn | decision_snapshot | artifact_task"
+  },
+  "gold_schema": {
+    "per_prompt": {
+      "base": {
+        "reference_answer": "complete reference answer or structured facts",
+        "reasoning": "derivation and evidence",
+        "acceptable_alternatives": []
+      }
+    },
+    "common_misjudgments": []
+  },
+  "rubric_schema": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "description": "observable substantive criterion",
+        "points": 4,
+        "prompt_scope": [
+          "base"
+        ],
+        "visible_requirement": "which explicit task request this criterion serves"
+      }
+    ],
+    "total_points": 10,
+    "format_policy": "语义等价可接受；格式失误单列，不能作为教育能力失败",
+    "critical_errors": []
+  },
+  "source_schema": {
+    "title": "paper/project",
+    "url": "https://...",
+    "year": 2026,
+    "supported_mechanism": "what observed failure supports this topic",
+    "limits": "model/protocol/gold limits; item is new not empirical replication"
+  },
+  "self_review_schema": {
+    "input_sufficient": true,
+    "gold_checked": true,
+    "no_hidden_requirements": true,
+    "not_trivialized": "why the hard operation remains",
+    "alternative_answers_checked": "what was checked",
+    "human_review": "pending",
+    "model_evaluation": "not_run",
+    "checks": [
+      "checks/NN.py"
+    ]
+  },
+  "generation_policy": "self-authored by Codex; no tested-panel APIs used for generation",
+  "legacy_policy": "Keep the original 12-item dataset and adapter unchanged; this batch is not loaded by that adapter.",
+  "evaluation_status": "not_run",
+  "human_review": "pending"
+}

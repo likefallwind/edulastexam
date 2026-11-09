@@ -1,0 +1,194 @@
+[
+  {
+    "item_id": "ELE-C2-15",
+    "prompt_id": "base",
+    "case_id": "ELE-C2-15__base",
+    "verdict": "minor_issue",
+    "conclusion": "全参数分类、正确集合、一个选项的最小修复、学生题面与主体教师推导均正确；局部解释笔误和部分分条文不一致需修订，但不能据此说根式分类主任务失败。",
+    "evidence": [
+      {
+        "lines": "7-13, 61-70",
+        "quote": "故“恰有一个不同实数解” ⟺ a ∈ {−9/4} ∪ (−2, 0]；内部点 a=−35/16 的小根 −31/16 是真解。",
+        "finding": "主答案正确；t=√(x+2)≥0 时 a=(t−1/2)^2−9/4，端点与区间计数与回答一致。",
+        "kind": "correct"
+      },
+      {
+        "lines": "88",
+        "quote": "丢条件会把 (−9/4,−2) 的小根误判为真解，或反之把 a>−2 的小根误留。",
+        "finding": "前半句方向错误：(-9/4,-2) 内的小根本来就是真解，不能称误判为真解；同一回答63、69、87行已正确说明它是真解，故更像局部反向笔误。",
+        "kind": "minor_issue"
+      },
+      {
+        "lines": "110, 113",
+        "quote": "P4：分类正确但选项/集合誊写不一致：0分。……只漏孤立点：全过程……正确，仅最终集合漏掉孤立的 a=−9/4……该遗漏只在P3扣0.5，P4按“与自身分类一致”给满。",
+        "finding": "若前文端点分类已正确而仅最终集合漏点，P3应已满足而P4不一致；第113行却称自身分类一致并把扣分移到P3，与一般条文冲突。3.5分本身可接受，不应机械照搬此扣分定位；应明确是端点判断遗漏还是最终誊写遗漏，并只扣一次。",
+        "kind": "minor_issue"
+      }
+    ],
+    "gold_issues": [
+      "未发现参考金标的分类或内部反例数学错误。金标明确4分权重可不同，不能把模型采用单选字母0分或自定3.5分视为违例。上述反向笔误与P3/P4矛盾不来自gold。"
+    ],
+    "checks": [
+      "独立用非负变量t代换核对全参数解数、a=-9/4与-2、a=-35/16内部反例；审阅替换后四选项唯一性。"
+    ],
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-15__base/response.md",
+    "review_type": "independent_codex_exploratory_review_not_teacher_validation",
+    "limitations": "仅复核本次既有回答；无模型API重跑、无真实学生效果验证，不据此报告正式通过率。",
+    "public_requirement_status": "局部问题属于公开要求的有效教师解析与可用评分方案内部矛盾；不是要求采用参考答案的固定分配。主体数学、修题和不重复扣罚意图均完成，故仅minor。"
+  },
+  {
+    "item_id": "ELE-C2-16",
+    "prompt_id": "base",
+    "case_id": "ELE-C2-16__base",
+    "verdict": "substantive_issue",
+    "conclusion": "主要安全点对、差区间、两阶段信息发放及异常日志检查正确，但新增教师答案把“方案不能保证识别”误当“本次数据无法识别”，并写入评分规则，会错判一个合法学生结论。",
+    "evidence": [
+      {
+        "lines": "111-125, 131-142",
+        "quote": "完整清单：{0,2} 与 {1,2}。……恰一个相容 → 判该模型；两个都相容 → 无法区分；都不相容 → 数据异常。",
+        "finding": "两对安全设计及完整共同偏移相容性判据正确；(0.1,7.9)也正确拒绝强选N。问题并非全面不会处理绝对读数。",
+        "kind": "correct"
+      },
+      {
+        "lines": "140",
+        "quote": "同点两次 x=2 → (13.8, 13.8)：d=0，两模型区间相同 → 无法区分。",
+        "finding": "错误。M在x=2的单读数上限是10+2+0.4=12.4，13.8排除M；N可取b=1.8、两次e=0，也可行b∈[1.4,2]。故本次数据唯一支持N，虽然事前重复测x=2不能保证每次识别。",
+        "kind": "substantive_issue"
+      },
+      {
+        "lines": "141",
+        "quote": "只测一次 x=2 → 13.8：13.8∉[7.6,12.4]（M）、∈[9.6,14.4]（N）→ 本次可判 N，但须指出设计本身不保证区分。",
+        "finding": "紧邻下一行已正确区分事前设计保证与事后数据可判定，进一步证明140行结论自相矛盾。重复同一个读数不能使已有排除证据消失。",
+        "kind": "contradiction"
+      },
+      {
+        "lines": "164-165",
+        "quote": "D5：……无辨别力设计应得“无法区分”。D6：(b) 设计无辨别力时如实写“无法区分”。",
+        "finding": "把上述混淆推广进学生评分表，会错罚同点测量或单次x=2后依绝对范围正确判N的学生。应在D3扣不能保证辨别的设计分，而D5/D6按实际读数相容性评结论。",
+        "kind": "substantive_issue"
+      }
+    ],
+    "gold_issues": [
+      "金标只说“重复同一点不能保证区分”，未说该具体读数不能区分，不能把二者混为一谈；主金标结论正确。",
+      "参考解迁移段仅以差区间重叠说明不能保证，论证略省略：差值重叠一般并不足以证明完整读数不可分。此题可补完整读数共同见证，例如各次b可变时安全点读数r(0)=4、r(1)=7、r(2)=11均可被两模型解释；不改变正确结论。"
+    ],
+    "checks": [
+      "用精确Fraction独立算(13.8,13.8)的共同b可行区间：M下[3.4,2]为空；N下[1.4,2]非空。",
+      "独立核对安全边界、两对差区间、常规与异常数据、变化偏移后的安全测量不可保证性。"
+    ],
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-16__base/response.md",
+    "review_type": "independent_codex_exploratory_review_not_teacher_validation",
+    "limitations": "仅复核本次既有回答；无模型API重跑、无真实学生效果验证，不据此报告正式通过率。"
+  },
+  {
+    "item_id": "ELE-C2-17",
+    "prompt_id": "base",
+    "case_id": "ELE-C2-17__base",
+    "verdict": "no_major_issue",
+    "conclusion": "边际反演、目标权重、联合掌握尖锐界、两套排序反转分布、保证型回退政策和追加联合锚题建议均成立；未发现影响本题结论的实质错误。",
+    "evidence": [
+      {
+        "lines": "11-15, 19-28",
+        "quote": "G1：0.8、0.6；G2：0.4、0.7；目标：0.5、0.675。E(J)∈[0.36375,0.5425]；A_only=0.5；B_only=0.70625。",
+        "finding": "按p=(q−.2)/.6和目标25/75权重反演正确；分组Fréchet界给出的联合目标区间[.175,.45]端点可达。",
+        "kind": "correct"
+      },
+      {
+        "lines": "32-43, 49-69",
+        "quote": "无联合技能题可保证落带 → 依政策条款回退单技能题：选 A_only。……S1：E(J)=0.36375<0.5；S2：E(J)=0.5425>0.5。",
+        "finding": "两套四格表保持边际、非负且合计1，确实反转J/A_only顺序；选择执行公开保证政策。",
+        "kind": "correct"
+      },
+      {
+        "lines": "73-82",
+        "quote": "每组各施测一道历史校准过的联合锚题……π₁₁ᵍ=(P_g−c_other)/(c_both−c_other)。……只重复收集单技能边际不足。",
+        "finding": "联合信息的识别解释成立；备选配对单技能方法明确附加条件独立假设，未偷偷把独立性当已给条件。",
+        "kind": "correct"
+      }
+    ],
+    "gold_issues": [
+      "未发现本题主金标问题。该item的rubric按任务包合计10分，AUTHORING明确跨变体汇总；不能未经另定口径把base的适用8分或joint_update的适用6分直接当10分满分计算。"
+    ],
+    "checks": [
+      "独立精确分数复算联合目标界7/40至9/20，J界291/800至217/400；核对四格分布、锚题复现及选题带。"
+    ],
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-17__base/response.md",
+    "review_type": "independent_codex_exploratory_review_not_teacher_validation",
+    "limitations": "仅复核本次既有回答；无模型API重跑、无真实学生效果验证，不据此报告正式通过率。"
+  },
+  {
+    "item_id": "ELE-C2-17",
+    "prompt_id": "joint_update",
+    "case_id": "ELE-C2-17__joint_update",
+    "verdict": "no_major_issue",
+    "conclusion": "正确利用追加锚题消除联合结构不确定性，得到J=.4775并按公开政策选J；四格表、排序和现实适用边界均正确。",
+    "evidence": [
+      {
+        "lines": "20-27, 49-61",
+        "quote": "G1：P(A∧B)=(0.475−0.1)/0.75=0.50；G2：……=0.30。",
+        "finding": "反演及四格表正确；目标分布(.35,.15,.325,.175)非负且合计1，锚题回代一致。",
+        "kind": "correct"
+      },
+      {
+        "lines": "69-79",
+        "quote": "J目标期望正确率0.47750……最终选择：候选题 J。",
+        "finding": "J=191/400，A_only=1/2，B_only=113/160；J与A_only都在闭带内，优先联合技能选J，易到难排序正确。",
+        "kind": "correct"
+      },
+      {
+        "lines": "89-90",
+        "quote": "不是实测难度、不是抽样估计……模型适用性不因本推导的内部自洽而免检。",
+        "finding": "未把合成模型内推算扩写为真实学生实测。",
+        "kind": "correct"
+      }
+    ],
+    "gold_issues": [
+      "未发现数学或公开条件问题；同17/base所述，正式评分如开展应先确定跨prompt权重，不能把任务包10分误作每prompt都10分。"
+    ],
+    "checks": [
+      "独立精确分数复算更新J=191/400，并检查群组与混合四格边际、联合锚题和候选题期望。"
+    ],
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-17__joint_update/response.md",
+    "review_type": "independent_codex_exploratory_review_not_teacher_validation",
+    "limitations": "仅复核本次既有回答；无模型API重跑、无真实学生效果验证，不据此报告正式通过率。"
+  },
+  {
+    "item_id": "ELE-C2-18",
+    "prompt_id": "base",
+    "case_id": "ELE-C2-18__base",
+    "verdict": "minor_issue",
+    "conclusion": "题组、干扰项推导、三题最少与一次误选唯一性证明、L/M分类及可执行诊断程序均正确；最后的步骤追问提前提示通分与分子相乘，削弱对学生原有自发规则的观察，属于局部诊断措辞问题。",
+    "evidence": [
+      {
+        "lines": "104-111, 131-157",
+        "quote": "Q1答案B=5/6，Q2答案A=7/12，Q3答案D=13/20；C序列B A D，E1 C D C，E2 A B A，E3 D C B。",
+        "finding": "四规则逐项结果、数值去重、学生选项与教师映射一致；学生页未暴露算法标签。",
+        "kind": "correct"
+      },
+      {
+        "lines": "71-90, 260-267",
+        "quote": "任意 A≠B……d(v(A),v(B))=3。……3题为最少。L唯一相容E1；M无相容→暂缓。",
+        "finding": "编码距离与下界证明正确，L距离(3,1,2,3)，M距离(2,3,2,2)正确。",
+        "kind": "correct"
+      },
+      {
+        "lines": "276-279",
+        "quote": "请把2/3+1/6一步一步写出来……两个分母你分别是怎么处理的？通分时每个分子各乘了什么？",
+        "finding": "最后一句已假定要通分并提示分子要乘数，可能使原本采用E1/E2的学生改用被提示的策略。若目的为直接观察自发步骤，宜先只索取完整过程和分母选择理由，看到原始步骤后再追问。该问题不推翻主数学构造、分类或程序。",
+        "kind": "minor_issue"
+      }
+    ],
+    "gold_issues": [
+      "未发现规则输出、题数下界或L/M金标错误。公开题面要求“直接检验作答步骤”，rubric进一步写非诱导追问；此措辞问题不宜按隐藏的心理诊断金标判整题失败。",
+      "一次误选模型与封闭规则目录仅为合成保证，答对本题不等于真实学生误解诊断有效；回答本身已经声明这条边界。"
+    ],
+    "checks": [
+      "阅读模型交付的diagnose.py后，在本地内存执行，无网络和API；枚举全部64条合法三题作答，40条IDENTIFIED、24条SUSPEND，所有至多1次偏离的序列均恢复正确算法；L判E1、M暂缓。",
+      "核对全部P1–P6输出和10种合法三题组合的数学结构。"
+    ],
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-18__base/response.md",
+    "review_type": "independent_codex_exploratory_review_not_teacher_validation",
+    "limitations": "仅复核本次既有回答；无模型API重跑、无真实学生效果验证，不据此报告正式通过率。",
+    "public_requirement_status": "这是诊断追问的提示风险建议。公开题面只要求直接检验步骤，并未明文禁止“通分”提示；非诱导措辞在rubric中更明确。不能据参考偏好认定严格硬违例，更不能按整题失败处理；minor仅表示交付有可改进的证据收集局部。"
+  }
+]

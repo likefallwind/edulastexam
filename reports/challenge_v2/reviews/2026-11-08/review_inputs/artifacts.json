@@ -1,0 +1,93 @@
+[
+  {
+    "case_id": "ELE-C2-14__base",
+    "item_id": "ELE-C2-14",
+    "prompt_id": "base",
+    "verdict": "substantive_issue",
+    "summary": "两人材料按探查证据作了不同安排，主要分数计算正确且学生/教师页分开；但同一例子重新等分后的图条长度改变，分母定义容易误导，并把“成因的替代解释”替换为替代教法。问题影响材料可靠性，但不应抹去其正确诊断与主要练习设计。",
+    "evidence": [
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-14__base/attempt_01/artifacts/01_student_A.md",
+        "line_start": 5,
+        "line_end": 6,
+        "quote": "- 所有纸条一样长，**一整条就是 1**。图里每条横条都代表一整条，分成几份以每幅图的说明为准。\n- **分母（下面的数）＝每份有多大；分子（上面的数）＝涂了几份。**",
+        "interpretation": "分母b表示整体等分成b份，单位分数大小是1/b；“决定每份大小”可作口语说明，但等号式定义与后文否定份数需修订。"
+      },
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-14__base/attempt_01/artifacts/01_student_A.md",
+        "line_start": 43,
+        "line_end": 43,
+        "quote": "- 分母说的是“每份有多大”，不是“有几份”。**大小不能和个数相加。**",
+        "interpretation": "这是概念表述的局部问题，不能推断模型完全不懂分数。"
+      },
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-14__base/attempt_01/artifacts/01_student_A.md",
+        "line_start": 15,
+        "line_end": 18,
+        "quote": "    [#############][             ]\n\n    乙：平均分成3份，涂1份（1/3）\n    [########][        ][        ]",
+        "interpretation": "两条最初均30字符，确实彼此等长。"
+      },
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-14__base/attempt_01/artifacts/01_student_A.md",
+        "line_start": 24,
+        "line_end": 32,
+        "quote": "把两条都切成一样大的小份：每条都平均分成 6 份，每格就是 1/6。\n\n- 1/2：把每一半再各切成 3 小份 → 半条正好占 3 格 → **1/2 ＝ 3/6**\n- 1/3：把每一份再各切成 2 小份 → 1/3 正好占 2 格 → **1/3 ＝ 2/6**\n\n（这个办法你在把 1/2 写成 3/6 时用过：“每半边再分 3 份，一共 6 份。”）\n\n    [####][####][####][::::][::::][    ]\n    （# 是来自 1/2 的 3 格；: 是来自 1/3 的 2 格；现在每格都是 1/6）",
+        "interpretation": "随后同一整体六等分条长变为36字符；同例子中没有说明比例变化。每一条内部仍等分，通分算式本身正确。"
+      },
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-14__base/attempt_01/artifacts/04_evidence_note.md",
+        "line_start": 15,
+        "line_end": 21,
+        "quote": "替代解释（首选不奏效时）：\n1. 单位／换零钱类比：2 枚五角＋3 枚五角＝5 枚五角；但 2 枚五角＋3 枚一角不能说成\"5 枚五角一角\"，要先换成同一种再数——通分＝先换零钱。A 符号能力强，通常接得上。\n2. 数线门槛：把 2/5 标在数线上，落在 1/2 左边；\"和不可能比大加数小\"直接推翻 2/5。\n\n后续观察（有区分力）：约一周后，无图给纯符号同分母 4/9＋2/9。答 6/9 且能说\"每份还是 1/9\"→ E1 已被替换；答 6/18 → 规则仍在符号通道自动触发（回到 A1 状态），继续\"图配符号\"练习；答对但说不出理由 → 只记部分掌握。B 在同型题上从未出错，此题可区分两人。\n\n## 学生 B：同分母稳，缺\"等值＝大小不变、个数要变\"",
+        "interpretation": "替代解释给的是换零钱/数轴等替代教法，而非学生为何出错的竞争解释；后续只检验首选补救，不区分成因。"
+      }
+    ],
+    "rubric_effect": "涉及c1替代解释与c2图示/概念措辞；c3材料组成、c4独立练习和主体数学应保留分数。不设整题归零。",
+    "gold_issues": [],
+    "judgment_boundary": "图条30→36由字符计数核验；分母措辞的教育影响仍需教师审查，不能把本标签当正式不通过。"
+  },
+  {
+    "case_id": "ELE-C2-19__base",
+    "item_id": "ELE-C2-19",
+    "prompt_id": "base",
+    "verdict": "no_major_issue",
+    "summary": "四态数值、375K触挡/离挡、40N向下止挡力、实际SVG的8/10/10/8.8cm高度与统一比例均正确；420K预测题的112kPa、24N也正确。",
+    "evidence": [],
+    "checks": [
+      "artifact_checks.json: five state records and four SVG gas regions checked",
+      "glm_piston.png: rendered and visually inspected"
+    ],
+    "gold_issues": [],
+    "judgment_boundary": "filename=写在代码块内容首行，审查时只去除此封装行以解析；保留原响应，不把文件封装格式记为物理能力失败。"
+  },
+  {
+    "case_id": "ELE-C2-20__base",
+    "item_id": "ELE-C2-20",
+    "prompt_id": "base",
+    "verdict": "minor_issue",
+    "summary": "实际浏览器验证通过指定7阶段的电压/电流/时间、切换连续性、历史保留和重置；但每次推进只保存一个终点，图用直线连接。合法一次推进2秒时，图在1秒处显示约5V，RC真实值约9.933V；20次0.1秒到达相同终态却画成不同曲线。",
+    "evidence": [
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-20__base/attempt_01/artifacts/01_corrected.html",
+        "line_start": 88,
+        "line_end": 92,
+        "quote": "  /* 本段内 R、模式不变 → 精确解 V = V_T + (V0 − V_T)·e^(−Δt/τ) */\n  state.voltage = vT + (v0 - vT) * Math.exp(-dt / tau);\n  state.time += dt;\n  samples.push({time: state.time, voltage: state.voltage});\n  render();",
+        "interpretation": "端点更新公式正确，但区间内部没有采样。"
+      },
+      {
+        "source_file": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-20__base/attempt_01/artifacts/01_corrected.html",
+        "line_start": 139,
+        "line_end": 143,
+        "quote": "  const xmax = Math.max(0.1, state.time);           // 横轴重缩放：只改屏幕映射\n  const X = t => 55 + 715 * t / xmax;\n  const Y = v => 260 - 23.5 * v;                    // 0 V→260，10 V→25\n  ui.trace.setAttribute('points',\n    samples.map(s => X(s.time).toFixed(4) + ',' + Y(s.voltage).toFixed(4)).join(' '));",
+        "interpretation": "polyline直接连接samples端点，导致粗步长时科学曲线失真。"
+      }
+    ],
+    "checks": [
+      "artifact_checks.json: all seven protocol states passed; history and reset passed; zero page errors",
+      "glm_rc_two_seconds.png versus glm_rc_twenty_steps.png"
+    ],
+    "rubric_effect": "仅representation/曲线表达存在问题；动力学、连续性和主要教学解释仍成立。",
+    "gold_issues": [],
+    "judgment_boundary": "公开要求真实历史电压曲线，但没有预先规定插值误差阈值；不以本次新探针设硬门槛或宣布整题失败。"
+  }
+]

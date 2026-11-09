@@ -1,0 +1,26 @@
+{
+  "schema_version": "edu_last_exam_v1_test_2026-11-09",
+  "status": "test_release_candidate",
+  "source_batch": "private/edu_last_exam_pilot_v1/challenge_v2",
+  "purpose": "小规模首版测试；验证题目构念、评分可判定性和跨模型错误模式，不发布总分或排行榜。",
+  "packages": [
+    {"item_id": "ELE-C2-01", "track": "core_text", "reason": "首错诊断必须区分当前数据下合法的平均与不可泛化的平均。"},
+    {"item_id": "ELE-C2-03", "track": "grading_robustness_control", "reason": "评分规则执行和缺陷隔离；作为评分稳健性基准，不预设为困难题。"},
+    {"item_id": "ELE-C2-09", "track": "core_text", "reason": "分层证据、共同目标场景权重和外推边界。"},
+    {"item_id": "ELE-C2-10", "track": "core_text", "reason": "长历史状态恢复、未完成迁移和测量误差边界。"},
+    {"item_id": "ELE-C2-12", "track": "long_history", "reason": "具体记录证据、提示后成功与无提示迁移的区分。"},
+    {"item_id": "ELE-C2-13", "track": "adaptive_scaffolding", "reason": "同一概念下按快照差异调整支架，并保留独立迁移验证。"},
+    {"item_id": "ELE-C2-16", "track": "assessment_design_static", "reason": "测评设计和证据相容性；当前协议是单轮静态交付，不冒充真实多轮实验。"},
+    {"item_id": "ELE-C2-20", "track": "artifact_rc_simulator", "reason": "交互教学产物的动力学、切换连续性、历史和中间曲线验收。"}
+  ],
+  "deferred": ["ELE-C2-02", "ELE-C2-04", "ELE-C2-05", "ELE-C2-06", "ELE-C2-07", "ELE-C2-08", "ELE-C2-11", "ELE-C2-14", "ELE-C2-15", "ELE-C2-17", "ELE-C2-18", "ELE-C2-19", "ELE-C2-21"],
+  "revision_notes": {
+    "ELE-C2-01": "核实 gold 已将 K4 作为首错，并明确 K3 在不合格人数相等时的当前合法性。",
+    "ELE-C2-09": "采用已修订的样本分配说明：A、B 各100粒，各自在强光和弱光下各50粒。",
+    "ELE-C2-10": "明确两次读数各 ±0.2g 时，前后差值的最坏误差界是 ±0.4g。",
+    "ELE-C2-12": "用 R03/R07/R11/R14 的早期无提示错误、R23/R24/R25/R26/R28/R32/R34/R38 的近期无提示成功，以及 R05/R10/R17/R27/R30/R35/R37/R40 的固定费用遗漏替换模糊计数。",
+    "ELE-C2-13": "保留确认学生自提方法与保守撤助两种可接受教学路径。",
+    "ELE-C2-16": "修正 rubric 交付编号；将任务标为静态测评设计和证据审查。",
+    "ELE-C2-20": "增加 reset(); advance(2) 后 t=1 附近约9.9326V的中间采样验收，防止端点直线伪装。"
+  }
+}

@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="668" viewBox="0 0 1240 668">
+  <rect width="100%" height="100%" fill="#fffdf7"/>
+  <style>text{font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif;fill:#172b4d}</style>
+  <text x="32" y="40" font-size="25">活塞先加热后冷却 · 修正图（止挡位于气柱高度 10 cm，统一比例 20 px = 1 cm）</text>
+
+  <!-- ============ 面板1 初态 cx=90, h=8cm(y_u=271) ============ -->
+  <text x="40" y="86" font-size="21">① 初态 300 K</text>
+  <text x="150" y="118" font-size="13" fill="#4a6a8a" text-anchor="middle">接下来等压加热</text>
+  <text x="150" y="138" font-size="13" fill="#4a6a8a" text-anchor="middle">P=100 kPa 不变，V∝T</text>
+  <rect x="93" y="271" width="114" height="160" fill="#cfe8f7" stroke="#2e6b91" stroke-width="1"/>
+  <rect x="93" y="257" width="114" height="14" fill="#566c7f" stroke="#2e4257"/>
+  <line x1="90" y1="191" x2="90" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="210" y1="191" x2="210" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="80" y1="431" x2="220" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="80" y1="191" x2="220" y2="191" stroke="#21354a" stroke-width="3"/>
+  <rect x="93" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <rect x="106" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <line x1="213" y1="217" x2="240" y2="217" stroke="#8a5a2b" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="216" y="201" font-size="12" fill="#8a5a2b">止挡</text>
+  <text x="150" y="346" font-size="15" fill="#14425f" text-anchor="middle">气体</text>
+  <text x="150" y="368" font-size="14" fill="#14425f" text-anchor="middle">T=300 K</text>
+  <line x1="211" y1="264" x2="218" y2="268" stroke="#33475a" stroke-width="1"/>
+  <text x="220" y="271" font-size="13" fill="#33475a">活塞</text>
+  <line x1="250" y1="271" x2="250" y2="431" stroke="#21354a" stroke-width="2"/>
+  <line x1="240" y1="271" x2="260" y2="271" stroke="#21354a" stroke-width="2"/>
+  <line x1="240" y1="431" x2="260" y2="431" stroke="#21354a" stroke-width="2"/>
+  <polygon points="250,271 244,282 256,282" fill="#21354a"/>
+  <polygon points="250,431 244,420 256,420" fill="#21354a"/>
+  <text x="263" y="356" font-size="16">h=8 cm</text>
+  <line x1="48" y1="191" x2="48" y2="431" stroke="#21354a" stroke-width="2"/>
+  <line x1="38" y1="191" x2="58" y2="191" stroke="#21354a" stroke-width="2"/>
+  <line x1="38" y1="431" x2="58" y2="431" stroke="#21354a" stroke-width="2"/>
+  <polygon points="48,191 42,202 54,202" fill="#21354a"/>
+  <polygon points="48,431 42,420 54,420" fill="#21354a"/>
+  <text x="36" y="311" font-size="15" text-anchor="middle" transform="rotate(-90 36 311)">H=12 cm（缸总高）</text>
+  <text x="40" y="472" font-size="18">T=300 K</text>
+  <text x="40" y="502" font-size="18">P=100 kPa</text>
+  <text x="40" y="532" font-size="18">V=160 cm³</text>
+  <text x="40" y="562" font-size="18">止挡力=0 N（未触挡）</text>
+  <text x="40" y="594" font-size="14" fill="#4a6a8a">等压加热：h 由 8 升到 10 cm</text>
+
+  <!-- ============ 面板2 首次触挡 cx=390, h=10cm(y_u=231) ============ -->
+  <text x="340" y="86" font-size="21">② 首次触挡 375 K</text>
+  <text x="450" y="118" font-size="13" fill="#4a6a8a" text-anchor="middle">接下来继续加热（定容）</text>
+  <text x="450" y="138" font-size="13" fill="#4a6a8a" text-anchor="middle">h 固定 10 cm，P∝T</text>
+  <rect x="393" y="231" width="114" height="200" fill="#ffe4a8" stroke="#2e6b91" stroke-width="1"/>
+  <rect x="393" y="217" width="114" height="14" fill="#566c7f" stroke="#2e4257"/>
+  <line x1="390" y1="191" x2="390" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="510" y1="191" x2="510" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="380" y1="431" x2="520" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="380" y1="191" x2="520" y2="191" stroke="#21354a" stroke-width="3"/>
+  <rect x="393" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <rect x="406" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <line x1="513" y1="217" x2="540" y2="217" stroke="#8a5a2b" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="516" y="201" font-size="12" fill="#8a5a2b">止挡</text>
+  <text x="450" y="316" font-size="15" fill="#14425f" text-anchor="middle">气体</text>
+  <text x="450" y="338" font-size="14" fill="#14425f" text-anchor="middle">T=375 K</text>
+  <line x1="550" y1="231" x2="550" y2="431" stroke="#21354a" stroke-width="2"/>
+  <line x1="540" y1="231" x2="560" y2="231" stroke="#21354a" stroke-width="2"/>
+  <line x1="540" y1="431" x2="560" y2="431" stroke="#21354a" stroke-width="2"/>
+  <polygon points="550,231 544,242 556,242" fill="#21354a"/>
+  <polygon points="550,431 544,420 556,420" fill="#21354a"/>
+  <text x="563" y="336" font-size="16">h=10 cm</text>
+  <text x="340" y="472" font-size="18">T=375 K</text>
+  <text x="340" y="502" font-size="18">P=100 kPa</text>
+  <text x="340" y="532" font-size="18">V=200 cm³</text>
+  <text x="340" y="562" font-size="18">止挡力=0 N（刚接触）</text>
+  <text x="340" y="594" font-size="14" fill="#4a6a8a">再加热为定容：P/T=常数</text>
+
+  <!-- ============ 面板3 加热到450 K cx=690, h=10cm(定容) ============ -->
+  <text x="640" y="86" font-size="21">③ 加热末 450 K</text>
+  <text x="750" y="118" font-size="13" fill="#4a6a8a" text-anchor="middle">接下来开始冷却</text>
+  <text x="750" y="138" font-size="13" fill="#4a6a8a" text-anchor="middle">≥375 K 定容；&lt;375 K 等压</text>
+  <rect x="693" y="231" width="114" height="200" fill="#ffc078" stroke="#2e6b91" stroke-width="1"/>
+  <rect x="693" y="217" width="114" height="14" fill="#566c7f" stroke="#2e4257"/>
+  <line x1="690" y1="191" x2="690" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="810" y1="191" x2="810" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="680" y1="431" x2="820" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="680" y1="191" x2="820" y2="191" stroke="#21354a" stroke-width="3"/>
+  <rect x="693" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <rect x="706" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <line x1="813" y1="217" x2="840" y2="217" stroke="#8a5a2b" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="816" y="201" font-size="12" fill="#8a5a2b">止挡</text>
+  <text x="750" y="176" font-size="14" fill="#b42b38" text-anchor="middle">F止挡=40 N ↓</text>
+  <line x1="750" y1="192" x2="750" y2="206" stroke="#b42b38" stroke-width="3"/>
+  <polygon points="750,217 743,206 757,206" fill="#b42b38"/>
+  <text x="750" y="316" font-size="15" fill="#14425f" text-anchor="middle">气体</text>
+  <text x="750" y="338" font-size="14" fill="#14425f" text-anchor="middle">T=450 K</text>
+  <line x1="850" y1="231" x2="850" y2="431" stroke="#21354a" stroke-width="2"/>
+  <line x1="840" y1="231" x2="860" y2="231" stroke="#21354a" stroke-width="2"/>
+  <line x1="840" y1="431" x2="860" y2="431" stroke="#21354a" stroke-width="2"/>
+  <polygon points="850,231 844,242 856,242" fill="#21354a"/>
+  <polygon points="850,431 844,420 856,420" fill="#21354a"/>
+  <text x="863" y="336" font-size="16">h=10 cm</text>
+  <text x="640" y="472" font-size="18">T=450 K</text>
+  <text x="640" y="502" font-size="18">P=120 kPa</text>
+  <text x="640" y="532" font-size="18">V=200 cm³</text>
+  <text x="640" y="562" font-size="18" fill="#b42b38">止挡力=40 N（向下↓）</text>
+  <text x="640" y="594" font-size="14" fill="#4a6a8a">F=(120−100) kPa × 20 cm² = 40 N</text>
+
+  <!-- ============ 面板4 冷却到330 K cx=990, h=8.8cm(y_u=255) ============ -->
+  <text x="940" y="86" font-size="21">④ 冷却终态 330 K</text>
+  <text x="1050" y="118" font-size="13" fill="#4a6a8a" text-anchor="middle">过程结束</text>
+  <text x="1050" y="138" font-size="13" fill="#4a6a8a" text-anchor="middle">P 回到 100 kPa，止挡力 0</text>
+  <rect x="993" y="255" width="114" height="176" fill="#d6efe0" stroke="#2e6b91" stroke-width="1"/>
+  <rect x="993" y="241" width="114" height="14" fill="#566c7f" stroke="#2e4257"/>
+  <line x1="990" y1="191" x2="990" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="1110" y1="191" x2="1110" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="980" y1="431" x2="1120" y2="431" stroke="#21354a" stroke-width="6"/>
+  <line x1="980" y1="191" x2="1120" y2="191" stroke="#21354a" stroke-width="3"/>
+  <rect x="993" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <rect x="1006" y="205" width="11" height="12" fill="#8a5a2b"/>
+  <line x1="1113" y1="217" x2="1140" y2="217" stroke="#8a5a2b" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="1116" y="201" font-size="12" fill="#8a5a2b">止挡</text>
+  <text x="1050" y="328" font-size="15" fill="#14425f" text-anchor="middle">气体</text>
+  <text x="1050" y="350" font-size="14" fill="#14425f" text-anchor="middle">T=330 K</text>
+  <line x1="1150" y1="255" x2="1150" y2="431" stroke="#21354a" stroke-width="2"/>
+  <line x1="1140" y1="255" x2="1160" y2="255" stroke="#21354a" stroke-width="2"/>
+  <line x1="1140" y1="431" x2="1160" y2="431" stroke="#21354a" stroke-width="2"/>
+  <polygon points="1150,255 1144,266 1156,266" fill="#21354a"/>
+  <polygon points="1150,431 1144,420 1156,420" fill="#21354a"/>
+  <text x="1160" y="348" font-size="16">h=8.8 cm</text>
+  <text x="940" y="472" font-size="18">T=330 K</text>
+  <text x="940" y="502" font-size="18">P=100 kPa</text>
+  <text x="940" y="532" font-size="18">V=176 cm³</text>
+  <text x="940" y="562" font-size="18">止挡力=0 N（已离挡）</text>
+  <text x="940" y="594" font-size="14" fill="#4a6a8a">375 K 离挡，此后等压下降</text>
+
+  <text x="30" y="622" font-size="16">A=20 cm²；缸总内高 H=12 cm（顶缘位置）；止挡限制气柱高度 h 至多 10 cm；h 由缸底量到活塞下表面，V=A·h；统一高度比例 20 px ↔ 1 cm。</text>
+  <text x="30" y="646" font-size="16">P 均为绝对压强；外界压力+活塞重等效 100 kPa 恒向下；无摩擦、准静态、不漏气。压强增大只发生在 375→450 K 的定容段。</text>
+</svg>

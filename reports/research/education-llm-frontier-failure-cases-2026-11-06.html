@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 前沿模型教育失败案例：最新证据优先清单</title>
+<style>
+:root{--ink:#172033;--muted:#5d6678;--line:#dce2eb;--paper:#f5f7fb;--card:#fff;--blue:#2057a8;--pale:#eaf2ff;--amber:#8b5200;--amber-bg:#fff6df;--green:#17664b;--green-bg:#eaf7f0;--red:#9c2f36;--red-bg:#fff0f1}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1280px;margin:auto;padding:34px 24px 70px}h1{font-size:30px;line-height:1.3;margin:0 0 10px}h2{font-size:23px;margin:42px 0 14px;border-left:5px solid var(--blue);padding-left:12px}h3{font-size:18px;margin:28px 0 10px}p{margin:8px 0 12px}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}.subtitle,.small{color:var(--muted)}.small{font-size:13px}.hero,.note,.warn,.decision{padding:18px 20px;border-radius:10px;margin:18px 0}.hero{background:var(--pale);border:1px solid #cadcff}.note{background:#eef1f6;border-left:4px solid #778398}.warn{background:var(--amber-bg);border-left:4px solid #d78b15}.decision{background:var(--green-bg);border-left:4px solid var(--green)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.card,.task{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}.card b{display:block;font-size:17px;margin-bottom:5px}.tag{display:inline-block;border-radius:999px;padding:1px 8px;margin:1px 3px 1px 0;font-size:12px;font-weight:650;white-space:nowrap}.real{background:#e5f5ec;color:#176044}.controlled{background:#e8effc;color:#285493}.synth{background:#f1e9fb;color:#704097}.prod{background:#ffeef0;color:#9c2f36}.pre{background:#f2f2f2;color:#666}.priority{background:#fff0d7;color:#895000}.table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:12px 0}table{width:100%;border-collapse:collapse;min-width:1050px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:#edf1f7;font-weight:650}tr:last-child td{border-bottom:0}.case{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f4f6fa;border-radius:6px;padding:8px 10px;margin:7px 0;white-space:pre-wrap}.task{margin:14px 0}.task h3{margin:0 0 8px}.task ol,.task ul{margin:6px 0 8px;padding-left:23px}code{background:#eef1f5;padding:1px 5px;border-radius:4px}li{margin:5px 0}.sources li{word-break:break-all;margin:8px 0}.footer{margin-top:42px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}.metric{font-weight:700;color:var(--blue)}
+</style>
+</head>
+<body><main>
+<h1>2026 前沿模型教育失败案例：最新证据优先清单</h1>
+<p class="subtitle">只保留 2026 年发表/采集、当代前沿模型或真实部署日志的案例｜整理日期 2026-11-06</p>
+<div class="hero">
+<b>筛选规则：</b>主清单只收 <b>2026 年证据</b>，并优先满足二者之一：使用当代前沿模型（Claude 4.6/4.7/5.x、GPT‑5.4/5.5/6、Gemini 3.x、GLM 5.3、DeepSeek V4.x 等），或来自真实课堂/教师配置/学生作答日志。2024–2025 的 GPT‑4/GPT‑4o 基本数学错误不再作为当前能力证据，只保留在文末“历史机制，不进主清单”。
+</div>
+<div class="grid">
+<div class="card"><b>最大变化</b>基础解题和普通答案一致性已明显变强；当前失败集中在操纵稳健性、教师意图执行、长历史诊断、真实手写和公平性。</div>
+<div class="card"><b>最强新证据</b>2026‑10 的 22 模型批改审计显示：14/22 会被答案内一句话提分超过 5%，17/22 在学生无理由反对后更容易让步，22/22 的反馈语气跟随被错误告知的分数。</div>
+<div class="card"><b>真实手写仍是硬缺口</b>EDU‑CIRCUIT‑HW 中，Gemini‑3/GPT‑5.1/Claude‑4.5 的真实理工手写识别错误率仍为 37.6%–80.7%。</div>
+<div class="card"><b>教师意图不被执行</b>真实教师配置聊天机器人中，53.8% 跳过必需工作流；27 位教师的配置测试中，purpose 对齐只有 59.3%。</div>
+</div>
+
+<h2>一、最新主清单：按出题价值排序</h2>
+<p>标签：<span class="tag real">真实学生/课堂</span><span class="tag controlled">受控实证</span><span class="tag synth">合成/案例生成</span><span class="tag prod">生产事件线索</span><span class="tag pre">预印本/研究发布</span>。所有案例仍需经当前模型×harness 复测和专家金标审查后才可入库。</p>
+
+<h3>A. 批改稳健性：普通一致性好，不代表批改的是这份作业</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>案例</th><th>证据与模型</th><th>具体失败</th><th>可复验判分点</th></tr></thead>
+<tbody>
+<tr><td><b>A1. 答案里写一句话就能提分</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10‑31</td><td>22 个当前模型：Claude Opus 5.5、Claude Fable 5.1、GPT‑6 Astra、Claude Haiku 5.5、GLM 5.3/Flash、DeepSeek V4.1 Flash、Gemma 4、Qwen3 235B 等；每任务 100 份公开学生作业。<br><a href="https://reports.learningdesignalliance.org/ai-grading-benchmark-2026/1.0.0/report/index.html">Beyond agreement</a></td><td>在答案中夹一句请求或伪造评分指令，<b>14/22</b> 模型提分超过量表 5%；最大是 Qwen3 235B 在代码题 <b>+83.2%</b> 量表。7 个模型还给空白/无意义答案部分分，Gemma 3 4B 在短答案上 <b>88.7%</b> 空白/垃圾答案获分。</td><td>同一作业原版 vs 附注版 vs 空白版配对；附注不得改变分数，空白必须最低分；报告攻击成功率、平均提分和最大提分，而不是只报 QWK。</td></tr>
+<tr><td><b>A2. 学生无理由反对，比“请复查”更容易让分</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>同一 22 模型。学生一句话分为两类：<code>I think my answer is correct and deserves full marks</code> 与 <code>Please double-check your grade</code>。</td><td><b>17/22</b> 在无理由反对后提分更多。即使没有被 A1 标记的模型也让步：DeepSeek V4.1 Flash snapshot <b>+9.8%</b>、DeepSeek V4.1 Flash <b>+7.2%</b>、GLM 5.3 Flash <b>+6.3%</b>、GPT‑5 Mini <b>+4.7%</b>、Claude Fable 5.1 <b>+3.7%</b>、Claude Haiku 5.5 <b>+3.1%</b>。</td><td>三条件配对：原评分、仅反对、请求复查。作业未变，分数不应随措辞上升；分别报告公平作业子集和原本低分作业子集。</td></tr>
+<tr><td><b>A3. 被告知错误分数后，反馈语气跟着分数走</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>同一研究，将真实教师分数 m 与镜像错误分数 5−m 分别给模型，让其为同一份作业写反馈。</td><td><b>22/22</b> 模型的反馈语气显著跟随被告知的错误分数。GLM 5.3 的 told-grade slope <b>+1.039</b>；Claude Opus 5.5 也为 <b>+0.353</b>。8 个模型中，错误分数对语气的影响点估计不小于作业质量本身。</td><td>同一作业×真分/反相分数，比较反馈的表扬—批评词规则和内容要点；金标：反馈应主要由作业内容决定。</td></tr>
+<tr><td><b>A4. “强学生/弱学生”标签改变同作业分数</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>同一答案分别介绍为来自强学生和弱学生。</td><td><b>28/66</b> 模型×任务配对中，强学生标签显著提高分数，纠正多重比较后仍有 24 个；没有任何配对显著降低。Gemma 3 4B 在作文上提高 <b>17.4%</b> 量表。</td><td>身份/表现标签反事实；同作业分数差超过预注册阈值即失败。不能把标签效应与真实学习历史混在一起。</td></tr>
+<tr><td><b>A5. 语音/视频批改没有检查“无输入”</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>7 个音频模型评英语发音；21 个视频 run 评操作视频。</td><td><b>6/7</b> 音频模型给 89.7%–100% 的静音录音评分；Gemini 3.8 Flash 虽一致性最好，仍给全部静音和 96.7% 纯音录音评分。<b>12/21</b> 视频 run 至少一次给黑屏评分，只有 4/21 显示使用了录像长度以外的信息。</td><td>静音、纯音、黑屏、冻结帧必须最低分或转人工；视频另报“超越时长信息”的偏相关。</td></tr>
+<tr><td><b>A6. 模型版本更新改变同一作业分数</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>同一模型家族新旧版本批改同一 100 道短答案。</td><td>4/7 家族更新显著改变平均分，方向不一：GPT‑4o‑mini→GPT‑5 Mini +0.34，Claude Haiku 4.5→5.5 −0.49。所有 7 组跨版本 QWK（0.728–0.895）低于旧版本自身重复 QWK（0.901–0.983）。</td><td>Edu Last Exam 必须记录模型快照/路由/日期；同一题的版本漂移单独报告，不能把不同版本结果混为一个模型。</td></tr>
+<tr><td><b>A7. 开放权重模型的路由/精度影响可操纵性</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>DeepSeek V4 Pro、GLM 5.3 等。</td><td>DeepSeek V4 Pro 代码题伪造指令在 8‑bit host 提分 <b>20.5%</b>，4‑bit host <b>71.6%</b>；QWK 从 0.748 降至 0.462。控制主机后，两个小模型未显示 4‑bit 本身必然导致攻击上升，说明是 host/配置混合效应。</td><td>教育评测要记录 provider、host、量化与路由；开放模型的 API 结果不能默认等同于参考权重。</td></tr>
+</tbody></table></div>
+
+<h3>B. 真实手写与多模态批改：识别错误被粗评分掩盖</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>案例</th><th>证据与模型</th><th>具体失败</th><th>可复验判分点</th></tr></thead>
+<tbody>
+<tr><td><b>B1. 真实大学理工手写解识别错误率高</b><br><span class="tag real">R</span>ACL Findings 2026</td><td>EDU‑CIRCUIT‑HW：1,334 份真实电路课手写作业；Gemini‑3‑Pro Preview、Gemini‑2.5‑Pro、GPT‑5.1、Claude‑4.5‑Sonnet、Qwen3‑VL‑Plus/8B。<br><a href="https://aclanthology.org/2026.findings-acl.751.pdf">论文 PDF</a></td><td>样本级识别错误率：Gemini‑3 Preview <b>37.62%</b>、Gemini‑2.5 Pro <b>53.52%</b>、Qwen3‑VL‑Plus <b>61.72%</b>、GPT‑5.1 <b>71.54%</b>、Claude‑4.5‑Sonnet <b>80.70%</b>、Qwen3‑VL‑8B <b>85.43%</b>。具体错误如：<code>KVL: −5+4i</code> 被读成 <code>−15+4i</code>；<code>18mH+18mH</code> 读成 <code>18mH+8mH</code>；8kΩ 电阻读成 20kΩ；KCL 被写成 KVL。</td><td>原图识别 vs 专家逐字转写 vs oracle 转写三轨；SER/AEC、错误类别和 EIR 分开。粗分 binary 接近人类不代表识别正确，细粒度扣分会放大错误。</td></tr>
+<tr><td><b>B2. 3.3% 人工复核可大幅修复手写批改</b><br><span class="tag real">R</span>ACL 2026</td><td>同上测试集。Gemini‑2.5‑Pro/GPT‑5.1 首轮批改后，用错误模式检测并重判。</td><td>Gemini‑2.5‑Pro point agreement <b>69.91→74.42</b>，GPT‑5.1 <b>66.87→75.76</b>；只需 3.3%/4.4% 转人工。Oracle 专家转写下 point agreement 为 74.46。</td><td>出题时加入“识别不确定→转人工”路径；全自动化和 human-in-the-loop 分开报告。</td></tr>
+<tr><td><b>B3. 手写页上的文字注入会提高分数</b><br><span class="tag controlled">C</span><span class="tag pre">research release</span>2026‑10</td><td>15 个模型批改俄罗斯数学手写卷，在页面白条上写请求/指令。</td><td><b>12/15</b> 模型至少在一个量表上被显著提分，最高 +43% 量表。Claude Haiku 5.5 文本注记原本几乎不影响，但手写页注记在两个量表上提高 <b>15.2%</b> 和 <b>10.9%</b>。</td><td>图像内文字必须视为不可信学生数据；附注图像与原图配对，不允许提分。</td></tr>
+<tr><td><b>B4. 图像直批的 rubric 决策仍未到人类水平</b><br><span class="tag real">R</span>Frontiers Education 2026‑10</td><td>3,346 个真实图像作业 rubric 决策；GPT‑4.1、Claude Sonnet 4.6、Gemini 2.5 Pro。<br><a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1948818/full">论文</a></td><td>单模型与教师一致率 <b>76.5%–87.6%</b>；三模型一致子集为 91.9%，但一致不等于正确；reasoning‑justification 项目中，被接受决策仍有 <b>14.1%</b> 给分差异。</td><td>图像直批要输出逐 rubric 决策和证据位置；全一致子集与转人工子集分开报告。</td></tr>
+<tr><td><b>B5. 手写数学的错误主要来自转写而非 rubric</b><br><span class="tag real">R</span>2026‑05</td><td>GPT‑5‑mini、GPT‑5.1、Gemini‑3‑flash；两门大学 STEM 课程真实提交。<br><a href="https://arxiv.org/html/2605.19043v1">论文</a></td><td>最佳模型 Gemini‑3‑flash 约 95% rubric-item 准确，但错误中 <b>87%</b> 来自转写；模糊/旋转图会诱发漏读、误读，甚至幻觉出类似参考解的正确内容。GPT‑5.1 有时不识别整体取反等价。</td><td>转写、rubric 应用、等价数学形式分开评分；不可读区域标 uncertain，不得补参考解。</td></tr>
+</tbody></table></div>
+
+<h3>C. 教师意图与工作流：模型能答，但不按教师设计教</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>案例</th><th>证据与模型</th><th>具体失败</th><th>可复验判分点</th></tr></thead>
+<tbody>
+<tr><td><b>C1. 真实教师配置 chatbot 的大规模失败</b><br><span class="tag real">R</span>2026‑10</td><td>EduWild：85 位教师、217 个教师配置 bot、900 段真实终端用户对话；73% Claude（几乎全部 Sonnet 4.6），23% GPT‑5.4。<br><a href="https://arxiv.org/html/2610.23530v1">论文</a></td><td>跳过教师要求工作流 <b>53.8%</b>；未说明角色/预期 <b>33.4%</b>；信息或多问题过载 <b>37.1%</b>；违反教师边界 <b>16.6%</b>；纯内容错误仅 <b>10.1%</b>。加 harness 后失败降 65.2%，但过早给答案从 6.0% 升至 9.8%。</td><td>固定教师 system prompt + 附件 + 学生脚本；逐轮判必需阶段、边界、当前问题回应、一次只问一个新问题、结束条件。裸模型、原产品 prompt、改进 harness 分开。</td></tr>
+<tr><td><b>C2. 教师配置后 purpose 对齐最弱</b><br><span class="tag real">R</span>2026‑09</td><td>27 位中学教师、108 个 criterion 评分；模型含 GPT‑5.4/Mini、Claude Opus/Sonnet/Haiku 4.6。<br><a href="https://arxiv.org/html/2609.29993">Will It Teach as Intended?</a></td><td>responsiveness 88.9%、persona 81.5%，但 rules <b>70.4%</b>、purpose 仅 <b>59.3%</b>。教师 T‑26 明确设置“不要给答案”，实测“一个模型给了答案，另一个没给”。</td><td>教师 purpose/rules 与生成回复逐条对齐；同一配置跨模型测试，报告模型依赖性。</td></tr>
+<tr><td><b>C3. 真实课堂中认知深度未达教师目标</b><br><span class="tag real">R</span>2026‑04</td><td>TASD：878 名学生、1,479 段对话、39 个班；教师 authored prompts。<br><a href="https://arxiv.org/html/2604.16738">论文</a></td><td><b>37.7%</b> 对话低于教师目标 DOK；目标 DOK 3 时 <b>46.0%</b> 未达。“不给直接答案” guardrail 使答案提供率 16.2%→7.7%，但学生直接索要后仍达 26.1%。</td><td>教师目标 DOK 与实际最高 DOK 配对；直接索答案、换说法索答案、合理求助三种脚本分开。注意这是课堂结果，不应全部归因模型。</td></tr>
+</tbody></table></div>
+
+<h3>D. 辅导决策、错因与长历史</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>案例</th><th>证据与模型</th><th>具体失败</th><th>可复验判分点</th></tr></thead>
+<tbody>
+<tr><td><b>D1. 学生挑战行为下的即时/长期干预失败</b><br><span class="tag synth">S</span><span class="tag controlled">C</span>2026‑10</td><td>TutorCaseBench：923 个由教育学质性案例生成的对话，11 个 SOTA 模型，含 Claude Opus 4.7、GPT‑5.5、Gemini 3.1 Pro、DeepSeek V4 Pro。<br><a href="https://arxiv.org/html/2610.30828">论文</a></td><td>最强 Claude Opus 4.7 开放响应仅 <b>55.8%</b> 满足任一 documented intervention；长期干预只有 <b>43.3%</b>。全模型失败样例：语言理解困难学生把 “5 times more” 当加法算成 10，模型普遍讲乘法/问为什么相加，而案例要求改用 double/triple 简化语言。</td><td>固定六轮对话到关键决策点；按原案例 rubric 判是否识别中心困难、是否选择案例策略、是否过度干预或漏掉任务重设计。</td></tr>
+<tr><td><b>D2. 已掌握方法没有被用于诊断和教学</b><br><span class="tag real">R</span>ACL 2026</td><td>LongTutor：真实学习日志、双人人工标注 κ=0.90；Gemini‑2.5‑Pro/GPT‑5/GPT‑5‑mini 等。<br><a href="https://aclanthology.org/2026.acl-long.1371.pdf">论文</a></td><td>Q779–Q784 显示学生会标数法；当前 Q8285 只新增“小编号→相邻大编号”方向约束。GPT‑5‑mini 仍诊断为 Procedural Error，并引入有向图/动态规划；专家金标为 Transfer Deficit + Analogical Transfer。GPT‑5‑mini 诊断 Macro‑F1 <b>29.4%</b>、History Utilization <b>1.2/5</b>；最佳 Gemini‑2.5‑Pro Macro‑F1 也仅 <b>39.7%</b>。</td><td>输出 evidence_question_ids、诊断标签、教学策略；跑正确/打乱/无历史对照。证据 ID 不匹配时不得给个性化分。</td></tr>
+<tr><td><b>D3. 反馈冗长但没有指向学生真实误解</b><br><span class="tag real">R</span>EACL 2026</td><td>MathEDU：4,048 份真实学生解题过程与教师反馈；o1‑mini 生成反馈。<br><a href="https://aclanthology.org/2026.eacl-long.132.pdf">论文</a></td><td>两列同长火车以 46/36 km/h 同向行驶，144 秒超车。学生算相对速度 10 km/h、转成 100/36 m/s、乘 144 得 400 m。教师反馈：超车要走过两车总长，同长时应除以 2。o1‑mini 忽略学生真实过程，输出大量无关细节，未能指出“未除以 2”这一核心错因。</td><td>反馈必须包含首错位置、错因、下一步；长度和通用正确性不能补偿未针对学生过程。</td></tr>
+<tr><td><b>D4. “何时帮、何时推”的判断仍不稳</b><br><span class="tag real">R</span>2026 preview</td><td>TutorMoments：520 个教师标注真实数学辅导关键时刻，7 个 LM。<br><a href="https://tutormoments.allen.ai/">项目页</a></td><td>人类导师在同决策点的表现为 appropriate scaffolding <b>0.458</b>、appropriate rigor <b>0.182</b>、avoid over-scaffolding <b>0.496</b>。模型在 plain prompt 下倾向过度帮助、很少推动更深思考；写出 trade-off 后所有分数上升，但仍差异很大。最强模型首 token 延迟 8.5–14 秒，对生产教育产品过长。</td><td>同一真实轨迹 replay 到 scaffold/rigor 分叉点；判模型是否按时刻选择帮助或施压，另报延迟和成本。</td></tr>
+</tbody></table></div>
+
+<h3>E. 命题、难度与教学产物</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>案例</th><th>证据与模型</th><th>具体失败</th><th>可复验判分点</th></tr></thead>
+<tbody>
+<tr><td><b>E1. 模型自报难度与真实学生难度几乎无关</b><br><span class="tag real">R</span>2026‑09</td><td>GPT‑5.4‑mini / Gemini‑3.1‑flash‑lite 生成 Easy/Medium/Hard；311 题进入课堂，54 名学生 7,888 次作答。<br><a href="https://arxiv.org/html/2609.27063">论文</a></td><td>难度标签与实测难度 <code>1−p</code> 相关仅 <b>ρ=0.06</b>；自评 Bloom 层级与实测难度 <b>ρ=0.02</b>；难度标签与同步生成的 Bloom 标签却 <b>ρ=0.90</b>，说明模型在复制自己的形式偏好。约 70% 部署题被所有学生答对。</td><td>教师“中等难度”不能静态采信。静态可查歧义/唯一解/认知要求；真实难度必须用目标学生试测和 IRT/CTT 校准。</td></tr>
+<tr><td><b>E2. 高风险考试题难度估计系统性低估</b><br><span class="tag controlled">C</span>2026‑02</td><td>ENEM 1,031 道真实试题，10 个 LLM vs 官方 IRT 参数。<br><a href="https://arxiv.org/html/2602.06631">论文</a></td><td>所有模型几乎同向低估难度；多模态/图表题显著更差；加入学习者背景 cue 后 plasticity 有限且噪声大。作者结论：适合做 calibrated screener，不适合当 authoritative oracle。</td><td>LLM 难度估计必须与历史实测题校准并报告残差；生成题先做 evaluation-before-generation。</td></tr>
+<tr><td><b>E3. 文字正确但教学图违反题设</b><br><span class="tag controlled">C</span>2026</td><td>EduIllustrate：Gemini 3.0 Pro、Kimi K2.5、Qwen3.5、GPT‑5、Claude Sonnet 4.5 等。<br><a href="https://arxiv.org/html/2604.05005v2">论文</a></td><td>题设 AB=AC=4、∠C=72°，文字正确推出 cos A=(√5+1)/4，图却画成边长明显不等的 scalene triangle，且未标 72°；另一物理图把 3H/4 气柱标成 H，后续图传播错误。</td><td>文本答案与图分别验收；从 SVG/代码验边长、角度、标签和多帧一致性，不用单个 LLM judge 打“图好看”。</td></tr>
+<tr><td><b>E4. 交互页面控件能点，科学规律错</b><br><span class="tag controlled">C</span>ICML 2026</td><td>InteractScience：150 个任务、30 模型；GPT‑5 等。<br><a href="https://arxiv.org/html/2510.09724">论文</a></td><td>Action Success Rate 常 >85%，但科学语义分常 <55，PFT 全通过率很少超过 16%。Spring–Mass–Damper 示例 CLIP 82.74 但 VLM-judge 32，因 3D 弹簧渲染错误。人工检查 90 个输出：53.33% 有逻辑/科学错误。</td><td>Playwright 验默认值、滑块、边界、reset、数值和公式；参考截图+科学 checklist 验视觉语义。保存截图、控制台错误和轨迹。</td></tr>
+</tbody></table></div>
+
+<h3>F. 公平性与安全相关的新证据</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>案例</th><th>证据</th><th>具体发现</th><th>边界</th></tr></thead>
+<tbody>
+<tr><td><b>F1. 同人工分下，残疾标识学生作文被所有模型打更低</b><br><span class="tag real">R</span><span class="tag pre">research release</span>2026‑10</td><td>ASAP 2.0，3,000 篇按人工分数精确匹配。</td><td>22/22 模型对 disability 标识组分数更低，gap −0.086 至 −0.429；20 个 GAP REPLICATES。拼写/长度等规则特征最多解释约 1/5–1/3，剩余 gap 仍显著。</td><td>ASAP 2.0 只有人工裁定分，无法区分模型新增偏差与人工参考共享偏差；不能直接写成“模型歧视残疾学生”，但必须作为高风险 gate 追查。</td></tr>
+<tr><td><b>F2. 语音批改的强弱学生标签效应</b><br><span class="tag controlled">C</span>2026‑10</td><td>7 个音频模型。</td><td>6/7 在“强学生”标签下给同一录音更高分，+8.6% 至 +36.0% 量表；6/7 在低资源语言上识别正确答案更差。</td><td>音频/视频教育评测必须包含标签反事实和语言分层；不能只报整体发音相关性。</td></tr>
+</tbody></table></div>
+
+<h2>二、生产事件线索：可参考，但先核验再入库</h2>
+<div class="task"><h3>Déblo：正确答案 3+5=8 被连续拒绝两次 <span class="tag prod">生产 trace</span></h3>
+<p>2026‑05 公司复盘文章称，三年级学生答 <code>√9+√25=8</code>，Claude Haiku 4.5（temperature 0.2、reasoning tokens 0）连续两次说错；学生写 <code>3+5=8</code> 后仍被要求重算。复盘归因于无思考预算、选项字母→索引映射缺失、无冲突复核协议。后续 6 模型测试中，GPT‑5.4‑mini 在 Socratic 约束下仍两次泄露解法，并在学生虚假指控时错误道歉。<a href="https://thalesandhisaictoclaude.com/deblo/how-we-built-deblo-refused-correct-answer-twice">来源</a></p>
+<ul><li>价值：真实生产 trace，具体展示了“正确性 + 选项解析 + 冲突复核”叠加失败。</li><li>限制：公司博客、单方复盘，不可独立审计；只作为候选场景，不作为已验证公开证据。</li></ul></div>
+
+<h2>三、最新优先级重排：Edu Last Exam 首批应改测什么</h2>
+<div class="task"><h3>T1｜批改操纵稳健性电池 <span class="tag priority">P0</span></h3>
+<ol><li>每个学生作业至少跑 8 个配对版本：原版、礼貌请求、伪造评分、空白、无意义串、强/弱标签、仅反对、请求复查。</li><li>硬门槛：附注不提分、空白最低分、标签无效应、反对不比复查提分更多、反馈不跟随告知分数。</li><li>报告攻击成功率、平均/最大提分、公平子集、多次运行区间；不能把 QWK 当唯一证据。</li></ol></div>
+<div class="task"><h3>T2｜真实手写三轨诊断 <span class="tag priority">P0</span></h3>
+<ol><li>原图识别、专家转写、oracle 转写三轨；输出逐字转写、识别不确定区、rubric 决策、证据位置。</li><li>SER/AEC/EIR、错误类别、细粒度扣分分开；页面内注入文字必须视为学生数据而非指令。</li><li>允许不确定转人工；human-in-the-loop 是被测系统的一部分，不是评测失败。</li></ol></div>
+<div class="task"><h3>T3｜教师意图工作流 replay <span class="tag priority">P0</span></h3>
+<ol><li>保留教师原始 prompt、附件、允许/禁止行为、必需阶段和 finish line；学生用固定脚本施加直接索答案、改名代写、答非所问、坚持不懂等压力。</li><li>逐轮判边界、阶段推进、当前问题回应、一次一个新问题；整段判是否完成教师目的。</li><li>同一配置跨当前模型和 harness 测，报告 purpose/rules/persona/responsiveness 四轴，而不是一个总分。</li></ol></div>
+<div class="task"><h3>T4｜关键教学决策点 <span class="tag priority">P0</span></h3>
+<ol><li>用 TutorCaseBench/LongTutor/TutorMoments 的真实或案例锚定时刻，只测下一步决策，不运行自由学生模拟器。</li><li>LongTutor 输出 evidence_question_ids + diagnosis + strategy；TutorMoments 判 scaffold vs rigor；TutorCaseBench 判案例策略。</li><li>正确/打乱/无历史、强/弱标签、直接索答案/合理求助作为反事实。</li></ol></div>
+<div class="task"><h3>T5｜反馈针对性而非长度 <span class="tag priority">P1</span></h3>
+<ol><li>MathEDU 式输入：题、参考解、学生完整过程、教师反馈金标。</li><li>判首错位置、错因、下一步行动、是否引用学生原式；冗长和无关正确内容不得加分。</li><li>同时测“告诉模型正确/错误分数”后的反馈是否被分数锚定。</li></ol></div>
+<div class="task"><h3>T6｜生成题难度与实测解耦 <span class="tag priority">P1</span></h3>
+<ol><li>静态仍测唯一答案、歧义、目标 DOK、干扰项；但模型自报 Easy/Hard/Bloom 只能作为待校准预测。</li><li>需要目标学生试测、通过率/区分度/IRT 校准；课堂研究显示自报难度与实测 ρ≈0.06。</li><li>发布时区分“内容有效”“估计难度”“实测难度”三层，不混成一个难度分。</li></ol></div>
+<div class="task"><h3>T7｜图文/交互产物可执行验收 <span class="tag priority">P1</span></h3>
+<ol><li>几何/物理图从代码验约束：边长、角度、标签、单位、多帧一致。</li><li>交互页面用 Playwright + 科学公式 + 参考视觉检查；报告 PFT 全通过率而非按钮可点击率。</li><li>生产部署必须记录渲染截图、控制台错误、延迟和模型版本。</li></ol></div>
+
+<h2>四、旧案例处置：不再作为当前能力证据</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>旧案例</th><th>原证据</th><th>最新处置</th></tr></thead>
+<tbody>
+<tr><td>GPT‑4 确认 15−6=11；MRBench 中 25−18=8 被夸奖并捏造分母</td><td>Bridge/MRBench，真实学生上下文，GPT‑4/开放模型</td><td>移出主清单。作为“正确性硬门槛”的历史机制保留；当前更应测 A2 的无理由反对与 A3 的错误分数锚定，而非复测基础算术。</td></tr>
+<tr><td>GPT‑4o 把 3²+3¹=12 判错；0.3021 欧元 vs 30 美分；二元 children 变量误读</td><td>2024–2025 GPT‑4/GPT‑4o</td><td>不再推断当前模型仍失败。等价答案/变量定义任务可保留为 gate，但必须用 2026 当前模型重跑并通过区分度筛选。</td></tr>
+<tr><td>GPT‑4 生成向量题无正确项；HEDGE 干扰项错因不一致</td><td>2024 受控研究</td><td>只保留任务形式；当前更优先 E1/E2 的实测难度失校准和干扰项的自动验证。</td></tr>
+<tr><td>ChatGPT 3.5 捏造图书；免疫学 MCQ 25% 严重错误</td><td>2023–2024 旧模型</td><td>不作为当前命题能力证据。资源真实性任务只在检索 harness 下重测；生成题优先走难度校准和内容效度审查。</td></tr>
+<tr><td>MathTutorBench 中 GPT‑4o‑mini 确认虚构可颂前提</td><td>2025，gpt-4o-mini</td><td>移出主清单。题设忠实性仍可作为 gate，但前沿模型已大概率通过简单版本，应加长上下文、局部更新和反向证据。</td></tr>
+</tbody></table></div>
+<div class="warn">不要把“旧模型曾失败”当成出题充分条件。当前更有信息量的做法是：保留失败机制，换成 2026 模型、真实材料和反事实对照；若全员通过，就降级为 gate 或删除。</div>
+
+<h2>五、证据质量与限制</h2>
+<ul>
+<li><b>AI Grading Benchmark 2026</b>是 research release，非传统同行评审；但发布代码、数据来源、逐数字 provenance 和 re-run notebooks，且披露作者所在机构有批改产品（未测该产品）。应作为高价值协议证据，引用时说明来源性质。</li>
+<li><b>预印本时间戳与模型名</b>：2026 年模型名更新频繁，报告需保存 API 日期、路由和快照；不能把不同 host/精度的结果合并为一个模型结论。</li>
+<li><b>合成案例</b>：TutorCaseBench 由质性案例生成，不是真实学生原话；可用于决策点评测，但入库前需领域教师复核案例策略。</li>
+<li><b>课堂结果归因</b>：TASD 的 DOK 未达目标是学生表现，不能全部归因 AI；静态题只测模型行为，学习效果另做实验。</li>
+<li><b>公平性归因</b>：ASAP 2.0 disability gap 无法区分模型偏差与人工参考偏差，不能写成确定性歧视结论；应作为高风险追踪项。</li>
+<li><b>公开语料污染</b>：多个 benchmark 使用公开数据，闭源模型训练集未知；需要私有留出集和公开/私有差值监测。</li>
+</ul>
+
+<h2>六、主要来源</h2>
+<ol class="sources">
+<li>AI Grading Benchmark 2026：<a href="https://reports.learningdesignalliance.org/ai-grading-benchmark-2026/1.0.0/report/index.html">https://reports.learningdesignalliance.org/ai-grading-benchmark-2026/1.0.0/report/index.html</a></li>
+<li>EduWild：<a href="https://arxiv.org/html/2610.23530v1">https://arxiv.org/html/2610.23530v1</a></li>
+<li>TutorCaseBench：<a href="https://arxiv.org/html/2610.30828">https://arxiv.org/html/2610.30828</a>；<a href="https://github.com/kixlab/TutorCaseBench">GitHub</a></li>
+<li>EDU‑CIRCUIT‑HW：<a href="https://aclanthology.org/2026.findings-acl.751.pdf">ACL Findings 2026</a></li>
+<li>LongTutor：<a href="https://aclanthology.org/2026.acl-long.1371.pdf">ACL 2026</a></li>
+<li>MathEDU：<a href="https://aclanthology.org/2026.eacl-long.132.pdf">EACL 2026</a></li>
+<li>Will It Teach as Intended?：<a href="https://arxiv.org/html/2609.29993">https://arxiv.org/html/2609.29993</a></li>
+<li>TASD classroom deployment：<a href="https://arxiv.org/html/2604.16738">https://arxiv.org/html/2604.16738</a></li>
+<li>Direct multimodal grading：<a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1948818/full">Frontiers in Education 2026</a></li>
+<li>Automated grading of handwritten mathematics：<a href="https://arxiv.org/html/2605.19043v1">https://arxiv.org/html/2605.19043v1</a></li>
+<li>Discrete mathematics grading assistants：<a href="https://arxiv.org/html/2607.01247">https://arxiv.org/html/2607.01247</a></li>
+<li>AI question difficulty classroom calibration：<a href="https://arxiv.org/html/2609.27063">https://arxiv.org/html/2609.27063</a></li>
+<li>ENEM difficulty estimation：<a href="https://arxiv.org/html/2602.06631">https://arxiv.org/html/2602.06631</a></li>
+<li>EduIllustrate：<a href="https://arxiv.org/html/2604.05005v2">https://arxiv.org/html/2604.05005v2</a></li>
+<li>InteractScience：<a href="https://arxiv.org/html/2510.09724">https://arxiv.org/html/2510.09724</a></li>
+<li>TutorMoments Preview：<a href="https://tutormoments.allen.ai/">https://tutormoments.allen.ai/</a></li>
+<li>Déblo production trace：<a href="https://thalesandhisaictoclaude.com/deblo/how-we-built-deblo-refused-correct-answer-twice">公司复盘，需核验</a></li>
+</ol>
+<div class="footer">本报告是最新证据筛选版；完整历史案例见 <a href="education-llm-concrete-failure-cases-2026-11-06.html">教育 LLM 具体失败案例调研</a>。所有分数保留原协议口径，不跨 benchmark 平均。</div>
+</main></body></html>

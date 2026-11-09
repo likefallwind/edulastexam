@@ -1,0 +1,228 @@
+{
+  "status": "authored_candidate",
+  "item_count": 21,
+  "prompt_count": 34,
+  "human_review": "pending",
+  "model_evaluation": "not_run",
+  "offline_checks": [
+    {
+      "path": "checks/01.py",
+      "status": "passed",
+      "output": "01 PASS: weighted conditional counts, two independent cancelling errors, follow-up oracle"
+    },
+    {
+      "path": "checks/02.py",
+      "status": "passed",
+      "output": "02 PASS: projection/sign convention, off-plane alternative, carry-forward marks"
+    },
+    {
+      "path": "checks/03.py",
+      "status": "passed",
+      "output": "03 PASS: executable independent defects, valid controls, note invariance"
+    },
+    {
+      "path": "checks/04.py",
+      "status": "passed",
+      "output": "04 PASS: exhaustive good implementation, actual nontermination counterexample, partial marks"
+    },
+    {
+      "path": "checks/05.py",
+      "status": "passed",
+      "output": "05 PASS: Simpson reversal, standardization, score controls; causality boundary requires human review"
+    },
+    {
+      "path": "checks/06.py",
+      "status": "passed",
+      "output": "06 PASS: weighted moments, carry-forward arithmetic, strict threshold, identical substantive materials"
+    },
+    {
+      "path": "checks/07.py",
+      "status": "passed",
+      "output": "07: topology equations and both reference directions verified"
+    },
+    {
+      "path": "checks/08.py",
+      "status": "passed",
+      "output": "08: slack transition, positive speed, and nonduplicating partial credit verified"
+    },
+    {
+      "path": "checks/09.py",
+      "status": "passed",
+      "output": "09: four cells, pooled/stratified/target calculations verified"
+    },
+    {
+      "path": "checks/10.py",
+      "status": "passed",
+      "output": "10: measurement bounds and uncompleted transfer state verified"
+    },
+    {
+      "path": "checks/11.py",
+      "status": "passed",
+      "output": "11: both worksheets and fixed-fee error independently verified"
+    },
+    {
+      "path": "checks/12.py",
+      "status": "passed",
+      "output": "12: 40 raw answers, hint separation, time contrasts and proposed probes verified"
+    },
+    {
+      "path": "checks/13.py",
+      "status": "passed",
+      "output": "13: all three independent snapshots and fraction/unit references verified"
+    },
+    {
+      "path": "checks/14.py",
+      "status": "passed",
+      "output": "14: eight exercise answers, equivalent forms and three accurate fraction diagrams verified"
+    },
+    {
+      "path": "checks/15.py",
+      "status": "passed",
+      "output": "ELE-C2-15: 3003 parameter checks and endpoint/option witnesses passed"
+    },
+    {
+      "path": "checks/16.py",
+      "status": "passed",
+      "output": "ELE-C2-16: all 10 point pairs, single-reading ambiguity, transfer and absolute-reading anomaly checked"
+    },
+    {
+      "path": "checks/17.py",
+      "status": "passed",
+      "output": "PASS 17: exact bounds, feasible endpoint tables, 651 joint worlds, updated selection"
+    },
+    {
+      "path": "checks/18.py",
+      "status": "passed",
+      "output": "PASS 18: 10 valid triples, 640 answer records, minimum-length counterexamples, L/M diagnosis"
+    },
+    {
+      "path": "checks/19.py",
+      "status": "passed",
+      "output": "19: ideal-gas invariant, stop complementarity, and SVG geometry verified"
+    },
+    {
+      "path": "checks/20.py",
+      "status": "passed",
+      "output": "20: actual reference JavaScript matches piecewise RC law, signed current, continuity, history and reset"
+    },
+    {
+      "path": "checks/21.py",
+      "status": "passed",
+      "output": "21 PASS: labels share identical work/rubric, inequalities and practice oracle; accessibility judgments remain human-reviewed"
+    }
+  ],
+  "sha256": {
+    "private/edu_last_exam_pilot_v1/challenge_v2/authored/assessment.jsonl": "4dfb7c69de387f51d0d1b8cad43fd366814602330c9ac748507d1f809e05fd32",
+    "private/edu_last_exam_pilot_v1/challenge_v2/authored/grading.jsonl": "e1a87b8110ca5f39dfbe92d018c16a8f09005e8f0a112b6d493bb620204c7de5",
+    "private/edu_last_exam_pilot_v1/challenge_v2/authored/teaching.jsonl": "b79cd6d5c89f42fa80c7c92326a165b987ade3c07d859f5dd210ab87032e0559",
+    "private/edu_last_exam_pilot_v1/challenge_v2/authored/visual.jsonl": "7ee275c0d7df5318f3849e882d085dfa9d0ee52cdb425ceec06980dc7ec45346",
+    "private/edu_last_exam_pilot_v1/challenge_v2/cards.jsonl": "30ba3a3733d6b55a23c0d6b86ebe7524bbba893a8e485838431955ef62adcb9f",
+    "data/edu_last_exam_pilot_v1/challenge_v2/authoring_spec.json": "f930650fd22c37a723e42319cbc5083ccf200a8198095dce27bf37beb182112e",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/01/base.md": "f246e4b788ff2da96ca34610227d0405f2e582875fb886ff236c183a14a574e0",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/02/base.md": "7e8f64c18cb523106112d863fd173831caf58867be4c7d7288bb455be48ead49",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/03/clean.md": "59e3023286c270c588aa02edb1bafbfa910276f6a91263d963d93957bbe3f59c",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/03/student_clean.py": "4d1c7a42b6b1f4f62b13372cacb2d7b51dccfce3bc0ab479cfeab04edfb2759b",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/03/student_with_note.py": "3785ae403e978138cb9763915494d7f34c90b63f28198571cc925f3c7e2790e1",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/03/with_note.md": "ad9408120f3370a907496f1dddb44b594b8f8dd46cb46cb330678f55e7f3f1b6",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/appeal_code.py": "eabb688d3a559453518d6967d535b7220e1ab90735f7e51c2f38cc7588b68f9e",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/pressure.md": "87bad8ad8a13bfa718dd09da957f667111d68198cd23058ff5e1f4a5e7680598",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/pressure_code.py": "23147821295264505fc2b79795bd4dae8d9b3a8ef0bc84ce9aa23725ca7b94d3",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/valid_appeal.md": "6d01915ad9b34c9260285ffb77590cf58bc48fd3aa4da865f309504f2a508610",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/aligned_anchor.md": "ca63e4fc366aa007cb627c549ac387b18d640adab64fb7cad54f37ca20e4662f",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/high_anchor_flawed.md": "b36535d9f0d4745fa1e57f566cf2505c905016695e688aea5964a7ea9beea982",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/low_anchor.md": "a47a2ae96383fae802b373b8f5d900cd3c64b49f0bee8786b61ff9685416f659",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/06/recompute_first.md": "715be0d5231dff670bc609c73c294fefe605d7114c17a3c0330c3a4fc2b2e166",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/06/score_first.md": "3f2e8613829fff12895f71ea1baa146261fad7c3f3eba4b2e1315fffbef47df6",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/07/circuit_l.png": "52fa7b6f0e7203e5c00c9200ed4e3697b54a7f542b80af4700bde2f8b7b7278e",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/07/circuit_l.svg": "9fee7bc49f5cd8e1e25f6e348de350abefa048edaafef90fb0c73c7c6bc99b36",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/07/circuit_r.png": "d188ae046c0ebac95f40236caa9c8317a810aac56a74566a1ecd584502d35e5b",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/07/circuit_r.svg": "9984f5077e6eef512517fd7d2b9cbcce34869bf6923493bc0ed0cb736bc87a07",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/08/student_A.png": "0b00c1557a9e7b509e9ff4867a21ceff446fc7344acef7a79da1de0abb238dcc",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/08/student_A.svg": "ea8e34050e18b3bc8c84579113a6f7698b8c25de73c4fd5cdacd942365a9e822",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/08/student_B.png": "66ff3f2fa1a8f217728d1a46c53e770ccf39048fe5c34deebb6d2caed4f92cab",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/08/student_B.svg": "9690365819ddfe288a40d0a64da71442d64814e9620d506a8b5e9b98e5b53188",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/09/counts.json": "1bc30ba71c654b3824b9eb1248053769d9d8d9b36beafd08a7d6a51a7fa6be20",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/09/lesson.md": "865323a76d1c3fc5a406491669075a11fa39baf65e234323d504790b44adfd50",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/10/session.md": "4142db2520c8af3116dbd9c38bbd2b95aa120de1473a1d2ada72cc8ef966777a",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/context.md": "f3bd198468cde0bc3c9e88c423ade576563e2f9b0cf0277e90ae851f8dc0604d",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/work_A.json": "d2d41ff8e8ad148fd9772b71cef6561eafb925356a4a3b3537fffb108e16456b",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/work_B.json": "8239ad4c2cb8c8d0dfad2c9ece52ba3ea9abf451032424085c112f391638bd1b",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/12/attempts.csv": "9bcc0179bab8b70b1a2b07fbe56ef91b1a70e95fbce9820321b3e9c7427050fb",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/12/teacher_request.md": "546800e4b8b8e7e06c055a1f8f27685623cc20a34a800de1acbf72deb3946c1e",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/13/snapshot_A.md": "14f1d622546cddd668beb53dfce35cc702bed5c0d3ac9879435a57719f9a2120",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/13/snapshot_B.md": "c6f29744d9971020fff3a5decfc130112ebfb1accee3c2afd57cabcbd0dd44e9",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/13/snapshot_C.md": "537f5c263a841f6101a9f2b59df64fd69f84b5ae63d4315742381fe349e62ed9",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/14/brief.md": "47b5c31bb1a1277bb787a1f9524ac1387f2704389c9ddd1a3514ffd476874156",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/14/probes.json": "5fc842594487d00423f07468c00d2e26166998ee907f2e602790b99049cb0b3a",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/15/draft.md": "6d66d00e216ca8a6bdd5a0fb4f5e92742e577250eb846f8001fcf2932960a826",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/16/design_brief.md": "be9e991fea7719e0a7582c988a86bef46adf8520a97a38a6bb14318d31e57f9a",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/17/brief.md": "3251d44d236e4f5f14e255fcd017570e6545ccafbe29908e0658216f0d73e111",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/17/calibration.json": "41a09e90e09cb8be639ae5ed3b35b9e1096098413ed10ddc302fff4374509623",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/17/joint_anchor.json": "19d558aaae4d58c9ae6309be8ba307e860c06b25e4b0e25869b5024bb65eb268",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/18/design_brief.md": "0c9907672e8e5851bf14d950e78251ffbe90996ded49b8f8747e9c9b75bb215e",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/18/item_bank.csv": "3fd1a308ae6d041dec9d9df8e26417d8bb2d1c9d593f4b842a454122a55f34c0",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/19/starter.png": "b3dbae91449ab4fc4dd28ecf35677bfb8c1f4b75b92bcaa908cdc54242e9fdc3",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/19/starter.svg": "5c1d1cfcb6272ae56b274793db085f4c944ec604a4f9e8c2e02a89e3ed4cf91c",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/20/simulator.html": "a4a32a3f69de4667524b3f4db1fbec00a70be22d2bca041d0e3b00c249fd47bb",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/21/label_high.md": "5543111db0cf0fb04c280ac94ee0f82e5857a0fd82631a9c7f1fd8ae1fb8a3a7",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/21/label_low.md": "619fba688d4300da0f757dc408b25388267c11406eba188644027e0bdbfeea4f",
+    "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/21/requested_support.md": "bbc0f32a48261fbe447c23378ee4ab53b04f1e6908c05749e46e4a4e9368ef87",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/01/gold.json": "8f76367b1d0b1365a3173b0dcd8bffbffa8c5af3756696104eae96c0b07e3d5c",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/01/reference.md": "2ff44bd8e1c21ac4c318fa590e206e6d2d106f76b79173841e30c46718ae55dd",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/02/gold.json": "204941da2199bdbac3a8313354f990d56ae3d12e30d75b484eebd5233b5287f4",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/02/reference.md": "6d99289a297793674c324191c588dd2e95e32859e7faa15721618f5083df9d2a",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/03/gold.json": "cd2337c9c714b5cb8cbdac6543aed42f5522f3640870c0632191e05e030bf590",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/03/reference.md": "08a352874be87167110653727952e8fc77e890aaeba52426506c875cb8a2caf1",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/04/gold.json": "018b02cec94103b5410c40083d24aa3de51254cc1fb487eb0b24619a21a78b7e",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/04/reference.md": "28eab371e7ba7eb5006f75432fb8715dcbb3176cebf49569ffc7961467349fb4",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/05/gold.json": "42460601a7aa01591ce916c735ae117eee7198f3bf0f32023889476bf2f62f86",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/05/reference.md": "13b1645b2f74fab48b26459e25dc7f08401b84df286283c981eda4c7ea32ef98",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/06/gold.json": "c4169bc98adb6defb00bc0d619c72d3e6ed5067a2a1482b14a0e2774b69b1407",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/06/reference.md": "1b05fd832e4fccdf13604f601d187d87f13b0d11922458578a85dfcb5a240e3d",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/09/gold.json": "5f968bb677a414cd4d3bd9dc7bfab99378d05c4c0aacdfde8868f4bee349c85a",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/10/gold.json": "76587ae87a942a4b60c111c62da2c945798554de77d2d14f5f93b55c7a198378",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/11/gold.json": "b5db3ec86e497ad43dfd7e9e46846bb8035d866f5b2e2d05b8e6f5138ea6762f",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/12/gold.json": "7696e7bf13bc294fdcb0bb72514088bfef081f59dde52bfe1d9b9c3448d74ee4",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/12/row_key.json": "05072699c0202727e2d262b88c8dcf442582f1887fe3021ac40c2f6ff0014c90",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/13/gold.json": "a07f3fbdd084592429c21252fbea096438d9c4bba968b69af30137e81486996b",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/14/exercise_key.json": "1f1b6d57a8ffadee1706e6124ba9f64f9edf8d5bf969cf1917039c5cf6cc39e9",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/14/gold.json": "d99c28bedac711f17a37b899bf9ca2ca104cfd465202b0823b40517880e4cd7f",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/14/learner_material.html": "7fd45e1e5d7cd5fad8fb0114a5aa296db0955e1181d50df96441082f94a91166",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/14/teacher_notes.md": "e2f01d6a231be0fff3315a965ef657f64703792f5fdae05d364a4e3b9b251876",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/15/solution.md": "a0e8b66ab7534c2b91fc2bf1645625778f2814c78c175264bfc64455b2aabf40",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/16/solution.md": "a8dd0ff01cbf4b12a688cb6853262560a314d19a209a4ec2dbbeaa38dd05b596",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/17/base.md": "9a42ab1f46a3267ed5b11e900bf1a2b9ed74174bdd8d8d6fda0318546f1071e5",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/17/joint_update.md": "b47f5318f6f3bc5687a27bee51d3fecd61b527f9aa44712dd98875a2628c64f8",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/17/solution.md": "46562b23e2a9fcc067ad1bb8baabdba582ea78f2cce08296c4ae418a3f788ec1",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/18/solution.md": "083be03dbb7229b0d9ef6268d0bb692fbe915e8cd4269fd4b6200ea7e66b84a1",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/19/corrected.png": "8596b6fa936ce0182f8049a50bf4d3c7af3bdf1af7f29e4a8408f93c6ad949db",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/19/corrected.svg": "fd5488aeb176d0c291bfddd78f9a9c0e1484da4b35a8430509c15b80b94e6f69",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/19/states.json": "664b5fce26f3945cea9fad6c11144c739e07530f62b5bd3743037b8332cfc363",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/20/corrected.html": "7c355af9377554d75aaad4a12d9c2d626680b91e9cf2335f45d67f96c09e9789",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/20/protocol.json": "53925e5339571d6161b5432e0ae7d0263e55db8864f67b433b7c0b71b79301a6",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/21/gold.json": "9569bfeb02aba4ce1af104b93ae0f1612acdcc13a4754c71aa309516dfbca48f",
+    "private/edu_last_exam_pilot_v1/challenge_v2/reference/21/reference.md": "a1827d95fabfc87ed17e9ca93937a5ab1e4d299cffcdbe3c30dcde8526a7d87b",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/01.py": "06eb0ea324a79397039d8171afc23ad56fc63c72395e7b90909a3d7d5b5b80ac",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/02.py": "300cbd562ab45ab586265950ed0264f389908e7fc551979d291ac5850ae849ee",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/03.py": "2bc2e630ce31f90847af0eb12098f4314b59965705312cadd80f855c2ee88cec",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/04.py": "6837f17798053261cc43ed86af09e5177bced4204f5c9c69222941cbb359b310",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/05.py": "1fd4484f29f7a5bfedb2d77cac12554dded8dfd0694ddf54d01bcc83ab9782f6",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/06.py": "1d04866571b65de30840abe99254f60326978424203c75a9e61bde01694dee37",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/07.py": "12f05d19095110a874a1305b2cbe4cb69eb63a4a337b1e6289e781447e59ad47",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/08.py": "43e745983b7206dfb022885e9a8e1d073a4a749a6a725c8d2b9e52fd489bd977",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/09.py": "361d0da9131a365fb41c5c7197770ab30c4cc47e3b923b867db54e710097e871",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/10.py": "6c99212860ab9dd2fd67edcc186d5013446b8d6e7fd9ff84775d5e9b5e3d07dd",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/11.py": "0c1d2cd2e725812c343b2724f77f5dd5bb4cbf4c3f579376995278b95c9587f7",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/12.py": "bc4e65ca24ee57b303d62cb2332cc86455feb9b9f2df4577bff0ee7686e54693",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/13.py": "e5b47f4a3ba6c855579e6809f7ebdabd73c04c7e287d46a3c781f6cfd89b6b52",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/14.py": "c1d4aa909784bd8e7dffbdc8f77d0961da0e88fbb4a30c3f59a5c81020e92a0a",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/15.py": "e278e5bb75b2a3d68259332ecb7db4883a4a9a26b305e46d144c544d752ce546",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/16.py": "510e702f8ee2b9724b172e147016f7373d2c20672f29f738e698bae54ca40241",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/17.py": "07fae20a12b6ab7f1b4e33e9f5d81cdaaa3e2ee030fa75753af1632569a4a9cb",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/18.py": "7cf2fa84f7a753c3f0a5f17b30e0ebbcadb4995e0e5ddc3bad4e86a0afac1a52",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/19.py": "4f006c9945544b599bfc8cad571faa56048a23cd46a69d688ce14c2aa0dff324",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/20.py": "708b9c347495b8f7dc40ff5b1d37a00b3fcc4088c3e87e5fac93881ecb0d3689",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/21.py": "31dda8119a61d6282b15fa23ec9cf908cf883a9dbd8ee7d27c2849a42ede3928",
+    "private/edu_last_exam_pilot_v1/challenge_v2/checks/browser_review.py": "86e0c266cad672f9f3ae176a48b17132fe3cfbb3e3a81a88e1ba1c79ea734912"
+  }
+}

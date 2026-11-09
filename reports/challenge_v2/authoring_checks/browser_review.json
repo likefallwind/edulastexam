@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "authored_reference_and_stimulus_only",
+  "model_evaluation": "not_run",
+  "rendered_svg": [
+    "stimuli/07/circuit_l.svg",
+    "stimuli/07/circuit_r.svg",
+    "stimuli/08/student_A.svg",
+    "stimuli/08/student_B.svg",
+    "stimuli/19/starter.svg",
+    "reference/19/corrected.svg"
+  ],
+  "rc_protocol_points": 7,
+  "rc_dom_history_and_reset": "passed",
+  "intentional_stimulus_defect_reproduced": true,
+  "review_page_verified": true,
+  "fraction_reference_screenshots": 2,
+  "page_errors": [],
+  "browser_version": "149.0.7827.55"
+}

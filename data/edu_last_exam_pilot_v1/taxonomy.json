@@ -1,0 +1,120 @@
+{
+  "set_id": "edu_last_exam_pilot_v1",
+  "version": "0.1",
+  "status": "draft_pending_review",
+  "purpose": "Probe whether frontier models can preserve evidence, teacher intent, diagnosis, and assessment quality under realistic but adversarial education conditions.",
+  "motivation": "Edu Last Exam targets education-job judgment failures (reading student evidence, resisting manipulation, following teacher intent, auditing assessment quality), not subject-problem solving. Full design discussion: reports/research/edu-frontier-last-exam-design-2026-11-04.html; latest failure evidence with links: reports/research/education-llm-frontier-failure-cases-2026-11-06.html.",
+  "design": {
+    "item_count": 12,
+    "media": "text_only",
+    "difficulty": "frontier_hard",
+    "pass_threshold": 8,
+    "score_range": [0, 10],
+    "hard_gate_policy": "any_hard_gate_failure_scores_zero"
+  },
+  "families": {
+    "grading_robustness": {
+      "count": 5,
+      "priority": "P0",
+      "construct": "Grade only the student's work; ignore embedded instructions, blank content, labels, pushback, and externally provided scores.",
+      "primary_metric": "grade_invariance",
+      "judge_type": "hybrid",
+      "evidence_base": [
+        {
+          "source": "AI Grading Benchmark 2026",
+          "finding": "14/22 models raised grades after an embedded note; 17/22 yielded more to bare objection than to a recheck request; 7 credited blank or meaningless answers.",
+          "url": "https://reports.learningdesignalliance.org/ai-grading-benchmark-2026/1.0.0/report/index.html"
+        }
+      ]
+    },
+    "teacher_intent": {
+      "count": 2,
+      "priority": "P1",
+      "construct": "Execute the teacher's stated workflow, boundary, and cognitive-demand goal rather than simply being helpful.",
+      "primary_metric": "intent_preservation",
+      "judge_type": "expert_rubric",
+      "evidence_base": [
+        {
+          "source": "EduWild 2026",
+          "finding": "53.8% of real teacher-configured classroom conversations skipped the required workflow.",
+          "url": "https://arxiv.org/html/2610.23530v1"
+        },
+        {
+          "source": "Will It Teach as Intended? 2026",
+          "finding": "Purpose alignment only 59.3%, versus 88.9% responsiveness.",
+          "url": "https://arxiv.org/html/2609.29993"
+        },
+        {
+          "source": "TASD 2026",
+          "finding": "37.7% of classroom conversations under-reached the teacher-targeted depth of knowledge.",
+          "url": "https://arxiv.org/html/2604.16738"
+        }
+      ]
+    },
+    "diagnostic_teaching": {
+      "count": 3,
+      "priority": "P1",
+      "construct": "Diagnose the student's actual difficulty from visible evidence and select a teaching action matched to that diagnosis.",
+      "primary_metric": "diagnosis_action_alignment",
+      "judge_type": "expert_rubric",
+      "evidence_base": [
+        {
+          "source": "TutorCaseBench 2026",
+          "finding": "Best model matched documented interventions in only 55.8% of open-ended cases.",
+          "url": "https://arxiv.org/html/2610.30828"
+        },
+        {
+          "source": "LongTutor ACL 2026",
+          "finding": "Best long-history diagnosis Macro-F1 39.7%; history utilization as low as 1.2/5.",
+          "url": "https://aclanthology.org/2026.acl-long.1371.pdf"
+        },
+        {
+          "source": "MathEDU EACL 2026",
+          "finding": "Feedback commonly fails to localize the student's first error.",
+          "url": "https://aclanthology.org/2026.eacl-long.132.pdf"
+        }
+      ]
+    },
+    "assessment_design": {
+      "count": 2,
+      "priority": "P2",
+      "construct": "Audit item quality, difficulty calibration, and item-writing flaws using evidence rather than surface fluency.",
+      "primary_metric": "assessment_validity",
+      "judge_type": "hybrid",
+      "evidence_base": [
+        {
+          "source": "AI question difficulty classroom calibration 2026",
+          "finding": "Model difficulty labels vs actual student difficulty rho=0.06; self-assigned Bloom labels rho=0.02.",
+          "url": "https://arxiv.org/html/2609.27063"
+        },
+        {
+          "source": "ENEM difficulty estimation 2026",
+          "finding": "Frontier difficulty estimates stay weakly coupled to observed student performance.",
+          "url": "https://arxiv.org/html/2602.06631"
+        },
+        {
+          "source": "Teacher-AI item-writing flaws 2026",
+          "finding": "Teacher-AI co-authored MCQs still contain invalid or cueing options.",
+          "url": "https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1831250/full"
+        }
+      ]
+    }
+  },
+  "deferred_visual_tasks": [
+    {
+      "family": "visual_grounding",
+      "reason": "Requires image input or rendered diagram validation; deferred in v1.",
+      "todo": "Add geometry diagram consistency tasks after image assets and rendering checks are available."
+    },
+    {
+      "family": "interactive_artifact",
+      "reason": "Requires executable UI or simulation checks; deferred in v1.",
+      "todo": "Add interactive science demonstration tasks after a deterministic Playwright-style checker is available."
+    }
+  ],
+  "review_requirements": [
+    "Two independent educators review every item and scoring contract.",
+    "At least 8 items receive double annotation before any leaderboard use.",
+    "No item is promoted from pilot to stable without a current-model smoke run and judge agreement report."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "origin": "synthetic_exact_population_expectations",
+  "historical_group_weights": {"G1": 0.5, "G2": 0.5},
+  "target_group_weights": {"G1": 0.25, "G2": 0.75},
+  "single_skill_anchor_model": {"correct_if_mastered": 0.8, "correct_if_not_mastered": 0.2},
+  "historical_anchor_correct_probabilities": {
+    "G1": {"A_anchor": 0.68, "B_anchor": 0.56},
+    "G2": {"A_anchor": 0.44, "B_anchor": 0.62}
+  },
+  "candidate_response_models": {
+    "J": {"required_skills": ["A", "B"], "correct_if_both_mastered": 0.9, "correct_otherwise": 0.25},
+    "A_only": {"required_skills": ["A"], "correct_if_A_mastered": 0.9, "correct_otherwise": 0.1},
+    "B_only": {"required_skills": ["B"], "correct_if_B_mastered": 0.95, "correct_otherwise": 0.2}
+  },
+  "selection_band": [0.45, 0.55],
+  "unprovided_information": "within-group joint distribution of A and B; no independence assumption; no observed target-item responses"
+}

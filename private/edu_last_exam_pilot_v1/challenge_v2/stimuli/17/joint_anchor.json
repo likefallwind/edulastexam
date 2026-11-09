@@ -1,0 +1,8 @@
+{
+  "origin": "additional_synthetic_exact_population_expectations",
+  "anchor_description": "An additional calibrated anchor requiring both A and B, distinct from all candidate items.",
+  "correct_if_both_mastered": 0.85,
+  "correct_otherwise": 0.1,
+  "group_correct_probabilities": {"G1": 0.475, "G2": 0.325},
+  "scope": "Same G1/G2 skill populations and candidate response models as calibration.json. This does not provide observed candidate-item correctness."
+}

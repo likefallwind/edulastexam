@@ -1,0 +1,394 @@
+[
+  {
+    "item_id": "ELE-C2-09",
+    "prompt_id": "base",
+    "verdict": "substantive_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-09__base/response.md",
+    "key_judgment": "主分析正确保留学生已对的总体统计，算出分层比例及55%/40%，没有代写推荐；但实际交给教师使用的分支参考与退出检查含两处数据归属错误，直接影响本题核心的加权比较解释。",
+    "evidence": [
+      {
+        "lines": [
+          17,
+          20
+        ],
+        "quote": "原实验总体 | 35/100 = 35% | 56/100 = 56% ... 下次 ... 55% ... 40%",
+        "assessment": "主体核算正确。"
+      },
+      {
+        "lines": [
+          48,
+          48
+        ],
+        "quote": "如果A也按90强/10弱种，按组内比例会发多少芽？（0.8×90+0.2×10=74粒，翻盘）",
+        "assessment": "误把B的弱光率20%用于A；A应为0.8×90+0.3×10=75粒。这是混用条件比例，非单纯加法笔误。"
+      },
+      {
+        "lines": [
+          77,
+          77
+        ],
+        "quote": "乙总量高是因为乙的苗大多在向阳（30/40 对 甲的 70/80）",
+        "assessment": "甲向阳为10/80；70/80是甲背阴占比。原结论可成立，但这里给出的成对证据不是同一条件比例。"
+      },
+      {
+        "lines": [
+          33,
+          34
+        ],
+        "quote": "请你把表里四个格子各算一个“发芽数÷种子数”。我示范一格 ... 剩下三格你来。",
+        "assessment": "以一格示范推进其余计算，符合公开允许的局部支架。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "金标核心数值正确，允许图示、反事实和局部示范；上述问题来自模型自拟教学材料，不是偏离参考话术。"
+    },
+    "judgment_boundary": "不将整题归零；其分层结论和主要教学动作仍成立。退出检查换了表但保留原比例，区分力有限，不能单因难度不高就判错。"
+  },
+  {
+    "item_id": "ELE-C2-10",
+    "prompt_id": "base",
+    "verdict": "minor_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-10__base/response.md",
+    "key_judgment": "识别L02/L04已经完成的环节，未把尚未作答的开放系统迁移记为完成；边界、逸出气体去向、未知具体读数均正确。额外事实解释混淆误差界与分辨率，并作无依据的手感保证。",
+    "evidence": [
+      {
+        "lines": [
+          12,
+          12
+        ],
+        "quote": "往“空”袋里放一枚硬币再掂，和不放的比，你基本分不出来。可我们的天平连0.2克都能分辨，比手灵敏几十倍。",
+        "assessment": "题面只给每次读数误差界±0.2g，不能推出分辨率，更不能推出手感灵敏度比值；能否感知一枚硬币也无该学生证据。"
+      },
+      {
+        "lines": [
+          15,
+          15
+        ],
+        "quote": "袋子吹鼓后多占了体积 ... 托的力大约正好抵掉袋里那几克空气的重量",
+        "assessment": "补充了日常空气浮力解释，因此不能说整体把“感受不到”归因为气体无质量。"
+      },
+      {
+        "lines": [
+          45,
+          47
+        ],
+        "quote": "独立判断打开装置后的变化并说明物质去向 —— 未完成 ... 不得记为完成。",
+        "assessment": "状态记录与实际历史一致。"
+      },
+      {
+        "lines": [
+          51,
+          53
+        ],
+        "quote": "最坏情形不确定度达±0.4g ... 258.2–258.6g间某一定值",
+        "assessment": "±0.4g的差值误差界正确；若给共同真实质量的精确可行区间，两次区间交集应为[258.2,258.5]g，所报范围较松且未说明只据第一次读数。"
+      },
+      {
+        "lines": [
+          61,
+          64
+        ],
+        "quote": "逸出气体不再属于被称对象 ... 实际显示不一定能分辨该变化",
+        "assessment": "开放系统迁移的核心目标处理正确。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "金标要求区分误差、真实量与实际显示，数学边界成立；金标没有要求空气密度或硬币示例。"
+    },
+    "judgment_boundary": "这些是额外教学说明的局部不准确，不支持“流程恢复失败”或“错误宣告已掌握”的结论。分支中适当解释后再请学生说明可接受，不机械要求每句都纯追问。"
+  },
+  {
+    "item_id": "ELE-C2-11",
+    "prompt_id": "work_A",
+    "verdict": "ambiguous",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-11__work_A/response.md",
+    "key_judgment": "正确核验全对作品、承认教师之前未看作业即安慰不当，并给私密参与路径。争议在于把已经完整的书面数学解释仍视为必须补口述：题面列举的参与形式均含口述，但总体目标又只要求可评定数学解释，不能用金标偏好的书面完成判定直接硬扣。",
+    "evidence": [
+      {
+        "lines": [
+          8,
+          11
+        ],
+        "quote": "解释三要素齐全且正确 ... 数学内容与解释：未发现任何错误，无需返工。",
+        "assessment": "没有为了辅导而虚构学业错误。"
+      },
+      {
+        "lines": [
+          21,
+          21
+        ],
+        "quote": "评定的要求只是让我一个人听到同样的解释 ... 小声讲给我听 ... 录一段 ...",
+        "assessment": "增加了必须听到解释的完成条件；可解释为执行教师给出的口述形式，也可能构成对已有书面证据的重复负担。"
+      },
+      {
+        "lines": [
+          35,
+          38
+        ],
+        "quote": "用你选的任一方式把这三条理由讲出来 ... 在学生所选方式中，由学生本人产出 ... 清单全勾即达标。",
+        "assessment": "仍把额外口述作为完成证据；但不强制公开，也不以情绪或声音评价数学。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": true,
+      "assessment": "非数学金标错误，而是完成形式边界不清。context.md列出的90秒展示、小声说明加同伴、私人录音全涉及口述；金标acceptables却写现有书面解释可直接完成。两种解释都能从题面找到支持。应将口述义务明确后再计此项，当前不宜作为确定模型失败。"
+    },
+    "judgment_boundary": "可指出重复负担与无必要家长升级建议，但不能把允许私密口述本身判成强迫公开，也不能要求必须说参考答案中的道歉措辞。"
+  },
+  {
+    "item_id": "ELE-C2-11",
+    "prompt_id": "work_B",
+    "verdict": "no_major_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-11__work_B/response.md",
+    "key_judgment": "正确区分长度模型、按错误式计算仍正确的乘法与固定安装费被重复收取的建模错误；实际回复让学生修订并解释，提供私人录音/单独说明，完成判据有学生自己的数学证据。",
+    "evidence": [
+      {
+        "lines": [
+          15,
+          16
+        ],
+        "quote": "安装费是一次性固定180元 ... 等于把安装费收了62次 ... 正确应为62×38+180 ... 2536元",
+        "assessment": "正确定位费用结构，而非误判算术。"
+      },
+      {
+        "lines": [
+          28,
+          28
+        ],
+        "quote": "长度你算对了 ... 只有一处要改 ... 你重算一下总费用 ... 可以只录一段只给我听的录音",
+        "assessment": "尊重已对部分，及时具体纠正，实际教学动作可执行。"
+      },
+      {
+        "lines": [
+          37,
+          37
+        ],
+        "quote": "写出62×38+180=2536后，追问一句“为什么180只加一次？” ... 若卡住 ... 小例示范",
+        "assessment": "不把抄答案自动算理解；容许示范后继续尝试。"
+      },
+      {
+        "lines": [
+          58,
+          60
+        ],
+        "quote": "课后单独对教师口头说明 ... 证据待补 ... 公开不加分，不公开不扣分",
+        "assessment": "仍拒绝公开时保留可行路径并区分缺证据与不合格。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "金标与公开题面相符，并允许直接说明正确式再要求学生独立理由。该回答采用更少直接告知的方式，同样成立。"
+    },
+    "judgment_boundary": "“乘法技能本身可靠”措辞略宽，单题只证明本次乘法正确；但未据此扩展能力标签或改变教学判断，不上升为实质问题。"
+  },
+  {
+    "item_id": "ELE-C2-12",
+    "prompt_id": "base",
+    "verdict": "minor_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-12__base/response.md",
+    "key_judgment": "主交接正确：近期负号独立改善、收费固定项遗漏持续、提示成功不能当独立稳定掌握，且R33/R39为反证；两道实际题和分支可用。但两处计数错误，以及把已被收费反例削弱的“除不尽才换方程”作为重要备选解释，降低证据严谨性。",
+    "evidence": [
+      {
+        "lines": [
+          20,
+          20
+        ],
+        "quote": "十一道费用题无提示作答，该模式一次未变；唯一一次改对是R31 ...",
+        "assessment": "CSV实际费用题9条，其中8条无提示；R31提示后正确。11不是可复核数量。"
+      },
+      {
+        "lines": [
+          46,
+          46
+        ],
+        "quote": "提示后7/7改对（R04/R08/R12/R15/R18/R20/R21/R22）",
+        "assessment": "括号列8条，实际为8/8；后期无提示8/8正确。"
+      },
+      {
+        "lines": [
+          35,
+          35
+        ],
+        "quote": "存在“除不尽才换方程”的混淆变量",
+        "assessment": "R05/R27/R35/R37/R40在收费语境也除不尽却仍直接相除，因此“除不尽”本身解释不了对照；只能保留为与语境交互的更弱待核验假说。"
+      },
+      {
+        "lines": [
+          80,
+          87
+        ],
+        "quote": "在“明确要求先写方程＋代回核验”的条件下是否仍然出现 ... 8+4t=32 ... t=6",
+        "assessment": "第一短题确实核验新的任务条件且参考正确，不必强制包含参考方案的负号题。"
+      },
+      {
+        "lines": [
+          109,
+          118
+        ],
+        "quote": "卡里原有16元 ... 共有44元 ... 16+4d=44 ... d=7",
+        "assessment": "第二短题及其分支数学正确；不过先经历题1讲解后，不能仅凭该题一次表现将“整数陷阱”解释确证。"
+      },
+      {
+        "lines": [
+          125,
+          129
+        ],
+        "quote": "下次课开场用同型费用题（无提示）检查 ... 首答 ... 是否提示 ... 完成状态",
+        "assessment": "保留撤助后复查并区分提示与独立表现。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "当前金标已允许两道题都检验首要不确定性、不强制负号保持题，并取消隐藏的每期两条记录硬门槛；符合公开要求。"
+    },
+    "judgment_boundary": "计数错不改变主要教学优先级，故列minor而非整份交接实质失败。无记录的代回过程应写“未见核验痕迹”，不应据此断言学生从未核验。"
+  },
+  {
+    "item_id": "ELE-C2-13",
+    "prompt_id": "A",
+    "verdict": "no_major_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-13__A/response.md",
+    "key_judgment": "依据过去独立图示与份数解释保留本题尝试，把学生自己提出的乘8转为解释与核验任务；成功和困难分支、迁移题、替代教法均可执行且数学正确。",
+    "evidence": [
+      {
+        "lines": [
+          14,
+          14
+        ],
+        "quote": "先用你自己的办法（画图、想等分都行）算出能分几段；再用3/4×8算一个数 ... 为什么“乘8”恰好等于 ...",
+        "assessment": "不先确认乘8也是可接受选择；仍让学生完成结果和理由，没有无限猜谜。"
+      },
+      {
+        "lines": [
+          26,
+          28
+        ],
+        "quote": "卡在3/4换成第八份 ... 教师此时可以示范一次 ... 随后 ... 平行新题",
+        "assessment": "出现真实困难时恢复支持。"
+      },
+      {
+        "lines": [
+          32,
+          36
+        ],
+        "quote": "2/3米 ... 每段1/6米 ... 4段 ... 数轴跳数、连加 ... 均算合格",
+        "assessment": "迁移题正确，认可多种含义证据而非唯一定式。"
+      },
+      {
+        "lines": [
+          40,
+          40
+        ],
+        "quote": "同单位改写法 ... 再把新题交给学生",
+        "assessment": "替代教法具体且与目标一致。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "当前金标明确允许简短确认学生自提乘8，也允许先让其解释；不能把“未确认”或不用参考话术当失败。"
+    },
+    "judgment_boundary": "“确认对会强化答案优先”是模型的教学理由而非已证明机制，措辞可更克制；实际方案仍合理。"
+  },
+  {
+    "item_id": "ELE-C2-13",
+    "prompt_id": "B",
+    "verdict": "no_major_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-13__B/response.md",
+    "key_judgment": "根据两次真实尝试及时提供格与段的显式桥接，完整讲解2段后立即改变每段大小做回检；再换分母进行迁移。不存在因直接给答案就自动扣分的依据。",
+    "evidence": [
+      {
+        "lines": [
+          19,
+          29
+        ],
+        "quote": "一段要3/8米，也就是3个小格 ... 6÷3=2段 ... 如果改成每段2/8米 ...",
+        "assessment": "明确解决复合份困难，并把下一次判断交回学生。"
+      },
+      {
+        "lines": [
+          35,
+          43
+        ],
+        "quote": "若成功 ... 迁移题 ... 若继续困难 ... 整数分组 ... 样条",
+        "assessment": "两分支对应成功与仍困惑；没有假定必定学会。"
+      },
+      {
+        "lines": [
+          48,
+          54
+        ],
+        "quote": "2/3米 ... 每段2/9米 ... 6÷2=3段 ... 无剩余",
+        "assessment": "非单位分数除数的新迁移题及解释正确。"
+      },
+      {
+        "lines": [
+          58,
+          58
+        ],
+        "quote": "数轴“跳几跳”/连减法 ... 减了2次 ...",
+        "assessment": "替代表征具体、正确。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "金标acceptable_alternatives明确允许直接解释答案2再独立应用；该回答属于允许路径。"
+    },
+    "judgment_boundary": "“能出题是掌握的强证据”应保留单次观察范围；但没有据未发生的出题宣告掌握。“不代他圈图”不能孤立读成拒绝帮助，全文已经完整示范并提供操作支架。"
+  },
+  {
+    "item_id": "ELE-C2-13",
+    "prompt_id": "C",
+    "verdict": "minor_issue",
+    "review_type": "read_only_content_review_not_formal_scoring",
+    "response_path": "/home/likefallwind/code/edubenchmark/reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-13__C/response.md",
+    "key_judgment": "主方案正确区分算法正确与单位含义缺口，提供图示、层级帮助、撤助迁移和替代教法。可选非整数拓展题出现含混且字面错误的参考解释，应局部修正。",
+    "evidence": [
+      {
+        "lines": [
+          8,
+          15
+        ],
+        "quote": "计算无误 ... 不知道是米还是段 ... 保留 ... 倒乘算法 ... 增加量的解释支架",
+        "assessment": "证据与支持匹配，不因会算就宣布理解，也不没收正确程序。"
+      },
+      {
+        "lines": [
+          36,
+          36
+        ],
+        "quote": "5/6米彩带，每段1/3米，能剪几段？（5/6÷2/6=2.5：2整段加半个“半段”）",
+        "assessment": "商2.5正确，但“半个半段”字面为1/4段；且固定每段1/3米的剪切题须区分2个完整段＋1/6米余料，和2.5个标准段长。"
+      },
+      {
+        "lines": [
+          39,
+          41
+        ],
+        "quote": "教师示范一次 ... 然后让学生量第二段 ... 第3层直接讲一次＋立即验证",
+        "assessment": "在继续困难时及时增加帮助。"
+      },
+      {
+        "lines": [
+          45,
+          49
+        ],
+        "quote": "2/3米 ... 每段1/6米 ... 4段 ... 既用倒乘又讲得出含义，视为达标",
+        "assessment": "必需迁移题和判据正确，允许算法和意义共存。"
+      }
+    ],
+    "gold_review": {
+      "issue_detected": false,
+      "assessment": "金标主概念与本题整数段数均无问题；模型自行增加非整数切段拓展引入了新歧义。"
+    },
+    "judgment_boundary": "不把该可选拓展的局部错误扩大为主教学失败，也不因使用直接讲解或数图而扣分。"
+  }
+]

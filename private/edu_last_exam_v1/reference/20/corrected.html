@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RC 充放电实验台</title><style>body{font:18px system-ui,sans-serif;max-width:900px;margin:32px auto;padding:20px;color:#183248;background:#f3f7fa}button,input,select{font:inherit;padding:8px;margin:5px}section{background:white;padding:20px;border-radius:12px;margin:18px 0}output{font-family:monospace;font-weight:bold;color:#075a78}svg{width:100%;background:#fff}small{color:#486070}.meter{display:flex;gap:30px;flex-wrap:wrap}</style><h1>RC 充放电实验台</h1><p>理想电容 C = 100 μF；充电电源 U = 10 V。电流正方向为流入电容正极板。每次按“推进”模拟一段时间；调整控件时实验暂停。</p><section><label>模式 <select id="mode"><option value="charge">充电</option><option value="discharge">放电</option></select></label><label>电阻 R（Ω）<input id="resistance" type="number" value="2000" min="500" max="10000" step="100"></label><br><label>推进时长 Δt（s）<input id="dt" type="number" value="0.1" min="0.001" max="2" step="0.05"></label><button id="advance">推进</button><button id="reset">重置</button><p id="notice" role="status"></p></section><section class="meter"><div>累计时间 <output id="time">0</output> s</div><div>电容电压 <output id="voltage">0</output> V</div><div>电流 <output id="current">0</output> mA</div></section><section><svg viewBox="0 0 800 300" aria-label="电容电压随时间的轨迹"><path d="M55 25V260H770" fill="none" stroke="#587084"/><text x="5" y="30">10 V</text><text x="15" y="265">0 V</text><text id="endtime" x="650" y="290">时间（s）</text><polyline id="trace" fill="none" stroke="#147d98" stroke-width="3"/></svg><p>记录的是本次实验已经走过的状态。</p></section><section><p>探究：切换到放电档的瞬间，哪些量可以改变？改变电阻能否改写此前的实验轨迹？</p></section><script>
+const C=100e-6, U=10;
+const ui=Object.fromEntries(['mode','resistance','dt','advance','reset','notice','time','voltage','current','trace','endtime'].map(k=>[k,document.getElementById(k)]));
+let state={time:0,voltage:0,mode:'charge',resistance:2000};
+let samples=[{time:0,voltage:0}];
+function target(){return state.mode==='charge'?U:0;}
+function current(){return (target()-state.voltage)/state.resistance;}
+function setMode(mode){if(!['charge','discharge'].includes(mode))throw Error('请选择充电或放电');state.mode=mode;render();}
+function setResistance(r){if(!Number.isFinite(r)||r<500||r>10000)throw Error('电阻应在 500–10000 Ω');state.resistance=r;render();}
+function advance(dt){
+ if(!Number.isFinite(dt)||dt<=0||dt>2)throw Error('推进时长应在 0–2 s 内且大于 0');
+ const start=state.time,v0=state.voltage,vt=target(),tau=state.resistance*C;
+ const steps=Math.max(10,Math.ceil(dt/0.002));
+ for(let k=1;k<=steps;k++){let delta=dt*k/steps;samples.push({time:start+delta,voltage:vt+(v0-vt)*Math.exp(-delta/tau)});}
+ state.time=start+dt;state.voltage=samples[samples.length-1].voltage;render();
+}
+function reset(){state={time:0,voltage:0,mode:'charge',resistance:2000};samples=[{time:0,voltage:0}];render();}
+function render(){
+ ui.time.textContent=state.time.toFixed(6);ui.voltage.textContent=state.voltage.toFixed(6);ui.current.textContent=(current()*1000).toFixed(6);
+ ui.mode.value=state.mode;ui.resistance.value=state.resistance;
+ const xmax=Math.max(0.1,state.time);
+ ui.trace.setAttribute('points',samples.map(s=>(55+715*s.time/xmax).toFixed(4)+','+(260-23.5*s.voltage).toFixed(4)).join(' '));
+ ui.endtime.textContent='0 – '+xmax.toFixed(3)+' s';
+}
+function checked(fn){try{fn();ui.notice.textContent='';}catch(e){ui.notice.textContent=e.message;}}
+ui.mode.addEventListener('change',()=>checked(()=>setMode(ui.mode.value)));
+ui.resistance.addEventListener('change',()=>checked(()=>setResistance(Number(ui.resistance.value))));
+ui.advance.addEventListener('click',()=>checked(()=>advance(Number(ui.dt.value))));
+ui.reset.addEventListener('click',()=>checked(reset));
+window.sim={advance,setMode,setResistance,reset,snapshot:()=>({...state,current:current(),samples:samples.map(s=>({...s}))})};
+render();
+</script></html>

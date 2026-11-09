@@ -1,0 +1,117 @@
+{
+  "schema_version": "edu_last_exam_v1_test_2026-11-09",
+  "status": "test_release_candidate",
+  "human_review": "owner_review_pending",
+  "model_evaluation": "not_run",
+  "difficulty_status": "not_measured",
+  "source_batch": "private/edu_last_exam_pilot_v1/challenge_v2",
+  "package_count": 8,
+  "prompt_count": 11,
+  "item_ids": [
+    "ELE-C2-01",
+    "ELE-C2-03",
+    "ELE-C2-09",
+    "ELE-C2-10",
+    "ELE-C2-12",
+    "ELE-C2-13",
+    "ELE-C2-16",
+    "ELE-C2-20"
+  ],
+  "tracks": {
+    "ELE-C2-01": "core_text",
+    "ELE-C2-03": "grading_robustness_control",
+    "ELE-C2-09": "core_text",
+    "ELE-C2-10": "core_text",
+    "ELE-C2-12": "long_history",
+    "ELE-C2-13": "adaptive_scaffolding",
+    "ELE-C2-16": "assessment_design_static",
+    "ELE-C2-20": "artifact_rc_simulator"
+  },
+  "offline_checks": [
+    {
+      "path": "checks/01.py",
+      "status": "passed",
+      "output": "01 PASS: weighted conditional counts, two independent cancelling errors, follow-up oracle"
+    },
+    {
+      "path": "checks/03.py",
+      "status": "passed",
+      "output": "03 PASS: executable independent defects, valid controls, note invariance"
+    },
+    {
+      "path": "checks/09.py",
+      "status": "passed",
+      "output": "09: four cells, pooled/stratified/target calculations verified"
+    },
+    {
+      "path": "checks/10.py",
+      "status": "passed",
+      "output": "10: measurement bounds and uncompleted transfer state verified"
+    },
+    {
+      "path": "checks/12.py",
+      "status": "passed",
+      "output": "12: 40 raw answers, hint separation, time contrasts and proposed probes verified"
+    },
+    {
+      "path": "checks/13.py",
+      "status": "passed",
+      "output": "13: all three independent snapshots and fraction/unit references verified"
+    },
+    {
+      "path": "checks/16.py",
+      "status": "passed",
+      "output": "ELE-C2-16: all 10 point pairs, single-reading ambiguity, transfer and absolute-reading anomaly checked"
+    },
+    {
+      "path": "checks/20.py",
+      "status": "passed",
+      "output": "20: actual reference JavaScript matches piecewise RC law, signed current, continuity, history and reset"
+    }
+  ],
+  "sha256": {
+    "README.md": "4342f5a69af4e1eb291a67d236e81c79b37872109eab755f6c087df503c6ec80",
+    "build_report.md": "0ca2c0c9fd45f4031180497b5db509e33bd157da96da9ce0a264f645774e9b5d",
+    "checks/01.py": "06eb0ea324a79397039d8171afc23ad56fc63c72395e7b90909a3d7d5b5b80ac",
+    "checks/03.py": "2bc2e630ce31f90847af0eb12098f4314b59965705312cadd80f855c2ee88cec",
+    "checks/09.py": "361d0da9131a365fb41c5c7197770ab30c4cc47e3b923b867db54e710097e871",
+    "checks/10.py": "6c99212860ab9dd2fd67edcc186d5013446b8d6e7fd9ff84775d5e9b5e3d07dd",
+    "checks/12.py": "bc4e65ca24ee57b303d62cb2332cc86455feb9b9f2df4577bff0ee7686e54693",
+    "checks/13.py": "e5b47f4a3ba6c855579e6809f7ebdabd73c04c7e287d46a3c781f6cfd89b6b52",
+    "checks/16.py": "510e702f8ee2b9724b172e147016f7373d2c20672f29f738e698bae54ca40241",
+    "checks/20.py": "29ce7404c9f655228b341ec677e4dbd267dc35fa79a1b94a6256d88f96f45b14",
+    "items.jsonl": "2be9ec1bacb9bea2394299cef7a5ee54021bcb01197bca33aa6d94337bc7589b",
+    "prompts.jsonl": "53c036dd194ebf7a85798054826dc7407cbfa0c34216092afa5688c4017289c6",
+    "questions.md": "00b6f3cba9fc9c7c0362e9a6137028d12714eb4ca8621d1f45c4b67665d97dd8",
+    "reference/01/gold.json": "8f76367b1d0b1365a3173b0dcd8bffbffa8c5af3756696104eae96c0b07e3d5c",
+    "reference/01/reference.md": "2ff44bd8e1c21ac4c318fa590e206e6d2d106f76b79173841e30c46718ae55dd",
+    "reference/03/gold.json": "cd2337c9c714b5cb8cbdac6543aed42f5522f3640870c0632191e05e030bf590",
+    "reference/03/reference.md": "08a352874be87167110653727952e8fc77e890aaeba52426506c875cb8a2caf1",
+    "reference/09/gold.json": "5f968bb677a414cd4d3bd9dc7bfab99378d05c4c0aacdfde8868f4bee349c85a",
+    "reference/10/gold.json": "76587ae87a942a4b60c111c62da2c945798554de77d2d14f5f93b55c7a198378",
+    "reference/12/gold.json": "7696e7bf13bc294fdcb0bb72514088bfef081f59dde52bfe1d9b9c3448d74ee4",
+    "reference/12/row_key.json": "05072699c0202727e2d262b88c8dcf442582f1887fe3021ac40c2f6ff0014c90",
+    "reference/13/gold.json": "a07f3fbdd084592429c21252fbea096438d9c4bba968b69af30137e81486996b",
+    "reference/16/solution.md": "a8dd0ff01cbf4b12a688cb6853262560a314d19a209a4ec2dbbeaa38dd05b596",
+    "reference/20/corrected.html": "7c355af9377554d75aaad4a12d9c2d626680b91e9cf2335f45d67f96c09e9789",
+    "reference/20/protocol.json": "53925e5339571d6161b5432e0ae7d0263e55db8864f67b433b7c0b71b79301a6",
+    "review.md": "234effdad2ce66a6793468aa9998ca0c0ba3f7b7020121c64571d1970a74caa0",
+    "review_sheet.csv": "0e9891a632c2a3a0493eb18c42e246cddeb1e1ab92869893bf2cfdc2a0ed6a9f",
+    "selection.json": "870bcb49215158f8a58d7f9ee021f349d82400c555b3a957f23671505e230ca0",
+    "stimuli/01/base.md": "f246e4b788ff2da96ca34610227d0405f2e582875fb886ff236c183a14a574e0",
+    "stimuli/03/clean.md": "59e3023286c270c588aa02edb1bafbfa910276f6a91263d963d93957bbe3f59c",
+    "stimuli/03/student_clean.py": "4d1c7a42b6b1f4f62b13372cacb2d7b51dccfce3bc0ab479cfeab04edfb2759b",
+    "stimuli/03/student_with_note.py": "3785ae403e978138cb9763915494d7f34c90b63f28198571cc925f3c7e2790e1",
+    "stimuli/03/with_note.md": "ad9408120f3370a907496f1dddb44b594b8f8dd46cb46cb330678f55e7f3f1b6",
+    "stimuli/09/counts.json": "1bc30ba71c654b3824b9eb1248053769d9d8d9b36beafd08a7d6a51a7fa6be20",
+    "stimuli/09/lesson.md": "9e803526255a7a2fe3ab114b3c627b6f5919e2ea9296ac5042a751a57195805e",
+    "stimuli/10/session.md": "4142db2520c8af3116dbd9c38bbd2b95aa120de1473a1d2ada72cc8ef966777a",
+    "stimuli/12/attempts.csv": "9bcc0179bab8b70b1a2b07fbe56ef91b1a70e95fbce9820321b3e9c7427050fb",
+    "stimuli/12/teacher_request.md": "546800e4b8b8e7e06c055a1f8f27685623cc20a34a800de1acbf72deb3946c1e",
+    "stimuli/13/snapshot_A.md": "14f1d622546cddd668beb53dfce35cc702bed5c0d3ac9879435a57719f9a2120",
+    "stimuli/13/snapshot_B.md": "c6f29744d9971020fff3a5decfc130112ebfb1accee3c2afd57cabcbd0dd44e9",
+    "stimuli/13/snapshot_C.md": "537f5c263a841f6101a9f2b59df64fd69f84b5ae63d4315742381fe349e62ed9",
+    "stimuli/16/design_brief.md": "be9e991fea7719e0a7582c988a86bef46adf8520a97a38a6bb14318d31e57f9a",
+    "stimuli/20/simulator.html": "a4a32a3f69de4667524b3f4db1fbec00a70be22d2bca041d0e3b00c249fd47bb"
+  }
+}

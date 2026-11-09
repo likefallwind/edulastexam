@@ -1,0 +1,366 @@
+{
+  "scope": "Codex artifact inspection, not formal scoring",
+  "model": "GLM-5.3",
+  "piston": {
+    "states": [
+      {
+        "id": "S1",
+        "expected": {
+          "h_cm": 8.0,
+          "V_cm3": 160.0,
+          "P_kPa": 100.0,
+          "stop_force_N": 0
+        },
+        "passed": true
+      },
+      {
+        "id": "S2",
+        "expected": {
+          "h_cm": 10,
+          "V_cm3": 200,
+          "P_kPa": 100.0,
+          "stop_force_N": 0
+        },
+        "passed": true
+      },
+      {
+        "id": "S3",
+        "expected": {
+          "h_cm": 10,
+          "V_cm3": 200,
+          "P_kPa": 120.0,
+          "stop_force_N": 40.0
+        },
+        "passed": true
+      },
+      {
+        "id": "S3b",
+        "expected": {
+          "h_cm": 10,
+          "V_cm3": 200,
+          "P_kPa": 100.0,
+          "stop_force_N": 0
+        },
+        "passed": true
+      },
+      {
+        "id": "S4",
+        "expected": {
+          "h_cm": 8.8,
+          "V_cm3": 176.0,
+          "P_kPa": 100.0,
+          "stop_force_N": 0
+        },
+        "passed": true
+      }
+    ],
+    "svg_gas_heights_cm": [
+      8.0,
+      10.0,
+      10.0,
+      8.8
+    ],
+    "uniform_scale_passed": true,
+    "format_normalization": "Removed only leading filename=corrected.svg / filename=states.json wrapper for parsing; not counted as content failure"
+  },
+  "fraction_ascii_rows": {
+    "A": [
+      {
+        "line": 15,
+        "strip": "[#############][             ]",
+        "characters": 30
+      },
+      {
+        "line": 18,
+        "strip": "[########][        ][        ]",
+        "characters": 30
+      },
+      {
+        "line": 31,
+        "strip": "[####][####][####][::::][::::][    ]",
+        "characters": 36
+      },
+      {
+        "line": 53,
+        "strip": "[   ][   ][   ][   ][   ][   ][   ][   ][   ]",
+        "characters": 45
+      },
+      {
+        "line": 79,
+        "strip": "[##][##][##][##][  ][  ][  ][  ][  ][  ]",
+        "characters": 40
+      }
+    ],
+    "B": [
+      {
+        "line": 17,
+        "strip": "[####][####][####][    ][    ][    ]",
+        "characters": 36
+      },
+      {
+        "line": 23,
+        "strip": "[####][####][####][    ][    ][    ]",
+        "characters": 36
+      },
+      {
+        "line": 24,
+        "strip": "[####][    ][    ][    ][    ][    ]",
+        "characters": 36
+      },
+      {
+        "line": 37,
+        "strip": "[#############][             ]",
+        "characters": 30
+      },
+      {
+        "line": 40,
+        "strip": "[########][        ][        ]",
+        "characters": 30
+      },
+      {
+        "line": 47,
+        "strip": "[####][####][####][    ][    ][    ]",
+        "characters": 36
+      },
+      {
+        "line": 48,
+        "strip": "[####][####][    ][    ][    ][    ]",
+        "characters": 36
+      },
+      {
+        "line": 66,
+        "strip": "[   ][   ][   ][   ][   ][   ][   ][   ]",
+        "characters": 40
+      },
+      {
+        "line": 76,
+        "strip": "[      ][      ][      ][      ]",
+        "characters": 32
+      },
+      {
+        "line": 95,
+        "strip": "[###][###][###][   ][   ][   ][   ][   ]",
+        "characters": 40
+      }
+    ]
+  },
+  "rc": {
+    "protocol": [
+      {
+        "actual": {
+          "time": 0,
+          "voltage": 0,
+          "current": 0.005
+        },
+        "expected": [
+          0,
+          0,
+          0.005
+        ],
+        "passed": true
+      },
+      {
+        "actual": {
+          "time": 0.3,
+          "voltage": 7.768698398515701,
+          "current": 0.0011156508007421496
+        },
+        "expected": [
+          0.3,
+          7.768698398515702,
+          0.0011156508007421492
+        ],
+        "passed": true
+      },
+      {
+        "actual": {
+          "time": 0.3,
+          "voltage": 7.768698398515701,
+          "current": -0.007768698398515701
+        },
+        "expected": [
+          0.3,
+          7.768698398515702,
+          -0.007768698398515702
+        ],
+        "passed": true
+      },
+      {
+        "actual": {
+          "time": 0.4,
+          "voltage": 2.857944425475435,
+          "current": -0.002857944425475435
+        },
+        "expected": [
+          0.4,
+          2.8579444254754356,
+          -0.0028579444254754355
+        ],
+        "passed": true
+      },
+      {
+        "actual": {
+          "time": 0.4,
+          "voltage": 2.857944425475435,
+          "current": -0.0007144861063688588
+        },
+        "expected": [
+          0.4,
+          2.8579444254754356,
+          -0.0007144861063688589
+        ],
+        "passed": true
+      },
+      {
+        "actual": {
+          "time": 0.6000000000000001,
+          "voltage": 1.7334309178056588,
+          "current": -0.0004333577294514147
+        },
+        "expected": [
+          0.6,
+          1.7334309178056588,
+          -0.0004333577294514147
+        ],
+        "passed": true
+      },
+      {
+        "actual": {
+          "time": 0.7000000000000001,
+          "voltage": 3.561989525473183,
+          "current": 0.0016095026186317043
+        },
+        "expected": [
+          0.7,
+          3.561989525473183,
+          0.0016095026186317043
+        ],
+        "passed": true
+      }
+    ],
+    "history_preserved": true,
+    "reset_passed": true,
+    "large_step_display": {
+      "dt_s": 2,
+      "polyline_points": [
+        [
+          55.0,
+          260.0
+        ],
+        [
+          770.0,
+          25.0107
+        ]
+      ],
+      "midpoint_t_s": 1,
+      "display_interpolated_voltage_V": 4.999772340425532,
+      "physical_voltage_V": 9.932620530009146,
+      "difference_V": 4.932848189583614
+    },
+    "same_endpoint_small_steps": {
+      "steps": 20,
+      "dt_s": 0.1,
+      "state": {
+        "time": 2.0000000000000004,
+        "voltage": 9.999546000702376,
+        "current": 2.2699964881223167e-07,
+        "mode": "charge",
+        "resistance": 2000,
+        "samples": [
+          {
+            "time": 0,
+            "voltage": 0
+          },
+          {
+            "time": 0.1,
+            "voltage": 3.934693402873666
+          },
+          {
+            "time": 0.2,
+            "voltage": 6.3212055882855775
+          },
+          {
+            "time": 0.30000000000000004,
+            "voltage": 7.768698398515703
+          },
+          {
+            "time": 0.4,
+            "voltage": 8.646647167633873
+          },
+          {
+            "time": 0.5,
+            "voltage": 9.179150013761012
+          },
+          {
+            "time": 0.6,
+            "voltage": 9.50212931632136
+          },
+          {
+            "time": 0.7,
+            "voltage": 9.698026165776815
+          },
+          {
+            "time": 0.7999999999999999,
+            "voltage": 9.816843611112658
+          },
+          {
+            "time": 0.8999999999999999,
+            "voltage": 9.888910034617577
+          },
+          {
+            "time": 0.9999999999999999,
+            "voltage": 9.932620530009146
+          },
+          {
+            "time": 1.0999999999999999,
+            "voltage": 9.95913228561536
+          },
+          {
+            "time": 1.2,
+            "voltage": 9.975212478233336
+          },
+          {
+            "time": 1.3,
+            "voltage": 9.984965608070224
+          },
+          {
+            "time": 1.4000000000000001,
+            "voltage": 9.990881180344456
+          },
+          {
+            "time": 1.5000000000000002,
+            "voltage": 9.994469156298523
+          },
+          {
+            "time": 1.6000000000000003,
+            "voltage": 9.996645373720975
+          },
+          {
+            "time": 1.7000000000000004,
+            "voltage": 9.997965316309894
+          },
+          {
+            "time": 1.8000000000000005,
+            "voltage": 9.998765901959134
+          },
+          {
+            "time": 1.9000000000000006,
+            "voltage": 9.999251481701123
+          },
+          {
+            "time": 2.0000000000000004,
+            "voltage": 9.999546000702376
+          }
+        ]
+      }
+    },
+    "interpretation_limit": "Endpoint values pass. Coarse straight interpolation is a visual-content issue; the task did not specify a curve error tolerance, so no automatic whole-item fail is assigned."
+  },
+  "page_errors": [],
+  "blocked_external_requests": [],
+  "source_sha256": {
+    "reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-19__base/attempt_01/artifacts/01_block_01.xml": "75a5f27b820cf239e1d67b26f59e269d967f43cff069563c669d46ef72994e38",
+    "reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-19__base/attempt_01/artifacts/02_block_02.json": "1a6545719225528c5b768d8e8116ca64dd8cdd196bd2d5556cbe6367ded5eb27",
+    "reports/eval/edu_last_exam_challenge_v2/_exploratory/GLM-5.3/20261107_01/cases/ELE-C2-20__base/attempt_01/artifacts/01_corrected.html": "c37f1d554e8c914788536083b2e6c5230b47f4902fe457194424554e49eca6f9"
+  }
+}
