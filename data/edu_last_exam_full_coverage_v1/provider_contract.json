@@ -1,0 +1,22 @@
+{
+  "verified_on": "2026-11-10",
+  "model": "GLM-5.3-Flash",
+  "endpoint": "https://open.bigmodel.cn/api/coding/paas/v4/chat/completions",
+  "max_tokens": "omitted",
+  "concurrency": 4,
+  "sources": [
+    "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash",
+    "https://docs.bigmodel.cn/api-reference/模型-api/对话补全"
+  ],
+  "official_model_input_modalities": [
+    "text",
+    "image",
+    "video",
+    "file"
+  ],
+  "image_transport": "image_url with base64 data URI",
+  "video_transport": "video_url; local MP4 data URI requires live endpoint verification",
+  "audio_transport": "not enabled for GLM-5.3-Flash; official input_audio schema specifies glm-4-voice",
+  "unsupported_media_policy": "retain task and fixture, mark unsupported_input_not_scored; no transcript substitution",
+  "official_api_markdown_sha256": "9af8109bae71cccb4974844c7e2f747694b3926d9a14e5dad5f451087065f0e0"
+}

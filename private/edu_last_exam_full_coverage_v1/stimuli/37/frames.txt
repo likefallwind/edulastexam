@@ -1,0 +1,7 @@
+file '/home/likefallwind/code/edulastexam/private/edu_last_exam_full_coverage_v1/stimuli/37/frame_0.png'
+duration 2
+file '/home/likefallwind/code/edulastexam/private/edu_last_exam_full_coverage_v1/stimuli/37/frame_1.png'
+duration 2
+file '/home/likefallwind/code/edulastexam/private/edu_last_exam_full_coverage_v1/stimuli/37/frame_2.png'
+duration 2
+file '/home/likefallwind/code/edulastexam/private/edu_last_exam_full_coverage_v1/stimuli/37/frame_2.png'

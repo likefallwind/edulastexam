@@ -1,0 +1,15 @@
+{
+  "source_path": "/home/likefallwind/code/edubenchmark/private/education_boundary_v1/items.jsonl",
+  "source_sha256": "6a6efce8242a7f348ab252ecd572f138b19493fa4a354c1a7e185a6a3c23e115",
+  "source_item_ids": [
+    "EB-A-R-003",
+    "EB-A-C-003"
+  ],
+  "copy_mode": "selected_records_explicit_copy",
+  "copied_record_sha256": "7e0bc0923071d81c0f84f7e767b3abc2ed8dd4e161e8ce62fb213704cbb3de41",
+  "publication_permission": "not_reassessed; private research copy only",
+  "source_review_status": [
+    "pending",
+    "pending"
+  ]
+}

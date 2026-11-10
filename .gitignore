@@ -8,9 +8,24 @@ venv/
 .env
 .env.*
 eval/
+# Keep the shared stream parser required by Edu Last Exam experiment runners.
+!scripts/eval/
+scripts/eval/*
+!scripts/eval/__init__.py
+!scripts/eval/minimax_client.py
 logs/
 tmp/
 sources/datasets/
+# Local delivery copies of external student images; provenance is tracked separately.
+private/edu_last_exam_scenario_v1/stimuli/*/*.png
+private/edu_last_exam_scenario_neutral_v1/stimuli/*/*.png
+# Full-coverage research inputs copied from external datasets; keep provenance,
+# source identities and acquisition notes, but do not publish raw student assets.
+private/edu_last_exam_full_coverage_v1/stimuli/07/*.png
+private/edu_last_exam_full_coverage_v1/stimuli/08/*.png
+private/edu_last_exam_full_coverage_v1/stimuli/17/
+private/edu_last_exam_full_coverage_v1/stimuli/22/
+private/edu_last_exam_full_coverage_v1/reference/*/oracle_output_*/
 *.tmp
 *.sse
 

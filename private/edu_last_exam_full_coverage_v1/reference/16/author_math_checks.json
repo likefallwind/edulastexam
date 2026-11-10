@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": [
+    "safe/unsafe range; identifying, overlap, incompatible logs"
+  ],
+  "independent_human_review": "pending"
+}

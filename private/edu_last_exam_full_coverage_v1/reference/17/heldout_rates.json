@@ -1,0 +1,36 @@
+{
+  "targets": {
+    "1100": {
+      "n": 613,
+      "correct": 371,
+      "rate": 0.6052202283849919
+    },
+    "1101": {
+      "n": 629,
+      "correct": 433,
+      "rate": 0.6883942766295708
+    },
+    "1102": {
+      "n": 622,
+      "correct": 403,
+      "rate": 0.6479099678456591
+    }
+  },
+  "pooled_calibration_baseline": 0.8597233982500706,
+  "cohort_counts": {
+    "heldout": 1729,
+    "calibration": 1708
+  },
+  "source_files": [
+    {
+      "path": "/home/likefallwind/code/edubenchmark/sources/datasets/longtutor/data/XES3G5M/questions.jsonl",
+      "sha256": "153e372ae27f1993f0495889926c034dd7dfd5b81585652e716b5759f33d76b4"
+    },
+    {
+      "path": "/home/likefallwind/code/edubenchmark/sources/datasets/longtutor/data/XES3G5M/sequences_long.jsonl",
+      "sha256": "b23c98b69dd0f62ef299eec44bfdbd8ddd6e925cf3550edcb6a58a0ea1ab8d8e"
+    }
+  ],
+  "sampling": "Selected target ids 1100,1101,1102 and anchors 403,405,438,1104,417,421 from complete text entries; not selected by GLM response or forecast error. Three targets are exploratory, not a difficulty population sample.",
+  "license_status": "upstream redistribution permission not resolved; local research derivative; no learner identifiers exported"
+}

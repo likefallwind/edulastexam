@@ -1,0 +1,152 @@
+{
+  "item_id": "ELE-S02-002",
+  "scenario_id": "S02",
+  "title": "交流电路手写推导的批改复核",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": "not_selected",
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "status": {
+    "stage": "authored_candidate",
+    "canonical": false,
+    "human_review": "pending",
+    "model_evaluation": "not_run",
+    "difficulty": "not_measured",
+    "frozen": false
+  },
+  "material_origin": "real_student_image_with_new_complete_task_context",
+  "failure_mechanism": "复杂手写式中的符号或节点关系被误读，导致正确的移项/超节点推导被判错。",
+  "education_consequence": "教师把有效电路推导改成错误方程，学生收到错误方法反馈。",
+  "source_evidence": [
+    {
+      "source_id": "CIRCUIT_HW",
+      "url": "https://github.com/gt-learning-innovation/CIRCUIT_EDU_HW_ACL/blob/d56d72861f443337d47d44714ee4ef8d4f6e5429/docs/assets/examples/hw8_student41_q10_6-1.png",
+      "record_locator": "hw8_student41_q10_6-1",
+      "license": "student_image_redistribution_unconfirmed"
+    },
+    {
+      "source_id": "CIRCUIT_PAPER",
+      "url": "https://aclanthology.org/2026.findings-acl.751.pdf"
+    }
+  ],
+  "atomic_abilities": [],
+  "gold_is_test_input": false,
+  "current_failure_evidence": "not_verified_for_this_adapted_item",
+  "limitations": [
+    "图像再分发条件未确认，图像只保留本地、不入Git。",
+    "源图中两个支路未标阻抗，本题已在可见条件中明确补齐；不能隐去这些条件后沿用同一金标。",
+    "学科计算负担较高，需要用转写对照分离识别与电路推理错误。"
+  ],
+  "prompts": [
+    {
+      "prompt_id": "a",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请审核附件中的交流电路学生作品。为使本题自足，以下是本项目给定的局部电路条件（不是要求你恢复未提供的教材原题）：公共地；电压源Vs=48∠45° V，经j50 Ω到V2；V2经20 Ω接地，控制电流I=V2/20向下；受控电压源在V2与V3间、左负右正，V3−V2=25I；V3经−j40 Ω接地，并经30 Ω到Vo；Vo经j25 Ω接地。采用余弦峰值相量，角频率2500 rad/s。\n\n批改草稿认为：①左下第二行把V2/(j50)移到右边后符号错；②右下第二行V2的系数不应为负；③末行幅值14.67、相位+5.6°明显错误。\n\n请逐条审核草稿意见，引用对应位置并独立复算Vo。若学生作品存在实质错误，请指出最早位置；若无则写“无”。与未舍入解析值相比，幅值误差≤0.05V、相位误差≤0.1°可接受；记号i(t)被用于相量的书写不规范可提醒，但本题不将它单独判为实质错误。最后给学生简短反馈。",
+      "assets": [
+        "stimuli/S02_002/worksheet.png"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "b",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请审核附件中的交流电路学生作品。为使本题自足，以下是本项目给定的局部电路条件（不是要求你恢复未提供的教材原题）：公共地；电压源Vs=48∠45° V，经j50 Ω到V2；V2经20 Ω接地，控制电流I=V2/20向下；受控电压源在V2与V3间、左负右正，V3−V2=25I；V3经−j40 Ω接地，并经30 Ω到Vo；Vo经j25 Ω接地。采用余弦峰值相量，角频率2500 rad/s。\n\n批改草稿认为：①左下第二行把V2/(j50)移到右边后符号错；②右下第二行V2的系数不应为负；③末行幅值14.67、相位+5.6°明显错误。\n\n请逐条审核草稿意见，引用对应位置并独立复算Vo。若学生作品存在实质错误，请指出最早位置；若无则写“无”。与未舍入解析值相比，幅值误差≤0.05V、相位误差≤0.1°可接受；记号i(t)被用于相量的书写不规范可提醒，但本题不将它单独判为实质错误。最后给学生简短反馈。",
+      "assets": [
+        "stimuli/S02_002/transcript.md"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "first_invalid_step": null,
+        "vo_real": 14.599827462750232,
+        "vo_imag": 1.4265211393037032,
+        "vo_magnitude": 14.669353240785915,
+        "vo_phase_degrees": 5.580546794012406,
+        "judgments": [
+          "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+          "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+          "③不成立，末行在给定容差内。"
+        ],
+        "acceptable_alternatives": [
+          "用节点方程、超节点法或消元数值解，得到等价结果。",
+          "以相位加减360°的等价表示或正弦改写给出同一波形。"
+        ],
+        "critical_errors": [
+          "把L2或R2的合法移项判为数学错误。",
+          "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+          "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+        ]
+      },
+      "b": {
+        "first_invalid_step": null,
+        "vo_real": 14.599827462750232,
+        "vo_imag": 1.4265211393037032,
+        "vo_magnitude": 14.669353240785915,
+        "vo_phase_degrees": 5.580546794012406,
+        "judgments": [
+          "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+          "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+          "③不成立，末行在给定容差内。"
+        ],
+        "acceptable_alternatives": [
+          "用节点方程、超节点法或消元数值解，得到等价结果。",
+          "以相位加减360°的等价表示或正弦改写给出同一波形。"
+        ],
+        "critical_errors": [
+          "把L2或R2的合法移项判为数学错误。",
+          "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+          "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "reading_and_topology",
+        "points": 2,
+        "observable": "忠实识别极性、控制电流与手写移项位置。"
+      },
+      {
+        "criterion_id": "equivalence",
+        "points": 3,
+        "observable": "两条符号指控均逐条核验，不把等价变形判错。"
+      },
+      {
+        "criterion_id": "numeric_oracle",
+        "points": 3,
+        "observable": "独立解方程并给出与14.66935∠5.58055°一致的结果，使用给定容差。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 2,
+        "observable": "撤销无根据的实质扣分；可提醒记号规范但不混为电路错误。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "same_work_image_vs_faithful_transcript",
+      "expected": "作品本身与三个指控的结论相同；视觉与纯文本结果分开报告。"
+    }
+  ],
+  "adaptations": [
+    "保留原学生图像，手工按原图校核转写。",
+    "新增完整局部电路条件、批改草稿和容差；不声称这是原教材题的未改动复现。",
+    "该图的实际解法正确，用于检测错误扣分；不能把“源数据中有手写错误”泛化到此图。"
+  ]
+}

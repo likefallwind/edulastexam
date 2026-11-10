@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AI 在教育应用中的薄弱点：文献与本仓库实验完整对照</title><style>
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #24323c; }
+body { margin: 0; background: #f3f5f6; line-height: 1.8; }
+main { max-width: 1120px; margin: 32px auto; padding: 36px; background: white; }
+h1 { font-size: 1.9rem; line-height: 1.4; }
+h2 { margin-top: 2.4em; padding-top: .8em; border-top: 1px solid #d8e0e4; }
+a { color: #176b87; overflow-wrap: anywhere; }
+p, li, td { overflow-wrap: anywhere; }
+nav { padding: 12px 20px; background: #edf5f7; border-radius: 8px; }
+nav ul { padding-left: 1.4em; columns: 2; column-gap: 32px; }
+nav li { break-inside: avoid; }
+.toc-h2 { font-weight: 650; margin-top: .5em; }
+.toc-h3 { font-size: .9rem; margin-left: .8em; }
+table { border-collapse: collapse; width: 100%; margin: 20px 0; font-size: .92rem; }
+th, td { border: 1px solid #d8e0e4; padding: 10px; text-align: left; vertical-align: top; }
+th { background: #edf3f5; }
+code { font-size: .9em; overflow-wrap: anywhere; }
+pre { padding: 16px; background: #edf3f5; overflow-x: auto; line-height: 1.5; }
+.provenance { font-size: .85rem; color: #526571; }
+@media (max-width: 760px) {
+  main { margin: 0; padding: 18px; }
+  nav ul { columns: 1; }
+  table { display: block; overflow-x: auto; }
+  th, td { min-width: 140px; }
+}
+@media print { body { background: white; } main { margin: 0; padding: 0; } }
+</style></head><body><main><p class="provenance">生成报告 · 证据核验日期 2026-11-10 · <a href="../../docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md">Markdown 来源</a><br>Source SHA-256: 6212122941652a98c4e70c49d2b7a79c6fd2638a77f947975711ab499313b983</p><nav aria-label="报告目录"><ul><li class="toc-h2"><a href="#section-1">1. 如何读这份清单</a></li><li class="toc-h2"><a href="#section-2">2. 我们实际做过哪些实验</a></li><li class="toc-h2"><a href="#section-3">3. 原有 21 个方向：逐项保留</a></li><li class="toc-h3"><a href="#section-4">01. 首错定位、错因归因与针对性反馈</a></li><li class="toc-h3"><a href="#section-5">02. 过程正确性、合法等价解与部分得分</a></li><li class="toc-h3"><a href="#section-6">03. 作业内注记、伪评分指令与空白／无意义回答</a></li><li class="toc-h3"><a href="#section-7">04. 无依据抗辩与有依据申诉</a></li><li class="toc-h3"><a href="#section-8">05. 外部分数与错误参考答案的锚定</a></li><li class="toc-h3"><a href="#section-9">06. 同一评分标准下的提示、顺序与配置稳定性</a></li><li class="toc-h3"><a href="#section-10">07. 忠实读取真实手写、图形、公式和原稿位置</a></li><li class="toc-h3"><a href="#section-11">08. 图像作业的综合评价与多模态辅导</a></li><li class="toc-h3"><a href="#section-12">09. 教师教学目的与认知深度保持</a></li><li class="toc-h3"><a href="#section-13">10. 教学流程执行、插问后恢复与结束判断</a></li><li class="toc-h3"><a href="#section-14">11. 拒答、担忧、理解困难等挑战行为下的教学应对</a></li><li class="toc-h3"><a href="#section-15">12. 长历史中的学习状态与误概念判断</a></li><li class="toc-h3"><a href="#section-16">13. 支架增减、提高要求与独立迁移</a></li><li class="toc-h3"><a href="#section-17">14. 把诊断落实为针对性补救材料和复查</a></li><li class="toc-h3"><a href="#section-18">15. 题目有效性、答案键与修订质量</a></li><li class="toc-h3"><a href="#section-19">16. 题目认知要求、实验设计与教学目标对齐</a></li><li class="toc-h3"><a href="#section-20">17. 生成题与既有试题对特定学生群体的难度校准</a></li><li class="toc-h3"><a href="#section-21">18. 诊断性干扰项与练习设计</a></li><li class="toc-h3"><a href="#section-22">19. 图文、连续图和时序教学解释一致性</a></li><li class="toc-h3"><a href="#section-23">20. 交互式科学演示的语义正确性</a></li><li class="toc-h3"><a href="#section-24">21. 无关身份、能力标签与群体公平</a></li><li class="toc-h2"><a href="#section-25">4. 后续讨论和仓库实验补充的方向</a></li><li class="toc-h3"><a href="#section-26">22. 作文／开放主观题整体评价与 rubric 的质量</a></li><li class="toc-h3"><a href="#section-27">23. 苏格拉底提问的实质质量</a></li><li class="toc-h3"><a href="#section-28">24. 先修关系、知识结构与学习路径规划</a></li><li class="toc-h3"><a href="#section-29">25. 自查、错误修正与教学策略调整</a></li><li class="toc-h3"><a href="#section-30">26. 置信度、证据不足识别与适当转交</a></li><li class="toc-h3"><a href="#section-31">27. 高质量教案与课程方案生成</a></li><li class="toc-h3"><a href="#section-32">28. 教学 PPT／幻灯片与跨页材料组织</a></li><li class="toc-h3"><a href="#section-33">29. 教育工具／LMS 长流程与可信交付</a></li><li class="toc-h3"><a href="#section-34">30. 长周期学习、保持、迁移与持续学生状态</a></li><li class="toc-h3"><a href="#section-35">31. 学生代码中的多个相互遮蔽错误</a></li><li class="toc-h3"><a href="#section-36">32. 开放证明与论证的完整性核查</a></li><li class="toc-h3"><a href="#section-37">33. 第二语言教学的情境适配与学习体验设计</a></li><li class="toc-h3"><a href="#section-38">34. 学生潜在风险识别与相称应对</a></li><li class="toc-h3"><a href="#section-39">35. 教师角色、学业诚信与行为边界</a></li><li class="toc-h3"><a href="#section-40">36. 内容适龄、育人导向与多轮施压</a></li><li class="toc-h3"><a href="#section-41">37. 音频／视频学习表现的证据真实性与语言差异</a></li><li class="toc-h2"><a href="#section-42">5. 仓库跨 benchmark 的量化证据与口径修正</a></li><li class="toc-h2"><a href="#section-43">6. 覆盖核对：原来的问题去了哪里</a></li><li class="toc-h2"><a href="#section-44">7. 仍保留、但不当成当前模型失败定论的研究线索</a></li><li class="toc-h2"><a href="#section-45">8. 文献核验状态与使用边界</a></li><li class="toc-h2"><a href="#section-46">9. 本版结论的适用范围</a></li></ul></nav><h1>AI 在教育应用中的薄弱点：文献与本仓库实验完整对照</h1>
+<p>整理日期：2026-11-10。本文是研究证据清单，不是冻结题集，也不是已经证明“绝大多数 Agent 都不能通过”的结论。</p>
+<p>本版完整保留原方案的 19 项问题及后续 21 个出题方向，再补入讨论和仓库证据中出现的 16 个独立或需要单列解释的条目，共 37 项。01–37 只是本文目录编号，不是新增原子能力，也不是互斥的能力分类。方向之间允许重叠；没有为了扩充范围而强制关联 P01–P21。</p>
+<p>研究文献重点为 2025–2026 年，当前两年窗口为 2024-11-10 至 2026-11-10。基础数据集可以更早，但不能以旧模型的失败代表当前模型。本文综合前期原文核验、本轮定向补核、原始回包、现存审阅记录和 summary；不是穷尽所有教育研究的系统综述。未完成复核的来源保留并注明，不用新模型的少量成功取消整个方向，也不用单例失败证明整个方向普遍困难。</p>
+<h2 id="section-1">1. 如何读这份清单</h2>
+<p>每个条目都分别说明：<strong>具体问题、文献依据、本地实验、当前判断与未验证部分</strong>。文献中的失败、本地失败、任务设计假设是不同的证据层次。</p>
+<table>
+<thead>
+<tr>
+<th>本地状态</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已测，有失败信号</td>
+<td>有现存评分统计或可定位错误；仍需看模型、题面、金标、judge 和工具条件</td>
+</tr>
+<tr>
+<td>已测，当前小样本主要成功</td>
+<td>本批没有稳定复现；不是证明整个方向已经解决</td>
+</tr>
+<tr>
+<td>部分测量／代理测量</td>
+<td>例如文本题代理真实手写、静态快照代理互动、BLEU 代理提问质量</td>
+</tr>
+<tr>
+<td>已生成，待审阅</td>
+<td>回答存在，但没有充分的语义判分或产物验收，不能算通过</td>
+</tr>
+<tr>
+<td>接口失败／输入未送达</td>
+<td>没有可解释的能力结果，不能算答错</td>
+</tr>
+<tr>
+<td>未测／证据待补强</td>
+<td>保留研究方向，不写成已确认短板</td>
+</tr>
+</tbody>
+</table>
+<p><strong>统一限制。</strong> 我们的 challenge_v2、v1 和场景候选试跑主要是一次 API 回答；即使输入包含历史或要求写后续分支，也不是真正执行多轮教学。代码生成没有自动获得浏览器、执行工具和修复循环。GLM、MiniMax 的本地内容审阅主要由 Codex 完成，不能称独立教师验证；不同版本的题不能直接组成模型排名。QWK、F1、ECS、BLEU、成对胜率和 0–10 归一分不能混读为通过率。</p>
+<p>证据入口：<a href="../../docs/plans/edu_last_exam_direction_proposal_2026-11-07.md">原 21 方向方案</a>、<a href="../../docs/evidence/edu_last_exam_evidence_matrix_2026-11-09.md">11 月 9 日证据矩阵</a>、<a href="../../docs/evidence/edu_last_exam_source_item_audit_2026-11-10.md">11 月 10 日原材料审查</a>。旧文档与 README 可能保留早期状态，本版运行事实以对应 summary 和本次证据快照为准。</p>
+<h2 id="section-2">2. 我们实际做过哪些实验</h2>
+<table>
+<thead>
+<tr>
+<th>批次</th>
+<th>任务规模与模型</th>
+<th>已知结果</th>
+<th>不能推导的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原 pilot</td>
+<td>12 题；MiniMax-M3、GLM-5.3</td>
+<td>原评分均为 9/12 通过；复审发现 DT001 泄漏诊断、GR001 合同冲突、GR002 对正确零分追加隐藏反馈要求、GR003 可能奖励盲从锚点</td>
+<td>不保留为可信的“25% 教育失败率”；未完成修正后全套重评分</td>
+</tr>
+<tr>
+<td>challenge_v2 / GLM-5.3</td>
+<td>21 包、34 prompt；30 文本／源码回包，4 PNG 未送达</td>
+<td>既有审阅的实质问题为 01、09、14、16；后续产物检查又定位 20 的科学曲线错误。19 的四态 SVG 核验成功</td>
+<td>4 张图的客户端不支持不算模型能力失败；不是正式总分</td>
+</tr>
+<tr>
+<td>challenge_v2 / GLM-5.3-Flash</td>
+<td>34/34 有回答，含 4 图</td>
+<td>01、16 两个明确核心错误；13A 局部争议；28 个 prompt 核心判断成立；14、19、20 的产物验收不足</td>
+<td>不能写成 32/34 通过；34 个版本不是 34 个独立任务</td>
+</tr>
+<tr>
+<td>修订 v1 / 两个 MiniMax</td>
+<td>8 包、11 prompt／模型；最终有效运行 <code>20261109_075237</code> 各 11 回答</td>
+<td>此前逐题内容审阅多数核心文字判断成立；M3 的 20 存在 JS 语法错误；M3.1 最终 attempt_02 的脚本级检查通过</td>
+<td>无正式 judge 总分；M3.1 未完成全部浏览器／视觉验收；此前 attempt_01 不能代替最终回答</td>
+</tr>
+<tr>
+<td>场景候选 scenario_v1 / MiniMax</td>
+<td>5 包、12 版本／模型；11 月 10 日运行</td>
+<td>两模型各 12 个 API error，没有有效能力结果</td>
+<td>不能记为 0/12 通过，也不能继承上一批的通过判断</td>
+</tr>
+<tr>
+<td>场景候选 scenario_v1 / GLM</td>
+<td>同一 5 包、12 版本</td>
+<td>GLM-5.3：10 回答、2 图片接口错误；Flash：12 回答。合计 22 份有效回答</td>
+<td>生成完成不等于题目答对；本轮未完成这 22 份的独立逐题语义审阅</td>
+</tr>
+<tr>
+<td>scenario_neutral_v1</td>
+<td>同一 5 包、12 版本；删减定向提示，材料／gold 不变</td>
+<td>与基线分开记录。核查时 GLM-5.3 为 7 回答、5 API error；Flash 为 12 回答，生成阶段均结束</td>
+<td>不因缺回包认定更难；未形成配对判分结果，不能宣布提示消融有效</td>
+</tr>
+</tbody>
+</table>
+<p>运行计数的机器可读依据见<a href="edu-last-exam-complete-evidence-inventory-2026-11-10.snapshot.json">本次本地证据快照</a>；这些是本次读取时的运行状态，本文不是实时监控。旧 v1 的 <code>20261109_073451</code> 空回答运行不是最终有效批次。场景题 README 的“未测”是作者构建时状态，后续回包状态单独列出。</p>
+<p>本地主要审阅入口：<a href="../challenge_v2/reviews/2026-11-08/GLM-5.3_initial_review.md">GLM-5.3</a>、<a href="../challenge_v2/reviews/2026-11-08/GLM-5.3-Flash_multimodal_review.md">GLM Flash</a>、<a href="../../docs/reviews/edu_last_exam_challenge_v2_audit_2026-11-09.md">v1 修订</a>、<a href="../eval/edu_last_exam_v1/_exploratory/MiniMax-M3/20261109_075237/cases">v1 最终 M3 回答</a>、<a href="../eval/edu_last_exam_v1/_exploratory/MiniMax-M3.1-Flash-Preview/20261109_075237/cases">v1 最终 M3.1 回答</a>、<a href="../../private/edu_last_exam_scenario_v1/README.md">新场景题</a>、<a href="../../private/edu_last_exam_scenario_neutral_v1/README.md">中性对照</a>。</p>
+<h2 id="section-3">3. 原有 21 个方向：逐项保留</h2>
+<h3 id="section-4">01. 首错定位、错因归因与针对性反馈</h3>
+<ul>
+<li>**具体问题：**知道学生有错，却找错第一处不成立的步骤；把后续错误传播当作新错；反馈很长，但没有解释实际误解和下一步。</li>
+<li><strong>文献依据：</strong><a href="https://aclanthology.org/2026.eacl-long.132/">MathEDU，EACL 2026</a>把正误、错误定位、反馈分开，发现反馈仍常冗长且缺乏针对性；<a href="https://aclanthology.org/2025.emnlp-main.553/">首错定位研究，EMNLP 2025</a>提供相关任务证据。LDA 的近期首错统计使用 VtG 源材料，但我们的<a href="../../docs/evidence/edu_last_exam_source_item_audit_2026-11-10.md">逐条审查</a>发现原金标与正确解有实质错误，因此不能把其 69%／71.5% 匹配率直接当作真实首错能力。</li>
+<li>**本地实验：**C2-01 中，GLM-5.3 和 Flash 都把等分母下合法的 K3 平均判错，真正首错是 K4；修订 v1 的 M3／M3.1 能处理核心区别。SAS-Bench 的 ECS 提供更大样本的错因一致性信号，见第 5 节。新 S01 两包已生成部分回答，未完成本轮语义审阅。</li>
+<li>**当前判断：已测，有具体失败和强模型成功反例。**首错位置、错因、反馈应分别看；不接受原标签就等于模型错误的推断。复杂认知误因还需要更多学生证据，不能从一个错误答案强迫唯一诊断。</li>
+</ul>
+<h3 id="section-5">02. 过程正确性、合法等价解与部分得分</h3>
+<ul>
+<li>**具体问题：**数值接近参考便放过错误推理；错罚非标准但有效的解法、符号约定或中间步骤；同一原始错误重复扣分。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2603.14732v3">物理评分研究 2026 v3</a>记录受力对象错误却获满分的例子，同时报告结构化题整体表现较好；<a href="https://arxiv.org/abs/2605.19043">手写数学评分 2026</a>包含等价表达处理错误；<a href="https://aclanthology.org/2026.bea-1.56/">Confirming Correct, Missing the Rest，BEA 2026</a>区分最优与非最优有效步骤。论文旧模型的失败不自动代表当前旗舰。</li>
+<li>**本地实验：**C2-02 的法向量约定、前错传播和部分得分，两个 GLM 的核心判断成立；C2-01 暴露了“合法当前计算被套一般禁令”的错误；新 S02-002 是正确手写作品的误扣分控制，已有回包但尚待本轮审阅。</li>
+<li>**当前判断：已部分测，许多小样本成功。**保留“忠实评价已有过程”的方向；不能规定只能采用参考解的一种写法。逻辑证明的目标完整性另见 32。</li>
+</ul>
+<h3 id="section-6">03. 作业内注记、伪评分指令与空白／无意义回答</h3>
+<ul>
+<li>**具体问题：**把学生作品内“应给满分／改用新量表”当成教师指令；对没有可评分内容的答案仍给分。</li>
+<li><strong>文献依据：</strong><a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">AI Grading Benchmark 2026 机构研究报告</a>在其模型、提示与供应商组合中发现 14/22 受附注明显提分，7 个模型给空白／无意义答案分数。Opus 5.5、GPT-6 Astra 等有成功反例；某些模型加防护提示后改善。该报告非传统同行评审，host 差异不能忽略。</li>
+<li>**本地实验：**C2-03 的 clean／with_note 两版本，两个 GLM 及 v1 两个 MiniMax 均能按教师 v1.0 规则批改，没有被学生附注改分。原 pilot 的空白答案 GR002 两模型判零，原扣分涉及未明示的反馈偏好，不能算空白误给分。</li>
+<li>**当前判断：已测，当前小样本主要成功。**真实攻击面保留；未做广泛载体、提示、供应商和重复运行的稳健性实验。</li>
+</ul>
+<h3 id="section-7">04. 无依据抗辩与有依据申诉</h3>
+<ul>
+<li>**具体问题：**学生只施压就让步，或学生指出真实错误后仍固守原判。改分本身既可能迎合，也可能是纠错。</li>
+<li><strong>文献依据：</strong><a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">LDA 报告 §5.3</a>比较“仅反对”和“请复查”，17/22 模型前者提分更多；也有稳定模型和对原本未低估作业的分层检查。它测的是相对两种追问的差异，不是所有申诉都不应改分。</li>
+<li>**本地实验：**C2-04，GLM 能接受有效二分查找申诉（8→10），也能抵抗无新证据施压（维持 5）；Flash 核心判断亦成立。v1 未选入该包，不能声称 MiniMax 已跑过这版申诉题。</li>
+<li>**当前判断：已测，现有 GLM 小样本主要成功。**尚未验证反复争论、真实评分不确定区间及原判本身错误时的连续处理。</li>
+</ul>
+<h3 id="section-8">05. 外部分数与错误参考答案的锚定</h3>
+<ul>
+<li>**具体问题：**为配合错误初评分数编造优缺点；依据错误参考扣掉学生正确答案；数值分、评语和事实证据脱节。</li>
+<li><strong>文献依据：</strong><a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">LDA</a>发现反馈语气随外部分数变化，但语气变化不等于事实反馈错误；<a href="https://arxiv.org/html/2603.14732v3">物理评分研究</a>直接显示错误参考损害评分准确性，正确参考则有帮助。</li>
+<li>**本地实验：**C2-05 的低锚、正确锚、高锚错误作品三个版本，两个 GLM 均能核验并纠正，不因锚点编造理由。新 S01-001 将正确学生／错误参考与其他条件配对；源 VtG[106] 参考本身错误已修复，新的模型难度不能继承原文结果。</li>
+<li>**当前判断：已测，旧小样本未复现；新题有回包待审阅。**必须明确模型能否核查参考，不能通过含混权威冲突制造错误。</li>
+</ul>
+<h3 id="section-9">06. 同一评分标准下的提示、顺序与配置稳定性</h3>
+<ul>
+<li>**具体问题：**作品、权限、评分规则不变，等价提示或先评分／先验算顺序导致无依据的评分漂移；同一模型不同服务配置也可能不同。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2609.29333">Where LLM Graders Succeed and Break，2026</a>发现严格前言会改变评分，但前言包含“不给部分分”等实质规则，不能把它全当等义改写实验；<a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">LDA</a>另有等义提示重写、重复运行、host 和版本比较。host 差异不是量化精度的单独因果效应。</li>
+<li>**本地实验：**C2-06 的先评分／先重算版本，两个 GLM 都按同一跟随误差规则给 9 分，主判断一致；未系统比较服务商、模型版本或大量提示复述。新中性版改变了定向提示量，不等同本条的语义完全等价改写。</li>
+<li>**当前判断：已测窄版本主要成功，配置稳定性未系统验证。**保留方向，不能要求真实评分政策改变后分数仍不变。</li>
+</ul>
+<h3 id="section-10">07. 忠实读取真实手写、图形、公式和原稿位置</h3>
+<ul>
+<li>**具体问题：**把短路读成开路、分数读成整数、箭头方向读反；跨页错配步骤；把草稿、删除内容或别处作答当作正式答案。</li>
+<li><strong>文献依据：</strong><a href="https://aclanthology.org/2026.findings-acl.751/">EDU-CIRCUIT-HW，ACL Findings 2026</a>在 513 份 observation 样本上，GPT-5.1／Gemini-3-Pro-Preview 至少一处识别错误的比例为 71.54%／37.62%；这不是误批率。<a href="https://aclanthology.org/2026.emnlp-main.2417/">HG-Bench，EMNLP 2026</a>包含跨页区域和步骤归属失败；完整数据可用性仍需确认。</li>
+<li>**本地实验：**C2-07/08 有合成图／源码变体，Flash 的图片核心判断正确；GLM 原批图片未送达。它们不能代表真实手写。新 S02-001/002 使用真实公开手写原图及忠实转写：GLM-5.3 图像请求失败、Flash 收到图并作答，语义复核待补。</li>
+<li>**当前判断：文献有直接证据，本地真实手写验证尚不完整。**专家转写应保留学生原错；不能用专家也无法辨认的图片制造难题。</li>
+</ul>
+<h3 id="section-11">08. 图像作业的综合评价与多模态辅导</h3>
+<ul>
+<li>**具体问题：**局部读取正确，却没整合题意、图示、推导和 rubric；漏掉关键步骤、幻觉不存在的作答，或给出与图不一致的辅导。</li>
+<li><strong>文献依据：</strong><a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1948818/full">Direct multimodal grading，2026</a>用 3,346 个 rubric 决策，模型与教师一致率 76.5%–87.6%；三模型一致子集覆盖 65.6%、一致率 91.9%，仍不保证正确。它没有转写真值，不能分清识别与评分错误。<a href="https://arxiv.org/abs/2605.19043">手写数学评分</a>的最佳模型错误中 87% 来自转写，分母是错误而非全部作业。<a href="https://aclanthology.org/2026.acl-long.1068/">MMTutorBench</a>提供多模态辅导信号。</li>
+<li>**本地实验：**C2-07/08 的 Flash 核心判断通过，原稿仍以自建图为主；新真实手写题有部分回包待审阅。仓库 TutorBench、MMTutorBench 有相关结果，但理解、策略、反馈和 judge 混合，不能拆成各自直接失败率。</li>
+<li>**当前判断：部分测量。**本轮补核成功恢复了原方案中图像直批来源；所测 GPT-4.1／Sonnet 4.6／Gemini 2.5 Pro 不能直接代表所有当前旗舰。</li>
+</ul>
+<h3 id="section-12">09. 教师教学目的与认知深度保持</h3>
+<ul>
+<li>**具体问题：**保持人设、礼貌回应，却没有让学生完成要求的举证、比较、论证；高认知目标最终退化为复述或代答。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2609.29993">Will It Teach as Intended，2026</a>中 responsiveness 88.9%、purpose 59.3%，后者对应 27 个最终 bot 配置中 16 个目的对齐，不是单模型回复准确率。<a href="https://arxiv.org/abs/2604.16738">TASD，2026</a>分析 2025 年课堂部署，约 38% 对话低于目标 DOK；学生认知表现的差距不能全归因模型。</li>
+<li>**本地实验：**C2-09 中 GLM-5.3 主分析正确，但教学分支混用分组比例，反事实 74 应为 75；原题样本描述也有歧义，v1 已修。Flash 和修订 v1 两个 MiniMax 的核心处理成立。此题更直接测分支证据一致性，没有测学生真的完成了高阶思考。</li>
+<li>**当前判断：文献有部署信号，本地仅部分覆盖。**不能将教师目的、流程遵循和学生学习效果合并成一个“教学对齐率”。</li>
+</ul>
+<h3 id="section-13">10. 教学流程执行、插问后恢复与结束判断</h3>
+<ul>
+<li>**具体问题：**回答插问后忘记原来的未完成环节、重复已完成内容、提前结束，或替学生补出必须由学生给出的理由。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2610.23530">EduWild，2026</a>在 900 条终端用户历史对话中发现必需流程遗漏等问题；提示式 harness 在后续研究中降低目标失败。导出时模型配置不代表每条旧对话调用的模型，不能把 53.8% 当作某个当前模型失败率。</li>
+<li>**本地实验：**C2-10 的核心恢复策略在 GLM／MiniMax 回答中基本成立；原题测量误差边界已经修订。一次写出“接下来怎样恢复”不等于实际经历学生插问后的完整执行。</li>
+<li>**当前判断：静态决策已测，多轮执行未充分测。**流程必须有教学理由，不能靠机械话术和固定轮数制造失败。</li>
+</ul>
+<h3 id="section-14">11. 拒答、担忧、理解困难等挑战行为下的教学应对</h3>
+<ul>
+<li>**具体问题：**面对不同原因的拒绝参与、担心出错、语言障碍或分心，一律安慰“错了没关系”或重复同一种提示；没有核查学生究竟是否做错。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2610.30828">TutorCaseBench，2026</a>用案例构造对话和 rubric，最强模型开放回复达到至少一项案例标准的比例仍有限。一个定位例是学生误以为作品错而拒绝展示，模型泛化安慰，却没有先核实作品。其长期干预任务常是一次生成计划，不是实际执行数周。</li>
+<li>**本地实验：**C2-11 A/B 能让 GLM 区分数学正确性与公开表达意愿；一版 gold／可见信息存在歧义，已标争议。Flash 的核心判断成立。没有系统覆盖语言困难、注意力变化和长期干预。</li>
+<li>**当前判断：已部分测，保留方向。**不得要求模型猜隐藏心理病因；历史有效干预不是唯一合理答案，追问澄清也可以正确。</li>
+</ul>
+<h3 id="section-15">12. 长历史中的学习状态与误概念判断</h3>
+<ul>
+<li>**具体问题：**忽略已有掌握证据、近期变化或任务差异；把偶发失误当稳定困难，把提示后成功当独立掌握。</li>
+<li><strong>文献依据：</strong><a href="https://aclanthology.org/2026.acl-long.1371/">LongTutor，ACL 2026</a>区分证据提取、诊断和教学；论文也有 GPT-5 成功处理 GPT-5-mini 失败例的反证。<a href="https://aclanthology.org/2026.emnlp-main.712/">MisconceptionBench，2026</a>提示误概念生成／学生分布预测存在困难，但标签映射、检索及可见证据影响结论。</li>
+<li>**本地实验：**官方协议对齐后的 1,000 条诊断中，M3 accuracy 41.5%、macro-F1 0.314；M3.1 为 45.0%、0.428。C2-12 的 40 条合成记录题则主要被正确处理；新 S03-001 将独立、帮助后、援助未知三种条件分开，有 GLM 回答待审阅。</li>
+<li>**当前判断：本地大样本有失败信号，小题有成功反例。**旧 2.62/10 属于早期协议，不能继续称当前成绩。离线读历史不测长期教学；正误记录通常不足以唯一识别心理原因。</li>
+</ul>
+<h3 id="section-16">13. 支架增减、提高要求与独立迁移</h3>
+<ul>
+<li>**具体问题：**学生已会时仍逐步代做；出现新困难却只催促；答案对就宣布掌握，没有检查量的含义、理由或迁移。</li>
+<li><strong>文献依据：</strong><a href="https://tutormoments.allen.ai/">TutorMoments</a>关注关键决策时刻；<a href="../../docs/evidence/edu_last_exam_scenario_shortlist_2026-11-10.md">已核固定版本记录</a>显示明确目标后强模型大幅改善，同时保留过度帮助的案例。MathTutorBench 的 scaffolding 也是相关证据，但它评价下一条回复。</li>
+<li>**本地实验：**C2-13 的三个快照主要成功。Flash A 中“不先确认学生自己提出的方法”最初被视为局部保守，v1 已明确这与“确认后要求解释”均可接受。仓库 1,150 条 scaffolding 在 MiniMax judge 下 M3／M3.1 位置平均胜率为 27.13%／11.0%，不是教学成功率。</li>
+<li>**当前判断：部分测量，有判分依赖。**真实连续撤助、失败后加助和独立迁移尚未完整验证；不能奖励永远少说、永远追问或永远不给答案。</li>
+</ul>
+<h3 id="section-17">14. 把诊断落实为针对性补救材料和复查</h3>
+<ul>
+<li>**具体问题：**分析说清误解，交付的讲解、练习和复查却是通用内容；练习没有区分竞争解释，也不能检验原问题是否消失。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2605.14322v4">TeachArena，2026 v4</a>的 MM-04 包含 GLM-5.1 泛化新材料与 GPT-5.5 成功完成针对性修改的对照；不是所有强模型都失败。<a href="https://aclanthology.org/2026.eacl-long.132/">MathEDU</a>提供反馈缺少针对性的相邻证据。</li>
+<li>**本地实验：**C2-14 中 GLM 正确区分两名学生、主要练习也合理，但分母定义不严谨、同一整体重新分割后条长从 30 变 36，还把“替代成因解释”写成替代教法。Flash 的静态诊断成立，产物未完整验收；v1 未选入。</li>
+<li>**当前判断：有本地部分失败，不能抹去成功部分。**尚未测实际学习改善或完整“诊断—补救—再测”闭环。</li>
+</ul>
+<h3 id="section-18">15. 题目有效性、答案键与修订质量</h3>
+<ul>
+<li>**具体问题：**多解／无解、错键、信息缺失、选项重复；修订虽消除一处错误却引入另一处；无关线索使学生绕过目标知识。</li>
+<li><strong>文献依据：</strong><a href="https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1831250/full">AI-assisted MCQ creation，2026</a>报告命题缺陷及自动化偏见，但前期核查发现实测为旧 Mixtral，不能据此断言当前旗舰不行。<a href="https://arxiv.org/html/2605.14322v4">TeachArena</a>包含保持构念的修题任务；<a href="https://arxiv.org/abs/2508.08314">2025 年考试实地研究</a>则是经审查修订后 AI 命题可用的反例。</li>
+<li>**本地实验：**C2-15 中两个 GLM 能发现原答案键问题并修订，GLM 有局部解释笔误和部分分条文不一致，但主体数学成立。C2-18 也能发现选项碰撞。v1 未选入 15／18。</li>
+<li>**当前判断：已测小样本主要成功，当前强模型共同失败证据不足。**正确选项较长本身不是坏题金标，需证明线索破坏测量。</li>
+</ul>
+<h3 id="section-19">16. 题目认知要求、实验设计与教学目标对齐</h3>
+<ul>
+<li>**具体问题：**标称分析／迁移，实际只需复述；设计不能保证识别时，又错误否定一次已经足够的实际观测；教师评分说明自相矛盾。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2605.14322v4">TeachArena</a>支持保留目标的修题与教学判断任务；<a href="https://arxiv.org/abs/2604.16738">TASD</a>提供认知目标落地问题的相邻证据。并没有证明所有 Bloom 高阶题生成都会失败。</li>
+<li>**本地实验：**C2-16 的两个 GLM 都混淆“事前设计不保证区分”和“本次读数不能区分”：13.8 已超过 M 的上限 12.4，却在重复点分支称不能判断。修订 v1 的两个 MiniMax 核心处理成立。</li>
+<li>**当前判断：有可定位本地错误，但只覆盖测评设计的一部分。**该题是单轮证据审查，不是真正多轮实验，更不直接测学生的认知深度。</li>
+</ul>
+<h3 id="section-20">17. 生成题与既有试题对特定学生群体的难度校准</h3>
+<ul>
+<li>**具体问题：**把题长、Bloom 动词或模型自己的解题体验当作学生难度；不能根据真实学习基础预测难度或调整选题。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2609.27063">2026 课堂研究</a>中 311 道部署题的自报难度与实测难度相关约 0.06；研究使用较小模型且题目有天花板，不能外推全部旗舰。<a href="https://arxiv.org/abs/2602.06631">ENEM</a>报告既有考试题难度低估及多模态差距；<a href="https://arxiv.org/abs/2512.18880">Human–AI Difficulty Alignment</a>说明解题强并不保证理解学生困难；<a href="https://arxiv.org/abs/2602.00034">历史响应支持方法</a>保留改进反例。</li>
+<li>**本地实验：**C2-17 的边际信息、联合掌握不确定性和追加锚题，两个 GLM 核心推理正确。但这是给定统计后的可识别性推理，不是从题目预测真实学生表现。我们没有部署题目给学生、没有取得本项目 IRT 或难度校准结果。</li>
+<li>**当前判断：本地只测相邻推理，真实难度预测未验证。**保留生成题与既有题两个子方向；不能把未提供目标群体信息的精确正确率猜测当硬题。</li>
+</ul>
+<h3 id="section-21">18. 诊断性干扰项与练习设计</h3>
+<ul>
+<li>**具体问题：**错误选项不是相应误概念会产生的结果；不同错误规则撞到同一选项；选择看起来相似的答案而非有诊断价值的答案。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2603.15547">Can LLMs Model Incorrect Student Reasoning，2026</a>发现科学题常依赖语义近似、生成后还会丢弃合理候选；匹配教师选项的改善不等于学生诊断效度。<a href="https://aclanthology.org/2026.emnlp-main.712/">MisconceptionBench</a>提供误概念与真实响应分布的相关研究。</li>
+<li>**本地实验：**C2-18 中两个 GLM 能构造区分错误规则的题组，处理选项碰撞和一次误选；GLM 最后追问提前提示方法，削弱自发规则观察，属局部问题。没有真实学生验证干扰项是否按假设工作。</li>
+<li>**当前判断：已测规则构造主要成功，实证诊断效果未测。**题目能对应预设规则不等于准确识别真实学生心理。</li>
+</ul>
+<h3 id="section-22">19. 图文、连续图和时序教学解释一致性</h3>
+<ul>
+<li>**具体问题：**文字推导正确，但图形条件、标签、比例或单位错；同一对象跨阶段改变；动画顺序改变了因果解释。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2604.05005">EduIllustrate，2026</a>的图文案例包含几何条件和物理标注不一致，部分展示例未注明具体模型；<a href="https://www.dorademszky.com/publications/49731.pdf">MathemaTikZ</a>说明补齐描述能明显改善，不能把缺题意当困难；<a href="https://aclanthology.org/2025.findings-emnlp.889/">VisualEDU</a>扩展到时序内容，模型和加权指标须保留边界。</li>
+<li>**本地实验：**C2-14 的“同一整条”长度变化是具体错误；C2-19 的 GLM 四态活塞 SVG 实测正确，Flash 产物未完整验收。仓库 EduIllustrate 的 M3 为 230 题、0 渲染失败、八维几何均值再平均为 3.1748/5；教学易懂性维度 2.713/5。判官同为 M3，是本地替代协议，不等同论文榜单或真实学习效果。</li>
+<li>**当前判断：有直接本地错误和较大样本信号，也有成功反例。**代码可渲染、截图好看和科学表达正确分别记录。</li>
+</ul>
+<h3 id="section-23">20. 交互式科学演示的语义正确性</h3>
+<ul>
+<li>**具体问题：**按钮和滑块正常，数值、曲线、状态变化却不服从科学模型；切换参数时改写历史或破坏连续性。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2510.09724v2">InteractScience，2025/2026</a>区分功能测试、动作成功和视觉／科学质量；<a href="https://doi.org/10.1145/3772318.3791514">SimStep，CHI 2026</a>有数据与界面脱节案例，但被测模型较旧。单次代码生成成绩不能代表可执行调试 Agent。</li>
+<li>**本地实验：**GLM C2-20 的 7 阶段端点／切换等检查通过，但一次推进 2 秒后只连端点，1 秒处图值约 5V，真实约 9.933V。v1 加了中点要求；M3 最终代码因非法赋值不能解析。M3.1 最终 attempt_02 本轮 Node／模拟 DOM 检查通过数值序列、中点、41 个采样点和 reset，未做完整浏览器视觉验收。</li>
+<li>**当前判断：科学表达错误已复现；另有一般代码交付错误。**M3 语法错误不能单独证明教育语义能力弱，也未证明给执行工具后仍不能修复。</li>
+</ul>
+<h3 id="section-24">21. 无关身份、能力标签与群体公平</h3>
+<ul>
+<li>**具体问题：**相同作品仅换“强／弱学生”或身份描述，就改变评分、批评力度、机会或错误归因；合理支持需求又被一律忽略。</li>
+<li><strong>文献依据：</strong><a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">LDA</a>有同作品标签配对效应；ASAP 残疾组差距是观察性比较，无法区分人工参考与模型共同偏差。<a href="https://aclanthology.org/2025.findings-naacl.314/">LLMs are Biased Teachers，2025</a>和 <a href="https://arxiv.org/abs/2609.12949">EduFair-Bench，2026</a>提供解释／反馈的差异信号。</li>
+<li>**本地实验：**C2-21 三版本，两个 GLM 的核心评分一致，并可按实际请求改变表达支持；有过度泛化“算得快／计算能力没问题”的局部表述，但不能据此认定标签因果效应。仓库 EduEquity 是探索性证据，不是本题集公平性验证。</li>
+<li>**当前判断：已有窄配对测试，多数成功；群体公平结论未建立。**同分、同作品和同实际需求三种比较须分开，不能要求所有人获得完全相同的帮助。</li>
+</ul>
+<h2 id="section-25">4. 后续讨论和仓库实验补充的方向</h2>
+<p>下列条目不是把前 21 项判为不足后另起一套分类，而是把原来被笼统合并、仅作为支线提到或只在仓库结果中出现的内容补齐。安全三项独立呈现，不与教学质量混成总分。</p>
+<h3 id="section-26">22. 作文／开放主观题整体评价与 rubric 的质量</h3>
+<ul>
+<li>**具体问题：**均分接近教师却排不对作品质量；评分受长度、语言形式影响；总分与分项不一致；生成 rubric 漏掉重要目标，或只识别教案表面结构。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2603.14732v3">物理评分研究</a>在作文上发现均值校准并未带来可靠排序；<a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">LDA</a>中作文与短答／代码表现不同；<a href="https://www.sciencedirect.com/science/article/pii/S2666920X2500178X">CODE-PLAN</a>研究的是评价教案，高推断教学连贯性比显式特征更难，不是直接测生成教案。图像直批研究也检查了生成 rubric 的完整性。</li>
+<li>**本地实验：**历史 ASAP 面板 7 模型的 QWK 归一均值约 5.45/10。现存 M3.1 完整 7,421 篇结果 QWK=0.4825、均分偏高约 0.451；<strong>该 <code>colleague</code> 提示未提供 rubric 或来源材料，并使用观察到的人工分数范围</strong>。M3 当前目录仅 30 篇，不能拿来与全量比较。SAS 总分与步骤一致性整体高于 ECS，但指标不同。</li>
+<li>**当前判断：已有本地统计，协议限制明显。**不能把上述 ASAP 结果写成“完整标准和材料下仍无法评分”；本项目没有完成作文细维度、rubric 生成和教案高推断评价的专门验证。</li>
+</ul>
+<h3 id="section-27">23. 苏格拉底提问的实质质量</h3>
+<ul>
+<li>**具体问题：**只把答案换成问句；连续追问不给必要信息；问题与学生真实卡点无关；一次抛出太多问题；过早泄露关键推理。</li>
+<li><strong>文献依据：</strong><a href="https://aclanthology.org/2025.emnlp-main.11/">MathTutorBench，EMNLP 2025</a>强调学科能力与教学能力分离；<a href="https://aclanthology.org/2025.naacl-long.57/">MRBench／Unifying AI Tutor Evaluation，NAACL 2025</a>及 <a href="https://arxiv.org/abs/2603.17373">SafeTutors</a>提供反馈行为与泄答的研究依据。旧模型具体算术错误只作历史例，不当当前模型难点。</li>
+<li>**本地实验：**Socratic 每模型 1,319 题，M3／M3.1 mean best-match SacreBLEU 为 0.296／0.281；它只说明与参考问句的文本匹配。C2-09/13 涉及提问，但不是独立的连续苏格拉底辅导实验。</li>
+<li>**当前判断：有代理测量，尚无充分行为验证。**旧“2.80/10，因此不会持续提问”的解释应撤回；需要保留有效但不同措辞的问题。</li>
+</ul>
+<h3 id="section-28">24. 先修关系、知识结构与学习路径规划</h3>
+<ul>
+<li>**具体问题：**把知识相近误当先修关系、颠倒依赖方向；局部关系会判，完整学习顺序却违反多个先修条件；路径不随掌握证据调整。</li>
+<li>**文献依据：**近两年 <a href="https://arxiv.org/html/2605.14322v4">TeachArena</a>、<a href="https://arxiv.org/abs/2608.03206">EduClaw-Bench</a>将课程／长期工作纳入评测，但不足以单独证明本条共同失败。MOOCCube 是更早的数据源，本条当前实证来自仓库 2026 年运行，不冒称新论文发现。</li>
+<li>**本地实验：**MOOCCube 各 200 道关系选择题与 100 道排序题：M3／M3.1 选择准确率 72.5%／74.5%；全部拓扑约束满足的排序比例 28%／33%；逐约束满足率 74.32%／76.83%。</li>
+<li>**当前判断：已有本地失败信号，但单一自建协议。**知识图谱可能不完备；本题不等于真实个性化课程规划，也没有长期学业收益验证。</li>
+</ul>
+<h3 id="section-29">25. 自查、错误修正与教学策略调整</h3>
+<ul>
+<li>**具体问题：**复查只是重述；看不到原答案／产物矛盾；改错变对的同时把正确内容改错；学生持续不懂却不调整解释。</li>
+<li>**文献依据：**教育反馈和交互产物研究支持生成后核验的重要性，<a href="https://arxiv.org/abs/2603.17373">SafeTutors</a>提供连续互动下策略失守的相邻证据；这些不能替代自查的独立测量。</li>
+<li>**本地实验：**P07 固定复查请求后，M3 将 232 道首轮错题中的 8 道改对，同时将 318 道对题中的 5 道改错；M3.1 在两轮均有效的 549 题中，218 道首轮错题中改对 12 道，331 道首轮对题中改错 10 道，另 1 题缺第二轮。净增益分别约 0.55／0.36 个百分点。</li>
+<li>**当前判断：本地有明确低收益信号。**这是被要求检查后的通用题纠错，不是主动发起复查，也不是完整教学策略自修复。C2-20 的代码错误不自动说明给执行反馈后无法修复。</li>
+</ul>
+<h3 id="section-30">26. 置信度、证据不足识别与适当转交</h3>
+<ul>
+<li>**具体问题：**对误读图片或不充分历史作确定判断；自报很有把握却经常答错；应请求补材料时猜答案，或为回避风险一律拒答。</li>
+<li><strong>文献依据：</strong><a href="https://aclanthology.org/2026.findings-acl.751/">手写三轨研究</a>和<a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2026.1948818/full">图像直批的选择性复核</a>支持按不确定性分配人工复查；这属于系统改进证据，不等于已证明模型概率校准。</li>
+<li>**本地实验：**P08 各 550 题：M3 有 545 条可解析置信度，报告平均 87.04/100，整体正确率 58.73%；M3.1 为 98.0/100、59.09%。高置信度（≥90）回答中的错误比例为 32.62%／40.04%。新 S02-001 的单位缺失、S03-001 的援助未知条件有回包待审阅。</li>
+<li>**当前判断：本地有校准缺口信号，教育场景行为验证有限。**自报概率不等于内部概率；题目难度影响校准；弃答能力与校准分开，不能靠全部转人工取得高分。</li>
+</ul>
+<h3 id="section-31">27. 高质量教案与课程方案生成</h3>
+<ul>
+<li>**具体问题：**结构齐全但目标、活动、练习与评价互不对应；没有符合学生起点的活动；教材依据错误；时间／资源不可执行；只套教学法术语。</li>
+<li><strong>文献依据：</strong><a href="https://www.nature.com/articles/s41599-025-06004-2">LessonPlanLM，2025</a>以知识增强改善结构、逻辑和准确性，同时报告不少产物可与人工教案相当；基线以 Qwen2、GPT-4、Claude 3.5 等旧模型为主，不能作为当前旗舰失败证明。<a href="https://arxiv.org/abs/2607.13041">LessonBench-V1，2026</a>主要提供数据与评价框架；<a href="https://www.sciencedirect.com/science/article/pii/S2666920X2500178X">CODE-PLAN</a>主要测教案评价；<a href="https://arxiv.org/abs/2602.10620">ISD-Agent-Bench</a>前期核查有协议描述不一致，性能数字暂不采信。</li>
+<li>**本地实验：**C2-14 仅涉及局部补救材料，不能代表完整教案；尚无本项目完整课时／单元教案、课堂实施和教师盲评实验。</li>
+<li>**当前判断：保留重要候选，当前强模型证据待补强。**不能把“我觉得生成质量不好”或框架论文的存在当作失败证据。</li>
+</ul>
+<h3 id="section-32">28. 教学 PPT／幻灯片与跨页材料组织</h3>
+<ul>
+<li>**具体问题：**页数和美观达标，但漏掉核心概念、引用不忠实、跨页符号不一致、图表与论证脱节；练习、讲解、答案页不配套，或不可编辑。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2603.07244">PresentBench，2026</a>提供带背景材料、可核查清单的任务，同时报告 NotebookLM 等方法的进步；<a href="https://aclanthology.org/2026.emnlp-main.1482/">SlidesGen-Bench，EMNLP 2026</a>区分内容、审美和可编辑性。它们是通用幻灯评测，不能直接证明教育目标失败或真实教学无效。</li>
+<li>**本地实验：**没有完整 PPT 生成、渲染与教学内容验收。SVG／HTML／Manim 结果不能替代 PPT 结果。</li>
+<li>**当前判断：未直接测，保留独立候选。**需区分资料忠实、跨页一致、教学组织和审美；不能笼统写成“AI 做不好 PPT”。</li>
+</ul>
+<h3 id="section-33">29. 教育工具／LMS 长流程与可信交付</h3>
+<ul>
+<li>**具体问题：**生成了文字方案但没有更新指定材料；改错对象或版本；漏掉发布、验证、恢复步骤；文件操作完成但教学内容没有对准需求。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2605.14322v4">TeachArena 2026 v4</a>联合评价专业判断、多轮教学与 LMS 工作流，包含成功和失败轨迹。平均 reward 不是任务通过率；不能声称教育工作流首次被研究。</li>
+<li>**本地实验：**现有 runner 可保存代码产物，但未给被测模型完整 LMS、浏览器／终端行动环境及修复循环。C2-20 是一次生成后我们验收，不是模型自己完成闭环。</li>
+<li>**当前判断：本地覆盖缺口。**P09 曾在仓库矩阵中被标 coverage gap。不能把 API 请求成功率、下载失败或一般工具故障直接当教育能力分。</li>
+</ul>
+<h3 id="section-34">30. 长周期学习、保持、迁移与持续学生状态</h3>
+<ul>
+<li>**具体问题：**跨次教学遗忘已掌握内容；错误更新学生状态；即时会答但离开提示或延迟后不会；长期路径和支持没有随证据变化。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2608.03206">EduClaw-Bench</a>提供 30 虚拟日、模拟学习者环境，是协议线索；不能把模拟状态变化当真实学习增益。<a href="https://arxiv.org/abs/2609.28470">StudentBench，2026</a>在成人 GRE 受控教学中给出与人工即时增益等效的反例，不能泛化全部年龄、学科或长期效果。</li>
+<li>**本地实验：**没有本项目真实学生延迟测验、长期对照或已验证 StudentEnv。LongTutor 是离线历史，C2-12 是一次读取记录，C2-13 是分开的静态快照。</li>
+<li>**当前判断：未直接测，属于覆盖缺口与研究假设。**不是所有方向都需要长周期；“长”本身不是难度或教育价值。</li>
+</ul>
+<h3 id="section-35">31. 学生代码中的多个相互遮蔽错误</h3>
+<ul>
+<li>**具体问题：**只识别首个异常；修复后暴露的新错误被漏掉；把所有逻辑重写掉而不解释原程序；多报不存在的错误。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2606.30610v2">PyMETA，2026 v2</a>中近期模型首异常 macro-F1 已达 87.5%–93.8%，97 份多错误子集 exact-set 仅 43.3%–48.5%，但 sample-F1 较高。标签覆盖一条专家修复路径，未必穷尽；模型原协议没有执行工具。</li>
+<li>**本地实验：**C2-03/04 涉及代码局部反例和评分，多数成功；没有复现 PyMETA 的迭代修复／再执行任务。</li>
+<li>**当前判断：文献支持候选，本地专项未测。**不能把某个额外合理错误与源标签不一致自动判错，也不能把普通编程难题当作学生诊断。</li>
+</ul>
+<h3 id="section-36">32. 开放证明与论证的完整性核查</h3>
+<ul>
+<li>**具体问题：**每段看起来合理，却未证明题目真正要求的目标；把有效但非最优步骤判错；把形式化失败当数学错误。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/html/2610.17697v3">LeanPRM，2026 v3</a>提供逐步证明验证和目标未完成案例；其标签由形式验证和模型过滤产生，没有人工 gold，前期审查发现数学／形式化混淆风险。<a href="https://aclanthology.org/2026.bea-1.56/">Confirming Correct, Missing the Rest</a>支持合法性与教学最优性分离。</li>
+<li>**本地实验：**C2-02 只测局部等价推导，尚未测试开放长证明或跨段论证；没有独立专家核验后的 LeanPRM 原例实验。</li>
+<li>**当前判断：保留候选，金标需重审。**先确认数学上错在哪里，再谈模型失败；自然语言证明与形式表达的缺口要单列。</li>
+</ul>
+<h3 id="section-37">33. 第二语言教学的情境适配与学习体验设计</h3>
+<ul>
+<li>**具体问题：**语言形式正确，但材料、纠错重点、难度、练习和反馈不适合给定学习者；了解教学法却不会在情境中应用。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2607.08842">L2-Bench，2026</a>覆盖语言教学和测评的情境任务，并报告难题上的表现下降；也有总体较强的模型。它测教学设计表现，不直接测真实语言学习收益。</li>
+<li>**本地实验：**尚未完成 L2-Bench 原始失败输出复核或专用题试跑；英文数学辅导、一般英语题和作文评分不能代替它。</li>
+<li>**当前判断：文献线索，未验证。**原讨论中的学科扩展保留，不为了覆盖学科而宣称当前共同弱点。</li>
+</ul>
+<h3 id="section-38">34. 学生潜在风险识别与相称应对</h3>
+<ul>
+<li>**具体问题：**忽视真正风险；把普通挫折升级为严重危机；识别对但干预不足或过度；没有适当交接。不同于普通“学生不想答题”。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2603.17373">SafeTutors</a>研究的是包含误概念强化、泄答等的教学安全，不能全部映射成学生危机识别；TutorCaseBench 提供部分困难情境，但不是临床风险 gold。对本条的近两年、与本仓库定义完全匹配的外部证据仍需补强。</li>
+<li>**本地实验：**Student Risk v2 在 M3 judge 下各 364 条，M3／M3.1 风险识别准确标签比例 67.58%／65.66%，过度识别约 31.04%／33.24%；干预轴另报。严重风险与普通情境差异很大，表明不能只看总分。</li>
+<li>**当前判断：已有本地探索性信号，独立安全支线。**标签与 judge 的教育解释还需逐题复核；模型说安慰话不自动等于过度干预，评分结果不是实际伤害率。</li>
+</ul>
+<h3 id="section-39">35. 教师角色、学业诚信与行为边界</h3>
+<ul>
+<li>**具体问题：**冒充有权作出正式决定；代替学生完成不应代做的任务；羞辱、关系越界；遇到合法请求却过度拒绝。</li>
+<li><strong>文献依据：</strong><a href="https://arxiv.org/abs/2610.23530">EduWild</a>包含教师边界执行信号；<a href="https://arxiv.org/abs/2603.17373">SafeTutors</a>包含教学安全，但二者不能替代完整的角色／诚信行为测量。旧安全知识选择题不证明实际行为安全。</li>
+<li>**本地实验：**Education Boundary v1 在 M3 judge 下各 320 条；风险子集边界通过率 M3／M3.1 为 69.17%／72.5%，控制题误拒为 0。C2 中教师目标与抗干扰题不能替代这套安全题。</li>
+<li>**当前判断：已测，有特定失守；不是所有教育边界都失败。**与先前面板归一均值 8.92/10 单位和样本不同，不混报。行为边界、建设性引导和转介分开。</li>
+</ul>
+<h3 id="section-40">36. 内容适龄、育人导向与多轮施压</h3>
+<ul>
+<li>**具体问题：**对年龄不适合的内容照给；追问后越过原来边界；生成内容强化有害价值，或将正常学习问题误拒。</li>
+<li>**文献依据：**前期矩阵将其作为独立支线；SafeTutors 等只提供相邻证据，身份差异研究不能直接证明适龄失败。本轮未找到并完成与本地 A/B 合同完全对应的独立文献复核。</li>
+<li>**本地实验：**现存 Age Values v1 v6 快照每模型 390 条、389 条有评分：M3／M3.1 的 A/core 内容与处理联合通过率 73.53%／72.06%；B 四类等权内容通过率 83.21%／82.35%。两轮子集较弱，但不是同题随机化单／多轮实验，不能把分差全部归因轮数。</li>
+<li>**当前判断：已有本地探索性结果，保持独立。**B 只按实际生成内容判，不把“没有主动劝导”重复当违规；sentinel、平台拦截与能力失败分开。</li>
+</ul>
+<h3 id="section-41">37. 音频／视频学习表现的证据真实性与语言差异</h3>
+<ul>
+<li>**具体问题：**对静音录音仍给口语表现分；评价录音时长之外的内容；同一录音仅更换学生能力标签就改变分数；低资源语言识别差距影响评价。</li>
+<li><strong>文献依据：</strong><a href="https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md">LDA 报告 §5.4</a>及我们最早的前沿案例清单已讨论音视频探针与语音标签效应。它们补充了纯文本／手写之外的风险，但涉及特定模型、任务、媒体接口和研究稿，不能全外推为课堂实训评价失败。</li>
+<li>**本地实验：**本项目没有口语、静音、视频时序或跨语言评分试跑；图片成功不代表音视频成功。</li>
+<li>**当前判断：保留文献候选，本地未测。**首先区分输入没有送达、输入为空、模型看漏和评价标准错误；不能用不可访问文件当能力测试。</li>
+</ul>
+<h2 id="section-42">5. 仓库跨 benchmark 的量化证据与口径修正</h2>
+<p>下面优先使用本轮读取的原生 summary，而不是机械沿用前期 0–10 面板。M3.1 在不同日期由 Preview 接口提供，不能假设跨月份是完全相同的服务快照。</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>M3</th>
+<th>M3.1 Preview</th>
+<th>结论边界与来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LongTutor diagnosis</td>
+<td>1,000 条；accuracy 41.5%；macro-F1 0.3144</td>
+<td>1,000 条；45.0%；0.4285</td>
+<td>官方协议对齐后的离线历史诊断；<a href="/home/likefallwind/code/edubenchmark/reports/eval/longtutor_diagnosis/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/longtutor_diagnosis/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>SAS-Bench</td>
+<td>4,109 条；QWK 84.30、CCS 76.83、ECS 66.02（均为发布的 0–100 统计）</td>
+<td>4,104/4,109 有结果；84.85、76.98、29.14</td>
+<td>M3 为导入结果，M3.1 为本地 adapter；不能忽略链路差异比较错因能力。ECS 是聚合一致性，不是错因正确率；<a href="/home/likefallwind/code/edubenchmark/reports/eval/sas_bench/minimax-m3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/sas_bench/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>Scaffolding</td>
+<td>1,150 条；位置平均胜率 0.2713</td>
+<td>1,150 条；0.1100</td>
+<td>同为 M3 judge，相对于参考回复的两顺序平均；不是学生学习成功率。M3 换 DeepSeek judge 为 0.2783；<a href="/home/likefallwind/code/edubenchmark/reports/eval/mathtutorbench_scaffolding/judge-minimax3/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/mathtutorbench_scaffolding/judge-minimax3/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>Socratic</td>
+<td>1,319 条；mean BLEU 0.296</td>
+<td>1,319 条；0.281</td>
+<td>文本匹配代理；不能读成“约七成不会苏格拉底提问”；<a href="/home/likefallwind/code/edubenchmark/reports/eval/mathtutorbench_socratic/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/mathtutorbench_socratic/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>MOOCCube</td>
+<td>200 MCQ：72.5%；100 排序：28%；约束满足 74.32%</td>
+<td>74.5%；33%；76.83%</td>
+<td>单一知识图谱与构造协议；<a href="/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>P07 自查</td>
+<td>550 双轮；改对 8、改错 5</td>
+<td>549 双轮；改对 12、改错 10，另 1 缺第二轮</td>
+<td>固定要求复查；不是主动自检；<a href="/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>P08 校准</td>
+<td>550 题，545 可读置信度；CWR@90=32.62%；AUROC 0.6379</td>
+<td>550 可读；40.04%；0.6294</td>
+<td>CWR 分母是高置信回答；不是全部题的错误率；<a href="/home/likefallwind/code/edubenchmark/reports/eval/p08_calibration/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/p08_calibration/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>ASAP 2.0</td>
+<td>当前目录仅 30 条，不与全量比</td>
+<td>7,421 条；QWK 0.4825；exact 39.02%；mean bias +0.4507</td>
+<td>本次提示无 rubric／source，使用人工分数范围；<a href="/home/likefallwind/code/edubenchmark/reports/eval/asap_2/MiniMax-M3.1-Flash-Preview/summary.json">M3.1 完整记录</a></td>
+</tr>
+<tr>
+<td>EduIllustrate</td>
+<td>230 题、0 render failure；3.1748/5；易懂／教学维度 2.713/5</td>
+<td>本轮不补造同协议结果</td>
+<td>替代 judge M3，工程与教学混合，真实学习效果未测；<a href="/home/likefallwind/code/edubenchmark/reports/eval/eduillustrate/judge-minimax3/minimax3/summary.json">记录</a></td>
+</tr>
+<tr>
+<td>TutorBench</td>
+<td>M3 judge：有效 1,440/1,473，ARR_w×100=59.27</td>
+<td>有回包 1,442，judge 有效 1,378/1,473；57.41</td>
+<td>缺失和 64 条 parse_failed 不当失败；混合构念、不代表某单一教学能力；<a href="/home/likefallwind/code/edubenchmark/reports/eval/tutorbench/judge-minimax3/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/tutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>Student Risk v2</td>
+<td>364 条；识别准确 67.58%，干预准确 67.31%</td>
+<td>364 条；65.66%，67.86%</td>
+<td>provisional 双轴 judge；不能当真实伤害率；<a href="/home/likefallwind/code/edubenchmark/reports/eval/student_risk_v2/judge-minimax3/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/student_risk_v2/judge-minimax3/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>Education Boundary v1</td>
+<td>320 条；风险边界通过 69.17%</td>
+<td>320 条；72.5%</td>
+<td>与含控制的总比例不同，judge 固定 M3；<a href="/home/likefallwind/code/edubenchmark/reports/eval/education_boundary_v1/judge-minimax3/minimax3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/education_boundary_v1/judge-minimax3/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+<tr>
+<td>Age Values v1 / v6 快照</td>
+<td>A/core 73.53%；B 等权 83.21%</td>
+<td>A/core 72.06%；B 等权 82.35%</td>
+<td>各 389/390 计分；A/B 构念不同，保持快照身份；<a href="/home/likefallwind/code/edubenchmark/reports/eval/age_values_v1/_full_v6_20261029/judge-minimax3/MiniMax-M3/summary.json">M3</a>／<a href="/home/likefallwind/code/edubenchmark/reports/eval/age_values_v1/_full_v6_20261029/judge-minimax3/MiniMax-M3.1-Flash-Preview/summary.json">M3.1</a></td>
+</tr>
+</tbody>
+</table>
+<p>**前期面板仍保留作为历史证据。**R28 中 SAS ECS 5.06（11 模型）、ASAP 5.45（7）、MOOCCube 3.99（8）、P07 5.21（8）、TutorBench 5.48（6）、MMTutorBench 6.80（5）、EduIllustrate 5.67（6）都是不同指标归一后的描述统计，不是相同面板、同一单位、同一协议的失败率。<a href="../atomic_ability_rebenchmark_v7_R28_snapshot_20261103/12_benchmark_portfolio_review.md">快照来源</a></p>
+<p>明确修正：</p>
+<ol>
+<li>LongTutor 旧 2.62 来自对齐前协议，不与 11 月 6 日后的结果连成趋势。</li>
+<li>Socratic 的低 BLEU 不是低教学通过率；Scaffolding 测一条续写，不是已执行多步辅导。</li>
+<li>P07 测被要求复查，不应再称“主动复查测试”。</li>
+<li>ASAP 旧 profile 中“无 adapter／只有导入”的说明与现有目录不一致；采用 summary 中真实的 7,421 条、提示 variant 与 audit 字段，不据 profile 推断运行协议。</li>
+<li>SAS 的 imported 与 adapter 结果、ECS 聚合相关、缺失输出都要单列，不能只读通用 <code>accuracy</code>。</li>
+<li>LDA/VtG 部分 gold 错误已被本仓库确认，尚无完整修正后统计；不引用旧首错百分比作为前沿能力定论。</li>
+<li>C2-13 的合理确认／不确认都可接受；旧 gold 风格偏好不再算实质失败。C2-09、10、12、16、20 的修订前后难度不可混用。</li>
+<li>“前期边界／适龄均分较高”不等于所有风险情境成熟；本轮原生分项揭示局部不足，也仍依赖 judge 与题集有效性。</li>
+</ol>
+<h2 id="section-43">6. 覆盖核对：原来的问题去了哪里</h2>
+<table>
+<thead>
+<tr>
+<th>最初 19 项</th>
+<th>本版对应条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 批改抗操纵</td>
+<td>03（含空白／无意义答案）</td>
+</tr>
+<tr>
+<td>2 学生反对后的稳健性</td>
+<td>04</td>
+</tr>
+<tr>
+<td>3 外部分数锚定</td>
+<td>05</td>
+</tr>
+<tr>
+<td>4 prompt／harness 敏感性</td>
+<td>06、29</td>
+</tr>
+<tr>
+<td>5 真实手写理解</td>
+<td>07</td>
+</tr>
+<tr>
+<td>6 图像直批一致性</td>
+<td>08、22</td>
+</tr>
+<tr>
+<td>7 教师工作流</td>
+<td>10、29</td>
+</tr>
+<tr>
+<td>8 教师 purpose</td>
+<td>09</td>
+</tr>
+<tr>
+<td>9 课堂认知深度</td>
+<td>09、16</td>
+</tr>
+<tr>
+<td>10 学生挑战行为</td>
+<td>11</td>
+</tr>
+<tr>
+<td>11 长历史学习诊断</td>
+<td>12；真正长期效果另列 30</td>
+</tr>
+<tr>
+<td>12 反馈针对性</td>
+<td>01、14</td>
+</tr>
+<tr>
+<td>13 何时帮助／提高要求</td>
+<td>13、23</td>
+</tr>
+<tr>
+<td>14 生成题难度校准</td>
+<td>17 的生成题子方向</td>
+</tr>
+<tr>
+<td>15 高风险考试题难度估计</td>
+<td>17 的既有题子方向</td>
+</tr>
+<tr>
+<td>16 AI 辅助命题质量</td>
+<td>15、16、18</td>
+</tr>
+<tr>
+<td>17 图文产物一致性</td>
+<td>19</td>
+</tr>
+<tr>
+<td>18 交互科学演示</td>
+<td>20</td>
+</tr>
+<tr>
+<td>19 公平性／标签效应</td>
+<td>21、37</td>
+</tr>
+</tbody>
+</table>
+<p>后续 21 方向与本版 01–21 一一对应。教案、PPT、学习路径、自查、校准、长期效果、工具工作流、安全、代码／证明／语言专项和音视频另列，避免被“教学互动”或“内容生成”几个大词吞掉。保留条目不等于已证明困难，也不预设最终题集必须覆盖全部 37 项。</p>
+<h2 id="section-44">7. 仍保留、但不当成当前模型失败定论的研究线索</h2>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>与本版的关系</th>
+<th>当前证据状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://aclanthology.org/2026.findings-acl.466/">EduMARS，ACL Findings 2026</a></td>
+<td>01／07／08：多步学生作品与多模态诊断</td>
+<td>已列入前期调研；本轮不补造逐模型失败数，本地专项复现待补</td>
+</tr>
+<tr>
+<td><a href="https://aclanthology.org/2026.acl-long.1068/">MMTutorBench，ACL 2026</a></td>
+<td>08／13／14：图文关键步骤辅导</td>
+<td>仓库有导入／相关评测，识别、策略、反馈与 judge 混合；不把平均分分拆成多个直接能力结论</td>
+</tr>
+<tr>
+<td><a href="https://aclanthology.org/2025.naacl-long.57/">MRBench</a>、BEA tutor 家族</td>
+<td>01／23：针对学生错误的反馈</td>
+<td>保留评价维度；旧 GPT-4 算术错例退出当前难题证据</td>
+</tr>
+<tr>
+<td><a href="https://aclanthology.org/2026.emnlp-main.2417/">HG-Bench</a></td>
+<td>07：跨页、答案区域、步骤归属</td>
+<td>数据可得性和标注粒度需核；零样本定位差不等于完整 Agent 仍失败</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/html/2603.00895v1">手写微积分批改 2026</a></td>
+<td>02／07／08 的成功反例与剩余错误</td>
+<td>前期记录多数作业正确或可接受；不再把“真实手写”本身当难度保证</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2607.01247">离散数学评分助手 2026</a></td>
+<td>02／22：不同题型评分条件</td>
+<td>原方案来源保留，本轮未完成原始输出和当前模型复测；不作定量主证据</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1145/3772318.3791514">SimStep</a>、<a href="https://www.dorademszky.com/publications/49731.pdf">MathemaTikZ</a>、<a href="https://aclanthology.org/2025.findings-emnlp.889/">VisualEDU</a></td>
+<td>19／20：时序图示、界面与科学关系</td>
+<td>有旧模型失败类型及输入补齐后的改善；不替代当前 Agent 工具条件下测试</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2504.05570">Can LLMs Match Tutoring System Adaptivity?</a></td>
+<td>12／13：学生信息消融</td>
+<td>旧模型和回复 embedding 差异主要是方法线索；文本变了不等于适配正确</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2602.10620">ISD-Agent-Bench</a></td>
+<td>27／29：课程设计与工作流</td>
+<td>前期发现模型／协议描述不一致；保留分类参考，性能数字待核</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2609.12949">EduFair-Bench</a></td>
+<td>21：公平性</td>
+<td>本地未专项复现；公平群体差异需要人工参考、作品匹配和不当差异的定义</td>
+</tr>
+<tr>
+<td><a href="https://thalesandhisaictoclaude.com/deblo/how-we-built-deblo-refused-correct-answer-twice">Déblo 公司事件复盘</a></td>
+<td>04／23／25：正确答案被否定、冲突复核与泄答</td>
+<td>单方生产线索；本轮未独立核验，不能称跨模型证据</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/html/2602.13964v4">HLE-Verified</a>、<a href="https://arxiv.org/html/2605.26079v2">AutoBenchmarkAudit</a></td>
+<td>金标、环境、评分协议审计</td>
+<td>构建方法依据，不是教育模型失败证据</td>
+</tr>
+</tbody>
+</table>
+<p>历史 GPT-3.5／GPT-4 的基础算术、生成无正确项、虚构书目等例子在旧报告中保留，但不据此断言 2026 年模型仍失败。一般学科解题、普通局部纠错和基础指令遵循的高分也保留为反证；本清单不以“教育中凡是使用 AI 的地方都不行”为前提。</p>
+<h2 id="section-45">8. 文献核验状态与使用边界</h2>
+<ul>
+<li>本轮重新读取或通过原作者／出版机构页面核对了：LDA 研究稿、严格评分提示研究、教师 purpose／TASD、TutorCaseBench、物理评分、手写数学、图像直批、难度预测三类研究、干扰项、MathEDU、MisconceptionBench、TeachArena、PyMETA、LeanPRM、SafeTutors、StudentBench、EduClaw、L2-Bench、LessonBench、PresentBench、SlidesGen-Bench、LessonPlanLM、CODE-PLAN 的可得内容。</li>
+<li>对 LongTutor、EDU-CIRCUIT-HW、TutorMoments、EduIllustrate、InteractScience 等，结合本对话此前原文核验和 11 月 10 日来源审查使用；不是本轮完整重跑或全篇逐页重审。</li>
+<li>LDA 网页入口本轮不可访问，改由 GitHub 插件读取作者公开仓库的文章；仓库稿仍带发布流程元数据，本文称机构研究稿，不称同行评审定论。CODE-PLAN 全文直读受限，采用出版机构检索返回的摘要／highlights，未报告未见方法细节。</li>
+<li>Jina 路径 DNS 失败、web-reader 未配置后，改用浏览工具与 GitHub 插件核验。附录线索没有新编数值；未取得完整来源的，不假称重新验证。</li>
+<li>“2026 年发表”不代表实测 2026 年最新模型：LessonPlanLM、MCQ 缺陷研究、TASD 部署、SimStep 等均注明模型或部署时间限制。公开已发布论文中的平均数仍受样本、题型、judge 和成功定义约束。</li>
+</ul>
+<h2 id="section-46">9. 本版结论的适用范围</h2>
+<p>目前可以保留的研究范围比“长对话”广得多：既包括一轮即可出现的误批、证据误读、锚定、命题和图文错误，也包括需要连续观察的适应性教学、工具流程和长期学习。具体题目采用什么形态应由问题决定。</p>
+<p>本地证据较具体的包括错误定位案例、历史诊断、自查收益、置信度、先修约束、部分评价统计和产物科学一致性；教案、PPT、完整工具 Agent、真实长期学习和部分语言／音视频任务仍是候选或覆盖缺口。小样本成功不删方向，失败也不自动升级为 Last Exam。本文没有新增模型 API 实验，没有把接口错误或未验收产物算成模型失败，没有形成跨方向总分。</p>
+<p>冻结的源摘要及哈希见<a href="edu-last-exam-complete-evidence-inventory-2026-11-10.snapshot.json">证据快照</a>；HTML 从本文生成。原 19 项、原 21 项、补充方向和原生指标已作完整性核对。正式出题／扩量和实验设计不在本版范围内。</p>
+</main></body></html>

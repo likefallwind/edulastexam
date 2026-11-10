@@ -1,0 +1,108 @@
+{
+  "gold": {
+    "per_prompt": {
+      "image": {
+        "first_invalid_step": null,
+        "vo_real": 14.599827462750232,
+        "vo_imag": 1.4265211393037032,
+        "vo_magnitude": 14.669353240785915,
+        "vo_phase_degrees": 5.580546794012406,
+        "judgments": [
+          "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+          "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+          "③不成立，末行在给定容差内。"
+        ],
+        "acceptable_alternatives": [
+          "用节点方程、超节点法或消元数值解，得到等价结果。",
+          "以相位加减360°的等价表示或正弦改写给出同一波形。"
+        ],
+        "critical_errors": [
+          "把L2或R2的合法移项判为数学错误。",
+          "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+          "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+        ],
+        "reference_answer": {
+          "first_invalid_step": null,
+          "vo_real": 14.599827462750232,
+          "vo_imag": 1.4265211393037032,
+          "vo_magnitude": 14.669353240785915,
+          "vo_phase_degrees": 5.580546794012406,
+          "judgments": [
+            "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+            "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+            "③不成立，末行在给定容差内。"
+          ]
+        }
+      },
+      "transcript": {
+        "first_invalid_step": null,
+        "vo_real": 14.599827462750232,
+        "vo_imag": 1.4265211393037032,
+        "vo_magnitude": 14.669353240785915,
+        "vo_phase_degrees": 5.580546794012406,
+        "judgments": [
+          "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+          "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+          "③不成立，末行在给定容差内。"
+        ],
+        "acceptable_alternatives": [
+          "用节点方程、超节点法或消元数值解，得到等价结果。",
+          "以相位加减360°的等价表示或正弦改写给出同一波形。"
+        ],
+        "critical_errors": [
+          "把L2或R2的合法移项判为数学错误。",
+          "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+          "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+        ],
+        "reference_answer": {
+          "first_invalid_step": null,
+          "vo_real": 14.599827462750232,
+          "vo_imag": 1.4265211393037032,
+          "vo_magnitude": 14.669353240785915,
+          "vo_phase_degrees": 5.580546794012406,
+          "judgments": [
+            "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+            "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+            "③不成立，末行在给定容差内。"
+          ]
+        }
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按明示电路拓扑复算Vo约14.66935∠5.58055°V，接受规定容差。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "三条扣分草稿均无实质依据；指出对应推导位置，不幻觉不存在的错误。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "综合反馈与题意、学生作品一致，允许规范符号提醒但不按被豁免的记号扣实质分。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "image",
+        "transcript"
+      ],
+      "relation": "same_correct_work_image_vs_transcript",
+      "expected": "均撤销三条错误意见。"
+    }
+  ],
+  "measurement_claim": "自足局部电路条件下真实图像作品的综合评价；非恢复原教材题。",
+  "unmeasured_subclaims": [
+    "真实教材原题重建、广泛多模态辅导、原图再分发许可未确认。"
+  ]
+}

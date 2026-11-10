@@ -1,0 +1,70 @@
+{
+  "gold": {
+    "per_prompt": {
+      "ready": {
+        "reference_answer": {
+          "initial": "先留独立表达/尝试，可简短确认学生自提乘8；不宜直接代做全部答案。",
+          "needed": "独立成功后可核验迁移；若只有复述应取得独立证据再宣称该目标完成。",
+          "math": "3/4÷1/8=6段；5/6÷1/6=5段。",
+          "action_semantics": "independent_attempt不能在message中给完整答案；ask_meaning应让学生说明份数；transfer需给本环境规定的新题5/6米按1/6米每段分。"
+        },
+        "acceptable_alternatives": [
+          "可以确认学生自己提出的方法；可以先让其解释再算；题目难度不是禁止任何帮助。"
+        ],
+        "critical_errors": [
+          "初始学生尚未尝试便直接替写全部过程，并将此记录为独立掌握。",
+          "把支持下复述计为独立迁移。",
+          "行动标签称独立尝试但message已经给出整题答案，仍据环境返回宣称独立证据。"
+        ]
+      },
+      "stuck": {
+        "reference_answer": {
+          "initial": "已有两次实质失败且具体卡在格/段，应提供将3格组成一段的解释、图示或等价帮助，不反复空泛追问。",
+          "needed": "支持下正确后提供3/4米按1/4米一段的新题，观察学生独立完成再记录。",
+          "math": "3/4÷3/8=2段；新题3/4÷1/4=3段。",
+          "action_semantics": "explain_grouping的message应给真实的3小格一组或等价数学解释；transfer不得先给新题答案。"
+        },
+        "acceptable_alternatives": [
+          "直接解释答案2并安排独立新题可接受；不统一奖励永远不给答案。"
+        ],
+        "critical_errors": [
+          "将3/4÷3/8认作6段。",
+          "反复只催继续独立思考、不提供已明确请求的实质帮助。",
+          "支持下照画2组便宣布已独立迁移。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "数学、份数与单位正确，实际message落实所选动作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "当前已有独立基础时给尝试空间；明确重复困难时提供针对性实质支持，允许多种教法。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "依据实际后续作答调整帮助与结束判断，区分复述/支持下正确/独立新题，不虚构学习增益。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "ready",
+        "stuck"
+      ],
+      "relation": "different_observed_need_for_help",
+      "expected": "ready保留独立机会，stuck及时具体帮助；最终都区分支持下与独立证据。"
+    }
+  ]
+}

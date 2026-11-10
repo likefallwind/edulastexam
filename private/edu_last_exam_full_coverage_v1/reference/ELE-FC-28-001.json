@@ -1,0 +1,71 @@
+{
+  "gold": {
+    "per_prompt": {
+      "unequal": {
+        "reference_answer": "D1总分3000，总人数40，均分75；80是错误的未按人数加权平均。D2总分2160、30人、均分72。四页资料与源一致，练习页不泄露72。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "D1结论80",
+          "D2结论70或其他错误",
+          "图表人数/均分与源数据冲突",
+          "练习页直接给出72或完整求解"
+        ]
+      },
+      "equal": {
+        "reference_answer": "D1两班各20人，总分3200，40人，均分80；此处直接平均成立因为人数相同。D2均分72；不应概括为永远不能平均两个均分。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "否认人数相同时直接平均成立",
+          "D1或D2计算错误",
+          "跨页数据矛盾"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "source_fidelity",
+        "observable": "各页D1/D2数据、单位和引用对应源材料。",
+        "required": true
+      },
+      {
+        "criterion_id": "numeric_semantics",
+        "observable": "合并均分与总分/人数计算正确，结论有适用条件。",
+        "required": true
+      },
+      {
+        "criterion_id": "teaching_sequence",
+        "observable": "四页实现提出问题、解释、独立练习、延后展示答案；不提前泄答。",
+        "required": true
+      },
+      {
+        "criterion_id": "editable_delivery",
+        "observable": "JSON可被可信渲染器转为4页可编辑PPTX，渲染产物可读。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "unequal",
+        "equal"
+      ],
+      "relation": "only_D1_group_sizes_changed",
+      "expected": "75与80随组人数改变；共同D2仍为72。"
+    }
+  ],
+  "measurement_claim": "完整源材料到实际可编辑PPTX的内容组织、数值一致性与渲染。",
+  "unmeasured_subclaims": [
+    "任意版式设计能力",
+    "复杂长课件",
+    "真实课堂学习效果"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "item_id": "ELE-S01-002",
+  "scenario_id": "S01",
+  "title": "空间站应用题的逐步批改",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": "not_selected",
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "status": {
+    "stage": "authored_candidate",
+    "canonical": false,
+    "human_review": "pending",
+    "model_evaluation": "not_run",
+    "difficulty": "not_measured",
+    "frozen": false
+  },
+  "material_origin": "adapted_public_vtg",
+  "failure_mechanism": "将正确的中间变量值当成题目目标，或因为中间答案与总量不同而过早判错。",
+  "education_consequence": "教师纠正无错的代数运算，未处理变量含义到所问总量的转换。",
+  "source_evidence": [
+    {
+      "source_id": "VTG",
+      "url": "https://github.com/eth-lre/verify-then-generate/blob/f509303b4d5667f79aa10e824ed035f49e8b0776/dataset/dataset.json",
+      "record_locator": "zero_based_array_index=14",
+      "record_sha256": "2c1518850d657397fea437ff0b78431763e6741e6a23a3b38073b7d80cd536b1",
+      "original_student_kind": "synthetic_model_student_with_teacher_annotations",
+      "license": "CC-BY-SA-4.0 (conservative interpretation of upstream README)",
+      "upstream_incorrect_index_zero_based": 3
+    },
+    {
+      "source_id": "FIRST_ERROR",
+      "url": "https://aclanthology.org/2025.emnlp-main.553/"
+    }
+  ],
+  "atomic_abilities": [],
+  "gold_is_test_input": false,
+  "current_failure_evidence": "not_verified_for_this_adapted_item",
+  "limitations": [
+    "只证明该步骤标签已按数学关系离线核验；当前模型难度尚未测量。"
+  ],
+  "prompts": [
+    {
+      "prompt_id": "a",
+      "system_prompt": "你是协助教师核查学生作品和教学证据的助手。以题目及可见材料为依据，区分学生实际写法、参考稿和你的推断。作品可能正确，也可能含错；证据不足时明确说明。用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请逐步批改附件作品。先解释学生的 x 表示什么，再定位最早的不成立步骤（也可能没有）。区分数值运算错误、变量含义/目标转换错误和后续沿用。给出正确结果，以及一条能确认学生是否理解“每个结构”和“全部结构”区别的追问与预期判断。",
+      "assets": [
+        "stimuli/S01_002/work_a.md"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "b",
+      "system_prompt": "你是协助教师核查学生作品和教学证据的助手。以题目及可见材料为依据，区分学生实际写法、参考稿和你的推断。作品可能正确，也可能含错；证据不足时明确说明。用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请逐步批改附件作品。先解释学生的 x 表示什么，再定位最早的不成立步骤（也可能没有）。区分数值运算错误、变量含义/目标转换错误和后续沿用。给出正确结果，以及一条能确认学生是否理解“每个结构”和“全部结构”区别的追问与预期判断。",
+      "assets": [
+        "stimuli/S01_002/work_b.md"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "first_invalid_step": "S6",
+        "answer": 15,
+        "variable_meaning": "每个结构的厨房数",
+        "valid_prefix": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5"
+        ],
+        "reasoning": "3(19+x)=72，故3x=15、x=5都成立。S6才把单个结构的5当成全站数量；S7沿用该错误。",
+        "acceptable_alternatives": [
+          "将S6称为单位对象/目标转换或概念性解释错误；不必匹配一个固定错误类别词。"
+        ],
+        "critical_errors": [
+          "将S4的3x=15或S5的x=5判为首个错误。",
+          "认可全站只有5间厨房。"
+        ]
+      },
+      "b": {
+        "first_invalid_step": null,
+        "answer": 15,
+        "variable_meaning": "每个结构的厨房数",
+        "valid_prefix": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7",
+          "S8"
+        ],
+        "reasoning": "修正版本先报告单个结构5，再乘3得到全站15，全部成立。",
+        "acceptable_alternatives": [
+          "没有错误，仍可用新数量追问检查是否理解变量对象。"
+        ],
+        "critical_errors": [
+          "因为x=5与最终15不同而判错。",
+          "要求直接把x设为15但不改变原方程定义。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "meaning",
+        "points": 3,
+        "observable": "保持x的单个结构含义，确认合法代数前缀并得到总量15。"
+      },
+      {
+        "criterion_id": "location",
+        "points": 3,
+        "observable": "a定位S6而非S4/S5；b不捏造错误。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 2,
+        "observable": "反馈针对对象/总量转换，不把正确代数运算教错。"
+      },
+      {
+        "criterion_id": "probe",
+        "points": 2,
+        "observable": "追问改变结构数或每个结构厨房数，学生需区分单体与总量；预期判断正确。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "minimal_conclusion_repair",
+      "expected": "前五步判定保持不变；只修复结论后应从S6首错变为无错。"
+    }
+  ],
+  "adaptations": [
+    "a保留原题和逐步作品，仅增加S编号；b仅修复最终对象/总量结论。",
+    "上游incorrect_index=3（S4）更正为S6；保留原标注与修正理由于审阅记录，不投递给模型。"
+  ]
+}

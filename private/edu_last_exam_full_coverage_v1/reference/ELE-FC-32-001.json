@@ -1,0 +1,64 @@
+{
+  "gold": {
+    "per_prompt": {
+      "incomplete": {
+        "reference_answer": "K1–K5都合法，没有不成立的推导；只证到有理数，尚未完成实数目标。利用有理数稠密性和连续性：q_k→x，f(x)=lim f(q_k)=x。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "称K4有理数步骤非法",
+          "直接认可只证有理数已完成所有实数",
+          "补足时不说明连续性或其他有效跨越理由"
+        ]
+      },
+      "complete": {
+        "reference_answer": "K1–K6合法且完成目标，任意实数由连续性和稠密性处理。接受其他正确解释。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "否认有效极限步骤",
+          "因不是最短解而判错",
+          "添加不存在的必要假设"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "local_validity",
+        "observable": "逐步合法性判断准确，允许非最短解。",
+        "required": true
+      },
+      {
+        "criterion_id": "goal",
+        "observable": "明确区分已证明的有理数域与题目实数域。",
+        "required": true
+      },
+      {
+        "criterion_id": "repair",
+        "observable": "不完整版补足有效逻辑；完整版不制造错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "incomplete",
+        "complete"
+      ],
+      "relation": "only_completion_step_added",
+      "expected": "局部合法性不变，整体完成度改变。"
+    }
+  ],
+  "measurement_claim": "自然语言证明的逐步合法性与实数目标完成度。",
+  "unmeasured_subclaims": [
+    "形式化工具表现",
+    "一般长证明全集能力"
+  ]
+}

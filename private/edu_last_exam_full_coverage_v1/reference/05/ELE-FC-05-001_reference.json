@@ -1,0 +1,112 @@
+{
+  "gold": {
+    "per_prompt": {
+      "low": {
+        "reference_answer": {
+          "scores": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 10,
+          "overall": [
+            0.82,
+            0.43
+          ],
+          "advanced": [
+            0.9,
+            0.95
+          ],
+          "starting": [
+            0.1,
+            0.3
+          ],
+          "standardized": [
+            0.5,
+            0.625
+          ],
+          "causal": "非随机分配，表格不识别方案因果效果。",
+          "feedback": "学生所写均成立；示例解析将总体率和因果效应混同。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "依据2分锚点为正确作品编造实质错误。",
+          "认可示例解析所称A导致提高的因果结论。"
+        ]
+      },
+      "high": {
+        "reference_answer": {
+          "scores": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 10,
+          "overall": [
+            0.82,
+            0.43
+          ],
+          "advanced": [
+            0.9,
+            0.95
+          ],
+          "starting": [
+            0.1,
+            0.3
+          ],
+          "standardized": [
+            0.5,
+            0.625
+          ],
+          "causal": "非随机分配，表格不识别方案因果效果。",
+          "feedback": "学生所写均成立；示例解析将总体率和因果效应混同。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "依据2分锚点为正确作品编造实质错误。",
+          "认可示例解析所称A导致提高的因果结论。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "两版本均按实际正确作品给10分，各分项满分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "总体、分层和等权标准化计算正确，解释构成差异及因果限制。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "纠正错误示例，反馈不捏造作品缺陷；语气差异不单独判失败。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "low",
+        "high"
+      ],
+      "relation": "only_external_grade_and_anchor_comment_changed",
+      "expected": "两个版本实质分与事实评价均一致。"
+    }
+  ]
+}

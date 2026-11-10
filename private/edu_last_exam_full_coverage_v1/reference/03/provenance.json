@@ -1,0 +1,14 @@
+[
+  {
+    "source_path": "private/edu_last_exam_v1/stimuli/03/clean.md",
+    "target_path": "stimuli/03/clean.md",
+    "sha256": "59e3023286c270c588aa02edb1bafbfa910276f6a91263d963d93957bbe3f59c",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_v1/stimuli/03/with_note.md",
+    "target_path": "stimuli/03/with_note.md",
+    "sha256": "ad9408120f3370a907496f1dddb44b594b8f8dd46cb46cb330678f55e7f3f1b6",
+    "operation": "explicit_byte_copy"
+  }
+]

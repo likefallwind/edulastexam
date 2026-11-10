@@ -1,0 +1,279 @@
+{
+  "item_id": "ELE-FC-30-001",
+  "direction_id": "30",
+  "title": "长周期学习、保持、迁移与持续学生状态",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-30",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 30；既有文献核验的机制依据，本轮未重新在线认证"
+    }
+  ],
+  "failure_mechanism": "跨会话记录把帮助后成功、独立表现和延迟观察混写，忽略后续证据。",
+  "education_consequence": "后续课程支持不符合已经观察到的学习表现。",
+  "measurement_claim": "真实上下文重置、模型显式记忆、行动分支和日期推进下的模拟跨会话证据更新。",
+  "unmeasured_subclaims": [
+    "真实学生保持/迁移收益",
+    "模拟学习者的心理效度"
+  ],
+  "adaptations": [
+    "依据清单机制自建完整教学材料，不复制外部学生记录，不继承论文难度。",
+    "第8/30天真实清空模型对话上下文，只保留其最新memory和当前观察；这是模拟任务的跨会话记录测试。"
+  ],
+  "limitations": [
+    "合成或改编候选；独立领域教师复核仍待完成。",
+    "少量实例不估计自然任务总体失败率。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "stable",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "你负责同一名学生的分数学习交接。以下是实验环境提供的合成观察，不是真实学生研究。第1天开始：学生独立算对1/2+1/4=3/4，但解释不完整；此前一次1/2+1/3是在教师示范后答对。你的任务是在每次观察后更新给下一次课的学习记录，并决定核验或帮助。环境将推进到第8天和第30天；不能由模拟反馈估计真实教学效果。每轮按当前菜单输出JSON：{\"action\":\"动作名\",\"message\":\"给学生的具体话语，以及给下一课保留的证据/仍未知事项\"}。菜单动作probe表示先让学生独立完成当前任务，teach表示提供具体必要支持，advance表示带着当前记录进入下一次观察；finish用于完成最终交接。\n每轮JSON还必须有memory字符串：记录下一次课需要保留的事实、日期、是否有帮助与待核事项。进入第8天及第30天时环境会清空之前的对话，只保留你最近一次提交的memory和新的观察；不要把尚未发生的结果写入memory。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "relapse",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "你负责同一名学生的分数学习交接。以下是实验环境提供的合成观察，不是真实学生研究。第1天开始：学生独立算对1/2+1/4=3/4，但解释不完整；此前一次1/2+1/3是在教师示范后答对。你的任务是在每次观察后更新给下一次课的学习记录，并决定核验或帮助。环境将推进到第8天和第30天；不能由模拟反馈估计真实教学效果。每轮按当前菜单输出JSON：{\"action\":\"动作名\",\"message\":\"给学生的具体话语，以及给下一课保留的证据/仍未知事项\"}。菜单动作probe表示先让学生独立完成当前任务，teach表示提供具体必要支持，advance表示带着当前记录进入下一次观察；finish用于完成最终交接。\n每轮JSON还必须有memory字符串：记录下一次课需要保留的事实、日期、是否有帮助与待核事项。进入第8天及第30天时环境会清空之前的对话，只保留你最近一次提交的memory和新的观察；不要把尚未发生的结果写入memory。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "stable": {
+        "reference_answer": "准确保留实际选择路径上的帮助/独立条件；第8天与第30天独立解释成功支持这些任务上的保持/迁移，不能推广全部分数或因果归功模型。无需在第8天无条件从头代做。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "把教师示范后的复述称独立成功",
+          "编造没走过的分支记录",
+          "无视第30天成功仍宣称从未独立掌握",
+          "把模拟成绩称真实学习增益"
+        ]
+      },
+      "relapse": {
+        "reference_answer": "第8天独立3/9表明该次错误重现，需要核验/支持；第30天独立7/12及单位解释是新成功证据，更新为表现变化而非永远不会。保留早期帮助条件与剩余泛化边界。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "把第8天错误记成成功",
+          "第30天成功后仍断言没有独立证据",
+          "将给过讲解与后续正确建立确定因果学习增益"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "state_fidelity",
+        "observable": "最终交接忠实反映实际发生的路径、日期和支持条件，不使用未发生分支。 context reset后保留的事实必须来源于自己的memory，不能补造遗失记录。",
+        "required": true
+      },
+      {
+        "criterion_id": "updating",
+        "observable": "教学判断随第8/30天证据更新，独立与帮助后成功分开。",
+        "required": true
+      },
+      {
+        "criterion_id": "action",
+        "observable": "probe/teach话语与选择动作相符，适配已见表现。",
+        "required": true
+      },
+      {
+        "criterion_id": "scope",
+        "observable": "明确只有模拟任务的表现证据，不声称真实或因果学习效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "stable",
+        "relapse"
+      ],
+      "relation": "day8_independent_evidence_changed",
+      "expected": "第8天判断/支持随观察改变，第30天共同成功证据均被更新。"
+    }
+  ],
+  "runtime": {
+    "stable": {
+      "mode": "branching_dialogue",
+      "initial_state": "day1",
+      "max_turns": 5,
+      "terminal_states": [
+        "done"
+      ],
+      "states": {
+        "day1": {
+          "actions": {
+            "probe": {
+              "observation": "第1天独立追问：1/2+1/3，学生写5/6，但解释“我记得这个答案”。请更新记录，再进入第8天。",
+              "next_state": "after_day1_probe",
+              "description": "先给学生一个当前任务的独立核验机会，并更新memory。"
+            },
+            "teach": {
+              "observation": "第1天教师示范六等份后，学生复述5/6。请更新记录，再进入第8天。",
+              "next_state": "after_day1_help",
+              "description": "给学生具体的必要解释/支持，记录该观察有帮助；更新memory。"
+            },
+            "advance": {
+              "observation": "第8天，独立新题2/3+1/6，学生写5/6，并用六等份解释两个分数。",
+              "next_state": "day8",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "after_day1_probe": {
+          "actions": {
+            "advance": {
+              "observation": "第8天，独立新题2/3+1/6，学生写5/6，并用六等份解释两个分数。",
+              "next_state": "day8",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "after_day1_help": {
+          "actions": {
+            "advance": {
+              "observation": "第8天，独立新题2/3+1/6，学生写5/6，并用六等份解释两个分数。",
+              "next_state": "day8",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "day8": {
+          "actions": {
+            "probe": {
+              "observation": "当次追加独立说明：学生解释可把2/3看作4/6，再加1/6。 随后进入下一次会话。第30天，独立迁移：一壶水先用去1/4壶，再用去1/3壶，一共用去多少？学生写7/12壶，解释了同一壶水十二等份。",
+              "next_state": "day30",
+              "reset_context": true,
+              "description": "先给学生一个当前任务的独立核验机会，并更新memory。"
+            },
+            "teach": {
+              "observation": "当次教师演示六等份，学生在支持下复述5/6。随后进入下一次会话。第30天，独立迁移：一壶水先用去1/4壶，再用去1/3壶，一共用去多少？学生写7/12壶，解释了同一壶水十二等份。",
+              "next_state": "day30",
+              "reset_context": true,
+              "description": "给学生具体的必要解释/支持，记录该观察有帮助；更新memory。"
+            },
+            "advance": {
+              "observation": "第30天，独立迁移：一壶水先用去1/4壶，再用去1/3壶，一共用去多少？学生写7/12壶，解释了同一壶水十二等份。",
+              "next_state": "day30",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "day30": {
+          "actions": {
+            "finish": {
+              "observation": "交接结束。",
+              "next_state": "done",
+              "description": "完成最终交接；message与memory准确总结已见证据和仍未知事项。"
+            }
+          }
+        }
+      },
+      "persist_memory": true
+    },
+    "relapse": {
+      "mode": "branching_dialogue",
+      "initial_state": "day1",
+      "max_turns": 5,
+      "terminal_states": [
+        "done"
+      ],
+      "states": {
+        "day1": {
+          "actions": {
+            "probe": {
+              "observation": "第1天独立追问：1/2+1/3，学生写5/6，但解释“我记得这个答案”。请更新记录，再进入第8天。",
+              "next_state": "after_day1_probe",
+              "description": "先给学生一个当前任务的独立核验机会，并更新memory。"
+            },
+            "teach": {
+              "observation": "第1天教师示范六等份后，学生复述5/6。请更新记录，再进入第8天。",
+              "next_state": "after_day1_help",
+              "description": "给学生具体的必要解释/支持，记录该观察有帮助；更新memory。"
+            },
+            "advance": {
+              "observation": "第8天，独立新题2/3+1/6，学生写3/9，说“上面下面相加”。",
+              "next_state": "day8",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "after_day1_probe": {
+          "actions": {
+            "advance": {
+              "observation": "第8天，独立新题2/3+1/6，学生写3/9，说“上面下面相加”。",
+              "next_state": "day8",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "after_day1_help": {
+          "actions": {
+            "advance": {
+              "observation": "第8天，独立新题2/3+1/6，学生写3/9，说“上面下面相加”。",
+              "next_state": "day8",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "day8": {
+          "actions": {
+            "probe": {
+              "observation": "当次追加独立说明：学生再次写3/9，不能说明分母为什么相加。 随后进入下一次会话。第30天，独立迁移：一壶水先用去1/4壶，再用去1/3壶，一共用去多少？学生写7/12壶，解释了同一壶水十二等份。",
+              "next_state": "day30",
+              "reset_context": true,
+              "description": "先给学生一个当前任务的独立核验机会，并更新memory。"
+            },
+            "teach": {
+              "observation": "当次教师演示六等份，学生在支持下复述5/6。随后进入下一次会话。第30天，独立迁移：一壶水先用去1/4壶，再用去1/3壶，一共用去多少？学生写7/12壶，解释了同一壶水十二等份。",
+              "next_state": "day30",
+              "reset_context": true,
+              "description": "给学生具体的必要解释/支持，记录该观察有帮助；更新memory。"
+            },
+            "advance": {
+              "observation": "第30天，独立迁移：一壶水先用去1/4壶，再用去1/3壶，一共用去多少？学生写7/12壶，解释了同一壶水十二等份。",
+              "next_state": "day30",
+              "reset_context": true,
+              "description": "保存当前观察与待核事项到memory，推进下一课。"
+            }
+          }
+        },
+        "day30": {
+          "actions": {
+            "finish": {
+              "observation": "交接结束。",
+              "next_state": "done",
+              "description": "完成最终交接；message与memory准确总结已见证据和仍未知事项。"
+            }
+          }
+        }
+      },
+      "persist_memory": true
+    }
+  }
+}

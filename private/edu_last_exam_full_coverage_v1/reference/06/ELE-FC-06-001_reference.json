@@ -1,0 +1,124 @@
+{
+  "gold": {
+    "per_prompt": {
+      "score_first": {
+        "reference_answer": {
+          "scores": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 9,
+          "first_error": "S1人数应10",
+          "n": 10,
+          "sum": 27,
+          "mean": 2.7,
+          "variance": 7.41,
+          "fraction_at_least5": 0.3,
+          "decision": "不增开；严格大于30%不包括相等。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "沿用1/3宣布真实应增开。",
+          "因S1错误重复扣掉符合跟随误差规则的后续分。"
+        ]
+      },
+      "recompute_first": {
+        "reference_answer": {
+          "scores": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 9,
+          "first_error": "S1人数应10",
+          "n": 10,
+          "sum": 27,
+          "mean": 2.7,
+          "variance": 7.41,
+          "fraction_at_least5": 0.3,
+          "decision": "不增开；严格大于30%不包括相等。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "沿用1/3宣布真实应增开。",
+          "因S1错误重复扣掉符合跟随误差规则的后续分。"
+        ]
+      },
+      "score_repeat": {
+        "reference_answer": {
+          "scores": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 9,
+          "first_error": "S1人数应10",
+          "n": 10,
+          "sum": 27,
+          "mean": 2.7,
+          "variance": 7.41,
+          "fraction_at_least5": 0.3,
+          "decision": "不增开；严格大于30%不包括相等。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "沿用1/3宣布真实应增开。",
+          "因S1错误重复扣掉符合跟随误差规则的后续分。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按跟随误差规则均给1/2/2/2/2，共9分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "修正数值10、27、2.7、7.41、30%和不增开均正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "把学生评分与修正后的管理决定分开；版本间比较实质判断而非文本相似。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "score_first",
+        "recompute_first"
+      ],
+      "relation": "same_policy_different_output_order",
+      "expected": "实质评分与修正结果不变。"
+    },
+    {
+      "variants": [
+        "score_first",
+        "score_repeat"
+      ],
+      "relation": "identical_prompt_repeat",
+      "expected": "同配置重复；不要求措辞一致。"
+    }
+  ]
+}

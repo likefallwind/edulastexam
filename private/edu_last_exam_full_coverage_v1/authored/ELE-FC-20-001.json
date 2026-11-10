@@ -1,0 +1,124 @@
+{
+  "item_id": "ELE-FC-20-001",
+  "direction_id": "20",
+  "title": "可运行RC演示的中间曲线与切换连续性",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-20",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 20；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "控件与端点正确但科学状态或中间曲线错误",
+  "education_consequence": "交互材料向学生显示错误科学规律",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "受限声明式交互产物的科学执行与反馈修复",
+  "unmeasured_subclaims": [
+    "任意代码Agent交付、真实学生学习效果"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "generate",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "交付一个RC充放电交互教学演示的计算与绘图配置。初始电源10V、电阻R=2000Ω、电容C=100μF，t=0，电容电压v=0。充电时目标电压V=10，放电时V=0；电流正方向为流入电容。状态方程dv/dt=(V-v)/(R*C)。一次推进期间R和模式固定；切换模式或R不推进时间、不使电容电压瞬变。切换后旧历史曲线保持原样；reset回到全部初始设置并清空旧历史。\n环境提供按钮、R输入框、充放电切换和曲线，实际采用你提交的规则运行。请只输出JSON：step_expression是给定当前v,V,R,C及dt后新的电压表达式；current_expression是当前电流表达式；sample_dt为绘图最大采样时间间隔（秒）；preserve_history_on_change和reset_restores_defaults为布尔值。表达式只支持数字、变量v/V/R/C/dt、+ - * / **、括号和exp(x)；幂指数须是绝对值≤8的数字常量。数字常量绝对值≤1e6，sample_dt范围[0.0001,1]。可另给explanation。\n曲线以实际采样点直线连接，要求0≤t≤2秒充电曲线在任意时间的电压与公开微分方程解相差不超过0.02V。一次推进和分段推进应一致；切换后按最新参数继续，同时保留旧历史。本任务验收状态、电流符号、曲线和控件实际表现。",
+      "assets": [],
+      "interaction_mode": "artifact"
+    },
+    {
+      "prompt_id": "repair_curve",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "交付一个RC充放电交互教学演示的计算与绘图配置。初始电源10V、电阻R=2000Ω、电容C=100μF，t=0，电容电压v=0。充电时目标电压V=10，放电时V=0；电流正方向为流入电容。状态方程dv/dt=(V-v)/(R*C)。一次推进期间R和模式固定；切换模式或R不推进时间、不使电容电压瞬变。切换后旧历史曲线保持原样；reset回到全部初始设置并清空旧历史。\n环境提供按钮、R输入框、充放电切换和曲线，实际采用你提交的规则运行。请只输出JSON：step_expression是给定当前v,V,R,C及dt后新的电压表达式；current_expression是当前电流表达式；sample_dt为绘图最大采样时间间隔（秒）；preserve_history_on_change和reset_restores_defaults为布尔值。表达式只支持数字、变量v/V/R/C/dt、+ - * / **、括号和exp(x)；幂指数须是绝对值≤8的数字常量。数字常量绝对值≤1e6，sample_dt范围[0.0001,1]。可另给explanation。\n曲线以实际采样点直线连接，要求0≤t≤2秒充电曲线在任意时间的电压与公开微分方程解相差不超过0.02V。一次推进和分段推进应一致；切换后按最新参数继续，同时保留旧历史。本任务验收状态、电流符号、曲线和控件实际表现。\n附件为待审核配置。请按同一公开要求提交最终配置；可保留满足要求的部分。",
+      "assets": [
+        "stimuli/20/candidate_simulation.json"
+      ],
+      "interaction_mode": "artifact"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "generate": {
+        "reference_answer": "精确步进V+(v−V)exp(−dt/(RC))，电流(V−v)/R；保留旧历史，重置初始参数。绘图需足够密使线性段误差≤0.02V，例如sample_dt=.01或.02均合格；只连t=0和2端点则中间图像错误。等价表达式接受。初始tau=.2s，充电2秒末值约9.999546V；t=1真实约9.932621V。切换放电连续且电流负，R变化不瞬改电压。",
+        "acceptable_alternatives": [
+          "接受等价代数表达式与任意满足误差要求的采样间隔。"
+        ],
+        "critical_errors": [
+          "以每次推进从0重新充电而忽略当前状态",
+          "放电电流符号错误",
+          "切换参数重算旧历史",
+          "端点对但中间折线超过公开误差",
+          "reset保留上次参数或旧轨迹"
+        ]
+      },
+      "repair_curve": {
+        "reference_answer": "精确步进V+(v−V)exp(−dt/(RC))，电流(V−v)/R；保留旧历史，重置初始参数。绘图需足够密使线性段误差≤0.02V，例如sample_dt=.01或.02均合格；只连t=0和2端点则中间图像错误。等价表达式接受。初始tau=.2s，充电2秒末值约9.999546V；t=1真实约9.932621V。切换放电连续且电流负，R变化不瞬改电压。",
+        "acceptable_alternatives": [
+          "接受等价代数表达式与任意满足误差要求的采样间隔。"
+        ],
+        "critical_errors": [
+          "以每次推进从0重新充电而忽略当前状态",
+          "放电电流符号错误",
+          "切换参数重算旧历史",
+          "端点对但中间折线超过公开误差",
+          "reset保留上次参数或旧轨迹"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "步进方程、当前电流、切换连续性和分段推进一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "绘图真实中间点和连线满足0.02V误差；不改写旧历史。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "重置恢复初始值，控件驱动实际状态；首次与反馈后修复分别记录。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "generate",
+        "repair_curve"
+      ],
+      "relation": "same_physics_from_scratch_vs_coarse_curve",
+      "expected": "状态正确而粗采样候选仍需修复曲线。"
+    }
+  ],
+  "runtime": {
+    "generate": {
+      "mode": "artifact",
+      "artifact_type": "simulation_json",
+      "validator": "20",
+      "repair_turns": 1
+    },
+    "repair_curve": {
+      "mode": "artifact",
+      "artifact_type": "simulation_json",
+      "validator": "20",
+      "repair_turns": 1
+    }
+  }
+}

@@ -1,0 +1,628 @@
+# 中性题面对照：沿用参考解与评分标准
+
+沿用参考解与rubric；不把未复述已删除的提示语或未命名错误类别直接判为关键错误。条件计算、证据使用及诊断设计分别审阅，不新增隐藏格式门槛。
+
+当前运行/审阅状态由独立实验记录维护；以下为父批次作者参考。
+
+# Edu Last Exam 场景候选审阅册
+
+**仅供审阅，不投递给被测模型。** 作者离线核验；专家审核pending、当前模型难度未测、未冻结。
+
+[材料来源与许可说明](NOTICE.md) · [题册](questions.html)
+
+## ELE-S01-001 · 年龄应用题的作业复核
+
+场景：S01；材料：adapted_public_vtg
+
+机制：参考稿与学生合法的方程法冲突时，误把学生正确步骤判错；或者一律替学生辩护而漏掉真正错误。
+
+教育后果：学生被要求放弃有效解法；教师向学生传递错误年龄关系。
+
+### 来源与改编
+
+- [VTG](https://github.com/eth-lre/verify-then-generate/blob/f509303b4d5667f79aa10e824ed035f49e8b0776/dataset/dataset.json)；定位：zero_based_array_index=106
+- [PHYSICS_REFERENCE_ANCHOR](https://arxiv.org/html/2603.14732v3)；定位：机制证据
+
+- 保留原题及a/b的学生逐步作品；剔除上游错误标签作为金标的权威。
+- a直接呈现原参考稿供复核；b替换为纠正的参考稿；c将原库student_correct_response中的错误过程分步明确化。
+- 原题和作品是公开合成学生材料，不称真实学生失败；本任务是新的参考稿复核协议，不继承源论文通过率。
+
+### a · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": null,
+  "answer": 30,
+  "reference_is_valid": false,
+  "reasoning": "2J-5=79 得 J=42；James=42-12=30。S1–S9 全部成立。参考稿把逆运算写成79-5，得到25错误；不能说 John=x+12 有错。",
+  "acceptable_alternatives": [
+    "用42和30直接回代验证，或用2(x+12)-5=79解得30。",
+    "指出命名可更清楚但不把有效方程法判成数学错误。"
+  ],
+  "critical_errors": [
+    "把S3或其他合法步骤判为首错。",
+    "坚持James=25或按参考稿要求学生改成25。"
+  ]
+}
+```
+
+### b · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": null,
+  "answer": 30,
+  "reference_is_valid": true,
+  "reasoning": "题意、学生方程法和参考稿一致，均得30。",
+  "acceptable_alternatives": [
+    "简明核验或逐步核验均可。"
+  ],
+  "critical_errors": [
+    "为挑错而把合法步骤判错。",
+    "把参考稿的30改成25。"
+  ]
+}
+```
+
+### c · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": "S2",
+  "answer": 30,
+  "reference_is_valid": true,
+  "reasoning": "应当由2J-5=79得到2J=84。S3/S4是沿用S2的后果；不应把S3当成最早错误或说S1年龄差错。",
+  "acceptable_alternatives": [
+    "用方程或逆运算纠正，且反馈落到S2。"
+  ],
+  "critical_errors": [
+    "肯定25为正确答案或声称全链无错。",
+    "定位首错到S1、S3或S4。"
+  ]
+}
+```
+
+### 可观察评分标准
+
+```json
+{
+  "total_points": 10,
+  "pass_threshold": null,
+  "scoring": "human_semantic_review_pending",
+  "criteria": [
+    {
+      "criterion_id": "relations",
+      "points": 3,
+      "observable": "正确建立年龄差和2J-5=79，独立得到30。"
+    },
+    {
+      "criterion_id": "location",
+      "points": 3,
+      "observable": "按版本正确判断无错或S2，并区分独立错误与传播后果。"
+    },
+    {
+      "criterion_id": "reference_audit",
+      "points": 2,
+      "observable": "核验参考稿；a纠正错误参考，b/c不无端否定正确参考。"
+    },
+    {
+      "criterion_id": "feedback",
+      "points": 2,
+      "observable": "反馈对应学生实际作品，保留合法方程法，不评价学生能力高低。"
+    }
+  ],
+  "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+}
+```
+
+### 成对控制
+
+- a/b：学生作品判断与30岁结果不变，仅参考稿是否需修改改变。
+- b/c：从无首错变为S2；不能一律替学生辩护。
+
+### 限制
+
+- 属于校准与稳健性候选，数学本身简单；是否有当前模型区分度未知。
+- 上游对该条的错误标签/参考答案失效，不能用模型反对上游金标作为失败证据。
+
+## ELE-S01-002 · 空间站应用题的逐步批改
+
+场景：S01；材料：adapted_public_vtg
+
+机制：将正确的中间变量值当成题目目标，或因为中间答案与总量不同而过早判错。
+
+教育后果：教师纠正无错的代数运算，未处理变量含义到所问总量的转换。
+
+### 来源与改编
+
+- [VTG](https://github.com/eth-lre/verify-then-generate/blob/f509303b4d5667f79aa10e824ed035f49e8b0776/dataset/dataset.json)；定位：zero_based_array_index=14
+- [FIRST_ERROR](https://aclanthology.org/2025.emnlp-main.553/)；定位：机制证据
+
+- a保留原题和逐步作品，仅增加S编号；b仅修复最终对象/总量结论。
+- 上游incorrect_index=3（S4）更正为S6；保留原标注与修正理由于审阅记录，不投递给模型。
+
+### a · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": "S6",
+  "answer": 15,
+  "variable_meaning": "每个结构的厨房数",
+  "valid_prefix": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "reasoning": "3(19+x)=72，故3x=15、x=5都成立。S6才把单个结构的5当成全站数量；S7沿用该错误。",
+  "acceptable_alternatives": [
+    "将S6称为单位对象/目标转换或概念性解释错误；不必匹配一个固定错误类别词。"
+  ],
+  "critical_errors": [
+    "将S4的3x=15或S5的x=5判为首个错误。",
+    "认可全站只有5间厨房。"
+  ]
+}
+```
+
+### b · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": null,
+  "answer": 15,
+  "variable_meaning": "每个结构的厨房数",
+  "valid_prefix": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8"
+  ],
+  "reasoning": "修正版本先报告单个结构5，再乘3得到全站15，全部成立。",
+  "acceptable_alternatives": [
+    "没有错误，仍可用新数量追问检查是否理解变量对象。"
+  ],
+  "critical_errors": [
+    "因为x=5与最终15不同而判错。",
+    "要求直接把x设为15但不改变原方程定义。"
+  ]
+}
+```
+
+### 可观察评分标准
+
+```json
+{
+  "total_points": 10,
+  "pass_threshold": null,
+  "scoring": "human_semantic_review_pending",
+  "criteria": [
+    {
+      "criterion_id": "meaning",
+      "points": 3,
+      "observable": "保持x的单个结构含义，确认合法代数前缀并得到总量15。"
+    },
+    {
+      "criterion_id": "location",
+      "points": 3,
+      "observable": "a定位S6而非S4/S5；b不捏造错误。"
+    },
+    {
+      "criterion_id": "feedback",
+      "points": 2,
+      "observable": "反馈针对对象/总量转换，不把正确代数运算教错。"
+    },
+    {
+      "criterion_id": "probe",
+      "points": 2,
+      "observable": "追问改变结构数或每个结构厨房数，学生需区分单体与总量；预期判断正确。"
+    }
+  ],
+  "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+}
+```
+
+### 成对控制
+
+- a/b：前五步判定保持不变；只修复结论后应从S6首错变为无错。
+
+### 限制
+
+- 只证明该步骤标签已按数学关系离线核验；当前模型难度尚未测量。
+
+## ELE-S02-001 · 电感手写计算的扣分依据复核
+
+场景：S02；材料：real_student_image_with_new_local_audit_task
+
+机制：把30°转成300并据此扣分；把缺失单位条件下的数值不一致直接归因为学生算术能力。
+
+教育后果：学生因OCR错误或未提供的原题条件被扣分。
+
+### 来源与改编
+
+- [CIRCUIT_HW](https://github.com/gt-learning-innovation/CIRCUIT_EDU_HW_ACL/blob/d56d72861f443337d47d44714ee4ef8d4f6e5429/docs/assets/examples/hw5_student42_q7_5-4.png)；定位：hw5_student42_q7_5-4
+- [CIRCUIT_PAPER](https://aclanthology.org/2026.findings-acl.751.pdf)；定位：机制证据
+
+- 原学生图像不裁剪、不重画；只添加一个可独立回答的局部审查任务。
+- 扣分草稿由本项目编写，不是假称论文记录的原模型反馈。
+- 没有补造原教材题；未确定的原单位本身是显式证据边界。
+
+### a · 参考答案与关键错误
+
+```json
+{
+  "phase_first_lines": "30 degrees, not 300",
+  "si_amplitude_v": 15000,
+  "milliamp_amplitude_v": 15,
+  "judgments": {
+    "A": "不成立：前两行是30°，不能将度符号误读为数字0后扣相位分。",
+    "B": "裸数乘积是15000而非15；但di/dt的单位未给出。若是60000 mA/s则为60 A/s，结果15V成立。不能据此断言原题答案错，更不能断言学生不会乘法。"
+  },
+  "acceptable_alternatives": [
+    "可以要求补写单位及转换；可以指出按SI解释存在1000倍差异，但必须标明条件。",
+    "若对原图细节有保留，指出具体不确定位置并请求清晰图；不得把不确定读数当作确定扣分依据。"
+  ],
+  "critical_errors": [
+    "把清晰的30°肯定读成300并据此扣分。",
+    "无条件认可250×10^-3×60000=15。",
+    "在未确认电流导数单位的情况下断定原题答案必错或给学生能力标签。"
+  ]
+}
+```
+
+### b · 参考答案与关键错误
+
+```json
+{
+  "phase_first_lines": "30 degrees, not 300",
+  "si_amplitude_v": 15000,
+  "milliamp_amplitude_v": 15,
+  "judgments": {
+    "A": "不成立：前两行是30°，不能将度符号误读为数字0后扣相位分。",
+    "B": "裸数乘积是15000而非15；但di/dt的单位未给出。若是60000 mA/s则为60 A/s，结果15V成立。不能据此断言原题答案错，更不能断言学生不会乘法。"
+  },
+  "acceptable_alternatives": [
+    "可以要求补写单位及转换；可以指出按SI解释存在1000倍差异，但必须标明条件。",
+    "若对原图细节有保留，指出具体不确定位置并请求清晰图；不得把不确定读数当作确定扣分依据。"
+  ],
+  "critical_errors": [
+    "把清晰的30°肯定读成300并据此扣分。",
+    "无条件认可250×10^-3×60000=15。",
+    "在未确认电流导数单位的情况下断定原题答案必错或给学生能力标签。"
+  ]
+}
+```
+
+### 可观察评分标准
+
+```json
+{
+  "total_points": 10,
+  "pass_threshold": null,
+  "scoring": "human_semantic_review_pending",
+  "criteria": [
+    {
+      "criterion_id": "faithful_reading",
+      "points": 3,
+      "observable": "正确识别30°、250×10^-3 H、60000及结论15，不把OCR混淆算成学生错误。"
+    },
+    {
+      "criterion_id": "conditional_math",
+      "points": 3,
+      "observable": "独立给出A/s时15000V、mA/s时15V及换算。"
+    },
+    {
+      "criterion_id": "evidence_boundary",
+      "points": 3,
+      "observable": "明确原题单位缺失，区分局部乘积与原题是否正确；撤销没有证据的确定性指控。"
+    },
+    {
+      "criterion_id": "feedback",
+      "points": 1,
+      "observable": "反馈要求学生明确单位和换算，准确、不作能力标签。"
+    }
+  ],
+  "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+}
+```
+
+### 成对控制
+
+- a/b：数学和证据边界判断应一致；b为转写对照，不是另一道独立题。
+
+### 限制
+
+- 公开样例，不是私有未见图；不能据此估计真实作业总体错误率。
+- 图像再分发条件未确认：仅在本地候选投递中使用，图像不入Git，不进入公开冻结版。
+- 不得把本题得分解释为完整电路题自动批改能力。
+
+## ELE-S02-002 · 交流电路手写推导的批改复核
+
+场景：S02；材料：real_student_image_with_new_complete_task_context
+
+机制：复杂手写式中的符号或节点关系被误读，导致正确的移项/超节点推导被判错。
+
+教育后果：教师把有效电路推导改成错误方程，学生收到错误方法反馈。
+
+### 来源与改编
+
+- [CIRCUIT_HW](https://github.com/gt-learning-innovation/CIRCUIT_EDU_HW_ACL/blob/d56d72861f443337d47d44714ee4ef8d4f6e5429/docs/assets/examples/hw8_student41_q10_6-1.png)；定位：hw8_student41_q10_6-1
+- [CIRCUIT_PAPER](https://aclanthology.org/2026.findings-acl.751.pdf)；定位：机制证据
+
+- 保留原学生图像，手工按原图校核转写。
+- 新增完整局部电路条件、批改草稿和容差；不声称这是原教材题的未改动复现。
+- 该图的实际解法正确，用于检测错误扣分；不能把“源数据中有手写错误”泛化到此图。
+
+### a · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": null,
+  "vo_real": 14.599827462750232,
+  "vo_imag": 1.4265211393037032,
+  "vo_magnitude": 14.669353240785915,
+  "vo_phase_degrees": 5.580546794012406,
+  "judgments": [
+    "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+    "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+    "③不成立，末行在给定容差内。"
+  ],
+  "acceptable_alternatives": [
+    "用节点方程、超节点法或消元数值解，得到等价结果。",
+    "以相位加减360°的等价表示或正弦改写给出同一波形。"
+  ],
+  "critical_errors": [
+    "把L2或R2的合法移项判为数学错误。",
+    "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+    "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+  ]
+}
+```
+
+### b · 参考答案与关键错误
+
+```json
+{
+  "first_invalid_step": null,
+  "vo_real": 14.599827462750232,
+  "vo_imag": 1.4265211393037032,
+  "vo_magnitude": 14.669353240785915,
+  "vo_phase_degrees": 5.580546794012406,
+  "judgments": [
+    "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+    "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+    "③不成立，末行在给定容差内。"
+  ],
+  "acceptable_alternatives": [
+    "用节点方程、超节点法或消元数值解，得到等价结果。",
+    "以相位加减360°的等价表示或正弦改写给出同一波形。"
+  ],
+  "critical_errors": [
+    "把L2或R2的合法移项判为数学错误。",
+    "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+    "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+  ]
+}
+```
+
+### 可观察评分标准
+
+```json
+{
+  "total_points": 10,
+  "pass_threshold": null,
+  "scoring": "human_semantic_review_pending",
+  "criteria": [
+    {
+      "criterion_id": "reading_and_topology",
+      "points": 2,
+      "observable": "忠实识别极性、控制电流与手写移项位置。"
+    },
+    {
+      "criterion_id": "equivalence",
+      "points": 3,
+      "observable": "两条符号指控均逐条核验，不把等价变形判错。"
+    },
+    {
+      "criterion_id": "numeric_oracle",
+      "points": 3,
+      "observable": "独立解方程并给出与14.66935∠5.58055°一致的结果，使用给定容差。"
+    },
+    {
+      "criterion_id": "feedback",
+      "points": 2,
+      "observable": "撤销无根据的实质扣分；可提醒记号规范但不混为电路错误。"
+    }
+  ],
+  "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+}
+```
+
+### 成对控制
+
+- a/b：作品本身与三个指控的结论相同；视觉与纯文本结果分开报告。
+
+### 限制
+
+- 图像再分发条件未确认，图像只保留本地、不入Git。
+- 源图中两个支路未标阻抗，本题已在可见条件中明确补齐；不能隐去这些条件后沿用同一金标。
+- 学科计算负担较高，需要用转写对照分离识别与电路推理错误。
+
+## ELE-S03-001 · 面积变化学习记录的诊断与下一步教学
+
+场景：S03；材料：synthetic_research_informed
+
+机制：把帮助后正确当成独立掌握；忽略与当前错误相关的历史，或在援助信息缺失时武断归因。
+
+教育后果：学生被安排不合适的补教，教师对已经观察到的表现与尚未观察到的能力作出混淆判断。
+
+### 来源与改编
+
+- [LONGTUTOR](https://aclanthology.org/2026.acl-long.1371.pdf)；定位：Table 2 and Table 14; mechanism only, not copied student logs
+
+- 自建、明示合成的几何历史；借鉴LongTutor的历史证据到诊断机制，不复制其学生记录或心理标签。
+- 三个版本只变更R07/R09/R11的help字段，是独立快照，不是真实多轮教学。
+
+### a · 参考答案与关键错误
+
+```json
+{
+  "current_answer": 5,
+  "current_area_factor": "1/4",
+  "diagnostic_records": [
+    "R07",
+    "R09",
+    "R11"
+  ],
+  "counterevidence_records": [
+    "R02",
+    "R03",
+    "R04",
+    "R10",
+    "R12"
+  ],
+  "acceptable_probe": {
+    "task": "不给公式或答案，问长6宽4的矩形两边均缩为1/2后，新面积是多少？要求写新边长和面积，并解释与旧面积的关系。",
+    "correct": "新边3、2，面积6；旧面积24，比例1/4。",
+    "typical_error": "12（直接把24减半）。",
+    "followup": "若能独立解释再回到三角形并让学生自己用底×高/2核对；若只套线性因子或无法开始，再用网格/两方向分割提供帮助并换新题复核。"
+  },
+  "acceptable_alternatives": [
+    "可用不同数值、方格图或长宽分别变化的非引导追问，只要能看到学生独立建立两个长度因子与面积的关系。",
+    "不要求唯一诊断名词或唯一教法；不同版本可选同一道追问，只要证据结论和不确定性处理合理。"
+  ],
+  "supported": "R07/R09/R11有近期无帮助、带解释的正确表现，不能说学生从来不会面积与长度因子的区别；当前缩小三角形情境出错，应核验情境迁移、读题/注意或掌握不稳定等竞争解释。",
+  "not_supported": "这些记录并不保证当前稳定迁移；不能因历史正确忽略当前错误，也不能唯一确定心理成因。",
+  "critical_errors": [
+    "无视R07/R09/R11，断言没有任何独立掌握证据或一直不会面积变化。",
+    "断言已经稳定掌握且当前10正确或不需要核验。",
+    "编造不存在的记录/援助条件来支撑结论。"
+  ]
+}
+```
+
+### b · 参考答案与关键错误
+
+```json
+{
+  "current_answer": 5,
+  "current_area_factor": "1/4",
+  "diagnostic_records": [
+    "R07",
+    "R09",
+    "R11"
+  ],
+  "counterevidence_records": [
+    "R02",
+    "R03",
+    "R04",
+    "R10",
+    "R12"
+  ],
+  "acceptable_probe": {
+    "task": "不给公式或答案，问长6宽4的矩形两边均缩为1/2后，新面积是多少？要求写新边长和面积，并解释与旧面积的关系。",
+    "correct": "新边3、2，面积6；旧面积24，比例1/4。",
+    "typical_error": "12（直接把24减半）。",
+    "followup": "若能独立解释再回到三角形并让学生自己用底×高/2核对；若只套线性因子或无法开始，再用网格/两方向分割提供帮助并换新题复核。"
+  },
+  "acceptable_alternatives": [
+    "可用不同数值、方格图或长宽分别变化的非引导追问，只要能看到学生独立建立两个长度因子与面积的关系。",
+    "不要求唯一诊断名词或唯一教法；不同版本可选同一道追问，只要证据结论和不确定性处理合理。"
+  ],
+  "supported": "R07/R09/R11的正确解释是看到教师方法和答案后复述，R06同样有帮助；证明的是在支持下的表现，尚未证明可独立建立面积倍数关系。R02/R03等仍支持基础面积计算，不能说所有几何都不会。",
+  "not_supported": "不能由重复正确断言独立掌握，也不能由没有独立证据断言没有能力；先取得独立作答再决定补助。",
+  "critical_errors": [
+    "将R07/R09/R11称为独立掌握证据。",
+    "把所有正确次数汇总为已稳定掌握或已获得因果学习增益。",
+    "将缺少独立观察等同于肯定不会。"
+  ]
+}
+```
+
+### c · 参考答案与关键错误
+
+```json
+{
+  "current_answer": 5,
+  "current_area_factor": "1/4",
+  "diagnostic_records": [
+    "R07",
+    "R09",
+    "R11"
+  ],
+  "counterevidence_records": [
+    "R02",
+    "R03",
+    "R04",
+    "R10",
+    "R12"
+  ],
+  "acceptable_probe": {
+    "task": "不给公式或答案，问长6宽4的矩形两边均缩为1/2后，新面积是多少？要求写新边长和面积，并解释与旧面积的关系。",
+    "correct": "新边3、2，面积6；旧面积24，比例1/4。",
+    "typical_error": "12（直接把24减半）。",
+    "followup": "若能独立解释再回到三角形并让学生自己用底×高/2核对；若只套线性因子或无法开始，再用网格/两方向分割提供帮助并换新题复核。"
+  },
+  "acceptable_alternatives": [
+    "可用不同数值、方格图或长宽分别变化的非引导追问，只要能看到学生独立建立两个长度因子与面积的关系。",
+    "不要求唯一诊断名词或唯一教法；不同版本可选同一道追问，只要证据结论和不确定性处理合理。"
+  ],
+  "supported": "R07/R09/R11答案正确但帮助信息unknown，独立性未知；应补援助记录或先进行独立诊断。不能把unknown默认为无帮助，也不能默认为照抄教师答案。",
+  "not_supported": "既不支持确定独立掌握，也不支持确定依赖帮助；当前仍有面积因子错误。",
+  "critical_errors": [
+    "把unknown解释为none并宣称独立掌握已观察到。",
+    "把unknown解释为老师给了答案并确定依赖。",
+    "虚构援助记录或把未观察能力当低能力。"
+  ]
+}
+```
+
+### 可观察评分标准
+
+```json
+{
+  "total_points": 10,
+  "pass_threshold": null,
+  "scoring": "human_semantic_review_pending",
+  "criteria": [
+    {
+      "criterion_id": "math",
+      "points": 2,
+      "observable": "当前新边4和2.5、面积5，面积因子1/4，明确指出学生线性缩放面积的错误。"
+    },
+    {
+      "criterion_id": "history",
+      "points": 3,
+      "observable": "用R07/R09/R11及相关反证，正确区分无帮助、已给答案帮助、援助未知。"
+    },
+    {
+      "criterion_id": "bounded_diagnosis",
+      "points": 2,
+      "observable": "至少两个可区分解释，不把可观察表现等同唯一心理原因、稳定掌握或因果学习效果。"
+    },
+    {
+      "criterion_id": "diagnostic_action",
+      "points": 3,
+      "observable": "追问先留独立作答机会，给出正确答案/典型错误，并根据回答改变帮助；不在追问里泄露关键结论。"
+    }
+  ],
+  "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+}
+```
+
+### 成对控制
+
+- a/b：所有题目、时间、最终答复不变；独立性判断必须随help变化，但不强制教学话术不同。
+- a/c：未知不是无帮助；降低对独立掌握的确定性。
+
+### 限制
+
+- 合成记录的自然性、教师可接受答案范围仍需人工审核。
+- 本题衡量证据使用与下一步诊断设计，不测长期学生状态维护或真实学习增益。
+- 援助条件机制属于研究启发候选，不声称LongTutor已直接证明本题难度。
+

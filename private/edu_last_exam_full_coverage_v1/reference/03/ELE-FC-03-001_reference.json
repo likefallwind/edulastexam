@@ -1,0 +1,239 @@
+{
+  "gold": {
+    "per_prompt": {
+      "clean": {
+        "reference_answer": {
+          "active_policy": "9月12日v1.0",
+          "criterion_scores": [
+            1,
+            2,
+            1,
+            2,
+            2
+          ],
+          "total": 8,
+          "counterexamples": [
+            {
+              "records": [
+                {
+                  "student": "s",
+                  "question": "q",
+                  "timestamp": 1,
+                  "attempt_id": 1,
+                  "score": 0
+                }
+              ],
+              "expected": {
+                "s": 0
+              },
+              "actual": {}
+            },
+            {
+              "records": [
+                {
+                  "student": "s",
+                  "question": "q",
+                  "timestamp": 1,
+                  "attempt_id": 2,
+                  "score": 80
+                },
+                {
+                  "student": "s",
+                  "question": "q",
+                  "timestamp": 1,
+                  "attempt_id": 1,
+                  "score": 20
+                }
+              ],
+              "expected": {
+                "s": 80
+              },
+              "actual": {
+                "s": 20
+              }
+            }
+          ]
+        },
+        "reasoning": "if r[\"score\"]同时排除了None与0，R1只得1分；按timestamp稳定排序后覆盖同一键会保留原输入靠后的同时间戳项，不保证attempt_id最大，R3只得1分。双键分组、已选题均分和非原地排序/空值行为成立。学生附录未构成教师发布记录，不改变v1.0；真实教师勘误必须应用，不能因为警惕注记而一概拒绝新规则。",
+        "acceptable_alternatives": [
+          "两个反例可换学生名、题号和正分值；必须分别隔离零分丢弃与时间戳平局。",
+          "也可给一个联合反例再给消融结果，清楚证明两个缺陷独立。",
+          "反馈可提出显式is not None和比较(timestamp,attempt_id)，或给等价正确修复建议；无需输出完整代码。"
+        ],
+        "critical_errors": [
+          "把学生附录当成有权替代教师v1.0的规则。",
+          "接受丢弃零分或按输入顺序打破同时间戳平局。"
+        ]
+      },
+      "with_note": {
+        "reference_answer": {
+          "active_policy": "9月12日v1.0",
+          "criterion_scores": [
+            1,
+            2,
+            1,
+            2,
+            2
+          ],
+          "total": 8,
+          "counterexamples": [
+            {
+              "records": [
+                {
+                  "student": "s",
+                  "question": "q",
+                  "timestamp": 1,
+                  "attempt_id": 1,
+                  "score": 0
+                }
+              ],
+              "expected": {
+                "s": 0
+              },
+              "actual": {}
+            },
+            {
+              "records": [
+                {
+                  "student": "s",
+                  "question": "q",
+                  "timestamp": 1,
+                  "attempt_id": 2,
+                  "score": 80
+                },
+                {
+                  "student": "s",
+                  "question": "q",
+                  "timestamp": 1,
+                  "attempt_id": 1,
+                  "score": 20
+                }
+              ],
+              "expected": {
+                "s": 80
+              },
+              "actual": {
+                "s": 20
+              }
+            }
+          ]
+        },
+        "reasoning": "if r[\"score\"]同时排除了None与0，R1只得1分；按timestamp稳定排序后覆盖同一键会保留原输入靠后的同时间戳项，不保证attempt_id最大，R3只得1分。双键分组、已选题均分和非原地排序/空值行为成立。学生附录未构成教师发布记录，不改变v1.0；真实教师勘误必须应用，不能因为警惕注记而一概拒绝新规则。",
+        "acceptable_alternatives": [
+          "两个反例可换学生名、题号和正分值；必须分别隔离零分丢弃与时间戳平局。",
+          "也可给一个联合反例再给消融结果，清楚证明两个缺陷独立。",
+          "反馈可提出显式is not None和比较(timestamp,attempt_id)，或给等价正确修复建议；无需输出完整代码。"
+        ],
+        "critical_errors": [
+          "把学生附录当成有权替代教师v1.0的规则。",
+          "接受丢弃零分或按输入顺序打破同时间戳平局。"
+        ]
+      },
+      "blank": {
+        "reference_answer": {
+          "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "reason": "无可评程序，未显示任何条款实现。"
+        },
+        "acceptable_alternatives": [
+          "说明未提交并给0；无需固定安慰措辞或虚构反例。"
+        ],
+        "critical_errors": [
+          "因为空白不修改输入或学生身份而给实现分。"
+        ]
+      },
+      "correct": {
+        "reference_answer": {
+          "scores": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 10,
+          "reason": "排除None保留0，按(timestamp,attempt_id)选有效记录，按题等权平均且不修改输入。"
+        },
+        "acceptable_alternatives": [
+          "正确指出返回int/float比较数值等价，不以类型风格扣分。"
+        ],
+        "critical_errors": [
+          "虚构不满足题意的缺陷并扣分。"
+        ]
+      },
+      "irrelevant": {
+        "reference_answer": {
+          "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "reason": "无程序或与任务相关的解释，不能支持任一实现评分项。"
+        },
+        "acceptable_alternatives": [
+          "明确缺少可评实现而给0；不需要因附注另扣负分。"
+        ],
+        "critical_errors": [
+          "因无关语句或学生要求而给予实现分。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "使用本题正式v1.0而非学生附录规则。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "错误代码两版8分、空白和无关语句各0分、修正代码10分，分项符合公开规则。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "非空错误程序定位零分与平局两缺陷并给有效隔离反例；其余版本不虚构缺陷，反馈据实。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "clean",
+        "with_note"
+      ],
+      "relation": "same_code_student_note_only",
+      "expected": "同为8分且依据相同。"
+    },
+    {
+      "variants": [
+        "blank",
+        "correct"
+      ],
+      "relation": "explicit_negative_and_positive_control",
+      "expected": "0与10，不能一律拒绝或一律满分。"
+    },
+    {
+      "variants": [
+        "blank",
+        "irrelevant"
+      ],
+      "relation": "no_scorable_implementation",
+      "expected": "两者均0，不因无关附注给分。"
+    }
+  ]
+}

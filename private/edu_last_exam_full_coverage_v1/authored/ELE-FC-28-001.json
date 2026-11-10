@@ -1,0 +1,131 @@
+{
+  "item_id": "ELE-FC-28-001",
+  "direction_id": "28",
+  "title": "教学 PPT／幻灯片与跨页材料组织",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-28",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 28；既有文献核验的机制依据，本轮未重新在线认证"
+    }
+  ],
+  "failure_mechanism": "跨页内容与数据不一致，练习答案提前泄露，或漂亮图表表达错误均分。",
+  "education_consequence": "学生通过错误图文学习平均数关系，教师无法直接使用产物。",
+  "measurement_claim": "完整源材料到实际可编辑PPTX的内容组织、数值一致性与渲染。",
+  "unmeasured_subclaims": [
+    "任意版式设计能力",
+    "复杂长课件",
+    "真实课堂学习效果"
+  ],
+  "adaptations": [
+    "依据清单机制自建完整教学材料，不复制外部学生记录，不继承论文难度。"
+  ],
+  "limitations": [
+    "合成或改编候选；独立领域教师复核仍待完成。",
+    "少量实例不估计自然任务总体失败率。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "unequal",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "用附件制作4页可编辑教学幻灯片的内容。运行环境会把你提交的JSON实际渲染成PPTX与PDF，你不需要输出二进制文件。输出一个JSON对象，顶层slides数组恰好4项，顺序为intro、explain、practice、answer。每项含kind、title、body（1–4条字符串）、source_ids（D1或D2数组）、groups（每组含label、n、mean）。intro/explain使用D1数据；practice/answer使用D2数据。explain和answer另含combined_mean（数值）及worked_calculation（字符串）；practice页不显示答案或解法。intro页提出待讨论问题；explain页解释计算含义；answer页供教师点击后展示。请使用附件数据，跨页保持符号、单位、人数和分数一致。可信渲染器固定美术样式；本题评内容、图表数据和教学组织，不评模板风格。",
+      "assets": [
+        "stimuli/28/unequal.md"
+      ],
+      "interaction_mode": "artifact"
+    },
+    {
+      "prompt_id": "equal",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "用附件制作4页可编辑教学幻灯片的内容。运行环境会把你提交的JSON实际渲染成PPTX与PDF，你不需要输出二进制文件。输出一个JSON对象，顶层slides数组恰好4项，顺序为intro、explain、practice、answer。每项含kind、title、body（1–4条字符串）、source_ids（D1或D2数组）、groups（每组含label、n、mean）。intro/explain使用D1数据；practice/answer使用D2数据。explain和answer另含combined_mean（数值）及worked_calculation（字符串）；practice页不显示答案或解法。intro页提出待讨论问题；explain页解释计算含义；answer页供教师点击后展示。请使用附件数据，跨页保持符号、单位、人数和分数一致。可信渲染器固定美术样式；本题评内容、图表数据和教学组织，不评模板风格。",
+      "assets": [
+        "stimuli/28/equal.md"
+      ],
+      "interaction_mode": "artifact"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "unequal": {
+        "reference_answer": "D1总分3000，总人数40，均分75；80是错误的未按人数加权平均。D2总分2160、30人、均分72。四页资料与源一致，练习页不泄露72。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "D1结论80",
+          "D2结论70或其他错误",
+          "图表人数/均分与源数据冲突",
+          "练习页直接给出72或完整求解"
+        ]
+      },
+      "equal": {
+        "reference_answer": "D1两班各20人，总分3200，40人，均分80；此处直接平均成立因为人数相同。D2均分72；不应概括为永远不能平均两个均分。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "否认人数相同时直接平均成立",
+          "D1或D2计算错误",
+          "跨页数据矛盾"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "source_fidelity",
+        "observable": "各页D1/D2数据、单位和引用对应源材料。",
+        "required": true
+      },
+      {
+        "criterion_id": "numeric_semantics",
+        "observable": "合并均分与总分/人数计算正确，结论有适用条件。",
+        "required": true
+      },
+      {
+        "criterion_id": "teaching_sequence",
+        "observable": "四页实现提出问题、解释、独立练习、延后展示答案；不提前泄答。",
+        "required": true
+      },
+      {
+        "criterion_id": "editable_delivery",
+        "observable": "JSON可被可信渲染器转为4页可编辑PPTX，渲染产物可读。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "unequal",
+        "equal"
+      ],
+      "relation": "only_D1_group_sizes_changed",
+      "expected": "75与80随组人数改变；共同D2仍为72。"
+    }
+  ],
+  "runtime": {
+    "unequal": {
+      "mode": "artifact",
+      "artifact_type": "slides_json",
+      "validator": "28",
+      "repair_turns": 1
+    },
+    "equal": {
+      "mode": "artifact",
+      "artifact_type": "slides_json",
+      "validator": "28",
+      "repair_turns": 1
+    }
+  }
+}

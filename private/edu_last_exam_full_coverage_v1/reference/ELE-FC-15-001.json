@@ -1,0 +1,60 @@
+{
+  "gold": {
+    "per_prompt": {
+      "flawed": {
+        "reference_answer": "令t=√(x+2)≥0，a=t²−t−2。[-3,-9/4)零解；{-9/4}一解；(-9/4,-2]两解；(-2,0]一解。因此正确集合{-9/4}∪(-2,0]。a=-2有x=-2,-1；a=-9/4有重合根x=-7/4。4分标准覆盖等价限制、根数变化与边界，同一漏点不得重复扣。原选项无正确集合；最少替换一个选项为完整集合并同步键。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "漏掉孤立参数-9/4",
+          "把a=-2计作一解",
+          "修改方程或范围绕过目标"
+        ]
+      },
+      "valid": {
+        "reference_answer": "令t=√(x+2)≥0，a=t²−t−2。[-3,-9/4)零解；{-9/4}一解；(-9/4,-2]两解；(-2,0]一解。因此正确集合{-9/4}∪(-2,0]。a=-2有x=-2,-1；a=-9/4有重合根x=-7/4。4分标准覆盖等价限制、根数变化与边界，同一漏点不得重复扣。当前B及解析有效；可保留，不必为审校而制造缺陷。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "将正确B改成不含孤立参数的集合",
+          "无依据宣布有效题无解或多选"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "完整分类正确且说明平方的非负条件。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "修订或保留动作与实际缺陷对应，保留目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "过程评分总分4且不重复处罚同一错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "flawed",
+        "valid"
+      ],
+      "relation": "repair_vs_preserve_valid",
+      "expected": "缺陷版修复，正确版不强改。"
+    }
+  ],
+  "measurement_claim": "参数题有效性及最小修订质量",
+  "unmeasured_subclaims": []
+}

@@ -1,0 +1,21 @@
+{
+  "status": "author_offline_contract_checks_passed",
+  "direction_id": "05",
+  "items": [
+    {
+      "item_id": "ELE-FC-05-001",
+      "sha256": "cf8be1cef2c1d59200624db860a0f789d8e1265185b2b9328c8a5337b42726aa",
+      "prompt_count": 2
+    }
+  ],
+  "checks": [
+    "prompt/gold identity and required fields",
+    "listed stimulus existence and safe paths",
+    "runtime graph and dialogue contract validation"
+  ],
+  "not_checked": [
+    "independent teacher judgment",
+    "difficulty in current models",
+    "real student learning effects"
+  ]
+}

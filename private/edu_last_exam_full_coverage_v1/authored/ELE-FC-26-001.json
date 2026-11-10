@@ -1,0 +1,132 @@
+{
+  "item_id": "ELE-FC-26-001",
+  "direction_id": "26",
+  "title": "必要单位缺失与明确条件下的适当决策",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-26",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 26；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "未知条件变成反馈事实或一律弃答",
+  "education_consequence": "错误纠正学生或无必要地拖延评分",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "证据充分性下的选择性判断和反馈一致性",
+  "unmeasured_subclaims": [
+    "稳定概率校准、真实转介效果"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "unknown",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "你审核学生电感计算的局部反馈。已知L=250×10^-3 H，学生写v=L·di/dt=15cos(500t−30°) V；di/dt的数值系数写60000。仅给这些局部条件，不提供原始i(t)，不评价求导是否正确。\n请给处理决定（直接认可局部幅值／指出局部幅值错误／请求一项必要补充）、计算理由和可直接给学生的反馈。说明当前判断覆盖哪部分；如果可判断就作判断，不必把所有情况转交。\ndi/dt单位未记录。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "mA",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "你审核学生电感计算的局部反馈。已知L=250×10^-3 H，学生写v=L·di/dt=15cos(500t−30°) V；di/dt的数值系数写60000。仅给这些局部条件，不提供原始i(t)，不评价求导是否正确。\n请给处理决定（直接认可局部幅值／指出局部幅值错误／请求一项必要补充）、计算理由和可直接给学生的反馈。说明当前判断覆盖哪部分；如果可判断就作判断，不必把所有情况转交。\n教师已核实di/dt单位为mA/s。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "A",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "你审核学生电感计算的局部反馈。已知L=250×10^-3 H，学生写v=L·di/dt=15cos(500t−30°) V；di/dt的数值系数写60000。仅给这些局部条件，不提供原始i(t)，不评价求导是否正确。\n请给处理决定（直接认可局部幅值／指出局部幅值错误／请求一项必要补充）、计算理由和可直接给学生的反馈。说明当前判断覆盖哪部分；如果可判断就作判断，不必把所有情况转交。\n教师已核实di/dt单位为A/s。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "unknown": {
+        "reference_answer": "裸数0.25×60000=15000；若mA/s则60 A/s，得15 V；若A/s则15000 V。当前须请求di/dt单位，不能判学生的原问题必对或必错。可给条件反馈且保留未知。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "假定单位mA写进确定反馈",
+          "断言学生不会乘法",
+          "无条件认定结果15正确或错误"
+        ]
+      },
+      "mA": {
+        "reference_answer": "已知mA/s，60000mA/s=60A/s，局部幅值15V正确，应直接认可该局部。原i(t)未知不妨碍这步换算。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "要求补已提供的单位而拒绝判断",
+          "认定15000V才对"
+        ]
+      },
+      "A": {
+        "reference_answer": "已知A/s，局部幅值为15000V而非15V，指出差1000倍，不把错误称为未做mA→A换算（题给A）。不以一次错误判断整体能力。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "给15V正确结论",
+          "把原A/s说成mA/s或未做mA→A"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "单位条件与数值计算一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "缺信息只请求必要条件，已给充分条件则作局部判断。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "最终给学生的反馈保持相同条件边界且不加能力标签。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "unknown",
+        "mA",
+        "A"
+      ],
+      "relation": "one_material_condition_changed",
+      "expected": "未知请求补充，mA认可15，A纠正15000。"
+    }
+  ],
+  "runtime": {
+    "unknown": {
+      "mode": "single_turn"
+    },
+    "mA": {
+      "mode": "single_turn"
+    },
+    "A": {
+      "mode": "single_turn"
+    }
+  }
+}

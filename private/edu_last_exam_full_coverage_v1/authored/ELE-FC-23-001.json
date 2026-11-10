@@ -1,0 +1,162 @@
+{
+  "item_id": "ELE-FC-23-001",
+  "direction_id": "23",
+  "title": "围绕分数单位的连续提问与独立迁移机会",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-23",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 23；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "答案改问句或无关追问代替诊断性提问",
+  "education_consequence": "无法观察学生真实理解，过早结束",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "有限行动集合中的实际连续辅导行为",
+  "unmeasured_subclaims": [
+    "开放自然语言学生模拟效度、真实学习增益"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "base",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "你在辅导学生理解“5÷(1/6)”。学生写5/6，并解释“看到除法就把6放到分母”。课程目标是让学生解释一个整体中包含多少个给定大小的单位，并完成一个独立迁移题。当前是本任务的受控教学对话，不把模拟回复当真实学习效果。\n每轮请按运行环境提供的action菜单输出JSON：action是操作，message是实际对学生说的话。可选择先询问学生的单位解释、使用具体模型、让学生独立试题或结束；message应实现所选操作。\n行动含义：ask_unit询问当前学生对六分之一单位和份数的理解；show_model用具体等分模型解释；give_answer直接提供当前题解；ask_explanation让学生解释当前题的单位意义；ask_transfer发出固定的独立迁移题“2÷(1/4)，请计算并解释单位含义”，不得在提问时给出答案；explain_again再次讲解当前题；request_followup请求以后延迟核验；finish结束并仅总结已观察证据。各轮只能选择环境当轮列出的行动。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "base": {
+        "reference_answer": "对5÷1/6原作应纠正为数有多少个六分之一的单位，结果30；提问/模型支持须围绕单位含义，不能只将30改成问句。在已有独立解释后提供固定2÷1/4迁移机会，结果8。只可据实际分支说已观察到独立解释/迁移，未选到迁移不得宣称迁移成功；延迟保持未测。",
+        "acceptable_alternatives": [
+          "先具体模型后追问或先询问单位均可；不按固定教学流派排序打分。"
+        ],
+        "critical_errors": [
+          "认可原5/6",
+          "始终代答或只要求机械重复却宣称已观察到独立迁移",
+          "凭未发生的分支编造学习结果"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "数学及单位解释正确；实际message与选择action相符。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "提问获取学生解释，支持针对观察到的卡点。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "有合理独立迁移机会，结束结论只引用实际轨迹。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "relation": "action_dependent_observation",
+      "expected": "解释/代答/追问产生不同观察，评分依据实际轨迹。"
+    }
+  ],
+  "runtime": {
+    "base": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 4,
+      "states": {
+        "s0": {
+          "actions": {
+            "ask_unit": {
+              "observation": "学生：我把1/6看成“一份”，但不确定5里面有多少份；一个1里面有6份。",
+              "next_state": "s1"
+            },
+            "show_model": {
+              "observation": "学生：我看见每个1分成6份，5个1一共有30份，但我还不知道为什么这叫除法。",
+              "next_state": "s1"
+            },
+            "give_answer": {
+              "observation": "学生：我记住答案30了；所以2÷(1/4)是不是2/4？",
+              "next_state": "s1"
+            },
+            "finish": {
+              "observation": "学生仍只提交原来的5/6，未取得新的独立解释。",
+              "next_state": "done"
+            }
+          }
+        },
+        "s1": {
+          "actions": {
+            "ask_explanation": {
+              "observation": "学生：除以1/6是在数六分之一的份数，5个整里每个有6份，所以有30份。",
+              "next_state": "s2"
+            },
+            "show_model": {
+              "observation": "学生：你画的我会数；换数字我想自己试一次。",
+              "next_state": "s2"
+            },
+            "give_answer": {
+              "observation": "学生：我能重复5乘6等于30，但还没自己做新题。",
+              "next_state": "s2"
+            },
+            "finish": {
+              "observation": "本轮没有独立迁移作答。",
+              "next_state": "done"
+            }
+          }
+        },
+        "s2": {
+          "actions": {
+            "ask_transfer": {
+              "observation": "学生独立作答固定迁移题2÷(1/4)：8，因为每个1有4个四分之一，2个1有8份。",
+              "next_state": "s3"
+            },
+            "explain_again": {
+              "observation": "学生：我能重复你的例子，但还未独立做迁移题。",
+              "next_state": "s3"
+            },
+            "finish": {
+              "observation": "未取得独立迁移。",
+              "next_state": "done"
+            }
+          }
+        },
+        "s3": {
+          "actions": {
+            "finish": {
+              "observation": "会话结束；只可汇总实际发生的观察。",
+              "next_state": "done"
+            },
+            "request_followup": {
+              "observation": "教师记录了延迟复查请求；尚无延迟学习结果。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ]
+    }
+  }
+}

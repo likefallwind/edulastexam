@@ -1,0 +1,104 @@
+{
+  "item_id": "ELE-FC-14-001",
+  "direction_id": "14",
+  "title": "将分数诊断落实为材料并据再测更新",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-14",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 14；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "诊断与实际材料脱节或新证据不更新帮助",
+  "education_consequence": "学生收到不匹配的补救或错误图示",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。",
+    "附件为显式复制；source_files保留来源路径和逐文件SHA256。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "补救材料与受控再测证据的一致性",
+  "unmeasured_subclaims": [
+    "真实学习效果、自然长期教学"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "base",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "你接手五年级分数加法的两名学生。附件为本任务合成的已观察记录；help为实际提供的帮助，不能把它改写成无帮助表现。课程目标是解释分数单位、计算同分母及异分母加法。所有纸条表示同样长的一个整体。\n请给A、B各制作一页可直接使用的补救材料：一个讲解例子、一道带支持练习、一道不附解法的独立变式。另给教师答案及针对性依据。材料可以是Markdown；若使用图，说明整体长度、等分及涂色。教师说明还应交代目前能判断什么、一次后续观察怎样帮助选择下一步。学生独立题答案放在教师页，不放在学生页。",
+      "assets": [
+        "stimuli/14/probes.json"
+      ],
+      "interaction_mode": "scripted_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "base": {
+        "reference_answer": "A在图示下理解同分母单位、能做等值变换，但符号加法仍用分子分母分别加；应桥接图示与符号，不宣称A完全不会等值分数。B同分母加法已成立而等值分数不稳，应先处理细分不改量。两人同一最终2/5不等于同一成因。所有整体恒定。新增观察后A已有多次该任务独立成功，可撤去重复基础示范并做新迁移；B等值变换已有一次成功而异分母加法仍错，需看是否会把等值变换用于加法，不能说B毫无进步或已稳定掌握。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "同一整体在分割过程中改变长度/面积却当等值",
+          "两人只给同一通分口诀而不使用差异证据",
+          "在收到新增观察后否认A已观察到的独立成功或把B一次等值成功当稳定加法掌握"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "学生页数学正确、整体不变、独立题未附关键解法。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "A/B支持重点与探查证据匹配，允许共享合理内容。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "实际第二轮据新观察更新，而非重复首轮判断。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "relation": "same_final_error_different_evidence",
+      "expected": "A/B最终错答相同，支持重点依据探查不同。"
+    },
+    {
+      "relation": "new_independent_evidence",
+      "expected": "第二轮保留正确证据并调整下一步。"
+    }
+  ],
+  "runtime": {
+    "base": {
+      "mode": "scripted_dialogue",
+      "followups": [
+        "两天后新增独立观察，均未提供公式或答案：A计算3/8+2/8得5/8，解释“单位还是八分之一”；计算1/2+1/4得3/4，并写成2/4+1/4。B把2/3写成4/6，说明“每份二等分”，但计算1/3+1/6仍写2/9。请根据这些新观察，分别更新下一次要查什么、要给什么支持；写一条下一次实际会问学生的问题，并给教师判读依据。"
+      ]
+    }
+  },
+  "source_files": [
+    {
+      "source_path": "/home/likefallwind/code/edulastexam/private/edu_last_exam_pilot_v1/challenge_v2/stimuli/14/probes.json",
+      "destination": "stimuli/14/probes.json",
+      "sha256": "5fc842594487d00423f07468c00d2e26166998ee907f2e602790b99049cb0b3a"
+    }
+  ]
+}

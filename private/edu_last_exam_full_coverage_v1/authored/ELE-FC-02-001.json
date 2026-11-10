@@ -1,0 +1,143 @@
+{
+  "item_id": "ELE-FC-02-001",
+  "direction_id": "02",
+  "title": "空间几何的等价参数约定与部分分",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": [
+      "GLM-5.3-Flash"
+    ],
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-02",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 02；沿用已核文献机制，本次不是重新联网核验"
+    },
+    {
+      "source_id": "LOCAL-02-1",
+      "local_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/02/base.md",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    },
+    {
+      "source_id": "LOCAL-02-2",
+      "local_path": "private/edu_last_exam_pilot_v1/challenge_v2/reference/02/gold.json",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    }
+  ],
+  "failure_mechanism": "混淆合法符号约定、传播错误与独立错误。",
+  "education_consequence": "误扣正确过程或因终值巧合放过错误最近点。",
+  "adaptations": [
+    "中性任务指令；来源若为本地自建案例仍保留合成身份，不冒充论文或真实学生原例。"
+  ],
+  "limitations": [
+    "独立教师审阅尚未完成；这是探索候选，当前模型难度未测。"
+  ],
+  "measurement_claim": "单轮过程评分；同一任务内的正确作品是正控制。",
+  "unmeasured_subclaims": [
+    "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "base",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "请按下面公开规则批改两份作业，给出分项分、总分、最早实质错误和简短反馈；附独立核算。\n\n题目：求点P=(3,-1,2)到平面H:2x-y+2z=5的最近点Q和距离，说明为什么是最近点。\n课程参考：取n=(2,-1,2)，写Q=P+t n，解出t，再求距离；其他有效方法和相反法向量同等接受。\n\n公开评分规则：\nR1 法向量与参数式相容，2分；仅方向正确但参数式不相容，1分。\nR2 将自己的参数式正确代入平面并求参数，2分；代入式正确但求参数运算有误，1分；代入式已错，0分。\nR3 根据自己求得的参数正确代回求Q，2分；此项允许前错带入，不因R2已扣的错误再次扣分；出现新的代入或运算错误，按只完成坐标的比例给分。\nR4 用自己参数的绝对值乘法向量长度，或计算自己P到Q的长度，且运算正确，2分；前错带入可得分；方法正确但出现新运算错误1分。\nR5 最短性说明，2分：仅说明法向/垂直方向为何相关给1分；还验证Q在H上，并用正交分解、柯西不等式或等价论证保证最短，再给1分。缺少可行性验证不能拿第二分。\n\n学生甲：\n甲1 我用n'=(-2,1,-2)，令Q=(3,-1,2)+t(-2,1,-2)。\n甲2 代入H得11-9t=5，所以t=2/3。\n甲3 Q=(5/3,-1/3,2/3)，且2×5/3-(-1/3)+2×2/3=5。\n甲4 距离=|2/3|×3=2。\n甲5 任取H上的X，X-Q垂直于Q-P，故|X-P|²=|X-Q|²+|Q-P|²≥4；等号在X=Q取得。\n\n学生乙：\n乙1 我用n'=(-2,1,-2)，令Q=(3,-1,2)+t(-2,1,-2)。\n乙2 代入H得11+9t=5，所以t=-2/3。\n乙3 Q=(13/3,-5/3,10/3)。\n乙4 距离=|-2/3|×3=2。\n乙5 因为Q-P沿法向量方向，所以这就是最近点。\n",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "base": {
+        "reference_answer": {
+          "甲": {
+            "criterion_scores": [
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "total": 10,
+            "first_error": null
+          },
+          "乙": {
+            "criterion_scores": [
+              2,
+              0,
+              2,
+              2,
+              1
+            ],
+            "total": 7,
+            "first_error": "乙2",
+            "Q_plane_lhs": 17
+          },
+          "nearest_point": [
+            "5/3",
+            "-1/3",
+            "2/3"
+          ],
+          "distance": 2
+        },
+        "reasoning": "n与n′方向相反，参数必须相应反号，甲完全正确。乙最早在代入系数把n·n′=-9写成+9；乙3按自己的t计算无新错，乙4也是按自己的位移正确算长度，因此依公开规则R3/R4各2分。乙Q代入平面得到17而非5，沿法向只说明相关方向，尚不能说明错误Q是可行最近点，R5仅1分。乙最终距离数值恰巧为2不使其Q正确。",
+        "acceptable_alternatives": [
+          "可用点到平面距离公式复核2，但不能用该公式替乙补上作品中没有的可行性论证。",
+          "最早错误可不报编号，准确指出11+9t应为11-9t即可。",
+          "R3按三个坐标部分计分的条款未触发：乙三个坐标均与其错误参数一致。"
+        ],
+        "critical_errors": [
+          "把甲t的符号与参考n的符号直接比较后扣分。",
+          "把乙判为全对，因为最终距离也是2。",
+          "因乙2而在R3/R4重复扣分。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "甲为10分且无实质错误；相反法向量是合法选择。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "乙首错乙2；按公开规则分项2/0/2/2/1，总分7，乙Q不在平面。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "独立最近点(5/3,-1/3,2/3)、距离2，并给出与评分一致的反馈。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "within_prompt": "base",
+      "positive_control": "学生甲全对",
+      "challenge": "乙距离数值对但Q错误。"
+    }
+  ],
+  "runtime": {
+    "base": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

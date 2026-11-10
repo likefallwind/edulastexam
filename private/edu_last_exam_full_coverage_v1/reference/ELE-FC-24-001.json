@@ -1,0 +1,66 @@
+{
+  "gold": {
+    "per_prompt": {
+      "none": {
+        "reference_answer": "必须完成A,B,C,D,E,F,G；任何满足8条边的拓扑序均可，例如A,B,C,D,E,F,G或E,A,C,B,D,F,G。建议序列F在C之前，违反C→F。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "将F安排在C/D/E前",
+          "误拒不同合法拓扑序",
+          "忽略目标G的必要祖先"
+        ]
+      },
+      "some": {
+        "reference_answer": "A,B,E已满足，不必重复作为强制先修。必须补C,D,F,G，C与D顺序任意，然后F、G。建议全序仍违反C→F；在已掌握条件下也不能让F先于C。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "不使用给定掌握状态而强制从头学全部",
+          "漏掉C或D却安排F"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "顺序满足全部显式先修约束而非只检查相邻项。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "目标祖先完整、已掌握节点不要求重复。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "接受所有合法拓扑序，准确指出建议序列违反C→F。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "none",
+        "some"
+      ],
+      "relation": "mastery_state_only",
+      "expected": "顺序的必要待学集合随证据变，不改边。"
+    },
+    {
+      "relation": "multiple_valid_orders",
+      "expected": "C与D等无直接依赖者可互换。"
+    }
+  ],
+  "measurement_claim": "显式课程依赖下的状态条件路径规划",
+  "unmeasured_subclaims": [
+    "自动推断真实概念先修边、长期学习收益"
+  ]
+}

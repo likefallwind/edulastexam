@@ -1,0 +1,26 @@
+[
+  {
+    "source_path": "private/edu_last_exam_v1/stimuli/12/attempts.csv",
+    "target_path": "stimuli/12/attempts.csv",
+    "sha256": "9bcc0179bab8b70b1a2b07fbe56ef91b1a70e95fbce9820321b3e9c7427050fb",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_scenario_neutral_v1/stimuli/S03_001/history_a.json",
+    "target_path": "stimuli/12/history_a.json",
+    "sha256": "4da819409deae9ead4398ac10fe2088993a7907d5260c0d35c9b449b4330b785",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_scenario_neutral_v1/stimuli/S03_001/history_b.json",
+    "target_path": "stimuli/12/history_b.json",
+    "sha256": "5b25a02eb64979901995203c98e2c2aa3011f6e48b1f5cd1f650580f2b67d51a",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_scenario_neutral_v1/stimuli/S03_001/history_c.json",
+    "target_path": "stimuli/12/history_c.json",
+    "sha256": "a77a97cf461a3d03d78946821449cad24a093a5d279a3bf914a75234f90ce84b",
+    "operation": "explicit_byte_copy"
+  }
+]

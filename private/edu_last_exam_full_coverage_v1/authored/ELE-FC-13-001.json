@@ -1,0 +1,339 @@
+{
+  "item_id": "ELE-FC-13-001",
+  "direction_id": "13",
+  "title": "帮助调整的可分支短辅导",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": [
+      "GLM-5.3-Flash"
+    ],
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-13",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 13；沿用已核文献机制，本次不是重新联网核验"
+    },
+    {
+      "source_id": "LOCAL-13-1",
+      "local_path": "private/edu_last_exam_v1/stimuli/13/snapshot_A.md",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    },
+    {
+      "source_id": "LOCAL-13-2",
+      "local_path": "private/edu_last_exam_v1/stimuli/13/snapshot_B.md",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    }
+  ],
+  "failure_mechanism": "帮助不随当前学生证据变化，或把支持下成功当作迁移。",
+  "education_consequence": "已会学生被代做，卡住学生被无效追问，教师获得错误完成记录。",
+  "adaptations": [
+    "中性任务指令；来源若为本地自建案例仍保留合成身份，不冒充论文或真实学生原例。",
+    "新增显式有限动作环境；每个action对应固定学生观察。评分同时核查message与action一致性，动作名不能替代实际教学行为。"
+  ],
+  "limitations": [
+    "独立教师审阅尚未完成；这是探索候选，当前模型难度未测。"
+  ],
+  "measurement_claim": "有模型行动依赖后续观察的有限动作短互动；由作者写定学生反应，不是自由学生模拟或真实学习效果。",
+  "unmeasured_subclaims": [
+    "开放自然语言行动的完整覆盖、真实学生学习增益、长期保持、教师动作集合独立验证。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "ready",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "这是受控短辅导环境。每轮请按运行器给出的当前动作选一个，并在message中写出你实际会给学生的话；动作名只是交互接口，不代表正确答案。教师目标是学生能解释分数除法的份数含义并尝试独立应用；可以直接解释、提示或示范。判定会同时检查动作和你实际写的话。\n\n学生先前独立解释1/2米按1/8米一段可分4段，以及3/5÷1/5=3的份数含义。当前新题是3/4米按1/8米一段分。学生说：“我能自己画，你先说是不是乘8？我想快点写完。”尚未尝试本题。\n\n本次交互接口说明：independent_attempt=请学生自己尝试当前题；ask_meaning=请学生解释当前量/单位；demonstrate或explain_grouping=给当前问题的具体示范/分组解释；explain=进一步解释当前卡点；transfer=让学生独立完成以下新题卡；finish=结束并报告已取得或仍缺少的证据。选择动作后仍需在message中真实落实，不只输出标签。可用新题卡：5/6米带子，每段1/6米，求段数并解释单位。教师希望结束前观察这道新题的独立作答；如未观察到，可以如实记录未完成，不能声称已经通过。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "stuck",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "这是受控短辅导环境。每轮请按运行器给出的当前动作选一个，并在message中写出你实际会给学生的话；动作名只是交互接口，不代表正确答案。教师目标是学生能解释分数除法的份数含义并尝试独立应用；可以直接解释、提示或示范。判定会同时检查动作和你实际写的话。\n\n学生前面独立做对3/4÷1/8=6。新题3/4米按3/8米一段分时，学生画6个八分之一并答6段。教师已问每段长度，学生能说3/8，却又逐格数说6段。两次尝试后他说：“我分不清格和段，能给我讲清楚吗？”\n\n本次交互接口说明：independent_attempt=请学生自己尝试当前题；ask_meaning=请学生解释当前量/单位；demonstrate或explain_grouping=给当前问题的具体示范/分组解释；explain=进一步解释当前卡点；transfer=让学生独立完成以下新题卡；finish=结束并报告已取得或仍缺少的证据。选择动作后仍需在message中真实落实，不只输出标签。可用新题卡：3/4米带子，每段1/4米，求段数并解释单位。教师希望结束前观察这道新题的独立作答；如未观察到，可以如实记录未完成，不能声称已经通过。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "ready": {
+        "reference_answer": {
+          "initial": "先留独立表达/尝试，可简短确认学生自提乘8；不宜直接代做全部答案。",
+          "needed": "独立成功后可核验迁移；若只有复述应取得独立证据再宣称该目标完成。",
+          "math": "3/4÷1/8=6段；5/6÷1/6=5段。",
+          "action_semantics": "independent_attempt不能在message中给完整答案；ask_meaning应让学生说明份数；transfer需给本环境规定的新题5/6米按1/6米每段分。"
+        },
+        "acceptable_alternatives": [
+          "可以确认学生自己提出的方法；可以先让其解释再算；题目难度不是禁止任何帮助。"
+        ],
+        "critical_errors": [
+          "初始学生尚未尝试便直接替写全部过程，并将此记录为独立掌握。",
+          "把支持下复述计为独立迁移。",
+          "行动标签称独立尝试但message已经给出整题答案，仍据环境返回宣称独立证据。"
+        ]
+      },
+      "stuck": {
+        "reference_answer": {
+          "initial": "已有两次实质失败且具体卡在格/段，应提供将3格组成一段的解释、图示或等价帮助，不反复空泛追问。",
+          "needed": "支持下正确后提供3/4米按1/4米一段的新题，观察学生独立完成再记录。",
+          "math": "3/4÷3/8=2段；新题3/4÷1/4=3段。",
+          "action_semantics": "explain_grouping的message应给真实的3小格一组或等价数学解释；transfer不得先给新题答案。"
+        },
+        "acceptable_alternatives": [
+          "直接解释答案2并安排独立新题可接受；不统一奖励永远不给答案。"
+        ],
+        "critical_errors": [
+          "将3/4÷3/8认作6段。",
+          "反复只催继续独立思考、不提供已明确请求的实质帮助。",
+          "支持下照画2组便宣布已独立迁移。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "数学、份数与单位正确，实际message落实所选动作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "当前已有独立基础时给尝试空间；明确重复困难时提供针对性实质支持，允许多种教法。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "依据实际后续作答调整帮助与结束判断，区分复述/支持下正确/独立新题，不虚构学习增益。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "ready",
+        "stuck"
+      ],
+      "relation": "different_observed_need_for_help",
+      "expected": "ready保留独立机会，stuck及时具体帮助；最终都区分支持下与独立证据。"
+    }
+  ],
+  "runtime": {
+    "ready": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 5,
+      "states": {
+        "s0": {
+          "actions": {
+            "independent_attempt": {
+              "observation": "学生独立作答：我画了6个1/8米的小段，所以3/4÷1/8=6段；每一段就是题目规定的一份。",
+              "next_state": "understood"
+            },
+            "demonstrate": {
+              "observation": "学生：我照你给的答案写成6段了。我还没有自己做新题。",
+              "next_state": "copied"
+            },
+            "ask_meaning": {
+              "observation": "学生独立解释：乘8是数有几个1/8米。3/4有6个1/8米，所以6是段数。",
+              "next_state": "understood"
+            },
+            "finish": {
+              "observation": "教师记录：本题在结束前没有学生独立作答。",
+              "next_state": "done"
+            }
+          }
+        },
+        "understood": {
+          "actions": {
+            "transfer": {
+              "observation": "学生独立解新题5/6米按1/6米一段分：5段，因为5×1/6米=5/6米。",
+              "next_state": "transfer_ok"
+            },
+            "explain": {
+              "observation": "学生：这段解释我刚才已经能说；我愿意做一道新的独立题。",
+              "next_state": "understood_again"
+            },
+            "finish": {
+              "observation": "教师记录：当前题已有独立解释；尚无本轮新的迁移题观察。",
+              "next_state": "done"
+            }
+          }
+        },
+        "understood_again": {
+          "actions": {
+            "transfer": {
+              "observation": "学生独立解5/6÷1/6：5段，并用5×1/6=5/6检验。",
+              "next_state": "transfer_ok"
+            },
+            "finish": {
+              "observation": "教师记录：本轮未完成新迁移。",
+              "next_state": "done"
+            }
+          }
+        },
+        "copied": {
+          "actions": {
+            "transfer": {
+              "observation": "学生独立解5/6÷1/6：5段，并用5×1/6米=5/6米检验。",
+              "next_state": "transfer_ok"
+            },
+            "ask_meaning": {
+              "observation": "学生：我能重复6，但你让我自己说明每份是什么，我还说不清。",
+              "next_state": "needs_meaning"
+            },
+            "finish": {
+              "observation": "教师记录：结束前只观察到跟随教师答案。",
+              "next_state": "done"
+            }
+          }
+        },
+        "needs_meaning": {
+          "actions": {
+            "explain": {
+              "observation": "学生：一份是题目规定的一段，不一定是图上一小格。请让我自己再做5/6÷1/6。",
+              "next_state": "prepared"
+            },
+            "transfer": {
+              "observation": "学生解5/6÷1/6得到5，但说结果是5米。",
+              "next_state": "wrong_unit"
+            },
+            "finish": {
+              "observation": "教师记录：份数意义未核验。",
+              "next_state": "done"
+            }
+          }
+        },
+        "prepared": {
+          "actions": {
+            "transfer": {
+              "observation": "学生独立解5/6÷1/6：5段，因为5段×1/6米/段=5/6米。",
+              "next_state": "transfer_ok"
+            },
+            "finish": {
+              "observation": "教师记录：解释后独立应用未观察。",
+              "next_state": "done"
+            }
+          }
+        },
+        "wrong_unit": {
+          "actions": {
+            "explain": {
+              "observation": "学生：应该是5段，不是5米；我按你提醒改好了。",
+              "next_state": "prepared"
+            },
+            "finish": {
+              "observation": "教师记录：单位问题未修复。",
+              "next_state": "done"
+            }
+          }
+        },
+        "transfer_ok": {
+          "actions": {
+            "finish": {
+              "observation": "教师记录：保存了本轮学生独立迁移和解释证据。",
+              "next_state": "done"
+            },
+            "explain": {
+              "observation": "学生：我已经解释过了，还有一个新的检查目标吗？",
+              "next_state": "transfer_ok"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ]
+    },
+    "stuck": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 5,
+      "states": {
+        "s0": {
+          "actions": {
+            "independent_attempt": {
+              "observation": "学生再次逐格数：6个八分之一，所以我还是写6段。我不知道怎样把格算成一段。",
+              "next_state": "stuck_again"
+            },
+            "explain_grouping": {
+              "observation": "学生：每段3/8米就是3个小格。6格能分成两组，所以2段。我照这个示范圈了两组。",
+              "next_state": "supported_correct"
+            },
+            "ask_meaning": {
+              "observation": "学生：每段是3/8米，但格是1/8米；我不知道要怎样连接这两个数。",
+              "next_state": "stuck_again"
+            },
+            "finish": {
+              "observation": "教师记录：学生仍写6段，未解决格与段关系。",
+              "next_state": "done"
+            }
+          }
+        },
+        "stuck_again": {
+          "actions": {
+            "explain_grouping": {
+              "observation": "学生：一段要3格；6格圈成两组，所以2段。这是看过说明后完成的。",
+              "next_state": "supported_correct"
+            },
+            "independent_attempt": {
+              "observation": "学生：还是6，我已经试过多次了。",
+              "next_state": "stuck_again"
+            },
+            "finish": {
+              "observation": "教师记录：学生困难持续且没有实质帮助。",
+              "next_state": "done"
+            }
+          }
+        },
+        "supported_correct": {
+          "actions": {
+            "transfer": {
+              "observation": "学生独立解新题3/4米按1/4米一段分：每段2个八分之一，6格分3组，所以3段。",
+              "next_state": "transfer_ok"
+            },
+            "explain_grouping": {
+              "observation": "学生：我会照着圈2组了，但是还没有自己做别的例子。",
+              "next_state": "supported_correct"
+            },
+            "finish": {
+              "observation": "教师记录：仅有支持下成功；没有独立迁移观察。",
+              "next_state": "done"
+            }
+          }
+        },
+        "transfer_ok": {
+          "actions": {
+            "finish": {
+              "observation": "教师记录：保存了独立新题的分组与单位解释。",
+              "next_state": "done"
+            },
+            "ask_meaning": {
+              "observation": "学生：3表示段数，每段1/4米；3×1/4米=3/4米。",
+              "next_state": "transfer_ok"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ]
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

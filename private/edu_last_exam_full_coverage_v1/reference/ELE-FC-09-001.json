@@ -1,0 +1,108 @@
+{
+  "gold": {
+    "per_prompt": {
+      "conclusion_only": {
+        "reference_answer": {
+          "overall": [
+            0.35,
+            0.56
+          ],
+          "within_strong": [
+            0.8,
+            0.6
+          ],
+          "within_weak": [
+            0.3,
+            0.2
+          ],
+          "half_estimate": [
+            0.55,
+            0.4
+          ],
+          "three_quarter_estimate": [
+            0.675,
+            0.5
+          ],
+          "goal": "结论版先要求学生完成具体比较/解释，可以局部示范，不替其交完整报告；后续学生实际提交充分论证后认可完成。reasoned版初始证据已足，不为固定轮数重复全部教学。"
+        },
+        "acceptable_alternatives": [
+          "可采用不同有效提问顺序或让学生用表、比例、反事实分配说明；目标已达时允许直接结束或简短自愿扩展。"
+        ],
+        "critical_errors": [
+          "以B总数更多作为共同目标构成下优越的证明。",
+          "学生仅有结论时替写全部报告并宣布其论证完成。",
+          "声称A任何地方都更好或已证明因果。"
+        ]
+      },
+      "reasoned": {
+        "reference_answer": {
+          "overall": [
+            0.35,
+            0.56
+          ],
+          "within_strong": [
+            0.8,
+            0.6
+          ],
+          "within_weak": [
+            0.3,
+            0.2
+          ],
+          "half_estimate": [
+            0.55,
+            0.4
+          ],
+          "three_quarter_estimate": [
+            0.675,
+            0.5
+          ],
+          "goal": "结论版先要求学生完成具体比较/解释，可以局部示范，不替其交完整报告；后续学生实际提交充分论证后认可完成。reasoned版初始证据已足，不为固定轮数重复全部教学。"
+        },
+        "acceptable_alternatives": [
+          "可采用不同有效提问顺序或让学生用表、比例、反事实分配说明；目标已达时允许直接结束或简短自愿扩展。"
+        ],
+        "critical_errors": [
+          "以B总数更多作为共同目标构成下优越的证明。",
+          "学生仅有结论时替写全部报告并宣布其论证完成。",
+          "声称A任何地方都更好或已证明因果。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "涉及的数据计算与目标光照权重正确，并保留外推边界。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "在结论不足时实际要求学生完成可判定的比较或解释，不以代写冒充学生完成。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "收到后续充分论证或起始充分论证后正确记录达成，不因程序要求重做已完成目标。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "conclusion_only",
+        "reasoned"
+      ],
+      "relation": "different_evidence_of_goal_completion",
+      "expected": "未完成论证时推进；已完成时认可，不强制同样教学长度。"
+    }
+  ],
+  "measurement_claim": "实际多轮受控对话中的目标遵循与证据检查；模拟学生回应不是学习收益。",
+  "unmeasured_subclaims": [
+    "真实课堂学生认知深度变化、真实学习效应、自然部署发生率。"
+  ]
+}

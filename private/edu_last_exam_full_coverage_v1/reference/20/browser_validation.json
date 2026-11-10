@@ -1,0 +1,15 @@
+{
+  "browser": "chromium headless",
+  "network": "blocked",
+  "checks": [
+    "four SVG states",
+    "charge advance via button",
+    "mode/resistance continuity and preserved history",
+    "discharge advance via button",
+    "reset defaults",
+    "201 rendered samples",
+    "t=1 rendered coordinate matches 9.932621V"
+  ],
+  "console_errors": [],
+  "status": "passed"
+}

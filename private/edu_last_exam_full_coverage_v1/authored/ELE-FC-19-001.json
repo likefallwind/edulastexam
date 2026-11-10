@@ -1,0 +1,190 @@
+{
+  "item_id": "ELE-FC-19-001",
+  "direction_id": "19",
+  "title": "四态活塞图的约束与跨态一致性",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-19",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 19；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "状态文字或图示未随止挡约束转换",
+  "education_consequence": "学生形成错误等压/等容模型",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "受限声明式科学图示生成及真实SVG渲染",
+  "unmeasured_subclaims": [
+    "任意绘图代码能力、独立视觉教学可读性、真实学习收益"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "generate",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "制作四态活塞气体教学图。密闭理想气体，活塞无摩擦，外部总压强（含活塞重量）为100kPa；截面积20cm²。初态T=300K，气柱高8cm。上止挡限制最高气柱10cm。缓慢加热至首次触挡，再到450K，随后缓慢冷却到330K。无漏气；忽略体积随容器温度变化。画出initial、touch、hot、cool四态，注明T、气柱高度、气体压强、体积、止挡对活塞向下的力。\n本运行环境用可信渲染器把你的JSON直接画成SVG：气柱高度决定画出的高度，标签来自相同数值，止挡固定在10cm。你负责科学状态与图示说明。只输出JSON：layout为horizontal或vertical；states按上述四个id排序；每态含id,temperature_K,piston_height_cm,pressure_kPa,volume_cm3,stop_force_N。可另加explanation文本。数值使用所示单位，误差≤1e-5；不能用字符串代替数值。该受限图示任务不要求你生成任意绘图代码。",
+      "assets": [],
+      "interaction_mode": "artifact"
+    },
+    {
+      "prompt_id": "review_valid",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "制作四态活塞气体教学图。密闭理想气体，活塞无摩擦，外部总压强（含活塞重量）为100kPa；截面积20cm²。初态T=300K，气柱高8cm。上止挡限制最高气柱10cm。缓慢加热至首次触挡，再到450K，随后缓慢冷却到330K。无漏气；忽略体积随容器温度变化。画出initial、touch、hot、cool四态，注明T、气柱高度、气体压强、体积、止挡对活塞向下的力。\n本运行环境用可信渲染器把你的JSON直接画成SVG：气柱高度决定画出的高度，标签来自相同数值，止挡固定在10cm。你负责科学状态与图示说明。只输出JSON：layout为horizontal或vertical；states按上述四个id排序；每态含id,temperature_K,piston_height_cm,pressure_kPa,volume_cm3,stop_force_N。可另加explanation文本。数值使用所示单位，误差≤1e-5；不能用字符串代替数值。该受限图示任务不要求你生成任意绘图代码。\n附件是一份待核验候选图数据。请核查后提交最终JSON；已有正确内容可以保留。",
+      "assets": [
+        "stimuli/19/review_candidate.json"
+      ],
+      "interaction_mode": "artifact"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "generate": {
+        "reference_answer": "T触挡=300×10/8=375K；初态(300,8,100,160,0)，刚触挡(375,10,100,200,0)，450K时(450,10,120,200,40)，冷至330K后已离挡(330,8.8,100,176,0)。压力单位kPa，面积20cm²=0.002m²，止挡力(120−100)×1000×0.002=40N向下。冷却到375K离挡，之后外压恒100。",
+        "acceptable_alternatives": [
+          "横排或竖排均可；解释可用PV/T不变或分段等压/等容。"
+        ],
+        "critical_errors": [
+          "冷至330K仍卡在10cm且压力88kPa而忽视活塞已离挡",
+          "刚触挡即声称正止挡力",
+          "力单位换算错误",
+          "图示高度与标注数值冲突"
+        ],
+        "expected_states": [
+          {
+            "id": "initial",
+            "temperature_K": 300,
+            "piston_height_cm": 8,
+            "pressure_kPa": 100,
+            "volume_cm3": 160,
+            "stop_force_N": 0
+          },
+          {
+            "id": "touch",
+            "temperature_K": 375,
+            "piston_height_cm": 10,
+            "pressure_kPa": 100,
+            "volume_cm3": 200,
+            "stop_force_N": 0
+          },
+          {
+            "id": "hot",
+            "temperature_K": 450,
+            "piston_height_cm": 10,
+            "pressure_kPa": 120,
+            "volume_cm3": 200,
+            "stop_force_N": 40
+          },
+          {
+            "id": "cool",
+            "temperature_K": 330,
+            "piston_height_cm": 8.8,
+            "pressure_kPa": 100,
+            "volume_cm3": 176,
+            "stop_force_N": 0
+          }
+        ]
+      },
+      "review_valid": {
+        "reference_answer": "T触挡=300×10/8=375K；初态(300,8,100,160,0)，刚触挡(375,10,100,200,0)，450K时(450,10,120,200,40)，冷至330K后已离挡(330,8.8,100,176,0)。压力单位kPa，面积20cm²=0.002m²，止挡力(120−100)×1000×0.002=40N向下。冷却到375K离挡，之后外压恒100。",
+        "acceptable_alternatives": [
+          "横排或竖排均可；解释可用PV/T不变或分段等压/等容。"
+        ],
+        "critical_errors": [
+          "冷至330K仍卡在10cm且压力88kPa而忽视活塞已离挡",
+          "刚触挡即声称正止挡力",
+          "力单位换算错误",
+          "图示高度与标注数值冲突"
+        ],
+        "expected_states": [
+          {
+            "id": "initial",
+            "temperature_K": 300,
+            "piston_height_cm": 8,
+            "pressure_kPa": 100,
+            "volume_cm3": 160,
+            "stop_force_N": 0
+          },
+          {
+            "id": "touch",
+            "temperature_K": 375,
+            "piston_height_cm": 10,
+            "pressure_kPa": 100,
+            "volume_cm3": 200,
+            "stop_force_N": 0
+          },
+          {
+            "id": "hot",
+            "temperature_K": 450,
+            "piston_height_cm": 10,
+            "pressure_kPa": 120,
+            "volume_cm3": 200,
+            "stop_force_N": 40
+          },
+          {
+            "id": "cool",
+            "temperature_K": 330,
+            "piston_height_cm": 8.8,
+            "pressure_kPa": 100,
+            "volume_cm3": 176,
+            "stop_force_N": 0
+          }
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "四态温度、压强、体积、高度和止挡力符合公开模型。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "渲染图几何与同一状态标签一致；冷却后正确离挡。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "有效候选不被错误更改；不同合格布局均可。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "generate",
+        "review_valid"
+      ],
+      "relation": "generation_and_correct_artifact_control",
+      "expected": "生成正确状态；对正确候选不引入错误。"
+    }
+  ],
+  "runtime": {
+    "generate": {
+      "mode": "artifact",
+      "artifact_type": "diagram_json",
+      "validator": "19",
+      "repair_turns": 1
+    },
+    "review_valid": {
+      "mode": "artifact",
+      "artifact_type": "diagram_json",
+      "validator": "19",
+      "repair_turns": 1
+    }
+  }
+}

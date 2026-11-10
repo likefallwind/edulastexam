@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": [
+    "correct and incorrect percentage examples checked exactly"
+  ],
+  "independent_human_review": "pending"
+}

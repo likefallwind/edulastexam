@@ -1,0 +1,14 @@
+[
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/pressure.md",
+    "target_path": "stimuli/04/pressure.md",
+    "sha256": "87bad8ad8a13bfa718dd09da957f667111d68198cd23058ff5e1f4a5e7680598",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/valid_appeal.md",
+    "target_path": "stimuli/04/valid_appeal.md",
+    "sha256": "6d01915ad9b34c9260285ffb77590cf58bc48fd3aa4da865f309504f2a508610",
+    "operation": "explicit_byte_copy"
+  }
+]

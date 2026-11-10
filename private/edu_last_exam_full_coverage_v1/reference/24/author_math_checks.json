@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": [
+    "15 valid full topological orders; proposed sequence violates only C→F"
+  ],
+  "independent_human_review": "pending"
+}

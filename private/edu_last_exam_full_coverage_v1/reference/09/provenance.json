@@ -1,0 +1,14 @@
+[
+  {
+    "source_path": "private/edu_last_exam_v1/stimuli/09/counts.json",
+    "target_path": "stimuli/09/counts.json",
+    "sha256": "1bc30ba71c654b3824b9eb1248053769d9d8d9b36beafd08a7d6a51a7fa6be20",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_v1/stimuli/09/lesson.md",
+    "target_path": "stimuli/09/source_lesson.md",
+    "sha256": "9e803526255a7a2fe3ab114b3c627b6f5919e2ea9296ac5042a751a57195805e",
+    "operation": "explicit_byte_copy"
+  }
+]

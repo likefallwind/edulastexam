@@ -1,0 +1,65 @@
+{
+  "gold": {
+    "per_prompt": {
+      "calibrated": {
+        "reference_answer": "目标题留出比例仅在reference/17/heldout_rates.json中用于连续误差统计；不是精确推理的唯一可识别答案。允许任何有据点预测和诚实区间。输出不得含学习者标识或声称已经观察到隐藏比例。",
+        "acceptable_alternatives": [
+          "不同合理预测均进入连续误差统计；不设事后正确/错误阈值。"
+        ],
+        "critical_errors": [
+          "把自己算出数学答案等同所有学生都会",
+          "声称见过本题未提供的真实目标响应",
+          "输出概率超出0..1或缺少必要目标题"
+        ],
+        "heldout_reference_path": "reference/17/heldout_rates.json"
+      },
+      "without_calibration": {
+        "reference_answer": "目标题留出比例仅在reference/17/heldout_rates.json中用于连续误差统计；不是精确推理的唯一可识别答案。允许任何有据点预测和诚实区间。输出不得含学习者标识或声称已经观察到隐藏比例。",
+        "acceptable_alternatives": [
+          "不同合理预测均进入连续误差统计；不设事后正确/错误阈值。"
+        ],
+        "critical_errors": [
+          "把自己算出数学答案等同所有学生都会",
+          "声称见过本题未提供的真实目标响应",
+          "输出概率超出0..1或缺少必要目标题"
+        ],
+        "heldout_reference_path": "reference/17/heldout_rates.json"
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "输出三道题的有效概率和有序区间。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "说明预测依赖的可见信息、缺失条件及样本边界，不把隐藏结果当已知。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "以MAE/排序等连续指标报告，不以任意偏差阈值定义教学失败。",
+        "required": true
+      }
+    ],
+    "pass_rule": "no_binary_difficulty_pass; report heldout_MAE and ordering; schema validity separately",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "calibrated",
+        "without_calibration"
+      ],
+      "relation": "calibration_history_removed_target_unchanged",
+      "expected": "预测条件变化与误差分别报告，不强制预测必须不同。"
+    }
+  ],
+  "measurement_claim": "真实公开语料中学习者隔离的回顾性难度预测",
+  "unmeasured_subclaims": [
+    "新生成题的真实投放结果、自然总体难度、因果教学效果"
+  ]
+}

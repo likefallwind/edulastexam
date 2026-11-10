@@ -1,0 +1,22 @@
+{
+  "verified_on": "2026-11-10",
+  "python": "3.12.3",
+  "python_executable": "/usr/bin/python3",
+  "python_packages": {
+    "python-pptx": "1.0.2",
+    "Pillow": "12.1.1",
+    "numpy": "2.4.3",
+    "playwright": "1.58.0",
+    "markdown-it-py": "3.0.0"
+  },
+  "executables": {
+    "tmux": "/usr/bin/tmux",
+    "libreoffice": "/usr/bin/libreoffice",
+    "pdftoppm": "/usr/bin/pdftoppm",
+    "ffmpeg": "/usr/bin/ffmpeg"
+  },
+  "scope": "Installed versions observed on this host; not a portable dependency lock or container image.",
+  "rendering": "LibreOffice and Playwright browser checks require a host process that permits their runtime directories and local sockets.",
+  "credentials": "GLM_API inherited from the calling environment; never stored in snapshots.",
+  "execution_boundary": "Trusted renderers and bounded arithmetic/Python AST interpreters; workspace JSON actions; no arbitrary model shell or code execution."
+}

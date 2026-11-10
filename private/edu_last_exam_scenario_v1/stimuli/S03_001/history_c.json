@@ -1,0 +1,88 @@
+{
+  "records": [
+    {
+      "record_id": "R01",
+      "date": "2026-10-20",
+      "task": "矩形两边都变为原来的2倍，面积变为几倍？",
+      "help": "none",
+      "student_response": "2倍"
+    },
+    {
+      "record_id": "R02",
+      "date": "2026-10-21",
+      "task": "长3cm、宽5cm的矩形面积是多少？",
+      "help": "none",
+      "student_response": "15平方厘米"
+    },
+    {
+      "record_id": "R03",
+      "date": "2026-10-22",
+      "task": "三角形底6cm、高4cm，面积是多少？",
+      "help": "none",
+      "student_response": "12平方厘米"
+    },
+    {
+      "record_id": "R04",
+      "date": "2026-10-23",
+      "task": "长方形长由4变为8，宽仍为3，面积从多少变到多少？",
+      "help": "none",
+      "student_response": "12变24，2倍"
+    },
+    {
+      "record_id": "R05",
+      "date": "2026-10-24",
+      "task": "正方形边长5cm，周长是多少？",
+      "help": "none",
+      "student_response": "20cm"
+    },
+    {
+      "record_id": "R06",
+      "date": "2026-10-25",
+      "task": "长方形两边同时变为原来的3倍，面积变为几倍？",
+      "help": "老师已写出(3a)(3b)=9ab并解释后作答",
+      "student_response": "9倍"
+    },
+    {
+      "record_id": "R07",
+      "date": "2026-10-28",
+      "task": "长3宽2的矩形，两边同时扩大到2倍；写新面积与旧面积之比并解释。",
+      "help": "unknown",
+      "student_response": "6×4=24，原来3×2=6，比是4；长和宽各贡献一个2"
+    },
+    {
+      "record_id": "R08",
+      "date": "2026-10-29",
+      "task": "一条线段从6cm缩短为3cm，长度变为原来的几分之几？",
+      "help": "none",
+      "student_response": "1/2"
+    },
+    {
+      "record_id": "R09",
+      "date": "2026-11-01",
+      "task": "三角形底4高6变为底6高9，比较前后面积。",
+      "help": "unknown",
+      "student_response": "原来12，现在27；面积比27/12=9/4，底高各乘3/2"
+    },
+    {
+      "record_id": "R10",
+      "date": "2026-11-03",
+      "task": "正方形边长由2cm变为6cm，周长变为几倍？",
+      "help": "none",
+      "student_response": "原8cm，新24cm，3倍"
+    },
+    {
+      "record_id": "R11",
+      "date": "2026-11-05",
+      "task": "正方形面积由36平方厘米变为9平方厘米，边长变为原来的多少？说明理由。",
+      "help": "unknown",
+      "student_response": "边长6变3，是1/2；面积变1/4，不能把面积倍数直接当边长倍数"
+    },
+    {
+      "record_id": "R12",
+      "date": "2026-11-07",
+      "task": "矩形长10宽4，面积是多少？",
+      "help": "none",
+      "student_response": "40平方厘米"
+    }
+  ]
+}

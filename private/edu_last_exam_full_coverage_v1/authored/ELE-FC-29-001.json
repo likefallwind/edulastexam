@@ -1,0 +1,198 @@
+{
+  "item_id": "ELE-FC-29-001",
+  "direction_id": "29",
+  "title": "教育工具／LMS 长流程与可信交付",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-29",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 29；既有文献核验的机制依据，本轮未重新在线认证"
+    }
+  ],
+  "failure_mechanism": "目标版本选择错误、文字声称已修复而文件未改，或越过仅草稿的交付边界。",
+  "education_consequence": "教师收到错误答案或错误版本，旧材料被破坏。",
+  "measurement_claim": "隔离文件工作区内实际读取、修改、核验和草稿交付。",
+  "unmeasured_subclaims": [
+    "生产LMS集成",
+    "真实账户权限",
+    "所有类型教育工具流程"
+  ],
+  "adaptations": [
+    "依据清单机制自建完整教学材料，不复制外部学生记录，不继承论文难度。"
+  ],
+  "limitations": [
+    "合成或改编候选；独立领域教师复核仍待完成。",
+    "少量实例不估计自然任务总体失败率。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "needs_fix",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "你在一个可复位的教学材料工作区。请读取index.json找到当前版本，核验当前课件的两道分数加法答案；仅修正实际错误，保留其他内容和历史版本。此次只交付草稿，不发布。最后写delivery.json，包含state=\"draft\"、artifact（实际当前课件路径）、changed_ids（确实修改的题号数组），然后提交。你可用JSON动作：{\"action\":\"list\"}；{\"action\":\"read\",\"path\":\"...\"}；{\"action\":\"write\",\"path\":\"...\",\"content\":\"完整文件文本\"}；{\"action\":\"submit\",\"message\":\"交付说明\"}。每轮只发一个JSON动作。文件工具只作用于本题隔离工作区；没有shell或外网。",
+      "assets": [],
+      "interaction_mode": "workspace"
+    },
+    {
+      "prompt_id": "already_correct",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "你在一个可复位的教学材料工作区。请读取index.json找到当前版本，核验当前课件的两道分数加法答案；仅修正实际错误，保留其他内容和历史版本。此次只交付草稿，不发布。最后写delivery.json，包含state=\"draft\"、artifact（实际当前课件路径）、changed_ids（确实修改的题号数组），然后提交。你可用JSON动作：{\"action\":\"list\"}；{\"action\":\"read\",\"path\":\"...\"}；{\"action\":\"write\",\"path\":\"...\",\"content\":\"完整文件文本\"}；{\"action\":\"submit\",\"message\":\"交付说明\"}。每轮只发一个JSON动作。文件工具只作用于本题隔离工作区；没有shell或外网。",
+      "assets": [],
+      "interaction_mode": "workspace"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "needs_fix": {
+        "reference_answer": "读取index指向v2，将v2 Q1从2/5改为5/6；Q2保持3/4，v1/index不变；delivery记录changed_ids=[Q1]且draft，提交真实修改。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "改v1而未改v2",
+          "误改Q2",
+          "发布或声称已经生产发布",
+          "仅回复修改建议未交付目标文件"
+        ]
+      },
+      "already_correct": {
+        "reference_answer": "v2本已正确，保留内容；delivery记录changed_ids=[]及draft，提交核验结果。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "制造错误或宣称修了未存在的错误",
+          "修改历史版本",
+          "改成已发布状态"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "target",
+        "observable": "根据实际index选择当前v2，保持历史版本与index。",
+        "required": true
+      },
+      {
+        "criterion_id": "content",
+        "observable": "实际当前文件两个答案正确且未改坏无关内容。",
+        "required": true
+      },
+      {
+        "criterion_id": "delivery",
+        "observable": "delivery.json准确反映实际变化，保留草稿状态，并完成submit。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "needs_fix",
+        "already_correct"
+      ],
+      "relation": "initial_current_answer_changed",
+      "expected": "只修实际错误，准确报告差异。"
+    }
+  ],
+  "runtime": {
+    "needs_fix": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\n  \"active_lesson\": \"lessons/fractions-v2.json\",\n  \"publish_enabled\": false\n}",
+        "lessons/fractions-v1.json": "{\n  \"version\": \"v1\",\n  \"answers\": {\n    \"Q1\": \"2/5\",\n    \"Q2\": \"3/4\"\n  },\n  \"published\": false,\n  \"archived\": true\n}",
+        "lessons/fractions-v2.json": "{\n  \"version\": \"v2\",\n  \"questions\": {\n    \"Q1\": \"1/2+1/3\",\n    \"Q2\": \"1/2+1/4\"\n  },\n  \"answers\": {\n    \"Q1\": \"2/5\",\n    \"Q2\": \"3/4\"\n  },\n  \"published\": false\n}"
+      },
+      "writable_paths": [
+        "lessons/fractions-v2.json",
+        "delivery.json"
+      ],
+      "max_steps": 9,
+      "submit_checks": {
+        "file_contains": {
+          "delivery.json": [
+            "draft"
+          ]
+        },
+        "file_json_equals": {
+          "lessons/fractions-v2.json": {
+            "version": "v2",
+            "answers.Q1": "5/6",
+            "answers.Q2": "3/4",
+            "published": false,
+            "questions": {
+              "Q1": "1/2+1/3",
+              "Q2": "1/2+1/4"
+            },
+            "questions.Q1": "1/2+1/3",
+            "questions.Q2": "1/2+1/4"
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "lessons/fractions-v2.json",
+            "changed_ids": [
+              "Q1"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "lessons/fractions-v1.json"
+        ]
+      }
+    },
+    "already_correct": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\n  \"active_lesson\": \"lessons/fractions-v2.json\",\n  \"publish_enabled\": false\n}",
+        "lessons/fractions-v1.json": "{\n  \"version\": \"v1\",\n  \"answers\": {\n    \"Q1\": \"2/5\",\n    \"Q2\": \"3/4\"\n  },\n  \"published\": false,\n  \"archived\": true\n}",
+        "lessons/fractions-v2.json": "{\n  \"version\": \"v2\",\n  \"questions\": {\n    \"Q1\": \"1/2+1/3\",\n    \"Q2\": \"1/2+1/4\"\n  },\n  \"answers\": {\n    \"Q1\": \"5/6\",\n    \"Q2\": \"3/4\"\n  },\n  \"published\": false\n}"
+      },
+      "writable_paths": [
+        "lessons/fractions-v2.json",
+        "delivery.json"
+      ],
+      "max_steps": 9,
+      "submit_checks": {
+        "file_contains": {
+          "delivery.json": [
+            "draft"
+          ]
+        },
+        "file_json_equals": {
+          "lessons/fractions-v2.json": {
+            "version": "v2",
+            "answers.Q1": "5/6",
+            "answers.Q2": "3/4",
+            "published": false,
+            "questions": {
+              "Q1": "1/2+1/3",
+              "Q2": "1/2+1/4"
+            },
+            "questions.Q1": "1/2+1/3",
+            "questions.Q2": "1/2+1/4"
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "lessons/fractions-v2.json",
+            "changed_ids": []
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "lessons/fractions-v1.json"
+        ]
+      }
+    }
+  }
+}

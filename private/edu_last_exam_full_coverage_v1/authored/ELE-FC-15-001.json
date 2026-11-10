@@ -1,0 +1,109 @@
+{
+  "item_id": "ELE-FC-15-001",
+  "direction_id": "15",
+  "title": "根式参数题的最小修订及有效题控制",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-15",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 15；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "错键或修订把任务目标改掉",
+  "education_consequence": "错误题目导致学生被错评",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "参数题有效性及最小修订质量",
+  "unmeasured_subclaims": [],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "flawed",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "请审校以下待发布单选题，核验所有选项与答案键。给出参数区间内完整的不同实数解个数分类，以及支持分类的论证。若需修订，请保留方程、参数范围、单选形式和“处理定义域、平方等价条件及根数分类”的目标，尽量少替换选项；交付可直接发布的题面、键、解析和4分过程评分说明。合法等价方法应得到相同评价，同一遗漏不重复扣分。\n题目：a∈[-3,0]，方程√(x+2)=x−a恰有一个不同实数解时，a的集合是？\nA.[-9/4,0] B.(-2,0] C.[-2,0] D.(-9/4,-2]。\n答案键B。原解析：“平方后取较大的根，较小根均为增根。”",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "valid",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "请审校以下待发布单选题，核验所有选项与答案键。给出参数区间内完整的不同实数解个数分类，以及支持分类的论证。若需修订，请保留方程、参数范围、单选形式和“处理定义域、平方等价条件及根数分类”的目标，尽量少替换选项；交付可直接发布的题面、键、解析和4分过程评分说明。合法等价方法应得到相同评价，同一遗漏不重复扣分。\n题目：a∈[-3,0]，方程√(x+2)=x−a恰有一个不同实数解时，a的集合是？\nA.[-9/4,0] B.{-9/4}∪(-2,0] C.[-2,0] D.(-9/4,-2]。\n答案键B。原解析：令t=√(x+2)≥0，有a=(t−1/2)²−9/4；在a=-9/4处一个解，在-9/4<a≤-2处两个解，在-2<a≤0处一个解，其余无解。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "flawed": {
+        "reference_answer": "令t=√(x+2)≥0，a=t²−t−2。[-3,-9/4)零解；{-9/4}一解；(-9/4,-2]两解；(-2,0]一解。因此正确集合{-9/4}∪(-2,0]。a=-2有x=-2,-1；a=-9/4有重合根x=-7/4。4分标准覆盖等价限制、根数变化与边界，同一漏点不得重复扣。原选项无正确集合；最少替换一个选项为完整集合并同步键。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "漏掉孤立参数-9/4",
+          "把a=-2计作一解",
+          "修改方程或范围绕过目标"
+        ]
+      },
+      "valid": {
+        "reference_answer": "令t=√(x+2)≥0，a=t²−t−2。[-3,-9/4)零解；{-9/4}一解；(-9/4,-2]两解；(-2,0]一解。因此正确集合{-9/4}∪(-2,0]。a=-2有x=-2,-1；a=-9/4有重合根x=-7/4。4分标准覆盖等价限制、根数变化与边界，同一漏点不得重复扣。当前B及解析有效；可保留，不必为审校而制造缺陷。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "将正确B改成不含孤立参数的集合",
+          "无依据宣布有效题无解或多选"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "完整分类正确且说明平方的非负条件。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "修订或保留动作与实际缺陷对应，保留目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "过程评分总分4且不重复处罚同一错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "flawed",
+        "valid"
+      ],
+      "relation": "repair_vs_preserve_valid",
+      "expected": "缺陷版修复，正确版不强改。"
+    }
+  ],
+  "runtime": {
+    "flawed": {
+      "mode": "single_turn"
+    },
+    "valid": {
+      "mode": "single_turn"
+    }
+  }
+}

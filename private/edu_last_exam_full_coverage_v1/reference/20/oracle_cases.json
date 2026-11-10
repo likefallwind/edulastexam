@@ -1,0 +1,27 @@
+[
+  {
+    "prompt_id": "generate",
+    "response_text": "{\"step_expression\": \"V+(v-V)*exp(-dt/(R*C))\", \"current_expression\": \"(V-v)/R\", \"sample_dt\": 0.01, \"preserve_history_on_change\": true, \"reset_restores_defaults\": true}",
+    "expected_pass": true
+  },
+  {
+    "prompt_id": "generate",
+    "response_text": "{\"step_expression\": \"V+(v-V)*exp(-dt/(R*C))\", \"current_expression\": \"(V-v)/R\", \"sample_dt\": 0.02, \"preserve_history_on_change\": true, \"reset_restores_defaults\": true}",
+    "expected_pass": true
+  },
+  {
+    "prompt_id": "repair_curve",
+    "response_text": "{\"step_expression\": \"V+(v-V)*exp(-dt/(R*C))\", \"current_expression\": \"(V-v)/R\", \"sample_dt\": 0.5, \"preserve_history_on_change\": true, \"reset_restores_defaults\": true}",
+    "expected_pass": false
+  },
+  {
+    "prompt_id": "generate",
+    "response_text": "{\"step_expression\": \"V*(1-exp(-dt/(R*C)))\", \"current_expression\": \"(V-v)/R\", \"sample_dt\": 0.01, \"preserve_history_on_change\": true, \"reset_restores_defaults\": true}",
+    "expected_pass": false
+  },
+  {
+    "prompt_id": "generate",
+    "response_text": "{\"step_expression\": \"__import__('os').system('true')\", \"current_expression\": \"(V-v)/R\", \"sample_dt\": 0.01, \"preserve_history_on_change\": true, \"reset_restores_defaults\": true}",
+    "expected_pass": false
+  }
+]

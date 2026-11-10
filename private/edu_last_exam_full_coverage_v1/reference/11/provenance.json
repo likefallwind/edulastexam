@@ -1,0 +1,14 @@
+[
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/work_A.json",
+    "target_path": "stimuli/11/work_A.json",
+    "sha256": "d2d41ff8e8ad148fd9772b71cef6561eafb925356a4a3b3537fffb108e16456b",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/work_B.json",
+    "target_path": "stimuli/11/work_B.json",
+    "sha256": "8239ad4c2cb8c8d0dfad2c9ece52ba3ea9abf451032424085c112f391638bd1b",
+    "operation": "explicit_byte_copy"
+  }
+]

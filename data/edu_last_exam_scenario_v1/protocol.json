@@ -1,0 +1,36 @@
+{
+  "schema_version": "edu_last_exam_scenario_v1_2026-11-10",
+  "candidate_only": true,
+  "workflow": [
+    "cards",
+    "authored",
+    "export",
+    "validate",
+    "review",
+    "freeze"
+  ],
+  "current_target": "author_offline_validated_candidate",
+  "package_count": 5,
+  "prompt_count": 12,
+  "independent_api_calls": true,
+  "real_multiturn": false,
+  "score_aggregation": "none_across_scenarios; paired contrasts reported within each package",
+  "human_review": "pending",
+  "model_evaluation": "not_run",
+  "difficulty": "not_measured",
+  "canonical_authoring_policy": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": "not_selected",
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "release_blockers": [
+    "independent human review",
+    "current multi-model evaluation and judge calibration",
+    "author model identification and exclusion before tested panel",
+    "student image redistribution permission for a public release"
+  ],
+  "runner": "scripts/experiments/run_edu_last_exam_challenge_v2.py",
+  "max_tokens": "not_added; deepseek-v3.2 provider contract remains a separate runner concern"
+}

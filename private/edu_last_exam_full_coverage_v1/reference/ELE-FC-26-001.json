@@ -1,0 +1,73 @@
+{
+  "gold": {
+    "per_prompt": {
+      "unknown": {
+        "reference_answer": "裸数0.25×60000=15000；若mA/s则60 A/s，得15 V；若A/s则15000 V。当前须请求di/dt单位，不能判学生的原问题必对或必错。可给条件反馈且保留未知。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "假定单位mA写进确定反馈",
+          "断言学生不会乘法",
+          "无条件认定结果15正确或错误"
+        ]
+      },
+      "mA": {
+        "reference_answer": "已知mA/s，60000mA/s=60A/s，局部幅值15V正确，应直接认可该局部。原i(t)未知不妨碍这步换算。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "要求补已提供的单位而拒绝判断",
+          "认定15000V才对"
+        ]
+      },
+      "A": {
+        "reference_answer": "已知A/s，局部幅值为15000V而非15V，指出差1000倍，不把错误称为未做mA→A换算（题给A）。不以一次错误判断整体能力。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "给15V正确结论",
+          "把原A/s说成mA/s或未做mA→A"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "单位条件与数值计算一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "缺信息只请求必要条件，已给充分条件则作局部判断。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "最终给学生的反馈保持相同条件边界且不加能力标签。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "unknown",
+        "mA",
+        "A"
+      ],
+      "relation": "one_material_condition_changed",
+      "expected": "未知请求补充，mA认可15，A纠正15000。"
+    }
+  ],
+  "measurement_claim": "证据充分性下的选择性判断和反馈一致性",
+  "unmeasured_subclaims": [
+    "稳定概率校准、真实转介效果"
+  ]
+}

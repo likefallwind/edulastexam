@@ -1,0 +1,148 @@
+{
+  "item_id": "ELE-FC-07-001",
+  "direction_id": "07",
+  "title": "真实手写局部读数与批注证据",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": [
+      "GLM-5.3-Flash"
+    ],
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-07",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 07；沿用已核文献机制，本次不是重新联网核验"
+    },
+    {
+      "source_id": "LOCAL-07-1",
+      "local_path": "private/edu_last_exam_scenario_neutral_v1/authored/ELE-S02-001.json",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    }
+  ],
+  "failure_mechanism": "视觉符号误读被转成学生错误；材料缺失被补猜为事实。",
+  "education_consequence": "学生收到不存在的错因或误扣意见。",
+  "adaptations": [
+    "中性任务指令；来源若为本地自建案例仍保留合成身份，不冒充论文或真实学生原例。",
+    "明确复制已有公开原图衍生素材；原素材许可与原教材缺失状态不因复制改变。"
+  ],
+  "limitations": [
+    "独立教师审阅尚未完成；这是探索候选，当前模型难度未测。"
+  ],
+  "measurement_claim": "真实手写局部读取与反馈的图像/转写对照；不测缺失原题的完整解题。",
+  "unmeasured_subclaims": [
+    "完整教材原题的正确性、跨页归属、自然手写分布、图像再分发许可未确认。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "image",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "附件是学生作品的一段，未提供教材原题。请按上方、中间和下方三个位置报告可读的式子与数值；说明相位的读数及可见单位。教师拟写两条批注：“学生把300改成30”“学生把250×10^-3×60000算成15，因此不会乘法”。请逐条给出可由作品支持的核查意见、相关计算和给学生的简短反馈。若局部确实辨不清，请定位说明。",
+      "assets": [
+        "stimuli/07/worksheet.png"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "transcript",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "附件是学生作品的一段，未提供教材原题。请按上方、中间和下方三个位置报告可读的式子与数值；说明相位的读数及可见单位。教师拟写两条批注：“学生把300改成30”“学生把250×10^-3×60000算成15，因此不会乘法”。请逐条给出可由作品支持的核查意见、相关计算和给学生的简短反馈。若局部确实辨不清，请定位说明。",
+      "assets": [
+        "stimuli/07/transcript.md"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "image": {
+        "reference_answer": {
+          "top": "V=L di/dt；i'(t)=60000 cos(500t−30°)",
+          "middle": "250×10^-3 H乘60000 cos(500t−30°)",
+          "bottom": "15 cos(500t−30)，30后无清晰度符号",
+          "units": "可见L单位H；电流导数A/s或mA/s未标",
+          "judgments": "不能把30°误读为300后扣分；裸数为15000，但若导数单位mA/s则15V可成立。当前不确定原题单位，不足以断定原题错或学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "图像细节确有不确定时可定位后要求更清晰图，不可将不确定读数作为扣分事实。",
+          "不必用指定转写格式；不能将末行度符号简写独自升级为相位数值改变。"
+        ],
+        "critical_errors": [
+          "将30°确定读成300并据此确认相位错误。",
+          "在未有电流单位时把mA/s或A/s作为原题事实，给确定的原题对错或能力标签。",
+          "无条件接受裸数乘积为15。"
+        ]
+      },
+      "transcript": {
+        "reference_answer": {
+          "top": "V=L di/dt；i'(t)=60000 cos(500t−30°)",
+          "middle": "250×10^-3 H乘60000 cos(500t−30°)",
+          "bottom": "15 cos(500t−30)，30后无清晰度符号",
+          "units": "可见L单位H；电流导数A/s或mA/s未标",
+          "judgments": "不能把30°误读为300后扣分；裸数为15000，但若导数单位mA/s则15V可成立。当前不确定原题单位，不足以断定原题错或学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "图像细节确有不确定时可定位后要求更清晰图，不可将不确定读数作为扣分事实。",
+          "不必用指定转写格式；不能将末行度符号简写独自升级为相位数值改变。"
+        ],
+        "critical_errors": [
+          "将30°确定读成300并据此确认相位错误。",
+          "在未有电流单位时把mA/s或A/s作为原题事实，给确定的原题对错或能力标签。",
+          "无条件接受裸数乘积为15。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "对上中下可见数值、30°与单位作忠实读取，真实不确定处具体标出而非编造。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "两条批注依据真实读数审核；条件计算正确，原题单位未知保留到最终反馈。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "不给学生无依据的能力标签，清楚指出需要补充的单位。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "image",
+        "transcript"
+      ],
+      "relation": "same_work_visual_vs_faithful_transcript",
+      "expected": "核心数学与证据边界一致；图片未送达不算模型错。"
+    }
+  ],
+  "runtime": {
+    "image": {
+      "mode": "single_turn"
+    },
+    "transcript": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

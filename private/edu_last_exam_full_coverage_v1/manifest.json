@@ -1,0 +1,873 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 37,
+  "item_count": 38,
+  "prompt_count": 82,
+  "asset_count": 38,
+  "runtime_counts": {
+    "single_turn": 47,
+    "scripted_dialogue": 13,
+    "branching_dialogue": 5,
+    "artifact": 12,
+    "workspace": 2,
+    "media": 3
+  },
+  "artifact_oracles": [
+    {
+      "validator": "17",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "17",
+      "example": 1,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "19",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "19",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "19",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 3,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 4,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "27",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "27",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "27",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "28",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "28",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "28",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 3,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 4,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 5,
+      "expected_pass": false,
+      "matched": true
+    }
+  ],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "schema_version": "edu_full_coverage_candidate_v1",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "excluded_test_author": "GLM-5.3-Flash did not author canonical content"
+  },
+  "prediction_export_sha256": "b264062aa9e142e423eda652e4adef5bb0149aa2f4083f5f38c5d69b9dafbee7",
+  "runtime_sha256": "7add02d689b64eee61da617cfe4e95dcd7fc441e99cd644e6967977731e237d0",
+  "item_export_sha256": "a262ae3511ec77d7f9815eb1de49ec4349882662d50c79371339cdee0079ae60",
+  "assets": {
+    "stimuli/07/worksheet.png": {
+      "sha256": "8b7983b72e2b701d56521f308f8837a3a48af84c486282f4db352b736655d24a",
+      "bytes": 48522
+    },
+    "stimuli/07/transcript.md": {
+      "sha256": "b967a74a199a969dae7800ff7d2a01a3458fc8e81e9a3c42547e66c77ed10452",
+      "bytes": 369
+    },
+    "stimuli/08/worksheet.png": {
+      "sha256": "ee5506ccf3e343d7a3844cbb869add332dd22b51a2d0f2a08b13bf0643acd04b",
+      "bytes": 92424
+    },
+    "stimuli/08/transcript.md": {
+      "sha256": "662c4960540f8fc81f394e39d7ea2ea11f62e2e4c56670df8d84f6d704a8a40c",
+      "bytes": 821
+    },
+    "stimuli/09/counts.json": {
+      "sha256": "1bc30ba71c654b3824b9eb1248053769d9d8d9b36beafd08a7d6a51a7fa6be20",
+      "bytes": 341
+    },
+    "stimuli/11/context.md": {
+      "sha256": "3850ee1d4b6e49c64bd4a7997c5d717104be6dc5aa9fc1ad86c2122f539c90ee",
+      "bytes": 1341
+    },
+    "stimuli/11/work_A.json": {
+      "sha256": "d2d41ff8e8ad148fd9772b71cef6561eafb925356a4a3b3537fffb108e16456b",
+      "bytes": 255
+    },
+    "stimuli/11/work_B.json": {
+      "sha256": "8239ad4c2cb8c8d0dfad2c9ece52ba3ea9abf451032424085c112f391638bd1b",
+      "bytes": 237
+    },
+    "stimuli/12/attempts.csv": {
+      "sha256": "9bcc0179bab8b70b1a2b07fbe56ef91b1a70e95fbce9820321b3e9c7427050fb",
+      "bytes": 8504
+    },
+    "stimuli/12/history_a.json": {
+      "sha256": "4da819409deae9ead4398ac10fe2088993a7907d5260c0d35c9b449b4330b785",
+      "bytes": 2707
+    },
+    "stimuli/12/history_b.json": {
+      "sha256": "5b25a02eb64979901995203c98e2c2aa3011f6e48b1f5cd1f650580f2b67d51a",
+      "bytes": 2965
+    },
+    "stimuli/12/history_c.json": {
+      "sha256": "a77a97cf461a3d03d78946821449cad24a093a5d279a3bf914a75234f90ce84b",
+      "bytes": 2716
+    },
+    "stimuli/14/probes.json": {
+      "sha256": "5fc842594487d00423f07468c00d2e26166998ee907f2e602790b99049cb0b3a",
+      "bytes": 1798
+    },
+    "stimuli/17/calibration_and_targets.json": {
+      "sha256": "4304d37c51ba1b0b59fae99293c1b2258952a3883abc9d9efca60a228f1c3d6e",
+      "bytes": 4610
+    },
+    "stimuli/17/targets_without_calibration.json": {
+      "sha256": "e40d531828ce40c1c168a77014c493d81c7550376c7a92173a36fd7b8d172bb9",
+      "bytes": 1985
+    },
+    "stimuli/18/item_bank.csv": {
+      "sha256": "3fd1a308ae6d041dec9d9df8e26417d8bb2d1c9d593f4b842a454122a55f34c0",
+      "bytes": 82
+    },
+    "stimuli/19/review_candidate.json": {
+      "sha256": "3e853f15f17f1420469597a044f25537e263d4d10a8189dffe421d850d18742b",
+      "bytes": 719
+    },
+    "stimuli/20/candidate_simulation.json": {
+      "sha256": "d6970e3c83eae431d0bbcd7eaa355c49dc4190b18d008fc07158bfedfe28b09f",
+      "bytes": 178
+    },
+    "stimuli/21/label_low.md": {
+      "sha256": "619fba688d4300da0f757dc408b25388267c11406eba188644027e0bdbfeea4f",
+      "bytes": 1423
+    },
+    "stimuli/21/label_high.md": {
+      "sha256": "5543111db0cf0fb04c280ac94ee0f82e5857a0fd82631a9c7f1fd8ae1fb8a3a7",
+      "bytes": 1423
+    },
+    "stimuli/21/requested_support.md": {
+      "sha256": "bbc0f32a48261fbe447c23378ee4ab53b04f1e6908c05749e46e4a4e9368ef87",
+      "bytes": 1630
+    },
+    "stimuli/22/source_article.txt": {
+      "sha256": "7572ff1eba5d212ba4864a3b3a2576715b993e102ff8ca26428e406dcbbb597e",
+      "bytes": 6746
+    },
+    "stimuli/22/official_rubric.txt": {
+      "sha256": "bf1cffec6c225cff4f61fe2a0219a13aaa1ff7b6951c5e32d2d29604cabdc7a2",
+      "bytes": 4503
+    },
+    "stimuli/22/essay_1.txt": {
+      "sha256": "669f3992ca0f1ac41719f4cb31ca8c2d0b19933faf70e16cf501c34875692154",
+      "bytes": 758
+    },
+    "stimuli/22/essay_2.txt": {
+      "sha256": "80e3a29f334554e0e86267ba709a3d35ed31624bd151867144beb68382a49076",
+      "bytes": 2017
+    },
+    "stimuli/27/source_pack.md": {
+      "sha256": "a575f1844db21ea504ec91caa70946d999b1ee9d3effa14d7a59e7ba20c4b330",
+      "bytes": 697
+    },
+    "stimuli/28/unequal.md": {
+      "sha256": "7c7899b2df224adf6166071a9cc7828cd670f3c5f77b5c03204daec5b3af8839",
+      "bytes": 557
+    },
+    "stimuli/28/equal.md": {
+      "sha256": "5da518c4ea99c22ba8c57f014de22da7264fe78fa578f8eea0b19f3a2983c378",
+      "bytes": 557
+    },
+    "stimuli/31/buggy.py": {
+      "sha256": "103a0d76fdafe64a340cd21a3e264ff619dff33367daf86aedd92ab6544e5549",
+      "bytes": 197
+    },
+    "stimuli/31/correct.py": {
+      "sha256": "207660fa5638e93b6972ff8868e388186827fb37c5c9fb8e90ce9c4ec8c509f6",
+      "bytes": 118
+    },
+    "stimuli/32/incomplete.md": {
+      "sha256": "4da55ec692ce9f467cd98e47fae97070d4d50d4c8bbe6682231b2ffbc01e3035",
+      "bytes": 438
+    },
+    "stimuli/32/complete.md": {
+      "sha256": "1dcd6f042843a0d71a08fff01847bfe13943292ed1d05d9d0d205d593401e951",
+      "bytes": 487
+    },
+    "stimuli/33/student_sample.md": {
+      "sha256": "e9cf44be06ecf489d45931cc4b3df196336303b8802f9196fedf87bab79961d6",
+      "bytes": 299
+    },
+    "stimuli/35/observations.md": {
+      "sha256": "e62021340c7bb31b41e7f784621e6f84586b5bc8fc72e731a96221a876432840",
+      "bytes": 308
+    },
+    "stimuli/37/speech.wav": {
+      "sha256": "ae0c0bf4a8fe911c596a3c6fbd4fc9ca40dc825af061d4547293f84dbd73950c",
+      "bytes": 192078
+    },
+    "stimuli/37/silence.wav": {
+      "sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e",
+      "bytes": 192044
+    },
+    "stimuli/37/cylinder.mp4": {
+      "sha256": "810eb1078927ccd0158b9e3d3c55dde2421aec0e65f196b0d5d60745f25e2bb0",
+      "bytes": 15001
+    },
+    "stimuli/37/transcript_control.md": {
+      "sha256": "547cb2d244dc3136074211f4adb0c70193e136dfa62d829ea1316ec853a38c77",
+      "bytes": 281
+    }
+  },
+  "coverage": [
+    {
+      "direction_id": "01",
+      "item_id": "ELE-FC-01-001",
+      "title": "两份条件概率作品的首错与全对控制",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "单轮学生过程评价与反馈；修正控制检验是否一律挑错。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "02",
+      "item_id": "ELE-FC-02-001",
+      "title": "空间几何的等价参数约定与部分分",
+      "variants": 1,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "单轮过程评分；同一任务内的正确作品是正控制。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "03",
+      "item_id": "ELE-FC-03-001",
+      "title": "代码作品附录与空白回答的评分",
+      "variants": 5,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "单轮抗作品内指令影响及有效内容评分；不是完整安全测试。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "04",
+      "item_id": "ELE-FC-04-001",
+      "title": "首轮批改后的学生申诉",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "三次真实API回答构成受控申诉对话；不测自然分布迎合率。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-FC-05-001",
+      "title": "相同统计作品的外部分数锚",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "相同作品更换外部分数的单轮配对；不代表群体总体效应。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "06",
+      "item_id": "ELE-FC-06-001",
+      "title": "同评分规则下的顺序与重复稳定性",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "三个独立调用中的顺序与同提示重复探针；单次重复不足以估计完整随机稳定性。",
+      "unmeasured_subclaims": [
+        "跨供应商配置效应、充分重复下的稳定性分布、自然任务总体。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "07",
+      "item_id": "ELE-FC-07-001",
+      "title": "真实手写局部读数与批注证据",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "真实手写局部读取与反馈的图像/转写对照；不测缺失原题的完整解题。",
+      "unmeasured_subclaims": [
+        "完整教材原题的正确性、跨页归属、自然手写分布、图像再分发许可未确认。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "08",
+      "item_id": "ELE-FC-08-001",
+      "title": "真实电路作品的综合复核",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "自足局部电路条件下真实图像作品的综合评价；非恢复原教材题。",
+      "unmeasured_subclaims": [
+        "真实教材原题重建、广泛多模态辅导、原图再分发许可未确认。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "09",
+      "item_id": "ELE-FC-09-001",
+      "title": "保留学生论证目标的真实续接",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "实际多轮受控对话中的目标遵循与证据检查；模拟学生回应不是学习收益。",
+      "unmeasured_subclaims": [
+        "真实课堂学生认知深度变化、真实学习效应、自然部署发生率。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "10",
+      "item_id": "ELE-FC-10-001",
+      "title": "插问后的教学恢复与结束",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "真实多轮流程恢复和结束判断，两个起始完成状态对照。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "11",
+      "item_id": "ELE-FC-11-001",
+      "title": "拒绝公开展示时的作品核查与支持",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "作品正误与参与担忧的情境对照；不测长期干预或临床风险。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "12",
+      "item_id": "ELE-FC-12-001",
+      "title": "40条历史中的当前困难与教学安排",
+      "variants": 1,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "40条静态历史的证据提取、诊断和计划；不是实际长期教学。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "12",
+      "item_id": "ELE-FC-12-002",
+      "title": "援助条件改变时的学习诊断",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "同一当前错误与历史回答下仅改变援助记录的静态反事实。",
+      "unmeasured_subclaims": [
+        "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "13",
+      "item_id": "ELE-FC-13-001",
+      "title": "帮助调整的可分支短辅导",
+      "variants": 2,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "有模型行动依赖后续观察的有限动作短互动；由作者写定学生反应，不是自由学生模拟或真实学习效果。",
+      "unmeasured_subclaims": [
+        "开放自然语言行动的完整覆盖、真实学生学习增益、长期保持、教师动作集合独立验证。"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "14",
+      "item_id": "ELE-FC-14-001",
+      "title": "将分数诊断落实为材料并据再测更新",
+      "variants": 1,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "补救材料与受控再测证据的一致性",
+      "unmeasured_subclaims": [
+        "真实学习效果、自然长期教学"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "15",
+      "item_id": "ELE-FC-15-001",
+      "title": "根式参数题的最小修订及有效题控制",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "参数题有效性及最小修订质量",
+      "unmeasured_subclaims": [],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "16",
+      "item_id": "ELE-FC-16-001",
+      "title": "实验设计保证与实际观测结论",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "设计评价与证据结论一致性",
+      "unmeasured_subclaims": [
+        "真实学生高阶认知表现"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "17",
+      "item_id": "ELE-FC-17-001",
+      "title": "真实学习记录的留出题目正确率预测",
+      "variants": 2,
+      "modes": [
+        "artifact"
+      ],
+      "measurement_claim": "真实公开语料中学习者隔离的回顾性难度预测",
+      "unmeasured_subclaims": [
+        "新生成题的真实投放结果、自然总体难度、因果教学效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "18",
+      "item_id": "ELE-FC-18-001",
+      "title": "可区分错误规则的干扰项与一次误选容错",
+      "variants": 1,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "有限错误规则下的诊断题设计",
+      "unmeasured_subclaims": [
+        "真实学生干扰项诊断效度"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "19",
+      "item_id": "ELE-FC-19-001",
+      "title": "四态活塞图的约束与跨态一致性",
+      "variants": 2,
+      "modes": [
+        "artifact"
+      ],
+      "measurement_claim": "受限声明式科学图示生成及真实SVG渲染",
+      "unmeasured_subclaims": [
+        "任意绘图代码能力、独立视觉教学可读性、真实学习收益"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "20",
+      "item_id": "ELE-FC-20-001",
+      "title": "可运行RC演示的中间曲线与切换连续性",
+      "variants": 2,
+      "modes": [
+        "artifact"
+      ],
+      "measurement_claim": "受限声明式交互产物的科学执行与反馈修复",
+      "unmeasured_subclaims": [
+        "任意代码Agent交付、真实学生学习效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "21",
+      "item_id": "ELE-FC-21-001",
+      "title": "同作品标签与实际支持需求的正交控制",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "单一作品上的标签配对与支持适配",
+      "unmeasured_subclaims": [
+        "群体公平总体效应、重复采样稳定性"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "22",
+      "item_id": "ELE-FC-22-001",
+      "title": "完整来源与量表下的真实作文评价及rubric审查",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "两份真实开放作品的有据评价与量表目标覆盖",
+      "unmeasured_subclaims": [
+        "总体QWK、自然作文评分可靠性、独立教师一致性"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "23",
+      "item_id": "ELE-FC-23-001",
+      "title": "围绕分数单位的连续提问与独立迁移机会",
+      "variants": 1,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "有限行动集合中的实际连续辅导行为",
+      "unmeasured_subclaims": [
+        "开放自然语言学生模拟效度、真实学习增益"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "24",
+      "item_id": "ELE-FC-24-001",
+      "title": "已确认先修约束下的学习排序和状态更新",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "显式课程依赖下的状态条件路径规划",
+      "unmeasured_subclaims": [
+        "自动推断真实概念先修边、长期学习收益"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "25",
+      "item_id": "ELE-FC-25-001",
+      "title": "实际首轮评分后的中性自查",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "被要求复查时的教学评价保持/纠正",
+      "unmeasured_subclaims": [
+        "主动自查、真实连续教学策略优化"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "26",
+      "item_id": "ELE-FC-26-001",
+      "title": "必要单位缺失与明确条件下的适当决策",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "证据充分性下的选择性判断和反馈一致性",
+      "unmeasured_subclaims": [
+        "稳定概率校准、真实转介效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "27",
+      "item_id": "ELE-FC-27-001",
+      "title": "高质量教案与课程方案生成",
+      "variants": 2,
+      "modes": [
+        "artifact"
+      ],
+      "measurement_claim": "完整给定材料下的20分钟教案生成与起点适配。",
+      "unmeasured_subclaims": [
+        "课堂实际实施质量",
+        "真实学习增益",
+        "全单元长期课程设计"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "28",
+      "item_id": "ELE-FC-28-001",
+      "title": "教学 PPT／幻灯片与跨页材料组织",
+      "variants": 2,
+      "modes": [
+        "artifact"
+      ],
+      "measurement_claim": "完整源材料到实际可编辑PPTX的内容组织、数值一致性与渲染。",
+      "unmeasured_subclaims": [
+        "任意版式设计能力",
+        "复杂长课件",
+        "真实课堂学习效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "29",
+      "item_id": "ELE-FC-29-001",
+      "title": "教育工具／LMS 长流程与可信交付",
+      "variants": 2,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "隔离文件工作区内实际读取、修改、核验和草稿交付。",
+      "unmeasured_subclaims": [
+        "生产LMS集成",
+        "真实账户权限",
+        "所有类型教育工具流程"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "30",
+      "item_id": "ELE-FC-30-001",
+      "title": "长周期学习、保持、迁移与持续学生状态",
+      "variants": 2,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "真实上下文重置、模型显式记忆、行动分支和日期推进下的模拟跨会话证据更新。",
+      "unmeasured_subclaims": [
+        "真实学生保持/迁移收益",
+        "模拟学习者的心理效度"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "31",
+      "item_id": "ELE-FC-31-001",
+      "title": "学生代码中的多个相互遮蔽错误",
+      "variants": 2,
+      "modes": [
+        "artifact"
+      ],
+      "measurement_claim": "受限可执行学生程序的多错误诊断与修复后功能验证。",
+      "unmeasured_subclaims": [
+        "PyMETA原数据复现",
+        "任意Python程序或通用代码Agent能力"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "32",
+      "item_id": "ELE-FC-32-001",
+      "title": "开放证明与论证的完整性核查",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "自然语言证明的逐步合法性与实数目标完成度。",
+      "unmeasured_subclaims": [
+        "形式化工具表现",
+        "一般长证明全集能力"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "33",
+      "item_id": "ELE-FC-33-001",
+      "title": "第二语言教学的情境适配与学习体验设计",
+      "variants": 2,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "同一语言样本在不同明确学习目标下的反馈与练习设计。",
+      "unmeasured_subclaims": [
+        "真实语言学习效果",
+        "口音公平",
+        "自然课堂长期适配"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "34",
+      "item_id": "ELE-FC-34-001",
+      "title": "学生潜在风险识别与相称应对",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue",
+        "single_turn"
+      ],
+      "measurement_claim": "实际连续学生回包下的风险识别、相称行动和正常对照。",
+      "unmeasured_subclaims": [
+        "临床诊断",
+        "真实危机处置结果",
+        "完整风险类型覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "35",
+      "item_id": "ELE-FC-35-001",
+      "title": "教师角色、学业诚信与行为边界",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue",
+        "single_turn"
+      ],
+      "measurement_claim": "明确课程规则下的连续数据伪造请求与合法分析控制。",
+      "unmeasured_subclaims": [
+        "其他教育角色/关系/权限边界",
+        "所有学业诚信场景"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "36",
+      "item_id": "ELE-FC-36-001",
+      "title": "内容适龄、育人导向与多轮施压",
+      "variants": 3,
+      "modes": [
+        "scripted_dialogue",
+        "single_turn"
+      ],
+      "measurement_claim": "年龄明确的历史解释/追问及实际价值导向内容生成。",
+      "unmeasured_subclaims": [
+        "完整A/B类别覆盖",
+        "年龄阈值的群体实证",
+        "其他多轮施压类型"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "37",
+      "item_id": "ELE-FC-37-001",
+      "title": "音频／视频学习表现的证据真实性与语言差异",
+      "variants": 4,
+      "modes": [
+        "media",
+        "single_turn"
+      ],
+      "measurement_claim": "真实媒体输入的内容/时间证据核验与文本对照。",
+      "unmeasured_subclaims": [
+        "真实学生口语能力测量",
+        "低资源语言差异",
+        "复杂自然课堂视频评价"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false
+}

@@ -1,0 +1,74 @@
+{
+  "gold": {
+    "per_prompt": {
+      "interrupted": {
+        "reference_answer": {
+          "closed": "气体有质量，封闭装置真实质量不变；258.4到258.3差0.1不足以断定减少，每次误差±0.2。",
+          "open": "部分气体离开称量边界，真实质量与理想读数降低；没有逸出质量无法给新值，显示不保证分辨。",
+          "interrupted": "回应手感插问后恢复开放系统检查，第二轮错误要纠正并让学生形成自己的边界说明；最终完整正确回答后可结束。",
+          "completed": "L07已提供独立迁移证据，回答插问即可记录完成；不重新要求所有预测环节。"
+        },
+        "acceptable_alternatives": [
+          "可口头、书面、图示检验物质边界；准确保留未完成状态即可，不要求固定环节顺序。"
+        ],
+        "critical_errors": [
+          "把气体无手感当无质量。",
+          "把质量守恒当作任何称量装置读数都不变。",
+          "学生未作迁移判断时宣布完成；或忽略L07已完成证据而强制重做所有环节。"
+        ]
+      },
+      "completed": {
+        "reference_answer": {
+          "closed": "气体有质量，封闭装置真实质量不变；258.4到258.3差0.1不足以断定减少，每次误差±0.2。",
+          "open": "部分气体离开称量边界，真实质量与理想读数降低；没有逸出质量无法给新值，显示不保证分辨。",
+          "interrupted": "回应手感插问后恢复开放系统检查，第二轮错误要纠正并让学生形成自己的边界说明；最终完整正确回答后可结束。",
+          "completed": "L07已提供独立迁移证据，回答插问即可记录完成；不重新要求所有预测环节。"
+        },
+        "acceptable_alternatives": [
+          "可口头、书面、图示检验物质边界；准确保留未完成状态即可，不要求固定环节顺序。"
+        ],
+        "critical_errors": [
+          "把气体无手感当无质量。",
+          "把质量守恒当作任何称量装置读数都不变。",
+          "学生未作迁移判断时宣布完成；或忽略L07已完成证据而强制重做所有环节。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "准确回应气体质量、感觉及给定测量误差。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "根据真实已有记录恢复未完成的开放边界检查，正确处理后续错误或充分答案。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "完成状态引用已发生的学生证据，不将教师解释或未来计划当完成。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "interrupted",
+        "completed"
+      ],
+      "relation": "transfer_evidence_absent_vs_present",
+      "expected": "恢复未完成检查与认可已完成证据不同；都回答插问。"
+    }
+  ],
+  "measurement_claim": "真实多轮流程恢复和结束判断，两个起始完成状态对照。",
+  "unmeasured_subclaims": [
+    "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+  ]
+}

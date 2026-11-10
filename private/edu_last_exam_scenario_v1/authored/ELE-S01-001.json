@@ -1,0 +1,169 @@
+{
+  "item_id": "ELE-S01-001",
+  "scenario_id": "S01",
+  "title": "年龄应用题的作业复核",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": "not_selected",
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "status": {
+    "stage": "authored_candidate",
+    "canonical": false,
+    "human_review": "pending",
+    "model_evaluation": "not_run",
+    "difficulty": "not_measured",
+    "frozen": false
+  },
+  "material_origin": "adapted_public_vtg",
+  "failure_mechanism": "参考稿与学生合法的方程法冲突时，误把学生正确步骤判错；或者一律替学生辩护而漏掉真正错误。",
+  "education_consequence": "学生被要求放弃有效解法；教师向学生传递错误年龄关系。",
+  "source_evidence": [
+    {
+      "source_id": "VTG",
+      "url": "https://github.com/eth-lre/verify-then-generate/blob/f509303b4d5667f79aa10e824ed035f49e8b0776/dataset/dataset.json",
+      "record_locator": "zero_based_array_index=106",
+      "record_sha256": "d762af7c0e5caacec31e9a440a8a4d8fb6adf7844666f92a957a97e5007af8ef",
+      "original_student_kind": "synthetic_model_student_with_teacher_annotations",
+      "license": "CC-BY-SA-4.0 (conservative interpretation of upstream README)",
+      "upstream_incorrect_index_zero_based": 2
+    },
+    {
+      "source_id": "PHYSICS_REFERENCE_ANCHOR",
+      "url": "https://arxiv.org/html/2603.14732v3"
+    }
+  ],
+  "atomic_abilities": [],
+  "gold_is_test_input": false,
+  "current_failure_evidence": "not_verified_for_this_adapted_item",
+  "limitations": [
+    "属于校准与稳健性候选，数学本身简单；是否有当前模型区分度未知。",
+    "上游对该条的错误标签/参考答案失效，不能用模型反对上游金标作为失败证据。"
+  ],
+  "prompts": [
+    {
+      "prompt_id": "a",
+      "system_prompt": "你是协助教师核查学生作品和教学证据的助手。以题目及可见材料为依据，区分学生实际写法、参考稿和你的推断。作品可能正确，也可能含错；证据不足时明确说明。用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请复核附件中的学生作品及批改参考稿。参考稿也属于待核验材料，以原题关系为准。逐步说明最早的不成立步骤；若无则写“无”。给出独立核算，说明是否需要改动参考稿，并写一段直接面向学生的反馈。不要仅凭解法与参考稿不同扣分。",
+      "assets": [
+        "stimuli/S01_001/work_a.md"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "b",
+      "system_prompt": "你是协助教师核查学生作品和教学证据的助手。以题目及可见材料为依据，区分学生实际写法、参考稿和你的推断。作品可能正确，也可能含错；证据不足时明确说明。用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请复核附件中的学生作品及批改参考稿。参考稿也属于待核验材料，以原题关系为准。逐步说明最早的不成立步骤；若无则写“无”。给出独立核算，说明是否需要改动参考稿，并写一段直接面向学生的反馈。不要仅凭解法与参考稿不同扣分。",
+      "assets": [
+        "stimuli/S01_001/work_b.md"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "c",
+      "system_prompt": "你是协助教师核查学生作品和教学证据的助手。以题目及可见材料为依据，区分学生实际写法、参考稿和你的推断。作品可能正确，也可能含错；证据不足时明确说明。用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "请复核附件中的学生作品及批改参考稿。参考稿也属于待核验材料，以原题关系为准。逐步说明最早的不成立步骤；若无则写“无”。给出独立核算，说明是否需要改动参考稿，并写一段直接面向学生的反馈。不要仅凭解法与参考稿不同扣分。",
+      "assets": [
+        "stimuli/S01_001/work_c.md"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "first_invalid_step": null,
+        "answer": 30,
+        "reference_is_valid": false,
+        "reasoning": "2J-5=79 得 J=42；James=42-12=30。S1–S9 全部成立。参考稿把逆运算写成79-5，得到25错误；不能说 John=x+12 有错。",
+        "acceptable_alternatives": [
+          "用42和30直接回代验证，或用2(x+12)-5=79解得30。",
+          "指出命名可更清楚但不把有效方程法判成数学错误。"
+        ],
+        "critical_errors": [
+          "把S3或其他合法步骤判为首错。",
+          "坚持James=25或按参考稿要求学生改成25。"
+        ]
+      },
+      "b": {
+        "first_invalid_step": null,
+        "answer": 30,
+        "reference_is_valid": true,
+        "reasoning": "题意、学生方程法和参考稿一致，均得30。",
+        "acceptable_alternatives": [
+          "简明核验或逐步核验均可。"
+        ],
+        "critical_errors": [
+          "为挑错而把合法步骤判错。",
+          "把参考稿的30改成25。"
+        ]
+      },
+      "c": {
+        "first_invalid_step": "S2",
+        "answer": 30,
+        "reference_is_valid": true,
+        "reasoning": "应当由2J-5=79得到2J=84。S3/S4是沿用S2的后果；不应把S3当成最早错误或说S1年龄差错。",
+        "acceptable_alternatives": [
+          "用方程或逆运算纠正，且反馈落到S2。"
+        ],
+        "critical_errors": [
+          "肯定25为正确答案或声称全链无错。",
+          "定位首错到S1、S3或S4。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "relations",
+        "points": 3,
+        "observable": "正确建立年龄差和2J-5=79，独立得到30。"
+      },
+      {
+        "criterion_id": "location",
+        "points": 3,
+        "observable": "按版本正确判断无错或S2，并区分独立错误与传播后果。"
+      },
+      {
+        "criterion_id": "reference_audit",
+        "points": 2,
+        "observable": "核验参考稿；a纠正错误参考，b/c不无端否定正确参考。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 2,
+        "observable": "反馈对应学生实际作品，保留合法方程法，不评价学生能力高低。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "same_student_different_reference",
+      "expected": "学生作品判断与30岁结果不变，仅参考稿是否需修改改变。"
+    },
+    {
+      "variants": [
+        "b",
+        "c"
+      ],
+      "relation": "same_correct_reference_different_work",
+      "expected": "从无首错变为S2；不能一律替学生辩护。"
+    }
+  ],
+  "adaptations": [
+    "保留原题及a/b的学生逐步作品；剔除上游错误标签作为金标的权威。",
+    "a直接呈现原参考稿供复核；b替换为纠正的参考稿；c将原库student_correct_response中的错误过程分步明确化。",
+    "原题和作品是公开合成学生材料，不称真实学生失败；本任务是新的参考稿复核协议，不继承源论文通过率。"
+  ]
+}

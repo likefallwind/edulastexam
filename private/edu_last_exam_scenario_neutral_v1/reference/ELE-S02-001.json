@@ -1,0 +1,80 @@
+{
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "phase_first_lines": "30 degrees, not 300",
+        "si_amplitude_v": 15000,
+        "milliamp_amplitude_v": 15,
+        "judgments": {
+          "A": "不成立：前两行是30°，不能将度符号误读为数字0后扣相位分。",
+          "B": "裸数乘积是15000而非15；但di/dt的单位未给出。若是60000 mA/s则为60 A/s，结果15V成立。不能据此断言原题答案错，更不能断言学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "可以要求补写单位及转换；可以指出按SI解释存在1000倍差异，但必须标明条件。",
+          "若对原图细节有保留，指出具体不确定位置并请求清晰图；不得把不确定读数当作确定扣分依据。"
+        ],
+        "critical_errors": [
+          "把清晰的30°肯定读成300并据此扣分。",
+          "无条件认可250×10^-3×60000=15。",
+          "在未确认电流导数单位的情况下断定原题答案必错或给学生能力标签。"
+        ]
+      },
+      "b": {
+        "phase_first_lines": "30 degrees, not 300",
+        "si_amplitude_v": 15000,
+        "milliamp_amplitude_v": 15,
+        "judgments": {
+          "A": "不成立：前两行是30°，不能将度符号误读为数字0后扣相位分。",
+          "B": "裸数乘积是15000而非15；但di/dt的单位未给出。若是60000 mA/s则为60 A/s，结果15V成立。不能据此断言原题答案错，更不能断言学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "可以要求补写单位及转换；可以指出按SI解释存在1000倍差异，但必须标明条件。",
+          "若对原图细节有保留，指出具体不确定位置并请求清晰图；不得把不确定读数当作确定扣分依据。"
+        ],
+        "critical_errors": [
+          "把清晰的30°肯定读成300并据此扣分。",
+          "无条件认可250×10^-3×60000=15。",
+          "在未确认电流导数单位的情况下断定原题答案必错或给学生能力标签。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "faithful_reading",
+        "points": 3,
+        "observable": "正确识别30°、250×10^-3 H、60000及结论15，不把OCR混淆算成学生错误。"
+      },
+      {
+        "criterion_id": "conditional_math",
+        "points": 3,
+        "observable": "独立给出A/s时15000V、mA/s时15V及换算。"
+      },
+      {
+        "criterion_id": "evidence_boundary",
+        "points": 3,
+        "observable": "明确原题单位缺失，区分局部乘积与原题是否正确；撤销没有证据的确定性指控。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 1,
+        "observable": "反馈要求学生明确单位和换算，准确、不作能力标签。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "same_work_image_vs_faithful_transcript",
+      "expected": "数学和证据边界判断应一致；b为转写对照，不是另一道独立题。"
+    }
+  ]
+}

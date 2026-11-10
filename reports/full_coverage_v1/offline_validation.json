@@ -1,0 +1,153 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 37,
+  "item_count": 38,
+  "prompt_count": 82,
+  "asset_count": 38,
+  "runtime_counts": {
+    "single_turn": 47,
+    "scripted_dialogue": 13,
+    "branching_dialogue": 5,
+    "artifact": 12,
+    "workspace": 2,
+    "media": 3
+  },
+  "artifact_oracles": [
+    {
+      "validator": "17",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "17",
+      "example": 1,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "19",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "19",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "19",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 3,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "20",
+      "example": 4,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "27",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "27",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "27",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "28",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "28",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "28",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 0,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 1,
+      "expected_pass": true,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 2,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 3,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 4,
+      "expected_pass": false,
+      "matched": true
+    },
+    {
+      "validator": "31",
+      "example": 5,
+      "expected_pass": false,
+      "matched": true
+    }
+  ],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "light": "strong",
+    "formula": "A",
+    "n": 10,
+    "germinated": 8
+  },
+  {
+    "light": "strong",
+    "formula": "B",
+    "n": 90,
+    "germinated": 54
+  },
+  {
+    "light": "weak",
+    "formula": "A",
+    "n": 90,
+    "germinated": 27
+  },
+  {
+    "light": "weak",
+    "formula": "B",
+    "n": 10,
+    "germinated": 2
+  }
+]

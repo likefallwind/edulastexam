@@ -1,0 +1,7 @@
+{
+  "step_expression": "V+(v-V)*exp(-dt/(R*C))",
+  "current_expression": "(V-v)/R",
+  "sample_dt": 0.01,
+  "preserve_history_on_change": true,
+  "reset_restores_defaults": true
+}

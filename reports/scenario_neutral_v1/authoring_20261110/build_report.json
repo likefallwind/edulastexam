@@ -1,0 +1,38 @@
+{
+  "status": "author_offline_validated_candidate",
+  "package_count": 5,
+  "prompt_count": 12,
+  "parent_oracles": [
+    {
+      "item_id": "ELE-S01-001",
+      "check": "age difference, inverse operation, repaired upstream gold",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S01-002",
+      "check": "per-structure vs total quantity and valid algebra prefix",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S02-001",
+      "check": "conditional SI/mA arithmetic; image reading requires human review",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S02-002",
+      "check": "two independent KCL residuals and public rounding tolerances",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S03-001",
+      "check": "geometry arithmetic and assistance-only counterfactuals; pedagogical judgment pending",
+      "status": "passed"
+    }
+  ],
+  "conditions_preserved": true,
+  "stimulus_bytes_preserved": true,
+  "gold_and_rubric_preserved": true,
+  "human_review": "pending",
+  "model_calls": 0,
+  "manifest_sha256": "90cc2b03bda9448462f5f811e4fcfa775db5fc0fdbf3c7ab9b5d0c4e2fddaae8"
+}

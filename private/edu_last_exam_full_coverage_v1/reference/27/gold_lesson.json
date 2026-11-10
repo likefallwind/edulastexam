@@ -1,0 +1,76 @@
+{
+  "title": "同一个整体的分数相加",
+  "objectives": [
+    "能说明共同计数单位的必要性",
+    "能独立计算并解释一题"
+  ],
+  "activities": [
+    {
+      "minutes": 3,
+      "teacher_action": "展示两条同长纸条，一条分二份一条分三份，收集1/2+1/3的判断。",
+      "student_action": "独立写答案和理由，不公布正误。",
+      "evidence": "记录是否分别相加及其理由。",
+      "materials": [
+        "黑板",
+        "相同纸条"
+      ]
+    },
+    {
+      "minutes": 7,
+      "teacher_action": "请各组把两种份数改画为相同小份，比较数量是否改变。",
+      "student_action": "画六等份并把3份与2份合并，解释每份大小。",
+      "evidence": "能说明同一整体和共同单位，不只复述分母规则。",
+      "materials": [
+        "纸条",
+        "笔",
+        "剪刀"
+      ]
+    },
+    {
+      "minutes": 6,
+      "teacher_action": "组织不同图示和符号方法比较，让学生解释为什么不是2/5。",
+      "student_action": "将六等份图与3/6+2/6对应，互相说明。",
+      "evidence": "图和算式表示同一数量，能指出不同单位不能直接计数。",
+      "materials": [
+        "黑板",
+        "纸条"
+      ]
+    },
+    {
+      "minutes": 4,
+      "teacher_action": "发独立新题1/2+1/4，收集答案与解释。",
+      "student_action": "独立计算并说明同一整体的四等份。",
+      "evidence": "3/4及共同单位解释；未完成者记录待支持。",
+      "materials": [
+        "纸",
+        "笔"
+      ]
+    }
+  ],
+  "worked_example": {
+    "problem": "1/2+1/3",
+    "answer": "5/6",
+    "explanation": "同一整体分六等份，3份与2份共5份。"
+  },
+  "independent_check": {
+    "problem": "1/2+1/4",
+    "answer": "3/4",
+    "what_to_observe": "独立把1/2转换为2/4并解释共同单位。"
+  },
+  "contingencies": [
+    {
+      "observation": "答案对但无法解释",
+      "action": "用另一张同长纸条核验，不先宣布掌握。"
+    },
+    {
+      "observation": "仍分别相加",
+      "action": "回到相同单位计数，再给新的独立核验。"
+    }
+  ],
+  "source_ids": [
+    "F1",
+    "F2",
+    "F3",
+    "F4"
+  ]
+}

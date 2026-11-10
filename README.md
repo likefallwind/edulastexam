@@ -6,7 +6,11 @@ Edu Last Exam 是一个独立维护的教育场景 benchmark 仓库。它要测�
 
 ## 当前状态
 
-- 证据矩阵和总体方案已经形成，见 [`docs/evidence/edu_last_exam_evidence_matrix_2026-11-09.md`](docs/evidence/edu_last_exam_evidence_matrix_2026-11-09.md) 和 [`docs/plans/edu_last_exam_integrated_plan_2026-11-08.md`](docs/plans/edu_last_exam_integrated_plan_2026-11-08.md)。
+- [全方向探索候选 v1](private/edu_last_exam_full_coverage_v1/README.md)已落实清单37个方向的38个基础案例、82个投递版本及评分协议。包括真实续轮、分支动作、隔离工作区、跨会话记忆、可渲染教学产物和真实媒体素材。阅读[题册](private/edu_last_exam_full_coverage_v1/questions.html)、[评分审阅册](private/edu_last_exam_full_coverage_v1/review.html)及[逐项测量边界](reports/full_coverage_v1/implementation_status.html)。这是全量探索候选；人审、当前模型难度和未覆盖子结论分别记录，不是冻结benchmark。
+- [中性题面对照](private/edu_last_exam_scenario_neutral_v1/README.md)保留原5包/12版本的附件、答案和rubric，仅移除系统及任务中的定向提示。可看[逐包题面对照](private/edu_last_exam_scenario_neutral_v1/prompt_comparison.html)。基线GLM试跑得到22份有效回答、2次图片接口拒绝；中性版结果独立记录，不将接口错误计作答题错误。
+- [场景研究首批候选题](private/edu_last_exam_scenario_v1/README.md)已完成作者离线核验：5个任务包、12个独立投递版本（含2个原图版本），覆盖首错/参考稿复核、真实手写作品审查、学习历史诊断。可直接读[题册](private/edu_last_exam_scenario_v1/questions.html)和[审阅册](private/edu_last_exam_scenario_v1/review.html)。当前模型难度未测、专家审核pending、未冻结。
+- 当前研究入口是 [首批易错场景与证据核验（2026-11-10）](docs/evidence/edu_last_exam_scenario_shortlist_2026-11-10.md)，另有 [HTML 阅读版](reports/research/edu-last-exam-scenario-shortlist-2026-11-10.html)。先核实具体失败场景与成功反例，再设计少量题目；原题复用、改编、自建按场景适配性选择，不设置复用优先级。
+- [11 月 9 日证据矩阵](docs/evidence/edu_last_exam_evidence_matrix_2026-11-09.md) 和 [11 月 8 日总体方案](docs/plans/edu_last_exam_integrated_plan_2026-11-08.md) 保留为前期研究记录，不要求按原子能力或 21 个方向凑齐题目。
 - `edu_last_exam_pilot_v1` 保留了原来的 12 题版本、题目规范和已跑过的 smoke 结果。
 - `challenge_v2` 是 21 个方向的研究启发式候选集，作者离线检查已通过，但人工审核和跨模型难度测量仍未完成；它不能被当作已经冻结的 Last Exam。
 - [`data/edu_last_exam_v1/`](data/edu_last_exam_v1/) 和 [`private/edu_last_exam_v1/`](private/edu_last_exam_v1/) 是从 challenge_v2 逐题审查后选出的 8 个任务包测试候选集；构建报告和状态字段明确标记为 `test_release_candidate`，不是正式排行榜版本。
@@ -57,8 +61,8 @@ python scripts/experiments/run_edu_last_exam_challenge_v2.py \
 
 ## 下一步
 
-1. 对 [`private/edu_last_exam_v1/review.md`](private/edu_last_exam_v1/review.md) 做 owner 级逐题确认，特别是静态测评和 artifact 轨道的验收边界。
-2. 先用小模型面板和独立评分器试跑 v1，按任务包记录通过、错误类型和评分一致性，不先汇总总分。
-3. 根据试跑补做多模态、成对一致性、HTML/SVG 渲染和公平控制轨道。
-4. 只有完成专家审核、对照/消融和跨模型验证后，才讨论正式版本和公开报告。
+1. 按[全方向计划](docs/plans/edu_last_exam_next_stage_plan_2026-11-10.md)用GLM-5.3-Flash并发4运行全部候选；逐方向保留错误、成功、接口未测与争议，完成后再决定深测范围。
+2. 对实际回答进行评分初审与独立教师复核；同模型语义评分仅作探索证据，17的连续指标单列，禁止混成一个总正确率。
+3. 按[研究待办](docs/plans/benchmark-todo.md)补未覆盖子结论、材料许可及评分校准；真实学习效果和自然课堂长期效度不由模拟互动替代。
+4. 完成专家审核、对照/消融和跨模型验证后，才讨论正式版本和公开报告；通过的题可以转为回归或控制题。
 

@@ -1,0 +1,78 @@
+{
+  "schema_version": "edu_last_exam_scenario_v1_2026-11-10",
+  "status": "author_offline_validated_candidate",
+  "package_count": 5,
+  "prompt_count": 12,
+  "image_prompt_count": 2,
+  "human_review": "pending",
+  "model_evaluation": "not_run",
+  "difficulty": "not_measured",
+  "canonical": false,
+  "real_multiturn": false,
+  "source_sha256": {
+    "data/edu_last_exam_scenario_v1/protocol.json": "2a7264efc9f21e3c57d825fdf30ce719fcc25676a44f1bfb052c379e2c1fff3b",
+    "data/edu_last_exam_scenario_v1/source_manifest.json": "820b782ddb506123adf73644e47f57b885547321fdb2e0b6c1e83414f8c5565a",
+    "private/edu_last_exam_scenario_v1/NOTICE.md": "70856783a697eafb5e1e22c38fb04ed913904cbd1935406378d221fa06806243",
+    "private/edu_last_exam_scenario_v1/README.md": "ee6ed6aa56c734bb065c0e06b47970a99cf9326b0ac1da75f76685cb2d30cb37",
+    "private/edu_last_exam_scenario_v1/authored/ELE-S01-001.json": "0ca8b393e422c3c266425f27e9e9130f6d014e56569f2dceb369c993fb3c5a55",
+    "private/edu_last_exam_scenario_v1/authored/ELE-S01-002.json": "d3a257ddc3b7dfaa2905258d6276e1bec16953dd89184212a4ccb98884e37d26",
+    "private/edu_last_exam_scenario_v1/authored/ELE-S02-001.json": "07b75721a2f0fb2e9739042556fd4a8e0759d142c92847839e4eae470e61b15e",
+    "private/edu_last_exam_scenario_v1/authored/ELE-S02-002.json": "8d558318cd257ae00aed4c17b9836bfd49d526ac2b3aba4ea94bd10f442a23cd",
+    "private/edu_last_exam_scenario_v1/authored/ELE-S03-001.json": "d3770012d62b926e77390c6746d7ceb5dcdd9d49baf2c205103ad2baff4e44ff",
+    "private/edu_last_exam_scenario_v1/cards.jsonl": "306c62fa74e91b70894c7e4e87b3e140ebeb9a3daee9d7d9e25fd48092414e1a",
+    "private/edu_last_exam_scenario_v1/stimuli/S01_001/work_a.md": "86fb298f89d2ab16f78746225aeb4a77d21724c6f1c600dd0b4191ad6b12a1bb",
+    "private/edu_last_exam_scenario_v1/stimuli/S01_001/work_b.md": "a29be4011db6f3e5ed67a2c996fc11fd86b35e8154ab3b003767ec5a5a705325",
+    "private/edu_last_exam_scenario_v1/stimuli/S01_001/work_c.md": "f606ce01d6db6fdc335b5f0efb79db2426ed33b2ca86c94a7eb12673fb048fbb",
+    "private/edu_last_exam_scenario_v1/stimuli/S01_002/work_a.md": "5902312f366ba1319e672b6393d6aba30606c8c8c64180bf42941808f71eff7b",
+    "private/edu_last_exam_scenario_v1/stimuli/S01_002/work_b.md": "682a5de61f658560814ac7c9afdbada3acc0aff68a8e578e2216be15f96aa9fc",
+    "private/edu_last_exam_scenario_v1/stimuli/S02_001/transcript.md": "b967a74a199a969dae7800ff7d2a01a3458fc8e81e9a3c42547e66c77ed10452",
+    "private/edu_last_exam_scenario_v1/stimuli/S02_002/transcript.md": "662c4960540f8fc81f394e39d7ea2ea11f62e2e4c56670df8d84f6d704a8a40c",
+    "private/edu_last_exam_scenario_v1/stimuli/S03_001/history_a.json": "4da819409deae9ead4398ac10fe2088993a7907d5260c0d35c9b449b4330b785",
+    "private/edu_last_exam_scenario_v1/stimuli/S03_001/history_b.json": "5b25a02eb64979901995203c98e2c2aa3011f6e48b1f5cd1f650580f2b67d51a",
+    "private/edu_last_exam_scenario_v1/stimuli/S03_001/history_c.json": "a77a97cf461a3d03d78946821449cad24a093a5d279a3bf914a75234f90ce84b",
+    "scripts/build/build_edu_last_exam_scenario_v1.py": "0521e613be94fe24a4abf28e5466e79657976797db4080ac79bb676763d3c3fb"
+  },
+  "export_sha256": {
+    "items.jsonl": "6da134d7bef019ef45c28eaa9a2da90babfad1dd38f902dffc3dc84e298f518e",
+    "prompts.jsonl": "2cfaf3d4c9f533c501c537fa02769ab0f350eb166a8f8d4b7613d9c016d627d1",
+    "questions.html": "fed67b1a17b25618090aa6b5c243c8aa113d09ff978f39199e2abe089dfac5a0",
+    "questions.md": "b79fc1634a0c061dbdd88883f72595ba7214d7791cfd792282fc08ed6e81f730",
+    "reference/ELE-S01-001.json": "1beaabab1d18c534e19841d33381ad3ad77f79b1bb5eb99ff5f54160ff575d57",
+    "reference/ELE-S01-002.json": "a484da7b906cbc19cd68f93708c91348ce8f9ce75bd74d42930b05dfa457c2e6",
+    "reference/ELE-S02-001.json": "84bf17d08c910e537acc7468fb4b4f013f88ab73ab5ca374ca3a9068af5ddfdd",
+    "reference/ELE-S02-002.json": "d5d5fb15b6958a12cd52a009d5e472b4a6d16a1a92fd664784bbce732ac16b62",
+    "reference/ELE-S03-001.json": "7770227a035ba0ed04df7137c0e60b2f64a9347cbfba02c3fe4b64d7e4d1814b",
+    "review.html": "c2ba1bf5d9d8ad5beddf1d4c996a621a28be180bb9490a486b6a944b235e654f",
+    "review.md": "4cf36177df0509bea6bf6fa2eb7967ac499caa79fe77744be8a1adc6b6b6d39d",
+    "review_sheet.csv": "c15ee62113d5469041b74d85c8278417caa3ca1daf4ddd4bfb49b7530af5fa46",
+    "stimuli/S02_001/worksheet.png": "8b7983b72e2b701d56521f308f8837a3a48af84c486282f4db352b736655d24a",
+    "stimuli/S02_002/worksheet.png": "ee5506ccf3e343d7a3844cbb869add332dd22b51a2d0f2a08b13bf0643acd04b"
+  },
+  "offline_checks": [
+    {
+      "item_id": "ELE-S01-001",
+      "check": "age difference, inverse operation, repaired upstream gold",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S01-002",
+      "check": "per-structure vs total quantity and valid algebra prefix",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S02-001",
+      "check": "conditional SI/mA arithmetic; image reading requires human review",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S02-002",
+      "check": "two independent KCL residuals and public rounding tolerances",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S03-001",
+      "check": "geometry arithmetic and assistance-only counterfactuals; pedagogical judgment pending",
+      "status": "passed"
+    }
+  ]
+}

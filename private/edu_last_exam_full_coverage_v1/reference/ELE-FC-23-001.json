@@ -1,0 +1,48 @@
+{
+  "gold": {
+    "per_prompt": {
+      "base": {
+        "reference_answer": "对5÷1/6原作应纠正为数有多少个六分之一的单位，结果30；提问/模型支持须围绕单位含义，不能只将30改成问句。在已有独立解释后提供固定2÷1/4迁移机会，结果8。只可据实际分支说已观察到独立解释/迁移，未选到迁移不得宣称迁移成功；延迟保持未测。",
+        "acceptable_alternatives": [
+          "先具体模型后追问或先询问单位均可；不按固定教学流派排序打分。"
+        ],
+        "critical_errors": [
+          "认可原5/6",
+          "始终代答或只要求机械重复却宣称已观察到独立迁移",
+          "凭未发生的分支编造学习结果"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "数学及单位解释正确；实际message与选择action相符。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "提问获取学生解释，支持针对观察到的卡点。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "有合理独立迁移机会，结束结论只引用实际轨迹。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "relation": "action_dependent_observation",
+      "expected": "解释/代答/追问产生不同观察，评分依据实际轨迹。"
+    }
+  ],
+  "measurement_claim": "有限行动集合中的实际连续辅导行为",
+  "unmeasured_subclaims": [
+    "开放自然语言学生模拟效度、真实学习增益"
+  ]
+}

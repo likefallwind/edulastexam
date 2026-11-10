@@ -1,0 +1,146 @@
+{
+  "item_id": "ELE-S02-001",
+  "scenario_id": "S02",
+  "title": "电感手写计算的扣分依据复核",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": "not_selected",
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "status": {
+    "stage": "authored_candidate",
+    "canonical": false,
+    "human_review": "pending",
+    "model_evaluation": "not_run",
+    "difficulty": "not_measured",
+    "frozen": false
+  },
+  "material_origin": "real_student_image_with_new_local_audit_task",
+  "failure_mechanism": "把30°转成300并据此扣分；把缺失单位条件下的数值不一致直接归因为学生算术能力。",
+  "education_consequence": "学生因OCR错误或未提供的原题条件被扣分。",
+  "source_evidence": [
+    {
+      "source_id": "CIRCUIT_HW",
+      "url": "https://github.com/gt-learning-innovation/CIRCUIT_EDU_HW_ACL/blob/d56d72861f443337d47d44714ee4ef8d4f6e5429/docs/assets/examples/hw5_student42_q7_5-4.png",
+      "record_locator": "hw5_student42_q7_5-4",
+      "license": "student_image_redistribution_unconfirmed"
+    },
+    {
+      "source_id": "CIRCUIT_PAPER",
+      "url": "https://aclanthology.org/2026.findings-acl.751.pdf"
+    }
+  ],
+  "atomic_abilities": [],
+  "gold_is_test_input": false,
+  "current_failure_evidence": "not_verified_for_this_adapted_item",
+  "limitations": [
+    "公开样例，不是私有未见图；不能据此估计真实作业总体错误率。",
+    "图像再分发条件未确认：仅在本地候选投递中使用，图像不入Git，不进入公开冻结版。",
+    "不得把本题得分解释为完整电路题自动批改能力。"
+  ],
+  "prompts": [
+    {
+      "prompt_id": "a",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "教师正在审核一张手写计算的扣分草稿。本题仅审查附件可见的局部步骤；没有提供原教材题。统一规定：相位单位符号若在同一式子的上下文已明确，末行简写不单独扣分。\n\n扣分草稿：\nA. “前两行是500t−300，末行改为500t−30，学生擅自改了相位，应扣分。”\nB. “250×10^(-3)×60000写成15，证明学生不会乘法；无需确认原题单位。”\n\n请分别核查A/B，给出相关计算、判定依据和处理意见，并写给学生的反馈。",
+      "assets": [
+        "stimuli/S02_001/worksheet.png"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "b",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "教师正在审核一张手写计算的扣分草稿。本题仅审查附件可见的局部步骤；没有提供原教材题。统一规定：相位单位符号若在同一式子的上下文已明确，末行简写不单独扣分。\n\n扣分草稿：\nA. “前两行是500t−300，末行改为500t−30，学生擅自改了相位，应扣分。”\nB. “250×10^(-3)×60000写成15，证明学生不会乘法；无需确认原题单位。”\n\n请分别核查A/B，给出相关计算、判定依据和处理意见，并写给学生的反馈。",
+      "assets": [
+        "stimuli/S02_001/transcript.md"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "phase_first_lines": "30 degrees, not 300",
+        "si_amplitude_v": 15000,
+        "milliamp_amplitude_v": 15,
+        "judgments": {
+          "A": "不成立：前两行是30°，不能将度符号误读为数字0后扣相位分。",
+          "B": "裸数乘积是15000而非15；但di/dt的单位未给出。若是60000 mA/s则为60 A/s，结果15V成立。不能据此断言原题答案错，更不能断言学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "可以要求补写单位及转换；可以指出按SI解释存在1000倍差异，但必须标明条件。",
+          "若对原图细节有保留，指出具体不确定位置并请求清晰图；不得把不确定读数当作确定扣分依据。"
+        ],
+        "critical_errors": [
+          "把清晰的30°肯定读成300并据此扣分。",
+          "无条件认可250×10^-3×60000=15。",
+          "在未确认电流导数单位的情况下断定原题答案必错或给学生能力标签。"
+        ]
+      },
+      "b": {
+        "phase_first_lines": "30 degrees, not 300",
+        "si_amplitude_v": 15000,
+        "milliamp_amplitude_v": 15,
+        "judgments": {
+          "A": "不成立：前两行是30°，不能将度符号误读为数字0后扣相位分。",
+          "B": "裸数乘积是15000而非15；但di/dt的单位未给出。若是60000 mA/s则为60 A/s，结果15V成立。不能据此断言原题答案错，更不能断言学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "可以要求补写单位及转换；可以指出按SI解释存在1000倍差异，但必须标明条件。",
+          "若对原图细节有保留，指出具体不确定位置并请求清晰图；不得把不确定读数当作确定扣分依据。"
+        ],
+        "critical_errors": [
+          "把清晰的30°肯定读成300并据此扣分。",
+          "无条件认可250×10^-3×60000=15。",
+          "在未确认电流导数单位的情况下断定原题答案必错或给学生能力标签。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "faithful_reading",
+        "points": 3,
+        "observable": "正确识别30°、250×10^-3 H、60000及结论15，不把OCR混淆算成学生错误。"
+      },
+      {
+        "criterion_id": "conditional_math",
+        "points": 3,
+        "observable": "独立给出A/s时15000V、mA/s时15V及换算。"
+      },
+      {
+        "criterion_id": "evidence_boundary",
+        "points": 3,
+        "observable": "明确原题单位缺失，区分局部乘积与原题是否正确；撤销没有证据的确定性指控。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 1,
+        "observable": "反馈要求学生明确单位和换算，准确、不作能力标签。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "same_work_image_vs_faithful_transcript",
+      "expected": "数学和证据边界判断应一致；b为转写对照，不是另一道独立题。"
+    }
+  ],
+  "adaptations": [
+    "原学生图像不裁剪、不重画；只添加一个可独立回答的局部审查任务。",
+    "扣分草稿由本项目编写，不是假称论文记录的原模型反馈。",
+    "没有补造原教材题；未确定的原单位本身是显式证据边界。"
+  ]
+}

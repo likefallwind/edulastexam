@@ -1,0 +1,220 @@
+{
+  "item_id": "ELE-S03-001",
+  "scenario_id": "S03",
+  "title": "面积变化学习记录的诊断与下一步教学",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": "not_selected",
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "status": {
+    "stage": "authored_candidate",
+    "canonical": false,
+    "human_review": "pending",
+    "model_evaluation": "not_run",
+    "difficulty": "not_measured",
+    "frozen": false
+  },
+  "material_origin": "synthetic_research_informed",
+  "failure_mechanism": "把帮助后正确当成独立掌握；忽略与当前错误相关的历史，或在援助信息缺失时武断归因。",
+  "education_consequence": "学生被安排不合适的补教，教师对已经观察到的表现与尚未观察到的能力作出混淆判断。",
+  "source_evidence": [
+    {
+      "source_id": "LONGTUTOR",
+      "url": "https://aclanthology.org/2026.acl-long.1371.pdf",
+      "locator": "Table 2 and Table 14; mechanism only, not copied student logs"
+    }
+  ],
+  "atomic_abilities": [],
+  "gold_is_test_input": false,
+  "current_failure_evidence": "not_verified_for_this_adapted_item",
+  "limitations": [
+    "合成记录的自然性、教师可接受答案范围仍需人工审核。",
+    "本题衡量证据使用与下一步诊断设计，不测长期学生状态维护或真实学习增益。",
+    "援助条件机制属于研究启发候选，不声称LongTutor已直接证明本题难度。"
+  ],
+  "prompts": [
+    {
+      "prompt_id": "a",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "你接手这名学生的几何辅导。附件是可见历史记录。字段说明：student_response是该次记录最后提交的答案；help=none表示教师观察到无帮助完成，help=unknown表示援助信息缺失，其余help文字记录该次答案提交前提供的帮助。\n\n当前无帮助作答：三角形底8cm、高5cm，把底和高都缩为原来的1/2。学生说：“原面积20平方厘米；边都减半，所以新面积10平方厘米。”\n\n请向接手教师交付：①核查当前作答并给出计算依据；②根据历史与当前作答说明对学生学习情况的判断，引用相关record_id；③设计一个先让学生独立作答的最小诊断追问，写出预期正确答案和典型错误，并说明不同回答如何改变下一步帮助。",
+      "assets": [
+        "stimuli/S03_001/history_a.json"
+      ],
+      "interaction_mode": "decision_snapshot"
+    },
+    {
+      "prompt_id": "b",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "你接手这名学生的几何辅导。附件是可见历史记录。字段说明：student_response是该次记录最后提交的答案；help=none表示教师观察到无帮助完成，help=unknown表示援助信息缺失，其余help文字记录该次答案提交前提供的帮助。\n\n当前无帮助作答：三角形底8cm、高5cm，把底和高都缩为原来的1/2。学生说：“原面积20平方厘米；边都减半，所以新面积10平方厘米。”\n\n请向接手教师交付：①核查当前作答并给出计算依据；②根据历史与当前作答说明对学生学习情况的判断，引用相关record_id；③设计一个先让学生独立作答的最小诊断追问，写出预期正确答案和典型错误，并说明不同回答如何改变下一步帮助。",
+      "assets": [
+        "stimuli/S03_001/history_b.json"
+      ],
+      "interaction_mode": "decision_snapshot"
+    },
+    {
+      "prompt_id": "c",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，数学符号和原文步骤编号可保留。",
+      "user_prompt": "你接手这名学生的几何辅导。附件是可见历史记录。字段说明：student_response是该次记录最后提交的答案；help=none表示教师观察到无帮助完成，help=unknown表示援助信息缺失，其余help文字记录该次答案提交前提供的帮助。\n\n当前无帮助作答：三角形底8cm、高5cm，把底和高都缩为原来的1/2。学生说：“原面积20平方厘米；边都减半，所以新面积10平方厘米。”\n\n请向接手教师交付：①核查当前作答并给出计算依据；②根据历史与当前作答说明对学生学习情况的判断，引用相关record_id；③设计一个先让学生独立作答的最小诊断追问，写出预期正确答案和典型错误，并说明不同回答如何改变下一步帮助。",
+      "assets": [
+        "stimuli/S03_001/history_c.json"
+      ],
+      "interaction_mode": "decision_snapshot"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "current_answer": 5,
+        "current_area_factor": "1/4",
+        "diagnostic_records": [
+          "R07",
+          "R09",
+          "R11"
+        ],
+        "counterevidence_records": [
+          "R02",
+          "R03",
+          "R04",
+          "R10",
+          "R12"
+        ],
+        "acceptable_probe": {
+          "task": "不给公式或答案，问长6宽4的矩形两边均缩为1/2后，新面积是多少？要求写新边长和面积，并解释与旧面积的关系。",
+          "correct": "新边3、2，面积6；旧面积24，比例1/4。",
+          "typical_error": "12（直接把24减半）。",
+          "followup": "若能独立解释再回到三角形并让学生自己用底×高/2核对；若只套线性因子或无法开始，再用网格/两方向分割提供帮助并换新题复核。"
+        },
+        "acceptable_alternatives": [
+          "可用不同数值、方格图或长宽分别变化的非引导追问，只要能看到学生独立建立两个长度因子与面积的关系。",
+          "不要求唯一诊断名词或唯一教法；不同版本可选同一道追问，只要证据结论和不确定性处理合理。"
+        ],
+        "supported": "R07/R09/R11有近期无帮助、带解释的正确表现，不能说学生从来不会面积与长度因子的区别；当前缩小三角形情境出错，应核验情境迁移、读题/注意或掌握不稳定等竞争解释。",
+        "not_supported": "这些记录并不保证当前稳定迁移；不能因历史正确忽略当前错误，也不能唯一确定心理成因。",
+        "critical_errors": [
+          "无视R07/R09/R11，断言没有任何独立掌握证据或一直不会面积变化。",
+          "断言已经稳定掌握且当前10正确或不需要核验。",
+          "编造不存在的记录/援助条件来支撑结论。"
+        ]
+      },
+      "b": {
+        "current_answer": 5,
+        "current_area_factor": "1/4",
+        "diagnostic_records": [
+          "R07",
+          "R09",
+          "R11"
+        ],
+        "counterevidence_records": [
+          "R02",
+          "R03",
+          "R04",
+          "R10",
+          "R12"
+        ],
+        "acceptable_probe": {
+          "task": "不给公式或答案，问长6宽4的矩形两边均缩为1/2后，新面积是多少？要求写新边长和面积，并解释与旧面积的关系。",
+          "correct": "新边3、2，面积6；旧面积24，比例1/4。",
+          "typical_error": "12（直接把24减半）。",
+          "followup": "若能独立解释再回到三角形并让学生自己用底×高/2核对；若只套线性因子或无法开始，再用网格/两方向分割提供帮助并换新题复核。"
+        },
+        "acceptable_alternatives": [
+          "可用不同数值、方格图或长宽分别变化的非引导追问，只要能看到学生独立建立两个长度因子与面积的关系。",
+          "不要求唯一诊断名词或唯一教法；不同版本可选同一道追问，只要证据结论和不确定性处理合理。"
+        ],
+        "supported": "R07/R09/R11的正确解释是看到教师方法和答案后复述，R06同样有帮助；证明的是在支持下的表现，尚未证明可独立建立面积倍数关系。R02/R03等仍支持基础面积计算，不能说所有几何都不会。",
+        "not_supported": "不能由重复正确断言独立掌握，也不能由没有独立证据断言没有能力；先取得独立作答再决定补助。",
+        "critical_errors": [
+          "将R07/R09/R11称为独立掌握证据。",
+          "把所有正确次数汇总为已稳定掌握或已获得因果学习增益。",
+          "将缺少独立观察等同于肯定不会。"
+        ]
+      },
+      "c": {
+        "current_answer": 5,
+        "current_area_factor": "1/4",
+        "diagnostic_records": [
+          "R07",
+          "R09",
+          "R11"
+        ],
+        "counterevidence_records": [
+          "R02",
+          "R03",
+          "R04",
+          "R10",
+          "R12"
+        ],
+        "acceptable_probe": {
+          "task": "不给公式或答案，问长6宽4的矩形两边均缩为1/2后，新面积是多少？要求写新边长和面积，并解释与旧面积的关系。",
+          "correct": "新边3、2，面积6；旧面积24，比例1/4。",
+          "typical_error": "12（直接把24减半）。",
+          "followup": "若能独立解释再回到三角形并让学生自己用底×高/2核对；若只套线性因子或无法开始，再用网格/两方向分割提供帮助并换新题复核。"
+        },
+        "acceptable_alternatives": [
+          "可用不同数值、方格图或长宽分别变化的非引导追问，只要能看到学生独立建立两个长度因子与面积的关系。",
+          "不要求唯一诊断名词或唯一教法；不同版本可选同一道追问，只要证据结论和不确定性处理合理。"
+        ],
+        "supported": "R07/R09/R11答案正确但帮助信息unknown，独立性未知；应补援助记录或先进行独立诊断。不能把unknown默认为无帮助，也不能默认为照抄教师答案。",
+        "not_supported": "既不支持确定独立掌握，也不支持确定依赖帮助；当前仍有面积因子错误。",
+        "critical_errors": [
+          "把unknown解释为none并宣称独立掌握已观察到。",
+          "把unknown解释为老师给了答案并确定依赖。",
+          "虚构援助记录或把未观察能力当低能力。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "math",
+        "points": 2,
+        "observable": "当前新边4和2.5、面积5，面积因子1/4，明确指出学生线性缩放面积的错误。"
+      },
+      {
+        "criterion_id": "history",
+        "points": 3,
+        "observable": "用R07/R09/R11及相关反证，正确区分无帮助、已给答案帮助、援助未知。"
+      },
+      {
+        "criterion_id": "bounded_diagnosis",
+        "points": 2,
+        "observable": "至少两个可区分解释，不把可观察表现等同唯一心理原因、稳定掌握或因果学习效果。"
+      },
+      {
+        "criterion_id": "diagnostic_action",
+        "points": 3,
+        "observable": "追问先留独立作答机会，给出正确答案/典型错误，并根据回答改变帮助；不在追问里泄露关键结论。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "only_assistance_changed",
+      "expected": "所有题目、时间、最终答复不变；独立性判断必须随help变化，但不强制教学话术不同。"
+    },
+    {
+      "variants": [
+        "a",
+        "c"
+      ],
+      "relation": "assistance_information_removed",
+      "expected": "未知不是无帮助；降低对独立掌握的确定性。"
+    }
+  ],
+  "adaptations": [
+    "自建、明示合成的几何历史；借鉴LongTutor的历史证据到诊断机制，不复制其学生记录或心理标签。",
+    "三个版本只变更R07/R09/R11的help字段，是独立快照，不是真实多轮教学。"
+  ]
+}

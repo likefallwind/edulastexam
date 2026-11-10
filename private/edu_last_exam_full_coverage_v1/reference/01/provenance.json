@@ -1,0 +1,8 @@
+[
+  {
+    "source_path": "private/edu_last_exam_v1/stimuli/01/base.md",
+    "target_path": "stimuli/01/source_base.md",
+    "sha256": "f246e4b788ff2da96ca34610227d0405f2e582875fb886ff236c183a14a574e0",
+    "operation": "explicit_byte_copy"
+  }
+]

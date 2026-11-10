@@ -1,0 +1,6 @@
+﻿item_id,scenario,variants,material_origin,author_offline_check,human_review,model_evaluation,difficulty,release_status
+ELE-S01-001,S01,3,adapted_public_vtg,passed_bounded_checks,pending,not_run,not_measured,not_frozen
+ELE-S01-002,S01,2,adapted_public_vtg,passed_bounded_checks,pending,not_run,not_measured,not_frozen
+ELE-S02-001,S02,2,real_student_image_with_new_local_audit_task,passed_bounded_checks,pending,not_run,not_measured,not_frozen
+ELE-S02-002,S02,2,real_student_image_with_new_complete_task_context,passed_bounded_checks,pending,not_run,not_measured,not_frozen
+ELE-S03-001,S03,3,synthetic_research_informed,passed_bounded_checks,pending,not_run,not_measured,not_frozen

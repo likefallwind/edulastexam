@@ -1,0 +1,87 @@
+{
+  "schema_version": "ele_scenario_sources_v1",
+  "checked_on": "2026-11-10",
+  "raw_data_policy": "sources/datasets is uncommitted; external image delivery copies are also uncommitted",
+  "images": [
+    {
+      "asset_id": "S02_001",
+      "source_url": "https://raw.githubusercontent.com/gt-learning-innovation/CIRCUIT_EDU_HW_ACL/d56d72861f443337d47d44714ee4ef8d4f6e5429/docs/assets/examples/hw5_student42_q7_5-4.png",
+      "source_commit": "d56d72861f443337d47d44714ee4ef8d4f6e5429",
+      "source_local_path": "sources/datasets/edu_last_exam_scenario_v1/circuit/hw5_student42_q7_5-4.png",
+      "delivery_path": "stimuli/S02_001/worksheet.png",
+      "sha256": "8b7983b72e2b701d56521f308f8837a3a48af84c486282f4db352b736655d24a",
+      "bytes": 48522,
+      "kind": "real_anonymized_student_image",
+      "modifications": "none; byte-identical local delivery copy",
+      "redistribution": "unconfirmed_do_not_publish",
+      "downloaded_on": "2026-11-10"
+    },
+    {
+      "asset_id": "S02_002",
+      "source_url": "https://raw.githubusercontent.com/gt-learning-innovation/CIRCUIT_EDU_HW_ACL/d56d72861f443337d47d44714ee4ef8d4f6e5429/docs/assets/examples/hw8_student41_q10_6-1.png",
+      "source_commit": "d56d72861f443337d47d44714ee4ef8d4f6e5429",
+      "source_local_path": "sources/datasets/edu_last_exam_scenario_v1/circuit/hw8_student41_q10_6-1.png",
+      "delivery_path": "stimuli/S02_002/worksheet.png",
+      "sha256": "ee5506ccf3e343d7a3844cbb869add332dd22b51a2d0f2a08b13bf0643acd04b",
+      "bytes": 92424,
+      "kind": "real_anonymized_student_image",
+      "modifications": "none; byte-identical local delivery copy",
+      "redistribution": "unconfirmed_do_not_publish",
+      "downloaded_on": "2026-11-10"
+    }
+  ],
+  "vtg": {
+    "url": "https://github.com/eth-lre/verify-then-generate/blob/f509303b4d5667f79aa10e824ed035f49e8b0776/dataset/dataset.json",
+    "commit": "f509303b4d5667f79aa10e824ed035f49e8b0776",
+    "source_local_path": "sources/datasets/edu_last_exam_scenario_v1/vtg/dataset.json",
+    "sha256": "335351285ae4b58176a671e6590d5ca29448df98f6b59c2ab8e5598cc8106cbf",
+    "git_blob_sha1": "6eb8845f105e6bd013878ac0ff8b095d1af6cfb1",
+    "md5": "3aa4f6bf8b0185e26fe859b749165b13",
+    "selected_zero_based_indices": [
+      106,
+      14
+    ],
+    "license_basis": "upstream README license section CC BY-SA 4.0, badge differs; conservative SA attribution retained",
+    "attribution": "Nico Daheim, Jakub Macina, Manu Kapur, Iryna Gurevych, Mrinmaya Sachan. EMNLP 2024. Stepwise Verification and Remediation of Student Reasoning Errors with Large Language Model Tutors.",
+    "upstream_gold_policy": "Never import incorrect_index or reference_solution as authoritative without independent checks."
+  },
+  "public_grading_screen": {
+    "commit": "bd3165f3d5bd1cd68c0a3f6115dbb2e3719b8107",
+    "models": [
+      "openai/gpt-6-astra",
+      "anthropic/claude-opus-5.5"
+    ],
+    "used_for": "candidate screening only; contains scores but no complete grader response text",
+    "not_a_new_run": true,
+    "rejected_as_failure_evidence": [
+      "vtg89-correct",
+      "vtg106-correct",
+      "vtg244-correct",
+      "vtg300-correct",
+      "vtg447-correct",
+      "vtg606-correct",
+      "vtg928-correct"
+    ],
+    "ambiguous_not_selected": [
+      "vtg357-lucky"
+    ],
+    "files": [
+      {
+        "source_url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark/blob/bd3165f3d5bd1cd68c0a3f6115dbb2e3719b8107/submissions/openai__gpt-6-astra/maths.json",
+        "source_local_path": "sources/datasets/edu_last_exam_scenario_v1/lda/gpt6astra.json",
+        "sha256": "6d090e1457be035050b50e93d96e7adec0c985fb95ebcd501c24cbe67d5f1ea0",
+        "bytes": 265345,
+        "retrieved_on": "2026-11-10",
+        "purpose": "source score screening; not model input or new evaluation"
+      },
+      {
+        "source_url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark/blob/bd3165f3d5bd1cd68c0a3f6115dbb2e3719b8107/submissions/anthropic__claude-opus-5.5/maths.json",
+        "source_local_path": "sources/datasets/edu_last_exam_scenario_v1/lda/opus55.json",
+        "sha256": "6e8a36fc837c2da0119bad684ea84bdc3c4ae9683d296fdedde2f4348320c226",
+        "bytes": 273292,
+        "retrieved_on": "2026-11-10",
+        "purpose": "source score screening; not model input or new evaluation"
+      }
+    ]
+  }
+}

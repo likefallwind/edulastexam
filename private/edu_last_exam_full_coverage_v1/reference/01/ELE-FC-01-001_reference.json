@@ -1,0 +1,85 @@
+{
+  "gold": {
+    "per_prompt": {
+      "errors": {
+        "reference_answer": {
+          "counts": {
+            "A_true_positive": 1080,
+            "B_true_positive": 960,
+            "A_false_positive": 776,
+            "B_false_positive": 2940
+          },
+          "probability": "510/1439",
+          "K_first_error": "K4",
+          "L_first_error": "L4",
+          "L_other_independent_error": "L5",
+          "feedback_K": "K3的两个不合格群体恰好各1200，故简单平均成立；K4的合格群体38800与58800不等，应按各自人数加权。请先分别算两线假阳性再相加。",
+          "feedback_L": "L4应为776，L5应为2940，两处算术错误一增一减100，恰好抵消，不能据最终答案正确确认过程正确。",
+          "follow_up_example": "保持两线合格品人数不变，把A、B误报率互换为5%、2%，计算假阳性并判断能否仍简单平均。正确总数3116；简单平均仍给3416，故不成立。"
+        },
+        "reasoning": "真阳性1200×.9+1200×.8=2040；假阳性38800×.02+58800×.05=3716；概率2040/5756=510/1439。K4误把条件为合格品时的线别比例当成1:1，K5运算与其前提相容。L4和L5是独立算术错，L6的加法及L7条件概率公式有效，其正确最终数来自局部抵消。K3正确需指出条件群体人数相等，不应笼统否定所有平均。",
+        "acceptable_alternatives": [
+          "概率树、贝叶斯公式或分层计数均可；误报率的正确合并值929/24400约3.8074%也可。",
+          "追问题可用其他不等群体或等群体对照，只要需要使用条件群体权重且给出可核验判断。",
+          "可将L6称为受错输入影响但恰好得到正确总数；不要求使用“抵消”固定词。"
+        ],
+        "critical_errors": [
+          "把K3判成非法平均而纠正学生；其两群体分母恰相等。",
+          "遗漏K4或L4/L5实质错误，因末答正确宣称L过程全对。"
+        ]
+      },
+      "correct": {
+        "reference_answer": {
+          "counts": [
+            1080,
+            960,
+            776,
+            2940
+          ],
+          "probability": "510/1439",
+          "K_first_error": null,
+          "L_first_error": null,
+          "explanation": "K3两个不合格群体各1200，平均有效；两份现有推导均正确。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "对正确的K3平均或其它合法步骤判实质错误。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立计数和最终概率正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "逐份首错和其它独立错误判断符合本版本；正确作品不误罚，后续带入不虚构新错。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "反馈准确且理解检查有正确参考，允许不同有效追问。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "errors",
+        "correct"
+      ],
+      "relation": "repair_only_student_errors",
+      "expected": "原版找K4/L4/L5；修正后都无首错。"
+    }
+  ]
+}

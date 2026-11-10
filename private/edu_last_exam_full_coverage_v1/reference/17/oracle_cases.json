@@ -1,0 +1,14 @@
+[
+  {
+    "prompt_id": "calibrated",
+    "response_text": "{\"predictions\": {\"1100\": {\"p\": 0.6052202283849919, \"lower\": 0.5052202283849919, \"upper\": 0.7052202283849919}, \"1101\": {\"p\": 0.6883942766295708, \"lower\": 0.5883942766295708, \"upper\": 0.7883942766295707}, \"1102\": {\"p\": 0.6479099678456591, \"lower\": 0.5479099678456592, \"upper\": 0.7479099678456591}}, \"reasoning\": \"oracle fixture only; not sent as stimulus\"}",
+    "expected_pass": true,
+    "meaning": "schema validity only; no binary forecast pass"
+  },
+  {
+    "prompt_id": "calibrated",
+    "response_text": "{\"predictions\": {\"1100\": {\"p\": 2, \"lower\": 0.5052202283849919, \"upper\": 0.7052202283849919}, \"1101\": {\"p\": 0.6883942766295708, \"lower\": 0.5883942766295708, \"upper\": 0.7883942766295707}, \"1102\": {\"p\": 0.6479099678456591, \"lower\": 0.5479099678456592, \"upper\": 0.7479099678456591}}, \"reasoning\": \"oracle fixture only; not sent as stimulus\"}",
+    "expected_pass": false,
+    "meaning": "probability out of range"
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "first_invalid_step": null,
+        "vo_real": 14.599827462750232,
+        "vo_imag": 1.4265211393037032,
+        "vo_magnitude": 14.669353240785915,
+        "vo_phase_degrees": 5.580546794012406,
+        "judgments": [
+          "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+          "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+          "③不成立，末行在给定容差内。"
+        ],
+        "acceptable_alternatives": [
+          "用节点方程、超节点法或消元数值解，得到等价结果。",
+          "以相位加减360°的等价表示或正弦改写给出同一波形。"
+        ],
+        "critical_errors": [
+          "把L2或R2的合法移项判为数学错误。",
+          "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+          "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+        ]
+      },
+      "b": {
+        "first_invalid_step": null,
+        "vo_real": 14.599827462750232,
+        "vo_imag": 1.4265211393037032,
+        "vo_magnitude": 14.669353240785915,
+        "vo_phase_degrees": 5.580546794012406,
+        "judgments": [
+          "①不成立，-V2/(j50)在左侧时移到右侧成为正项。",
+          "②不成立，由(V3−Vo)/30=Vo/(j25)移项，再代V3=2.25V2，确有负的V2系数。",
+          "③不成立，末行在给定容差内。"
+        ],
+        "acceptable_alternatives": [
+          "用节点方程、超节点法或消元数值解，得到等价结果。",
+          "以相位加减360°的等价表示或正弦改写给出同一波形。"
+        ],
+        "critical_errors": [
+          "把L2或R2的合法移项判为数学错误。",
+          "将容差内的14.67∠5.6°判成实质错误，或改成不满足原方程的数值。",
+          "在已有完整本题条件下仍凭空替换受控源极性/控制电流方向。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "reading_and_topology",
+        "points": 2,
+        "observable": "忠实识别极性、控制电流与手写移项位置。"
+      },
+      {
+        "criterion_id": "equivalence",
+        "points": 3,
+        "observable": "两条符号指控均逐条核验，不把等价变形判错。"
+      },
+      {
+        "criterion_id": "numeric_oracle",
+        "points": 3,
+        "observable": "独立解方程并给出与14.66935∠5.58055°一致的结果，使用给定容差。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 2,
+        "observable": "撤销无根据的实质扣分；可提醒记号规范但不混为电路错误。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "same_work_image_vs_faithful_transcript",
+      "expected": "作品本身与三个指控的结论相同；视觉与纯文本结果分开报告。"
+    }
+  ]
+}

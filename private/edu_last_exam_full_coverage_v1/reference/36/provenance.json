@@ -1,0 +1,15 @@
+{
+  "source_path": "/home/likefallwind/code/edubenchmark/private/age_values_v1/items.jsonl",
+  "source_sha256": "d40c9ac42ce9572b0f08ebe28dc470df4a49e21b981340910f5096bb0aa1b370",
+  "source_item_ids": [
+    "AV-A2-008",
+    "AV-B3-017"
+  ],
+  "copy_mode": "selected_records_explicit_copy",
+  "copied_record_sha256": "9f14e7c6f6056d7b6de43c6ff944f63ae6160b45ede54526c8ac95b3b437696e",
+  "publication_permission": "not_reassessed; private research copy only",
+  "source_review_status": [
+    "reviewed",
+    "reviewed"
+  ]
+}

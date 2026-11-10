@@ -1,0 +1,169 @@
+{
+  "item_id": "ELE-FC-22-001",
+  "direction_id": "22",
+  "title": "完整来源与量表下的真实作文评价及rubric审查",
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-22",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 22；文献为机制依据，不声称本轮重新核验原论文"
+    },
+    {
+      "source_id": "ASAP2",
+      "local_path": "/home/likefallwind/code/edubenchmark/sources/datasets/asap_2/data/data_manifest.json",
+      "locator": "test split: AAAOPP13416000003875, AAAOPP13416000001315; Driverless cars source and official rubric"
+    }
+  ],
+  "failure_mechanism": "只按形式打分或在缺来源时臆断证据",
+  "education_consequence": "学生论证质量被错误评价",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。",
+    "附件为显式复制；source_files保留来源路径和逐文件SHA256。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。",
+    "公开数据原作及来源材料仅作本地研究；发布前复核许可，人工整体分不视为无争议唯一gold。"
+  ],
+  "measurement_claim": "两份真实开放作品的有据评价与量表目标覆盖",
+  "unmeasured_subclaims": [
+    "总体QWK、自然作文评分可靠性、独立教师一致性"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "forward",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "附件包含原写作任务的完整来源文章、官方1–6分整体量表与两份匿名真实作品。请按整体量表分别评分，引用作品与来源中的具体依据，说明两份作品质量排序；各维度只作整体分的理由，不凭空把整体量表改成相加分表。原写作任务：In the article “Driverless Cars are Coming,” the author presents both positive and negative aspects of driverless cars. Using details from the article, create an argument for or against the development of these cars.  Be sure to include: your position on driverless cars; appropriate details from the article that support your position; an introduction, a body, and a conclusion to your argumentative essay.\n另外，教师拟用以下替代标准批改本任务：“字数足够2分；拼写正确2分；分成三段2分，总6分。”请判断它是否足以评价原任务，给出必要修订及理由。不要因为立场赞成或反对自动改变分数。",
+      "assets": [
+        "stimuli/22/source_article.txt",
+        "stimuli/22/official_rubric.txt",
+        "stimuli/22/essay_1.txt",
+        "stimuli/22/essay_2.txt"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "reversed",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "附件包含原写作任务的完整来源文章、官方1–6分整体量表与两份匿名真实作品。请按整体量表分别评分，引用作品与来源中的具体依据，说明两份作品质量排序；各维度只作整体分的理由，不凭空把整体量表改成相加分表。原写作任务：In the article “Driverless Cars are Coming,” the author presents both positive and negative aspects of driverless cars. Using details from the article, create an argument for or against the development of these cars.  Be sure to include: your position on driverless cars; appropriate details from the article that support your position; an introduction, a body, and a conclusion to your argumentative essay.\n另外，教师拟用以下替代标准批改本任务：“字数足够2分；拼写正确2分；分成三段2分，总6分。”请判断它是否足以评价原任务，给出必要修订及理由。不要因为立场赞成或反对自动改变分数。",
+      "assets": [
+        "stimuli/22/source_article.txt",
+        "stimuli/22/official_rubric.txt",
+        "stimuli/22/essay_2.txt",
+        "stimuli/22/essay_1.txt"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "forward": {
+        "reference_answer": "essay_1偏离论证无人驾驶开发的任务，主要讲普通驾驶习惯，来源证据不足；官方整体参考分1，合理复核可在低分区间1–2。essay_2明确支持立场，围绕人类失误、警告接管及技术发展组织证据和论证，官方参考分5；4–6须有实际文字依据并保留评分争议，不能硬罚与单一人工分不同。essay_2应明显高于essay_1。替代标准仅覆盖字数/拼写/段落，未覆盖立场、证据忠实与解释、论证质量，不足以测原任务；修订须纳入这些目标，不能只奖励长。",
+        "acceptable_alternatives": [
+          "官方分为参考，不宣称唯一教师真值；允许基于完整量表的邻近分并记录争议。"
+        ],
+        "critical_errors": [
+          "把普通驾驶建议当作充分的无人驾驶论证而排高于有据作品",
+          "捏造作品中不存在的来源证据",
+          "认可字数/拼写/段数为完整内容评价",
+          "只按立场或长短评分"
+        ],
+        "source_item_ids": [
+          "AAAOPP13416000003875",
+          "AAAOPP13416000001315"
+        ],
+        "human_scores": {
+          "essay_1": 1,
+          "essay_2": 5
+        },
+        "expected_order": [
+          "essay_2",
+          "essay_1"
+        ]
+      },
+      "reversed": {
+        "reference_answer": "essay_1偏离论证无人驾驶开发的任务，主要讲普通驾驶习惯，来源证据不足；官方整体参考分1，合理复核可在低分区间1–2。essay_2明确支持立场，围绕人类失误、警告接管及技术发展组织证据和论证，官方参考分5；4–6须有实际文字依据并保留评分争议，不能硬罚与单一人工分不同。essay_2应明显高于essay_1。替代标准仅覆盖字数/拼写/段落，未覆盖立场、证据忠实与解释、论证质量，不足以测原任务；修订须纳入这些目标，不能只奖励长。",
+        "acceptable_alternatives": [
+          "官方分为参考，不宣称唯一教师真值；允许基于完整量表的邻近分并记录争议。"
+        ],
+        "critical_errors": [
+          "把普通驾驶建议当作充分的无人驾驶论证而排高于有据作品",
+          "捏造作品中不存在的来源证据",
+          "认可字数/拼写/段数为完整内容评价",
+          "只按立场或长短评分"
+        ],
+        "source_item_ids": [
+          "AAAOPP13416000003875",
+          "AAAOPP13416000001315"
+        ],
+        "human_scores": {
+          "essay_1": 1,
+          "essay_2": 5
+        },
+        "expected_order": [
+          "essay_2",
+          "essay_1"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "针对完整任务和官方整体量表引用真实文本依据。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "作品2高于作品1；邻近分分歧保留可解释审阅，不机械判错。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "替代量表补上论点、证据及论证目标；不奖励无关长度。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "forward",
+        "reversed"
+      ],
+      "relation": "same_essays_different_order",
+      "expected": "内容评价和排序不因展示顺序改变。"
+    }
+  ],
+  "runtime": {
+    "forward": {
+      "mode": "single_turn"
+    },
+    "reversed": {
+      "mode": "single_turn"
+    }
+  },
+  "source_files": [
+    {
+      "source_path": "/home/likefallwind/code/edubenchmark/sources/datasets/asap_2/data/essays.jsonl",
+      "sha256": "97732aec0bb178cb15c1b8d4ac3ff1472f143afd9996319d7104394e640f56c7"
+    },
+    {
+      "source_path": "/home/likefallwind/code/edubenchmark/sources/datasets/asap_2/data/source_texts.json",
+      "sha256": "04f5e42169c5f34fc944ae82e8886cc6180e4a98776aa7a3752bf80176bc728f"
+    },
+    {
+      "source_path": "/home/likefallwind/code/edubenchmark/sources/datasets/asap_2/data/rubric.txt",
+      "sha256": "bf1cffec6c225cff4f61fe2a0219a13aaa1ff7b6951c5e32d2d29604cabdc7a2"
+    }
+  ]
+}

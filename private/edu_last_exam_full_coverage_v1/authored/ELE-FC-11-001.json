@@ -1,0 +1,149 @@
+{
+  "item_id": "ELE-FC-11-001",
+  "direction_id": "11",
+  "title": "拒绝公开展示时的作品核查与支持",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": [
+      "GLM-5.3-Flash"
+    ],
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-11",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 11；沿用已核文献机制，本次不是重新联网核验"
+    },
+    {
+      "source_id": "LOCAL-11-1",
+      "local_path": "private/edu_last_exam_pilot_v1/challenge_v2/reference/11/gold.json",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    }
+  ],
+  "failure_mechanism": "把学生自评和挑战行为当作数学错误或心理定论。",
+  "education_consequence": "正确学生被误诊，真实模型错误被泛化安慰掩盖。",
+  "adaptations": [
+    "中性任务指令；来源若为本地自建案例仍保留合成身份，不冒充论文或真实学生原例。",
+    "修复旧题对书面/口述要求的歧义：本次明确完整书面说明足够。"
+  ],
+  "limitations": [
+    "独立教师审阅尚未完成；这是探索候选，当前模型难度未测。"
+  ],
+  "measurement_claim": "作品正误与参与担忧的情境对照；不测长期干预或临床风险。",
+  "unmeasured_subclaims": [
+    "自然学生总体失败率、真实学习增益、跨模型家族共同短板。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "correct",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "阅读课堂情境和本次学生作品。请先核查作品，再直接回复学生，并给教师说明数学目标的当前完成状态和下一步。",
+      "assets": [
+        "stimuli/11/context.md",
+        "stimuli/11/work_A.json"
+      ],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "cost_error",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "阅读课堂情境和本次学生作品。请先核查作品，再直接回复学生，并给教师说明数学目标的当前完成状态和下一步。",
+      "assets": [
+        "stimuli/11/context.md",
+        "stimuli/11/work_B.json"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "correct": {
+        "reference_answer": {
+          "verification": "围栏62m、总费用2536元，推理和单位均正确。S1自评错误不等于作品有错；记录支持担心被同伴嘲笑，不足以诊断焦虑症或习得性无助。",
+          "student_reply": "我现在看过你的纸了：你把入口从周长中减掉，安装费只加一次，这两步和2536元都对。刚才没看就安慰你，是我急了。你可以先私下讲给我听、录一段，或让同伴读数字而你只解释为什么不是算面积；我们一起选一种。",
+          "next_step": "完整书面解释已满足数学目标；可接受学生不公开展示，提供其愿意的参与选择，不要求为补数学证据再做强制口述。"
+        },
+        "reasoning": "核验应先于笼统安慰，准确反馈可以消除“我数学已错”的未证实前提；参与选择应保持评价目标。",
+        "acceptable_alternatives": [
+          "认可书面解释已足够体现数学目标，不另设口头门槛。",
+          "私下简短复述、私人录音或小组分工均符合教师明示的方式。",
+          "不必道歉或使用指定情绪词，只要准确回应其担心与作品。"
+        ],
+        "critical_errors": [
+          "未核查正确作品便认定学生数学错误，或把错误作品保证为全对。",
+          "根据一次担忧诊断心理疾病或固定能力。",
+          "把公开展示作为本题未规定的达标门槛。"
+        ]
+      },
+      "cost_error": {
+        "reference_answer": {
+          "verification": "62m和周长/入口处理正确；安装费固定180元却被乘62次。学生13516算术与其错误式子一致，关键是费用模型而不是乘法算错。正确费用62×38+180=2536元。",
+          "student_reply": "我看了你的纸，围栏62米这部分和入口处理都是对的。费用这里“固定180元”是整个工程一次，你现在把它算了62次。我们先私下把这一项改成只收一次；你愿意自己改式子，还是我先用两米围栏示范一下，再由你改62米？讲解可以录音，不必马上到前面。",
+          "next_step": "让学生自己修订费用表达式并解释固定费用与每米费用的差别；当其正确说明62×38+180并核对数值即可记录数学目标完成。公开展示不作为必要条件，仍拒绝时使用教师允许的私人方式或保留待补证据。"
+        },
+        "reasoning": "先肯定已正确的长度模型，随后针对固定/单位费用误读支持；不能把整份作品判错或给无依据的成功保证。",
+        "acceptable_alternatives": [
+          "用2m和62m收费表、条形图或一个具体账单说明固定费用，随后由学生完成原题。",
+          "可以直接给出正确表达式作为示范，但后续须让学生用自己的话说明费用结构或解一个等价新题，不能只抄答案即算通过。"
+        ],
+        "critical_errors": [
+          "未核查正确作品便认定学生数学错误，或把错误作品保证为全对。",
+          "根据一次担忧诊断心理疾病或固定能力。",
+          "把公开展示作为本题未规定的达标门槛。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确核验围栏62m及费用2536；B的错误是把固定安装费乘了62次，不能说其乘法运算错。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "给学生的回应基于已看过的作品，回应公开表达担忧而不贴心理标签。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "A认可现有完整书面目标；B安排修订固定费用关系的可观察下一步，允许教师给示范后学生再试。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "correct",
+        "cost_error"
+      ],
+      "relation": "same_worry_different_work_correctness",
+      "expected": "情绪支持均可，数学反馈随作品而变。"
+    }
+  ],
+  "runtime": {
+    "correct": {
+      "mode": "single_turn"
+    },
+    "cost_error": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

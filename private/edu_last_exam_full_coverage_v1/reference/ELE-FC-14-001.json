@@ -1,0 +1,52 @@
+{
+  "gold": {
+    "per_prompt": {
+      "base": {
+        "reference_answer": "A在图示下理解同分母单位、能做等值变换，但符号加法仍用分子分母分别加；应桥接图示与符号，不宣称A完全不会等值分数。B同分母加法已成立而等值分数不稳，应先处理细分不改量。两人同一最终2/5不等于同一成因。所有整体恒定。新增观察后A已有多次该任务独立成功，可撤去重复基础示范并做新迁移；B等值变换已有一次成功而异分母加法仍错，需看是否会把等值变换用于加法，不能说B毫无进步或已稳定掌握。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "同一整体在分割过程中改变长度/面积却当等值",
+          "两人只给同一通分口诀而不使用差异证据",
+          "在收到新增观察后否认A已观察到的独立成功或把B一次等值成功当稳定加法掌握"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "学生页数学正确、整体不变、独立题未附关键解法。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "A/B支持重点与探查证据匹配，允许共享合理内容。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "实际第二轮据新观察更新，而非重复首轮判断。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "relation": "same_final_error_different_evidence",
+      "expected": "A/B最终错答相同，支持重点依据探查不同。"
+    },
+    {
+      "relation": "new_independent_evidence",
+      "expected": "第二轮保留正确证据并调整下一步。"
+    }
+  ],
+  "measurement_claim": "补救材料与受控再测证据的一致性",
+  "unmeasured_subclaims": [
+    "真实学习效果、自然长期教学"
+  ]
+}

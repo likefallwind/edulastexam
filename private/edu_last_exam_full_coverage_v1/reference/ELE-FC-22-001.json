@@ -1,0 +1,89 @@
+{
+  "gold": {
+    "per_prompt": {
+      "forward": {
+        "reference_answer": "essay_1偏离论证无人驾驶开发的任务，主要讲普通驾驶习惯，来源证据不足；官方整体参考分1，合理复核可在低分区间1–2。essay_2明确支持立场，围绕人类失误、警告接管及技术发展组织证据和论证，官方参考分5；4–6须有实际文字依据并保留评分争议，不能硬罚与单一人工分不同。essay_2应明显高于essay_1。替代标准仅覆盖字数/拼写/段落，未覆盖立场、证据忠实与解释、论证质量，不足以测原任务；修订须纳入这些目标，不能只奖励长。",
+        "acceptable_alternatives": [
+          "官方分为参考，不宣称唯一教师真值；允许基于完整量表的邻近分并记录争议。"
+        ],
+        "critical_errors": [
+          "把普通驾驶建议当作充分的无人驾驶论证而排高于有据作品",
+          "捏造作品中不存在的来源证据",
+          "认可字数/拼写/段数为完整内容评价",
+          "只按立场或长短评分"
+        ],
+        "source_item_ids": [
+          "AAAOPP13416000003875",
+          "AAAOPP13416000001315"
+        ],
+        "human_scores": {
+          "essay_1": 1,
+          "essay_2": 5
+        },
+        "expected_order": [
+          "essay_2",
+          "essay_1"
+        ]
+      },
+      "reversed": {
+        "reference_answer": "essay_1偏离论证无人驾驶开发的任务，主要讲普通驾驶习惯，来源证据不足；官方整体参考分1，合理复核可在低分区间1–2。essay_2明确支持立场，围绕人类失误、警告接管及技术发展组织证据和论证，官方参考分5；4–6须有实际文字依据并保留评分争议，不能硬罚与单一人工分不同。essay_2应明显高于essay_1。替代标准仅覆盖字数/拼写/段落，未覆盖立场、证据忠实与解释、论证质量，不足以测原任务；修订须纳入这些目标，不能只奖励长。",
+        "acceptable_alternatives": [
+          "官方分为参考，不宣称唯一教师真值；允许基于完整量表的邻近分并记录争议。"
+        ],
+        "critical_errors": [
+          "把普通驾驶建议当作充分的无人驾驶论证而排高于有据作品",
+          "捏造作品中不存在的来源证据",
+          "认可字数/拼写/段数为完整内容评价",
+          "只按立场或长短评分"
+        ],
+        "source_item_ids": [
+          "AAAOPP13416000003875",
+          "AAAOPP13416000001315"
+        ],
+        "human_scores": {
+          "essay_1": 1,
+          "essay_2": 5
+        },
+        "expected_order": [
+          "essay_2",
+          "essay_1"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "针对完整任务和官方整体量表引用真实文本依据。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "作品2高于作品1；邻近分分歧保留可解释审阅，不机械判错。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "替代量表补上论点、证据及论证目标；不奖励无关长度。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "forward",
+        "reversed"
+      ],
+      "relation": "same_essays_different_order",
+      "expected": "内容评价和排序不因展示顺序改变。"
+    }
+  ],
+  "measurement_claim": "两份真实开放作品的有据评价与量表目标覆盖",
+  "unmeasured_subclaims": [
+    "总体QWK、自然作文评分可靠性、独立教师一致性"
+  ]
+}

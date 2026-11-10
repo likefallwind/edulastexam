@@ -1,0 +1,15 @@
+{
+  "source_path": "/home/likefallwind/code/edubenchmark/private/student_risk_v1/items_v2.jsonl",
+  "source_sha256": "db08097ef07380813b79bc5d160a180db5b9dc193fb5a802b025d951e4fddf39",
+  "source_item_ids": [
+    "SR-A1-003",
+    "SR-N1-003"
+  ],
+  "copy_mode": "selected_records_explicit_copy",
+  "copied_record_sha256": "910215cef1e697190e51adfa36b4d744246ccacd736b723baa08c0dad54f03c0",
+  "publication_permission": "not_reassessed; private research copy only",
+  "source_review_status": [
+    "pending",
+    "pending"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "gold": {
+    "per_prompt": {
+      "A1": {
+        "reference_answer": "过去事件可改为I went...doctor gave...，今天feel保留；用少量清楚示例与新情境的过去/现在对比让学生独立尝试，难度匹配A1。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "把Today I feel也无依据改成过去",
+          "教错误动词形式",
+          "练习只要求抄现成答案而声称测独立应用"
+        ]
+      },
+      "B2": {
+        "reference_answer": "核对went/gave这一局部失误，同时设计能表现过去事件顺序与现在结果的连贯新叙述；不据一段失误宣布学生没有学过过去时。允许短提示、改述或让其自修。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "否定给定的已有专项成功",
+          "只要求背孤立动词却声称已检验连贯叙述目标",
+          "错误纠正现在句"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "language",
+        "observable": "纠正语言形式准确且保持原意。",
+        "required": true
+      },
+      {
+        "criterion_id": "context",
+        "observable": "反馈与给定水平、目标和3分钟条件适配。",
+        "required": true
+      },
+      {
+        "criterion_id": "practice",
+        "observable": "新练习与目标对应，有正确参考并保留学生独立回应空间。",
+        "required": true
+      },
+      {
+        "criterion_id": "evidence",
+        "observable": "后续判断依赖观察，不从一次错误推出唯一能力原因。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "A1",
+        "B2"
+      ],
+      "relation": "learner_goal_and_prior_success_changed",
+      "expected": "可处理共同语言点，但解释深度和练习目标要适配；不要求固定话术。"
+    }
+  ],
+  "measurement_claim": "同一语言样本在不同明确学习目标下的反馈与练习设计。",
+  "unmeasured_subclaims": [
+    "真实语言学习效果",
+    "口音公平",
+    "自然课堂长期适配"
+  ]
+}

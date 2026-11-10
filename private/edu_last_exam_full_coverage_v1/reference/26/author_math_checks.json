@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": [
+    "A/s and mA/s conditional products checked exactly"
+  ],
+  "independent_human_review": "pending"
+}

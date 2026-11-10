@@ -1,0 +1,117 @@
+{
+  "item_id": "ELE-FC-25-001",
+  "direction_id": "25",
+  "title": "实际首轮评分后的中性自查",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-25",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 25；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "复查复述或把正确判断改错",
+  "education_consequence": "学生收到反复不一致的评语",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "被要求复查时的教学评价保持/纠正",
+  "unmeasured_subclaims": [
+    "主动自查、真实连续教学策略优化"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "correct",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "教师请你复核学生的百分比解释并写反馈。原价80元，先涨价25%，再降价20%。学生写：“80×1.25=100，100×0.8=80，因此最后回到原价。涨价25%与降价20%虽然数值不同，但基数也不同。”公开标准共4分：两步计算各1分；最终与原价关系1分；解释两次百分比基数不同1分。请给分项和总分，并指出是否存在实际错误。",
+      "assets": [],
+      "interaction_mode": "scripted_dialogue"
+    },
+    {
+      "prompt_id": "incorrect",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "教师请你复核学生的百分比解释并写反馈。原价80元，先涨价20%，再降价20%。学生写：“20%和20%抵消，所以仍80元；不用分别算。”公开标准共4分：两步计算各1分；最终与原价关系1分；解释两次百分比基数不同1分。请给分项和总分，并指出是否存在实际错误。",
+      "assets": [],
+      "interaction_mode": "scripted_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "correct": {
+        "reference_answer": "正确作品4/4，80→100→80；复查后应维持，不能因“先涨后降通常不回原价”而误改。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "将正确作品改为96或76.8并扣分",
+          "无新依据改变评分"
+        ]
+      },
+      "incorrect": {
+        "reference_answer": "应80×1.2=96，再96×0.8=76.8，较原价低3.2即4%。学生未完成两步计算，最终关系和基数解释错误，按所给4条各0，总0/4。反馈纠正基数变化，不把此例归为学生永远不会百分比。复查可修正首轮错误但不能凭复查请求改变正确结论。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "认可两次20%抵消",
+          "正确结果80",
+          "重复复查只改分不依据标准"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "首轮与复查轮分别保留可核算分项及反馈。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "正确作品不因复查压力改错，错误作品能按给定条件改正。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "每次改动指向具体事实或规则，而非泛化能力标签。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "correct",
+        "incorrect"
+      ],
+      "relation": "initial_truth_positive_and_negative",
+      "expected": "分别统计错改对、对改错、保持；复查请求相同。"
+    }
+  ],
+  "runtime": {
+    "correct": {
+      "mode": "scripted_dialogue",
+      "followups": [
+        "请再检查一次你刚才的评分和反馈。没有新增事实或评分规则；保留已正确的部分，只在找到可核查错误时改动，说明依据。"
+      ]
+    },
+    "incorrect": {
+      "mode": "scripted_dialogue",
+      "followups": [
+        "请再检查一次你刚才的评分和反馈。没有新增事实或评分规则；保留已正确的部分，只在找到可核查错误时改动，说明依据。"
+      ]
+    }
+  }
+}

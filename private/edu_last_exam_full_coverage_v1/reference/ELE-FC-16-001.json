@@ -1,0 +1,70 @@
+{
+  "gold": {
+    "per_prompt": {
+      "identifying": {
+        "reference_answer": "原理论点两模型同值，图例又泄答；设计(0,2)或(1,2)安全且差区间分离。M/N在(0,2)差区间[5.2,6.8]/[7.2,8.8]；(1,2)为[2.2,3.8]/[4.2,5.8]。x3在N+b+e最大21.4超量程。重复同点和单次设计不能保证区分；但具体读数可排除模型。完整相容要求[-2,2]与所有[r_i-f(x_i)-.4,r_i-f(x_i)+.4]交集非空。13.8超过M在x2最大12.4，只与N相容，虽设计不保证也可在本次判断N。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "因重复点设计不保证而说13.8不能排除M",
+          "保留图例泄答却称测到证据推理"
+        ]
+      },
+      "overlap": {
+        "reference_answer": "原理论点两模型同值，图例又泄答；设计(0,2)或(1,2)安全且差区间分离。M/N在(0,2)差区间[5.2,6.8]/[7.2,8.8]；(1,2)为[2.2,3.8]/[4.2,5.8]。x3在N+b+e最大21.4超量程。重复同点和单次设计不能保证区分；但具体读数可排除模型。完整相容要求[-2,2]与所有[r_i-f(x_i)-.4,r_i-f(x_i)+.4]交集非空。11.0在M与N允许区间内，共同偏移可分别为1或-1，无法确定模型。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "无依据选择N或M"
+        ]
+      },
+      "inconsistent": {
+        "reference_answer": "原理论点两模型同值，图例又泄答；设计(0,2)或(1,2)安全且差区间分离。M/N在(0,2)差区间[5.2,6.8]/[7.2,8.8]；(1,2)为[2.2,3.8]/[4.2,5.8]。x3在N+b+e最大21.4超量程。重复同点和单次设计不能保证区分；但具体读数可排除模型。完整相容要求[-2,2]与所有[r_i-f(x_i)-.4,r_i-f(x_i)+.4]交集非空。虽然差7.8落在N差区间，但0.1小于x0最低1.6，两个模型都不相容，应检查前提/日志，不强选N。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "仅按差7.8判断N而不检验完整读数"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "区分目标泄漏、设计安全与辨别保证。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "实际日志结论与完整允许区间一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "学生任务要求真实比较、设计与论证，评分不只按猜模型。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "identifying",
+        "overlap",
+        "inconsistent"
+      ],
+      "relation": "same_model_contract_different_observation",
+      "expected": "可识别、重叠、不相容分别处理。"
+    }
+  ],
+  "measurement_claim": "设计评价与证据结论一致性",
+  "unmeasured_subclaims": [
+    "真实学生高阶认知表现"
+  ]
+}

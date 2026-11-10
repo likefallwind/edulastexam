@@ -1,0 +1,14 @@
+[
+  {
+    "source_path": "private/edu_last_exam_scenario_neutral_v1/stimuli/S02_001/worksheet.png",
+    "target_path": "stimuli/07/worksheet.png",
+    "sha256": "8b7983b72e2b701d56521f308f8837a3a48af84c486282f4db352b736655d24a",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_scenario_neutral_v1/stimuli/S02_001/transcript.md",
+    "target_path": "stimuli/07/transcript.md",
+    "sha256": "b967a74a199a969dae7800ff7d2a01a3458fc8e81e9a3c42547e66c77ed10452",
+    "operation": "explicit_byte_copy"
+  }
+]

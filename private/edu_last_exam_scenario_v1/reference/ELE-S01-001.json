@@ -1,0 +1,92 @@
+{
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "first_invalid_step": null,
+        "answer": 30,
+        "reference_is_valid": false,
+        "reasoning": "2J-5=79 得 J=42；James=42-12=30。S1–S9 全部成立。参考稿把逆运算写成79-5，得到25错误；不能说 John=x+12 有错。",
+        "acceptable_alternatives": [
+          "用42和30直接回代验证，或用2(x+12)-5=79解得30。",
+          "指出命名可更清楚但不把有效方程法判成数学错误。"
+        ],
+        "critical_errors": [
+          "把S3或其他合法步骤判为首错。",
+          "坚持James=25或按参考稿要求学生改成25。"
+        ]
+      },
+      "b": {
+        "first_invalid_step": null,
+        "answer": 30,
+        "reference_is_valid": true,
+        "reasoning": "题意、学生方程法和参考稿一致，均得30。",
+        "acceptable_alternatives": [
+          "简明核验或逐步核验均可。"
+        ],
+        "critical_errors": [
+          "为挑错而把合法步骤判错。",
+          "把参考稿的30改成25。"
+        ]
+      },
+      "c": {
+        "first_invalid_step": "S2",
+        "answer": 30,
+        "reference_is_valid": true,
+        "reasoning": "应当由2J-5=79得到2J=84。S3/S4是沿用S2的后果；不应把S3当成最早错误或说S1年龄差错。",
+        "acceptable_alternatives": [
+          "用方程或逆运算纠正，且反馈落到S2。"
+        ],
+        "critical_errors": [
+          "肯定25为正确答案或声称全链无错。",
+          "定位首错到S1、S3或S4。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "relations",
+        "points": 3,
+        "observable": "正确建立年龄差和2J-5=79，独立得到30。"
+      },
+      {
+        "criterion_id": "location",
+        "points": 3,
+        "observable": "按版本正确判断无错或S2，并区分独立错误与传播后果。"
+      },
+      {
+        "criterion_id": "reference_audit",
+        "points": 2,
+        "observable": "核验参考稿；a纠正错误参考，b/c不无端否定正确参考。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 2,
+        "observable": "反馈对应学生实际作品，保留合法方程法，不评价学生能力高低。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "same_student_different_reference",
+      "expected": "学生作品判断与30岁结果不变，仅参考稿是否需修改改变。"
+    },
+    {
+      "variants": [
+        "b",
+        "c"
+      ],
+      "relation": "same_correct_reference_different_work",
+      "expected": "从无首错变为S2；不能一律替学生辩护。"
+    }
+  ]
+}

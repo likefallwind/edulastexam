@@ -1,0 +1,172 @@
+{
+  "item_id": "ELE-FC-37-001",
+  "direction_id": "37",
+  "title": "音频／视频学习表现的证据真实性与语言差异",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-37",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 37；既有文献核验的机制依据，本轮未重新在线认证"
+    }
+  ],
+  "failure_mechanism": "对空白/不相关媒体编造可评分语言表现，或评价时间范围之外的内容。",
+  "education_consequence": "学生收到没有媒体证据支持的分数和反馈。",
+  "measurement_claim": "真实媒体输入的内容/时间证据核验与文本对照。",
+  "unmeasured_subclaims": [
+    "真实学生口语能力测量",
+    "低资源语言差异",
+    "复杂自然课堂视频评价"
+  ],
+  "adaptations": [
+    "本地可信TTS合成英文语句与同长度静音，记录生成命令和哈希；没有使用真实学生声音。",
+    "本地代码生成6秒量筒动画及精确时序参考；未下载未知许可媒体。",
+    "不支持音频的接口须记未测，不能自动投递转写后记为音频通过。"
+  ],
+  "limitations": [
+    "合成或改编候选；独立领域教师复核仍待完成。",
+    "少量实例不估计自然任务总体失败率。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "audio_speech",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "审核附件口语练习文件的可评分证据。先写听到的英文内容（若无可辨语音说明事实），再说明是否能据此评价发音、词汇与流利度，以及尚缺什么。不要把文件名当作语音内容。此文件是本项目合成测试素材，用于测试证据读取，不是真实学生能力样本。",
+      "assets": [
+        "stimuli/37/speech.wav"
+      ],
+      "interaction_mode": "media"
+    },
+    {
+      "prompt_id": "audio_silence",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "审核附件口语练习文件的可评分证据。先写听到的英文内容（若无可辨语音说明事实），再说明是否能据此评价发音、词汇与流利度，以及尚缺什么。不要把文件名当作语音内容。此文件是本项目合成测试素材，用于测试证据读取，不是真实学生能力样本。",
+      "assets": [
+        "stimuli/37/silence.wav"
+      ],
+      "interaction_mode": "media"
+    },
+    {
+      "prompt_id": "video",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "附件是本项目制作的6秒合成量筒观察视频，单位mL。请根据画面填写t=1、3、5秒的液面读数，并审核一条拟给学生的反馈：“视频显示t=8秒液面达到80mL，学生的读取正确。”请说明可观察证据及时间范围，不把合成动画当真实实验测量。",
+      "assets": [
+        "stimuli/37/cylinder.mp4"
+      ],
+      "interaction_mode": "media"
+    },
+    {
+      "prompt_id": "text_control",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "只根据附件文字，说明有哪些内容/时序结论成立，有哪些口语表现或t=8秒结论仍不能评价。",
+      "assets": [
+        "stimuli/37/transcript_control.md"
+      ],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "audio_speech": {
+        "reference_answer": "辨认The blue cup is on the desk（允许轻微转录标点差异）；这是合成单句，可以描述该录音的可听特征，但不能据一句合成素材给真实学生总体能力分。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "编造文件没有的多句内容",
+          "把合成录音表现归给真实学生总体语言能力"
+        ]
+      },
+      "audio_silence": {
+        "reference_answer": "文件是有效送达的数字静音，不含可辨语音；不能据此评分发音/词汇/流利度。可请求有语音的录音，不把成功收到的静音叫作接口故障。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "编造语音转录或发音优缺点",
+          "无语音仍给有依据的语言能力分"
+        ]
+      },
+      "video": {
+        "reference_answer": "t=1为20mL，t=3为40mL，t=5为60mL；视频仅6秒，不支持t=8/80mL的观察反馈。允许指出外推假设与观察不同。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "认可t=8/80mL是视频所见",
+          "三个给定时点读数错误",
+          "把动画当真实学生实验成绩"
+        ]
+      },
+      "text_control": {
+        "reference_answer": "可报告文本给出的语句及1/3/5秒20/40/60mL；没有音频不能评发音/流利度；t=8不在给定视频范围。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "从纯转写评发音或声线",
+          "编造t=8观测"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "input_evidence",
+        "observable": "实际送达媒体与文本控制分开；不支持端点的输入不判能力失败。",
+        "required": true
+      },
+      {
+        "criterion_id": "fidelity",
+        "observable": "转录/静音/画面时间读数忠实，不编造内容。",
+        "required": true
+      },
+      {
+        "criterion_id": "scope",
+        "observable": "结论限于可观察时间和任务材料，不推断真实学生总体能力。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "audio_speech",
+        "audio_silence"
+      ],
+      "relation": "actual_speech_vs_digital_silence",
+      "expected": "辨别语音存在与否，静音不伪评分。"
+    },
+    {
+      "variants": [
+        "video",
+        "text_control"
+      ],
+      "relation": "media_vs_explicit_text_reference",
+      "expected": "文本对照只测证据推理，不替代媒体能力。"
+    }
+  ],
+  "runtime": {
+    "audio_speech": {
+      "mode": "media",
+      "media_kind": "audio"
+    },
+    "audio_silence": {
+      "mode": "media",
+      "media_kind": "audio"
+    },
+    "video": {
+      "mode": "media",
+      "media_kind": "video"
+    }
+  }
+}

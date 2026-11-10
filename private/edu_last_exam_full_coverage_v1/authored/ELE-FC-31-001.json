@@ -1,0 +1,159 @@
+{
+  "item_id": "ELE-FC-31-001",
+  "direction_id": "31",
+  "title": "学生代码中的多个相互遮蔽错误",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-31",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 31；既有文献核验的机制依据，本轮未重新在线认证"
+    }
+  ],
+  "failure_mechanism": "首个异常遮蔽其他逻辑错误；修复异常后遗漏统计边界/累加/空集处理，或误报正确替代实现。",
+  "education_consequence": "学生只修表面异常，程序仍错，教师反馈不能解释原程序问题。",
+  "measurement_claim": "受限可执行学生程序的多错误诊断与修复后功能验证。",
+  "unmeasured_subclaims": [
+    "PyMETA原数据复现",
+    "任意Python程序或通用代码Agent能力"
+  ],
+  "adaptations": [
+    "依据清单机制自建完整教学材料，不复制外部学生记录，不继承论文难度。"
+  ],
+  "limitations": [
+    "合成或改编候选；独立领域教师复核仍待完成。",
+    "少量实例不估计自然任务总体失败率。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "buggy",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "学生函数positive_mean(values)的要求：values是长度0–20的整数列表，元素范围−100到100；只对严格大于0的元素求平均，若没有正数则返回None。请审核附件：列出每个实质问题、最小反例及它如何影响结果；若没有问题请说明。保留函数名称和学生的基本思路，给一个完整修复函数，放在python代码块中，再给学生简短反馈。运行器提供受限Python子集解释器进行测试并返回结果；可用赋值、if/for、列表推导、下标、四则运算及len/sum/range/min/max/abs，不支持导入、属性访问、文件、网络、递归或while。参考实现可以合法地采用不同错误修复顺序。",
+      "assets": [
+        "stimuli/31/buggy.py"
+      ],
+      "interaction_mode": "artifact"
+    },
+    {
+      "prompt_id": "correct",
+      "system_prompt": "你是协助教师完成教育任务的助手。请按任务要求交付，使用中文；学生原文和代码可保留原语言。",
+      "user_prompt": "学生函数positive_mean(values)的要求：values是长度0–20的整数列表，元素范围−100到100；只对严格大于0的元素求平均，若没有正数则返回None。请审核附件：列出每个实质问题、最小反例及它如何影响结果；若没有问题请说明。保留函数名称和学生的基本思路，给一个完整修复函数，放在python代码块中，再给学生简短反馈。运行器提供受限Python子集解释器进行测试并返回结果；可用赋值、if/for、列表推导、下标、四则运算及len/sum/range/min/max/abs，不支持导入、属性访问、文件、网络、递归或while。参考实现可以合法地采用不同错误修复顺序。",
+      "assets": [
+        "stimuli/31/correct.py"
+      ],
+      "interaction_mode": "artifact"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "buggy": {
+        "reference_answer": "四个独立缺陷：range(len+1)越界；>=0把0错误纳入正数；total=覆盖而非累加；无正数时除零而应None。允许解释哪些缺陷被越界遮蔽并按任意合理顺序修复。合法实现所有测试通过且不误报。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "只修越界而留下实质逻辑错误",
+          "将0算正数",
+          "无正数返回0/抛异常",
+          "称正确列表推导不合法"
+        ],
+        "expected_cases": [
+          {
+            "input": [],
+            "output": null
+          },
+          {
+            "input": [
+              0,
+              -2
+            ],
+            "output": null
+          },
+          {
+            "input": [
+              1,
+              3
+            ],
+            "output": 2.0
+          },
+          {
+            "input": [
+              0,
+              4
+            ],
+            "output": 4.0
+          },
+          {
+            "input": [
+              -3,
+              2,
+              8
+            ],
+            "output": 5.0
+          }
+        ]
+      },
+      "correct": {
+        "reference_answer": "附件实现满足要求；可以原样保留或给合法等价实现，不编造错误。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "把合法列表推导/条件表达式判错",
+          "修改后引入边界错误"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "diagnosis",
+        "observable": "问题声明有实际反例，识别被首异常遮蔽的独立问题；正确控制不误报。",
+        "required": true
+      },
+      {
+        "criterion_id": "execution",
+        "observable": "修复函数满足正数、空集和混合输入合同。",
+        "required": true
+      },
+      {
+        "criterion_id": "feedback",
+        "observable": "反馈对应原学生代码的原因，不只给无解释重写。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "buggy",
+        "correct"
+      ],
+      "relation": "buggy_vs_legal_alternative",
+      "expected": "坏代码得到具体纠正，合法代码被认可。"
+    }
+  ],
+  "runtime": {
+    "buggy": {
+      "mode": "artifact",
+      "artifact_type": "python_function",
+      "validator": "31",
+      "repair_turns": 1
+    },
+    "correct": {
+      "mode": "artifact",
+      "artifact_type": "python_function",
+      "validator": "31",
+      "repair_turns": 1
+    }
+  }
+}

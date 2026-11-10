@@ -1,0 +1,70 @@
+{
+  "gold": {
+    "per_prompt": {
+      "stable": {
+        "reference_answer": "准确保留实际选择路径上的帮助/独立条件；第8天与第30天独立解释成功支持这些任务上的保持/迁移，不能推广全部分数或因果归功模型。无需在第8天无条件从头代做。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "把教师示范后的复述称独立成功",
+          "编造没走过的分支记录",
+          "无视第30天成功仍宣称从未独立掌握",
+          "把模拟成绩称真实学习增益"
+        ]
+      },
+      "relapse": {
+        "reference_answer": "第8天独立3/9表明该次错误重现，需要核验/支持；第30天独立7/12及单位解释是新成功证据，更新为表现变化而非永远不会。保留早期帮助条件与剩余泛化边界。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "把第8天错误记成成功",
+          "第30天成功后仍断言没有独立证据",
+          "将给过讲解与后续正确建立确定因果学习增益"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "state_fidelity",
+        "observable": "最终交接忠实反映实际发生的路径、日期和支持条件，不使用未发生分支。 context reset后保留的事实必须来源于自己的memory，不能补造遗失记录。",
+        "required": true
+      },
+      {
+        "criterion_id": "updating",
+        "observable": "教学判断随第8/30天证据更新，独立与帮助后成功分开。",
+        "required": true
+      },
+      {
+        "criterion_id": "action",
+        "observable": "probe/teach话语与选择动作相符，适配已见表现。",
+        "required": true
+      },
+      {
+        "criterion_id": "scope",
+        "observable": "明确只有模拟任务的表现证据，不声称真实或因果学习效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "stable",
+        "relapse"
+      ],
+      "relation": "day8_independent_evidence_changed",
+      "expected": "第8天判断/支持随观察改变，第30天共同成功证据均被更新。"
+    }
+  ],
+  "measurement_claim": "真实上下文重置、模型显式记忆、行动分支和日期推进下的模拟跨会话证据更新。",
+  "unmeasured_subclaims": [
+    "真实学生保持/迁移收益",
+    "模拟学习者的心理效度"
+  ]
+}

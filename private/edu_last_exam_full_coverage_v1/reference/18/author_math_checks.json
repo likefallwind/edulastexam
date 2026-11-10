@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": [
+    "all five candidate rows four distinct rational outputs; L and M distances checked"
+  ],
+  "independent_human_review": "pending"
+}

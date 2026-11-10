@@ -1,0 +1,74 @@
+{
+  "gold": {
+    "per_prompt": {
+      "image": {
+        "reference_answer": {
+          "top": "V=L di/dt；i'(t)=60000 cos(500t−30°)",
+          "middle": "250×10^-3 H乘60000 cos(500t−30°)",
+          "bottom": "15 cos(500t−30)，30后无清晰度符号",
+          "units": "可见L单位H；电流导数A/s或mA/s未标",
+          "judgments": "不能把30°误读为300后扣分；裸数为15000，但若导数单位mA/s则15V可成立。当前不确定原题单位，不足以断定原题错或学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "图像细节确有不确定时可定位后要求更清晰图，不可将不确定读数作为扣分事实。",
+          "不必用指定转写格式；不能将末行度符号简写独自升级为相位数值改变。"
+        ],
+        "critical_errors": [
+          "将30°确定读成300并据此确认相位错误。",
+          "在未有电流单位时把mA/s或A/s作为原题事实，给确定的原题对错或能力标签。",
+          "无条件接受裸数乘积为15。"
+        ]
+      },
+      "transcript": {
+        "reference_answer": {
+          "top": "V=L di/dt；i'(t)=60000 cos(500t−30°)",
+          "middle": "250×10^-3 H乘60000 cos(500t−30°)",
+          "bottom": "15 cos(500t−30)，30后无清晰度符号",
+          "units": "可见L单位H；电流导数A/s或mA/s未标",
+          "judgments": "不能把30°误读为300后扣分；裸数为15000，但若导数单位mA/s则15V可成立。当前不确定原题单位，不足以断定原题错或学生不会乘法。"
+        },
+        "acceptable_alternatives": [
+          "图像细节确有不确定时可定位后要求更清晰图，不可将不确定读数作为扣分事实。",
+          "不必用指定转写格式；不能将末行度符号简写独自升级为相位数值改变。"
+        ],
+        "critical_errors": [
+          "将30°确定读成300并据此确认相位错误。",
+          "在未有电流单位时把mA/s或A/s作为原题事实，给确定的原题对错或能力标签。",
+          "无条件接受裸数乘积为15。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "对上中下可见数值、30°与单位作忠实读取，真实不确定处具体标出而非编造。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "两条批注依据真实读数审核；条件计算正确，原题单位未知保留到最终反馈。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "不给学生无依据的能力标签，清楚指出需要补充的单位。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "image",
+        "transcript"
+      ],
+      "relation": "same_work_visual_vs_faithful_transcript",
+      "expected": "核心数学与证据边界一致；图片未送达不算模型错。"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "gold": {
+    "per_prompt": {
+      "generate": {
+        "reference_answer": "T触挡=300×10/8=375K；初态(300,8,100,160,0)，刚触挡(375,10,100,200,0)，450K时(450,10,120,200,40)，冷至330K后已离挡(330,8.8,100,176,0)。压力单位kPa，面积20cm²=0.002m²，止挡力(120−100)×1000×0.002=40N向下。冷却到375K离挡，之后外压恒100。",
+        "acceptable_alternatives": [
+          "横排或竖排均可；解释可用PV/T不变或分段等压/等容。"
+        ],
+        "critical_errors": [
+          "冷至330K仍卡在10cm且压力88kPa而忽视活塞已离挡",
+          "刚触挡即声称正止挡力",
+          "力单位换算错误",
+          "图示高度与标注数值冲突"
+        ],
+        "expected_states": [
+          {
+            "id": "initial",
+            "temperature_K": 300,
+            "piston_height_cm": 8,
+            "pressure_kPa": 100,
+            "volume_cm3": 160,
+            "stop_force_N": 0
+          },
+          {
+            "id": "touch",
+            "temperature_K": 375,
+            "piston_height_cm": 10,
+            "pressure_kPa": 100,
+            "volume_cm3": 200,
+            "stop_force_N": 0
+          },
+          {
+            "id": "hot",
+            "temperature_K": 450,
+            "piston_height_cm": 10,
+            "pressure_kPa": 120,
+            "volume_cm3": 200,
+            "stop_force_N": 40
+          },
+          {
+            "id": "cool",
+            "temperature_K": 330,
+            "piston_height_cm": 8.8,
+            "pressure_kPa": 100,
+            "volume_cm3": 176,
+            "stop_force_N": 0
+          }
+        ]
+      },
+      "review_valid": {
+        "reference_answer": "T触挡=300×10/8=375K；初态(300,8,100,160,0)，刚触挡(375,10,100,200,0)，450K时(450,10,120,200,40)，冷至330K后已离挡(330,8.8,100,176,0)。压力单位kPa，面积20cm²=0.002m²，止挡力(120−100)×1000×0.002=40N向下。冷却到375K离挡，之后外压恒100。",
+        "acceptable_alternatives": [
+          "横排或竖排均可；解释可用PV/T不变或分段等压/等容。"
+        ],
+        "critical_errors": [
+          "冷至330K仍卡在10cm且压力88kPa而忽视活塞已离挡",
+          "刚触挡即声称正止挡力",
+          "力单位换算错误",
+          "图示高度与标注数值冲突"
+        ],
+        "expected_states": [
+          {
+            "id": "initial",
+            "temperature_K": 300,
+            "piston_height_cm": 8,
+            "pressure_kPa": 100,
+            "volume_cm3": 160,
+            "stop_force_N": 0
+          },
+          {
+            "id": "touch",
+            "temperature_K": 375,
+            "piston_height_cm": 10,
+            "pressure_kPa": 100,
+            "volume_cm3": 200,
+            "stop_force_N": 0
+          },
+          {
+            "id": "hot",
+            "temperature_K": 450,
+            "piston_height_cm": 10,
+            "pressure_kPa": 120,
+            "volume_cm3": 200,
+            "stop_force_N": 40
+          },
+          {
+            "id": "cool",
+            "temperature_K": 330,
+            "piston_height_cm": 8.8,
+            "pressure_kPa": 100,
+            "volume_cm3": 176,
+            "stop_force_N": 0
+          }
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "四态温度、压强、体积、高度和止挡力符合公开模型。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "渲染图几何与同一状态标签一致；冷却后正确离挡。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "有效候选不被错误更改；不同合格布局均可。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "generate",
+        "review_valid"
+      ],
+      "relation": "generation_and_correct_artifact_control",
+      "expected": "生成正确状态；对正确候选不引入错误。"
+    }
+  ],
+  "measurement_claim": "受限声明式科学图示生成及真实SVG渲染",
+  "unmeasured_subclaims": [
+    "任意绘图代码能力、独立视觉教学可读性、真实学习收益"
+  ]
+}

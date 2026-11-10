@@ -1,0 +1,115 @@
+{
+  "item_id": "ELE-FC-24-001",
+  "direction_id": "24",
+  "title": "已确认先修约束下的学习排序和状态更新",
+  "material_origin": "literature_mechanism_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-24",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 24；文献为机制依据，不声称本轮重新核验原论文"
+    }
+  ],
+  "failure_mechanism": "只满足部分依赖或不使用已掌握证据",
+  "education_consequence": "学生被安排无法衔接或重复的学习路径",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。"
+  ],
+  "measurement_claim": "显式课程依赖下的状态条件路径规划",
+  "unmeasured_subclaims": [
+    "自动推断真实概念先修边、长期学习收益"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "none",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "教师为一个短模块制定了下列明确先修约束，作为本题课程合同，不要求你认可它是所有课程唯一安排。\n节点：A分数含义；B等值分数；C分数乘法；D异分母加法；E一元一次方程；F含分数系数方程；G应用题建模。\n有向边u→v表示学习v前须已掌握u：A→B，A→C，B→D，C→F，D→F，E→F，E→G，F→G。不存在其他必须依赖。学生目标G。\n请列出当前必须补的节点及一个合法学习顺序；也说明哪些已掌握或与目标无关的内容无需重复。随后审核建议顺序A,B,D,E,F,C,G是否合法，定位违反的约束。不同合法拓扑序均可，不以唯一顺序为标准。\n没有已确认掌握节点。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "some",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "教师为一个短模块制定了下列明确先修约束，作为本题课程合同，不要求你认可它是所有课程唯一安排。\n节点：A分数含义；B等值分数；C分数乘法；D异分母加法；E一元一次方程；F含分数系数方程；G应用题建模。\n有向边u→v表示学习v前须已掌握u：A→B，A→C，B→D，C→F，D→F，E→F，E→G，F→G。不存在其他必须依赖。学生目标G。\n请列出当前必须补的节点及一个合法学习顺序；也说明哪些已掌握或与目标无关的内容无需重复。随后审核建议顺序A,B,D,E,F,C,G是否合法，定位违反的约束。不同合法拓扑序均可，不以唯一顺序为标准。\n已观察到A、B、E的无帮助正确解释及两次独立迁移；本题把它们记为已掌握，其余未测。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "none": {
+        "reference_answer": "必须完成A,B,C,D,E,F,G；任何满足8条边的拓扑序均可，例如A,B,C,D,E,F,G或E,A,C,B,D,F,G。建议序列F在C之前，违反C→F。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "将F安排在C/D/E前",
+          "误拒不同合法拓扑序",
+          "忽略目标G的必要祖先"
+        ]
+      },
+      "some": {
+        "reference_answer": "A,B,E已满足，不必重复作为强制先修。必须补C,D,F,G，C与D顺序任意，然后F、G。建议全序仍违反C→F；在已掌握条件下也不能让F先于C。",
+        "acceptable_alternatives": [
+          "接受等价正确论证和符合公开教学目标的其他教法。"
+        ],
+        "critical_errors": [
+          "不使用给定掌握状态而强制从头学全部",
+          "漏掉C或D却安排F"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "顺序满足全部显式先修约束而非只检查相邻项。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "目标祖先完整、已掌握节点不要求重复。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "接受所有合法拓扑序，准确指出建议序列违反C→F。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "none",
+        "some"
+      ],
+      "relation": "mastery_state_only",
+      "expected": "顺序的必要待学集合随证据变，不改边。"
+    },
+    {
+      "relation": "multiple_valid_orders",
+      "expected": "C与D等无直接依赖者可互换。"
+    }
+  ],
+  "runtime": {
+    "none": {
+      "mode": "single_turn"
+    },
+    "some": {
+      "mode": "single_turn"
+    }
+  }
+}

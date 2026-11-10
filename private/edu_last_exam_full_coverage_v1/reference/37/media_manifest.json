@@ -1,0 +1,67 @@
+{
+  "origin": "locally_generated_synthetic_fixtures",
+  "real_student_data": false,
+  "license": "project-authored synthetic materials; flite synthesized speech, no third-party recording",
+  "audio_text": "The blue cup is on the desk.",
+  "audio_generation": "ffmpeg lavfi flite voice=slt; padded to 6 s; mono PCM16 16000 Hz",
+  "video_generation": "three project-authored vector diagrams rasterized by trusted Pillow drawing; ffmpeg concat 10 fps H.264, 6 s",
+  "observations": [
+    {
+      "interval_s": [
+        0,
+        2
+      ],
+      "volume_ml": 20
+    },
+    {
+      "interval_s": [
+        2,
+        4
+      ],
+      "volume_ml": 40
+    },
+    {
+      "interval_s": [
+        4,
+        6
+      ],
+      "volume_ml": 60
+    }
+  ],
+  "files": {
+    "speech.wav": {
+      "sha256": "ae0c0bf4a8fe911c596a3c6fbd4fc9ca40dc825af061d4547293f84dbd73950c",
+      "bytes": 192078,
+      "duration_s": 6.0,
+      "sample_rate": 16000,
+      "channels": 1,
+      "rms": 2718.927572239344
+    },
+    "silence.wav": {
+      "sha256": "47b589098cc9e4b92774cd5b6a57ccca0713c02396bf755b2318f7e81cdc534e",
+      "bytes": 192044,
+      "duration_s": 6.0,
+      "sample_rate": 16000,
+      "channels": 1,
+      "rms": 0.0
+    },
+    "cylinder.mp4": {
+      "sha256": "810eb1078927ccd0158b9e3d3c55dde2421aec0e65f196b0d5d60745f25e2bb0",
+      "bytes": 15001,
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 640,
+            "height": 480,
+            "nb_frames": "60"
+          }
+        ],
+        "format": {
+          "duration": "6.000000"
+        }
+      }
+    }
+  }
+}

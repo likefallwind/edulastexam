@@ -1,0 +1,70 @@
+{
+  "gold": {
+    "per_prompt": {
+      "misconception": {
+        "reference_answer": "围绕同一整体和共同计数单位组织操作/讨论，1/2+1/3=5/6；安排学生独立新题如1/2+1/4=3/4，按解释与答案决定是否加助。不能直接将2/5定为仅粗心。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "示例/练习答案错误",
+          "活动依赖没有的投影/网络且无可行替代",
+          "没有任何独立评价却宣布所有学生掌握"
+        ]
+      },
+      "ready": {
+        "reference_answer": "利用已有独立成功，安排比较合法解法、解释共同单位或迁移挑战，仍有独立核验；可有简短回顾，不应整节从零代做。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "否认给定独立成功而将全班断言为从不会",
+          "把正确合法解法判错",
+          "数学内容错误"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "alignment",
+        "observable": "目标、学生行动、观测证据和独立题形成可执行对应。",
+        "required": true
+      },
+      {
+        "criterion_id": "mathematics",
+        "observable": "所有示例、图示含义及练习答案正确且整体一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "feasibility",
+        "observable": "活动总时长20分钟，资源和班级组织可行。",
+        "required": true
+      },
+      {
+        "criterion_id": "adaptation",
+        "observable": "使用给定学生起点，依据实际作答安排后续支持；接受多种教法。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "misconception",
+        "ready"
+      ],
+      "relation": "student_starting_evidence_changed",
+      "expected": "起点判断和课堂任务有所适配，允许局部共同活动。"
+    }
+  ],
+  "measurement_claim": "完整给定材料下的20分钟教案生成与起点适配。",
+  "unmeasured_subclaims": [
+    "课堂实际实施质量",
+    "真实学习增益",
+    "全单元长期课程设计"
+  ]
+}

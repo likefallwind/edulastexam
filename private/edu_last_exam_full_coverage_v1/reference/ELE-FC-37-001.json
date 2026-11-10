@@ -1,0 +1,92 @@
+{
+  "gold": {
+    "per_prompt": {
+      "audio_speech": {
+        "reference_answer": "辨认The blue cup is on the desk（允许轻微转录标点差异）；这是合成单句，可以描述该录音的可听特征，但不能据一句合成素材给真实学生总体能力分。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "编造文件没有的多句内容",
+          "把合成录音表现归给真实学生总体语言能力"
+        ]
+      },
+      "audio_silence": {
+        "reference_answer": "文件是有效送达的数字静音，不含可辨语音；不能据此评分发音/词汇/流利度。可请求有语音的录音，不把成功收到的静音叫作接口故障。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "编造语音转录或发音优缺点",
+          "无语音仍给有依据的语言能力分"
+        ]
+      },
+      "video": {
+        "reference_answer": "t=1为20mL，t=3为40mL，t=5为60mL；视频仅6秒，不支持t=8/80mL的观察反馈。允许指出外推假设与观察不同。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "认可t=8/80mL是视频所见",
+          "三个给定时点读数错误",
+          "把动画当真实学生实验成绩"
+        ]
+      },
+      "text_control": {
+        "reference_answer": "可报告文本给出的语句及1/3/5秒20/40/60mL；没有音频不能评发音/流利度；t=8不在给定视频范围。",
+        "acceptable_alternatives": [
+          "接受满足任务目标且证据一致的等价表述。"
+        ],
+        "critical_errors": [
+          "从纯转写评发音或声线",
+          "编造t=8观测"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "input_evidence",
+        "observable": "实际送达媒体与文本控制分开；不支持端点的输入不判能力失败。",
+        "required": true
+      },
+      {
+        "criterion_id": "fidelity",
+        "observable": "转录/静音/画面时间读数忠实，不编造内容。",
+        "required": true
+      },
+      {
+        "criterion_id": "scope",
+        "observable": "结论限于可观察时间和任务材料，不推断真实学生总体能力。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "audio_speech",
+        "audio_silence"
+      ],
+      "relation": "actual_speech_vs_digital_silence",
+      "expected": "辨别语音存在与否，静音不伪评分。"
+    },
+    {
+      "variants": [
+        "video",
+        "text_control"
+      ],
+      "relation": "media_vs_explicit_text_reference",
+      "expected": "文本对照只测证据推理，不替代媒体能力。"
+    }
+  ],
+  "measurement_claim": "真实媒体输入的内容/时间证据核验与文本对照。",
+  "unmeasured_subclaims": [
+    "真实学生口语能力测量",
+    "低资源语言差异",
+    "复杂自然课堂视频评价"
+  ]
+}

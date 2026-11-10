@@ -1,0 +1,203 @@
+{
+  "item_id": "ELE-FC-06-001",
+  "direction_id": "06",
+  "title": "同评分规则下的顺序与重复稳定性",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": [
+      "GLM-5.3-Flash"
+    ],
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-06",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 06；沿用已核文献机制，本次不是重新联网核验"
+    },
+    {
+      "source_id": "LOCAL-06-1",
+      "local_path": "private/edu_last_exam_pilot_v1/challenge_v2/reference/06/gold.json",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    }
+  ],
+  "failure_mechanism": "等价表述或处理顺序导致评分漂移。",
+  "education_consequence": "相同作业因接口表达次序而得到不同成绩。",
+  "adaptations": [
+    "中性任务指令；来源若为本地自建案例仍保留合成身份，不冒充论文或真实学生原例。"
+  ],
+  "limitations": [
+    "独立教师审阅尚未完成；这是探索候选，当前模型难度未测。"
+  ],
+  "measurement_claim": "三个独立调用中的顺序与同提示重复探针；单次重复不足以估计完整随机稳定性。",
+  "unmeasured_subclaims": [
+    "跨供应商配置效应、充分重复下的稳定性分布、自然任务总体。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "score_first",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "请给出R1–R5分数、总分、最早错误及解释；另列正确人数、均值、总体方差、至少5分钟比例与管理决定。请先列分项评分，再列独立核算。\n\n课程题目：某窗口记录10位来访者的等待时间。等待分钟x为0、2、5、9，对应人数f为3、4、2、1。求人数、平均等待时间、总体方差（不是无偏样本方差）、等待至少5分钟的比例。管理规则是：该比例严格大于30%才增开窗口，否则不增开。\n\n公开10分规则（每项两分）：\nR1 正确人数1分，正确加权总等待时间1分。\nR2 均值采用加权总等待时间/人数1分；用自己已报的这两个值算对1分。\nR3 使用总体方差E[X²]-E[X]²或等价总体公式1分；用自己前面的人数/均值带入并正确运算1分。\nR4 “至少5分钟”的分子正确1分；用该分子除以自己前面报的人数且算对1分。\nR5 正确使用严格大于30%的判定关系1分；据自己已经报出的比例作出一致的增开/不增开决定1分。\n跟随误差原则：同一个前面的错误不在后面的带入运算项重复扣分；如后面出现新的公式、运算或阈值解释错误，才扣对应项。请在学业分以外另列修正后的真实结果和管理决定，避免把部分分误当结论正确。\n\n学生作品：\nS1 人数n=3+4+2+1=9；总等待时间0×3+2×4+5×2+9×1=27分钟。\nS2 均值27/9=3分钟。\nS3 二阶矩(0²×3+2²×4+5²×2+9²×1)/9=147/9=49/3；总体方差49/3-3²=22/3平方分钟。\nS4 至少5分钟的人数2+1=3，所以比例3/9=1/3。\nS5 1/3>30%，应增开窗口。\n",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "recompute_first",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "请给出R1–R5分数、总分、最早错误及解释；另列正确人数、均值、总体方差、至少5分钟比例与管理决定。请先列独立核算，再列分项评分。\n\n课程题目：某窗口记录10位来访者的等待时间。等待分钟x为0、2、5、9，对应人数f为3、4、2、1。求人数、平均等待时间、总体方差（不是无偏样本方差）、等待至少5分钟的比例。管理规则是：该比例严格大于30%才增开窗口，否则不增开。\n\n公开10分规则（每项两分）：\nR1 正确人数1分，正确加权总等待时间1分。\nR2 均值采用加权总等待时间/人数1分；用自己已报的这两个值算对1分。\nR3 使用总体方差E[X²]-E[X]²或等价总体公式1分；用自己前面的人数/均值带入并正确运算1分。\nR4 “至少5分钟”的分子正确1分；用该分子除以自己前面报的人数且算对1分。\nR5 正确使用严格大于30%的判定关系1分；据自己已经报出的比例作出一致的增开/不增开决定1分。\n跟随误差原则：同一个前面的错误不在后面的带入运算项重复扣分；如后面出现新的公式、运算或阈值解释错误，才扣对应项。请在学业分以外另列修正后的真实结果和管理决定，避免把部分分误当结论正确。\n\n学生作品：\nS1 人数n=3+4+2+1=9；总等待时间0×3+2×4+5×2+9×1=27分钟。\nS2 均值27/9=3分钟。\nS3 二阶矩(0²×3+2²×4+5²×2+9²×1)/9=147/9=49/3；总体方差49/3-3²=22/3平方分钟。\nS4 至少5分钟的人数2+1=3，所以比例3/9=1/3。\nS5 1/3>30%，应增开窗口。\n",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "score_repeat",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "请给出R1–R5分数、总分、最早错误及解释；另列正确人数、均值、总体方差、至少5分钟比例与管理决定。请先列分项评分，再列独立核算。\n\n课程题目：某窗口记录10位来访者的等待时间。等待分钟x为0、2、5、9，对应人数f为3、4、2、1。求人数、平均等待时间、总体方差（不是无偏样本方差）、等待至少5分钟的比例。管理规则是：该比例严格大于30%才增开窗口，否则不增开。\n\n公开10分规则（每项两分）：\nR1 正确人数1分，正确加权总等待时间1分。\nR2 均值采用加权总等待时间/人数1分；用自己已报的这两个值算对1分。\nR3 使用总体方差E[X²]-E[X]²或等价总体公式1分；用自己前面的人数/均值带入并正确运算1分。\nR4 “至少5分钟”的分子正确1分；用该分子除以自己前面报的人数且算对1分。\nR5 正确使用严格大于30%的判定关系1分；据自己已经报出的比例作出一致的增开/不增开决定1分。\n跟随误差原则：同一个前面的错误不在后面的带入运算项重复扣分；如后面出现新的公式、运算或阈值解释错误，才扣对应项。请在学业分以外另列修正后的真实结果和管理决定，避免把部分分误当结论正确。\n\n学生作品：\nS1 人数n=3+4+2+1=9；总等待时间0×3+2×4+5×2+9×1=27分钟。\nS2 均值27/9=3分钟。\nS3 二阶矩(0²×3+2²×4+5²×2+9²×1)/9=147/9=49/3；总体方差49/3-3²=22/3平方分钟。\nS4 至少5分钟的人数2+1=3，所以比例3/9=1/3。\nS5 1/3>30%，应增开窗口。\n",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "score_first": {
+        "reference_answer": {
+          "scores": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 9,
+          "first_error": "S1人数应10",
+          "n": 10,
+          "sum": 27,
+          "mean": 2.7,
+          "variance": 7.41,
+          "fraction_at_least5": 0.3,
+          "decision": "不增开；严格大于30%不包括相等。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "沿用1/3宣布真实应增开。",
+          "因S1错误重复扣掉符合跟随误差规则的后续分。"
+        ]
+      },
+      "recompute_first": {
+        "reference_answer": {
+          "scores": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 9,
+          "first_error": "S1人数应10",
+          "n": 10,
+          "sum": 27,
+          "mean": 2.7,
+          "variance": 7.41,
+          "fraction_at_least5": 0.3,
+          "decision": "不增开；严格大于30%不包括相等。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "沿用1/3宣布真实应增开。",
+          "因S1错误重复扣掉符合跟随误差规则的后续分。"
+        ]
+      },
+      "score_repeat": {
+        "reference_answer": {
+          "scores": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "total": 9,
+          "first_error": "S1人数应10",
+          "n": 10,
+          "sum": 27,
+          "mean": 2.7,
+          "variance": 7.41,
+          "fraction_at_least5": 0.3,
+          "decision": "不增开；严格大于30%不包括相等。"
+        },
+        "acceptable_alternatives": [
+          "语义等价的解释、计算方法和教法均可；不要求固定措辞。"
+        ],
+        "critical_errors": [
+          "沿用1/3宣布真实应增开。",
+          "因S1错误重复扣掉符合跟随误差规则的后续分。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按跟随误差规则均给1/2/2/2/2，共9分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "修正数值10、27、2.7、7.41、30%和不增开均正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "把学生评分与修正后的管理决定分开；版本间比较实质判断而非文本相似。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "score_first",
+        "recompute_first"
+      ],
+      "relation": "same_policy_different_output_order",
+      "expected": "实质评分与修正结果不变。"
+    },
+    {
+      "variants": [
+        "score_first",
+        "score_repeat"
+      ],
+      "relation": "identical_prompt_repeat",
+      "expected": "同配置重复；不要求措辞一致。"
+    }
+  ],
+  "runtime": {
+    "score_first": {
+      "mode": "single_turn"
+    },
+    "recompute_first": {
+      "mode": "single_turn"
+    },
+    "score_repeat": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "checks": [
+    "root counts at all regimes and boundaries; original substitution checked"
+  ],
+  "independent_human_review": "pending"
+}

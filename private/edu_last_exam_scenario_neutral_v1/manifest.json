@@ -1,0 +1,109 @@
+{
+  "schema_version": "edu_last_exam_scenario_neutral_v1_2026-11-10",
+  "status": "author_offline_validated_candidate",
+  "package_count": 5,
+  "prompt_count": 12,
+  "image_prompt_count": 2,
+  "parent_prompt_sha256": "2cfaf3d4c9f533c501c537fa02769ab0f350eb166a8f8d4b7613d9c016d627d1",
+  "parent_manifest_sha256": "f98882fcf466d3e9fbdd5433f587666537bf61785db051902f220f31f4b08ca8",
+  "intervention": "system_and_user_instruction_scaffolding_only",
+  "baseline_run": "reports/eval/edu_last_exam_scenario_v1/_exploratory/20261110_102728_glm",
+  "human_review": "pending",
+  "model_evaluation": "tracked_in_separate_run_artifacts",
+  "difficulty": "not_measured",
+  "canonical": false,
+  "frozen": false,
+  "real_multiturn": false,
+  "source_sha256": {
+    "data/edu_last_exam_scenario_neutral_v1/prompt_control.json": "3c14801b8c45b8f8cd66e28a494f6c996747d4d4e8a2984cf205b4b90abccb71",
+    "scripts/build/build_edu_last_exam_scenario_neutral.py": "b15bc1fa5c2ba5a10518e481e1243d84112c17eb65b9db93245da313693d59e5",
+    "private/edu_last_exam_scenario_neutral_v1/README.md": "c527db03f5ff01664d542a7ac4529fd56efab6cbc8812eb32b31b1f2678c94a2",
+    "private/edu_last_exam_scenario_v1/manifest.json": "f98882fcf466d3e9fbdd5433f587666537bf61785db051902f220f31f4b08ca8",
+    "private/edu_last_exam_scenario_v1/prompts.jsonl": "2cfaf3d4c9f533c501c537fa02769ab0f350eb166a8f8d4b7613d9c016d627d1",
+    "scripts/build/build_edu_last_exam_scenario_v1.py": "0521e613be94fe24a4abf28e5466e79657976797db4080ac79bb676763d3c3fb"
+  },
+  "asset_sha256": {
+    "stimuli/S01_001/work_a.md": "86fb298f89d2ab16f78746225aeb4a77d21724c6f1c600dd0b4191ad6b12a1bb",
+    "stimuli/S01_001/work_b.md": "a29be4011db6f3e5ed67a2c996fc11fd86b35e8154ab3b003767ec5a5a705325",
+    "stimuli/S01_001/work_c.md": "f606ce01d6db6fdc335b5f0efb79db2426ed33b2ca86c94a7eb12673fb048fbb",
+    "stimuli/S01_002/work_a.md": "5902312f366ba1319e672b6393d6aba30606c8c8c64180bf42941808f71eff7b",
+    "stimuli/S01_002/work_b.md": "682a5de61f658560814ac7c9afdbada3acc0aff68a8e578e2216be15f96aa9fc",
+    "stimuli/S02_001/transcript.md": "b967a74a199a969dae7800ff7d2a01a3458fc8e81e9a3c42547e66c77ed10452",
+    "stimuli/S02_001/worksheet.png": "8b7983b72e2b701d56521f308f8837a3a48af84c486282f4db352b736655d24a",
+    "stimuli/S02_002/transcript.md": "662c4960540f8fc81f394e39d7ea2ea11f62e2e4c56670df8d84f6d704a8a40c",
+    "stimuli/S02_002/worksheet.png": "ee5506ccf3e343d7a3844cbb869add332dd22b51a2d0f2a08b13bf0643acd04b",
+    "stimuli/S03_001/history_a.json": "4da819409deae9ead4398ac10fe2088993a7907d5260c0d35c9b449b4330b785",
+    "stimuli/S03_001/history_b.json": "5b25a02eb64979901995203c98e2c2aa3011f6e48b1f5cd1f650580f2b67d51a",
+    "stimuli/S03_001/history_c.json": "a77a97cf461a3d03d78946821449cad24a093a5d279a3bf914a75234f90ce84b"
+  },
+  "export_sha256": {
+    "NOTICE.md": "70856783a697eafb5e1e22c38fb04ed913904cbd1935406378d221fa06806243",
+    "authored/ELE-S01-001.json": "c700b38179430dc680e2862ecb568d7733f8543ca61f1ff9054bf068cea2180d",
+    "authored/ELE-S01-002.json": "1465532bac58e9cd6ef0a41812cd4f866f891bb5ca5431359eb980708b90ecaa",
+    "authored/ELE-S02-001.json": "46dc7cbcf84184d3affa3e7277a76e76683c36b262992f4d0f562eba8443eb81",
+    "authored/ELE-S02-002.json": "dfc31371505e89ac6ff4b86f2622e51dabb2371b72d46b8bac49167dc4c3b312",
+    "authored/ELE-S03-001.json": "8f277aea0417ba53048491b115906adb342d5b0861b195babf553b9430f8199a",
+    "cards.jsonl": "306c62fa74e91b70894c7e4e87b3e140ebeb9a3daee9d7d9e25fd48092414e1a",
+    "items.jsonl": "9b3c916ac724986ddc5e6047d73752acef04c86b6a25e55d3cd439d6ad998a05",
+    "prompt_comparison.html": "1c1d7ebd0b1e40f92b77157e88176fd5eb8abdc2cfb69881f289dfd82ae280c6",
+    "prompt_comparison.md": "7d8d9081a624449ad2c2e4395f4dc6c18d2c152008b37c515aa4f91068946b73",
+    "prompts.jsonl": "271831a00735a87fb76521905eec67c3fef7985ebbbdee4561685900c0c50617",
+    "questions.html": "01ddd88796f7e00c4fb432bd0ef5c519dfbea0cd9f7b2313b4241ef5a5c9c10a",
+    "questions.md": "c9ae0ef302c2140ed2a8c8d441440f139f9595c07f1af40a9ed8b6cdbc6a8ca1",
+    "reference/ELE-S01-001.json": "1beaabab1d18c534e19841d33381ad3ad77f79b1bb5eb99ff5f54160ff575d57",
+    "reference/ELE-S01-002.json": "a484da7b906cbc19cd68f93708c91348ce8f9ce75bd74d42930b05dfa457c2e6",
+    "reference/ELE-S02-001.json": "84bf17d08c910e537acc7468fb4b4f013f88ab73ab5ca374ca3a9068af5ddfdd",
+    "reference/ELE-S02-002.json": "d5d5fb15b6958a12cd52a009d5e472b4a6d16a1a92fd664784bbce732ac16b62",
+    "reference/ELE-S03-001.json": "7770227a035ba0ed04df7137c0e60b2f64a9347cbfba02c3fe4b64d7e4d1814b",
+    "review.html": "ec4dd0218e9adc5de355637ff6cdfa8861a0a663d0cbf3bbb17abc356c91f5b8",
+    "review.md": "d79d8fca25d884c236bb9e02d423390c84cb2395997b49540e5dc6231149cc7a",
+    "review_sheet.csv": "c15ee62113d5469041b74d85c8278417caa3ca1daf4ddd4bfb49b7530af5fa46",
+    "stimuli/S01_001/work_a.md": "86fb298f89d2ab16f78746225aeb4a77d21724c6f1c600dd0b4191ad6b12a1bb",
+    "stimuli/S01_001/work_b.md": "a29be4011db6f3e5ed67a2c996fc11fd86b35e8154ab3b003767ec5a5a705325",
+    "stimuli/S01_001/work_c.md": "f606ce01d6db6fdc335b5f0efb79db2426ed33b2ca86c94a7eb12673fb048fbb",
+    "stimuli/S01_002/work_a.md": "5902312f366ba1319e672b6393d6aba30606c8c8c64180bf42941808f71eff7b",
+    "stimuli/S01_002/work_b.md": "682a5de61f658560814ac7c9afdbada3acc0aff68a8e578e2216be15f96aa9fc",
+    "stimuli/S02_001/transcript.md": "b967a74a199a969dae7800ff7d2a01a3458fc8e81e9a3c42547e66c77ed10452",
+    "stimuli/S02_001/worksheet.png": "8b7983b72e2b701d56521f308f8837a3a48af84c486282f4db352b736655d24a",
+    "stimuli/S02_002/transcript.md": "662c4960540f8fc81f394e39d7ea2ea11f62e2e4c56670df8d84f6d704a8a40c",
+    "stimuli/S02_002/worksheet.png": "ee5506ccf3e343d7a3844cbb869add332dd22b51a2d0f2a08b13bf0643acd04b",
+    "stimuli/S03_001/history_a.json": "4da819409deae9ead4398ac10fe2088993a7907d5260c0d35c9b449b4330b785",
+    "stimuli/S03_001/history_b.json": "5b25a02eb64979901995203c98e2c2aa3011f6e48b1f5cd1f650580f2b67d51a",
+    "stimuli/S03_001/history_c.json": "a77a97cf461a3d03d78946821449cad24a093a5d279a3bf914a75234f90ce84b"
+  },
+  "offline_checks": [
+    {
+      "item_id": "ELE-S01-001",
+      "check": "age difference, inverse operation, repaired upstream gold",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S01-002",
+      "check": "per-structure vs total quantity and valid algebra prefix",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S02-001",
+      "check": "conditional SI/mA arithmetic; image reading requires human review",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S02-002",
+      "check": "two independent KCL residuals and public rounding tolerances",
+      "status": "passed"
+    },
+    {
+      "item_id": "ELE-S03-001",
+      "check": "geometry arithmetic and assistance-only counterfactuals; pedagogical judgment pending",
+      "status": "passed"
+    }
+  ],
+  "conditions_preserved": true,
+  "gold_and_rubric_preserved": true,
+  "comparison_limits": [
+    "每模型每版本仅一次，不能将差异全部归因为提示；后续必要时重复。",
+    "GLM-5.3原图版本在基线中为接口拒绝，不与Flash图片表现混算。",
+    "转写材料中的原有事实描述、批改草稿本身与必要计分规则保留；本轮不声称消除了所有语境线索。",
+    "仍是独立单次调用或历史快照，不是真实多轮。"
+  ]
+}

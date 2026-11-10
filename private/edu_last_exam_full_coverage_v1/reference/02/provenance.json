@@ -1,0 +1,8 @@
+[
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/02/base.md",
+    "target_path": "stimuli/02/base.md",
+    "sha256": "7e8f64c18cb523106112d863fd173831caf58867be4c7d7288bb455be48ead49",
+    "operation": "explicit_byte_copy"
+  }
+]

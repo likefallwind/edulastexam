@@ -1,0 +1,87 @@
+{
+  "gold": {
+    "per_prompt": {
+      "a": {
+        "first_invalid_step": "S6",
+        "answer": 15,
+        "variable_meaning": "每个结构的厨房数",
+        "valid_prefix": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5"
+        ],
+        "reasoning": "3(19+x)=72，故3x=15、x=5都成立。S6才把单个结构的5当成全站数量；S7沿用该错误。",
+        "acceptable_alternatives": [
+          "将S6称为单位对象/目标转换或概念性解释错误；不必匹配一个固定错误类别词。"
+        ],
+        "critical_errors": [
+          "将S4的3x=15或S5的x=5判为首个错误。",
+          "认可全站只有5间厨房。"
+        ]
+      },
+      "b": {
+        "first_invalid_step": null,
+        "answer": 15,
+        "variable_meaning": "每个结构的厨房数",
+        "valid_prefix": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7",
+          "S8"
+        ],
+        "reasoning": "修正版本先报告单个结构5，再乘3得到全站15，全部成立。",
+        "acceptable_alternatives": [
+          "没有错误，仍可用新数量追问检查是否理解变量对象。"
+        ],
+        "critical_errors": [
+          "因为x=5与最终15不同而判错。",
+          "要求直接把x设为15但不改变原方程定义。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "total_points": 10,
+    "pass_threshold": null,
+    "scoring": "human_semantic_review_pending",
+    "criteria": [
+      {
+        "criterion_id": "meaning",
+        "points": 3,
+        "observable": "保持x的单个结构含义，确认合法代数前缀并得到总量15。"
+      },
+      {
+        "criterion_id": "location",
+        "points": 3,
+        "observable": "a定位S6而非S4/S5；b不捏造错误。"
+      },
+      {
+        "criterion_id": "feedback",
+        "points": 2,
+        "observable": "反馈针对对象/总量转换，不把正确代数运算教错。"
+      },
+      {
+        "criterion_id": "probe",
+        "points": 2,
+        "observable": "追问改变结构数或每个结构厨房数，学生需区分单体与总量；预期判断正确。"
+      }
+    ],
+    "aggregation": "Report each variant and the declared paired contrasts; no cross-scenario total."
+  },
+  "controls": [
+    {
+      "variants": [
+        "a",
+        "b"
+      ],
+      "relation": "minimal_conclusion_repair",
+      "expected": "前五步判定保持不变；只修复结论后应从S6首错变为无错。"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exploratory single-call GLM baseline; produces no canonical benchmark score.
+"""Exploratory single-call model baseline; produces no canonical benchmark score.
 
 Reads only the published prompt export and listed stimulus files. No reference
 answers, no judge calls, no execution of model-authored code, no token ceiling.
@@ -266,7 +266,8 @@ def render_report(output, tasks, results, progress):
         if not isinstance(delivered, str):
             delivered = json.dumps(delivered, ensure_ascii=False, indent=2)
         chunks.append(f'<article><h2>{html.escape(ident)} · {html.escape(status)}</h2><details><summary>完整投递内容</summary><pre>{html.escape(delivered)}</pre></details><pre>{html.escape(result.get("response", result.get("error", "")))}</pre><ul>{"".join(links)}</ul></article>')
-    doc = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Edu Last Exam GLM试跑</title><style>body{font:17px/1.7 system-ui,sans-serif;max-width:1100px;margin:30px auto;padding:20px;background:#f4f7fa;color:#17324a}article{background:white;padding:24px;margin:24px 0;border:1px solid #d6e0e8;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}summary{cursor:pointer}a{color:#06708f}</style><h1>Edu Last Exam · GLM-5.3 初步回答</h1><p>单轮文本、源码与图片附件，无工具、无裁判、无通过率。代码产物仅保存，尚未执行核验。刷新页面查看新增回答。</p><pre>' + html.escape(json.dumps(progress, ensure_ascii=False, indent=2)) + '</pre>' + ''.join(chunks) + '</html>'
+    model_label = html.escape(progress.get("model", "model"))
+    doc = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Edu Last Exam ' + model_label + ' 试跑</title><style>body{font:17px/1.7 system-ui,sans-serif;max-width:1100px;margin:30px auto;padding:20px;background:#f4f7fa;color:#17324a}article{background:white;padding:24px;margin:24px 0;border:1px solid #d6e0e8;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}summary{cursor:pointer}a{color:#06708f}</style><h1>Edu Last Exam · ' + model_label + ' 初步回答</h1><p>单轮文本、源码与图片附件，无工具、无裁判、无通过率。代码产物仅保存，尚未执行核验。刷新页面查看新增回答。</p><pre>' + html.escape(json.dumps(progress, ensure_ascii=False, indent=2)) + '</pre>' + ''.join(chunks) + '</html>'
     path = output / "responses.html"
     temp = path.with_suffix(".tmp")
     temp.write_text(doc, encoding="utf-8")

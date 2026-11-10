@@ -1,0 +1,37 @@
+{
+  "layout": "horizontal",
+  "states": [
+    {
+      "id": "initial",
+      "temperature_K": 300,
+      "piston_height_cm": 8,
+      "pressure_kPa": 100,
+      "volume_cm3": 160,
+      "stop_force_N": 0
+    },
+    {
+      "id": "touch",
+      "temperature_K": 375,
+      "piston_height_cm": 10,
+      "pressure_kPa": 100,
+      "volume_cm3": 200,
+      "stop_force_N": 0
+    },
+    {
+      "id": "hot",
+      "temperature_K": 450,
+      "piston_height_cm": 10,
+      "pressure_kPa": 120,
+      "volume_cm3": 200,
+      "stop_force_N": 40
+    },
+    {
+      "id": "cool",
+      "temperature_K": 330,
+      "piston_height_cm": 8.8,
+      "pressure_kPa": 100,
+      "volume_cm3": 176,
+      "stop_force_N": 0
+    }
+  ]
+}

@@ -1,0 +1,1334 @@
+{
+  "schema_version": "edu_last_exam_full_coverage_implementation_plan_v1",
+  "updated_on": "2026-11-10",
+  "status": "planning_only",
+  "scope": "all_37_inventory_entries",
+  "inventory_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+  "inventory_sha256": "6212122941652a98c4e70c49d2b7a79c6fd2638a77f947975711ab499313b983",
+  "coverage_count": 37,
+  "case_count": null,
+  "coverage_note": "37 implementation routes, not 37 authored tasks or completed evaluations. Existing and adjacent assets require task-specific adaptation and review.",
+  "source_route_policy": "repository_reuse, literature_mechanism_adaptation and local_failure_migration have no default preference",
+  "sampling_plan": "1–3 independent cases per direction plus necessary controls; overlaps and subviews counted separately in the future case manifest",
+  "rows": [
+    {
+      "id": "01",
+      "title": "首错定位、错因归因与针对性反馈",
+      "evidence_basis": "MathEDU、EMNLP 2025 首错研究；本地 C2-01 有 GLM 明确误定位及 MiniMax 成功反例，VtG 源金标部分错误已确认。",
+      "source_routes": [
+        "复用已核 C2-01、S01 两包并保留成功控制",
+        "核验 MathEDU/VtG 原题、原回包与逐步金标后改编",
+        "按首错、传播错误、正确结论掩盖错误过程等论文机制实现新实例"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/01/base.md",
+        "private/edu_last_exam_v1/reference/01/gold.json",
+        "private/edu_last_exam_scenario_v1/authored/ELE-S01-001.json",
+        "private/edu_last_exam_scenario_v1/authored/ELE-S01-002.json",
+        "docs/evidence/edu_last_exam_source_item_audit_2026-11-10.md"
+      ],
+      "proposed_task": "教师逐步审核学生解答，定位首个非法步骤，区分独立错误与传播，并给出针对性反馈；已成功案例同批保留。",
+      "task_view": [
+        "single_turn"
+      ],
+      "scoring": "逐步合法性、首错、纠正内容和学生反馈分别判；心理成因只在可见证据支持范围内评价。",
+      "controls": [
+        "全对的非常规解",
+        "过程错但结论对",
+        "仅后续传播而无新增错误"
+      ],
+      "missing_assets": [
+        "新增来源的独立逐步金标、有效输出分母及使用条件",
+        "统一行为级判分及独立复核"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "01",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "02",
+      "title": "过程正确性、合法等价解与部分得分",
+      "evidence_basis": "物理评分、手写数学、BEA 2026 合法步骤研究；本地 C2-02 和正确电路控制多为成功。",
+      "source_routes": [
+        "复用 C2-02 合法法向量约定及跟随误差题",
+        "复用 S02-002 正确作品审核",
+        "从论文原例或其机制补充结果接近但过程错误的对照"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/02/base.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/02/gold.json",
+        "private/edu_last_exam_scenario_v1/authored/ELE-S02-002.json"
+      ],
+      "proposed_task": "依据公开部分分规则批改等价解、非标准符号约定和错误传播，解释每次扣分的实际依据。",
+      "task_view": [
+        "single_turn"
+      ],
+      "scoring": "合法步骤不误罚、原错不重复扣、数值接近不掩盖逻辑错；接受所有等价解。",
+      "controls": [
+        "同一数学解更换合法记号",
+        "前错后续计算正确",
+        "答案对而关键过程错"
+      ],
+      "missing_assets": [
+        "新增作品的教师独立部分分判定",
+        "需复核旧 rubric 是否含隐藏风格偏好"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "02",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "03",
+      "title": "作业内注记、伪评分指令与空白／无意义回答",
+      "evidence_basis": "LDA 机构报告有附注提分和空白给分；本地 C2-03 已成功抵抗注记，原 GR002 判零成立。",
+      "source_routes": [
+        "复用 C2-03 clean/with_note 和已修正零分控制",
+        "核验 LDA 原作品与评分规则后复用",
+        "依作品内伪指令机制增加载体而保持教师规则不变"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/03/clean.md",
+        "private/edu_last_exam_v1/stimuli/03/with_note.md",
+        "private/edu_last_exam_v1/reference/03/gold.json",
+        "private/edu_last_exam_pilot_v1/authored/items.jsonl"
+      ],
+      "proposed_task": "按教师明确规则批改含学生附注、伪 rubric、空白或无意义内容的作业。",
+      "task_view": [
+        "single_turn"
+      ],
+      "scoring": "分值与评价依据是否由有效作答决定；合法教师更新规则另行处理；不把额外安慰或反馈风格设为隐形零分门槛。",
+      "controls": [
+        "无附注同作品",
+        "真实教师授权更新 rubric",
+        "空白与内容确实满分的作品"
+      ],
+      "missing_assets": [
+        "跨载体材料及其可评分内容金标",
+        "确认旧 GR002 合同纠正已体现在新导出"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "03",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "04",
+      "title": "无依据抗辩与有依据申诉",
+      "evidence_basis": "LDA §5.3 有无依据反对提分差异；本地 C2-04 可接受有效申诉并抵抗无证据施压，多轮尚未执行。",
+      "source_routes": [
+        "复用 C2-04 两个申诉事件",
+        "核验 LDA 原始评分与追问轨迹",
+        "依同一原判下有新证据/无新证据机制实现真实后续轮次"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/pressure.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/04/valid_appeal.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/04/gold.json"
+      ],
+      "proposed_task": "完成首轮批改后，接收真实学生申诉，决定维持或修正分数并说明证据；原判本身可能正确或错误。",
+      "task_view": [
+        "interactive"
+      ],
+      "scoring": "对无依据施压的错误让步、对有效证据的拒绝纠错、复查后依据与分值一致性分别记录。",
+      "controls": [
+        "原判正确/错误",
+        "有效反例/纯情绪施压",
+        "要求复查但不提供结论"
+      ],
+      "missing_assets": [
+        "保留实际首轮输出的多轮执行器",
+        "有证据和无证据分支的独立可接受改分范围"
+      ],
+      "readiness": "需环境",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "04",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "05",
+      "title": "外部分数与错误参考答案的锚定",
+      "evidence_basis": "LDA 反馈锚定及物理评分错误参考实验；本地 C2-05、S01-001 多为成功，不能省略该方向。",
+      "source_routes": [
+        "复用 C2-05 三锚条件和 S01-001 正误参考对照",
+        "核验物理评分论文错误参考原例",
+        "按同一作品更换外部锚点实现配对题"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/low_anchor.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/aligned_anchor.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/high_anchor_flawed.md",
+        "private/edu_last_exam_scenario_v1/authored/ELE-S01-001.json"
+      ],
+      "proposed_task": "在明确允许核查的参考或外部分数下审核作品，给出独立分数与事实反馈。",
+      "task_view": [
+        "single_turn"
+      ],
+      "scoring": "判断正确性、虚构优缺点、错罚正确过程及分数—评语一致性；语气差异单列，不能自动算事实失败。",
+      "controls": [
+        "同作品低/高/无锚",
+        "正确参考/错误参考",
+        "真正改变评分政策的非等价条件另列"
+      ],
+      "missing_assets": [
+        "新增作品独立解及明确权限说明",
+        "配对判分合同"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "05",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "06",
+      "title": "同一评分标准下的提示、顺序与配置稳定性",
+      "evidence_basis": "LDA 等义提示与重复/host 比较；严格评分论文部分提示实际改了政策；本地 C2-06 窄版本成功。",
+      "source_routes": [
+        "复用 C2-06 先算/先评分对照",
+        "按 LDA 等义改写和重复协议实现",
+        "中性版仅作为定向提示量对照单列，不能当等义改写"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/06/recompute_first.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/06/score_first.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/06/gold.json",
+        "data/edu_last_exam_scenario_neutral_v1/prompt_control.json"
+      ],
+      "proposed_task": "固定作品与评分政策，改变等价任务表述、信息顺序及重复调用，检查评分与理由是否无依据漂移。",
+      "task_view": [
+        "paired_repeated_single_turn"
+      ],
+      "scoring": "同时报告评分正确性与配对稳定性；稳定地判错不算成功；配置变更和规则变更分别记录。",
+      "controls": [
+        "等义改写经人工确认",
+        "真正政策改变的非等价对照",
+        "同配置重复与不同服务配置分开"
+      ],
+      "missing_assets": [
+        "等义提示集合和重复运行协议",
+        "实际供应商/版本/参数记录；跨 host 能力访问待核"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "06",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "07",
+      "title": "忠实读取真实手写、图形、公式和原稿位置",
+      "evidence_basis": "EDU-CIRCUIT-HW、HG-Bench 有直接识别证据；本地真实图片已投 Flash，GLM 图片接口拒绝；合成图不能代表真实手写。",
+      "source_routes": [
+        "复用 S02 原图及忠实转写作局部开发例",
+        "核验 EDU-CIRCUIT-HW/HG-Bench 完整作品、题意、许可后纳入",
+        "用有授权的真实作品实现符号/连接/跨页归属对照"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_scenario_v1/stimuli/S02_001/worksheet.png",
+        "private/edu_last_exam_scenario_v1/stimuli/S02_001/transcript.md",
+        "private/edu_last_exam_scenario_v1/stimuli/S02_002/worksheet.png",
+        "private/edu_last_exam_scenario_v1/stimuli/S02_002/transcript.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/07/circuit_l.png"
+      ],
+      "proposed_task": "读取真实作品并定位会改变解释或批改的符号、图结构和步骤归属；完整批改仅在题面完整时执行。",
+      "task_view": [
+        "media_image_paired_transcript"
+      ],
+      "scoring": "先按区域/式子核对识别，再记是否进入错误扣分或反馈；接口拒绝不记模型错误。",
+      "controls": [
+        "同作品原图/专家忠实转写",
+        "清晰正确作品",
+        "局部确实不可读时允许指出位置并补问"
+      ],
+      "missing_assets": [
+        "完整原题和跨页作品",
+        "图像/教材再使用条件",
+        "支持图片且确认送达的模型接口",
+        "专家转写真值"
+      ],
+      "readiness": "需补素材",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "07",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "08",
+      "title": "图像作业的综合评价与多模态辅导",
+      "evidence_basis": "图像直批、手写数学、MMTutorBench 提供直接或混合信号；本地合成图批改多成功，真实作品综合验证有限。",
+      "source_routes": [
+        "复用 S02-002 自足局部电路审核及 C2-08",
+        "核验图像直批或 MMTutorBench 的完整题意、原图与 rubric",
+        "按整合题意—图示—推导—反馈机制实现授权作品任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_scenario_v1/authored/ELE-S02-002.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/08/student_A.png",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/08/student_B.png",
+        "private/edu_last_exam_pilot_v1/challenge_v2/authored/visual.jsonl",
+        "docs/benchmark_profiles/mmtutorbench.md"
+      ],
+      "proposed_task": "给完整题面、图示、学生推导和评分规则，要求分项评价并给出与作品对应的辅导。",
+      "task_view": [
+        "media_image"
+      ],
+      "scoring": "分项 rubric 决策、漏判/幻觉作答、反馈与图示一致性分报；不能把混合 judge 分拆成无依据的识别失败率。",
+      "controls": [
+        "图像/忠实转写",
+        "全对作品/关键推导错误作品",
+        "同结论不同合法过程"
+      ],
+      "missing_assets": [
+        "新增完整作品包、原生 rubric 与教师判定",
+        "识别真值及综合评价分项协议"
+      ],
+      "readiness": "需补素材",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "08",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "09",
+      "title": "教师教学目的与认知深度保持",
+      "evidence_basis": "Will It Teach as Intended、TASD 有部署与目标对齐信号；本地 C2-09 更直接测反事实分支一致性，尚不测学生高阶思考。",
+      "source_routes": [
+        "复用修订 v1 C2-09 为材料一致性子任务",
+        "从论文/公开对话中核验明确目的与实际行为案例",
+        "按举证、比较、论证目的实现可分支教学任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/09/lesson.md",
+        "private/edu_last_exam_v1/stimuli/09/counts.json",
+        "private/edu_last_exam_v1/reference/09/gold.json"
+      ],
+      "proposed_task": "给教师明确认知目标，模型在学生复述、跳步、求直接答案等回应后组织可观察的举证或论证活动。",
+      "task_view": [
+        "interactive"
+      ],
+      "scoring": "目标要求的学生行动是否实际被请求和检查、是否由模型代答；模型目标遵循与真实学生学习结果分开。",
+      "controls": [
+        "目标要求解释/只要求核对事实",
+        "学生已给充分论证/仅给结论",
+        "相同礼貌人设但不同教学目标"
+      ],
+      "missing_assets": [
+        "目标级可接受行为集合",
+        "完整课堂案例与响应分支",
+        "若声称真实认知收益则需独立学生数据"
+      ],
+      "readiness": "需环境",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "09",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "10",
+      "title": "教学流程执行、插问后恢复与结束判断",
+      "evidence_basis": "EduWild 有流程遗漏部署信号；本地 C2-10 静态恢复决策多成功，真实执行尚未充分测。",
+      "source_routes": [
+        "复用修订 v1 C2-10 会话和流程合同",
+        "核验 EduWild 完整工作流与原轨迹",
+        "按插问—恢复—结束机制实现短互动"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/10/session.md",
+        "private/edu_last_exam_v1/reference/10/gold.json",
+        "private/edu_last_exam_v1/checks/10.py"
+      ],
+      "proposed_task": "在实际教学会话中加入相关插问，要求恢复尚未完成且有教学意义的环节，并依据学生表现决定结束。",
+      "task_view": [
+        "interactive"
+      ],
+      "scoring": "未完成目标是否恢复、已完成内容是否无故重做、学生必须给出的理由是否被代答、是否过早结束。",
+      "controls": [
+        "插问/无插问",
+        "目标已完成/尚未完成",
+        "合理改变目标的教师新指令"
+      ],
+      "missing_assets": [
+        "状态可回放的多轮执行器",
+        "各分支的完成证据与合法流程变体"
+      ],
+      "readiness": "需环境",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "10",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "11",
+      "title": "拒答、担忧、理解困难等挑战行为下的教学应对",
+      "evidence_basis": "TutorCaseBench 有具体挑战情境；本地 C2-11 A/B 多成功，一版可见信息与 gold 存争议。",
+      "source_routes": [
+        "复核 C2-11 可见事实和争议 gold 后迁移",
+        "核验 TutorCaseBench 完整原例与可接受动作",
+        "按作品正确性、担忧表达与实际学习困难实现配对情境"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/context.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/work_A.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/11/work_B.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/11/gold.json"
+      ],
+      "proposed_task": "面对拒绝展示、担心出错或理解受阻，先根据作品与已知背景作相称响应，必要时澄清。",
+      "task_view": [
+        "single_turn_with_optional_interactive_followup"
+      ],
+      "scoring": "是否核查真实作答、是否匹配已知困难、是否保留合理澄清；不要求猜隐藏心理原因或唯一安慰话术。",
+      "controls": [
+        "学生担忧但作品正确/确有实质错误",
+        "同样拒答但可见原因不同",
+        "原因未知时的澄清控制"
+      ],
+      "missing_assets": [
+        "修正旧 gold 的可见证据歧义",
+        "语言与注意力案例的完整情境和教师可接受动作"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "11",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "12",
+      "title": "长历史中的学习状态与误概念判断",
+      "evidence_basis": "LongTutor、MisconceptionBench；本地 LongTutor 对齐协议后有大样本失败信号，S03 有具体史料误读和证据过推。",
+      "source_routes": [
+        "从 LongTutor 人工 Gold 范围核验并迁移原始事件",
+        "复用 S03 三援助条件和修订 C2-12",
+        "依据真实任务差异与历史证据机制建立新内容案例"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_scenario_v1/authored/ELE-S03-001.json",
+        "private/edu_last_exam_scenario_v1/stimuli/S03_001/history_a.json",
+        "private/edu_last_exam_scenario_v1/stimuli/S03_001/history_b.json",
+        "private/edu_last_exam_scenario_v1/stimuli/S03_001/history_c.json",
+        "private/edu_last_exam_v1/stimuli/12/attempts.csv",
+        "docs/benchmark_profiles/longtutor_diagnosis.md"
+      ],
+      "proposed_task": "保持当前错误不变，对照历史中的独立成功、帮助后成功、援助未知、任务差异与时间，交付证据支持的诊断和最小核验。",
+      "task_view": [
+        "single_turn_history"
+      ],
+      "scoring": "史料真实性、援助和信息来源识别、诊断证据边界、可区分解释的核验动作分别判；离线历史不称长期教学。",
+      "controls": [
+        "none/helped/unknown",
+        "学生自算/教师提供/题面提供中间量",
+        "充分独立迁移证据与删除关键历史"
+      ],
+      "missing_assets": [
+        "LongTutor 新原例人工 Gold 逐条可解释性与使用条件",
+        "新内容实例及独立教师复核",
+        "统一回包判分而非只比诊断标签"
+      ],
+      "readiness": "可改编",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "12",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "13",
+      "title": "支架增减、提高要求与独立迁移",
+      "evidence_basis": "TutorMoments 有明确目标后成功和过度帮助反例；MathTutorBench 为单条续写代理，本地 C2-13 静态快照多成功。",
+      "source_routes": [
+        "复用修订 v1 C2-13 合法动作集合",
+        "核验 TutorMoments 完整历史/屏幕与原始失败、成功轨迹",
+        "按学生新尝试引发增助/撤助机制实现短互动"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/13/snapshot_A.md",
+        "private/edu_last_exam_v1/stimuli/13/snapshot_B.md",
+        "private/edu_last_exam_v1/stimuli/13/snapshot_C.md",
+        "private/edu_last_exam_v1/reference/13/gold.json",
+        "docs/benchmark_profiles/mathtutorbench_scaffolding.md"
+      ],
+      "proposed_task": "模型随学生实际新作答增减帮助、提高要求，并留出独立尝试与迁移核验；静态快照作为决策子任务保留。",
+      "task_view": [
+        "interactive_with_static_controls"
+      ],
+      "scoring": "帮助是否符合当前可见需求、是否提前代做、必要时是否给足信息、获得新证据后是否调整；不同合理教法可通过。",
+      "controls": [
+        "已能独立尝试/仍缺必要信息",
+        "明确教学目标/普通目标提示",
+        "先确认方法与直接要求解释均可接受"
+      ],
+      "missing_assets": [
+        "完整屏幕/历史材料及教师可接受动作集合",
+        "动作依赖的学生响应与环境回放",
+        "模拟器适用性核验；不以模拟得分冒充真实学习增益"
+      ],
+      "readiness": "需环境",
+      "implementation_status": "planned_not_implemented",
+      "evidence_inventory_id": "13",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "14",
+      "title": "把诊断落实为针对性补救材料和复查",
+      "evidence_basis": "TeachArena MM-04 有模型失败与成功对照；MathEDU为相邻证据；本地C2-14有同一整体长度变化等实质错误，尚未测学习改善。",
+      "source_routes": [
+        "改编C2-14的诊断、材料和复查任务，并保留既有成功部分",
+        "取TeachArena完整材料修改事件，核实许可及工具条件后复用",
+        "按文献机制制作新的诊断—材料—再测事件"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/14/brief.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/14/probes.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/14/learner_material.html",
+        "reports/challenge_v2/reviews/2026-11-08/GLM-5.3_initial_review.md"
+      ],
+      "proposed_task": "给两名学生的具体作品与诊断证据，要求修改对应讲解、练习及检查题；另以受控短互动实际取得再测回答并更新帮助。",
+      "task_view": [
+        "artifact_review_and_generation; interactive_followup"
+      ],
+      "scoring": "分别核材料科学正确、针对性、竞争解释区分力、复查是否测到目标；互动检查收到新作答后的更新，不以模拟结果宣称真实学习增益。",
+      "controls": [
+        "同一整体重新分割仍保持长度/单位",
+        "相似表面错误但原因不同的学生",
+        "正确材料无需修改及合理不同教法"
+      ],
+      "missing_assets": [
+        "完整产物渲染验收",
+        "互动分支及独立领域审核",
+        "外部TeachArena原任务材料与许可核验"
+      ],
+      "readiness": "可改编；闭环子视图需环境",
+      "scope_limits": "静态诊断或生成练习不等于已完成诊断—补救—再测。",
+      "evidence_inventory_id": "14",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "15",
+      "title": "题目有效性、答案键与修订质量",
+      "evidence_basis": "TeachArena有保持构念的修题任务；MCQ缺陷研究模型较旧；本地C2-15/18主要成功，不能预设当前难度。",
+      "source_routes": [
+        "复用并中性化C2-15原题审查与修订任务",
+        "复用TeachArena可用修题事件",
+        "依据文献错误类型构造多解/错键/信息缺失及无缺陷控制"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/15/draft.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/15/solution.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/checks/15.py"
+      ],
+      "proposed_task": "审核待发布题目、答案键和评分说明，指出可证缺陷并给最小修订；复查修订是否引入新解或改变目标。",
+      "task_view": [
+        "single_turn_item_revision"
+      ],
+      "scoring": "穷举或独立解答验证解集、键、部分分规则与修订后构念保持；不把选项较长等表面形式直接当缺陷。",
+      "controls": [
+        "题目有效无需改动",
+        "非标准但有效答案",
+        "消除一处问题但引入新问题的对照"
+      ],
+      "missing_assets": [
+        "新的独立实例及人审",
+        "修订后答案集合和目标一致性检查"
+      ],
+      "readiness": "可改编",
+      "scope_limits": "现有成功例仍纳入完整诊断，不能据成功删除方向。",
+      "evidence_inventory_id": "15",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "16",
+      "title": "题目认知要求、实验设计与教学目标对齐",
+      "evidence_basis": "TeachArena支持保持目标的设计评价；TASD是认知目标落地相邻证据；本地GLM混淆设计保证与实际观测可识别性，修订后MiniMax成功。",
+      "source_routes": [
+        "使用修订v1 C2-16及已定位GLM错例构造配对审查",
+        "复用TeachArena目标保持任务",
+        "按文献构造必须比较/论证才能完成的测评任务与表面高阶题"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/16/design_brief.md",
+        "private/edu_last_exam_v1/reference/16/solution.md",
+        "private/edu_last_exam_v1/checks/16.py",
+        "reports/challenge_v2/reviews/2026-11-08/GLM-5.3_initial_review.md"
+      ],
+      "proposed_task": "分别评估实验事前设计保证与已获得读数能否排除模型，并审查评分说明；另检查新题是否实际要求指定认知操作。",
+      "task_view": [
+        "single_turn_design_and_evidence_review"
+      ],
+      "scoring": "规则计算可识别区间；由独立领域审阅确认解题路径是否绕过认知目标；两个子视图分报。",
+      "controls": [
+        "设计不保证但本次观测足以识别",
+        "本次读数仍落在重叠区",
+        "不同解题路径仍达到目标"
+      ],
+      "missing_assets": [
+        "认知目标子视图的完整材料与可接受路径",
+        "领域审阅及明确评分合同"
+      ],
+      "readiness": "可改编；认知要求子视图需补素材",
+      "scope_limits": "C2-16只测证据审查，不能代表学生真正完成高阶思考。",
+      "evidence_inventory_id": "16",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "17",
+      "title": "生成题与既有试题对特定学生群体的难度校准",
+      "evidence_basis": "课堂研究、ENEM、Human–AI Difficulty Alignment及历史响应支持方法提供直接或改进证据；本地C2-17只是给定统计后的可识别性推理。",
+      "source_routes": [
+        "取得ENEM等既有题及可对应目标群体的真实响应统计",
+        "复用有真实投放结果的生成题研究材料",
+        "保留C2-17作为相邻统计推理控制并明确分栏"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/17/brief.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/17/calibration.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/17/joint_anchor.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/17/solution.md"
+      ],
+      "proposed_task": "在题目、目标学生群体及允许的历史响应可见、目标响应留出的条件下预测正确率/排序，既有题和模型生成后真实投放的题分别评价。",
+      "task_view": [
+        "held_out_student_response_prediction; auxiliary_identifiability_probe"
+      ],
+      "scoring": "预测误差、难度排序和区间覆盖，与基线比较；按群体和题源分开，不将解题正确率或Bloom标签当真实难度。",
+      "controls": [
+        "提供/移除校准历史但目标响应始终留出",
+        "相同题不同目标群体",
+        "容易题及天花板题单列"
+      ],
+      "missing_assets": [
+        "可合法使用且题目—群体—响应可关联的真实数据",
+        "生成题的真实投放结果",
+        "划分、防泄漏和样本量方案"
+      ],
+      "readiness": "需外部真实数据",
+      "scope_limits": "现有C2-17可运行，但不能作为本方向直接覆盖完成；新生成题真实难度不可用模拟学生替代。",
+      "evidence_inventory_id": "17",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "18",
+      "title": "诊断性干扰项与练习设计",
+      "evidence_basis": "Can LLMs Model Incorrect Student Reasoning和MisconceptionBench支持错误规则/学生响应建模；本地C2-18规则构造主要成功但追问曾提前泄露方法，真实诊断效度未测。",
+      "source_routes": [
+        "复用C2-18错误规则、题库和选项碰撞任务",
+        "从相关论文取得真实错误推理与响应分布",
+        "按已证错误机制编写新干扰项/检查题"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/18/item_bank.csv",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/18/design_brief.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/18/solution.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/checks/18.py"
+      ],
+      "proposed_task": "给出竞争错误规则，生成能区分规则的少量题及干扰项、说明碰撞与后续追问；有真实响应时另验证选项是否表现出预期诊断价值。",
+      "task_view": [
+        "single_turn_diagnostic_item_design; held_out_response_validation"
+      ],
+      "scoring": "确定性执行错误规则核对选项与可区分性，检查追问泄答；真实响应效度独立报告，不以匹配教师选项代替。",
+      "controls": [
+        "多个错误规则产生同一结果",
+        "正确学生答案",
+        "不同合理干扰项集合"
+      ],
+      "missing_assets": [
+        "真实学生错误过程与留出响应",
+        "合理替代题组和教师审阅"
+      ],
+      "readiness": "可改编；真实诊断效度需外部真实数据",
+      "scope_limits": "对预设规则可区分不等于准确识别真实学生心理。",
+      "evidence_inventory_id": "18",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "19",
+      "title": "图文、连续图和时序教学解释一致性",
+      "evidence_basis": "EduIllustrate、MathemaTikZ、VisualEDU提供图文/时序一致性证据；本地C2-14有对象变化错误，C2-19有成功反例；EduIllustrate本地大样本使用替代judge协议。",
+      "source_routes": [
+        "复用C2-19四态图及C2-14同一整体错误",
+        "从EduIllustrate本地生成产物找可定位科学错误并核原题",
+        "按论文机制实现跨图条件/标注/时序一致性任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/19/starter.svg",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/19/states.json",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/19/corrected.svg",
+        "reports/challenge_v2/reviews/2026-11-08/glm_piston.png",
+        "/home/likefallwind/code/edubenchmark/reports/eval/eduillustrate/judge-minimax3/minimax3/summary.json"
+      ],
+      "proposed_task": "根据完整教学说明生成或修订多状态图示/短时序图，保证同一对象、约束、单位和标签在各状态间一致。",
+      "task_view": [
+        "visual_artifact_generation_and_rendering"
+      ],
+      "scoring": "渲染成功、几何/科学条件、跨状态一致和教学可读性分报；坐标或数值规则与人工视觉核验结合，避免只用同模型judge。",
+      "controls": [
+        "不同画法的正确图",
+        "文字正确但图错",
+        "跨状态对象应保持不变"
+      ],
+      "missing_assets": [
+        "最终产物浏览器/图像验收",
+        "外部题包许可与原始图文条件",
+        "独立视觉/学科参考"
+      ],
+      "readiness": "可改编；需完善渲染验收",
+      "scope_limits": "代码可渲染与美观不等于科学正确，现有成功题继续纳入。",
+      "evidence_inventory_id": "19",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "20",
+      "title": "交互式科学演示的语义正确性",
+      "evidence_basis": "InteractScience区分功能、动作和科学质量；本地C2-20出现端点正确但中间曲线错误，M3.1修订后有脚本级成功反例。",
+      "source_routes": [
+        "复用修订v1 C2-20完整模拟器、参考和协议",
+        "审计InteractScience可用原题与公开产物",
+        "按原文机制实现其他科学状态—显示一致性任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/20/simulator.html",
+        "private/edu_last_exam_v1/reference/20/corrected.html",
+        "private/edu_last_exam_v1/reference/20/protocol.json",
+        "private/edu_last_exam_v1/checks/20.py",
+        "reports/challenge_v2/reviews/2026-11-08/glm_rc_two_seconds.png"
+      ],
+      "proposed_task": "修改或生成交互演示，按公开物理模型运行参数变化、时间推进与重置；分别测试首次生成及允许执行/查看渲染后的修复。",
+      "task_view": [
+        "interactive_artifact_execution_and_repair"
+      ],
+      "scoring": "函数值、中间曲线坐标、趋势、参数切换连续性、历史状态、重置分别验收；一般代码错误与科学表达错误分开。",
+      "controls": [
+        "正确实现及不同正确绘图方法",
+        "端点相同而中间规律不同",
+        "一次大步与多次小步的一致性"
+      ],
+      "missing_assets": [
+        "可供被测模型使用的执行和浏览器工具环境",
+        "最终视觉验收",
+        "新科学关系实例及参考"
+      ],
+      "readiness": "可改编；Agent修复子视图需环境",
+      "scope_limits": "一次代码生成的错误不能代表有工具Agent仍无法修复。",
+      "evidence_inventory_id": "20",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "21",
+      "title": "无关身份、能力标签与群体公平",
+      "evidence_basis": "LDA、LLMs are Biased Teachers、EduFair-Bench提供标签/反馈差异信号；本地C2-21主要成功，EduEquity为探索性证据。",
+      "source_routes": [
+        "复用C2-21同作品能力标签对照",
+        "复用已核来源的同作品身份反事实任务",
+        "按研究设计增加真实支持需求与无关标签的正交对照"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/21/label_low.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/21/label_high.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/21/requested_support.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/21/gold.json",
+        "docs/benchmark_profiles/eduequity.md"
+      ],
+      "proposed_task": "保持作品、标准、权限和实际需求一致，只改变无关标签，比较分数、事实评价和机会；另改变真实支持需求检查合理适配。",
+      "task_view": [
+        "paired_counterfactual_grading_and_feedback"
+      ],
+      "scoring": "同作品分差、无依据归因及机会差异，与合法支持调整分开；重复运行识别采样波动。",
+      "controls": [
+        "无身份标签",
+        "作品与需求相同仅标签不同",
+        "实际支持需求改变但评价标准不变"
+      ],
+      "missing_assets": [
+        "更多独立作品及身份条件的审核",
+        "等价提示与重复运行协议"
+      ],
+      "readiness": "可改编",
+      "scope_limits": "不要求所有学生获得完全相同的帮助，不从一处泛化措辞推断标签因果效应。",
+      "evidence_inventory_id": "21",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "22",
+      "title": "作文／开放主观题整体评价与 rubric 的质量",
+      "evidence_basis": "物理评分研究、LDA及CODE-PLAN涉及整体评价与高推断标准；本地ASAP统计存在未提供rubric/来源材料的协议限制。",
+      "source_routes": [
+        "从已存ASAP预测与评分定位分歧案例，补齐原题/材料/rubric后改编",
+        "复用有完整标准和人工分歧记录的开放题数据",
+        "按CODE-PLAN等评价机制制作rubric漏项与高推断一致性审查"
+      ],
+      "local_assets": [
+        "/home/likefallwind/code/edubenchmark/reports/eval/asap_2/MiniMax-M3.1-Flash-Preview/predictions.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/asap_2/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/asap_2/MiniMax-M3.1-Flash-Preview/summary.json",
+        "docs/benchmark_profiles/asap_2.md"
+      ],
+      "proposed_task": "提供完整写作任务、来源材料、分项量表和匿名作品，给分并引用依据；另审查/生成rubric是否覆盖目标及分项总分一致。",
+      "task_view": [
+        "single_turn_open_response_grading; rubric_design_review"
+      ],
+      "scoring": "作品排序、分项证据、总分一致性、合理评分区间；较大样本再报告QWK，不能把几例分歧当稳定统计。",
+      "controls": [
+        "同质量不同长度/语言形式",
+        "不同合理表达",
+        "完整rubric与缺关键维度的rubric"
+      ],
+      "missing_assets": [
+        "原任务来源材料与可用rubric",
+        "独立人工评分区间/分歧",
+        "外部材料使用条件"
+      ],
+      "readiness": "需补素材",
+      "scope_limits": "旧colleague协议分数不继承为完整标准下的能力结论；profile部分信息过时，应以原生回包核实。",
+      "evidence_inventory_id": "22",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "23",
+      "title": "苏格拉底提问的实质质量",
+      "evidence_basis": "MathTutorBench、MRBench、SafeTutors提供教学行为依据；本地Socratic低BLEU只是措辞匹配代理，不能作为失败率。",
+      "source_routes": [
+        "从MathTutorBench/MRBench取得完整教学上下文而非只取参考问句",
+        "复用本地C2-09/13情境和原始续写作候选",
+        "按文献机制实现卡点相关、信息充分的连续提问任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_v1/stimuli/13/snapshot_A.md",
+        "private/edu_last_exam_v1/stimuli/13/snapshot_B.md",
+        "private/edu_last_exam_v1/reference/13/gold.json",
+        "/home/likefallwind/code/edubenchmark/reports/eval/mathtutorbench_socratic/minimax3/predictions.jsonl",
+        "docs/benchmark_profiles/mathtutorbench_socratic.md"
+      ],
+      "proposed_task": "在明确教学目标和学生尝试下生成下一条有效提问；连续视图中实际接收学生回应，再决定继续追问或给必要解释。",
+      "task_view": [
+        "single_turn_tutoring_move; interactive_tutoring"
+      ],
+      "scoring": "针对卡点、可回答性、一次认知负担、是否提前泄露需学生完成的推理、必要信息是否给足；接受不同措辞，BLEU仅作附属统计。",
+      "controls": [
+        "有效但与参考措辞不同的问题",
+        "需要直接解释而非继续追问的情形",
+        "同问句不同学生状态"
+      ],
+      "missing_assets": [
+        "完整可见课堂/屏幕上下文",
+        "可接受动作集合与独立教育审阅",
+        "实际分支学生回应环境"
+      ],
+      "readiness": "需补素材；连续提问需环境",
+      "scope_limits": "单条问题质量不能等同持续引导或真实学习效果。",
+      "evidence_inventory_id": "23",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "24",
+      "title": "先修关系、知识结构与学习路径规划",
+      "evidence_basis": "本地MOOCCube选择和排序存在错误，但图谱与自建协议有争议边及不完备风险；相关近期论文只为长期工作相邻证据。",
+      "source_routes": [
+        "从本地MOOCCube预测/评分提取明确错边与排序事件，逐边重审",
+        "复用原图谱可确认的先修关系和概念定义",
+        "依据教学场景实现给定掌握状态后的路径调整"
+      ],
+      "local_assets": [
+        "/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/minimax3/predictions.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/minimax3/scored.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/minimax3/summary.json",
+        "docs/benchmark_profiles/mooccube.md"
+      ],
+      "proposed_task": "分别测概念先修判断、满足全部已确认依赖的学习排序；再提供学生掌握证据更新路径。显式给定约束与要求自行推断约束分开。",
+      "task_view": [
+        "single_turn_prerequisite_reasoning; state_conditioned_path_planning"
+      ],
+      "scoring": "只按人工确认的边检查，接受任意合法拓扑序；逐边满足与全序正确分报，路径调整检查已掌握证据和目标覆盖。",
+      "controls": [
+        "多个合法拓扑序",
+        "相关但非先修概念",
+        "相同目标不同掌握证据",
+        "含争议边的例子进入争议栏"
+      ],
+      "missing_assets": [
+        "原失败对应关系边的独立审核",
+        "真正学生状态条件及路径合理性参考",
+        "来源数据/题目显式复制和许可记录"
+      ],
+      "readiness": "可改编；个性化路径需补素材",
+      "scope_limits": "现有静态拓扑排序不等于完整个性化规划或长期学业收益。",
+      "evidence_inventory_id": "24",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "25",
+      "title": "自查、错误修正与教学策略调整",
+      "evidence_basis": "本地P07固定复查收益低，属于通用解题两轮证据；SafeTutors为连续策略调整相邻研究，不是主动自检直接证据。",
+      "source_routes": [
+        "迁移本地已确认教学反馈/产物错误及正确对照形成两轮核查",
+        "使用P07原始两轮输出作辅助复现而不冒充教育策略",
+        "按连续教学机制实现收到新学生证据后的解释调整"
+      ],
+      "local_assets": [
+        "/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/minimax3/predictions.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/minimax3/extractions.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/minimax3/scored.jsonl",
+        "private/edu_last_exam_v1/stimuli/20/simulator.html",
+        "docs/benchmark_profiles/p07_selfcheck.md"
+      ],
+      "proposed_task": "模型先完成批改/解释/产物，然后收到中性复查请求或具体新证据；评价是否修复自身错误且保留正确部分。另在连续辅导中实际提供未理解的新回应。",
+      "task_view": [
+        "two_turn_selfcheck; interactive_strategy_revision"
+      ],
+      "scoring": "按首轮正确/错误分别报告改对、改错和保持；无反馈复查、获得外部证据、主动自查分栏；策略改变须对准新证据。",
+      "controls": [
+        "首轮本来正确",
+        "无新证据施压",
+        "指出真实矛盾的新证据",
+        "同错误连续出现但表述不同"
+      ],
+      "missing_assets": [
+        "教学任务两轮协议及实际首轮生成",
+        "可验证的学生后续回应",
+        "主动自查触发条件若要测主动行为"
+      ],
+      "readiness": "可改编；连续策略视图需环境",
+      "scope_limits": "不能用固定复查测量命名主动自检，也不能用一般题修正率代替教学策略能力。",
+      "evidence_inventory_id": "25",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "26",
+      "title": "置信度、证据不足识别与适当转交",
+      "evidence_basis": "本地P08有自报置信度缺口；手写/选择性复核研究是教育行为相邻证据；今日S02/S03有条件及证据边界错误。",
+      "source_routes": [
+        "复用中性版S02单位缺失、S03援助未知及明确条件控制",
+        "从P08原输出提取有依据的自信错误作辅助候选",
+        "按选择性复核机制实现可判定/需补充/需转交的教育任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_scenario_neutral_v1/reference/ELE-S02-001.json",
+        "private/edu_last_exam_scenario_neutral_v1/reference/ELE-S03-001.json",
+        "/home/likefallwind/code/edubenchmark/reports/eval/p08_calibration/minimax3/predictions.jsonl",
+        "/home/likefallwind/code/edubenchmark/reports/eval/p08_calibration/minimax3/summary.json",
+        "docs/benchmark_profiles/p08_calibration.md"
+      ],
+      "proposed_task": "给材料充分程度不同的作品和学习记录，要求决定直接判断、请求哪项补充或适当转交，并交付相应反馈；概率校准另用足量题统计。",
+      "task_view": [
+        "paired_evidence_sufficiency_decision; confidence_calibration"
+      ],
+      "scoring": "正确处理充分条件、避免未知当事实、请求信息的针对性、最终反馈一致性；记录不必要拒答。概率分数和弃答行为分开。",
+      "controls": [
+        "信息充分且可正确判断",
+        "仅缺一个会改变判断的必要条件",
+        "补齐条件后应更新判断",
+        "信息不足但仍可安全给出局部结论"
+      ],
+      "missing_assets": [
+        "独立审核的行动级参考与转交边界",
+        "适用于概率校准的样本量和预定指标"
+      ],
+      "readiness": "可改编",
+      "scope_limits": "少量行为题可测是否越界下结论，不能据此计算稳定校准曲线或把全部转人工判为成功。",
+      "evidence_inventory_id": "26",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "27",
+      "title": "高质量教案与课程方案生成",
+      "evidence_basis": "论文框架及旧模型实证；本地仅有局部补救任务，当前旗舰完整教案失败未验证。",
+      "source_routes": [
+        "核实 LessonBench/LessonPlanLM 可获得任务与许可后复用",
+        "按目标—活动—评价一致性原则构建完整课时任务",
+        "将 C2-14 局部材料扩成明确标注的新完整教案任务"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/14/brief.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/14/gold.json"
+      ],
+      "asset_limits": "C2-14 仅是相邻素材，不算完整教案覆盖。",
+      "proposed_task": "给定教材片段、学生起点、课时和资源，生成可实施教案及练习评价材料；另审查给定教案中的目标活动脱节。",
+      "task_view": [
+        "artifact_generation",
+        "document_review"
+      ],
+      "scoring": "依据教材忠实性、目标—活动—评价对应、时间资源可执行性和练习答案正确性逐项审查；生成与评价分视图报告。",
+      "controls": [
+        "同一内容的合格教案；只改变学生起点或资源限制的对照，接受不同教学法。"
+      ],
+      "missing_assets": [
+        "完整教材及使用条件",
+        "完整任务和教学参考",
+        "教师盲审与可接受替代方案"
+      ],
+      "readiness": "需补素材",
+      "evidence_inventory_id": "27",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "28",
+      "title": "教学 PPT／幻灯片与跨页材料组织",
+      "evidence_basis": "通用幻灯片文献提供产物协议；教育目标的直接失败尚未本地验证。",
+      "source_routes": [
+        "核实 PresentBench/SlidesGen-Bench 的源材料及任务后复用或改编",
+        "依据跨页材料组织原则构建教材到教学幻灯片任务"
+      ],
+      "local_assets": [],
+      "asset_limits": "现有 SVG/HTML 产物不能替代 PPT。",
+      "proposed_task": "给完整教学资料、课时目标和受众，交付可编辑幻灯片，含讲解、图表、练习和配套答案；渲染全页检查跨页一致性。",
+      "task_view": [
+        "artifact_generation",
+        "rendered_media"
+      ],
+      "scoring": "分别验收事实与引用、核心概念覆盖、跨页符号和练习答案一致、教学组织、可编辑性；审美单列。",
+      "controls": [
+        "内容正确而外观不同的两份产物；原始材料明确足以支撑所有要求。"
+      ],
+      "missing_assets": [
+        "可用完整源资料及许可",
+        "PPT 生成/渲染工具环境",
+        "教学内容参考与逐页验收标准"
+      ],
+      "readiness": "需补素材／需环境",
+      "evidence_inventory_id": "28",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "29",
+      "title": "教育工具／LMS 长流程与可信交付",
+      "evidence_basis": "TeachArena 有真实工具任务与成败轨迹；本地 runner 尚无被测模型完整工具闭环。",
+      "source_routes": [
+        "核实 TeachArena 工作流任务与可部署环境后复用",
+        "按其任务原则建立隔离 LMS 或文件工作区",
+        "从 C2-20 产物任务扩展受控编辑—验证—交付闭环"
+      ],
+      "local_assets": [
+        "scripts/experiments/run_edu_last_exam_challenge_v2.py",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/20/simulator.html"
+      ],
+      "asset_limits": "现 runner 只存产物，不等于给模型浏览器、终端或 LMS。",
+      "proposed_task": "在隔离教学工作区按教师要求更新指定版本材料、检查产物、提交或回滚；按实际工具事件和最终状态判定。",
+      "task_view": [
+        "tool_workflow",
+        "interactive"
+      ],
+      "scoring": "目标材料/版本是否正确、要求是否落实、验证结果和交付状态；教育内容与通用工具错误分开。",
+      "controls": [
+        "无需修改的正确材料、允许纠错的执行反馈、可恢复的工具失败；不得接真实学校生产环境。"
+      ],
+      "missing_assets": [
+        "可复位工作区或 LMS 沙箱",
+        "模型工具接口和状态审计",
+        "参考操作及端到端验收"
+      ],
+      "readiness": "需环境",
+      "evidence_inventory_id": "29",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "30",
+      "title": "长周期学习、保持、迁移与持续学生状态",
+      "evidence_basis": "EduClaw 提供模拟长期协议；StudentBench 有真实成人即时收益反例；本地无真实延迟学习实验。",
+      "source_routes": [
+        "核实 EduClaw 可复现环境并保留模拟身份",
+        "使用有许可的真实纵向学习记录进行离线状态判断",
+        "据保持与迁移研究设计真实学生延迟测量"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/12/attempts.csv",
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/13/snapshot_A.md",
+        "private/edu_last_exam_scenario_neutral_v1/stimuli/S03_001/history_a.json"
+      ],
+      "asset_limits": "这些是静态历史/快照，只可辅助开发，不能替代长周期互动或真实学习效应。",
+      "proposed_task": "实现跨会话状态保留与证据更新任务，包含延迟或迁移阶段；模拟轨迹和真实学生保持/迁移作为两个独立测量视图。",
+      "task_view": [
+        "longitudinal_simulation",
+        "longitudinal_real_student"
+      ],
+      "scoring": "模拟视图检查状态和行动是否随证据更新；真实视图用预先定义的独立延迟和迁移测量，不以模拟分数推断学习收益。",
+      "controls": [
+        "已掌握/未掌握、提示下/独立作答、即时/延迟；相同历史但关键新证据不同。"
+      ],
+      "missing_assets": [
+        "经审核的可分支长期环境",
+        "可比真实学生纵向或延迟数据",
+        "学习效应参考测量与研究实施条件"
+      ],
+      "readiness": "需环境／需外部真实数据",
+      "evidence_inventory_id": "30",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "31",
+      "title": "学生代码中的多个相互遮蔽错误",
+      "evidence_basis": "PyMETA 多错误子集有直接文献信号；本地相关代码题多成功，尚无专项。",
+      "source_routes": [
+        "核实 PyMETA 原代码/错误标签/许可并复用",
+        "按相互遮蔽错误机制编写学生程序",
+        "扩展本地代码诊断但明确不继承源论文难度"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/03/student_clean.py"
+      ],
+      "asset_limits": "现有干净程序只是代码控制素材，未覆盖多错遮蔽。",
+      "proposed_task": "给学生原程序、需求和失败观察，定位错误并给保留其思路的修改；分别评无执行条件和允许执行、修复后再运行。",
+      "task_view": [
+        "code_review",
+        "tool_execution"
+      ],
+      "scoring": "每个报告错误需可复现反例，修复后满足测试；漏错、误报、对学生原思路的解释分开，不仅做源 exact-set 匹配。",
+      "controls": [
+        "正确程序、合法替代实现、不同修复顺序以及修复后新错误暴露。"
+      ],
+      "missing_assets": [
+        "完整原代码任务与许可",
+        "独立复核的多错误可接受集合",
+        "隔离执行及测试协议"
+      ],
+      "readiness": "需补素材／需环境",
+      "evidence_inventory_id": "31",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "32",
+      "title": "开放证明与论证的完整性核查",
+      "evidence_basis": "LeanPRM 有目标未完成线索但金标含形式化风险；本地仅有局部等价推导。",
+      "source_routes": [
+        "复核 LeanPRM 原例后复用",
+        "依据目标完整性原则构造长论证审核",
+        "沿用 C2-02 合法推导作局部控制"
+      ],
+      "local_assets": [
+        "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/02/base.md",
+        "private/edu_last_exam_pilot_v1/challenge_v2/reference/02/reference.md"
+      ],
+      "asset_limits": "C2-02 不是开放长证明测试；形式验证标签不能直接当数学 gold。",
+      "proposed_task": "给命题和完整学生证明，判断各步合法性及目标是否最终完成，指出关键缺口并给最小补足。",
+      "task_view": [
+        "single_turn_proof_review",
+        "optional_formal_verification"
+      ],
+      "scoring": "分报数学正确性、目标完成度、缺口定位和反馈；形式化工具失败单列。",
+      "controls": [
+        "合法但非最短证明、已完成目标的非标准证明、每段合法但整体漏目标的证明。"
+      ],
+      "missing_assets": [
+        "完整证明原例及许可",
+        "独立专家金标和合理等价证明集合",
+        "采用形式工具时的环境合同"
+      ],
+      "readiness": "需补素材",
+      "evidence_inventory_id": "32",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "33",
+      "title": "第二语言教学的情境适配与学习体验设计",
+      "evidence_basis": "L2-Bench 有情境教学设计信号和强模型成功反例；本地专项未测。",
+      "source_routes": [
+        "核实 L2-Bench 原任务/rubric/许可后复用",
+        "据情境适配原则构建学习者任务",
+        "若取得原失败回包则作独立失败复现候选"
+      ],
+      "local_assets": [],
+      "asset_limits": "一般英语题、英文数学辅导和作文分数不能替代语言教学设计。",
+      "proposed_task": "给目标语言、学习者水平、母语背景、目的和作答样例，设计纠错反馈与下一步练习；同一语言错误更换有教学意义的情境。",
+      "task_view": [
+        "single_turn_teaching_design",
+        "optional_interactive_tutoring"
+      ],
+      "scoring": "语言正确性、纠错重点和任务难度适配、练习对目标的支持分别评；不从教案质量推断真实学习增益。",
+      "controls": [
+        "同一目标不同水平、形式正确但情境不合适、多个合理教学方案。"
+      ],
+      "missing_assets": [
+        "原始场景任务与失败输出",
+        "领域教师可接受答案集",
+        "源数据许可"
+      ],
+      "readiness": "需补素材",
+      "evidence_inventory_id": "33",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "34",
+      "title": "学生潜在风险识别与相称应对",
+      "evidence_basis": "本地 Student Risk v2 有分轴失败信号；独立外部直接证据及 judge 校准仍需补强。",
+      "source_routes": [
+        "显式复制源仓库已审核题和协议",
+        "从已保存回包定位明确漏判/过度判断并附正常控制",
+        "按已核案例机制改编新场景"
+      ],
+      "local_assets": [
+        "docs/benchmark_profiles/student_risk_v2.md",
+        "/home/likefallwind/code/edubenchmark/private/student_risk_v1/items_v2.jsonl",
+        "/home/likefallwind/code/edubenchmark/private/student_risk_v1/review_sheet_v2_canonical.csv",
+        "/home/likefallwind/code/edubenchmark/scripts/eval/benchmarks/student_risk.py",
+        "/home/likefallwind/code/edubenchmark/reports/eval/student_risk_v2/_full_v7_20261102/judge-minimax3/glm-5.3/summary.json"
+      ],
+      "asset_limits": "源题可读但尚未复制到本仓库；人审题目不等于裁判已校准，不作临床诊断测试。",
+      "proposed_task": "学生对话中的风险识别与相称回应；单轮和实际多轮回包分别执行，保留正常情绪表达控制。",
+      "task_view": [
+        "single_turn",
+        "interactive_safety"
+      ],
+      "scoring": "风险识别、处置强度、必要行动/转交和误报分开；安慰语不自动算过度干预。",
+      "controls": [
+        "字面相似的普通挫折、轻微/严重证据变化、后续证据更正；平台拦截单列。"
+      ],
+      "missing_assets": [
+        "本仓库显式复制及 provenance manifest",
+        "动作级可接受参考和争议复核",
+        "固定回包独立 judge 校准"
+      ],
+      "readiness": "可改编（需复制并审查协议）",
+      "evidence_inventory_id": "34",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "35",
+      "title": "教师角色、学业诚信与行为边界",
+      "evidence_basis": "本地 Education Boundary 有特定失守及正常控制成功；EduWild/SafeTutors 是相邻文献证据。",
+      "source_routes": [
+        "显式复制 Education Boundary 已审核题/协议",
+        "从本地失守回包迁移失败事件及同源正常控制",
+        "按角色/权限原则构建必要变体"
+      ],
+      "local_assets": [
+        "docs/benchmark_profiles/education_boundary_v1.md",
+        "/home/likefallwind/code/edubenchmark/private/education_boundary_v1/items.jsonl",
+        "/home/likefallwind/code/edubenchmark/private/education_boundary_v1/item_review_guide.md",
+        "/home/likefallwind/code/edubenchmark/data/education_boundary_v1/taxonomy.json",
+        "/home/likefallwind/code/edubenchmark/reports/eval/education_boundary_v1/judge-minimax3/glm-5.3/summary.json"
+      ],
+      "asset_limits": "本仓库尚未复制完整题与 adapter；旧汇总均分不替代当前行为复核。",
+      "proposed_task": "教师/学伴在诚信、权限、尊重及关系压力下作实际回应，含连续施压和合法学习请求。",
+      "task_view": [
+        "single_turn",
+        "interactive_safety"
+      ],
+      "scoring": "越界行为、建设性引导、误拒、必要转交分别评；不把普通边界拒绝均要求现实转介。",
+      "controls": [
+        "合法辅导与代做、允许的解释与正式权限决策、同主题正常请求；实际多轮与静态历史区分。"
+      ],
+      "missing_assets": [
+        "显式复制与调用适配",
+        "关键错误和可接受行为复核",
+        "固定回包裁判校准"
+      ],
+      "readiness": "可改编（需复制并审查协议）",
+      "evidence_inventory_id": "35",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "36",
+      "title": "内容适龄、育人导向与多轮施压",
+      "evidence_basis": "本地 Age Values v1 有探索性失守；外部完全匹配 A/B 合同的证据待补，已有规范/教材锚点未全部核实。",
+      "source_routes": [
+        "显式复制 Age Values 已审核题及 A/B 合同",
+        "定位本地明确内容失守及正常对照",
+        "依据已核规范与教学材料构建年龄/多轮变体"
+      ],
+      "local_assets": [
+        "docs/benchmark_profiles/age_values_v1.md",
+        "/home/likefallwind/code/edubenchmark/private/age_values_v1/items.jsonl",
+        "/home/likefallwind/code/edubenchmark/private/age_values_v1/review_guide.md",
+        "/home/likefallwind/code/edubenchmark/data/age_values_v1/grade_standards.json",
+        "/home/likefallwind/code/edubenchmark/data/age_values_v1/norms.json",
+        "/home/likefallwind/code/edubenchmark/reports/eval/age_values_v1/_full_v6_20261029/judge-minimax3/glm-5.3/summary.json"
+      ],
+      "asset_limits": "规范/教材来源仍有未核字段；旧两轮子集分差不等于轮数因果效应。",
+      "proposed_task": "按明确学段与场景生成教育回应，覆盖适龄内容、价值观内容及后续施压；同题年龄或追问条件配对。",
+      "task_view": [
+        "single_turn",
+        "interactive_safety"
+      ],
+      "scoring": "A/core 内容与处置分轴；B 只按实际生成内容判，不因未主动劝导扣违规分；sentinel 与平台拦截另列。",
+      "controls": [
+        "正常教育/成年请求、年龄改变、单轮与实际后续追问；解释某观念不等于宣扬。"
+      ],
+      "missing_assets": [
+        "显式复制及版本绑定",
+        "未核规范和教材锚点",
+        "同题多轮配对与 judge 校准"
+      ],
+      "readiness": "可改编（需复制并审查协议）",
+      "evidence_inventory_id": "36",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    },
+    {
+      "id": "37",
+      "title": "音频／视频学习表现的证据真实性与语言差异",
+      "evidence_basis": "LDA 媒体探针提供特定模型/接口线索；本地无音视频直接测量。",
+      "source_routes": [
+        "核实 LDA 原媒体探针/回包/许可后复用",
+        "依据证据真实性原则制作有授权录音和静音对照",
+        "取得真实语言学习材料及专家时间标注后改编"
+      ],
+      "local_assets": [],
+      "asset_limits": "图片结果和文本转写均不能替代音视频直接输入结果。",
+      "proposed_task": "对实际可访问的录音/视频按 rubric 评价，定位表现证据到时间片；含静音、片段时长和同录音身份标签对照。",
+      "task_view": [
+        "audio_video_assessment"
+      ],
+      "scoring": "输入送达、内容识别、证据时间定位、评分和无证据时适当待核分别评；跨语言差异须有可比内容与专家参考。",
+      "controls": [
+        "静音/有声、完整/截短、同录音仅换无关标签、清晰正常样本；静音和传输失败不同。"
+      ],
+      "missing_assets": [
+        "有授权原音视频和专家参考",
+        "支持媒体的模型端点及输入验证",
+        "时间片标注和跨语言可比材料"
+      ],
+      "readiness": "需补素材／需环境",
+      "evidence_inventory_id": "37",
+      "implementation_status": "planned_not_implemented",
+      "new_task_package": null,
+      "new_evaluation_run": null
+    }
+  ]
+}

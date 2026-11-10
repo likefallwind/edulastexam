@@ -1,0 +1,20 @@
+{
+  "needs_fix": {
+    "answers": {
+      "Q1": "5/6",
+      "Q2": "3/4"
+    },
+    "changed_ids": [
+      "Q1"
+    ],
+    "state": "draft"
+  },
+  "already_correct": {
+    "answers": {
+      "Q1": "5/6",
+      "Q2": "3/4"
+    },
+    "changed_ids": [],
+    "state": "draft"
+  }
+}

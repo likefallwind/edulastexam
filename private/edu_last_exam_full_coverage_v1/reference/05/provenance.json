@@ -1,0 +1,14 @@
+[
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/low_anchor.md",
+    "target_path": "stimuli/05/low_anchor.md",
+    "sha256": "a47a2ae96383fae802b373b8f5d900cd3c64b49f0bee8786b61ff9685416f659",
+    "operation": "explicit_byte_copy"
+  },
+  {
+    "source_path": "private/edu_last_exam_pilot_v1/challenge_v2/stimuli/05/aligned_anchor.md",
+    "target_path": "stimuli/05/aligned_anchor.md",
+    "sha256": "ca63e4fc366aa007cb627c549ac387b18d640adab64fb7cad54f37ca20e4662f",
+    "operation": "explicit_byte_copy"
+  }
+]

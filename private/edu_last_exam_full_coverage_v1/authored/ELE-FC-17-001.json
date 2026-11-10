@@ -1,0 +1,143 @@
+{
+  "item_id": "ELE-FC-17-001",
+  "direction_id": "17",
+  "title": "真实学习记录的留出题目正确率预测",
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-17",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 17；文献为机制依据，不声称本轮重新核验原论文"
+    },
+    {
+      "source_id": "LONGTUTOR_XES3G5M",
+      "local_path": "/home/likefallwind/code/edubenchmark/sources/datasets/longtutor/data/XES3G5M",
+      "locator": "questions.jsonl + sequences_long.jsonl; source hashes in reference/17/heldout_rates.json"
+    }
+  ],
+  "failure_mechanism": "用自身解题体验替代目标群体表现",
+  "education_consequence": "练习选择难度失配",
+  "adaptations": [
+    "将已审阅机制落实为独立探索候选；不继承旧模型错误率。"
+  ],
+  "limitations": [
+    "独立领域教师审阅待完成；本轮小样本不能代表自然教育任务总体。",
+    "LongTutor筛选后的语料，题目作答子群不完全相同；预测非随机前瞻试验。来源许可未解决，不公开再分发。"
+  ],
+  "measurement_claim": "真实公开语料中学习者隔离的回顾性难度预测",
+  "unmeasured_subclaims": [
+    "新生成题的真实投放结果、自然总体难度、因果教学效果"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "calibrated",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "附件给出公开学习记录中按学习者隔离的校准和留出群体。请根据题目内容及实际可见的校准材料，预测三个目标题在指定留出作答群体中的首次答对比例。目标题的留出结果没有提供。不是求数学题答案，也不要求把无法唯一确定的比例写成已知事实。\n输出一个JSON对象：predictions为按question_id键索引的对象，每个值含p（0到1的点预测）、lower和upper（0到1的主观预测区间，lower≤p≤upper）；另给reasoning说明预测依据及局限。该区间未指定置信水平，仅检查你表达的不确定性并描述是否覆盖。评分采用实际留出比例上的MAE、两两难度排序和相对于校准均值基线的误差，不将一次点预测与实际比例不同自动判整题失败。",
+      "assets": [
+        "stimuli/17/calibration_and_targets.json"
+      ],
+      "interaction_mode": "artifact"
+    },
+    {
+      "prompt_id": "without_calibration",
+      "system_prompt": "你是协助教师处理教学任务的助手。请用中文作答，保留必要的原文、数学符号和编号。",
+      "user_prompt": "附件给出公开学习记录中按学习者隔离的校准和留出群体。请根据题目内容及实际可见的校准材料，预测三个目标题在指定留出作答群体中的首次答对比例。目标题的留出结果没有提供。不是求数学题答案，也不要求把无法唯一确定的比例写成已知事实。\n输出一个JSON对象：predictions为按question_id键索引的对象，每个值含p（0到1的点预测）、lower和upper（0到1的主观预测区间，lower≤p≤upper）；另给reasoning说明预测依据及局限。该区间未指定置信水平，仅检查你表达的不确定性并描述是否覆盖。评分采用实际留出比例上的MAE、两两难度排序和相对于校准均值基线的误差，不将一次点预测与实际比例不同自动判整题失败。",
+      "assets": [
+        "stimuli/17/targets_without_calibration.json"
+      ],
+      "interaction_mode": "artifact"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "calibrated": {
+        "reference_answer": "目标题留出比例仅在reference/17/heldout_rates.json中用于连续误差统计；不是精确推理的唯一可识别答案。允许任何有据点预测和诚实区间。输出不得含学习者标识或声称已经观察到隐藏比例。",
+        "acceptable_alternatives": [
+          "不同合理预测均进入连续误差统计；不设事后正确/错误阈值。"
+        ],
+        "critical_errors": [
+          "把自己算出数学答案等同所有学生都会",
+          "声称见过本题未提供的真实目标响应",
+          "输出概率超出0..1或缺少必要目标题"
+        ],
+        "heldout_reference_path": "reference/17/heldout_rates.json"
+      },
+      "without_calibration": {
+        "reference_answer": "目标题留出比例仅在reference/17/heldout_rates.json中用于连续误差统计；不是精确推理的唯一可识别答案。允许任何有据点预测和诚实区间。输出不得含学习者标识或声称已经观察到隐藏比例。",
+        "acceptable_alternatives": [
+          "不同合理预测均进入连续误差统计；不设事后正确/错误阈值。"
+        ],
+        "critical_errors": [
+          "把自己算出数学答案等同所有学生都会",
+          "声称见过本题未提供的真实目标响应",
+          "输出概率超出0..1或缺少必要目标题"
+        ],
+        "heldout_reference_path": "reference/17/heldout_rates.json"
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "输出三道题的有效概率和有序区间。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "说明预测依赖的可见信息、缺失条件及样本边界，不把隐藏结果当已知。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "以MAE/排序等连续指标报告，不以任意偏差阈值定义教学失败。",
+        "required": true
+      }
+    ],
+    "pass_rule": "no_binary_difficulty_pass; report heldout_MAE and ordering; schema validity separately",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "calibrated",
+        "without_calibration"
+      ],
+      "relation": "calibration_history_removed_target_unchanged",
+      "expected": "预测条件变化与误差分别报告，不强制预测必须不同。"
+    }
+  ],
+  "runtime": {
+    "calibrated": {
+      "mode": "artifact",
+      "artifact_type": "forecast_json",
+      "validator": "17",
+      "repair_turns": 0,
+      "evaluation_type": "continuous"
+    },
+    "without_calibration": {
+      "mode": "artifact",
+      "artifact_type": "forecast_json",
+      "validator": "17",
+      "repair_turns": 0,
+      "evaluation_type": "continuous"
+    }
+  },
+  "scoring_type": "continuous",
+  "source_files": [
+    {
+      "path": "/home/likefallwind/code/edubenchmark/sources/datasets/longtutor/data/XES3G5M/questions.jsonl",
+      "sha256": "153e372ae27f1993f0495889926c034dd7dfd5b81585652e716b5759f33d76b4"
+    },
+    {
+      "path": "/home/likefallwind/code/edubenchmark/sources/datasets/longtutor/data/XES3G5M/sequences_long.jsonl",
+      "sha256": "b23c98b69dd0f62ef299eec44bfdbd8ddd6e925cf3550edcb6a58a0ea1ab8d8e"
+    }
+  ]
+}

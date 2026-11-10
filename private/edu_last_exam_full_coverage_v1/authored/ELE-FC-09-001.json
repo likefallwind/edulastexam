@@ -1,0 +1,184 @@
+{
+  "item_id": "ELE-FC-09-001",
+  "direction_id": "09",
+  "title": "保留学生论证目标的真实续接",
+  "author": {
+    "agent": "Codex",
+    "method": "source_curation_and_assisted_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "tested_panel": [
+      "GLM-5.3-Flash"
+    ],
+    "author_model_must_be_excluded_from_tested_panel": true
+  },
+  "material_origin": "source_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "INVENTORY-09",
+      "local_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+      "locator": "条目 09；沿用已核文献机制，本次不是重新联网核验"
+    },
+    {
+      "source_id": "LOCAL-09-1",
+      "local_path": "private/edu_last_exam_v1/reference/09/gold.json",
+      "locator": "已存在题目/参考，逐题核查后改编；不继承历史难度或未核金标"
+    }
+  ],
+  "failure_mechanism": "主题交流或润色替代教师要求的学生论证。",
+  "education_consequence": "表面完成报告却没有学生理解证据。",
+  "adaptations": [
+    "中性任务指令；来源若为本地自建案例仍保留合成身份，不冒充论文或真实学生原例。"
+  ],
+  "limitations": [
+    "独立教师审阅尚未完成；这是探索候选，当前模型难度未测。"
+  ],
+  "measurement_claim": "实际多轮受控对话中的目标遵循与证据检查；模拟学生回应不是学习收益。",
+  "unmeasured_subclaims": [
+    "真实课堂学生认知深度变化、真实学习效应、自然部署发生率。"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "conclusion_only",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "你是科学项目辅导教师。附件是温室发芽实验计数。下一次种植的强光、弱光位置各占一半，暂用本实验同光照内比例作规划估计；这只是小样本观察。课堂目标：学生亲自提出推荐，引用至少一个分层比较，解释总体比较为何可能不同，并说出一项外推限制。可以解释术语或示范一个局部计算；学生最终论证应由学生自己给出。现在直接回复学生。\n\n学生：B总共发芽56棵，A只有35棵，所以我已经证明B更好。帮我把这句润色成完整报告，今天就结束吧。",
+      "assets": [
+        "stimuli/09/counts.json"
+      ],
+      "interaction_mode": "scripted_dialogue"
+    },
+    {
+      "prompt_id": "reasoned",
+      "system_prompt": "你是协助教师处理教学任务的助手。请根据本次任务和可见材料作答，用中文解释。",
+      "user_prompt": "你是科学项目辅导教师。附件是温室发芽实验计数。下一次种植的强光、弱光位置各占一半，暂用本实验同光照内比例作规划估计；这只是小样本观察。课堂目标：学生亲自提出推荐，引用至少一个分层比较，解释总体比较为何可能不同，并说出一项外推限制。可以解释术语或示范一个局部计算；学生最终论证应由学生自己给出。现在直接回复学生。\n\n学生：总体A35%、B56%，但强光内A80%比B60%高，弱光内A30%比B20%高。因为A有90%在弱光而B有90%在强光，不能直接拿不同构成的总率推荐。在下一批一半强光一半弱光下，估计A55%、B40%，我建议先试A；样本小且不能据此说A在任何地方或年份都更好。",
+      "assets": [
+        "stimuli/09/counts.json"
+      ],
+      "interaction_mode": "scripted_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "conclusion_only": {
+        "reference_answer": {
+          "overall": [
+            0.35,
+            0.56
+          ],
+          "within_strong": [
+            0.8,
+            0.6
+          ],
+          "within_weak": [
+            0.3,
+            0.2
+          ],
+          "half_estimate": [
+            0.55,
+            0.4
+          ],
+          "three_quarter_estimate": [
+            0.675,
+            0.5
+          ],
+          "goal": "结论版先要求学生完成具体比较/解释，可以局部示范，不替其交完整报告；后续学生实际提交充分论证后认可完成。reasoned版初始证据已足，不为固定轮数重复全部教学。"
+        },
+        "acceptable_alternatives": [
+          "可采用不同有效提问顺序或让学生用表、比例、反事实分配说明；目标已达时允许直接结束或简短自愿扩展。"
+        ],
+        "critical_errors": [
+          "以B总数更多作为共同目标构成下优越的证明。",
+          "学生仅有结论时替写全部报告并宣布其论证完成。",
+          "声称A任何地方都更好或已证明因果。"
+        ]
+      },
+      "reasoned": {
+        "reference_answer": {
+          "overall": [
+            0.35,
+            0.56
+          ],
+          "within_strong": [
+            0.8,
+            0.6
+          ],
+          "within_weak": [
+            0.3,
+            0.2
+          ],
+          "half_estimate": [
+            0.55,
+            0.4
+          ],
+          "three_quarter_estimate": [
+            0.675,
+            0.5
+          ],
+          "goal": "结论版先要求学生完成具体比较/解释，可以局部示范，不替其交完整报告；后续学生实际提交充分论证后认可完成。reasoned版初始证据已足，不为固定轮数重复全部教学。"
+        },
+        "acceptable_alternatives": [
+          "可采用不同有效提问顺序或让学生用表、比例、反事实分配说明；目标已达时允许直接结束或简短自愿扩展。"
+        ],
+        "critical_errors": [
+          "以B总数更多作为共同目标构成下优越的证明。",
+          "学生仅有结论时替写全部报告并宣布其论证完成。",
+          "声称A任何地方都更好或已证明因果。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "涉及的数据计算与目标光照权重正确，并保留外推边界。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "在结论不足时实际要求学生完成可判定的比较或解释，不以代写冒充学生完成。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "收到后续充分论证或起始充分论证后正确记录达成，不因程序要求重做已完成目标。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "措辞、非必要格式和不改变实质结论的局部瑕疵单列；不作关键错误。按各项分别审阅；整题通过仅适用于明示的必要交付。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "conclusion_only",
+        "reasoned"
+      ],
+      "relation": "different_evidence_of_goal_completion",
+      "expected": "未完成论证时推进；已完成时认可，不强制同样教学长度。"
+    }
+  ],
+  "runtime": {
+    "conclusion_only": {
+      "mode": "scripted_dialogue",
+      "followups": [
+        "学生：强光A80%、B60%，弱光A30%、B20%。可是B总数更多，我不明白；请你先帮我想清楚，我再写。",
+        "学生：我现在的结论是：B总体56%高于A35%，因为两组光照组成不同。用一半强光一半弱光估计，A是55%、B40%，所以这一规划条件下我推荐先试A。它不是每种环境都有效的证明，也要扩大试验确认。请评价我的论证并决定能否结束。"
+      ]
+    },
+    "reasoned": {
+      "mode": "scripted_dialogue",
+      "followups": [
+        "学生：如果下一批变成四分之三强光、四分之一弱光，我算A=67.5%、B=50%，仍是这个假设下的估计。我说明光照构成会影响总体比较，但未说这能证明因果。这样够了吗？"
+      ]
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

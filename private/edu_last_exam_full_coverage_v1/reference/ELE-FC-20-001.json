@@ -1,0 +1,67 @@
+{
+  "gold": {
+    "per_prompt": {
+      "generate": {
+        "reference_answer": "精确步进V+(v−V)exp(−dt/(RC))，电流(V−v)/R；保留旧历史，重置初始参数。绘图需足够密使线性段误差≤0.02V，例如sample_dt=.01或.02均合格；只连t=0和2端点则中间图像错误。等价表达式接受。初始tau=.2s，充电2秒末值约9.999546V；t=1真实约9.932621V。切换放电连续且电流负，R变化不瞬改电压。",
+        "acceptable_alternatives": [
+          "接受等价代数表达式与任意满足误差要求的采样间隔。"
+        ],
+        "critical_errors": [
+          "以每次推进从0重新充电而忽略当前状态",
+          "放电电流符号错误",
+          "切换参数重算旧历史",
+          "端点对但中间折线超过公开误差",
+          "reset保留上次参数或旧轨迹"
+        ]
+      },
+      "repair_curve": {
+        "reference_answer": "精确步进V+(v−V)exp(−dt/(RC))，电流(V−v)/R；保留旧历史，重置初始参数。绘图需足够密使线性段误差≤0.02V，例如sample_dt=.01或.02均合格；只连t=0和2端点则中间图像错误。等价表达式接受。初始tau=.2s，充电2秒末值约9.999546V；t=1真实约9.932621V。切换放电连续且电流负，R变化不瞬改电压。",
+        "acceptable_alternatives": [
+          "接受等价代数表达式与任意满足误差要求的采样间隔。"
+        ],
+        "critical_errors": [
+          "以每次推进从0重新充电而忽略当前状态",
+          "放电电流符号错误",
+          "切换参数重算旧历史",
+          "端点对但中间折线超过公开误差",
+          "reset保留上次参数或旧轨迹"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "步进方程、当前电流、切换连续性和分段推进一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "绘图真实中间点和连线满足0.02V误差；不改写旧历史。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "重置恢复初始值，控件驱动实际状态；首次与反馈后修复分别记录。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "generate",
+        "repair_curve"
+      ],
+      "relation": "same_physics_from_scratch_vs_coarse_curve",
+      "expected": "状态正确而粗采样候选仍需修复曲线。"
+    }
+  ],
+  "measurement_claim": "受限声明式交互产物的科学执行与反馈修复",
+  "unmeasured_subclaims": [
+    "任意代码Agent交付、真实学生学习效果"
+  ]
+}
