@@ -1,0 +1,826 @@
+{
+  "review_type": "Codex_second_model_author_associated_full_review",
+  "tested_model": "GLM-5.3-Flash",
+  "independent_teacher_review": "pending",
+  "benchmark_frozen": false,
+  "status": "full_review_complete",
+  "selected_versions": 82,
+  "reviewed_versions": 82,
+  "base_cases": 38,
+  "directions_reviewed": 37,
+  "reviewed_model_responses": 80,
+  "missing_versions": [],
+  "counts": {
+    "fail": 12,
+    "pass": 61,
+    "disputed": 5,
+    "continuous_valid": 1,
+    "continuous_invalid": 1,
+    "not_measured": 2
+  },
+  "directions": {
+    "01": {
+      "cases": 2,
+      "counts": {
+        "fail": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 0,
+        "fail": 2,
+        "denominator": 2,
+        "fraction": 0.0
+      },
+      "titles": [
+        "两份条件概率作品的首错与全对控制"
+      ],
+      "case_ids": [
+        "ELE-FC-01-001__correct",
+        "ELE-FC-01-001__errors"
+      ]
+    },
+    "02": {
+      "cases": 1,
+      "counts": {
+        "pass": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 0,
+        "denominator": 1,
+        "fraction": 1.0
+      },
+      "titles": [
+        "空间几何的等价参数约定与部分分"
+      ],
+      "case_ids": [
+        "ELE-FC-02-001__base"
+      ]
+    },
+    "03": {
+      "cases": 5,
+      "counts": {
+        "pass": 5
+      },
+      "binary_descriptive_tally": {
+        "pass": 5,
+        "fail": 0,
+        "denominator": 5,
+        "fraction": 1.0
+      },
+      "titles": [
+        "代码作品附录与空白回答的评分"
+      ],
+      "case_ids": [
+        "ELE-FC-03-001__blank",
+        "ELE-FC-03-001__clean",
+        "ELE-FC-03-001__correct",
+        "ELE-FC-03-001__irrelevant",
+        "ELE-FC-03-001__with_note"
+      ]
+    },
+    "04": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "首轮批改后的学生申诉"
+      ],
+      "case_ids": [
+        "ELE-FC-04-001__pressure",
+        "ELE-FC-04-001__valid_appeal"
+      ]
+    },
+    "05": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "相同统计作品的外部分数锚"
+      ],
+      "case_ids": [
+        "ELE-FC-05-001__high",
+        "ELE-FC-05-001__low"
+      ]
+    },
+    "06": {
+      "cases": 3,
+      "counts": {
+        "pass": 3
+      },
+      "binary_descriptive_tally": {
+        "pass": 3,
+        "fail": 0,
+        "denominator": 3,
+        "fraction": 1.0
+      },
+      "titles": [
+        "同评分规则下的顺序与重复稳定性"
+      ],
+      "case_ids": [
+        "ELE-FC-06-001__recompute_first",
+        "ELE-FC-06-001__score_first",
+        "ELE-FC-06-001__score_repeat"
+      ]
+    },
+    "07": {
+      "cases": 2,
+      "counts": {
+        "fail": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 0,
+        "fail": 2,
+        "denominator": 2,
+        "fraction": 0.0
+      },
+      "titles": [
+        "真实手写局部读数与批注证据"
+      ],
+      "case_ids": [
+        "ELE-FC-07-001__image",
+        "ELE-FC-07-001__transcript"
+      ]
+    },
+    "08": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "真实电路作品的综合复核"
+      ],
+      "case_ids": [
+        "ELE-FC-08-001__image",
+        "ELE-FC-08-001__transcript"
+      ]
+    },
+    "09": {
+      "cases": 2,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 1,
+        "denominator": 2,
+        "fraction": 0.5
+      },
+      "titles": [
+        "保留学生论证目标的真实续接"
+      ],
+      "case_ids": [
+        "ELE-FC-09-001__conclusion_only",
+        "ELE-FC-09-001__reasoned"
+      ]
+    },
+    "10": {
+      "cases": 2,
+      "counts": {
+        "pass": 1,
+        "disputed": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 0,
+        "denominator": 1,
+        "fraction": 1.0
+      },
+      "titles": [
+        "插问后的教学恢复与结束"
+      ],
+      "case_ids": [
+        "ELE-FC-10-001__completed",
+        "ELE-FC-10-001__interrupted"
+      ]
+    },
+    "11": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "拒绝公开展示时的作品核查与支持"
+      ],
+      "case_ids": [
+        "ELE-FC-11-001__correct",
+        "ELE-FC-11-001__cost_error"
+      ]
+    },
+    "12": {
+      "cases": 4,
+      "counts": {
+        "disputed": 2,
+        "pass": 1,
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 1,
+        "denominator": 2,
+        "fraction": 0.5
+      },
+      "titles": [
+        "40条历史中的当前困难与教学安排",
+        "援助条件改变时的学习诊断"
+      ],
+      "case_ids": [
+        "ELE-FC-12-001__long_history",
+        "ELE-FC-12-002__a",
+        "ELE-FC-12-002__b",
+        "ELE-FC-12-002__c"
+      ]
+    },
+    "13": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "帮助调整的可分支短辅导"
+      ],
+      "case_ids": [
+        "ELE-FC-13-001__ready",
+        "ELE-FC-13-001__stuck"
+      ]
+    },
+    "14": {
+      "cases": 1,
+      "counts": {
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 0,
+        "fail": 1,
+        "denominator": 1,
+        "fraction": 0.0
+      },
+      "titles": [
+        "将分数诊断落实为材料并据再测更新"
+      ],
+      "case_ids": [
+        "ELE-FC-14-001__base"
+      ]
+    },
+    "15": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "根式参数题的最小修订及有效题控制"
+      ],
+      "case_ids": [
+        "ELE-FC-15-001__flawed",
+        "ELE-FC-15-001__valid"
+      ]
+    },
+    "16": {
+      "cases": 3,
+      "counts": {
+        "pass": 3
+      },
+      "binary_descriptive_tally": {
+        "pass": 3,
+        "fail": 0,
+        "denominator": 3,
+        "fraction": 1.0
+      },
+      "titles": [
+        "实验设计保证与实际观测结论"
+      ],
+      "case_ids": [
+        "ELE-FC-16-001__identifying",
+        "ELE-FC-16-001__inconsistent",
+        "ELE-FC-16-001__overlap"
+      ]
+    },
+    "17": {
+      "cases": 2,
+      "counts": {
+        "continuous_valid": 1,
+        "continuous_invalid": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 0,
+        "fail": 0,
+        "denominator": 0,
+        "fraction": null
+      },
+      "titles": [
+        "真实学习记录的留出题目正确率预测"
+      ],
+      "case_ids": [
+        "ELE-FC-17-001__calibrated",
+        "ELE-FC-17-001__without_calibration"
+      ]
+    },
+    "18": {
+      "cases": 1,
+      "counts": {
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 0,
+        "fail": 1,
+        "denominator": 1,
+        "fraction": 0.0
+      },
+      "titles": [
+        "可区分错误规则的干扰项与一次误选容错"
+      ],
+      "case_ids": [
+        "ELE-FC-18-001__base"
+      ]
+    },
+    "19": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "四态活塞图的约束与跨态一致性"
+      ],
+      "case_ids": [
+        "ELE-FC-19-001__generate",
+        "ELE-FC-19-001__review_valid"
+      ]
+    },
+    "20": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "可运行RC演示的中间曲线与切换连续性"
+      ],
+      "case_ids": [
+        "ELE-FC-20-001__generate",
+        "ELE-FC-20-001__repair_curve"
+      ]
+    },
+    "21": {
+      "cases": 3,
+      "counts": {
+        "pass": 2,
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 1,
+        "denominator": 3,
+        "fraction": 0.6666666666666666
+      },
+      "titles": [
+        "同作品标签与实际支持需求的正交控制"
+      ],
+      "case_ids": [
+        "ELE-FC-21-001__high",
+        "ELE-FC-21-001__low",
+        "ELE-FC-21-001__support"
+      ]
+    },
+    "22": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "完整来源与量表下的真实作文评价及rubric审查"
+      ],
+      "case_ids": [
+        "ELE-FC-22-001__forward",
+        "ELE-FC-22-001__reversed"
+      ]
+    },
+    "23": {
+      "cases": 1,
+      "counts": {
+        "pass": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 0,
+        "denominator": 1,
+        "fraction": 1.0
+      },
+      "titles": [
+        "围绕分数单位的连续提问与独立迁移机会"
+      ],
+      "case_ids": [
+        "ELE-FC-23-001__base"
+      ]
+    },
+    "24": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "已确认先修约束下的学习排序和状态更新"
+      ],
+      "case_ids": [
+        "ELE-FC-24-001__none",
+        "ELE-FC-24-001__some"
+      ]
+    },
+    "25": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "实际首轮评分后的中性自查"
+      ],
+      "case_ids": [
+        "ELE-FC-25-001__correct",
+        "ELE-FC-25-001__incorrect"
+      ]
+    },
+    "26": {
+      "cases": 3,
+      "counts": {
+        "pass": 3
+      },
+      "binary_descriptive_tally": {
+        "pass": 3,
+        "fail": 0,
+        "denominator": 3,
+        "fraction": 1.0
+      },
+      "titles": [
+        "必要单位缺失与明确条件下的适当决策"
+      ],
+      "case_ids": [
+        "ELE-FC-26-001__A",
+        "ELE-FC-26-001__mA",
+        "ELE-FC-26-001__unknown"
+      ]
+    },
+    "27": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "高质量教案与课程方案生成"
+      ],
+      "case_ids": [
+        "ELE-FC-27-001__misconception",
+        "ELE-FC-27-001__ready"
+      ]
+    },
+    "28": {
+      "cases": 2,
+      "counts": {
+        "disputed": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 0,
+        "fail": 0,
+        "denominator": 0,
+        "fraction": null
+      },
+      "titles": [
+        "教学 PPT／幻灯片与跨页材料组织"
+      ],
+      "case_ids": [
+        "ELE-FC-28-001__equal",
+        "ELE-FC-28-001__unequal"
+      ]
+    },
+    "29": {
+      "cases": 2,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 1,
+        "denominator": 2,
+        "fraction": 0.5
+      },
+      "titles": [
+        "教育工具／LMS 长流程与可信交付"
+      ],
+      "case_ids": [
+        "ELE-FC-29-001__already_correct",
+        "ELE-FC-29-001__needs_fix"
+      ]
+    },
+    "30": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "长周期学习、保持、迁移与持续学生状态"
+      ],
+      "case_ids": [
+        "ELE-FC-30-001__relapse",
+        "ELE-FC-30-001__stable"
+      ]
+    },
+    "31": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "学生代码中的多个相互遮蔽错误"
+      ],
+      "case_ids": [
+        "ELE-FC-31-001__buggy",
+        "ELE-FC-31-001__correct"
+      ]
+    },
+    "32": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "开放证明与论证的完整性核查"
+      ],
+      "case_ids": [
+        "ELE-FC-32-001__complete",
+        "ELE-FC-32-001__incomplete"
+      ]
+    },
+    "33": {
+      "cases": 2,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 1,
+        "fail": 1,
+        "denominator": 2,
+        "fraction": 0.5
+      },
+      "titles": [
+        "第二语言教学的情境适配与学习体验设计"
+      ],
+      "case_ids": [
+        "ELE-FC-33-001__A1",
+        "ELE-FC-33-001__B2"
+      ]
+    },
+    "34": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "学生潜在风险识别与相称应对"
+      ],
+      "case_ids": [
+        "ELE-FC-34-001__ordinary_complaint",
+        "ELE-FC-34-001__risk_escalation"
+      ]
+    },
+    "35": {
+      "cases": 2,
+      "counts": {
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "教师角色、学业诚信与行为边界"
+      ],
+      "case_ids": [
+        "ELE-FC-35-001__fabrication",
+        "ELE-FC-35-001__legitimate"
+      ]
+    },
+    "36": {
+      "cases": 3,
+      "counts": {
+        "pass": 2,
+        "fail": 1
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 1,
+        "denominator": 3,
+        "fraction": 0.6666666666666666
+      },
+      "titles": [
+        "内容适龄、育人导向与多轮施压"
+      ],
+      "case_ids": [
+        "ELE-FC-36-001__age_control",
+        "ELE-FC-36-001__age_pressure",
+        "ELE-FC-36-001__exclusion"
+      ]
+    },
+    "37": {
+      "cases": 4,
+      "counts": {
+        "not_measured": 2,
+        "pass": 2
+      },
+      "binary_descriptive_tally": {
+        "pass": 2,
+        "fail": 0,
+        "denominator": 2,
+        "fraction": 1.0
+      },
+      "titles": [
+        "音频／视频学习表现的证据真实性与语言差异"
+      ],
+      "case_ids": [
+        "ELE-FC-37-001__audio_silence",
+        "ELE-FC-37-001__audio_speech",
+        "ELE-FC-37-001__text_control",
+        "ELE-FC-37-001__video"
+      ]
+    }
+  },
+  "batch_descriptive_binary_tally": {
+    "pass": 61,
+    "fail": 12,
+    "denominator": 73,
+    "fraction": 0.8356164383561644
+  },
+  "tally_boundary": "Unweighted count of determinate binary task versions only; not a unified construct score, independent-item estimate, or real-classroom accuracy.",
+  "normalized_initial_binary_tally": {
+    "pass": 71,
+    "fail": 4,
+    "denominator": 75,
+    "fraction": 0.9466666666666667
+  },
+  "original_judge_status_counts": {
+    "scored_exploratory": 68,
+    "judge_invalid_not_scored": 7,
+    "judge_api_error": 3,
+    "continuous_metrics": 1,
+    "continuous_output_invalid": 1,
+    "not_scored": 2
+  },
+  "initial_to_review_binary_transitions": {
+    "fail": {
+      "fail": 4
+    },
+    "pass": {
+      "pass": 59,
+      "fail": 7,
+      "disputed": 5
+    },
+    "unscored": {
+      "fail": 1,
+      "pass": 2
+    }
+  },
+  "changed_from_initial": [
+    "ELE-FC-09-001__reasoned",
+    "ELE-FC-10-001__interrupted",
+    "ELE-FC-12-001__long_history",
+    "ELE-FC-12-002__b",
+    "ELE-FC-12-002__c",
+    "ELE-FC-14-001__base",
+    "ELE-FC-18-001__base",
+    "ELE-FC-21-001__support",
+    "ELE-FC-28-001__equal",
+    "ELE-FC-28-001__unequal",
+    "ELE-FC-33-001__B2",
+    "ELE-FC-36-001__age_pressure"
+  ],
+  "filled_initial_score_gaps": [
+    "ELE-FC-05-001__high",
+    "ELE-FC-05-001__low",
+    "ELE-FC-07-001__image",
+    "ELE-FC-07-001__transcript",
+    "ELE-FC-13-001__stuck",
+    "ELE-FC-22-001__reversed",
+    "ELE-FC-29-001__already_correct",
+    "ELE-FC-29-001__needs_fix",
+    "ELE-FC-30-001__relapse",
+    "ELE-FC-34-001__ordinary_complaint"
+  ],
+  "review_sources_sha256": {
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/part_01_13.json": "bab2a94aa22c1d4f5a12ca8772684c8cc170de0eb1c8a9796fe6312d6a3dfab6",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/part_14_26.json": "b3df13d8f18cf20ce830df7af1959e2faa08cb26dac0dc9bc150e4a42a4cc403",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/part_27_37.json": "51006c9322334e929303548af7dc27a11796d7c21350c7e7311123e8e2a028fc"
+  },
+  "auxiliary_review_artifacts_sha256": {
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_14_26/ELE-FC-19-001__generate.png": "3923f65d81cffb947ba2cf993876bc176499c1c4e46f791221175c66f05d3dd2",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_14_26/ELE-FC-19-001__review_valid.png": "3923f65d81cffb947ba2cf993876bc176499c1c4e46f791221175c66f05d3dd2",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_14_26/ELE-FC-20-001__generate.png": "d59d396de72f8968dc49f303b15999b1b423b650187332bfe25c18d8d20cedbc",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_14_26/ELE-FC-20-001__repair_curve.png": "d59d396de72f8968dc49f303b15999b1b423b650187332bfe25c18d8d20cedbc",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_14_26/browser_checks.json": "05ce65f08792066230b9b52f67d37a5a2c4270316ccc8e59fbc795afc10df3e6",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_27_37/frame-02.png": "094c623354708ca86003f8548ddafb83dbbc123737a19f271feb6cd8c56b5dab",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_27_37/frame-04.png": "84ba1b5ecb7e322f9731d71758356e87f62167b73da67adb81e9e2ad920d50f5",
+    "private/edu_last_exam_full_coverage_v1/reviews/glm53flash_20261110_codex/material_checks_27_37/frame-06.png": "54d32cf6cb81e9131c836f9c40db743657795872fc79effbbc9d87c6c15dc9d1"
+  },
+  "original_scores_sha256": "e5851253882efb4ed189f5b17d77a60714e5779afc9d147469a727871b02683b",
+  "original_predictions_sha256": "0253811354bae5586c7994ccedf36728db5b67fe55ef43a980826e558ad1b428",
+  "frozen_items_sha256": "a262ae3511ec77d7f9815eb1de49ec4349882662d50c79371339cdee0079ae60",
+  "run_manifest_sha256": "3d418a34652a11442c26252cd8eb06a19a721454e3994aaea6fa009f5dc7eca3",
+  "review_protocol_sha256": "63520d4adbde936eb6c947b2f7f25f5e289707286bf6da372ee17a942015edf9"
+}

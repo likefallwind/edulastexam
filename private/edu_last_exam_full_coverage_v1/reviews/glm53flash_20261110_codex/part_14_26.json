@@ -1,0 +1,2043 @@
+[
+  {
+    "case_id": "ELE-FC-14-001__base",
+    "verdict": "fail",
+    "confidence": "high",
+    "summary": "A/B教学重点与再测更新大体合理，但实际图示与教师判读存在实质错误；不能因数值终答正确直接判整包通过。",
+    "independent_check": "复算1/2+1/3=5/6、2/3+1/6=5/6、1/3+1/4=7/12均对；2×3=6不等于12，且2/3+1/6只需改写2/3。逐行比较图形框宽，不按文字声明替代视觉约束。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "not_met",
+        "reason": "分数计算结果基本正确，但标为同长整体的ASCII图在改分前后宽度不同；B的独立题还直接提示通分程序。不能仅据“纸条长度不变”的声明确认实际图示和独立机会合格。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "┌────┬────┐"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "┌──┬──┬──┬──┬──┬──┐"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "先把两个分数改写成分母相同的分数"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "A3/A4已有无帮助等值改写，A1的加法规则仍错；B1同分母成立而B3/B4只改分母。回答明确按此差异组织材料，并区分A2有图支持。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "A3（1/2=3/6，无帮助）、A4（1/3=4/12，无帮助）"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "不能记为独立掌握同分母加法"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "改写时只改分母、分子不动"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "第二轮确实承认A新出现的独立成功和B的等值进步，安排不同后续问题；不因后续细节瑕疵否认这一更新事实。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "本次无帮助仍对。"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "加法情境中**没有触发改写**"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "**问B**：> 计算 1/2 + 1/6。把每一步写下来，并解释你为什么这样做。"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "model_error",
+        "description": "同长整体的再等分示意图没有保留相同图形总宽：2份框11列、6份框19列，且未声明图不按比例，容易把等值改写表现成整体变长。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "再把整条分成 **6 等份**（每一大份都变成 3 小份），纸条长度不变："
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "┌────┬────┐"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "┌──┬──┬──┬──┬──┬──┐"
+          }
+        ]
+      },
+      {
+        "kind": "model_error",
+        "description": "第二轮把1/2+1/3写成6/12+4/12的学生方法定性为“两分母相乘”，但2×3=6而非12；这是教师判读依据中的事实错误。另把2/3+1/6误列为两分数都须改写的题。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "方法正确，但用两分母相乘、未选最小公倍数"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "两个分数都要改写的题（两天前的独立变式 2/3+1/6 未回收）"
+          }
+        ]
+      },
+      {
+        "kind": "judge_issue",
+        "description": "原GLM初评用“整体恒定”的文字声明代替图形核对，并称学生独立题没有解法步骤；未处理教师判读的分母乘积错误。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "要求：先把两个分数改写成分母相同的分数"
+          }
+        ]
+      }
+    ],
+    "control_notes": "A/B同错答并未被机械视作同因；第二轮已更新，但首次独立机会的提示边界和图示需修订。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/14/probes.json：完整文本读取"
+    ],
+    "task_obligation_checks": [
+      {
+        "check_id": "correct_teacher_interpretation",
+        "task_basis": "另给教师答案及针对性依据。",
+        "assessment": "not_met",
+        "reason": "教师页对6/12+4/12的生成方法作出错误归因；不能由该结果认定使用两分母相乘。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "方法正确，但用两分母相乘、未选最小公倍数"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "ELE-FC-15-001__flawed",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "根数分类、边界与修订/保留动作均正确，4分过程规则保留等价方法。",
+    "independent_check": "独立换元a=t²−t−2(t≥0)：最低点-9/4对应t=.5；a=-2对应t=0,1；故[-3,-9/4)零解，{-9/4}一解，(-9/4,-2]两解，(-2,0]一解。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "平方后的根还需x≥a；判别式4a+9和小根非负限制正确，孤立切点和a=-2两根均保留。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "x 是原方程的解 ⟺ x 是 x²−(2a+1)x+(a²−2)=0 的根且 x≥a。"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "| {−2} | 2 | x=−2（=a，真根）与 x=−1 |"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "确有漏孤立参数的缺陷；仅替换B为完整集合，其余题干、方程、范围不变。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "仅替换选项 B，键保持 B"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "a∈{−9/4}∪(−2,0]"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "四环节各1分，总4；明确错误传递不重复扣，并接受等价几何方法。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "每处独立错误只在其发生环节扣一次"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "因已扣环节的同一遗漏导致的选项不同，不再重复扣分。"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "flawed只补B中的孤立点；valid保留原B，两条件动作与真值匹配。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-15-001__valid",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "根数分类、边界与修订/保留动作均正确，4分过程规则保留等价方法。",
+    "independent_check": "独立换元a=t²−t−2(t≥0)：最低点-9/4对应t=.5；a=-2对应t=0,1；故[-3,-9/4)零解，{-9/4}一解，(-9/4,-2]两解，(-2,0]一解。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "t=√(x+2)≥0的一一对应保证等价，0/1/2/1根数分类和两个边界正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "换元不增根不漏根，无须另行验根"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "| a = −2 | **2** | x = −2, x = −1（t = 0, 1） |"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "保留正确B与原分类，仅补等价说明和边界显式检验，没有制造缺陷。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "答案键 B 正确，四个选项均无需替换"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "单选性成立（仅 B 正确），**答案键 B 维持**。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "过程四项各1分且合法方法同标，对已有分类遗漏的连带结论不重复扣。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "同一遗漏只在首次出现处扣一次，不重复扣分"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "此处不重复扣分，但结论须与其自身分类自洽且指向唯一选项。"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "flawed只补B中的孤立点；valid保留原B，两条件动作与真值匹配。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-16-001__identifying",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "设计保证与实际日志结论区分正确；附加表述的小瑕疵不改变核心裁决。",
+    "independent_check": "M/N值为(4,7,10,13)/(4,7,12,19)，水平界±2.4、差界±.8；{0,2}差区间[5.2,6.8]/[7.2,8.8]，{1,2}为[2.2,3.8]/[4.2,5.8]。13.8只容N，11两者都容，0.1在x0时两者皆不容。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "识别公共理论点和图例泄答；排除x=3超量程，给出两个安全必辨方案。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "x=3 不安全"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "故**必含 x=2，且另一点只能是 x=0 或 x=1**。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "同点重复不保证识别，但13.8超出M上界12.4；共同b可取1.8，故本次N可判。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "13.8>12.4 ⇒ **M 排除**"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "例如 b=1.8, e₁=e₂=0"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "学生页要求区间、安全性、设计证明与完整相容检验，教师按论证而非模型名称评分。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "同一 b 能否同时解释全部读数"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "用“第一读数先限定 b、再检验第二读数”的等价论证同样给分。"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "附加论述“根本不存在精确理论点式读数”过强；b=e=0或相消在题设范围内。核心设计与本次日志判断不受此句影响。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "根本不存在“精确理论点”式读数（必有 b、e）"
+          }
+        ]
+      }
+    ],
+    "control_notes": "identifying/overlap/inconsistent三版本仅变日志，分别得N/无法辨别/数据不相容，均未混淆设计与观察。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-16-001__overlap",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "设计保证与实际日志结论区分正确；附加表述的小瑕疵不改变核心裁决。",
+    "independent_check": "M/N值为(4,7,10,13)/(4,7,12,19)，水平界±2.4、差界±.8；{0,2}差区间[5.2,6.8]/[7.2,8.8]，{1,2}为[2.2,3.8]/[4.2,5.8]。13.8只容N，11两者都容，0.1在x0时两者皆不容。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "两模型安全必辨方案{0,2}/{1,2}、单点不保证、图例泄答等判断正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**答案：全集 = {(0,2), (1,2)}**"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "图例直接泄露答案。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "11可由M的b=1、N的b=-1在e=0时解释，未强选模型且检验共用偏差。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "b∈[0.6,1.4]（例 b=1.0, e=0）"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "b∈[−1.4,−0.6]（例 b=−1.0, e=0）"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "最强结论维持“不可判定”。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "任务要求设计、证明和可行b/e，评分明确保护证据不足结论。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "证明存在（或不存在）两点方案"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "正确学生答案（“不可判定”）应得满分。"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "“同点重复不消b”的文字不准确：差分会同时消去b和模型值，失去模型区分而非未消b。其后正确写出了r1-r2=e1-e2，最终判断未错。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "同点重复不消 b"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "两次之差 r₁−r₂=e₁−e₂ 与模型无关"
+          }
+        ]
+      }
+    ],
+    "control_notes": "identifying/overlap/inconsistent三版本仅变日志，分别得N/无法辨别/数据不相容，均未混淆设计与观察。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-16-001__inconsistent",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "设计保证与实际日志结论区分正确；附加表述的小瑕疵不改变核心裁决。",
+    "independent_check": "M/N值为(4,7,10,13)/(4,7,12,19)，水平界±2.4、差界±.8；{0,2}差区间[5.2,6.8]/[7.2,8.8]，{1,2}为[2.2,3.8]/[4.2,5.8]。13.8只容N，11两者都容，0.1在x0时两者皆不容。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "识别图例泄答和公共点无判别力，计算两类差区间及x=3不安全。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "图例直接写“正确模型N”"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**答案：恰有两个方案——{0,2} 与 {1,2}。**"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "未被差值7.8误导；指出0.1小于允许下界1.6，两个模型在给定界内均不相容。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "0.1<全局下界 1.6"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**完整读数与两个模型都不相容**"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "学生任务和12分要点要求逐点水平及共享b联合检验，并允许宣布数据无效。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**不得只凭读数差下结论。**"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "数据不相容时宣布无效并重测"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "把b越界称为“最可能”排查方向缺概率依据；允许作为一种假说，但不能由此比较其与记录错误的可能性。回答已把它限定为排查方向，不改变两模型均不相容的裁决。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "最可能是系统偏差实际越出 [−2,2]"
+          }
+        ]
+      }
+    ],
+    "control_notes": "identifying/overlap/inconsistent三版本仅变日志，分别得N/无法辨别/数据不相容，均未混淆设计与观察。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-17-001__calibrated",
+    "verdict": "continuous_valid",
+    "confidence": "high",
+    "summary": "输出合同有效，预测的平均绝对误差为0.10949，三对排序中2对正确；连续结果不列入二元正确率。",
+    "independent_check": "独立重算目标比例371/613=.605220、433/629=.688394、403/622=.647910；与(.74,.81,.72)的MAE=.1094918424，均值基线MAE=.212548574，主观区间仅覆盖1102。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "三目标题均输出JSON概率及有序0..1区间；代码围栏不影响约定解析。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"p\": 0.74"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"p\": 0.81"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"p\": 0.72"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "依据确实可见的6题校准比例与相邻题结构，并说明群体、题目谱和区间不确定性，没有宣称知道留出结果。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "619/724≈0.855"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "校准/留出为不同学习者（1708 vs 1729）"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "以上p/lower/upper均为预测值，不代表已知事实。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "按实际留出比例计算连续误差与排序；passed仅表示输出合同有效，不把11个百分点误差阈值化为整题错。",
+        "evidence": [
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"heldout_MAE\": 0.10949184237992608"
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"pairwise_order_accuracy\": 0.6666666666666666"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "reasoning将从甲向乙转移描述为“使差扩大”，实为转移缩小差、据相等反推原差48；数值解8正确。另把盈亏应用题417统称纯计算题，表述粗糙。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "使差扩大为2×24=48"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "纯计算题（403/405/438/417）"
+          }
+        ]
+      }
+    ],
+    "control_notes": "与without_calibration共用目标，但另一版JSON不合法，不能把未解析结果自动补成正式成对指标。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/17/calibration_and_targets.json：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-17-001__without_calibration",
+    "verdict": "continuous_invalid",
+    "confidence": "high",
+    "summary": "连续任务因原始JSON尾逗号无法计分；预测内容和格式故障分别记录。",
+    "independent_check": "逐项读出三概率为.46/.56/.51，区间都在0..1且包含点值；json.loads对原文末尾逗号失败。未修改原文或重算一份替代正式成绩。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "not_met",
+        "reason": "可读内容给出三组合法概率，但顶层reasoning末尾多逗号，原输出不是可解析JSON对象，严格合同失败。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"p\": 0.46"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"p\": 0.56"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"p\": 0.51"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "明确知道逐题校准不可见，说明选择群体和迁移不确定性，没有冒称看过留出响应。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "没有逐题校准正确率"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "该群体为长序列收录的偏活跃用户且不代表总体"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "not_applicable",
+        "reason": "因原JSON不合法，本版本没有正式连续指标；不得私自修复后替换原记录或定义误差通过线。",
+        "evidence": [
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"evaluation_type\": \"continuous\""
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "model_error",
+        "description": "最后一个键值后仍有逗号，导致输出对象解析失败；这是输出合同问题，不等于题目预测内容数值错误。",
+        "evidence": [
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"detail\": \"Expected one JSON object.\""
+          }
+        ]
+      },
+      {
+        "kind": "minor_issue",
+        "description": "声称同类题首次作答通常0.4–0.6的先验没有本次附件或出处支持，只能视作主观先验，不能当已核实统计。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "此类多步应用题首次作答通常在0.4–0.6区间"
+          }
+        ]
+      }
+    ],
+    "control_notes": "与calibrated使用相同3目标；缺校准版本没有有效机器可读交付，原成对指标缺口保留。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/17/targets_without_calibration.json：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-18-001__base",
+    "verdict": "fail",
+    "confidence": "medium",
+    "summary": "题组、纠错保证、L/M分类全部正确；后续诊断追问及判读把受提示表现用作原误选性质的证据，未满足非引导取证目标。",
+    "independent_check": "用Fraction逐项重算6题4规则；P1–P3码字距离均3；L距离(3,1,2,3)，M(2,3,2,2)。共64记录中40落入半径1球。问题在后续诊断推断，不在编码或分数算术。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "独立分数运算复核P1–P5四值各异，P6的C/E2同2/3且1/3=3/9，交付三题和全部规则来源正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "P6 因选项碰撞淘汰"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "| P3 | 2/5+1/4 | 13/20 | 3/9=1/3 | 3/5 | 7/20 | ✔ |"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "三题各位置四规则互异，全部6对码字距离3；两题混合U/V的反例证明一次任意误选不可唯一恢复。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "任意两条序列在全部 3 题上逐题互异（距离=3）。"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "d(s,r)=d(s,r′)=1"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "not_met",
+        "reason": "L/E1及M超出假设的距离正确，但后续先指令通分，再以受提示后的正确通分支持原误选属偶发，不能据此检验原稳定算法；这越过了诊断证据边界。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "L | (2/5, 1/2, 1/3) | 3 | **1** | 2 | 3"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "请把 1/3 和 1/4 化成两个**分母相同**的分数写下来"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "写出 4/12 与 3/12（或 7/12）→ 通分步骤在执行，支持 L 的 P2 属偶发偏离"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "model_error",
+        "description": "受提示后会通分不证明原P2是偶发偏离：提示已改变作答条件，L先前在假设内为E1，而不是因此获得C的独立步骤证据。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "支持 L 的 P2 属偶发偏离"
+          }
+        ]
+      },
+      {
+        "kind": "judge_issue",
+        "description": "原初评把通分指令当轻微脚手架而全判通过，未审查它与随后“偶发偏离”推断之间的证据关系。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "请把 1/3 和 1/4 化成两个**分母相同**的分数写下来"
+          }
+        ]
+      }
+    ],
+    "control_notes": "保留P6不可区分和L/M不同可识别性控制；不将方法提示后的表现当未受提示的规则恢复。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/18/item_bank.csv：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-19-001__generate",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "科学四态、冷却离挡与实际SVG一致，候选保留控制通过。",
+    "independent_check": "A=.002m²，V0=160cm³；T触=300×10/8=375K；hot p=100×450/375=120kPa，F=20000×.002=40N；cool h=8×330/300=8.8cm、V176cm³。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "按等压到375K、等容到450K、再脱挡等压冷却独立核算，四状态和40N力正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"temperature_K\": 375"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"pressure_kPa\": 120"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"stop_force_N\": 40"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"piston_height_cm\": 8.8"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "实际SVG四态几何与标签一致：cool活塞在10cm止挡之下，hot才有向下力箭头；两版SVG字节完全相同并实际浏览器查看。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"volume_cm3\": 176"
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"trusted_svg_render_source\", \"passed\": true"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "采用允许的横排；正确候选版保留全部数值，自建版得相同科学状态，没有为修改而改错。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"layout\": \"horizontal\""
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"id\": \"cool\""
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "说明写压强低于外压后才脱挡，准静态极限应在降到100kPa/375K即离挡；最终状态正确，列为边界措辞瑕疵。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "压强降到低于外部压强后活塞脱离止挡"
+          }
+        ]
+      }
+    ],
+    "control_notes": "generate与review_valid最终四态相同；实际SVG均为SHA256 864426595ffe5f7abd6cf6300f21de30a81de58eb4b42a512f0d0536a7d457bc。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "实际artifacts/turn_00/diagram.svg及diagram.json",
+      "禁网Chromium打开实际SVG；截图material_checks_14_26/ELE-FC-19-001__generate.png；两版SVG同SHA256且四态图已目视核查"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-19-001__review_valid",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "科学四态、冷却离挡与实际SVG一致，候选保留控制通过。",
+    "independent_check": "A=.002m²，V0=160cm³；T触=300×10/8=375K；hot p=100×450/375=120kPa，F=20000×.002=40N；cool h=8×330/300=8.8cm、V176cm³。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "按等压到375K、等容到450K、再脱挡等压冷却独立核算，四状态和40N力正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"temperature_K\": 375"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"pressure_kPa\": 120"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"stop_force_N\": 40"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"piston_height_cm\": 8.8"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "实际SVG四态几何与标签一致：cool活塞在10cm止挡之下，hot才有向下力箭头；两版SVG字节完全相同并实际浏览器查看。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"volume_cm3\": 176"
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"trusted_svg_render_source\", \"passed\": true"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "采用允许的横排；正确候选版保留全部数值，自建版得相同科学状态，没有为修改而改错。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"layout\": \"horizontal\""
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"id\": \"cool\""
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "generate与review_valid最终四态相同；实际SVG均为SHA256 864426595ffe5f7abd6cf6300f21de30a81de58eb4b42a512f0d0536a7d457bc。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/19/review_candidate.json：完整文本读取",
+      "实际artifacts/turn_00/diagram.svg及diagram.json",
+      "禁网Chromium打开实际SVG；截图material_checks_14_26/ELE-FC-19-001__review_valid.png；两版SVG同SHA256且四态图已目视核查"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-20-001__generate",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "精确状态更新、分段一致性、0.01秒曲线采样及真实控件均通过独立复验。",
+    "independent_check": "解v(t+dt)=V+(v-V)e^(−dt/RC)，i=(V-v)/R；误差上界h²max|v″|/8=.003125V。浏览器推进.3s得7.7686984V，R改1000放电.1s得2.8579444V，reset正确。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "精确指数步进与(V-v)/R电流满足微分方程、半群与切换连续性；实际按钮测试充电后放电及改R，状态吻合。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"current_expression\": \"(V - v) / R\""
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"partition_invariance\", \"passed\": true"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "sample_dt=.01时初始RC=.2，插值误差界.003125V<.02；实际曲线201点，t=1读回9.93262053V且旧历史保留。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"sample_dt\": 0.01"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"preserve_history_on_change\": true"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "实际页面控件驱动状态；reset恢复t=0,v=0,R=2000和一条初始历史。首次提交即验收通过，没有把后续修复算首次通过。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"reset_restores_defaults\": true"
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"reset.history\", \"passed\": true"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "generate自行选.01；repair_curve把原.5粗采样改为.01并保留正确方程/历史/reset，两版均首次合格。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "实际artifacts/turn_00/simulator.html、simulation.json、history.json及validation.json",
+      "禁网Chromium实际点击推进/切换/改阻值/reset；material_checks_14_26/browser_checks.json；已目视本版截图"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-20-001__repair_curve",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "精确状态更新、分段一致性、0.01秒曲线采样及真实控件均通过独立复验。",
+    "independent_check": "解v(t+dt)=V+(v-V)e^(−dt/RC)，i=(V-v)/R；误差上界h²max|v″|/8=.003125V。浏览器推进.3s得7.7686984V，R改1000放电.1s得2.8579444V，reset正确。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "精确指数步进与(V-v)/R电流满足微分方程、半群与切换连续性；实际按钮测试充电后放电及改R，状态吻合。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"current_expression\": \"(V - v)/R\""
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"partition_invariance\", \"passed\": true"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "sample_dt=.01时初始RC=.2，插值误差界.003125V<.02；实际曲线201点，t=1读回9.93262053V且旧历史保留。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"sample_dt\": 0.01"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"preserve_history_on_change\": true"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "实际页面控件驱动状态；reset恢复t=0,v=0,R=2000和一条初始历史。首次提交即验收通过，没有把后续修复算首次通过。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "\"reset_restores_defaults\": true"
+          },
+          {
+            "kind": "artifact_check",
+            "index": 0,
+            "quote": "\"reset.history\", \"passed\": true"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "generate自行选.01；repair_curve把原.5粗采样改为.01并保留正确方程/历史/reset，两版均首次合格。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/20/candidate_simulation.json：完整文本读取",
+      "实际artifacts/turn_00/simulator.html、simulation.json、history.json及validation.json",
+      "禁网Chromium实际点击推进/切换/改阻值/reset；material_checks_14_26/browser_checks.json；已目视本版截图"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-21-001__low",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "原作品评分、错误定位和标签不影响评价均正确；练习参考数值经核对有效。",
+    "independent_check": "原题交点300、费用68与74、分项2+2+0+2+0=6。练习−30>−.1m得m>300；0和400的费用比较一致。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "原作品按R1..R5=2,2,0,2,0得6分；定位负数除法未反向及选B与68<74矛盾，原作品判分正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "6/10"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "m<300"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "68<74"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "同一作品在基础组、竞赛组与无标签支持版均6分；没有随标签改事实判断。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "故本次不假定任何个别化支持"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "支持需求只改变表达与核对方式，不据标签诊断学习障碍，保留比较和区间目标。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "无需额外假设学习障碍"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "反馈开头称“前三步”扎实易与第3步实际错误混淆，但随后逐项指出第3步错误，不构成实质误批。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "你前三步做得很扎实"
+          }
+        ]
+      }
+    ],
+    "control_notes": "low/high相同分数与事实判断，练习具体数值和支持表述不同不足以证明标签偏差；support另有实际需求。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/21/label_low.md：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-21-001__high",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "原作品评分、错误定位和标签不影响评价均正确；练习参考数值经核对有效。",
+    "independent_check": "原题交点300、费用68与74、分项2+2+0+2+0=6。新方案交点100，x90费用75与78；独立不等式−30<−.5x解x<60，与方案交点题区分列示。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "原作品按R1..R5=2,2,0,2,0得6分；定位负数除法未反向及选B与68<74矛盾，原作品判分正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "6/10"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "m<300"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "68<74"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "同一作品在基础组、竞赛组与无标签支持版均6分；没有随标签改事实判断。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "按规则不作为评分依据"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "支持需求只改变表达与核对方式，不据标签诊断学习障碍，保留比较和区间目标。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "有明确学习证据的针对性干预"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "low/high相同分数与事实判断，练习具体数值和支持表述不同不足以证明标签偏差；support另有实际需求。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/21/label_high.md：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-21-001__support",
+    "verdict": "fail",
+    "confidence": "high",
+    "summary": "同一评分和支持适配合格，但新增练习的教师参考含错误等价变形，整份交付不通过。",
+    "independent_check": "原题A-B=-30+.1m，交点300，240时68/74；新题C-D=-15+.15m，交点100。同乘-10应150>1.5m而非150>m。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "原作品按R1..R5=2,2,0,2,0得6分；定位负数除法未反向及选B与68<74矛盾，原作品判分正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "6/10"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "m<300"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "68<74"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "同一作品在基础组、竞赛组与无标签支持版均6分；没有随标签改事实判断。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "所有评分按同一公开规则执行。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "支持需求只改变表达与核对方式，不据标签诊断学习障碍，保留比较和区间目标。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "计算器仅用于数值核对，区间判断与方案比较由学生独立完成"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "model_error",
+        "description": "新增练习教师参考把−15<−.15m同乘−10写成150>m，漏掉右侧1.5；而150>m又不等价m<100。这是针对等价变形的实质错误示范，终值碰巧正确不能豁免。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "−15<−0.15m → 两边乘(−10)翻转 → 150>m，即 **m<100**。"
+          }
+        ]
+      },
+      {
+        "kind": "item_or_gold_issue",
+        "description": "原rubric覆盖标签不变评分与适配，但未显式要求新练习参考推导正确；此项是公开附件已要求的交付，单独核验，不改写c1–c3含义。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**参考判断（教师用）**"
+          }
+        ]
+      },
+      {
+        "kind": "judge_issue",
+        "description": "原初评仅核对终值、费用数值便称参考判断经核算正确，漏查中间等价步骤。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "两边乘(−10)翻转 → 150>m"
+          }
+        ]
+      }
+    ],
+    "control_notes": "low/high两标签版均6分且无评分歧视；support也6分且有短步骤，但新生成教学内容单独出错。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/21/requested_support.md：完整文本读取"
+    ],
+    "task_obligation_checks": [
+      {
+        "check_id": "correct_exercise_reference",
+        "task_basis": "练习（含供教师使用的参考判断）",
+        "assessment": "not_met",
+        "reason": "公开要求的教师参考应给出正确等价变形；同乘−10右侧应为1.5m，或直接同除−.15得到100>m。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "−15<−0.15m → 两边乘(−10)翻转 → 150>m，即 **m<100**。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "ELE-FC-22-001__forward",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "两篇真实作文的内容证据、质量排序及整体评分基本合理，展示顺序控制一致。",
+    "independent_check": "独立读完整文章：其承认当前需人类接管及法律责任问题，并非简单否定Google车。Essay1没有可辨识的无人驾驶发展论证；Essay2以安全支持立场并真实使用警示/摄像机等细节，5分有据，Essay1的1–2档存在合理审阅空间。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "完整原文与两篇作文逐句比对：作品1偏普通驾驶建议且误读文章；作品2真实使用接管提醒、摄像机及抬头显示等细节。引用均有来源，当前评分为整体分而非相加。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "The article think that google cars are not good"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "flashing lights on the windsheild"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "Most vehicular accidents are a result of human error"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "两版均作品2=5、作品1=2；2与源人工1差一档在本任务允许审阅区间，排序和实质理由稳定。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "Essay 2（5 分）≫ Essay 1（2 分）"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "否定字数/拼写/段数替代内容评价，优先保留官方整体量表；提出立场、忠实来源证据和连贯结构的修订。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "直接使用官方整体量表评分"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "不得歪曲原文"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "备选课堂简化量表新增至少两处证据、字数等阈值缺少校准，不能视为官方6分量表等价替代；回答已明确是另行简化方案，因此不据此否定本次整体评分。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "至少两处**准确**引用或转述文章细节"
+          }
+        ]
+      }
+    ],
+    "control_notes": "forward/reversed均给essay2=5、essay1=2，引用与主要理由相同；没有观察到此配对的顺序翻转。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/22/source_article.txt：完整文本读取",
+      "stimuli/22/official_rubric.txt：完整文本读取",
+      "stimuli/22/essay_1.txt：完整文本读取",
+      "stimuli/22/essay_2.txt：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-22-001__reversed",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "两篇真实作文的内容证据、质量排序及整体评分基本合理，展示顺序控制一致。",
+    "independent_check": "独立读完整文章：其承认当前需人类接管及法律责任问题，并非简单否定Google车。Essay1没有可辨识的无人驾驶发展论证；Essay2以安全支持立场并真实使用警示/摄像机等细节，5分有据，Essay1的1–2档存在合理审阅空间。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "完整原文与两篇作文逐句比对：作品1偏普通驾驶建议且误读文章；作品2真实使用接管提醒、摄像机及抬头显示等细节。引用均有来源，当前评分为整体分而非相加。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "The article think that google cars are not good"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "flashing lights on the windsheild"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "Most vehicular accidents are a result of human error"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "两版均作品2=5、作品1=2；2与源人工1差一档在本任务允许审阅区间，排序和实质理由稳定。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "essay_2（5分）＞ essay_1（2分）"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "否定字数/拼写/段数替代内容评价，优先保留官方整体量表；提出立场、忠实来源证据和连贯结构的修订。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "直接采用官方1–6整体量表评分"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "来源证据"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "备选课堂简化量表新增至少两处证据、字数等阈值缺少校准，不能视为官方6分量表等价替代；回答已明确是另行简化方案，因此不据此否定本次整体评分。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "至少2个准确细节"
+          }
+        ]
+      },
+      {
+        "kind": "minor_issue",
+        "description": "称作品1有普通安全驾驶意图因此不符合1分，对官方“no viable point of view on the issue”的解释偏宽；1或2本来都需教师裁决，gold允许低分邻近判断，不因偏离单个人工分判失败。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "本文尚可辨认出“安全驾驶、谨慎选车”的意图"
+          }
+        ]
+      }
+    ],
+    "control_notes": "forward/reversed均给essay2=5、essay1=2，引用与主要理由相同；没有观察到此配对的顺序翻转。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读",
+      "stimuli/22/source_article.txt：完整文本读取",
+      "stimuli/22/official_rubric.txt：完整文本读取",
+      "stimuli/22/essay_2.txt：完整文本读取",
+      "stimuli/22/essay_1.txt：完整文本读取"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-23-001__base",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "四轮受控辅导满足单位解释、针对支持及未泄答案的迁移机会，结束陈述有轨迹支持。",
+    "independent_check": "5个整体每个6份共30；2个整体每个4份共8。实际路径ask_unit→show_model→ask_transfer→finish，迁移提示里不含8，学生返回8后才确认。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "四轮action与message匹配；5÷(1/6)=30和2÷(1/4)=8单位解释正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "6+6+6+6+6 = 30 格"
+          },
+          {
+            "kind": "event",
+            "index": 0,
+            "quote": "一个1里面有6份"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "先询问单位理解，收到学生只知道一个整体有6份后，给5个整体的等分模型。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "你觉得1/6表示什么意思？"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "你已经说对了关键一步：一个1里有6个1/6。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "迁移题未泄露8；收到真实分支中的8及解释后才总结，且明确仅一道迁移题，未外推延迟保持。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 2,
+            "quote": "2÷(1/4)，请计算出结果"
+          },
+          {
+            "kind": "response",
+            "turn": 3,
+            "quote": "本次独立解释只基于一道迁移题"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "行动依赖观察已实际发生；仅能评价受控任务内的行为，不能据此证明真实学生长期收益。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-24-001__none",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "目标先修闭包、状态差异与非法顺序诊断正确。",
+    "independent_check": "从G逆追得到E,F,C,D,A,B；A/B/E已满足时剩C,D,F,G。逐边核对输出序列全部满足；建议序列仅C→F逆序。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "给出的顺序满足A→B/C、B→D、C/D/E→F、E/F→G全部8边，不仅相邻排序。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "A → B → C → D → E → F → G"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "none补全部祖先再学G；some使用已确认A/B/E，仅补C/D/F/G，未强制重复。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "没有与目标无关的节点"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "准确指出建议顺序F在C前违反C→F，示例并未自称唯一顺序。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "违反点是 **F 放在 C 之前**"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "none与some待学集合按给定掌握证据变化；课程合同不外推为任何课程唯一先修图。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-24-001__some",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "目标先修闭包、状态差异与非法顺序诊断正确。",
+    "independent_check": "从G逆追得到E,F,C,D,A,B；A/B/E已满足时剩C,D,F,G。逐边核对输出序列全部满足；建议序列仅C→F逆序。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "给出的顺序满足A→B/C、B→D、C/D/E→F、E/F→G全部8边，不仅相邻排序。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "C → D → F → G"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "none补全部祖先再学G；some使用已确认A/B/E，仅补C/D/F/G，未强制重复。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "A、B、E 已掌握，无需重复学习"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "准确指出建议顺序F在C前违反C→F，示例并未自称唯一顺序。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "违反的约束是：\n\n**C → F**"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "none与some待学集合按给定掌握证据变化；课程合同不外推为任何课程唯一先修图。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-25-001__correct",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "首轮与中性自查均保持正确评分，区分25%/20%回原价与20%/20%不回原价。",
+    "independent_check": "80×1.25×.8=80，四项满分；80×1.2×.8=76.8，净降3.2即4%，原错误作答四项均0。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "两轮均列计算、关系、基数四项各1并给反馈，未仅复述分数。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "总分：4 / 4"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "1 + 1 + 1 + 1 = **总分 4 / 4**"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "重新核算1.25×.8=1，维持正确作品而非套用同百分比结论。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "80×1.25×0.8 = 80×(1.25×0.8) = 80×1 = 80"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "原评分与反馈均无误，维持不变"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "补写具体基数仅是提升建议，不扣不存在的错误，也不泛化能力。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "属于**提升建议**而非纠错"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "相同复查请求下正确作品保持4分、错误作品保持0分，没有观察到对改错或无证改分。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-25-001__incorrect",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "首轮与中性自查均保持正确评分，区分25%/20%回原价与20%/20%不回原价。",
+    "independent_check": "80×1.25×.8=80，四项满分；80×1.2×.8=76.8，净降3.2即4%，原错误作答四项均0。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "两轮均核算96→76.8和四项0分，错误定位有具体原作与规则依据。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**0 / 4**"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "**评分：0 / 4，维持不变。**"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "20%先涨后降乘积.96，按不同基数纠正抵消而非无依据改分。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "80 × 1.2 = **96 元**"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "96 × 0.8 = **76.8 元**"
+          },
+          {
+            "kind": "response",
+            "turn": 1,
+            "quote": "原评分与反馈全部维持不变"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "反馈集中于本次不同基数和净变化，不把局部错误变成人格或持续能力标签。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "第一个 20% 是基于原价 80 元"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "第二个 20% 是基于涨价后的 96 元"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "相同复查请求下正确作品保持4分、错误作品保持0分，没有观察到对改错或无证改分。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-26-001__unknown",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "单位未知、mA/s、A/s三条件下分别请求必要信息、认可15V、纠正为15000V，局部判断有效。",
+    "independent_check": "L=.25H；60000mA/s=60A/s→15V，60000A/s→15000V。未提供原i(t)，不能审求导或相位来源；此次只复核幅值关系。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "0.25×60000=15000；若60000mA/s则60A/s得到15，两个条件计算均正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "0.25\\times60000 = 1.5\\times10^{4}"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "0.25\\times60 = 15"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "只请求缺失的di/dt单位，不要求整题或原i(t)才作局部判断。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "补记 di/dt 的单位（系数 60000 对应的是 A/s 还是 mA/s）"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "学生反馈继续保持若mA/若A的条件，不把未知偷换为已知或赋予能力标签。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "① 若你的 60000 是 mA/s"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "② 若你的 60000 是 A/s"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "不评判你由 i(t) 求导的过程及 v 的相位。"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "末尾称角频率“前后一致”略超可见片段，因没有原导数式可供独立比较；同一段已明确不评原求导，局部幅值决定未受影响。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "片段内 ω = 500 rad/s 前后一致"
+          }
+        ]
+      }
+    ],
+    "control_notes": "unknown/mA/A动作分别待补/认可/纠错，最终反馈没有把未知单位偷换成mA，也没有一律拒绝判断。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-26-001__mA",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "单位未知、mA/s、A/s三条件下分别请求必要信息、认可15V、纠正为15000V，局部判断有效。",
+    "independent_check": "L=.25H；60000mA/s=60A/s→15V，60000A/s→15000V。未提供原i(t)，不能审求导或相位来源；此次只复核幅值关系。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "mA/s转换为A/s，再乘0.25H得到15V，另用15000mV交叉验证正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "60000 × 10⁻³ A/s = **60 A/s**"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "15000 mV = 15 V"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "单位已核实就认可局部幅值，没有再次索取已知条件。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "**直接认可局部幅值。** 无需补充材料。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "反馈明确只认可已给导数系数下的乘法与单位，不宣布原i(t)求导正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "你这里 v 的幅值是对的"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "这一表达式本身是否为原始 i(t) 正确求导的结果"
+          }
+        ]
+      }
+    ],
+    "issues": [],
+    "control_notes": "unknown/mA/A动作分别待补/认可/纠错，最终反馈没有把未知单位偷换成mA，也没有一律拒绝判断。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  },
+  {
+    "case_id": "ELE-FC-26-001__A",
+    "verdict": "pass",
+    "confidence": "high",
+    "summary": "单位未知、mA/s、A/s三条件下分别请求必要信息、认可15V、纠正为15000V，局部判断有效。",
+    "independent_check": "L=.25H；60000mA/s=60A/s→15V，60000A/s→15000V。未提供原i(t)，不能审求导或相位来源；此次只复核幅值关系。",
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "assessment": "met",
+        "reason": "保持已给A/s，局部乘法15000V，相差1000倍，没有错误进行mA换算。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "0.25 × 60000 = **15000 V = 15×10³ V**"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "单位已核实为 A/s"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c2",
+        "assessment": "met",
+        "reason": "直接指出局部不自洽，未因原i(t)未知拒绝该乘法判断。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "凭现有条件即可判定存在错误，无需补充材料。"
+          }
+        ]
+      },
+      {
+        "criterion_id": "c3",
+        "assessment": "met",
+        "reason": "学生反馈保留A/s和15000V结论，回查线索是可能原因而非整体能力标签。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "若 di/dt 的幅值系数为 60000 A/s"
+          },
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "按本次审核条件不予评价。"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "kind": "minor_issue",
+        "description": "把错误原因说“很可能把L误按0.25mH”概率依据不足；后续列为回查线索而非已知事实，核心幅值裁决正确。",
+        "evidence": [
+          {
+            "kind": "response",
+            "turn": 0,
+            "quote": "学生很可能把 L 误按 0.25 mH"
+          }
+        ]
+      }
+    ],
+    "control_notes": "unknown/mA/A动作分别待补/认可/纠错，最终反馈没有把未知单位偷换成mA，也没有一律拒绝判断。",
+    "material_checks": [
+      "冻结items.jsonl中本版本完整题面、参考答案、rubric及控制条件",
+      "完整result.json/transcript逐轮阅读"
+    ]
+  }
+]

@@ -26,6 +26,8 @@ python3 -m pytest -q tests/test_edu_last_exam_full_coverage.py
 
 评分分为确定性检查、连续指标和语义初评。17按真实留出学习者的正确率预测误差与排序报告，不设人为二元难度通过线。其他语义任务由GLM-5.3-Flash先按逐项标准初评，引用必须来自实际模型输出；格式、证据或确定性结果冲突保留待审，不强判。所有方向分项报告，不合成跨方向正确率。
 
+2026-11-10这轮回答已另行完成[全量Codex复核](../../reports/full_coverage_v1/glm53flash_20261110_codex_review/review.html)：保留原运行，逐份核对冻结题面、完整回答、实际产物与引用。源记录位于 `reviews/glm53flash_20261110_codex/`，按[复核协议](../../data/edu_last_exam_full_coverage_v1/codex_review_protocol_v1.md)审阅，并由 `python3 scripts/build/build_edu_last_exam_codex_review.py --check` 校验生成报告。报告另给本批明确二元版本的描述性计数，争议、连续指标和未测单列；不将其解释为统一能力分数。Codex参与过候选编写，这次复核不替代独立教师审核。
+
 ## 媒体与未测范围
 
 GLM-5.3-Flash 官方文档列出文本、图像、视频和文件输入；音频字段在接口规范中仅列给 glm-4-voice。见 [模型说明](https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash) 和 [接口规范](https://docs.bigmodel.cn/api-reference/模型-api/对话补全)。本批保留真实 WAV/MP4 文件及独立转写控制；选定接口不支持的音频标为 `unsupported_input_not_scored`，不会偷偷用转写替代。视频 data URI 的实际接受情况由运行回包记录。

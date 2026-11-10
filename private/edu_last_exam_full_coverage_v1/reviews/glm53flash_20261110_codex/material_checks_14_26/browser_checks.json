@@ -1,0 +1,62 @@
+[
+  {
+    "case_id": "ELE-FC-19-001__generate",
+    "source": "reports/eval/edu_last_exam_full_coverage_v1/_exploratory/20261110_142158_glm53flash/GLM-5.3-Flash/cases/ELE-FC-19-001__generate/artifacts/turn_00/diagram.svg",
+    "sha256": "864426595ffe5f7abd6cf6300f21de30a81de58eb4b42a512f0d0536a7d457bc",
+    "checks": {
+      "four_states": true,
+      "no_page_errors": true
+    },
+    "errors": [],
+    "passed": true,
+    "network": "blocked"
+  },
+  {
+    "case_id": "ELE-FC-19-001__review_valid",
+    "source": "reports/eval/edu_last_exam_full_coverage_v1/_exploratory/20261110_142158_glm53flash/GLM-5.3-Flash/cases/ELE-FC-19-001__review_valid/artifacts/turn_00/diagram.svg",
+    "sha256": "864426595ffe5f7abd6cf6300f21de30a81de58eb4b42a512f0d0536a7d457bc",
+    "checks": {
+      "four_states": true,
+      "no_page_errors": true
+    },
+    "errors": [],
+    "passed": true,
+    "network": "blocked"
+  },
+  {
+    "case_id": "ELE-FC-20-001__generate",
+    "source": "reports/eval/edu_last_exam_full_coverage_v1/_exploratory/20261110_142158_glm53flash/GLM-5.3-Flash/cases/ELE-FC-20-001__generate/artifacts/turn_00/simulator.html",
+    "sha256": "c42f2e3400e74e066bf5ed9cdc377e46b289aa7bae66d59670aadd189ef257cf",
+    "checks": {
+      "charge": true,
+      "switch_preserves_history": true,
+      "switch_continuity": true,
+      "discharge": true,
+      "reset": true,
+      "samples": true,
+      "curve_t1": true,
+      "no_page_errors": true
+    },
+    "errors": [],
+    "passed": true,
+    "network": "blocked"
+  },
+  {
+    "case_id": "ELE-FC-20-001__repair_curve",
+    "source": "reports/eval/edu_last_exam_full_coverage_v1/_exploratory/20261110_142158_glm53flash/GLM-5.3-Flash/cases/ELE-FC-20-001__repair_curve/artifacts/turn_00/simulator.html",
+    "sha256": "44ce3fcffef418f5fb919f0eed1237b5e824cc77f06dcd3351e4c21938abe596",
+    "checks": {
+      "charge": true,
+      "switch_preserves_history": true,
+      "switch_continuity": true,
+      "discharge": true,
+      "reset": true,
+      "samples": true,
+      "curve_t1": true,
+      "no_page_errors": true
+    },
+    "errors": [],
+    "passed": true,
+    "network": "blocked"
+  }
+]
