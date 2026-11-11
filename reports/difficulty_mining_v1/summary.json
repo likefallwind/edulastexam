@@ -1,0 +1,203 @@
+{
+  "schema_version": "edu_last_exam_difficulty_mining_v1",
+  "status": "discovery_only",
+  "source_checkout": "../edubenchmark",
+  "suites": [
+    "mini_v2",
+    "frontier_v1"
+  ],
+  "benchmarks": [
+    "ceval",
+    "mooccube_prereq"
+  ],
+  "full_benchmarks": [
+    "ceval",
+    "mooccube_prereq"
+  ],
+  "n_records": 2146,
+  "cross_suite_candidate_counts": {
+    "both_p_correct_le_0.25": 9,
+    "both_p_correct_le_0.50": 17,
+    "both_unanimous_failure": 8
+  },
+  "collections": [
+    {
+      "suite": "mini_v2",
+      "benchmark": "ceval",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/ceval_items_v2.txt",
+      "item_list_sha256": "feece75c9d9d9a309e4940ff12204fadb49f5bab15bbd21048268f317020bb82",
+      "n_items": 150,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 40,
+        "unanimous_failure": 4,
+        "unanimous_pass": 106
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 7,
+        "p_correct_le_0.50": 13
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mooccube_prereq",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mooccube_prereq_items_v2.txt",
+      "item_list_sha256": "03022326a65be428a1164e058e6a13b39a3574d9aaa12b39626c8f1019758427",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 43,
+        "unanimous_failure": 18,
+        "unanimous_pass": 39
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 32,
+        "p_correct_le_0.50": 45
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "ceval",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/ceval_frontier_items_v1.txt",
+      "item_list_sha256": "b3e69005fa75aed53d7ee73b6a3dd7b99d3ecd9ee2f731a7a9b7be0289e68e90",
+      "n_items": 150,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 114,
+        "unanimous_failure": 25,
+        "unanimous_pass": 10
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 46,
+        "p_correct_le_0.50": 71
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mooccube_prereq",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mooccube_prereq_frontier_items_v1.txt",
+      "item_list_sha256": "22850218c7fc4d18c330e08a65f37810aa370b0d39db1667d7e617a2c313ebf3",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 67,
+        "unanimous_failure": 28,
+        "unanimous_pass": 5
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 54,
+        "p_correct_le_0.50": 80
+      }
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "ceval",
+      "status": "ok",
+      "item_list": "sources/datasets/ceval/data/val.jsonl",
+      "item_list_sha256": "3181b099988c175e284623321b8c8f26ed3f1341308fba1a7ff7c29b2c488e61",
+      "n_items": 1346,
+      "panel_models": [
+        "MiniMax-M2.7",
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3-8B",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-flash",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 10,
+      "outcome_counts": {
+        "incomplete_panel": 3,
+        "mixed_outcome": 414,
+        "unanimous_failure": 27,
+        "unanimous_pass": 902
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 51,
+        "p_correct_le_0.50": 108
+      }
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mooccube_prereq",
+      "status": "ok",
+      "item_list": "sources/datasets/mooccube/items_v1.jsonl",
+      "item_list_sha256": "636854d4d5ce33a683aabf6f7ed43c76b2b5ec3d97d6f3c85575fb0887efa826",
+      "n_items": 300,
+      "panel_models": [
+        "MiniMax-M2.7",
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 126,
+        "unanimous_failure": 65,
+        "unanimous_pass": 109
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 108,
+        "p_correct_le_0.50": 134
+      }
+    }
+  ],
+  "interpretation": [
+    "unanimous_failure is historical panel model error, not an official or human difficulty label",
+    "mini_v2 and frontier_v1 are different selections and must not be averaged",
+    "candidate promotion requires item/gold/protocol review and held-out model or human evidence"
+  ]
+}
