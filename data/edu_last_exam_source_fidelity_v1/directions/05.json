@@ -1,0 +1,89 @@
+{
+  "direction_id": "05",
+  "title": "教师已给分对反馈的锚定",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "lda",
+      "title": "lda original repository",
+      "url": "git@github.com:Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/feedback.py",
+      "sha256": "ab2a56f715443864047ccfafeb62ade29114a449d835c8c053b177b473c90e5a",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "feedback.py::halo; prompts/feedback-shown.txt versus feedback-blind.txt",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "feedback.py::halo; prompts/feedback-shown.txt versus feedback-blind.txt; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "lda",
+      "title": "lda original repository",
+      "url": "git@github.com:Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/feedback-discordant/study.py",
+      "sha256": "2ea2a306ba14fbf55e7ec1c483117417c98b853f73ea05ca2448a92bda4fc49b",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "docstring DESIGN/MEASURES and slope_origin",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "docstring DESIGN/MEASURES and slope_origin; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "lda_report",
+      "title": "LDA AI grading benchmark institutional research report",
+      "url": "https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda-research-report.md",
+      "sha256": "893dee45f63f2e910dd3b8d39837569b66e5d033621973b37e74ed628290684d",
+      "revision": "article directory1.0.0; content pinned by SHA256",
+      "locator": "§5.3 Table5.3 and feedback-discordant study",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "All22 setups show positive told-grade tone slope in the original100-case wrong-grade pairing. This measures tone copying, not automatically false factual feedback."
+    }
+  ],
+  "research_failure": {
+    "condition": "Same work with true teacher mark m versus mirrored mark5-m; blind feedback control; tone scored with original English rule.",
+    "finding": "All22 setups show positive told-grade tone slope in the original100-case wrong-grade pairing. This measures tone copying, not automatically false factual feedback.",
+    "model_setting": "Original22 setup-specific models and100 Mohler short answers; our3-case source subset is not a statistical replication.",
+    "scope": "Wrong external numeric mark affecting feedback tone; wrong worked reference answers remain outside this task.",
+    "source_id": "lda_report",
+    "locator": "§5.3 Table5.3 and feedback-discordant study"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Native feedback-shown prompt with true m and mirrored5-m, plus native blind prompt",
+    "output_contract": "Original JSON score/reason or feedback",
+    "scoring_contract": "Native tone difference per matched work; dmark/dtone pair; S=sum(dmark*dtone)/sum(dmark²), no tiny-sample bootstrap verdict",
+    "environment_contract": "Independent or forked chat calls preserving original conditioning",
+    "source_case_ids": [
+      "E01.Q01.A00",
+      "E01.Q01.A01",
+      "E01.Q01.A02"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Three-case source-fidelity check; no population reliability or confidence-interval conclusion.",
+      "Directions 03–06 reuse the same underlying work and are not independent benchmark samples."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Same work with true teacher mark m versus mirrored mark5-m; blind feedback control; tone scored with original English rule.",
+      "evidence_locator": "feedback-discordant/study.py::DESIGN/MEASURES",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-05-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-05-001",
+    "ELE-SF-05-002",
+    "ELE-SF-05-003"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:Learning-Design-Alliance/ai-grading-benchmark.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "direction_id": "37",
+  "title": "音视频学习表现的证据真实性与语言差异",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "LDA-video",
+      "title": "LDA video preregistered protocol",
+      "url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/lda/video/PREREG.md",
+      "sha256": "d7bb6424142fdeda3e76906a43cab581251c5093282ac0d5dd577f12ff8e7b9a",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "video/PREREG.md: probes, length, hallucination",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Blank/frozen recordings must receive the minimum; attainment labels change no work."
+    },
+    {
+      "source_id": "LDA-results",
+      "title": "LDA recorded-performance results",
+      "url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/lda/video/README.md",
+      "sha256": "af189a33602f7a6deb997cf498d03248260afb71b8d249382166f066afabe795",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "Video task results and coverage addition",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "GLM5.3Flash original run credits3%black screens and57%frozen frames; no extrapolation to all classes."
+    },
+    {
+      "source_id": "LDA-speech",
+      "title": "LDA speech protocol and limits",
+      "url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/lda/speech/README.md",
+      "sha256": "7f8fc6e038e05749410fc92ab81ae0e56b8552efdd73e2413fca500c74a7cc5a",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "Speech pronunciation and silent controls",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Seven audio-model study; Mandarin-L1 speakers only, accent not a nuisance test."
+    },
+    {
+      "source_id": "ZAI-video-contract",
+      "title": "Official Z.ai chat completion schema",
+      "url": "https://docs.z.ai/api-reference/llm/chat-completion.md",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/lda/zai_chat_completion.md",
+      "sha256": "5e608d3c82b283ed8dac0b7991187b625e378ca706a060f0eaa40ddf90d1e110",
+      "revision": "Retrieved2026-11-10",
+      "locator": "Video content schema lines869-891",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "video_url URL; supportedmp4/mkv/mov; size≤200MB. Gateway support remains separately verified."
+    }
+  ],
+  "research_failure": {
+    "condition": "Score actual observed performance rather than duration/attainment label; withhold skill credit for black or frozen recordings.",
+    "finding": "Native video experiments separate agreement beyond duration from raw QWK and expose credit for non-performance probes; some models do show beyond-duration signal.",
+    "model_setting": "Original21runs, video or declared16-frame modes, including GLM5.3Flash video.",
+    "scope": "Laparoscopic skill videos; not general classroom assessment or low-resource language conclusion.",
+    "source_id": "LDA-video",
+    "locator": "video/PREREG.md; video/README.md"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original LASANA full selected video and native GOALS prompt, with native same-work probes.",
+    "output_contract": "4–20 total and four1–5subscores JSON.",
+    "scoring_contract": "Native parser; null credit and paired label delta; full100-case correlations not estimated from1case.",
+    "environment_contract": "ffmpeg original preprocessing; genuinevideo_url request; no transcript proxy.",
+    "source_case_ids": [
+      "lasana-bluags"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Preserve actual temporal visual evidence and native counterfactuals. Download/transport failure is an environment state, never model error.",
+    "limitations": [
+      "Only video submechanism covered; audio silence and cross-language comparison still unmeasured.",
+      "One source case does not support native population WATCHES claim."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Original raw temporal performance vs black/still controls and same-work label switch",
+      "evidence_locator": "video/PREREG.md probes table",
+      "implementation_locator": "ELE-SF-37-001",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-37-001"
+  ],
+  "search_log": [
+    {
+      "action": "Read full original video/speech PREREG and result sources; fetch LASANAannotations and exactselectedZIPmember",
+      "result": "206 Content-Range verified;4MiB resumable chunks and original ffmpeg preprocessing, no wholeZIP download."
+    },
+    {
+      "action": "Read official Z.ai and BigModel chat-completion docs",
+      "result": "Both document multimodal video support; actual gateway acceptance is tracked separately and not assumed frommodelname."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "direction_id": "20",
+  "title": "交互科学演示的语义正确性",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "INTERACT",
+      "title": "InteractScience",
+      "url": "https://arxiv.org/html/2510.09724v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/interactscience/test_llm.py",
+      "sha256": "25793f2b99ef005864451b8b293dec8235bfb9ebce0d271ec68c0880fc8572bb",
+      "revision": "c21ea8dffad175a43d810fa027a152113956e6ff",
+      "locator": "§4; Appendix E failure analysis; Appendix F Fields of Magnet Array",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "INTERACT-TEST",
+      "title": "Original executable test suites",
+      "url": "https://github.com/open-compass/InteractScience",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/interactscience/cal_metrics.py",
+      "sha256": "1a4ea0aa39e11c55c8b3334af57aa70e2bcc33ff86d2e1981dcf37d7dba8e1ca",
+      "revision": "c21ea8dffad175a43d810fa027a152113956e6ff",
+      "locator": "PFT_tests, VQT_tests, native rate aggregation",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "模型按原科学实现计划自由生成完整 HTML；对原指定参数、按钮和动态可视化执行原测试，不能仅检查JSON参数或静态样图。",
+    "finding": "原研究的功能通过与视觉科学质量相关较弱，科学逻辑/数值错误可与可用交互同时存在。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "INTERACT",
+    "locator": "§4; Appendix E failure analysis; Appendix F Fields of Magnet Array"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-20-001",
+      "ELE-SF-20-002"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "模型按原科学实现计划自由生成完整 HTML；对原指定参数、按钮和动态可视化执行原测试，不能仅检查JSON参数或静态样图。",
+    "limitations": [
+      "PFT 原测试自身有已知误报/漏报，保留原结果另列审阅；原 VLM judge 和CLIP待评。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "模型按原科学实现计划自由生成完整 HTML；对原指定参数、按钮和动态可视化执行原测试，不能仅检查JSON参数或静态样图。",
+      "evidence_locator": "§4; Appendix E failure analysis; Appendix F Fields of Magnet Array",
+      "implementation_locator": "ELE-SF-20-001; ELE-SF-20-002",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-20-001",
+    "ELE-SF-20-002"
+  ],
+  "search_log": [
+    {
+      "url": "https://arxiv.org/html/2510.09724v2",
+      "checked": "§4; Appendix E failure analysis; Appendix F Fields of Magnet Array",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://github.com/open-compass/InteractScience",
+      "checked": "PFT_tests, VQT_tests, native rate aggregation",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "data/edu_last_exam_source_fidelity_v1/runtime_environment.json",
+      "sha256": "b6fece759f3b55f9b9189d2961a239798765915678da9b9d1aa99c6eb137760e"
+    }
+  ]
+}

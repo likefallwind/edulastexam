@@ -1,0 +1,42 @@
+{
+  "python": "/home/likefallwind/miniconda3/bin/python",
+  "python_version": "3.13.11",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "commands": {
+    "bwrap": "/usr/bin/bwrap",
+    "prlimit": "/usr/bin/prlimit",
+    "node": "/usr/bin/node",
+    "libreoffice": "/usr/bin/libreoffice",
+    "ffmpeg": "/usr/bin/ffmpeg",
+    "tmux": "/usr/bin/tmux"
+  },
+  "packages": {
+    "pytest": "9.0.3",
+    "requests": "2.31.0",
+    "numpy": "2.4.2",
+    "pandas": "2.3.3",
+    "playwright": "1.59.0",
+    "pillow": "12.1.1",
+    "sacrebleu": "2.6.0",
+    "scikit-learn": "1.8.0",
+    "PyMuPDF": "1.27.2.3"
+  },
+  "credential": "GLM_API inherited from configured interactive shell; value never recorded",
+  "network_isolation": "bubblewrap --unshare-all, no credential environment, dedicated /work",
+  "isolated_loopback_probe": "passed",
+  "execution_model": "source-specific adapters; no arbitrary host code execution",
+  "run_concurrency": 4,
+  "interactscience_node_runtime": {
+    "path": "/home/likefallwind/code/edulastexam/eval/source_fidelity_runtime/node",
+    "playwright": "1.53.0",
+    "lock_sha256": "ec33113a5245e671fb2e2c4039b13f262dba0df892c56d0621bc10f77edcc628",
+    "browser_path": "/home/likefallwind/code/edulastexam/eval/source_fidelity_runtime/browsers",
+    "chromium_revision": "1178",
+    "upstream_lock_available": false,
+    "pin_basis": "Upstream package.json minimum version ^1.53.0"
+  },
+  "original_scoring_roles": {
+    "MiniMax-M3": "configured environment available; original role only",
+    "Claude/GPT-4/Gemini": "not available from configured gateway; Google direct model listing rejected (400); no substitution"
+  }
+}

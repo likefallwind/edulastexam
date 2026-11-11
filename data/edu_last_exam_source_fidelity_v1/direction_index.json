@@ -1,0 +1,191 @@
+{
+  "source_path": "docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md",
+  "source_sha256": "6212122941652a98c4e70c49d2b7a79c6fd2638a77f947975711ab499313b983",
+  "directions": [
+    {
+      "direction_id": "01",
+      "original_title": "首错定位、错因归因与针对性反馈",
+      "source_line": 44
+    },
+    {
+      "direction_id": "02",
+      "original_title": "过程正确性、合法等价解与部分得分",
+      "source_line": 51
+    },
+    {
+      "direction_id": "03",
+      "original_title": "作业内注记、伪评分指令与空白／无意义回答",
+      "source_line": 58
+    },
+    {
+      "direction_id": "04",
+      "original_title": "无依据抗辩与有依据申诉",
+      "source_line": 65
+    },
+    {
+      "direction_id": "05",
+      "original_title": "外部分数与错误参考答案的锚定",
+      "source_line": 72
+    },
+    {
+      "direction_id": "06",
+      "original_title": "同一评分标准下的提示、顺序与配置稳定性",
+      "source_line": 79
+    },
+    {
+      "direction_id": "07",
+      "original_title": "忠实读取真实手写、图形、公式和原稿位置",
+      "source_line": 86
+    },
+    {
+      "direction_id": "08",
+      "original_title": "图像作业的综合评价与多模态辅导",
+      "source_line": 93
+    },
+    {
+      "direction_id": "09",
+      "original_title": "教师教学目的与认知深度保持",
+      "source_line": 100
+    },
+    {
+      "direction_id": "10",
+      "original_title": "教学流程执行、插问后恢复与结束判断",
+      "source_line": 107
+    },
+    {
+      "direction_id": "11",
+      "original_title": "拒答、担忧、理解困难等挑战行为下的教学应对",
+      "source_line": 114
+    },
+    {
+      "direction_id": "12",
+      "original_title": "长历史中的学习状态与误概念判断",
+      "source_line": 121
+    },
+    {
+      "direction_id": "13",
+      "original_title": "支架增减、提高要求与独立迁移",
+      "source_line": 128
+    },
+    {
+      "direction_id": "14",
+      "original_title": "把诊断落实为针对性补救材料和复查",
+      "source_line": 135
+    },
+    {
+      "direction_id": "15",
+      "original_title": "题目有效性、答案键与修订质量",
+      "source_line": 142
+    },
+    {
+      "direction_id": "16",
+      "original_title": "题目认知要求、实验设计与教学目标对齐",
+      "source_line": 149
+    },
+    {
+      "direction_id": "17",
+      "original_title": "生成题与既有试题对特定学生群体的难度校准",
+      "source_line": 156
+    },
+    {
+      "direction_id": "18",
+      "original_title": "诊断性干扰项与练习设计",
+      "source_line": 163
+    },
+    {
+      "direction_id": "19",
+      "original_title": "图文、连续图和时序教学解释一致性",
+      "source_line": 170
+    },
+    {
+      "direction_id": "20",
+      "original_title": "交互式科学演示的语义正确性",
+      "source_line": 177
+    },
+    {
+      "direction_id": "21",
+      "original_title": "无关身份、能力标签与群体公平",
+      "source_line": 184
+    },
+    {
+      "direction_id": "22",
+      "original_title": "作文／开放主观题整体评价与 rubric 的质量",
+      "source_line": 195
+    },
+    {
+      "direction_id": "23",
+      "original_title": "苏格拉底提问的实质质量",
+      "source_line": 202
+    },
+    {
+      "direction_id": "24",
+      "original_title": "先修关系、知识结构与学习路径规划",
+      "source_line": 209
+    },
+    {
+      "direction_id": "25",
+      "original_title": "自查、错误修正与教学策略调整",
+      "source_line": 216
+    },
+    {
+      "direction_id": "26",
+      "original_title": "置信度、证据不足识别与适当转交",
+      "source_line": 223
+    },
+    {
+      "direction_id": "27",
+      "original_title": "高质量教案与课程方案生成",
+      "source_line": 230
+    },
+    {
+      "direction_id": "28",
+      "original_title": "教学 PPT／幻灯片与跨页材料组织",
+      "source_line": 237
+    },
+    {
+      "direction_id": "29",
+      "original_title": "教育工具／LMS 长流程与可信交付",
+      "source_line": 244
+    },
+    {
+      "direction_id": "30",
+      "original_title": "长周期学习、保持、迁移与持续学生状态",
+      "source_line": 251
+    },
+    {
+      "direction_id": "31",
+      "original_title": "学生代码中的多个相互遮蔽错误",
+      "source_line": 258
+    },
+    {
+      "direction_id": "32",
+      "original_title": "开放证明与论证的完整性核查",
+      "source_line": 265
+    },
+    {
+      "direction_id": "33",
+      "original_title": "第二语言教学的情境适配与学习体验设计",
+      "source_line": 272
+    },
+    {
+      "direction_id": "34",
+      "original_title": "学生潜在风险识别与相称应对",
+      "source_line": 279
+    },
+    {
+      "direction_id": "35",
+      "original_title": "教师角色、学业诚信与行为边界",
+      "source_line": 286
+    },
+    {
+      "direction_id": "36",
+      "original_title": "内容适龄、育人导向与多轮施压",
+      "source_line": 293
+    },
+    {
+      "direction_id": "37",
+      "original_title": "音频／视频学习表现的证据真实性与语言差异",
+      "source_line": 300
+    }
+  ]
+}

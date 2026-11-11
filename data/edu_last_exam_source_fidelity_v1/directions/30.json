@@ -1,0 +1,69 @@
+{
+  "direction_id": "30",
+  "title": "长期学习效果与主动支持",
+  "status": "blocked_environment",
+  "sources": [
+    {
+      "source_id": "EduClaw",
+      "title": "EduClaw",
+      "url": "https://arxiv.org/html/2608.03206v1",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2608.03206v1.html",
+      "sha256": "e40ebee857f31def712a86c78cb93ed869c16c0e51d6b2d0191ed9d187fbeebc",
+      "revision": null,
+      "locator": "Environment/action design; §6 actions and30day results",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "StudentBench",
+      "title": "StudentBench",
+      "url": "https://arxiv.org/html/2609.28470",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2609.28470.html",
+      "sha256": "21bb4ba8bd2f67ad7e4a739ca97b59f7417cc7db911221365920c9c940183bf2",
+      "revision": null,
+      "locator": "Randomized human GRE learning-gain study; limitations",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    }
+  ],
+  "research_failure": {
+    "condition": "Thirty virtual days with learned knowledge-tracing state, observable student responses, scheduling and action costs; alternatively real human pre/post learning outcomes.",
+    "finding": "EduClaw reports never-used adjust_level action and long silent periods with early plateaus. StudentBench instead finds pooled AI equivalent to human short-term GRE tutoring; it does not establish universal weak learning effects.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "EduClaw",
+    "locator": "Environment/action design; §6 actions and30day results"
+  },
+  "original_task": {
+    "available": "paper_only_for_EduClaw; public_human_StudentBench_records",
+    "input_contract": "Original11 learner personas×5 schedules, KT model weights and student simulator;30day timeline.",
+    "output_contract": "Actions send_message/stay_silent/assign_items/adjust_level/provide_content and resulting student state.",
+    "scoring_contract": "Original30day probe learning gains, proactive support metrics and judge panel; StudentBench real pre/post randomized outcomes.",
+    "environment_contract": "EduClaw anonymous repository repeatedly times out; simulator/KTweights unavailable here. StudentBench requires new real learners for a new tutor outcome.",
+    "source_case_ids": []
+  },
+  "decision": {
+    "route": "blocked_environment_not_proxy",
+    "rationale": "Cannot replace learned student transitions or real human learning with three scripted dates and call it original learning-gain evaluation.",
+    "limitations": [
+      "Author-repository fetch failed TLS timeout twice; alternative search found unrelated EduClaw software, not the benchmark.",
+      "Design evidence does not warrant inventing unvalidated learning-gain ground truth."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Thirty virtual days with learned knowledge-tracing state, observable student responses, scheduling and action costs; alternatively real human pre/post learning outcomes.",
+      "evidence_locator": "Environment/action design; §6 actions and30day results",
+      "implementation_locator": [],
+      "preserved": false,
+      "omission_reason": "Cannot replace learned student transitions or real human learning with three scripted dates and call it original learning-gain evaluation."
+    }
+  ],
+  "task_ids": [],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

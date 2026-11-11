@@ -1,0 +1,218 @@
+{
+  "direction_id": "25",
+  "title": "自查与改错",
+  "status": "ready_mechanism",
+  "sources": [
+    {
+      "source_id": "P07P08",
+      "title": "Historical local protocol with original C-Eval",
+      "url": "https://github.com/hkust-nlp/ceval",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/p07_selfcheck.py",
+      "sha256": "58429351dd141086a1439aaf8d8917960e1b5902451945bf981bdc2d4f0aa791",
+      "revision": null,
+      "locator": "fixed item_list_v1; intrinsic recheck",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "HISTORY-minimax3",
+      "title": "Observed historical p07_selfcheck / minimax3",
+      "url": "/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/minimax3/summary.json",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p07_selfcheck/minimax3.json",
+      "sha256": "ba091e252156410cea9bb9506a8cd00f8956934b39533de1853fe8ed8f5baace",
+      "revision": null,
+      "locator": "extra_metrics; fixed evaluation protocol",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "HISTORY-MiniMax-M3.1-Flash-Preview",
+      "title": "Observed historical p07_selfcheck / MiniMax-M3.1-Flash-Preview",
+      "url": "/home/likefallwind/code/edubenchmark/reports/eval/p07_selfcheck/MiniMax-M3.1-Flash-Preview/summary.json",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p07_selfcheck/MiniMax-M3.1-Flash-Preview.json",
+      "sha256": "73ee617191a91a36086e748e8f8d4a877a64bd59f1c3452c948e4aab7d85a2d3",
+      "revision": null,
+      "locator": "extra_metrics; fixed evaluation protocol",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "不提供外部错误提示，在实际解答后要求自检并保留错改对/对改错分母。",
+    "finding": "M3 wrong→right 8/232 and right→wrong 5/318; M3.1 12/218 and 10/331, 1 missing second round.",
+    "model_setting": "MiniMax-M3 and MiniMax-M3.1-Flash-Preview; frozen local original protocols",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "HISTORY-minimax3",
+    "locator": "extra_metrics",
+    "observed_metrics": [
+      {
+        "n_scored_both_rounds": 550,
+        "n_round2_missing": 0,
+        "r1_accuracy": 0.5782,
+        "r2_accuracy": 0.5836,
+        "net_gain": 0.0055,
+        "change_rate": 0.0291,
+        "n_r1_wrong": 232,
+        "n_fixed_wrong_to_right": 8,
+        "fix_rate": 0.0345,
+        "n_r1_right": 318,
+        "n_broken_right_to_wrong": 5,
+        "break_rate": 0.0157,
+        "score_10": 5.094,
+        "by_source": {
+          "ceval": {
+            "n": 200,
+            "r1_correct": 117,
+            "r2_correct": 118,
+            "fixed": 3,
+            "broken": 2
+          },
+          "mmlu_pro": {
+            "n": 150,
+            "r1_correct": 82,
+            "r2_correct": 83,
+            "fixed": 1,
+            "broken": 0
+          },
+          "agieval": {
+            "n": 100,
+            "r1_correct": 54,
+            "r2_correct": 56,
+            "fixed": 3,
+            "broken": 1
+          },
+          "mtb_problem_solving": {
+            "n": 100,
+            "r1_correct": 65,
+            "r2_correct": 64,
+            "fixed": 1,
+            "broken": 2
+          }
+        }
+      },
+      {
+        "n_scored_both_rounds": 549,
+        "n_round2_missing": 1,
+        "r1_accuracy": 0.6029,
+        "r2_accuracy": 0.6066,
+        "net_gain": 0.0036,
+        "change_rate": 0.0583,
+        "n_r1_wrong": 218,
+        "n_fixed_wrong_to_right": 12,
+        "fix_rate": 0.055,
+        "n_r1_right": 331,
+        "n_broken_right_to_wrong": 10,
+        "break_rate": 0.0302,
+        "score_10": 5.124,
+        "by_source": {
+          "ceval": {
+            "n": 200,
+            "r1_correct": 121,
+            "r2_correct": 121,
+            "fixed": 6,
+            "broken": 6
+          },
+          "mmlu_pro": {
+            "n": 150,
+            "r1_correct": 79,
+            "r2_correct": 79,
+            "fixed": 2,
+            "broken": 2
+          },
+          "agieval": {
+            "n": 99,
+            "r1_correct": 66,
+            "r2_correct": 66,
+            "fixed": 2,
+            "broken": 2
+          },
+          "mtb_problem_solving": {
+            "n": 100,
+            "r1_correct": 65,
+            "r2_correct": 67,
+            "fixed": 2,
+            "broken": 0
+          }
+        }
+      }
+    ]
+  },
+  "original_task": {
+    "available": false,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-25-001",
+      "ELE-SF-25-002",
+      "ELE-SF-25-003"
+    ]
+  },
+  "decision": {
+    "route": "historical_protocol_replay",
+    "rationale": "不提供外部错误提示，在实际解答后要求自检并保留错改对/对改错分母。",
+    "limitations": [
+      "三例统计不稳定；无错题时 fix rate 未定义，只有一种正确性时 AUROC 未定义；不得用 0 代替。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "不提供外部错误提示，在实际解答后要求自检并保留错改对/对改错分母。",
+      "evidence_locator": "fixed item_list_v1; intrinsic recheck",
+      "implementation_locator": "ELE-SF-25-001; ELE-SF-25-002; ELE-SF-25-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-25-001",
+    "ELE-SF-25-002",
+    "ELE-SF-25-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://github.com/hkust-nlp/ceval",
+      "checked": "fixed item_list_v1; intrinsic recheck",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/ceval.py",
+      "sha256": "9e519c8a065c95e6c1905e05c5c68f6750bbe942a870b396eec276d63a5652d7"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/p08_calibration.py",
+      "sha256": "e9174a113ab68ca0a63f27eba832e68f2f1f674d0bbec682da3b2aff648e6e94"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/item_list_v1.txt",
+      "sha256": "f8eaa35cd4061271845ef0c22ddb7e106bd6ccbf5fbc69faff882112b9afea1c"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/selected_ceval_original.json",
+      "sha256": "a82e61b5bbb2914fabc66cc42195b2bb7a58cf3682d0627cc0a4250dfd6df53b"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/p07_selfcheck.py",
+      "sha256": "58429351dd141086a1439aaf8d8917960e1b5902451945bf981bdc2d4f0aa791"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/choice_parsing.py",
+      "sha256": "d829c8aae909d99bf6766d6574176863bce1d476d0dab73ea9349c16d5c73792"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/LICENSE-DATA",
+      "sha256": "1349a4b6148492b44f629e64eed676612e234fe9a839e4f3b277c1482c8849f1"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p07_selfcheck/minimax3.json",
+      "sha256": "ba091e252156410cea9bb9506a8cd00f8956934b39533de1853fe8ed8f5baace"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p07_selfcheck/MiniMax-M3.1-Flash-Preview.json",
+      "sha256": "73ee617191a91a36086e748e8f8d4a877a64bd59f1c3452c948e4aab7d85a2d3"
+    }
+  ]
+}

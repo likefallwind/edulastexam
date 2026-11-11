@@ -1,0 +1,71 @@
+{
+  "direction_id": "29",
+  "title": "完整教学工具工作流",
+  "status": "blocked_environment",
+  "sources": [
+    {
+      "source_id": "TeachArena",
+      "title": "TeachArena",
+      "url": "https://arxiv.org/html/2605.14322v4",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2605.14322v4.html",
+      "sha256": "405a3bb78ecab493663a0f428c2643bd7c554b5e9dd1f53f92ba9e1dd1517d3d",
+      "revision": null,
+      "locator": "§stress conditions; Appendixworkflow; long-chain six tasks",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "TeachArena-release",
+      "title": "TeachArena full public release",
+      "url": "https://huggingface.co/datasets/CinderD/TeachArena",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/teacha/tasks/stage2_teaching_workflows.json",
+      "sha256": "93fdf6abeb8326a1aefbf29c502e616774267b7ed939eaa23770ec8920b18582",
+      "revision": "cbd99fcca76b076352388d01be10056a5ee47eb4",
+      "locator": "tasks/stage2_teaching_workflows.json; environment_db; policy; evaluator",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    }
+  ],
+  "research_failure": {
+    "condition": "Retrieve evidence, reason pedagogically, perform persistent LMS updates/artifact writes, and communicate across a long workflow.",
+    "finding": "Six long-chain workflows averaged0.321 vs0.559 elsewhere in original17-model study; this is an association, not isolated chain-length causality.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "TeachArena",
+    "locator": "§stress conditions; Appendixworkflow; long-chain six tasks"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original user_scenario and initial state, LMS tools and policy; full public354 tasks/db downloaded.",
+    "output_contract": "Persistent final LMS state, artifacts, action trajectory and final communication.",
+    "scoring_contract": "ENV × NL × GOAL × (0.5+0.5 CQ) × PROCESS, original evaluators retained.",
+    "environment_contract": "Public release omits execution service/tool schemas required to enact the original LMS transitions.",
+    "source_case_ids": [
+      "AD-01"
+    ]
+  },
+  "decision": {
+    "route": "original_task_environment_blocked",
+    "rationale": "Original tasks and evaluators are public but native action execution service is absent; no substitution with a one-turn declarative plan.",
+    "limitations": [
+      "Full environment restoration needed before API trial.",
+      "The first archived task is a source exemplar; no claimed long-chain reproduction."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Retrieve evidence, reason pedagogically, perform persistent LMS updates/artifact writes, and communicate across a long workflow.",
+      "evidence_locator": "§stress conditions; Appendixworkflow; long-chain six tasks",
+      "implementation_locator": [],
+      "preserved": false,
+      "omission_reason": "Original tasks and evaluators are public but native action execution service is absent; no substitution with a one-turn declarative plan."
+    }
+  ],
+  "task_ids": [],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

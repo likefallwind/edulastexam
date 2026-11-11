@@ -1,0 +1,95 @@
+{
+  "direction_id": "27",
+  "title": "完整课程生成与教学结构",
+  "status": "blocked_protocol",
+  "sources": [
+    {
+      "source_id": "LessonBench",
+      "title": "LessonBench",
+      "url": "https://arxiv.org/html/2607.13041v1",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2607.13041v1.html",
+      "sha256": "4e10fc596f6ff68c3d6917926763dee01aeb9fd770a411c2d00c2fbc6c3ac9ec",
+      "revision": null,
+      "locator": "§5 Evaluation Framework",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "LessonBench-source",
+      "title": "LessonBench original plan/reference",
+      "url": "https://github.com/SuienS/lesson-bench-v1",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/lessonbench/lesson_160_0/lesson_plan.md",
+      "sha256": "faf420b0351f3090389e378b33a27ef5f5f4e8bd9d582651e83c14d68b5eac8f",
+      "revision": "1e96761e951947a583f53692803c8b65deae1695",
+      "locator": "LessonBench/data/topic_160/lesson_160_0/lesson_plan/lesson_plan.md",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "LessonPlanLM",
+      "title": "Knowledge-enhanced large language models for automatic lesson plan generation",
+      "url": "https://www.nature.com/articles/s41599-025-06004-2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/lessonplanlm.pdf",
+      "sha256": "a23cc3656d3f68f96cbc6484ff5d446ba2b692daa8b6b9ea30d00786eb684f37",
+      "revision": "2025publishedarticle",
+      "locator": "Table4; appendix baseline prompts and automatic vs human comparison; dataavailability",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Human evaluation separates structure, accuracy, logic and language; paper reports large gaps betweenGPT4andhuman scoring; baselines are older2024models."
+    }
+  ],
+  "research_failure": {
+    "condition": "Generation must follow structured instructional roles and Bloom levels across a complete lesson.",
+    "finding": "This paper proposes a dataset and evaluation framework; it does not establish that current frontier LLMs fail this selected lesson. LessonPlanLM provides human-rated older-model deficits in lesson structure/content/logic and shows automaticGPT4scoring does not match humans; it cannot establish currentGLMfailure.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "LessonBench",
+    "locator": "§5 Evaluation Framework"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Structured original lesson_plan.md",
+    "output_contract": "Complete instructional lesson",
+    "scoring_contract": "Semantic/structural similarity and reverse-plan pedagogical alignment; unspecified evaluator implementation.",
+    "environment_contract": "Text generation; exact original prompting unavailable.",
+    "source_case_ids": [
+      "lesson_160_0"
+    ]
+  },
+  "decision": {
+    "route": "original_task_with_protocol_gap",
+    "rationale": "Preserve full original plan and human lesson; collect output but do not substitute a plan rubric for full-lesson assessment.",
+    "limitations": [
+      "No demonstrated difficulty for the selected original lesson.",
+      "Original scoring recipe incomplete; score pending.",
+      "LessonPlanLM releases training JSON and inference driver but no identified held-out test file; no training records mislabeled as original test cases."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Generation must follow structured instructional roles and Bloom levels across a complete lesson.",
+      "evidence_locator": "§5 Evaluation Framework",
+      "implementation_locator": [
+        "ELE-SF-27-001"
+      ],
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-27-001"
+  ],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    },
+    {
+      "action": "Read full LessonPlanLM paper and inspected actual ai4ed/LessonPlan GitHub tree",
+      "result": "Original author release checked separately from LessonBench; legacy model/sample and human-scoring conditions retained."
+    },
+    {
+      "action": "Inspected ai4ed/LessonPlan release file paths and evaluation instructions",
+      "result": "Public sft_data/lesson_plan_data.json is training data; README points to unspecified test data path. No original held-out test record or complete human scoring artifact released; not presented as source-test reuse."
+    }
+  ]
+}

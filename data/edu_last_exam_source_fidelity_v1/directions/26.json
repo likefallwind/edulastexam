@@ -1,0 +1,252 @@
+{
+  "direction_id": "26",
+  "title": "置信度校准",
+  "status": "ready_mechanism",
+  "sources": [
+    {
+      "source_id": "P07P08",
+      "title": "Historical local protocol with original C-Eval",
+      "url": "https://github.com/hkust-nlp/ceval",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/p08_calibration.py",
+      "sha256": "e9174a113ab68ca0a63f27eba832e68f2f1f674d0bbec682da3b2aff648e6e94",
+      "revision": null,
+      "locator": "fixed item_list_v1; verbalized confidence; native calibration metrics",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "HISTORY-minimax3",
+      "title": "Observed historical p08_calibration / minimax3",
+      "url": "/home/likefallwind/code/edubenchmark/reports/eval/p08_calibration/minimax3/summary.json",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p08_calibration/minimax3.json",
+      "sha256": "1c88e966e0cea5294d3bf42fefdeb441aa035bee661f199a7b33e91af7100785",
+      "revision": null,
+      "locator": "extra_metrics; fixed evaluation protocol",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "HISTORY-MiniMax-M3.1-Flash-Preview",
+      "title": "Observed historical p08_calibration / MiniMax-M3.1-Flash-Preview",
+      "url": "/home/likefallwind/code/edubenchmark/reports/eval/p08_calibration/MiniMax-M3.1-Flash-Preview/summary.json",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p08_calibration/MiniMax-M3.1-Flash-Preview.json",
+      "sha256": "ef038e42067a9c83d8fcc18feab68fac1532020215927a9f67a4dbd2d7d69b60",
+      "revision": null,
+      "locator": "extra_metrics; fixed evaluation protocol",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "让模型先答未给金标的真实试题并报告自身置信度，评分后配对正确性。",
+    "finding": "550 items/model: confidence>=90 wrong proportions .3262/.4004; means87.04/98.0 versus accuracy .5873/.5909.",
+    "model_setting": "MiniMax-M3 and MiniMax-M3.1-Flash-Preview; frozen local original protocols",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "HISTORY-minimax3",
+    "locator": "extra_metrics",
+    "observed_metrics": [
+      {
+        "n_scored": 550,
+        "n_with_confidence": 545,
+        "confidence_unparsed_rate": 0.0091,
+        "accuracy": 0.5873,
+        "confidence_mean": 87.04,
+        "confidence_std": 12.56,
+        "confidence_histogram": {
+          "0-9": 0,
+          "10-19": 1,
+          "20-29": 1,
+          "30-39": 1,
+          "40-49": 4,
+          "50-59": 13,
+          "60-69": 16,
+          "70-79": 81,
+          "80-89": 103,
+          "90-99": 325
+        },
+        "cwr_at_90": 0.3262,
+        "n_high_confidence": 325,
+        "ece_10bin": 0.2893,
+        "brier": 0.3138,
+        "auroc": 0.6379,
+        "selective_accuracy": {
+          "coverage_90": 0.6061,
+          "coverage_80": 0.617,
+          "coverage_70": 0.6414
+        },
+        "by_source": {
+          "agieval": {
+            "n": 100,
+            "accuracy": 0.58,
+            "n_with_confidence": 98,
+            "cwr_at_90": 0.375,
+            "auroc": 0.5572
+          },
+          "ceval": {
+            "n": 200,
+            "accuracy": 0.56,
+            "n_with_confidence": 200,
+            "cwr_at_90": 0.3558,
+            "auroc": 0.599
+          },
+          "mmlu_pro": {
+            "n": 150,
+            "accuracy": 0.5733,
+            "n_with_confidence": 147,
+            "cwr_at_90": 0.2838,
+            "auroc": 0.6941
+          },
+          "mtb_problem_solving": {
+            "n": 100,
+            "accuracy": 0.67,
+            "n_with_confidence": 100,
+            "cwr_at_90": 0.2892,
+            "auroc": 0.6836
+          }
+        },
+        "headline_metric": "score_10 = 10 * [0.5*(1-CWR@90) + 0.5*AUROC]",
+        "score_10": 6.559
+      },
+      {
+        "n_scored": 550,
+        "n_with_confidence": 550,
+        "confidence_unparsed_rate": 0.0,
+        "accuracy": 0.5909,
+        "confidence_mean": 98.0,
+        "confidence_std": 3.31,
+        "confidence_histogram": {
+          "0-9": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 1,
+          "70-79": 1,
+          "80-89": 11,
+          "90-99": 537
+        },
+        "cwr_at_90": 0.4004,
+        "n_high_confidence": 537,
+        "ece_10bin": 0.3891,
+        "brier": 0.3875,
+        "auroc": 0.6294,
+        "selective_accuracy": {
+          "coverage_90": 0.6141,
+          "coverage_80": 0.6295,
+          "coverage_70": 0.6416
+        },
+        "by_source": {
+          "agieval": {
+            "n": 100,
+            "accuracy": 0.61,
+            "n_with_confidence": 100,
+            "cwr_at_90": 0.3878,
+            "auroc": 0.6208
+          },
+          "ceval": {
+            "n": 200,
+            "accuracy": 0.575,
+            "n_with_confidence": 200,
+            "cwr_at_90": 0.4124,
+            "auroc": 0.5961
+          },
+          "mmlu_pro": {
+            "n": 150,
+            "accuracy": 0.5667,
+            "n_with_confidence": 150,
+            "cwr_at_90": 0.4207,
+            "auroc": 0.6884
+          },
+          "mtb_problem_solving": {
+            "n": 100,
+            "accuracy": 0.64,
+            "n_with_confidence": 100,
+            "cwr_at_90": 0.36,
+            "auroc": 0.5705
+          }
+        },
+        "headline_metric": "score_10 = 10 * [0.5*(1-CWR@90) + 0.5*AUROC]",
+        "score_10": 6.145
+      }
+    ]
+  },
+  "original_task": {
+    "available": false,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-26-001",
+      "ELE-SF-26-002",
+      "ELE-SF-26-003"
+    ]
+  },
+  "decision": {
+    "route": "historical_protocol_replay",
+    "rationale": "让模型先答未给金标的真实试题并报告自身置信度，评分后配对正确性。",
+    "limitations": [
+      "三例统计不稳定；无错题时 fix rate 未定义，只有一种正确性时 AUROC 未定义；不得用 0 代替。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "让模型先答未给金标的真实试题并报告自身置信度，评分后配对正确性。",
+      "evidence_locator": "fixed item_list_v1; verbalized confidence; native calibration metrics",
+      "implementation_locator": "ELE-SF-26-001; ELE-SF-26-002; ELE-SF-26-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-26-001",
+    "ELE-SF-26-002",
+    "ELE-SF-26-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://github.com/hkust-nlp/ceval",
+      "checked": "fixed item_list_v1; verbalized confidence; native calibration metrics",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/ceval.py",
+      "sha256": "9e519c8a065c95e6c1905e05c5c68f6750bbe942a870b396eec276d63a5652d7"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/p08_calibration.py",
+      "sha256": "e9174a113ab68ca0a63f27eba832e68f2f1f674d0bbec682da3b2aff648e6e94"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/item_list_v1.txt",
+      "sha256": "f8eaa35cd4061271845ef0c22ddb7e106bd6ccbf5fbc69faff882112b9afea1c"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/selected_ceval_original.json",
+      "sha256": "a82e61b5bbb2914fabc66cc42195b2bb7a58cf3682d0627cc0a4250dfd6df53b"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/p07_selfcheck.py",
+      "sha256": "58429351dd141086a1439aaf8d8917960e1b5902451945bf981bdc2d4f0aa791"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/choice_parsing.py",
+      "sha256": "d829c8aae909d99bf6766d6574176863bce1d476d0dab73ea9349c16d5c73792"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/selfcheck_calibration/LICENSE-DATA",
+      "sha256": "1349a4b6148492b44f629e64eed676612e234fe9a839e4f3b277c1482c8849f1"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p08_calibration/minimax3.json",
+      "sha256": "1c88e966e0cea5294d3bf42fefdeb441aa035bee661f199a7b33e91af7100785"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/p08_calibration/MiniMax-M3.1-Flash-Preview.json",
+      "sha256": "ef038e42067a9c83d8fcc18feab68fac1532020215927a9f67a4dbd2d7d69b60"
+    }
+  ]
+}

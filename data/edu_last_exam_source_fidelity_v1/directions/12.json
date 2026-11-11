@@ -1,0 +1,122 @@
+{
+  "direction_id": "12",
+  "title": "完整长期记录的证据检索、诊断和教学",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "longtutor",
+      "title": "longtutor original repository",
+      "url": "https://github.com/liano3/LongTutor",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/longtutor/scripts/eval_ai_tutor.py",
+      "sha256": "53fbda4a99660500216e8ee80be76a815da345182c25e7dae394d85b089d4212",
+      "revision": "ba40af3b9e976f5960c42a15a645c0e9c3a7d718",
+      "locator": "scripts/eval_ai_tutor.py::_build_prompts/process_one_sample; scripts/compute_ai_tutor_eval_metrics.py::_process_one_sample",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "scripts/eval_ai_tutor.py::_build_prompts/process_one_sample; scripts/compute_ai_tutor_eval_metrics.py::_process_one_sample; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "original_paper_12",
+      "title": "LongTutor",
+      "url": "https://aclanthology.org/2026.acl-long.1371/",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "Abstract; evidence acquisition, diagnosis and action tasks",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Authors observe better historical evidence acquisition than accurate knowledge-state diagnosis and adaptive teaching; success on retrieval alone does not imply personalized-tutoring success."
+    },
+    {
+      "source_id": "misconceptionbench",
+      "title": "MisconceptionBench current public repository",
+      "url": "https://github.com/wkeaner/MisconceptionBench",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/misconception/README.md",
+      "sha256": "f25bcdf85a3529a81e7389d861d58b52698a595f223ea4480537e620be812299",
+      "revision": "ba37d7a99beada46289ac39648a1e8411d78a26d",
+      "locator": "Repository availability update,26October2026; official AAAS/BSCS resource links",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Current repository contains README only; authors state that the paper describes an earlier release and materials now require applicable permissions."
+    }
+  ],
+  "research_failure": {
+    "condition": "Reason over full chronological learner interaction history rather than a short summary; separate extraction, across-session reasoning and false-premise memory query; then diagnosis/teaching.",
+    "finding": "Authors observe better historical evidence acquisition than accurate knowledge-state diagnosis and adaptive teaching; success on retrieval alone does not imply personalized-tutoring success.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "original_paper_12",
+    "locator": "Abstract; evidence acquisition, diagnosis and action tasks"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original reconstructed full199-history record/current question and three original queries",
+    "output_contract": "One joint JSON:memory,diagnosis,reason,strategy,content",
+    "scoring_contract": "Native exact-match fast path and GPT5 semantic fallback/content rubrics; no cross-view averaging",
+    "environment_contract": "Original text API task, up to5 native schema-validity attempts; GPT5 scoring dependency",
+    "source_case_ids": [
+      "8572||4a7d36d788845c983528abe193c9fd6d7f629545b8ef6aa7e605ad12d6dde0db",
+      "179||1a9b71f5c365023af8c86db12890a2aa9611750f05222d541683f5d4bfe1a96f",
+      "5664||55e71c2ded0ba3ce0cfb19a3d287f275457e24f8cf4ff1c854738a2da21a4bd9"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Offline replay of historical learner records, not a new longitudinal learner-outcome experiment.",
+      "Original source feature filename is not released; independently regenerated with original compute_history_stats code from public sequences/questions.",
+      "Native semantic evaluator is pending; three cases cannot establish native macro-F1 reliability.",
+      "Direction12 is partially covered: LongTutor executes; MisconceptionBench original case/gold family is blocked_source, not silently replaced by authored misconceptions."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Reason over full chronological learner interaction history rather than a short summary; separate extraction, across-session reasoning and false-premise memory query; then diagnosis/teaching.",
+      "evidence_locator": "scripts/eval_ai_tutor.py::_build_prompts/process_one_sample; scripts/compute_ai_tutor_eval_metrics.py::_process_one_sample",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-12-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-12-001",
+    "ELE-SF-12-002",
+    "ELE-SF-12-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://github.com/liano3/LongTutor",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    },
+    {
+      "url": "https://github.com/wkeaner/MisconceptionBench",
+      "checked": "Live GitHub connector README, depth1clone and full current file inventory; original ACL paper abstract and official source links",
+      "result": "Original earlier code/data release is unavailable now; root task remains partial on this second family."
+    }
+  ],
+  "source_task_coverage": [
+    {
+      "task_family": "LongTutor original joint task",
+      "status": "ready_original",
+      "task_ids": [
+        "ELE-SF-12-001",
+        "ELE-SF-12-002",
+        "ELE-SF-12-003"
+      ],
+      "condition": "Full199-history original evidence acquisition, diagnosis and teaching."
+    },
+    {
+      "task_family": "MisconceptionBench matching/generation/distribution prediction",
+      "status": "blocked_source",
+      "task_ids": [],
+      "condition": "Original761science items,1474distractor misconceptions and empirical response distributions; generation Hit@1 about38.5–39.6%, grade-band difference F1 no higher than0.21 in the original paper.",
+      "missing": [
+        "Original complete item stems and answer options",
+        "Original expert misconception-to-distractor mapping",
+        "Empirical learner response tables and grade-band ground truth",
+        "Original versioned task prompt/scorer bundle now withdrawn"
+      ],
+      "reason": "Live original repo at ba37d7a99beada46289ac39648a1e8411d78a26d has only README; cached search results refer to the withdrawn earlier release. No invented item or response distribution substitutes for this empirical task.",
+      "paper": "https://aclanthology.org/2026.emnlp-main.712/"
+    }
+  ]
+}

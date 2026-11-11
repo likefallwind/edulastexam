@@ -1,0 +1,75 @@
+{
+  "direction_id": "09",
+  "title": "教师教学目的与学习者推理保持",
+  "status": "ready_mechanism",
+  "sources": [
+    {
+      "source_id": "paper_09",
+      "title": "Will It Teach as Intended?",
+      "url": "https://arxiv.org/html/2609.29993v2",
+      "local_path": null,
+      "sha256": null,
+      "revision": "v2",
+      "locator": "§4.2–4.3; §5.3.1–5.3.2, teacher configurations T03/T05/T26",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Original authors report purpose alignment for 16 of27 final chatbot configurations (59.3%), compared with responsiveness24/27 (88.9%); these are configuration-level observations, not failure rates for current GLM."
+    }
+  ],
+  "research_failure": {
+    "condition": "Teacher Purpose asks for reasoning and open-ended inquiry, but answers can be responsive to immediate requests while bypassing that instructional purpose.",
+    "finding": "Original authors report purpose alignment for 16 of27 final chatbot configurations (59.3%), compared with responsiveness24/27 (88.9%); these are configuration-level observations, not failure rates for current GLM.",
+    "model_setting": "Original teacher-authored systems on their deployment platforms; GLM-5.3-Flash is a new tested setup.",
+    "scope": "Observable alignment/workflow behavior; no student-learning outcome or prevalence transfer.",
+    "source_id": "paper_09",
+    "locator": "§4.2–4.3; §5.3.1–5.3.2, teacher configurations T03/T05/T26"
+  },
+  "original_task": {
+    "available": false,
+    "input_contract": "Original complete teacher configurations plus linked live conversation logs were not available for reuse.",
+    "output_contract": "Native responses and interaction logs; no standalone public original test split.",
+    "scoring_contract": "09 published four1–4 alignment dimensions;10 published binary failure codebook. Full original annotation protocol cannot be claimed as reproduced.",
+    "environment_contract": "New text interaction implementing the published failure conditions; explicitly synthetic learner messages.",
+    "source_case_ids": []
+  },
+  "decision": {
+    "route": "mechanism_authored",
+    "rationale": "The paper exposes failure conditions but not a complete publicly reusable case with original configuration/log. Construct a new paired interaction and map each condition explicitly.",
+    "limitations": [
+      "These are newly authored cases, not quotations of original teacher/student logs.",
+      "Operational rubric is local; independent human review pending.",
+      "A successful or failed small probe does not establish broad model difficulty."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Teacher Purpose asks for reasoning and open-ended inquiry, but answers can be responsive to immediate requests while bypassing that instructional purpose.",
+      "evidence_locator": "§4.2–4.3; §5.3.1–5.3.2, teacher configurations T03/T05/T26",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-09-001.json",
+      "preserved": true,
+      "omission_reason": null
+    },
+    {
+      "condition": "Actual original school deployment and human learner responses",
+      "evidence_locator": "Methods/data collection",
+      "implementation_locator": null,
+      "preserved": false,
+      "omission_reason": "Public complete original conversations/configurations unavailable; no real learner-outcome claim."
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-09-001",
+    "ELE-SF-09-002"
+  ],
+  "search_log": [
+    {
+      "url": "https://arxiv.org/html/2609.29993v2",
+      "checked": "Full original HTML including methods, results, appendix and data availability; all code/data links inspected.",
+      "result": "No complete public original task records with linked full teacher configuration and scoring gold. EduWild explicitly proposes DUA access upon publication."
+    },
+    {
+      "url": "https://github.com/search?q=\"Will+It+Teach+as+Intended\"&type=repositories",
+      "checked": "Repository search and paper-linked repositories",
+      "result": "GitHub connector repository search returned no match for exact paper09 title; EduWild returned erum007/EduWild whose README describes an ActinSpace/Technovation Cordova app, unrelated to the paper. Primary paper links and web exact-title searches yielded no reusable original configuration+log dataset."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "direction_id": "08",
+  "title": "多模态解题下一步教学",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "mmtutor",
+      "title": "mmtutor original repository",
+      "url": "git@github.com:TangciuYueng/MMTutorBench",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/mmtutor/src/generate.py",
+      "sha256": "b2688d9d6abefd9354808054480fffbef310865c0f0c00b6f48a2cec8e83def1",
+      "revision": "64df4be08b75f316ae316e58eda4c5218a068c9a",
+      "locator": "src/generate.py::run_all_img_and_question; src/evaluate.py::prompt_fn",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "src/generate.py::run_all_img_and_question; src/evaluate.py::prompt_fn; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "original_paper_08",
+      "title": "MMTutorBench",
+      "url": "https://aclanthology.org/2026.acl-long.1068/",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "Abstract; six dimensions and input-variant comparison",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Across12 evaluated MLLMs, original authors report remaining gaps to human tutoring and degraded tutoring quality when visual input is replaced by OCR pipelines."
+    }
+  ],
+  "research_failure": {
+    "condition": "A learner is stuck at a particular point in a visual mathematical derivation; inspect preceding frames and current frame and provide only the next operation.",
+    "finding": "Across12 evaluated MLLMs, original authors report remaining gaps to human tutoring and degraded tutoring quality when visual input is replaced by OCR pipelines.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "original_paper_08",
+    "locator": "Abstract; six dimensions and input-variant comparison"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original frame chain and synthetic learner question, native all_img_and_question template",
+    "output_contract": "Three original sections: insight, prescription, execution",
+    "scoring_contract": "Original six binary criteria; o4-mini evaluator from evaluate.sh",
+    "environment_contract": "Image API and original evaluator dependency",
+    "source_case_ids": [
+      "-ydg41H8Suw_38",
+      "-ydg41H8Suw_102",
+      "3tkbMYgEwBU_50"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "This is original MMTutorBench data derived from educational videos, not a real-student handwriting collection.",
+      "Native evaluator pending; no generic hardcoded reference or generated-image substitute."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "A learner is stuck at a particular point in a visual mathematical derivation; inspect preceding frames and current frame and provide only the next operation.",
+      "evidence_locator": "src/generate.py::run_all_img_and_question; src/evaluate.py::prompt_fn",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-08-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-08-001",
+    "ELE-SF-08-002",
+    "ELE-SF-08-003"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:TangciuYueng/MMTutorBench.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}

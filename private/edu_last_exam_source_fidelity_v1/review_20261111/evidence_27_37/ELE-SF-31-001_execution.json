@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-I",
+    "-c",
+    "import io,sys,runpy;sys.stdin=io.StringIO('{1: 0, 3: 1, 5: 9, 7: 16}\\n');runpy.run_path('/work/ELE-SF-31-001.py',run_name=\"__main__\")"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<frozen runpy>\", line 286, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/work/ELE-SF-31-001.py\", line 6, in <module>\n    for (key, value) in my_dict():\n                        ^^^^^^^^^\nTypeError: 'dict' object is not callable\n",
+  "timed_out": false,
+  "elapsed_seconds": 0.029,
+  "isolation": {
+    "engine": "bubblewrap",
+    "network": false,
+    "credentials": false,
+    "workspace": "/tmp/ele_sf_review_31",
+    "readonly_paths": []
+  },
+  "verification_context": {
+    "kind": "author_offline_isolated_student_code_check",
+    "source_task": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-31-001.json",
+    "student_code_sha256": "1bef58fe633d3d3368be0166fbcc1aabafb7cc4fbb3eb3f72dd4ca0bf9da0394",
+    "original_predictions_unchanged": true,
+    "model_api_calls": 0
+  }
+}

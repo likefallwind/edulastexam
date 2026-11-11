@@ -1,0 +1,81 @@
+{
+  "direction_id": "19",
+  "title": "图文与连续图解释一致性",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "EDUI",
+      "title": "EduIllustrate",
+      "url": "https://arxiv.org/html/2604.05005v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/eduillustrate/generate_explanation.py",
+      "sha256": "d7c6a39e1b771f6ac0ce486a001862ac74037b11222589c32a9f00c05a26eebb",
+      "revision": "6ce312e95f42e7cf3ebf5703c16ac4bd100af571",
+      "locator": "§3 sequential anchoring; Appendix C geometry/physics failures; generate_markdown_diagrams",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "EDUI-RUBRIC",
+      "title": "Original eight dimensions",
+      "url": "https://github.com/ECNU-innoSpark/EduIllustrate",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/eduillustrate/eval_suite/doc_evaluation_rubric.json",
+      "sha256": "63709fd249fffc25ddefd22bdd68fcce5a2255124ac007adf1e393bf5c225951",
+      "revision": "6ce312e95f42e7cf3ebf5703c16ac4bd100af571",
+      "locator": "eight native dimensions and score levels",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "原高中物理/几何完整题和原图经过 outline→Scene1实现→Scene1代码/渲染→后续Scene锚定→图文文档；验证图示与题意、跨图样式及解释协调。",
+    "finding": "原研究发现逻辑、几何物理标注、文本图示协调可能失败；渲染完成只是运行信号，不是教学正确。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "EDUI",
+    "locator": "§3 sequential anchoring; Appendix C geometry/physics failures; generate_markdown_diagrams"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-19-001",
+      "ELE-SF-19-002"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "原高中物理/几何完整题和原图经过 outline→Scene1实现→Scene1代码/渲染→后续Scene锚定→图文文档；验证图示与题意、跨图样式及解释协调。",
+    "limitations": [
+      "两例不能复现230题总体；原八维 judge 待评。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "原高中物理/几何完整题和原图经过 outline→Scene1实现→Scene1代码/渲染→后续Scene锚定→图文文档；验证图示与题意、跨图样式及解释协调。",
+      "evidence_locator": "§3 sequential anchoring; Appendix C geometry/physics failures; generate_markdown_diagrams",
+      "implementation_locator": "ELE-SF-19-001; ELE-SF-19-002",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-19-001",
+    "ELE-SF-19-002"
+  ],
+  "search_log": [
+    {
+      "url": "https://arxiv.org/html/2604.05005v2",
+      "checked": "§3 sequential anchoring; Appendix C geometry/physics failures; generate_markdown_diagrams",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://github.com/ECNU-innoSpark/EduIllustrate",
+      "checked": "eight native dimensions and score levels",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": []
+}

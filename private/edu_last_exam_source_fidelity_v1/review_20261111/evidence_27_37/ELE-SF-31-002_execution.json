@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-I",
+    "-c",
+    "import io,sys,runpy;sys.stdin=io.StringIO('3 4\\n');runpy.run_path('/work/ELE-SF-31-002.py',run_name=\"__main__\")"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<frozen runpy>\", line 286, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/work/ELE-SF-31-002.py\", line 1, in <module>\n    a,b=int(input().split(\"\"))\n            ^^^^^^^^^^^^^^^^^\nValueError: empty separator\n",
+  "timed_out": false,
+  "elapsed_seconds": 0.028,
+  "isolation": {
+    "engine": "bubblewrap",
+    "network": false,
+    "credentials": false,
+    "workspace": "/tmp/ele_sf_review_31",
+    "readonly_paths": []
+  },
+  "verification_context": {
+    "kind": "author_offline_isolated_student_code_check",
+    "source_task": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-31-002.json",
+    "student_code_sha256": "e79079d9aba524797410edbe254e4ad4a027db45a9333e3b13be908def1deffc",
+    "original_predictions_unchanged": true,
+    "model_api_calls": 0
+  }
+}

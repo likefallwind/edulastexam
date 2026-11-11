@@ -1,0 +1,93 @@
+{
+  "direction_id": "17",
+  "title": "既有试题对学生群体的难度预测",
+  "status": "blocked_source",
+  "sources": [
+    {
+      "source_id": "DIFF",
+      "title": "Human–AI Difficulty Alignment",
+      "url": "https://arxiv.org/html/2512.18880v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/difficulty_alignment/paper.html",
+      "sha256": "43fabafd8f095eec832faddd450ddf207b917d050006f5ec2d37b5a7917ca52e",
+      "revision": null,
+      "locator": "§2.1 difficulty perception; Appendix D Figures 7–11",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "DIFF-REPO",
+      "title": "Difficulty Alignment public release",
+      "url": "https://github.com/MingLiiii/Difficulty_Alignment",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/difficulty_alignment/Cambridge_gpt35_results.jsonl",
+      "sha256": "1ee4d195f2a075a9981252c5ea013c4f7ff3edb00747bc04251223c2643d0c8d",
+      "revision": null,
+      "locator": "README advertises data/Cambridge; public root lacks data; downloaded result rows contain only model_response",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "CMCQRD",
+      "title": "Cambridge original access",
+      "url": "https://researchdatasets.cambridge.org/datasets/cambridge-multiple-choice-questions-reading-dataset",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "registration form and dataset terms; not a public direct-download corpus",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "在不给真实难度的条件下，从完整考试题及正确答案估计学生困难；低/中/高 proficiency 条件独立预测，和真实人类难度算 Spearman。",
+    "finding": "原研究讨论解题能力与人类困难估计分离；旧全覆盖题给出响应统计后计算比例没有测到这个行为。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "DIFF",
+    "locator": "§2.1 difficulty perception; Appendix D Figures 7–11"
+  },
+  "original_task": {
+    "available": false,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": []
+  },
+  "decision": {
+    "route": "await_original_items_and_human_difficulty",
+    "rationale": "在不给真实难度的条件下，从完整考试题及正确答案估计学生困难；低/中/高 proficiency 条件独立预测，和真实人类难度算 Spearman。",
+    "limitations": [
+      "原作者公开树缺 README 声称的 formatted data；已读取两个 Cambridge 结果文件但仅有 model_response，没有原题或真实 difficulty。",
+      "CMCQRD 官方页需个人/机构注册和许可；未填写身份、未对外发信。",
+      "没有真实学生难度真值时，新编题不能赋予虚构难度金标；故保留测量缺口，不以 LongTutor CTT 比例推理替代。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "在不给真实难度的条件下，从完整考试题及正确答案估计学生困难；低/中/高 proficiency 条件独立预测，和真实人类难度算 Spearman。",
+      "evidence_locator": "§2.1 difficulty perception; Appendix D Figures 7–11",
+      "implementation_locator": "no runnable task",
+      "preserved": false,
+      "omission_reason": "原作者公开树缺 README 声称的 formatted data；已读取两个 Cambridge 结果文件但仅有 model_response，没有原题或真实 difficulty。; CMCQRD 官方页需个人/机构注册和许可；未填写身份、未对外发信。; 没有真实学生难度真值时，新编题不能赋予虚构难度金标；故保留测量缺口，不以 LongTutor CTT 比例推理替代。"
+    }
+  ],
+  "task_ids": [],
+  "search_log": [
+    {
+      "url": "https://github.com/MingLiiii/Difficulty_Alignment",
+      "checked": "repo root + model_results/diff/Cambridge; utils.py + README + response JSONL",
+      "result": "找到原 prompt 与 Spearman 评分，未获得带 processed_text/difficulty 的原记录"
+    },
+    {
+      "url": "https://arxiv.org/html/2602.06631",
+      "checked": "ENEM paper datasets/methods and links",
+      "result": "未在文中定位配套公开原题-IRT真值及英文/图像转写发布"
+    },
+    {
+      "url": "https://researchdatasets.cambridge.org/datasets/cambridge-multiple-choice-questions-reading-dataset",
+      "checked": "official download/registration page",
+      "result": "需要注册身份；当前材料不足"
+    }
+  ],
+  "snapshot_dependencies": []
+}

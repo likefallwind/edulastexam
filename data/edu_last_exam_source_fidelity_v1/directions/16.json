@@ -1,0 +1,90 @@
+{
+  "direction_id": "16",
+  "title": "题目构念与区分度判断",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "TEACHA",
+      "title": "TeachArena",
+      "url": "https://huggingface.co/datasets/CinderD/TeachArena",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/teacha/tasks/stage1_pedagogical_judgment.json",
+      "sha256": "201987274c26e4f19e24ed5d17026f5c3f230e3aee3ca9657336da32763e1909",
+      "revision": "cbd99fcca76b076352388d01be10056a5ee47eb4",
+      "locator": "EI-C04",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "TEACHA-paper",
+      "title": "Are Agents Ready to Teach?",
+      "url": "https://arxiv.org/html/2605.14322v4",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "case study EI-C04",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "分析近均匀选择分布、低点二列相关和 A/B/C 多个可辩护答案，不把选项均匀误作优质区分。",
+    "finding": "原论文个案对比显示 plausibility 不保证指定任务/构念与产物完成；强模型存在成功反例。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "TEACHA",
+    "locator": "EI-C04"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "EI-C04"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "分析近均匀选择分布、低点二列相关和 A/B/C 多个可辩护答案，不把选项均匀误作优质区分。",
+    "limitations": []
+  },
+  "condition_mapping": [
+    {
+      "condition": "分析近均匀选择分布、低点二列相关和 A/B/C 多个可辩护答案，不把选项均匀误作优质区分。",
+      "evidence_locator": "EI-C04",
+      "implementation_locator": "ELE-SF-16-001",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-16-001"
+  ],
+  "search_log": [
+    {
+      "url": "https://huggingface.co/datasets/CinderD/TeachArena",
+      "checked": "EI-C04",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://arxiv.org/html/2605.14322v4",
+      "checked": "case study EI-C04",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/teacha/evaluator/evaluator_response_content.py",
+      "sha256": "a60b27368b1fc21b3094d0ee2140a3ed4bca31e6d3cf7ca87db9cec31932ee13"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/teacha/evaluator/evaluator_nl_assertions.py",
+      "sha256": "7a0aeb96d9fe14773a506e8695206c9bc5f3a1843258cbbf51ef5def6ecba10a"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/teacha/policy.md",
+      "sha256": "e3f9cfd44c53af8ab107d4724a1d6b35000318ea1b3da7bd1695de0404379797"
+    }
+  ]
+}

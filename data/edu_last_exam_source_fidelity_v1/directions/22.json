@@ -1,0 +1,100 @@
+{
+  "direction_id": "22",
+  "title": "作文整体评分",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "ASAP2",
+      "title": "ASAP 2.0",
+      "url": "https://github.com/scrosseye/ASAP_2.0",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/data_manifest.json",
+      "sha256": "74cb15a566147e2a676da1401d24386f41e49ea2c7038e5cece5e244978f755b",
+      "revision": null,
+      "locator": "official holistic rubric; test split; Driverless cars",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "完整作文需按整体质量而非局部语言漂亮程度评分，保留原文章、写作任务、人工总分与量尺。",
+    "finding": "原始语料支持人工评分任务；本地历史模型 QWK 受省略 rubric/材料等协议差异影响，不据此断言新版失败。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "ASAP2",
+    "locator": "official holistic rubric; test split; Driverless cars"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-22-001",
+      "ELE-SF-22-002",
+      "ELE-SF-22-003"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "完整作文需按整体质量而非局部语言漂亮程度评分，保留原文章、写作任务、人工总分与量尺。",
+    "limitations": [
+      "无官方 LLM prompt；三例仅展示误差，不能稳定估计人群 QWK。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "完整作文需按整体质量而非局部语言漂亮程度评分，保留原文章、写作任务、人工总分与量尺。",
+      "evidence_locator": "official holistic rubric; test split; Driverless cars",
+      "implementation_locator": "ELE-SF-22-001; ELE-SF-22-002; ELE-SF-22-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-22-001",
+    "ELE-SF-22-002",
+    "ELE-SF-22-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://github.com/scrosseye/ASAP_2.0",
+      "checked": "official holistic rubric; test split; Driverless cars",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/rubric.txt",
+      "sha256": "bf1cffec6c225cff4f61fe2a0219a13aaa1ff7b6951c5e32d2d29604cabdc7a2"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/IN2_driverless_cars.pdf",
+      "sha256": "7c9684f4430f012daad05a58827475bf2e83156feb485b919cb719c6086a4163"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/data_manifest.json",
+      "sha256": "74cb15a566147e2a676da1401d24386f41e49ea2c7038e5cece5e244978f755b"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/asap_2.py",
+      "sha256": "aa1836817244692ee09bec310e9638d33c6f61f14a6165e42a9f7181ffbdf7a9"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/asap_scoring_rubric.docx",
+      "sha256": "578edb71fd66c5f51e99b8d8bc24b038fcf819d91ad896d118b3736711c46403"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/scoring.py",
+      "sha256": "400238f15d9f0205f9a65b3227c654bbce81106c3f1e329fe555de5966469ea4"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/source_texts.json",
+      "sha256": "04f5e42169c5f34fc944ae82e8886cc6180e4a98776aa7a3752bf80176bc728f"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/asap_2/selected_original_essays.json",
+      "sha256": "050d9e71b7db2a68ce7334c6a25a35134eb2cb0a1c692b9ebc6bd8ff13d0bb0e"
+    }
+  ]
+}

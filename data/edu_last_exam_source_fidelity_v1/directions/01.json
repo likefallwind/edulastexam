@@ -1,0 +1,80 @@
+{
+  "direction_id": "01",
+  "title": "真实学生数学解题纠错",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "mathedu",
+      "title": "mathedu original repository",
+      "url": "git@github.com:NYCU-NLP-Lab/MathEDU",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/mathedu/o1_mini_grading.py",
+      "sha256": "4e320cf99ae2fef54f74ecfb64bd0a5615ecb3336dac1b3a18b65d0d031e6f03",
+      "revision": "acb1873f1569048d72c90855febc6f367b1e3356",
+      "locator": "o1_mini_grading.py::create_prompt_o1(woR), get_examples; response_analyze.py::judge/get_wrong_equation",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "o1_mini_grading.py::create_prompt_o1(woR), get_examples; response_analyze.py::judge/get_wrong_equation; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "original_paper_01",
+      "title": "MathEDU",
+      "url": "https://aclanthology.org/2026.eacl-long.132/",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "Abstract; original dataset/tasks and results",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "The authors find that model feedback remains verbose and insufficiently targeted to the learner misconception; correctness classification and error localization improve under fine-tuning."
+    }
+  ],
+  "research_failure": {
+    "condition": "Judge real student reasoning rather than solve the question alone; retain incomplete, algebraic and correct solutions with original teacher labels.",
+    "finding": "The authors find that model feedback remains verbose and insufficiently targeted to the learner misconception; correctness classification and error localization improve under fine-tuning.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "original_paper_01",
+    "locator": "Abstract; original dataset/tasks and results"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Full original real learner process, MathQA problem/options and native demonstrations",
+    "output_contract": "Correct/incorrect, wrong equations and teacher advice",
+    "scoring_contract": "Original classification and equation metrics; feedback metrics separately pending",
+    "environment_contract": "Text-only original multi-message few-shot protocol",
+    "source_case_ids": [
+      "time_series_split/test:9744:5",
+      "time_series_split/test:36978:6",
+      "time_series_split/test:9729:5"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Direction02 covers legitimate-work correctness, not a new partial-credit rubric or guaranteed alternative-proof subcase.",
+      "Original source annotation and native substring/scorer quirks may disagree with an independent audit.",
+      "Single joint response; no invented multi-turn dialogue.",
+      "MathEDU annotates all identified equations, not a strict first-error-only native task; strict first-error metric is not claimed. One selected original error span has an escaping mismatch, retained and flagged."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Judge real student reasoning rather than solve the question alone; retain incomplete, algebraic and correct solutions with original teacher labels.",
+      "evidence_locator": "o1_mini_grading.py::create_prompt_o1(woR), get_examples; response_analyze.py::judge/get_wrong_equation",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-01-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-01-001",
+    "ELE-SF-01-002",
+    "ELE-SF-01-003"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:NYCU-NLP-Lab/MathEDU.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}

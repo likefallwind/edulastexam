@@ -1,0 +1,76 @@
+{
+  "direction_id": "21",
+  "title": "同作品能力标签与评分公平",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "LDA",
+      "title": "AI Grading Benchmark",
+      "url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/prompting.py",
+      "sha256": "4a7af811bfdcb419ef68d766430325d63f7605e0986a6b724f4ba8ff19009933",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "CONTEXT; probe_input; prompts/default.txt; ctx_low/ctx_high",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "完全相同作品在低/高既往成绩标签下独立打分；加 neutral 和无 context 基线区分文本存在与标签效应。",
+    "finding": "原 probe 测标签导致的相对评分偏移，不能据单篇评分变化判断统计公平或真实人群歧视。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "LDA",
+    "locator": "CONTEXT; probe_input; prompts/default.txt; ctx_low/ctx_high"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-21-001",
+      "ELE-SF-21-002",
+      "ELE-SF-21-003"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "完全相同作品在低/高既往成绩标签下独立打分；加 neutral 和无 context 基线区分文本存在与标签效应。",
+    "limitations": [
+      "native paired metric，不设人为二元通过阈值；原评分单位0–5。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "完全相同作品在低/高既往成绩标签下独立打分；加 neutral 和无 context 基线区分文本存在与标签效应。",
+      "evidence_locator": "CONTEXT; probe_input; prompts/default.txt; ctx_low/ctx_high",
+      "implementation_locator": "ELE-SF-21-001; ELE-SF-21-002; ELE-SF-21-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-21-001",
+    "ELE-SF-21-002",
+    "ELE-SF-21-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://github.com/Learning-Design-Alliance/ai-grading-benchmark",
+      "checked": "CONTEXT; probe_input; prompts/default.txt; ctx_low/ctx_high",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/prompting.py",
+      "sha256": "4a7af811bfdcb419ef68d766430325d63f7605e0986a6b724f4ba8ff19009933"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/prompts/default.txt",
+      "sha256": "e97aa6618ed2637f7c043c857a5106f413aaa04b0fb16613865c004ca88ac115"
+    }
+  ]
+}

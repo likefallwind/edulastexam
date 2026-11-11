@@ -1,0 +1,88 @@
+{
+  "direction_id": "23",
+  "title": "苏格拉底提问",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "MTB",
+      "title": "MathTutorBench",
+      "url": "https://aclanthology.org/2025.emnlp-main.11/",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mathtutorbench/socratic_questioning.py",
+      "sha256": "90ed34952a785e44766ce15f2a81fa3192b793d997e92030441b996b655e5fa0",
+      "revision": "54b62137c7170a32f596876db48b088870fc5fb4",
+      "locator": "configs/socratic_questioning.yaml; tasks/socratic_questioning.py::compute_metrics",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "从完整数学问题生成分步问题，原提示只允许一行问题列表，参考来自 GSM8K Socratic。",
+    "finding": "该视图原评分是最佳句级 BLEU；低分只代表与参考问句词面相似度低，不是教学失败率。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "MTB",
+    "locator": "configs/socratic_questioning.yaml; tasks/socratic_questioning.py::compute_metrics"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-23-001",
+      "ELE-SF-23-002",
+      "ELE-SF-23-003"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "从完整数学问题生成分步问题，原提示只允许一行问题列表，参考来自 GSM8K Socratic。",
+    "limitations": [
+      "单轮原任务，不冒充学生参与的持续苏格拉底辅导；BLEU 不覆盖提问教育质量。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "从完整数学问题生成分步问题，原提示只允许一行问题列表，参考来自 GSM8K Socratic。",
+      "evidence_locator": "configs/socratic_questioning.yaml; tasks/socratic_questioning.py::compute_metrics",
+      "implementation_locator": "ELE-SF-23-001; ELE-SF-23-002; ELE-SF-23-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-23-001",
+    "ELE-SF-23-002",
+    "ELE-SF-23-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://aclanthology.org/2025.emnlp-main.11/",
+      "checked": "configs/socratic_questioning.yaml; tasks/socratic_questioning.py::compute_metrics",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mathtutorbench/socratic_questioning.py",
+      "sha256": "90ed34952a785e44766ce15f2a81fa3192b793d997e92030441b996b655e5fa0"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mathtutorbench/selected_socratic_test.json",
+      "sha256": "d673c04edf2ae83d06e58e24699685f365449759092e9e5861adfb8b74aebe28"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mathtutorbench/socratic_questioning.yaml",
+      "sha256": "3ded92d1d73e219c72bc5f1e9795111a6de91cdf12112a31ae06a25d14ad9db1"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mathtutorbench/main.py",
+      "sha256": "8ef8d9adc4f6aeaacf56d46e40885aa91c6f6a02d5295caac62acdd9b8b4d0d4"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mathtutorbench/extraction.py",
+      "sha256": "644a7b8dccb230266fcb89ac68b00ce5b3cc2ad7b3f751d49622feb130400696"
+    }
+  ]
+}

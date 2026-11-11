@@ -1,0 +1,164 @@
+{
+  "direction_id": "18",
+  "title": "科学题干扰项生成",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "DIST",
+      "title": "Can LLMs Model Incorrect Student Reasoning?",
+      "url": "https://arxiv.org/html/2603.15547v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/naive_cot.py",
+      "sha256": "cb302ad18e90588bebe90d4e24b72bddf416463f4d2d15946147885ab519d730",
+      "revision": "9b533643741c619f08e2889dd1fcc600a7ba68f8",
+      "locator": "§4–5; Appendix A.2; native naive_cot prompt",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "SCIQ",
+      "title": "SciQ original train records",
+      "url": "https://huggingface.co/datasets/allenai/sciq",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/sciq_first3.json",
+      "sha256": "94095f1f1461a7128a6236b8959f943225c4112340d75d00cfdd7f082f544ab5",
+      "revision": "2c94ad3e1aafab77146f384e23536f97a4849815",
+      "locator": "train rows 0–2",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "DIST-SCORE",
+      "title": "Original semantic equivalence and metrics",
+      "url": "https://github.com/eth-lre/llm-student-modeling-strategies",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/equality.py",
+      "sha256": "6bbba6479b14addae6f6e8a92e21e0312d5791d4f1ee893e713d1d851135cfaa",
+      "revision": "9b533643741c619f08e2889dd1fcc600a7ba68f8",
+      "locator": "ScienceSemanticEqualityChecker; src/evaluation.py",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "不给人类干扰项，要求从原题生成三个错误选项；科学题会依赖近义联想，可能误给正确选项、重复或丢弃合理候选。",
+    "finding": "原研究以教师干扰项语义匹配与错误类型测量；并未验证每个选项对应真实学生误概念。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "DIST",
+    "locator": "§4–5; Appendix A.2; native naive_cot prompt"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-18-001",
+      "ELE-SF-18-002",
+      "ELE-SF-18-003"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "不给人类干扰项，要求从原题生成三个错误选项；科学题会依赖近义联想，可能误给正确选项、重复或丢弃合理候选。",
+    "limitations": [
+      "原语义 judge 待评；匹配教师选项不等于真实诊断效度。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "不给人类干扰项，要求从原题生成三个错误选项；科学题会依赖近义联想，可能误给正确选项、重复或丢弃合理候选。",
+      "evidence_locator": "§4–5; Appendix A.2; native naive_cot prompt",
+      "implementation_locator": "ELE-SF-18-001; ELE-SF-18-002; ELE-SF-18-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-18-001",
+    "ELE-SF-18-002",
+    "ELE-SF-18-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://arxiv.org/html/2603.15547v2",
+      "checked": "§4–5; Appendix A.2; native naive_cot prompt",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://huggingface.co/datasets/allenai/sciq",
+      "checked": "train rows 0–2",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://github.com/eth-lre/llm-student-modeling-strategies",
+      "checked": "ScienceSemanticEqualityChecker; src/evaluation.py",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/evaluation.py",
+      "sha256": "f73bcb5501c91a5d1af5a154492aab48f54de33f9364152e92772f7412f814ec"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/equality.py",
+      "sha256": "6bbba6479b14addae6f6e8a92e21e0312d5791d4f1ee893e713d1d851135cfaa"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/prompt_util.py",
+      "sha256": "aed869a2d8c8dee09d4832d18d5aebb6944d2387ee0b4a5983b90b81828e964d"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/model_configurations.py",
+      "sha256": "7d47d7245907c26d7aaea2613cf0f5d1aef72d0efefbae2db36e1ea1b68eac3b"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/datasets.py",
+      "sha256": "0c6c87c7902552c904a5fb0afb88a55e37fb39edb22011dd398da98831bf48bd"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/misconception.py",
+      "sha256": "ff22f1d558fbbe086cdcaa6cc6acbc1ca76fce39f16e637255b0d3e6e2ae1104"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/simulation.py",
+      "sha256": "821e2ca1ba6a7fd8d43379d1c4d4d16570c944662fa80385543789ea7ea6ae02"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/joint.py",
+      "sha256": "cf1a977483b132ca8725ec8a5faf7ebaa993df6dfd856a47e50caa33917dab93"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/enforce_process.py",
+      "sha256": "ba91a3f169aeddb4e04d8c4046ab413a26570f4ac1a820d915855e68d154f9e2"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/groundtruth.py",
+      "sha256": "fc912416ecb9ce5cde970a686f3ec0ef628c39b93a32ac16eab06a49d3e2fcb5"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/naive.py",
+      "sha256": "707aec35742442186a0ccbcb0a5c2a25faeec0162969f6fe9de43e6fc3309936"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/naive_n_correct.py",
+      "sha256": "5fdb4abf11910e27e83d07ea30209549a18051e96ac3cbf7d1acda669482100d"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/distractor/src/models/impl/naive_cot.py",
+      "sha256": "cb302ad18e90588bebe90d4e24b72bddf416463f4d2d15946147885ab519d730"
+    }
+  ]
+}

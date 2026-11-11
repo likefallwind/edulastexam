@@ -1,0 +1,87 @@
+{
+  "direction_id": "28",
+  "title": "完整课件生成与长材料保真",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "PresentBench",
+      "title": "PresentBench",
+      "url": "https://arxiv.org/html/2603.07244v1",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2603.07244v1.html",
+      "sha256": "efc7e43fea70221b48a52a9181bc11ca0616059316fa94d2ad93ff21e34c03d8",
+      "revision": null,
+      "locator": "Task formulation; evaluation; long material grounding",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "PresentBench-case",
+      "title": "PresentBench Lecture01",
+      "url": "https://huggingface.co/datasets/PresentBench/PresentBench",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench/education/CSAPP-Lectures_2015Fall/Lecture01/generation_task/instructions.md",
+      "sha256": "83b88aea44c54fe44456013ea0a56f023df4f3f848ba0aa8d0af5e1814960909",
+      "revision": "3c6e01f563165d3a364a459f9777cd7286f42cd8",
+      "locator": "education/CSAPP-Lectures_2015Fall/Lecture01",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "SlidesGen-Bench",
+      "title": "SlidesGen-Bench original repo and paper",
+      "url": "https://github.com/YunqiaoYang/SlidesGen-Bench",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/slidesgen/README.md",
+      "sha256": "4d68263a4b1a5f80f2a3728052dfb1de40ba3e44bc7fd1e25bd3423e32de394b",
+      "revision": null,
+      "locator": "README: three dimensions; dataset; dated2025v1snapshot; paper§3.3.2",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Content uses source-document QuizBank; aesthetics uses computational metrics; editability parses native structure. Commercial systems datedNov–Dec2025."
+    }
+  ],
+  "research_failure": {
+    "condition": "Full long-context source-to-slides production: dispersed factual requirements and visual layout must survive generation.",
+    "finding": "Original benchmark evaluates grounding and presentation quality from full source documents, with checklist scoring; no inference from four-page text proxies.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "PresentBench",
+    "locator": "Task formulation; evaluation; long material grounding"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Entire material.pdf and instructions.md",
+    "output_contract": "slides.pdf, 21–35 slides for this case",
+    "scoring_contract": "Five-category checklist and native judge; evaluator pending exact judge configuration.",
+    "environment_contract": "Free presentation agent, implemented with explicit isolated code and image tools.",
+    "source_case_ids": [
+      "education/CSAPP-Lectures_2015Fall/Lecture01"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Actual PDF artifact with all source information, not a declarative slide outline.",
+    "limitations": [
+      "New GLM code-agent harness differs from original evaluated systems.",
+      "One original education task; original native judge needed for quality score.",
+      "SlidesGen-Bench corroborates source-information loss but evaluates dated2025systems and its QuizBank/aesthetics/editability are distinct from PresentBench; this subset does not claim SlidesGen scores."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Full long-context source-to-slides production: dispersed factual requirements and visual layout must survive generation.",
+      "evidence_locator": "Task formulation; evaluation; long material grounding",
+      "implementation_locator": [
+        "ELE-SF-28-001"
+      ],
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-28-001"
+  ],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

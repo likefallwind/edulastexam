@@ -1,0 +1,81 @@
+{
+  "direction_id": "32",
+  "title": "数学证明过程核验",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "LeanPRM",
+      "title": "LeanPRM",
+      "url": "https://arxiv.org/html/2610.17697v3",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2610.17697v3.html",
+      "sha256": "946487b80fc7016ed4ba21beda6135facdac08a038a7a4d519d7d2f928783da2",
+      "revision": null,
+      "locator": "Benchmark construction and error taxonomy",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "LeanPRM-data",
+      "title": "LeanPRM test split",
+      "url": "https://huggingface.co/datasets/pavelslab-nyu/LeanPRM",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/leanprm/benchmark/test.parquet",
+      "sha256": "94c373fdc65515ab94fc6c06d3595589217874ff9de169b8d40a1461a7aca7d2",
+      "revision": "214ca0eb505bc0a5ee8295a7a267c770529732b3",
+      "locator": "benchmark/test.parquet",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    }
+  ],
+  "research_failure": {
+    "condition": "Cumulative proof verification: detect first invalid step and reject incomplete proof state despite locally plausible prose.",
+    "finding": "Native labels reflect Lean verification trajectories; they are not equivalent to isolated local mathematical sentence truth.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "LeanPRM",
+    "locator": "Benchmark construction and error taxonomy"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original problem plus every natural-language proof step.",
+    "output_contract": "Per-step correct/incorrect and overall verdict, cumulative error convention.",
+    "scoring_contract": "Unmodified verifier_task._score_one and frontier format normalization.",
+    "environment_contract": "No Lean/code tools shown to tested model.",
+    "source_case_ids": [
+      "numina_25ee68ff-3987-5909-ab66-419a98d5da92",
+      "numina_3ed8388f-92e1-58a7-915f-556eb983e024",
+      "numina_b5df5f23-6b8f-5c81-a524-d71c9659063c"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Three exact original proofs with original prompt builder and score function.",
+    "limitations": [
+      "Small stratified subset; no aggregate benchmark comparison.",
+      "Known semantic/formal label caveats preserved."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Cumulative proof verification: detect first invalid step and reject incomplete proof state despite locally plausible prose.",
+      "evidence_locator": "Benchmark construction and error taxonomy",
+      "implementation_locator": [
+        "ELE-SF-32-001",
+        "ELE-SF-32-002",
+        "ELE-SF-32-003"
+      ],
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-32-001",
+    "ELE-SF-32-002",
+    "ELE-SF-32-003"
+  ],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

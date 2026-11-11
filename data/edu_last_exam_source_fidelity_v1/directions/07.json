@@ -1,0 +1,67 @@
+{
+  "direction_id": "07",
+  "title": "真实手写数学与电路识别",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "circuit",
+      "title": "circuit original repository",
+      "url": "git@github.com:gt-learning-innovation/CIRCUIT_EDU_HW_ACL",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/circuit/README.md",
+      "sha256": "d45ad5d8e4bf21a64e9167121beee38450355a6c4f79588c4ae5a682bfeb7c5c",
+      "revision": "d56d72861f443337d47d44714ee4ef8d4f6e5429",
+      "locator": "README.md::OCR evaluation; handwritting_recognition_utils/Prompts/Initial_prompt_wo_problem_statement_v6.txt",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "README.md::OCR evaluation; handwritting_recognition_utils/Prompts/Initial_prompt_wo_problem_statement_v6.txt; original code/data inspected, not inferred from prior inventory."
+    }
+  ],
+  "research_failure": {
+    "condition": "Read actual handwriting including physical units, circuit topology, crossings-out and meaningful mathematical notation; reference transcription unavailable to tested model.",
+    "finding": "CIRCUIT evaluates recognition errors separately from later grading; symbolic and semantic OCR errors require equivalence-aware judgment.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "circuit",
+    "locator": "README.md::OCR evaluation; handwritting_recognition_utils/Prompts/Initial_prompt_wo_problem_statement_v6.txt"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Exact native OCR prompt and original PNG",
+    "output_contract": "Markdown mathematical and diagram transcription",
+    "scoring_contract": "Gemini2.5Pro discrepancy judge, strict exclusions, native SER/AEC",
+    "environment_contract": "Requires image-capable GLM endpoint and original judge for scoring",
+    "source_case_ids": [
+      "hw1_student21_q1_5-2",
+      "hw2_student31_q4_2-2",
+      "hw4_student4_q6_4-4"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Original textbook problems are not publicly supplied; this is the released OCR condition, not a fabricated grading condition.",
+      "Original native judge pending; failed vision transport must remain environment failure."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Read actual handwriting including physical units, circuit topology, crossings-out and meaningful mathematical notation; reference transcription unavailable to tested model.",
+      "evidence_locator": "README.md::OCR evaluation; handwritting_recognition_utils/Prompts/Initial_prompt_wo_problem_statement_v6.txt",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-07-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-07-001",
+    "ELE-SF-07-002",
+    "ELE-SF-07-003"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:gt-learning-innovation/CIRCUIT_EDU_HW_ACL.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}

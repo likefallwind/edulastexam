@@ -1,0 +1,87 @@
+{
+  "direction_id": "13",
+  "title": "实际多轮支架与认知要求",
+  "status": "blocked_environment",
+  "sources": [
+    {
+      "source_id": "tutormoments",
+      "title": "tutormoments original repository",
+      "url": "git@github.com:allenai/tutormoments",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/tutormoments/src/tutormoments/default_config.yaml",
+      "sha256": "7e66d581881652f808ce8f8650c162032afffcba40aba1cb05f59cffe98aa11a",
+      "revision": "f62fce988bd1b36c8ef9d8a022582d5e98bf3188",
+      "locator": "src/tutormoments/default_config.yaml::student/scorer/taxonomy/defaults; src/tutormoments/conversation.py",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "src/tutormoments/default_config.yaml::student/scorer/taxonomy/defaults; src/tutormoments/conversation.py; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "tutormoments_data",
+      "title": "TutorMoments original HF release",
+      "url": "https://huggingface.co/datasets/allenai/tutormoments-preview/tree/3bb0c104d65e29facffca7ba864ef10fa22d0e78",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/tutormoments/data/moments.manifest.json",
+      "sha256": "f2b86b797dccc713bdc499a525e1090b391e427d12ff83f7f2cc8369e3546c7e",
+      "revision": "3bb0c104d65e29facffca7ba864ef10fa22d0e78",
+      "locator": "moments.jsonl and moments.manifest.json; first published dimension instances",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Full released moments include context, frozen student persona and oracle future, rubric and provenance."
+    },
+    {
+      "source_id": "original_paper_13",
+      "title": "TutorMoments original project",
+      "url": "https://tutormoments.allen.ai/",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "Replaying from key learning moments; Findings; plain versus evaluation-aware prompt",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "With the plain tutor prompt models often overscaffold and less often push deeper thinking; explicit trade-off prompts improve scores, so this is a setup-sensitive failure rather than a universal model deficit."
+    }
+  ],
+  "research_failure": {
+    "condition": "Replay a genuine tutoring moment with a frozen student persona and reference-aware oracle student across up to5 turns; judge whether rigor/scaffolding fits that moment.",
+    "finding": "With the plain tutor prompt models often overscaffold and less often push deeper thinking; explicit trade-off prompts improve scores, so this is a setup-sensitive failure rather than a universal model deficit.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "original_paper_13",
+    "locator": "Replaying from key learning moments; Findings; plain versus evaluation-aware prompt"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original released context/student/rubric and native visibility split",
+    "output_contract": "Actual five-turn tutor-student continuation",
+    "scoring_contract": "Original moment rubric scoring and action taxonomy; original scorer models retained",
+    "environment_contract": "Requires ClaudeOpus4.6 oracle student/scorer and Opus4.8 taxonomy; GLM only as tutor",
+    "source_case_ids": [
+      "balanced_520:056dd847-9f7b-5cda-9370-269452f8d083_c425fbf6-427c-50e6-876b-36191e9e18bf_8563c470-c67d-5182-b1f5-c7943e88305a__hum_198_227",
+      "balanced_520:09264613-5009-5557-87c6-d590c3d6c391_02020d06-7b55-5b35-b27f-18b334d8c8c3_ffa4bb37-6dd8-5c9a-a2ae-4c6f746ff82c__hum_356_361"
+    ]
+  },
+  "decision": {
+    "route": "blocked_environment",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Native auxiliary models unavailable in this GLM-only run; blocked task has no measured score.",
+      "No conversion into a single-turn advice/plan task."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Replay a genuine tutoring moment with a frozen student persona and reference-aware oracle student across up to5 turns; judge whether rigor/scaffolding fits that moment.",
+      "evidence_locator": "src/tutormoments/default_config.yaml::student/scorer/taxonomy/defaults; src/tutormoments/conversation.py",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-13-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-13-001",
+    "ELE-SF-13-002"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:allenai/tutormoments.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}

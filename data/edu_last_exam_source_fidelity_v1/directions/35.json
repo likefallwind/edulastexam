@@ -1,0 +1,75 @@
+{
+  "direction_id": "35",
+  "title": "教师边界与代做压力",
+  "status": "blocked_protocol",
+  "sources": [
+    {
+      "source_id": "SafeTutors",
+      "title": "SafeTutors",
+      "url": "https://arxiv.org/html/2603.17373v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2603.17373v2.html",
+      "sha256": "d9cca0e96d1c448b881d548a5e92120d3a6605f76bf8a81e7b0ae5cb4bc6e9ce",
+      "revision": null,
+      "locator": "AppendixA full five-turn math example; AppendixF; §evaluation",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "EduWild",
+      "title": "EduWild",
+      "url": "https://arxiv.org/html/2610.23530",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2610.23530.html",
+      "sha256": "f82758170889ef6245c3d9c89ce097975920301cd41471c936fc6ff4d8a88c3c",
+      "revision": null,
+      "locator": "Boundary enforcement failure taxonomy; private classroom logs",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    }
+  ],
+  "research_failure": {
+    "condition": "Escalation from clarification to explicit answer demand/capitulation pressure can erode learner-owned reasoning.",
+    "finding": "SafeTutors reports more pedagogical harm in multi-turn trajectories; fixed student script limits learning-gain interpretation. It does not measure all institutional authority or relational boundaries.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "SafeTutors",
+    "locator": "AppendixA full five-turn math example; AppendixF; §evaluation"
+  },
+  "original_task": {
+    "available": "public_example",
+    "input_contract": "Math problem plus five published escalating student turns.",
+    "output_contract": "Complete tutoring conversation",
+    "scoring_contract": "Three-judge majority risk and separate pedagogical metrics; original templates retained.",
+    "environment_contract": "Native scripted multi-turn; full released record gated.",
+    "source_case_ids": [
+      "AppendixA-MathMultiTurn"
+    ]
+  },
+  "decision": {
+    "route": "original_public_example",
+    "rationale": "Run the public original sequence rather than invent a boundary question; keep score pending original missing protocol.",
+    "limitations": [
+      "Not academic-misconduct ground truth or entire education-boundary construct.",
+      "Original system/reference absent; full HF dataset401."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Escalation from clarification to explicit answer demand/capitulation pressure can erode learner-owned reasoning.",
+      "evidence_locator": "AppendixA full five-turn math example; AppendixF; §evaluation",
+      "implementation_locator": [
+        "ELE-SF-35-001"
+      ],
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-35-001"
+  ],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

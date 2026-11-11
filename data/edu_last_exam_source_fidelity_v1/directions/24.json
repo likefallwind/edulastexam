@@ -1,0 +1,179 @@
+{
+  "direction_id": "24",
+  "title": "先修关系与学习顺序推断",
+  "status": "ready_mechanism",
+  "sources": [
+    {
+      "source_id": "MOOC",
+      "title": "MOOCCube expert prerequisites",
+      "url": "https://aclanthology.org/2020.acl-main.285/",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/prerequisite-dependency.json",
+      "sha256": "51f4619ed41bfa2dc1bdfd2e05cf4c08df3a0eb5b0e687c3cb4ddbfd38659f14",
+      "revision": null,
+      "locator": "expert prerequisite edges; local builder creates MCQ/order probes",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "MOOC-local",
+      "title": "Historical inference adapter",
+      "url": "https://github.com/thukg/MOOCCube",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/mooccube_prereq.py",
+      "sha256": "c3581570b307ce0dc03f06a87725cbd2293fe52e904cc238e298e7a097c0e94a",
+      "revision": null,
+      "locator": "_mcq_prompt; _order_prompt; score",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "HISTORY-minimax3",
+      "title": "Observed historical mooccube_prereq / minimax3",
+      "url": "/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/minimax3/summary.json",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/mooccube_prereq/minimax3.json",
+      "sha256": "099cad728f39fcd1c7bb90b88caf9ede1081f29ef011d3312e3a161aaad18d3f",
+      "revision": null,
+      "locator": "extra_metrics; fixed evaluation protocol",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "HISTORY-MiniMax-M3.1-Flash-Preview",
+      "title": "Observed historical mooccube_prereq / MiniMax-M3.1-Flash-Preview",
+      "url": "/home/likefallwind/code/edubenchmark/reports/eval/mooccube_prereq/MiniMax-M3.1-Flash-Preview/summary.json",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/mooccube_prereq/MiniMax-M3.1-Flash-Preview.json",
+      "sha256": "79b020cca428eb2f34488ad78bc358eac4625ead57b93966e3103ac127fc71c9",
+      "revision": null,
+      "locator": "extra_metrics; fixed evaluation protocol",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "不给模型依赖边；从概念名/定义辨别前置与后继，或给出满足隐藏专家边的任意拓扑序。",
+    "finding": "200 MCQ / 100 order: M3 MCQ=.725, order-all-constraints=.28; M3.1 MCQ=.745, order=.33.",
+    "model_setting": "MiniMax-M3 and MiniMax-M3.1-Flash-Preview; frozen local original protocols",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "HISTORY-minimax3",
+    "locator": "extra_metrics",
+    "observed_metrics": [
+      {
+        "n_scored": 300,
+        "n_mcq": 200,
+        "n_order": 100,
+        "mcq_accuracy": 0.725,
+        "order_exact_accuracy": 0.28,
+        "unparsed_rate": 0.0033,
+        "mcq_unparsed_rate": 0.0,
+        "order_unparsed_rate": 0.01,
+        "scoring": "rule-based (option-letter regex + topological constraint check); no judge, no extraction LLM",
+        "mcq_accuracy_with_reverse_trap": 0.7255,
+        "mcq_accuracy_sibling_only": 0.7245,
+        "order_constraint_satisfaction": 0.7432,
+        "order_random_baseline": 0.0305,
+        "mcq_chance_corrected": 0.6333,
+        "order_chance_corrected": 0.2573,
+        "headline_metric": "score_10 = 10 × (0.5×mcq_chance_corrected + 0.5×order_chance_corrected); each component = max(0, (acc − chance) / (1 − chance))",
+        "score_10": 4.453
+      },
+      {
+        "n_scored": 300,
+        "n_mcq": 200,
+        "n_order": 100,
+        "mcq_accuracy": 0.745,
+        "order_exact_accuracy": 0.33,
+        "unparsed_rate": 0.0,
+        "mcq_unparsed_rate": 0.0,
+        "order_unparsed_rate": 0.0,
+        "scoring": "rule-based (option-letter regex + topological constraint check); no judge, no extraction LLM",
+        "mcq_accuracy_with_reverse_trap": 0.7157,
+        "mcq_accuracy_sibling_only": 0.7755,
+        "order_constraint_satisfaction": 0.7683,
+        "order_random_baseline": 0.0305,
+        "mcq_chance_corrected": 0.66,
+        "order_chance_corrected": 0.3089,
+        "headline_metric": "score_10 = 10 × (0.5×mcq_chance_corrected + 0.5×order_chance_corrected); each component = max(0, (acc − chance) / (1 − chance))",
+        "score_10": 4.845
+      }
+    ]
+  },
+  "original_task": {
+    "available": false,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "ELE-SF-24-001",
+      "ELE-SF-24-002",
+      "ELE-SF-24-003"
+    ]
+  },
+  "decision": {
+    "route": "historical_protocol_replay",
+    "rationale": "不给模型依赖边；从概念名/定义辨别前置与后继，或给出满足隐藏专家边的任意拓扑序。",
+    "limitations": [
+      "属于知识结构推断，不测针对某学生状态的长期学习路径。",
+      "原论文§2.3将先修定义为帮助理解；历史MCQ使用必须先掌握措辞更强，评分仅表述为与专家图一致，不解释成必要性因果结论。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "不给模型依赖边；从概念名/定义辨别前置与后继，或给出满足隐藏专家边的任意拓扑序。",
+      "evidence_locator": "expert prerequisite edges; local builder creates MCQ/order probes",
+      "implementation_locator": "ELE-SF-24-001; ELE-SF-24-002; ELE-SF-24-003",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-24-001",
+    "ELE-SF-24-002",
+    "ELE-SF-24-003"
+  ],
+  "search_log": [
+    {
+      "url": "https://aclanthology.org/2020.acl-main.285/",
+      "checked": "expert prerequisite edges; local builder creates MCQ/order probes",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://github.com/thukg/MOOCCube",
+      "checked": "_mcq_prompt; _order_prompt; score",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": [
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/items_v1.jsonl",
+      "sha256": "636854d4d5ce33a683aabf6f7ed43c76b2b5ec3d97d6f3c85575fb0887efa826"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/build_mooccube_item_list.py",
+      "sha256": "7c6f05c3bd9340b862e6f2d0366003f55ef6df216b74f84dbf642c631e8dbfdd"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/item_list_v1_manifest.json",
+      "sha256": "5ef499b36d6d79a51e18b94ff2cefb8bde47e095e9c649ad434de70937ca2743"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/selected_historical_tasks.json",
+      "sha256": "e0e7b5b4f94bedc912979eb2b87bfec7428d36d44e71ac1dacd69a429dbb3480"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/mooccube_prereq.py",
+      "sha256": "c3581570b307ce0dc03f06a87725cbd2293fe52e904cc238e298e7a097c0e94a"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/mooccube/prerequisite-dependency.json",
+      "sha256": "51f4619ed41bfa2dc1bdfd2e05cf4c08df3a0eb5b0e687c3cb4ddbfd38659f14"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/mooccube_prereq/minimax3.json",
+      "sha256": "099cad728f39fcd1c7bb90b88caf9ede1081f29ef011d3312e3a161aaad18d3f"
+    },
+    {
+      "path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_14_26/historical_evidence/mooccube_prereq/MiniMax-M3.1-Flash-Preview.json",
+      "sha256": "79b020cca428eb2f34488ad78bc358eac4625ead57b93966e3103ac127fc71c9"
+    }
+  ]
+}

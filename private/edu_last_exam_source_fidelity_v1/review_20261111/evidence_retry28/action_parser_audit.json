@@ -1,0 +1,1378 @@
+{
+  "case_id": "ELE-SF-28-001",
+  "source_run": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash",
+  "prediction_sha256": "30a5ad3722b5ff3e57101d85bb83d0d0a2701da725d5ae202da2be24c784df25",
+  "frozen_adapter_sha256": "5c5190d1ffb360bfc81d415b816916c1906ba5bc2fca0aa019810dda9c0f7618",
+  "fixed_adapter_sha256": "c74fddb3968ec44330067f4f80635540cde1eefcfb92f9b15612d54427eba0ef",
+  "mode": "read_only_parser_replay_no_actions_executed",
+  "turns": [
+    {
+      "turn": 0,
+      "response_sha256": "f1a494a61df94584744d45d22025689edae0efff9f39a611247be0c3320f6d34",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "ac078a4923e4b175dca5a24838da24a83e0b28e3646a41d0e849c15a805250b6",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cat /work/instructions.md; echo '---'; pdfinfo /work/material.pdf"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "ac078a4923e4b175dca5a24838da24a83e0b28e3646a41d0e849c15a805250b6",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cat /work/instructions.md; echo '---'; pdfinfo /work/material.pdf"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cat /work/instructions.md; echo '---'; pdfinfo /work/material.pdf"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 1,
+      "response_sha256": "d1fb571453fc4d0a62456108db245e1e1326b7d08aacde48958455cb22b886ad",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "9c2229b95ac51bd0f87866684d6a2021820f6dbc96b7370bdd1032b407196490",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "pdftotext -layout /work/material.pdf /work/material.txt; wc -l /work/material.txt"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "9c2229b95ac51bd0f87866684d6a2021820f6dbc96b7370bdd1032b407196490",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "pdftotext -layout /work/material.pdf /work/material.txt; wc -l /work/material.txt"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "pdftotext -layout /work/material.pdf /work/material.txt; wc -l /work/material.txt"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 2,
+      "response_sha256": "7348d80ebc705c3e2f1b31432e594d78ebbf7c7497f24413a28b371472f996d9",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "8899f2204c96be088440125561b74d2e6cf0c7eee9f85892b4201bb98dcad65f",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "sed -n '1,450p' /work/material.txt"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "8899f2204c96be088440125561b74d2e6cf0c7eee9f85892b4201bb98dcad65f",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "sed -n '1,450p' /work/material.txt"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "sed -n '1,450p' /work/material.txt"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 3,
+      "response_sha256": "99d6fd823e680697f5a423fe91d39f03777155345a399e4c7406ec1b31b0f804",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "bf9cf65b2ff053ce9530e676e081d3eacc2bab343d0eb265b53b82b15587691b",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "sed -n '450,897p' /work/material.txt"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "bf9cf65b2ff053ce9530e676e081d3eacc2bab343d0eb265b53b82b15587691b",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "sed -n '450,897p' /work/material.txt"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "sed -n '450,897p' /work/material.txt"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 4,
+      "response_sha256": "d65f9b2871cd070207d65f1f3ab4b85ebc28d22b0543034d8f4787d38ebfc11a",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "6f186c70348c661c37f528ff5476a01871cd8f791efee8622b73ef1a8d8173b8",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftoppm -f 8 -l 9 -png -r 60 material.pdf pg && pdftoppm -f 12 -l 13 -png -r 60 material.pdf pg2 && pdftoppm -f 15 -l 15 -png -r 60 material.pdf pg3 && ls *.png; ls /usr/share/fonts/truetype/dejavu/ 2>/dev/null | head; fc-list 2>/dev/null | grep -i dejavu | head -5"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "6f186c70348c661c37f528ff5476a01871cd8f791efee8622b73ef1a8d8173b8",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftoppm -f 8 -l 9 -png -r 60 material.pdf pg && pdftoppm -f 12 -l 13 -png -r 60 material.pdf pg2 && pdftoppm -f 15 -l 15 -png -r 60 material.pdf pg3 && ls *.png; ls /usr/share/fonts/truetype/dejavu/ 2>/dev/null | head; fc-list 2>/dev/null | grep -i dejavu | head -5"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftoppm -f 8 -l 9 -png -r 60 material.pdf pg && pdftoppm -f 12 -l 13 -png -r 60 material.pdf pg2 && pdftoppm -f 15 -l 15 -png -r 60 material.pdf pg3 && ls *.png; ls /usr/share/fonts/truetype/dejavu/ 2>/dev/null | head; fc-list 2>/dev/null | grep -i dejavu | head -5"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 5,
+      "response_sha256": "9119fd29b3ad8c0741cb51d11b17c3fdd3bfeec3b0974409d62a92ce861ab477",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "965e94ad53ae263ef929ad14be4c9c3f4426456537721a0b8133e04be6039cd8",
+        "path": "/work/pg-09.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "965e94ad53ae263ef929ad14be4c9c3f4426456537721a0b8133e04be6039cd8",
+        "path": "/work/pg-09.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 6,
+      "response_sha256": "deb2cac613d1005a53f7d99da4a3faeb253a8c187c18926783c09a9234a1da3f",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "bebb0ed2c039c3e3e786b357b0ccd0d09f0df3ee42d34fb80ef745fea2b72007",
+        "path": "/work/pg2-12.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "bebb0ed2c039c3e3e786b357b0ccd0d09f0df3ee42d34fb80ef745fea2b72007",
+        "path": "/work/pg2-12.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 7,
+      "response_sha256": "736b4b792d7b82151c9860edecfa7ec922cf31b6d9b522415e84c0a52a90dbbc",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "9c6fa9314e24b1670cec3d7b64f30997222385c05023a5b22570173a80c1e06b",
+        "path": "/work/pg2-13.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "9c6fa9314e24b1670cec3d7b64f30997222385c05023a5b22570173a80c1e06b",
+        "path": "/work/pg2-13.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 8,
+      "response_sha256": "4ae90114d9aa3c88f535cca40f616510263d8086247c6f4539bf0339e7ef6c86",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "5857602fceb7e24a988d60b760acb631b60a9b7d3006241c1f9a11259fdb4f14",
+        "path": "/work/pg3-15.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "5857602fceb7e24a988d60b760acb631b60a9b7d3006241c1f9a11259fdb4f14",
+        "path": "/work/pg3-15.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 9,
+      "response_sha256": "74c8f1e8efe4c58c8250f056489130a1bc37bff700a449c33f0b2f6f882e98b0",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "99b32245e6ce5c5b9bdc8514f117abe5651b99e14caf90d1b82b145cb6df2799",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftoppm -f 17 -l 17 -png -r 100 material.pdf instr && ls instr*"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "99b32245e6ce5c5b9bdc8514f117abe5651b99e14caf90d1b82b145cb6df2799",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftoppm -f 17 -l 17 -png -r 100 material.pdf instr && ls instr*"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftoppm -f 17 -l 17 -png -r 100 material.pdf instr && ls instr*"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 10,
+      "response_sha256": "5b9579df56ed94540ef737aba1c1e625289ec838a3d260f1e3c16e86e0db5f9d",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "50cb67516cf4575b1d5a3dc0987e86144153f11edc1302fe1b9c785bd7e2e2ca",
+        "path": "/work/instr-17.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "50cb67516cf4575b1d5a3dc0987e86144153f11edc1302fe1b9c785bd7e2e2ca",
+        "path": "/work/instr-17.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 11,
+      "response_sha256": "0a6cbccf0daa488ed6aec16c76d59f044619646b811e66ebb7830082ab55e475",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "e53161e99807d7eae51ecffda0f3bb2c11437b07c45be1a9272801841511fc17",
+        "path": "/work/assets_prep.py",
+        "command": null,
+        "content_bytes": 3216
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "e53161e99807d7eae51ecffda0f3bb2c11437b07c45be1a9272801841511fc17",
+        "path": "/work/assets_prep.py",
+        "command": null,
+        "content_bytes": 3216
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "assets_prep.py",
+        "bytes": 3216
+      }
+    },
+    {
+      "turn": 12,
+      "response_sha256": "3aa85acff947982c490387d03eb41c14bac85fc5a4fc8122c0fcebb60af53142",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "2dbc9df35e674dd0abbd36776b5ff33d75d6feed1f6aefd126e32226f3d49837",
+        "path": null,
+        "command": [
+          "python3",
+          "assets_prep.py"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "2dbc9df35e674dd0abbd36776b5ff33d75d6feed1f6aefd126e32226f3d49837",
+        "path": null,
+        "command": [
+          "python3",
+          "assets_prep.py"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "python3",
+          "assets_prep.py"
+        ],
+        "returncode": 1,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 13,
+      "response_sha256": "1318ad3f6a8c81474c4ac53176fdd91ebe035a17776d2f1849559faa17460abb",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "845ea81d5ec0e8e0a0f66fad68473ab5f022b9f5fb7502403ed79c09ff9a3264",
+        "path": "/work/assets_prep.py",
+        "command": null,
+        "content_bytes": 447
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "845ea81d5ec0e8e0a0f66fad68473ab5f022b9f5fb7502403ed79c09ff9a3264",
+        "path": "/work/assets_prep.py",
+        "command": null,
+        "content_bytes": 447
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "assets_prep.py",
+        "bytes": 447
+      }
+    },
+    {
+      "turn": 14,
+      "response_sha256": "3aa85acff947982c490387d03eb41c14bac85fc5a4fc8122c0fcebb60af53142",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "2dbc9df35e674dd0abbd36776b5ff33d75d6feed1f6aefd126e32226f3d49837",
+        "path": null,
+        "command": [
+          "python3",
+          "assets_prep.py"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "2dbc9df35e674dd0abbd36776b5ff33d75d6feed1f6aefd126e32226f3d49837",
+        "path": null,
+        "command": [
+          "python3",
+          "assets_prep.py"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "python3",
+          "assets_prep.py"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 15,
+      "response_sha256": "6309ecc77de5e0c082c01c112f454aa1b76823c50627654f369c494420941f4b",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": false,
+        "error": "Expected exactly one complete JSON action object; no action was executed"
+      },
+      "fixed": {
+        "accepted": false,
+        "error": "Incomplete JSON action object; no action was executed"
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "tool_error": "Expected exactly one complete JSON action object; no action was executed"
+      }
+    },
+    {
+      "turn": 16,
+      "response_sha256": "9940923ff26282d7e42179f68b163f3361f897678f18e647fd374472369b11a3",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "ebb15ea858f2a2356cadbf01e3663a42624fc6685b910f95e01018979ae258e1",
+        "path": "/work/build_deck.py",
+        "command": null,
+        "content_bytes": 58453
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "ebb15ea858f2a2356cadbf01e3663a42624fc6685b910f95e01018979ae258e1",
+        "path": "/work/build_deck.py",
+        "command": null,
+        "content_bytes": 58453
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "build_deck.py",
+        "bytes": 58453
+      }
+    },
+    {
+      "turn": 17,
+      "response_sha256": "f1706f497fe341e290d667857a92bcbdd89f20a62066674f28fad4d2815ccabb",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "4a34d449e91615794a7509e38532b297eb0e69f661500cf07bc839e37195b7d4",
+        "path": null,
+        "command": [
+          "python3",
+          "build_deck.py"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "4a34d449e91615794a7509e38532b297eb0e69f661500cf07bc839e37195b7d4",
+        "path": null,
+        "command": [
+          "python3",
+          "build_deck.py"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "python3",
+          "build_deck.py"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 18,
+      "response_sha256": "630bf40cbab42c9e14a8250365864bce79e042974173b9c9d32d3ea0fdfb16b7",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "06d4201fb276f56ba4437282c2149a2fd4f18bc38a2c2a24a1cb6baf81ab7d33",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && ls chk* | head -40 && pdfinfo slides.pdf | head -6"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "06d4201fb276f56ba4437282c2149a2fd4f18bc38a2c2a24a1cb6baf81ab7d33",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && ls chk* | head -40 && pdfinfo slides.pdf | head -6"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && ls chk* | head -40 && pdfinfo slides.pdf | head -6"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 19,
+      "response_sha256": "8019bfceef2778e841d9af6cfb7dfa660a78b52f99e03a57463a8b5b3828b2fe",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "3c8dc2efc565b225fb5706ae0411963e4ca7adedb712dc40dd0643256f962877",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftotext -f 36 -l 36 slides.pdf - | head -5; echo '---page35---'; pdftotext -f 35 -l 35 slides.pdf - | head -8; python3 -c \"\nfrom PIL import Image\nim = Image.open('/work/chk-36.png').convert('L')\nprint('page36 min/max pixel:', im.getextrema())\n\""
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "3c8dc2efc565b225fb5706ae0411963e4ca7adedb712dc40dd0643256f962877",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftotext -f 36 -l 36 slides.pdf - | head -5; echo '---page35---'; pdftotext -f 35 -l 35 slides.pdf - | head -8; python3 -c \"\nfrom PIL import Image\nim = Image.open('/work/chk-36.png').convert('L')\nprint('page36 min/max pixel:', im.getextrema())\n\""
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && pdftotext -f 36 -l 36 slides.pdf - | head -5; echo '---page35---'; pdftotext -f 35 -l 35 slides.pdf - | head -8; python3 -c \"\nfrom PIL import Image\nim = Image.open('/work/chk-36.png').convert('L')\nprint('page36 min/max pixel:', im.getextrema())\n\""
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 20,
+      "response_sha256": "84b3e25b4ecafddaee05f972e5d2030978dd9436af48e91a939af8e737ce448c",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "0317c3dcb844b6b15d73db4e72d7f3b1abc39631b08b71c78728317bb6b3b1e7",
+        "path": "/work/chk-36.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "0317c3dcb844b6b15d73db4e72d7f3b1abc39631b08b71c78728317bb6b3b1e7",
+        "path": "/work/chk-36.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 21,
+      "response_sha256": "8fea6aff8b723b56138229d9f49a510c8a4124707e05ec519e2ec5d25fed1df3",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "03aaba82ec457c93bf358b44c57c2f332b20e7b60d627d59b2825a42750752a1",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 -c \"\nfrom PIL import Image\nim = Image.open('/work/chk-01.png').convert('L')\nprint('page1 extrema:', im.getextrema())\n\"; grep -c 'newslide()' build_deck.py; tail -2 build_deck.py"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "03aaba82ec457c93bf358b44c57c2f332b20e7b60d627d59b2825a42750752a1",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 -c \"\nfrom PIL import Image\nim = Image.open('/work/chk-01.png').convert('L')\nprint('page1 extrema:', im.getextrema())\n\"; grep -c 'newslide()' build_deck.py; tail -2 build_deck.py"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 -c \"\nfrom PIL import Image\nim = Image.open('/work/chk-01.png').convert('L')\nprint('page1 extrema:', im.getextrema())\n\"; grep -c 'newslide()' build_deck.py; tail -2 build_deck.py"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 22,
+      "response_sha256": "af9d58c2d13ec7e82fa4ab634d1042c272ea38d57d9f123ed424f6921f46faa9",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "aabf30d915fe74bcfae2becfa57a032f152c24412c9eb4a580eb43301df3eb95",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 - <<'EOF'\nsrc = open('build_deck.py').read()\nold = \"\"\"# ============ Slide 1: Title ============\nnewslide()\nc.setFillColor(RED)\"\"\"\nnew = \"\"\"# ============ Slide 1: Title (draw on initial page) ============\nc.setFillColor(RED)\"\"\"\nassert old in src\nsrc = src.replace(old, new)\nopen('build_deck.py','w').write(src)\nprint('patched')\nEOF\npython3 build_deck.py && pdfinfo slides.pdf | grep Pages && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && ls chk* | wc -l"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "aabf30d915fe74bcfae2becfa57a032f152c24412c9eb4a580eb43301df3eb95",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 - <<'EOF'\nsrc = open('build_deck.py').read()\nold = \"\"\"# ============ Slide 1: Title ============\nnewslide()\nc.setFillColor(RED)\"\"\"\nnew = \"\"\"# ============ Slide 1: Title (draw on initial page) ============\nc.setFillColor(RED)\"\"\"\nassert old in src\nsrc = src.replace(old, new)\nopen('build_deck.py','w').write(src)\nprint('patched')\nEOF\npython3 build_deck.py && pdfinfo slides.pdf | grep Pages && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && ls chk* | wc -l"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 - <<'EOF'\nsrc = open('build_deck.py').read()\nold = \"\"\"# ============ Slide 1: Title ============\nnewslide()\nc.setFillColor(RED)\"\"\"\nnew = \"\"\"# ============ Slide 1: Title (draw on initial page) ============\nc.setFillColor(RED)\"\"\"\nassert old in src\nsrc = src.replace(old, new)\nopen('build_deck.py','w').write(src)\nprint('patched')\nEOF\npython3 build_deck.py && pdfinfo slides.pdf | grep Pages && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && ls chk* | wc -l"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 23,
+      "response_sha256": "9ac019fcd44bbb65a36e5a50b355f9f7f0be3aaaca62ba48c078054f227d1223",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "41ecef5b904ba7f1d8565e34899e65b3fdc427c130b9c69b90c3dbe2bf0e945e",
+        "path": "/work/chk-01.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "41ecef5b904ba7f1d8565e34899e65b3fdc427c130b9c69b90c3dbe2bf0e945e",
+        "path": "/work/chk-01.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 24,
+      "response_sha256": "768723f92bcf0d20ef04999550554420a23926957e206d10060a5a063d610b39",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "8cd21d1bb209b063e95588c792502654871b915694791eb1dee4e80c1004d2c9",
+        "path": "/work/chk-06.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "8cd21d1bb209b063e95588c792502654871b915694791eb1dee4e80c1004d2c9",
+        "path": "/work/chk-06.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 25,
+      "response_sha256": "bf0c956d0cbcb2c61a13416f2c2a1e7c16e09b1ad9c53612b163d2f94123b17e",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "85b386d021470ff7566849b04ed13115a76d1e0ffce30dc7c2f142598a41fa84",
+        "path": "/work/chk-14.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "85b386d021470ff7566849b04ed13115a76d1e0ffce30dc7c2f142598a41fa84",
+        "path": "/work/chk-14.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 26,
+      "response_sha256": "f1585fc0d7dbbf6495c3461c0b9078ef84dcf24d60d8a1ddf8caab6a28dc080c",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": false,
+        "error": "Expected exactly one complete JSON action object; no action was executed"
+      },
+      "fixed": {
+        "accepted": false,
+        "error": "Incomplete JSON action object; no action was executed"
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "tool_error": "Expected exactly one complete JSON action object; no action was executed"
+      }
+    },
+    {
+      "turn": 27,
+      "response_sha256": "edcdaf77ce2c4eb8b14b71cd41f0f916261d804656b0d2da145badb65816f82e",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "8d71f1286cd038bef5ab3cf041bee66f1734759774e9902586cc0a446c1b6aec",
+        "path": "/work/patch14.py",
+        "command": null,
+        "content_bytes": 3622
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "8d71f1286cd038bef5ab3cf041bee66f1734759774e9902586cc0a446c1b6aec",
+        "path": "/work/patch14.py",
+        "command": null,
+        "content_bytes": 3622
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "patch14.py",
+        "bytes": 3622
+      }
+    },
+    {
+      "turn": 28,
+      "response_sha256": "565bef3394f2e4a0a4f1c6c3e52d77eb61a86c341356397f49497c9d4e0b3dd5",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "e78971d87254df0bb467427dcc1c40b9eb511a6747407f58c4a14d3f3dab883d",
+        "path": null,
+        "command": [
+          "python3",
+          "patch14.py"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "e78971d87254df0bb467427dcc1c40b9eb511a6747407f58c4a14d3f3dab883d",
+        "path": null,
+        "command": [
+          "python3",
+          "patch14.py"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "python3",
+          "patch14.py"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 29,
+      "response_sha256": "e9585d76d9d697ec507019ced39ae5af37ccc457525e181b335be6504409551a",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "e3aeb46dff232edc793d2b6a33f34928bcf2c1afa02db00801a85d2b5d12515b",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 build_deck.py && pdfinfo slides.pdf | grep Pages && rm -f chk*.png && pdftoppm -f 14 -l 14 -png -r 50 slides.pdf chk14 && pdftoppm -f 20 -l 20 -png -r 50 slides.pdf chk20 && pdftoppm -f 24 -l 24 -png -r 50 slides.pdf chk24 && ls chk*"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "e3aeb46dff232edc793d2b6a33f34928bcf2c1afa02db00801a85d2b5d12515b",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 build_deck.py && pdfinfo slides.pdf | grep Pages && rm -f chk*.png && pdftoppm -f 14 -l 14 -png -r 50 slides.pdf chk14 && pdftoppm -f 20 -l 20 -png -r 50 slides.pdf chk20 && pdftoppm -f 24 -l 24 -png -r 50 slides.pdf chk24 && ls chk*"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 build_deck.py && pdfinfo slides.pdf | grep Pages && rm -f chk*.png && pdftoppm -f 14 -l 14 -png -r 50 slides.pdf chk14 && pdftoppm -f 20 -l 20 -png -r 50 slides.pdf chk20 && pdftoppm -f 24 -l 24 -png -r 50 slides.pdf chk24 && ls chk*"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 30,
+      "response_sha256": "3e0683a0d3723abc513c4439b841176495a0533934f5a87fd273b1792b1f23f4",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "41c562e6e85c5005067871502cc98dbe3b087b32812246c9487a43f94350eab4",
+        "path": "/work/chk14-14.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "41c562e6e85c5005067871502cc98dbe3b087b32812246c9487a43f94350eab4",
+        "path": "/work/chk14-14.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 31,
+      "response_sha256": "f886db9136d88e27f85f5c74836386204b0927e1a52bf2b2ec3e986aa21cad4f",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "b67a966858251bc65c88bc89722b5bd76f9379113442d5bb43120bf7a79fbbd2",
+        "path": "/work/patch14b.py",
+        "command": null,
+        "content_bytes": 550
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "b67a966858251bc65c88bc89722b5bd76f9379113442d5bb43120bf7a79fbbd2",
+        "path": "/work/patch14b.py",
+        "command": null,
+        "content_bytes": 550
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "patch14b.py",
+        "bytes": 550
+      }
+    },
+    {
+      "turn": 32,
+      "response_sha256": "7f619639fd4a61b05dfd18eefcc7c9a23a9ff6ef7600fb337f21c712875039ae",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "ddacdcf71de93acab3929671c0faf11c1f252d9bae7d363c20b0c5c97178799f",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch14b.py && python3 build_deck.py && rm -f chk14*.png && pdftoppm -f 14 -l 14 -png -r 90 slides.pdf hi14 && echo done"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "ddacdcf71de93acab3929671c0faf11c1f252d9bae7d363c20b0c5c97178799f",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch14b.py && python3 build_deck.py && rm -f chk14*.png && pdftoppm -f 14 -l 14 -png -r 90 slides.pdf hi14 && echo done"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch14b.py && python3 build_deck.py && rm -f chk14*.png && pdftoppm -f 14 -l 14 -png -r 90 slides.pdf hi14 && echo done"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 33,
+      "response_sha256": "f91f8eaf4eeb3c5fe243d73a3d5d07832e452f0ad767853a47990fe41629a613",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "cb4efeace69269b7a939e82e121560094e7b9bcd30f7aafdeaea6f06498598ab",
+        "path": "/work/chk20-20.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "cb4efeace69269b7a939e82e121560094e7b9bcd30f7aafdeaea6f06498598ab",
+        "path": "/work/chk20-20.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 34,
+      "response_sha256": "1174e32f7dbdc103b67008f4b29b63c89f306de50114d787742b27d336eb8b17",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "e06a49bed83420d51392211297bb20e2c6431805130e11e93e9bb30d53f9a375",
+        "path": "/work/patch20.py",
+        "command": null,
+        "content_bytes": 3580
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "e06a49bed83420d51392211297bb20e2c6431805130e11e93e9bb30d53f9a375",
+        "path": "/work/patch20.py",
+        "command": null,
+        "content_bytes": 3580
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "patch20.py",
+        "bytes": 3580
+      }
+    },
+    {
+      "turn": 35,
+      "response_sha256": "0670c15d2c3012a3b03bd35ec26226f6926314b61c11b0439afd02731ad687f1",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "19ba4c8f19ae70c7d191cb0921396436e1ad6ed793aba1f5044dc6fbd1c5a32c",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch20.py && python3 build_deck.py && rm -f chk20*.png hi14*.png && pdftoppm -f 20 -l 20 -png -r 70 slides.pdf chk20 && echo ok"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "19ba4c8f19ae70c7d191cb0921396436e1ad6ed793aba1f5044dc6fbd1c5a32c",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch20.py && python3 build_deck.py && rm -f chk20*.png hi14*.png && pdftoppm -f 20 -l 20 -png -r 70 slides.pdf chk20 && echo ok"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch20.py && python3 build_deck.py && rm -f chk20*.png hi14*.png && pdftoppm -f 20 -l 20 -png -r 70 slides.pdf chk20 && echo ok"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 36,
+      "response_sha256": "f91f8eaf4eeb3c5fe243d73a3d5d07832e452f0ad767853a47990fe41629a613",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "cb4efeace69269b7a939e82e121560094e7b9bcd30f7aafdeaea6f06498598ab",
+        "path": "/work/chk20-20.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "cb4efeace69269b7a939e82e121560094e7b9bcd30f7aafdeaea6f06498598ab",
+        "path": "/work/chk20-20.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    },
+    {
+      "turn": 37,
+      "response_sha256": "0e0f0158c8794f425298498fbba4ceb3049e44aed85895d94a098cc0a659b9b0",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "1b2f485511321351acf5ce1375c2de4641afe33c976499884f8292c0cea57176",
+        "path": "/work/patch20b.py",
+        "command": null,
+        "content_bytes": 833
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "write_file",
+        "action_sha256": "1b2f485511321351acf5ce1375c2de4641afe33c976499884f8292c0cea57176",
+        "path": "/work/patch20b.py",
+        "command": null,
+        "content_bytes": 833
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "written": "patch20b.py",
+        "bytes": 833
+      }
+    },
+    {
+      "turn": 38,
+      "response_sha256": "1da65f0d322b3eff138072785985ba0843e0bc07a2ecf73b3d4d6f4194eca5bb",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "ef18fea51c5d89f66eccb99313e2b7775e84a3f6b8213dd13fc601556b56d340",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch20b.py && python3 build_deck.py && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && echo ok"
+        ],
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "exec",
+        "action_sha256": "ef18fea51c5d89f66eccb99313e2b7775e84a3f6b8213dd13fc601556b56d340",
+        "path": null,
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch20b.py && python3 build_deck.py && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && echo ok"
+        ],
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": {
+        "command": [
+          "bash",
+          "-c",
+          "cd /work && python3 patch20b.py && python3 build_deck.py && rm -f chk*.png && pdftoppm -png -r 50 slides.pdf chk && echo ok"
+        ],
+        "returncode": 0,
+        "timed_out": false,
+        "isolation": {
+          "engine": "bubblewrap",
+          "network": false,
+          "credentials": false,
+          "workspace": "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash/cases/ELE-SF-28-001/workspace",
+          "readonly_paths": [
+            "/home/likefallwind/code/edulastexam/reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/source_snapshot/sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/presentbench_runtime"
+          ]
+        }
+      }
+    },
+    {
+      "turn": 39,
+      "response_sha256": "aa83e7a14cc2461ce8e9620e60ae3141869ae0d7fd693882c2fe31613d7af29c",
+      "prediction_status": "generated",
+      "frozen": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "4a5a8a67ceba2e5f23a1f3257f6c568437e687db420790010e64acbe34eea5e8",
+        "path": "/work/chk-24.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "fixed": {
+        "accepted": true,
+        "action": "view_image",
+        "action_sha256": "4a5a8a67ceba2e5f23a1f3257f6c568437e687db420790010e64acbe34eea5e8",
+        "path": "/work/chk-24.png",
+        "command": null,
+        "content_bytes": 0
+      },
+      "same_action_or_rejection": true,
+      "actual_feedback": null
+    }
+  ],
+  "all_actions_or_rejections_match": true
+}

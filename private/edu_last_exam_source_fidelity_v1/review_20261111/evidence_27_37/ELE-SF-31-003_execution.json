@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-I",
+    "-c",
+    "import io,sys,runpy;sys.stdin=io.StringIO('12\\n');runpy.run_path('/work/ELE-SF-31-003.py',run_name=\"__main__\")"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<frozen runpy>\", line 286, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/work/ELE-SF-31-003.py\", line 7, in <module>\n    convert_num()\n  File \"/work/ELE-SF-31-003.py\", line 4, in convert_num\n    if (param >= 10):\n        ^^^^^\nUnboundLocalError: cannot access local variable 'param' where it is not associated with a value\n",
+  "timed_out": false,
+  "elapsed_seconds": 0.02,
+  "isolation": {
+    "engine": "bubblewrap",
+    "network": false,
+    "credentials": false,
+    "workspace": "/tmp/ele_sf_review_31",
+    "readonly_paths": []
+  },
+  "verification_context": {
+    "kind": "author_offline_isolated_student_code_check",
+    "source_task": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-31-003.json",
+    "student_code_sha256": "31f2eb172b02bae556f4993d43a0103d34069cb9413a466205254f2107af55c5",
+    "original_predictions_unchanged": true,
+    "model_api_calls": 0
+  }
+}

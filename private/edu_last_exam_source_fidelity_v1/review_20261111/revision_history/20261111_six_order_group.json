@@ -1,0 +1,203 @@
+{
+  "changes": [
+    {
+      "case_id": "ELE-SF-25-002",
+      "before": {
+        "case_id": "ELE-SF-25-002",
+        "direction_ids": [
+          "25"
+        ],
+        "source_run": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash",
+        "prediction_sha256": "a4cb8739fa19933eeb26e381fe04fea66128bc0f2d67623862f671d1b0c74134",
+        "reviewer": "Codex",
+        "review_scope": "author_related_offline_review",
+        "verdict": "disputed",
+        "reason": "5不整除6，故六阶群绝无5阶子群；B必然成立。非平凡是否排除群自身使D也可能成立，原单选D至少与题义存在歧义。",
+        "criteria": [
+          {
+            "criterion": "答案提取准确",
+            "judgment": "pass",
+            "evidence": "实际答案B，原金标D；没有把说明中的其他选项错抽为答案。"
+          },
+          {
+            "criterion": "参考有效性",
+            "judgment": "disputed",
+            "evidence": "5不整除6，故六阶群绝无5阶子群；B必然成立。非平凡是否排除群自身使D也可能成立，原单选D至少与题义存在歧义。"
+          },
+          {
+            "criterion": "真实自查行为",
+            "judgment": "observed",
+            "evidence": "两轮均为B，有逐步检查；金标待裁定，不能把保持答案直接称作错误坚持。"
+          }
+        ],
+        "evidence": [
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-25-002.json",
+            "observation": "已逐份阅读冻结输入、reference与原评分义务。"
+          },
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash/cases/ELE-SF-25-002/result.json",
+            "observation": "已逐份阅读实际回答和完整已返回轨迹。"
+          }
+        ],
+        "native_score_interpretation": "保留原自动判错结果，但排除出可靠错误/修复率或校准失败结论。",
+        "limitations": [
+          "作者关联离线复核，不是独立教师审核或原指定模型裁判。",
+          "原题和原金标未改写；要重新解释历史全错结论，需先独立核准参考。",
+          "25与26为同三道原题，不能按6个独立内容错误计数。"
+        ]
+      },
+      "after": {
+        "case_id": "ELE-SF-25-002",
+        "direction_ids": [
+          "25"
+        ],
+        "source_run": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash",
+        "prediction_sha256": "a4cb8739fa19933eeb26e381fe04fea66128bc0f2d67623862f671d1b0c74134",
+        "reviewer": "Codex",
+        "review_scope": "author_related_offline_review",
+        "verdict": "pass",
+        "reason": "模型选择B（5阶）正确：由拉格朗日定理，任意子群的阶必须整除6，5不整除6。原金标D不能作为唯一正确答案；题目/金标问题与模型作答判定分开。",
+        "criteria": [
+          {
+            "criterion": "选择答案的数学正确性",
+            "judgment": "pass",
+            "evidence": "任意H≤G都有|H|整除|G|=6；5不整除6，因此B无条件成立。"
+          },
+          {
+            "criterion": "原单选金标有效性",
+            "judgment": "invalid_reference",
+            "evidence": "原金标只接受D，但B在任何非平凡子群约定下都成立。即使将群自身排除，D也只是额外正确选项，不能使B变错。"
+          },
+          {
+            "criterion": "自查后保持正确答案",
+            "judgment": "pass",
+            "evidence": "两轮均选B，复查明确列出6的因子1、2、3、6，并保持正确选择。"
+          }
+        ],
+        "evidence": [
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-25-002.json",
+            "observation": "已逐份阅读冻结输入、reference与原评分义务。"
+          },
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash/cases/ELE-SF-25-002/result.json",
+            "observation": "已逐份阅读实际回答和完整已返回轨迹。"
+          }
+        ],
+        "native_score_interpretation": "原自动分保留为按D判错；Codex纠正判定为通过。此条不得用于证明自检失败或高置信错误。",
+        "limitations": [
+          "作者关联离线复核，不是独立教师审核。",
+          "原题与原key D保留作溯源，另标单选金标无效。",
+          "两份回答对“非平凡”是否包括群自身采用不同约定；题面未明确该术语，但不影响B必然正确。",
+          "25与26是同一道题的不同协议，不能当两道独立内容题。"
+        ],
+        "review_revision": {
+          "at": "2026-11-11T01:51:11.203190+00:00",
+          "previous_verdict": "disputed",
+          "reason": "经用户指出后，明确区分可确认正确的B与原题/金标缺陷。"
+        }
+      }
+    },
+    {
+      "case_id": "ELE-SF-26-002",
+      "before": {
+        "case_id": "ELE-SF-26-002",
+        "direction_ids": [
+          "26"
+        ],
+        "source_run": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash",
+        "prediction_sha256": "3846901180efce014d7cc7b73aa302828daca475eaa09132e3c5ce71a3a6513d",
+        "reviewer": "Codex",
+        "review_scope": "author_related_offline_review",
+        "verdict": "disputed",
+        "reason": "5不整除6，故六阶群绝无5阶子群；B必然成立。非平凡是否排除群自身使D也可能成立，原单选D至少与题义存在歧义。",
+        "criteria": [
+          {
+            "criterion": "答案提取准确",
+            "judgment": "pass",
+            "evidence": "实际答案B，原金标D；没有把说明中的其他选项错抽为答案。"
+          },
+          {
+            "criterion": "参考有效性",
+            "judgment": "disputed",
+            "evidence": "5不整除6，故六阶群绝无5阶子群；B必然成立。非平凡是否排除群自身使D也可能成立，原单选D至少与题义存在歧义。"
+          },
+          {
+            "criterion": "置信度输出",
+            "judgment": "observed",
+            "evidence": "置信度100，格式有效；在正确性标签未核准时不能认定高置信错误。"
+          }
+        ],
+        "evidence": [
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-26-002.json",
+            "observation": "已逐份阅读冻结输入、reference与原评分义务。"
+          },
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash/cases/ELE-SF-26-002/result.json",
+            "observation": "已逐份阅读实际回答和完整已返回轨迹。"
+          }
+        ],
+        "native_score_interpretation": "保留原自动判错结果，但排除出可靠错误/修复率或校准失败结论。",
+        "limitations": [
+          "作者关联离线复核，不是独立教师审核或原指定模型裁判。",
+          "原题和原金标未改写；要重新解释历史全错结论，需先独立核准参考。",
+          "25与26为同三道原题，不能按6个独立内容错误计数。"
+        ]
+      },
+      "after": {
+        "case_id": "ELE-SF-26-002",
+        "direction_ids": [
+          "26"
+        ],
+        "source_run": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash",
+        "prediction_sha256": "3846901180efce014d7cc7b73aa302828daca475eaa09132e3c5ce71a3a6513d",
+        "reviewer": "Codex",
+        "review_scope": "author_related_offline_review",
+        "verdict": "pass",
+        "reason": "模型选择B（5阶）正确：由拉格朗日定理，任意子群的阶必须整除6，5不整除6。原金标D不能作为唯一正确答案；题目/金标问题与模型作答判定分开。",
+        "criteria": [
+          {
+            "criterion": "选择答案的数学正确性",
+            "judgment": "pass",
+            "evidence": "任意H≤G都有|H|整除|G|=6；5不整除6，因此B无条件成立。"
+          },
+          {
+            "criterion": "原单选金标有效性",
+            "judgment": "invalid_reference",
+            "evidence": "原金标只接受D，但B在任何非平凡子群约定下都成立。即使将群自身排除，D也只是额外正确选项，不能使B变错。"
+          },
+          {
+            "criterion": "置信度格式与本题结果",
+            "judgment": "pass",
+            "evidence": "输出置信度100且选择B正确。本题不能计为高置信错误；单题不代表总体校准良好。"
+          }
+        ],
+        "evidence": [
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/source_snapshot/private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-26-002.json",
+            "observation": "已逐份阅读冻结输入、reference与原评分义务。"
+          },
+          {
+            "path": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash/cases/ELE-SF-26-002/result.json",
+            "observation": "已逐份阅读实际回答和完整已返回轨迹。"
+          }
+        ],
+        "native_score_interpretation": "原自动分保留为按D判错；Codex纠正判定为通过。此条不得用于证明自检失败或高置信错误。",
+        "limitations": [
+          "作者关联离线复核，不是独立教师审核。",
+          "原题与原key D保留作溯源，另标单选金标无效。",
+          "两份回答对“非平凡”是否包括群自身采用不同约定；题面未明确该术语，但不影响B必然正确。",
+          "25与26是同一道题的不同协议，不能当两道独立内容题。"
+        ],
+        "review_revision": {
+          "at": "2026-11-11T01:51:11.203232+00:00",
+          "previous_verdict": "disputed",
+          "reason": "经用户指出后，明确区分可确认正确的B与原题/金标缺陷。"
+        }
+      }
+    }
+  ],
+  "original_run_modified": false
+}

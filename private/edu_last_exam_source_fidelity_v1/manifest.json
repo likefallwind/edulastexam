@@ -1,0 +1,1150 @@
+{
+  "protocol": "source_fidelity_v1",
+  "direction_count": 37,
+  "case_count": 81,
+  "prediction_eligible_cases": 77,
+  "original_condition_unavailable_cases": [
+    "ELE-SF-13-001",
+    "ELE-SF-13-002",
+    "ELE-SF-33-001",
+    "ELE-SF-35-001"
+  ],
+  "direction_states": {
+    "ready_original": 21,
+    "ready_mechanism": 6,
+    "blocked_environment": 5,
+    "blocked_source": 1,
+    "blocked_protocol": 3,
+    "evidence_gap": 1
+  },
+  "origins": {
+    "original_task": 63,
+    "mechanism_authored": 18
+  },
+  "native_scoring_modes": {
+    "native_adapter": 62,
+    "native_judge": 9,
+    "manual_pending": 10
+  },
+  "task_sha256": {
+    "ELE-SF-01-001": "7dedeaf5a24b8a40cdd077bf3311dbce1bbd6dcde78e9f12999044a781677f1e",
+    "ELE-SF-01-002": "a365e5f75da550f657d8f4581aaf4e3ad30291585b2e42265d2365b96079942a",
+    "ELE-SF-01-003": "4fce65190dd1c97542d5385319f6f2c5a95c494f50ffb728aae4d7a8d4005400",
+    "ELE-SF-02-001": "c6b717b7758d36462787fcbf1a770e75c4469d7ca345d9a31fe799c80cbc9612",
+    "ELE-SF-02-002": "02fe8b689dc47c11269825b0a56cd171659a743ef56045794789d46d1cfb49aa",
+    "ELE-SF-02-003": "73b017281d305d2eea45e2268f38e4d7c6fe51604d28d67afcd38ca85ea0ce0c",
+    "ELE-SF-03-001": "bbcffcca46bf1576fd43a47ed18458305e80885c5e07367a91a23ce883fb6376",
+    "ELE-SF-03-002": "fe03fbfca74b0c036b7ec73502e8ae7fe95d8dda32b7cf2488e644b6a0100895",
+    "ELE-SF-03-003": "85d877ddd47d148c1c8be7e87a2486cc0b3e930f5b7b86faeeb6d404c41c8e33",
+    "ELE-SF-04-001": "f2a782a029a61428adccc6d0d7e40ecd89dabffbb5fbccab7fc73b32e313477a",
+    "ELE-SF-04-002": "6e4bf02c42e5b634b4140e5b63943ee3b72232883347840d54576d31a7e71257",
+    "ELE-SF-04-003": "13265fa545aaf7aada2b1d1efed42faa06e22c963aff1de64bb360924b11b388",
+    "ELE-SF-05-001": "48c08061a12efbaf5bec64df73f1e1fc421ab81327459dbb686fb559fe998856",
+    "ELE-SF-05-002": "bdaf883344c4c93d5b68184db847b7d1d2a1e8fd5995cde1d0ff1110847c9f4b",
+    "ELE-SF-05-003": "8e7503c4bcb2db80a2e4da2a8ee8cb535dfa2a722f26b4c71e6e99a7af358480",
+    "ELE-SF-06-001": "e1812a18c1a5f531672130b1c28d1d838a49d5d9a85c9bb1cbb639ef3d8c7981",
+    "ELE-SF-06-002": "8c6561f9f18ef03c757897c9cda55e868c48c95b4015dbf7a5633cd9e3a1aa1f",
+    "ELE-SF-06-003": "e27c1d17e8ec732e108a795eafbd71fe148378c8d47b19212425fc620886ca82",
+    "ELE-SF-07-001": "e9566960b3f511f2117c97b891bfd457b7d35c9477c5e966251da5514586adbb",
+    "ELE-SF-07-002": "eff35cd7156c026d5dbc6c2f934f83eb85f7bd93b395d707aba970da4f67527f",
+    "ELE-SF-07-003": "4fb83c8983e22db060c681767baa605cd77bb23989ac6cd4ffd05fef0174c297",
+    "ELE-SF-08-001": "4f244c432267c148c82fcfad31112a90ee0f38f6265bc3f96fad37f4f2415d8c",
+    "ELE-SF-08-002": "ab4220bd33ca9b47b13b32738e18798c27bdc6e237e25bc5f2fcbecdf51ca215",
+    "ELE-SF-08-003": "cdbfa48990ed32ad026885238a8fad9a0d27144a9059f2f7cc29588c3b481dc6",
+    "ELE-SF-09-001": "880232cb5068cff90b2b86f9abaa4fec2dac8804c7e066100b7a7f1d41f13bbb",
+    "ELE-SF-09-002": "cd21a2a1e545c1b6b2e8f5713ed4602961ce7952bb99eb7a4c71a8ab1eba45f2",
+    "ELE-SF-10-001": "14d97d56193a3af005b2c2aac53916c147ae2efce464d97c9a9c1c568c0c07a9",
+    "ELE-SF-10-002": "bb80f4b671282732d2ecdb887662cec8eb450096338fba17e696e207a4bdc5a8",
+    "ELE-SF-11-001": "6cc618ea93f67d0da7fa8eb67e606d745634b6f543963b4603558b364e4c0be9",
+    "ELE-SF-11-002": "713f9fa039f4324a1488cb653b77c69a212f6c70f84317b0414ba6033333386d",
+    "ELE-SF-11-003": "021e2f416b3858d661f97b7613235e386c7d9437ee840d6b7565a1ac6d648ade",
+    "ELE-SF-11-101": "52ca8d4da082a20fb19f342e235d7c927589158dcce1deb8bf7818d0df38f1a6",
+    "ELE-SF-11-102": "c533668656cf4d4c7d8919cd1bf73ee18083edce44a5ca5008f2fbaccff0e8e3",
+    "ELE-SF-11-103": "f1bba4028d3e3cb1bda2038ead55149a4dc73c1e8e38a7dda3ed1f6e738705ee",
+    "ELE-SF-12-001": "38f0ab3e7d853f5d6300e4bb4e1cdbc03218cd22cad1e35babb5e4480d4ea11c",
+    "ELE-SF-12-002": "184f64ba319182d538f26583fd4548cc47f1f831ad15c3b78f1840345092cc3b",
+    "ELE-SF-12-003": "39e45ffa89a90e6de50dc3e632048d07d725e8e9cc3b651bd497aa1ea095acdf",
+    "ELE-SF-13-001": "1b0060250a440f50a4b1a4f1b77364f939206d9fc97fbea3b9f16105bc376148",
+    "ELE-SF-13-002": "ef16acc20d902493f07db20173e228467c44266a11b8c4392532c64a9f4e229c",
+    "ELE-SF-16-001": "22a852a0712120ca7bdfe8a3d0809e1325981c60ae5e26c8bb65200f22c0702a",
+    "ELE-SF-18-001": "f68c13fbfc484f5dea156d3284009c14328a66bd1088620f22bdbefd135b748c",
+    "ELE-SF-18-002": "73690f3c32b2e45f4d3b6b9744c524d5df625e0dc2e1d3ea157cb01efd76c5aa",
+    "ELE-SF-18-003": "2def4f8809421885cb71bbac3e8d9579f5097f5b5b0c248eaf288220adf8bfac",
+    "ELE-SF-19-001": "d274b8f6a4a6f1245359356633f37b03f8a9c135cf025e79fa2010ce3ba86723",
+    "ELE-SF-19-002": "23fde01347db98b480f8bc1b8ae5b9ebbc19c3d216f99ae390cca664e69be04b",
+    "ELE-SF-20-001": "d9cf43b02a8bffb5fb55f0ec896d7517afe293901717a2b0c15cf9bbfa65a93d",
+    "ELE-SF-20-002": "a61b104dca3aa69375796d5f2f6c4fbb4dc170d31ca71e1e047355865d06b713",
+    "ELE-SF-21-001": "ef71276fca04c6ec677e882e8046ffe875f69e79037701bf5a62e4c9aa1998fd",
+    "ELE-SF-21-002": "d0810e9f5c30d598c1443570e92c5c6a32163f25877821a3a260b4443b5b1d31",
+    "ELE-SF-21-003": "34720c4fd60fe3ba3417dc4bfdce3023e6c87342e8eb0048ed3de939d086905f",
+    "ELE-SF-22-001": "70ff982fa7338a82212090c8a75ec323ce2f7b2f9a96364e6f9d2fc5b67f936a",
+    "ELE-SF-22-002": "7844ea8d7823fe3e103872a39767ebd30008def68532db06534b13e23df0504a",
+    "ELE-SF-22-003": "a28966bdf07711a9b9fa625866a2c6583f82d3b30d8f3bd81310db83c61d78ee",
+    "ELE-SF-23-001": "b70c82655f273fb03b610f74c3730230edc6200bfbda764e991a30856844bfc8",
+    "ELE-SF-23-002": "c68b53ae994385a21d6e8f5e4e4299b8f92a0f92e397cb4b3c5bd3ffefe02c5e",
+    "ELE-SF-23-003": "2475e62bba72d293809ba5af958b4bec52fb14863af97a9e2de9aa4f40acf140",
+    "ELE-SF-24-001": "49bbe693f809b21b8a51ce0650d812f7eec999026fc22406d9cef5211b1da0d9",
+    "ELE-SF-24-002": "76e1116f587c977bb29fd7f5e5ce5acd680cf08e663fee654b753cb77cdefceb",
+    "ELE-SF-24-003": "f2c3f0dbfa1868f8799953377f3726bfce0f345ad0c3be413722407fabed1639",
+    "ELE-SF-25-001": "04cb861698e6886e2bf7476c2a17ce9dc85305174d2635c5a04c290653be3255",
+    "ELE-SF-25-002": "d9021584b1bc53cbb3fd988142949386560d76835803bf356d0ed3a67a552994",
+    "ELE-SF-25-003": "f25e3a8e242487d85a865010dd11c08862b666a061246286fc97c02d8914ef3c",
+    "ELE-SF-26-001": "a51bf54da4e407af4e1d8e49c114d7223f416a597f6d19b79c7bf7f840d02ffe",
+    "ELE-SF-26-002": "982cb415fefc31fafe86f254568485ef02575d5d61c312cadea5c8ddad49265d",
+    "ELE-SF-26-003": "83922cba589d8afdfac72dbd6a87678e2b7750af2c42e78a70dd602838af6030",
+    "ELE-SF-27-001": "ff0c4fa0ca1ba719d7aa231a786a80f559ff01b1d12f4c508eb546e6b031b338",
+    "ELE-SF-28-001": "5c6901c00f6c9b28d9b252d3edc5c541c13289b8385a5f7efbb4580c40fa92de",
+    "ELE-SF-31-001": "148158f8e5290d3b13b87822c358581dffb334283db5332604578de21b35c677",
+    "ELE-SF-31-002": "93723bc028c8c9ebafb463f419cfb027455b254219c31032fdb6fe611ed250ab",
+    "ELE-SF-31-003": "aae2b2262bdd80d12f7feac566b28ad90c8e3f453d61684aebb083a4f9a0f36a",
+    "ELE-SF-32-001": "26d7bd93a7251dc21c25071a1f4a3584d833a6be716d563f044e49a90ed29d27",
+    "ELE-SF-32-002": "65036305a984c120daf9713e809bb41c33b0d39f7886adc35291eb40cc985df5",
+    "ELE-SF-32-003": "bfb36984f272ab32864e314459e93ba15172b0cd27e2b1a8edfa7f1803f21e6c",
+    "ELE-SF-33-001": "7070dface42512e07d199af7045ad141ea8cba049544fb45ff267e06b43c25a3",
+    "ELE-SF-34-001": "6815751e2bdd234977a464f1e3cd720e84f06c8c88fa796543818f2c518e37e8",
+    "ELE-SF-34-002": "2172579e95cb35213fc62d835a8b39b17e560ca147125a94148d9b734d2accf4",
+    "ELE-SF-34-003": "46ef6d132050bf963cfee844446ac5400cceadbe1559e5adf270375072284b5d",
+    "ELE-SF-35-001": "a0f3c122d735830f0fc4e887cac2b4eb3ee51d70e7aa031f27fb646542932991",
+    "ELE-SF-36-001": "dadaec731954cb4cdf838b2cd48a181079ca1866f6e12ec8a3195dfc3fad0a38",
+    "ELE-SF-36-002": "164b1c705471e4e6a24029402dca3cd3de747b5c44d069a6218a880429da96fb",
+    "ELE-SF-37-001": "8f940eabfe2c2f8e92a827150a45a294156af315e6ae47baeb195bca3b944922"
+  },
+  "audit_sha256": {
+    "01": "b2eba141ab10c474ebf2e64b3e704ef70c5bbe809046b42c4478e2add812aab3",
+    "02": "b8bae5f78eda848fe6e9dd0cd88b95a31fc99342bcc68e789970508a8ee7dda4",
+    "03": "2e217b1da82fdbf62a43fb462602387fd5fe95922220ed947de1120587f5e86c",
+    "04": "764b447bb30431d709376e8e6d6f2722383eea500853de32eab9d2d29240f8cf",
+    "05": "30a6175283d8d143de274d4882ac17237a54a22e1a7afb03942a1c8b3ddc3d44",
+    "06": "38b7ad619930d03a43caba9c5fe677ebe4390d5f9a5ec02a306079808d9a1a22",
+    "07": "9ca002b313d95b0aeb6a351d68df586271446fdaf39c8e34a98426b39050b58c",
+    "08": "cb4202b3773bc72d041c91b1bb3b28f6a161bd47c6dcbcc2bd72162f2965a632",
+    "09": "3c6129f9850224385ee83cc7e390d27fe849d2c30ccd5610e245d141277b6413",
+    "10": "d5fe3082e0de7aeb9011f6c256e3609a84e8e65bab2dfdf170feb4459d080a20",
+    "11": "92d62e8437415edb0090145a659a165edbdf03144ffa359768280359ea9f7546",
+    "12": "12f08a844f13627817d6acb41146c70c13c3efd93b8da263da0fc12c80dcfbd4",
+    "13": "52c51dc0a134060535c1cb4d785a5fd7ffd59cda4aabf945f8db09dcb286f170",
+    "14": "7b55604f6edb23c84cc130e1c05e289c5e1514c49d351ff4e6bbbcddf7b02171",
+    "15": "30c0fd13fab91c5297c3cd811ad5b3c1693a38b61c1635dd136d0928a9824545",
+    "16": "4aec660670d03ef1b8ec8ad381ec5fb1a3f64b9c4a40dcb42c9a990d8417c9da",
+    "17": "a7fbddf4781bc99823a74321a867d82bee4b40c6d47aaf7c9d51e4476ac161e4",
+    "18": "f8ec8cb68ca60c71615adedba6c356f8409f7277bd53c839b3376fdcf66a0c10",
+    "19": "669327411dc57ff80160e681afdbba3871aecb822e22506466c77d2c5404961a",
+    "20": "045ae238524b450e3f1225aec9227072e49d41aa60d553e311cb1598e6925b67",
+    "21": "7ec6a11710f650cfe94dab0f97a5b29f9a91c8acf9c2aad431a46a2105fdd86d",
+    "22": "790e7dc3c454fbf3d61ddc3335c7fc96f2f77c7e8c28f685ef93b527f81e3635",
+    "23": "cf118960ae27bb945d1deaba7b58c2f417c9547c39fe7c077f8d7c8e5039ddcf",
+    "24": "881653fef513624d1513cb83ac899201d86bf7b8836dd22429eef99848c95781",
+    "25": "e44253c639f505d4a8a6b38bce8e71848793e25a15b2126ff5869383ed71140d",
+    "26": "612ebb466c2cb756c9b57ec01131a1bf0178e8c807c5f134bdb2ab78c419490a",
+    "27": "4142a7bee34be53f305fcf237c5408d7e4548b4ee213b257ea6ee3e2c454af40",
+    "28": "503d1597b24fa3ba7e066c97e68ab83eb6c4f26487efaf03c84b3d86b3d367a5",
+    "29": "fcd711b8eee3869c4c8c7caa7e8e62c6dc7c3f37e5beb83b6ab00c7cc0ae5bd2",
+    "30": "8237da74041631a155c3097f27922d8d99097ea230d9ad66123b57725cf0f304",
+    "31": "36fd8c564645adcc4d42449a5b757a49155fda8114c8e6c5edba0a645a21d7aa",
+    "32": "974443f27daca6375e8cf49d0ee9804b44ddfb50e0f176bc8d29489d868678da",
+    "33": "37ab37c5d07e38f825027a24ff006c96b56237d7ff79a22fdd051595e5fec97d",
+    "34": "f9a293b75e4c7398c18e54b0c3d68b333c1a66efc460ee0fbd0ffdc1aa4e2bcc",
+    "35": "f08726612a71f4a4f4b5411662a2310ad3cd001879d736ee78c6f1c5f9f9bfa3",
+    "36": "d56d8fafc995763dddc16785bb89102132f6cd2db8a5ea6dc60e5d9cc86c3e2e",
+    "37": "007e6a1aa210d4ea2de0d366473f420b88d1f2e6af700db404a2a9d39d28dd80"
+  },
+  "protocol_sha256": "67c31ee93e074fbf5c7154505f7670179a356a8a0b02def096be054b9543d28c",
+  "author": "Codex",
+  "tested_panel": [
+    "GLM-5.3-Flash"
+  ],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "canonical": false,
+  "cross_direction_total_score": false,
+  "offline_checks": [
+    {
+      "case_id": "ELE-SF-01-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original parser positive/negative/output-format paths"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-01-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original parser positive/negative/output-format paths"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-01-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original parser positive/negative/output-format paths"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-02-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original parser positive/negative/output-format paths"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-02-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original parser positive/negative/output-format paths"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-02-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original parser positive/negative/output-format paths"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-03-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-03-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-03-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-04-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-04-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-04-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-05-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-05-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-05-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-06-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-06-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-06-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Native grading parser and paired condition identities"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-07-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-07-002",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-07-003",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-08-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-08-002",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-08-003",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-09-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-09-002",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-10-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-10-002",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-11-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-11-002",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-11-003",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-11-101",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original four-option key retained"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-11-102",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original four-option key retained"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-11-103",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Original four-option key retained"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-12-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "All 199 released history entries plus current question and three queries retained"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-12-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "All 199 released history entries plus current question and three queries retained"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-12-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "All 199 released history entries plus current question and three queries retained"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-13-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Adapter protocol and source dependencies declared"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-13-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_01_13",
+          "passed": true,
+          "checks": [
+            "Adapter protocol and source dependencies declared"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-16-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-18-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-18-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-18-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-19-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions",
+            "native compiled prompt identity; original 2 fixes (3 rendering attempts); separate isolated two-scene fixture passed"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-19-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions",
+            "native compiled prompt identity; original 2 fixes (3 rendering attempts); separate isolated two-scene fixture passed"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-20-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions",
+            "original prompt and test files; fixed Playwright 1.53.0/Chromium1178; no-network browser fixture passed"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-20-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions",
+            "original prompt and test files; fixed Playwright 1.53.0/Chromium1178; no-network browser fixture passed"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-21-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-21-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-21-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-22-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-22-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-22-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-23-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-23-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-23-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-24-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-24-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-24-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-25-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-25-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-25-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-26-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-26-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-26-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_14_26",
+          "passed": true,
+          "checks": [
+            "source files are hashed by core validator",
+            "gold only in reference; selection before model predictions"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-27-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-28-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Full original material.pdf and instructions delivered as files",
+            "No-network bwrap available",
+            "PDF rendering and metadata tools available",
+            "Original Gemini judge explicitly pending"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-31-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact released prompt builder identity",
+            "Released parser positive and invalid-output checks",
+            "Gold IDs linked via stable attemptstepid"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-31-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact released prompt builder identity",
+            "Released parser positive and invalid-output checks",
+            "Gold IDs linked via stable attemptstepid"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-31-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact released prompt builder identity",
+            "Released parser positive and invalid-output checks",
+            "Gold IDs linked via stable attemptstepid"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-32-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact original _proof_prompt schema conversion",
+            "Unmodified _score_one positive/negative checks",
+            "Full natural language steps; gold/Lean withheld from model"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-32-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact original _proof_prompt schema conversion",
+            "Unmodified _score_one positive/negative checks",
+            "Full natural language steps; gold/Lean withheld from model"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-32-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact original _proof_prompt schema conversion",
+            "Unmodified _score_one positive/negative checks",
+            "Full natural language steps; gold/Lean withheld from model"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-33-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-34-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Unchanged copied local original system/all student turns",
+            "Original fixed MiniMax-M3 judge templates/parser/score code",
+            "Historical evidence separated from external literature",
+            "Current GLM output never used for selection"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-34-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Unchanged copied local original system/all student turns",
+            "Original fixed MiniMax-M3 judge templates/parser/score code",
+            "Historical evidence separated from external literature",
+            "Current GLM output never used for selection"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-34-003",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Unchanged copied local original system/all student turns",
+            "Original fixed MiniMax-M3 judge templates/parser/score code",
+            "Historical evidence separated from external literature",
+            "Current GLM output never used for selection"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-35-001",
+      "passed": true,
+      "checks": []
+    },
+    {
+      "case_id": "ELE-SF-36-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Unchanged copied local original system/all student turns",
+            "Original fixed MiniMax-M3 judge templates/parser/score code",
+            "Historical evidence separated from external literature",
+            "Current GLM output never used for selection"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-36-002",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Unchanged copied local original system/all student turns",
+            "Original fixed MiniMax-M3 judge templates/parser/score code",
+            "Historical evidence separated from external literature",
+            "Current GLM output never used for selection"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "ELE-SF-37-001",
+      "passed": true,
+      "checks": [
+        {
+          "adapter": "scripts.source_fidelity.group_27_37",
+          "passed": true,
+          "checks": [
+            "Exact original video template and native probe texts",
+            "Original 480x270 fps2 full-length preprocessing",
+            "Video assets hashed and true video_url delivery",
+            "Original parse_score bounds and null-credit definition"
+          ]
+        }
+      ]
+    }
+  ]
+}

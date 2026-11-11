@@ -1,0 +1,81 @@
+{
+  "direction_id": "31",
+  "title": "编程作业多错误定位与修复反馈",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "PyMETA",
+      "title": "PyMETA",
+      "url": "https://arxiv.org/html/2606.30610v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2606.30610v2.html",
+      "sha256": "58886c194b8b25470f1c04ab103c31fedffe6714865182e64b55d74c279c42a7",
+      "revision": null,
+      "locator": "§4 multi-error diagnostic subset; Table 5; Appendix prompt",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "Every model matches fewer than half of the recorded sets exactly."
+    },
+    {
+      "source_id": "PyMETA-data",
+      "title": "PyMETA expert97 metadata",
+      "url": "https://huggingface.co/datasets/CircleCat/pymeta",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/pymeta/metadata/multi_error_subset_97_ids.csv",
+      "sha256": "a4a57ada9ee3e45f77831231a6ca659a6934d00821df1e17d8a72206a5cb3c92",
+      "revision": "db66bd04916cdbefee9ad66774b4598e5f2a3ba0",
+      "locator": "attemptstepid stable IDs",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    }
+  ],
+  "research_failure": {
+    "condition": "One student submission contains multiple errors, including secondary errors exposed only after a repair.",
+    "finding": "Original models exact-set agreement below half, but expert labels depend on plausible repair paths; three selected cases expose gold ambiguities.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "PyMETA",
+    "locator": "§4 multi-error diagnostic subset; Table 5; Appendix prompt"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original multi_error_prompting prompt plus question, expected answer, student answer.",
+    "output_contract": "Predicted Label: Name (#id), ...",
+    "scoring_contract": "Set exact match and sample F1 from paper; original parser; original gold retained.",
+    "environment_contract": "Single-turn text-only classification; no execution tool.",
+    "source_case_ids": [
+      "152016",
+      "577935",
+      "318113"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Retain exact prompt and source records; report original score and gold-review concerns separately.",
+    "limitations": [
+      "Not code repair generation; not a new benchmark gold validation.",
+      "Original multi-error repair-path labels may be ambiguous."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "One student submission contains multiple errors, including secondary errors exposed only after a repair.",
+      "evidence_locator": "§4 multi-error diagnostic subset; Table 5; Appendix prompt",
+      "implementation_locator": [
+        "ELE-SF-31-001",
+        "ELE-SF-31-002",
+        "ELE-SF-31-003"
+      ],
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-31-001",
+    "ELE-SF-31-002",
+    "ELE-SF-31-003"
+  ],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

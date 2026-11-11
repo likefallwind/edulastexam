@@ -1,0 +1,179 @@
+{
+  "updated_at": "2026-11-11T02:37:36.300576+00:00",
+  "reviewer": "Codex",
+  "review_scope": "author_related_offline_review",
+  "independent_teacher_review": false,
+  "original_run": "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261110_source_fidelity_glm53flash/GLM-5.3-Flash",
+  "expected_original_cases": 81,
+  "original_review_records": 81,
+  "original_generated_reviewed": 72,
+  "original_verdict_counts": {
+    "pass": 33,
+    "mixed": 4,
+    "descriptive_only": 16,
+    "fail": 9,
+    "disputed": 10,
+    "not_evaluable": 4,
+    "pending_rerun": 5
+  },
+  "latest_review_records": 81,
+  "latest_verdict_counts": {
+    "pass": 36,
+    "mixed": 4,
+    "descriptive_only": 17,
+    "fail": 9,
+    "disputed": 10,
+    "not_evaluable": 5
+  },
+  "direction_verdict_counts": {
+    "01": {
+      "pass": 3
+    },
+    "02": {
+      "pass": 3
+    },
+    "03": {
+      "mixed": 1,
+      "descriptive_only": 2
+    },
+    "04": {
+      "mixed": 1,
+      "descriptive_only": 2
+    },
+    "05": {
+      "descriptive_only": 1,
+      "fail": 1,
+      "mixed": 1
+    },
+    "06": {
+      "mixed": 1,
+      "descriptive_only": 2
+    },
+    "07": {
+      "pass": 3
+    },
+    "08": {
+      "descriptive_only": 1,
+      "pass": 1,
+      "fail": 1
+    },
+    "09": {
+      "pass": 2
+    },
+    "10": {
+      "pass": 2
+    },
+    "11": {
+      "pass": 4,
+      "fail": 1,
+      "disputed": 1
+    },
+    "12": {
+      "fail": 2,
+      "pass": 1
+    },
+    "13": {
+      "not_evaluable": 2
+    },
+    "16": {
+      "pass": 1
+    },
+    "18": {
+      "pass": 3
+    },
+    "19": {
+      "descriptive_only": 2
+    },
+    "20": {
+      "pass": 1,
+      "fail": 1
+    },
+    "21": {
+      "descriptive_only": 3
+    },
+    "22": {
+      "descriptive_only": 3
+    },
+    "23": {
+      "pass": 3
+    },
+    "24": {
+      "pass": 1,
+      "disputed": 2
+    },
+    "25": {
+      "disputed": 2,
+      "pass": 1
+    },
+    "26": {
+      "disputed": 2,
+      "pass": 1
+    },
+    "27": {
+      "disputed": 1
+    },
+    "28": {
+      "not_evaluable": 1
+    },
+    "31": {
+      "fail": 1,
+      "disputed": 2
+    },
+    "32": {
+      "pass": 2,
+      "fail": 1
+    },
+    "33": {
+      "not_evaluable": 1
+    },
+    "34": {
+      "pass": 3
+    },
+    "35": {
+      "not_evaluable": 1
+    },
+    "36": {
+      "fail": 1,
+      "pass": 1
+    },
+    "37": {
+      "descriptive_only": 1
+    }
+  },
+  "missing_original_reviews": [],
+  "retry_run_states": {
+    "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry01/GLM-5.3-Flash": {
+      "state": "complete_with_unmeasured_or_pending",
+      "selected_cases": 5,
+      "prediction_records": 5,
+      "prediction_status_counts": {
+        "empty_response": 3,
+        "environment_budget_exhausted": 1,
+        "generated": 1
+      },
+      "pending_predictions": 0
+    },
+    "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry23b/GLM-5.3-Flash": {
+      "state": "complete_with_unmeasured_or_pending",
+      "selected_cases": 3,
+      "prediction_records": 3,
+      "prediction_status_counts": {
+        "empty_response": 3
+      },
+      "pending_predictions": 0
+    },
+    "reports/eval/edu_last_exam_source_fidelity_v1/_exploratory/20261111_source_fidelity_retry23c/GLM-5.3-Flash": {
+      "state": "complete",
+      "selected_cases": 3,
+      "prediction_records": 3,
+      "prediction_status_counts": {
+        "generated": 3
+      },
+      "pending_predictions": 0
+    }
+  },
+  "unreviewed_successful_retries": [],
+  "cross_construct_accuracy": null,
+  "native_scores_unchanged": true,
+  "frozen_benchmark": false
+}

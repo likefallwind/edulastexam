@@ -1,0 +1,75 @@
+{
+  "direction_id": "33",
+  "title": "语言学习支持的情境适切性",
+  "status": "blocked_protocol",
+  "sources": [
+    {
+      "source_id": "L2-Bench",
+      "title": "L2-Bench",
+      "url": "https://arxiv.org/html/2607.08842v2",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/papers/2607.08842v2.html",
+      "sha256": "436d9318ac651799cc355db7247d9b1fafbce9090d6451f6724090d1fdfde8ab",
+      "revision": null,
+      "locator": "Appendix F.3 Example1; H production judge",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    },
+    {
+      "source_id": "L2-data",
+      "title": "OUP/l2-bench",
+      "url": "https://huggingface.co/datasets/OUP/l2-bench",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/l2/README.md",
+      "sha256": "0e08a21942b0951a225034df0b6aabfd6d9249f1f1b83ef7ccc1f505b66f69cd",
+      "revision": null,
+      "locator": "Gated l2-bench_tasks.csv and resource archive",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": ""
+    }
+  ],
+  "research_failure": {
+    "condition": "Teacher/learner task performance must satisfy contextual, consensus and universal criteria rather than just fluent language.",
+    "finding": "The paper reports hard-subset degradation, not a demonstrated failure on this public appendix example.",
+    "model_setting": "See original paper and repository snapshot; not evidence about all current LLMs.",
+    "scope": "Original study conditions only; this exploratory subset cannot estimate the full benchmark.",
+    "source_id": "L2-Bench",
+    "locator": "Appendix F.3 Example1; H production judge"
+  },
+  "original_task": {
+    "available": "public_examples_only",
+    "input_contract": "Published exact task; minimal context.",
+    "output_contract": "Open-ended response",
+    "scoring_contract": "Weighted criteria; original Claude Sonnet4.6 v1 reference-guided judge requires unpublished expert answer.",
+    "environment_contract": "Gated full data requires user account/terms acceptance; public resource-free example can produce answer.",
+    "source_case_ids": [
+      "AppendixF.3-Example1"
+    ]
+  },
+  "decision": {
+    "route": "original_public_example",
+    "rationale": "Preserve public original example and all published criterion weights; do not fabricate gated material or grading reference.",
+    "limitations": [
+      "Missing original system/expert reference.",
+      "This subset cannot be called a complete native protocol replication."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Teacher/learner task performance must satisfy contextual, consensus and universal criteria rather than just fluent language.",
+      "evidence_locator": "Appendix F.3 Example1; H production judge",
+      "implementation_locator": [
+        "ELE-SF-33-001"
+      ],
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-33-001"
+  ],
+  "search_log": [
+    {
+      "action": "Read original author paper and released repository/dataset files",
+      "result": "Full source snapshot, version and file hashes retained; no item selection based on GLM output."
+    }
+  ]
+}

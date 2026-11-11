@@ -29,3 +29,12 @@ private/edu_last_exam_full_coverage_v1/reference/*/oracle_output_*/
 *.tmp
 *.sse
 
+# Source-preserving candidates embed external original inputs; keep raw task exports local.
+private/edu_last_exam_source_fidelity_v1/authored/
+private/edu_last_exam_source_fidelity_v1/items.jsonl
+private/edu_last_exam_source_fidelity_v1/prompts.jsonl
+reports/source_fidelity_v1/source_audit.html
+reports/eval/edu_last_exam_source_fidelity_v1/
+# The local review book republishes full external inputs and raw response transcripts.
+reports/source_fidelity_v1/human_review_book_*/
+

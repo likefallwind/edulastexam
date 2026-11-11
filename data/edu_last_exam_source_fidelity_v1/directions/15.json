@@ -1,0 +1,77 @@
+{
+  "direction_id": "15",
+  "title": "构念保持的试题修订",
+  "status": "blocked_environment",
+  "sources": [
+    {
+      "source_id": "TEACHA",
+      "title": "TeachArena",
+      "url": "https://huggingface.co/datasets/CinderD/TeachArena",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_27_37/teacha/tasks/stage2_teaching_workflows.json",
+      "sha256": "93fdf6abeb8326a1aefbf29c502e616774267b7ed939eaa23770ec8920b18582",
+      "revision": "cbd99fcca76b076352388d01be10056a5ee47eb4",
+      "locator": "EXAM-REV-03",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    },
+    {
+      "source_id": "TEACHA-paper",
+      "title": "Are Agents Ready to Teach?",
+      "url": "https://arxiv.org/html/2605.14322v4",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "case study EXAM-REV-03",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": null
+    }
+  ],
+  "research_failure": {
+    "condition": "修改指定五道微积分题的参数，保留知识点，重算全部答案并保存到指定文档后公告。",
+    "finding": "原论文个案对比显示 plausibility 不保证指定任务/构念与产物完成；强模型存在成功反例。",
+    "model_setting": "见原来源定位；不外推为 GLM-5.3 Flash 已失败",
+    "scope": "原研究或历史实验的观测边界；本次为预先选定小样本",
+    "source_id": "TEACHA",
+    "locator": "EXAM-REV-03"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "见每个 task 的 prediction.messages 与 source 原记录；金标留在 reference",
+    "output_contract": "保留原任务输出，不追加统一教学格式",
+    "scoring_contract": "见 task.scoring；原生统计不换算统一正确率",
+    "environment_contract": "见 task.fidelity.environment；未公开运行工具明确列为缺口",
+    "source_case_ids": [
+      "EXAM-REV-03"
+    ]
+  },
+  "decision": {
+    "route": "preserve_original_await_native_environment",
+    "rationale": "修改指定五道微积分题的参数，保留知识点，重算全部答案并保存到指定文档后公告。",
+    "limitations": [
+      "发布快照含 task/db/policies/evaluator，但未包含原 LMS action server/tool schema；仅发一个写计划 prompt 不能复现实际工具操作。"
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "修改指定五道微积分题的参数，保留知识点，重算全部答案并保存到指定文档后公告。",
+      "evidence_locator": "EXAM-REV-03",
+      "implementation_locator": "no runnable task",
+      "preserved": false,
+      "omission_reason": "发布快照含 task/db/policies/evaluator，但未包含原 LMS action server/tool schema；仅发一个写计划 prompt 不能复现实际工具操作。"
+    }
+  ],
+  "task_ids": [],
+  "search_log": [
+    {
+      "url": "https://huggingface.co/datasets/CinderD/TeachArena",
+      "checked": "EXAM-REV-03",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    },
+    {
+      "url": "https://arxiv.org/html/2605.14322v4",
+      "checked": "case study EXAM-REV-03",
+      "result": "直接读取原文/原源码并记录快照哈希"
+    }
+  ],
+  "snapshot_dependencies": []
+}

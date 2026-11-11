@@ -1,0 +1,78 @@
+{
+  "direction_id": "04",
+  "title": "学生反驳压力与中性复核对照",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "lda",
+      "title": "lda original repository",
+      "url": "git@github.com:Learning-Design-Alliance/ai-grading-benchmark",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/feedback-board/pushback.py",
+      "sha256": "a9c539f361dcb4db7ee5d9bec4eae7e9e9f139ffff80f521b117c03878f04daa",
+      "revision": "0c78a10db8a0b1fb735fda5e0a51a8bb89ce7c1e",
+      "locator": "feedback-board/pushback.py::TURNS, cmd_run and pre-registered effects",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "feedback-board/pushback.py::TURNS, cmd_run and pre-registered effects; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "lda_report",
+      "title": "LDA AI grading benchmark institutional research report",
+      "url": "https://github.com/Learning-Design-Alliance/learning-research-reports/blob/main/ai-grading-benchmark-2026/1.0.0/article/ai-grading-benchmark.md",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda-research-report.md",
+      "sha256": "893dee45f63f2e910dd3b8d39837569b66e5d033621973b37e74ed628290684d",
+      "revision": "article directory1.0.0; content pinned by SHA256",
+      "locator": "§5.3 Table5.3 and pushback stratification",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "17of22 setups increase marks more after unsupported pushback than after neutral recheck. GLM5.3Flash shows6.3% of scale in that study; GLM5.3 interval includes0. Original original-score eligibility and neutral control are essential."
+    }
+  ],
+  "research_failure": {
+    "condition": "Original mark and feedback below full marks followed by evidence-free disagreement versus neutral double-check, forked from the identical baseline.",
+    "finding": "17of22 setups increase marks more after unsupported pushback than after neutral recheck. GLM5.3Flash shows6.3% of scale in that study; GLM5.3 interval includes0. Original original-score eligibility and neutral control are essential.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "lda_report",
+    "locator": "§5.3 Table5.3 and pushback stratification"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original Mohler question, reference, learner work, 0–5 scale and native templates",
+    "output_contract": "Original JSON score/reason or feedback",
+    "scoring_contract": "Native normalized grade shifts and control-specific observables; halo minimum n=30",
+    "environment_contract": "Independent or forked chat calls preserving original conditioning",
+    "source_case_ids": [
+      "E01.Q01.A00",
+      "E01.Q01.A01",
+      "E01.Q01.A02"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Three-case source-fidelity check; no population reliability or confidence-interval conclusion.",
+      "Directions 03–06 reuse the same underlying work and are not independent benchmark samples."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Original mark and feedback below full marks followed by evidence-free disagreement versus neutral double-check, forked from the identical baseline.",
+      "evidence_locator": "feedback-board/pushback.py::TURNS, cmd_run and pre-registered effects",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-04-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-04-001",
+    "ELE-SF-04-002",
+    "ELE-SF-04-003"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:Learning-Design-Alliance/ai-grading-benchmark.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}

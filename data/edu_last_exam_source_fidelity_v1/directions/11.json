@@ -1,0 +1,84 @@
+{
+  "direction_id": "11",
+  "title": "学生行为挑战下的即时干预",
+  "status": "ready_original",
+  "sources": [
+    {
+      "source_id": "tutorcase",
+      "title": "tutorcase original repository",
+      "url": "git@github.com:kixlab/TutorCaseBench",
+      "local_path": "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/tutorcase/README.md",
+      "sha256": "6e9578b757fe2087420a692f6b83dbc0c75288a268508ac97f97f3ef6b4c33ba",
+      "revision": "6b9ac34262c70e3606242ab5c974b34e54b3b932",
+      "locator": "README.md::dialogue_prompt, rubric_evaluation_prompt and mcq_prompt; benchmark_code/config/config_evaluation.json",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "README.md::dialogue_prompt, rubric_evaluation_prompt and mcq_prompt; benchmark_code/config/config_evaluation.json; original code/data inspected, not inferred from prior inventory."
+    },
+    {
+      "source_id": "original_paper_11",
+      "title": "TutorCaseBench",
+      "url": "https://arxiv.org/html/2610.30828v1",
+      "local_path": null,
+      "sha256": null,
+      "revision": null,
+      "locator": "§5.1–5.2; open-ended versus MCQ; AppendixT.11–T.13",
+      "verified_at": "2026-11-10",
+      "evidence_excerpt": "The strongest of11 evaluated models satisfies at least one personalized rubric criterion in55.8% of open-ended cases; selection is stronger than situated response generation."
+    }
+  ],
+  "research_failure": {
+    "condition": "Choose interventions for a specific learner challenge in a contextualized classroom exchange; fluent generic academic tutoring can miss the actual behavioral need.",
+    "finding": "The strongest of11 evaluated models satisfies at least one personalized rubric criterion in55.8% of open-ended cases; selection is stronger than situated response generation.",
+    "model_setting": "As released in the original source; this is a GLM source-task subset, not a reproduction of published model population.",
+    "scope": "Only the specified task condition; no generalized failure prevalence or learning-gain claim.",
+    "source_id": "original_paper_11",
+    "locator": "§5.1–5.2; open-ended versus MCQ; AppendixT.11–T.13"
+  },
+  "original_task": {
+    "available": true,
+    "input_contract": "Original minimal context/dialogue and immediate next-turn instruction, plus paired original MCQ",
+    "output_contract": "Native short tutor response or MCQ JSON",
+    "scoring_contract": "Open-ended original checklist ANY rule, Gemini3.1Pro; MCQ original answer key",
+    "environment_contract": "Text response and native judge dependency for open-ended view",
+    "source_case_ids": [
+      "0001_immediate_c001_s001",
+      "mcq_0001_immediate_c001_s001",
+      "0002_immediate_c001_s002",
+      "mcq_0002_immediate_c001_s002",
+      "0004_immediate_c001_s003",
+      "mcq_0004_immediate_c001_s003"
+    ]
+  },
+  "decision": {
+    "route": "original_task",
+    "rationale": "Use released original tasks and controls; preserve original metric boundaries.",
+    "limitations": [
+      "Original released dialogues/rubrics/MCQs are LLM-synthesized from literature; not raw human classroom transcripts.",
+      "Open-ended and MCQ views are paired, not independent samples, and must not be averaged together."
+    ]
+  },
+  "condition_mapping": [
+    {
+      "condition": "Choose interventions for a specific learner challenge in a contextualized classroom exchange; fluent generic academic tutoring can miss the actual behavioral need.",
+      "evidence_locator": "README.md::dialogue_prompt, rubric_evaluation_prompt and mcq_prompt; benchmark_code/config/config_evaluation.json",
+      "implementation_locator": "private/edu_last_exam_source_fidelity_v1/authored/ELE-SF-11-*.json",
+      "preserved": true,
+      "omission_reason": null
+    }
+  ],
+  "task_ids": [
+    "ELE-SF-11-001",
+    "ELE-SF-11-101",
+    "ELE-SF-11-002",
+    "ELE-SF-11-102",
+    "ELE-SF-11-003",
+    "ELE-SF-11-103"
+  ],
+  "search_log": [
+    {
+      "url": "git@github.com:kixlab/TutorCaseBench.git",
+      "checked": "Original GitHub repository and pinned local snapshot; task input builder, scorer, case truth and control files inspected.",
+      "result": "Released original task available."
+    }
+  ]
+}
