@@ -8,6 +8,7 @@
 - [逐方向/benchmark inventory](../../reports/edu_last_exam_evidence_inventory_v1/inventory.json)：24 个与37方向直接相关的 benchmark，含原始任务目录、mini/frontier 逐题 scored 文件、full eval 产物、judge 模型和重复 identity 计数。
 - [生成后的方向矩阵](../../reports/edu_last_exam_evidence_inventory_v1/direction_route_matrix.json)：在路线矩阵上补入当前 source-fidelity card、task IDs、原任务可用性、评分合同和 condition mapping 数量。
 - [历史模型错误索引](../../reports/difficulty_mining_v1/summary.json)：对已有 mini/frontier 选题的 36 个 benchmark 做逐题聚合；C-Eval/MOOCCube 另保留 full eval。这里只记录 `historical_model_error`，不把它写成 human difficulty 或冻结结论。
+- [逐题候选队列](../../reports/edu_last_exam_item_selection_v1/selection_queue.json)：把81个 source-fidelity task card 和已有 benchmark 候选 item 关联起来；当前全部仍需题面、gold、协议和构念审计。
 
 `edubenchmark` 既有的 [frontier selection report](../../../edubenchmark/reports/frontier_selection_v1/selection_report.md)、[mini selection report](../../../edubenchmark/reports/mini_selection_v2/selection_report.md)、[EduBench item-level analysis](../../../edubenchmark/reports/eval/edubench/_analysis/item_level_analysis.json)、[judge swap](../../../edubenchmark/reports/eval/edubench/_judge_swap/agreement.json) 和 [student-risk 人工错误统计](../../../edubenchmark/reports/eval/student_risk_v2/_audit/codex-manual-error-stats.json) 已挂入 inventory，后续直接复用其统计和限制，不重复造一套全错计数。
 
