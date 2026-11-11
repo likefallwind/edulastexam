@@ -1,0 +1,2708 @@
+{
+  "schema_version": "edu_last_exam_evidence_inventory_v1",
+  "status": "descriptive_inventory",
+  "source_checkout": "../edubenchmark",
+  "direction_count": 37,
+  "benchmark_count": 24,
+  "benchmarks": [
+    "asap_2",
+    "ceval",
+    "edubench",
+    "eduillustrate",
+    "interactscience",
+    "longtutor_diagnosis",
+    "longtutor_evidence",
+    "longtutor_teaching",
+    "mathtutorbench_mistake_correction",
+    "mathtutorbench_mistake_location",
+    "mathtutorbench_pedagogy",
+    "mathtutorbench_scaffolding",
+    "mathtutorbench_scaffolding_hard",
+    "mathtutorbench_socratic",
+    "mathtutorbench_solution_correctness",
+    "mmtutorbench",
+    "mooccube_prereq",
+    "p07_selfcheck",
+    "p08_calibration",
+    "pedagogy_benchmark",
+    "safe_child_llm",
+    "scivideobench",
+    "student_risk_v2",
+    "tutorbench"
+  ],
+  "suite_artifacts": [
+    {
+      "suite": "mini_v2",
+      "benchmark": "asap_2",
+      "path": "reports/eval_suites/mini_v2/asap_2",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 1200,
+      "unique_item_ids_sum": 1200,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/asap_2/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/asap_2/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "ceval",
+      "path": "reports/eval_suites/mini_v2/ceval",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 1200,
+      "unique_item_ids_sum": 1200,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1200,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/ceval/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/ceval/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "edubench",
+      "path": "reports/eval_suites/mini_v2/edubench",
+      "exists": true,
+      "scored_files": 16,
+      "rows_total": 2400,
+      "unique_item_ids_sum": 2400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 2391,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v3.2",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/edubench/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/judge-deepseek-v3.2/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/edubench/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "eduillustrate",
+      "path": "reports/eval_suites/mini_v2/eduillustrate",
+      "exists": true,
+      "scored_files": 4,
+      "rows_total": 920,
+      "unique_item_ids_sum": 920,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/eduillustrate/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/eduillustrate/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/eduillustrate/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/eduillustrate/judge-minimax3/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "interactscience",
+      "path": "reports/eval_suites/mini_v2/interactscience",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "longtutor_diagnosis",
+      "path": "reports/eval_suites/mini_v2/longtutor_diagnosis",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 669,
+      "unique_item_ids_sum": 669,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 635,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/MiniMax-M2.7/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_diagnosis/glm-5.3-flash/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "longtutor_evidence",
+      "path": "reports/eval_suites/mini_v2/longtutor_evidence",
+      "exists": true,
+      "scored_files": 16,
+      "rows_total": 1600,
+      "unique_item_ids_sum": 1600,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1600,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_evidence/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "longtutor_teaching",
+      "path": "reports/eval_suites/mini_v2/longtutor_teaching",
+      "exists": true,
+      "scored_files": 16,
+      "rows_total": 1600,
+      "unique_item_ids_sum": 1600,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1600,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/mini_v2/longtutor_teaching/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_mistake_correction",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_correction/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_mistake_location",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_mistake_location",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_mistake_location/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_pedagogy",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_pedagogy",
+      "exists": true,
+      "scored_files": 14,
+      "rows_total": 1400,
+      "unique_item_ids_sum": 1400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1400,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_pedagogy/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_scaffolding",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_scaffolding",
+      "exists": true,
+      "scored_files": 14,
+      "rows_total": 1400,
+      "unique_item_ids_sum": 1400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1400,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_scaffolding_hard",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard",
+      "exists": true,
+      "scored_files": 14,
+      "rows_total": 1050,
+      "unique_item_ids_sum": 1050,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1050,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_socratic",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_socratic",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_socratic/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_solution_correctness",
+      "path": "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/mathtutorbench_solution_correctness/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mmtutorbench",
+      "path": "reports/eval_suites/mini_v2/mmtutorbench",
+      "exists": true,
+      "scored_files": 10,
+      "rows_total": 1000,
+      "unique_item_ids_sum": 1000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1000,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mmtutorbench/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mooccube_prereq",
+      "path": "reports/eval_suites/mini_v2/mooccube_prereq",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/mooccube_prereq/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/mooccube_prereq/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "p07_selfcheck",
+      "path": "reports/eval_suites/mini_v2/p07_selfcheck",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/p07_selfcheck/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/p07_selfcheck/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "p08_calibration",
+      "path": "reports/eval_suites/mini_v2/p08_calibration",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/p08_calibration/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/p08_calibration/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "pedagogy_benchmark",
+      "path": "reports/eval_suites/mini_v2/pedagogy_benchmark",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 1600,
+      "unique_item_ids_sum": 1600,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1600,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/mini_v2/pedagogy_benchmark/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "safe_child_llm",
+      "path": "reports/eval_suites/mini_v2/safe_child_llm",
+      "exists": true,
+      "scored_files": 11,
+      "rows_total": 2200,
+      "unique_item_ids_sum": 2200,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 2185,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-minimax3/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/safe_child_llm/judge-minimax3/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "scivideobench",
+      "path": "reports/eval_suites/mini_v2/scivideobench",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "student_risk_v2",
+      "path": "reports/eval_suites/mini_v2/student_risk_v2",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "tutorbench",
+      "path": "reports/eval_suites/mini_v2/tutorbench",
+      "exists": true,
+      "scored_files": 10,
+      "rows_total": 2000,
+      "unique_item_ids_sum": 2000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/mini_v2/tutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/mini_v2/tutorbench/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "asap_2",
+      "path": "reports/eval_suites/frontier_v1/asap_2",
+      "exists": true,
+      "scored_files": 7,
+      "rows_total": 1050,
+      "unique_item_ids_sum": 1050,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/asap_2/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/asap_2/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/asap_2/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/asap_2/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/asap_2/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/asap_2/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/frontier_v1/asap_2/kimi-k3.1-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "ceval",
+      "path": "reports/eval_suites/frontier_v1/ceval",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 1350,
+      "unique_item_ids_sum": 1350,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1348,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/ceval/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/frontier_v1/ceval/kimi-k3.1-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "edubench",
+      "path": "reports/eval_suites/frontier_v1/edubench",
+      "exists": true,
+      "scored_files": 16,
+      "rows_total": 2400,
+      "unique_item_ids_sum": 2400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 2327,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v3.2",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/edubench/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/judge-deepseek-v3.2/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/edubench/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "eduillustrate",
+      "path": "reports/eval_suites/frontier_v1/eduillustrate",
+      "exists": true,
+      "scored_files": 4,
+      "rows_total": 920,
+      "unique_item_ids_sum": 920,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/eduillustrate/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/eduillustrate/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/eduillustrate/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/eduillustrate/judge-minimax3/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "interactscience",
+      "path": "reports/eval_suites/frontier_v1/interactscience",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "longtutor_diagnosis",
+      "path": "reports/eval_suites/frontier_v1/longtutor_diagnosis",
+      "exists": true,
+      "scored_files": 10,
+      "rows_total": 763,
+      "unique_item_ids_sum": 763,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 732,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/MiniMax-M2.7/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_diagnosis/glm-5.3-flash/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "longtutor_evidence",
+      "path": "reports/eval_suites/frontier_v1/longtutor_evidence",
+      "exists": true,
+      "scored_files": 17,
+      "rows_total": 1700,
+      "unique_item_ids_sum": 1700,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1700,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_evidence/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "longtutor_teaching",
+      "path": "reports/eval_suites/frontier_v1/longtutor_teaching",
+      "exists": true,
+      "scored_files": 16,
+      "rows_total": 1600,
+      "unique_item_ids_sum": 1600,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1600,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/frontier_v1/longtutor_teaching/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_mistake_correction",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 900,
+      "unique_item_ids_sum": 900,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 899,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_correction/kimi-k3.1-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_mistake_location",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 900,
+      "unique_item_ids_sum": 900,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 900,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/glm-5.3-flash/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_mistake_location/kimi-k3.1-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_pedagogy",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy",
+      "exists": true,
+      "scored_files": 15,
+      "rows_total": 1500,
+      "unique_item_ids_sum": 1500,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1500,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_pedagogy/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_scaffolding",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding",
+      "exists": true,
+      "scored_files": 14,
+      "rows_total": 1400,
+      "unique_item_ids_sum": 1400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1400,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_scaffolding_hard",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard",
+      "exists": true,
+      "scored_files": 14,
+      "rows_total": 1050,
+      "unique_item_ids_sum": 1050,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1050,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_socratic",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_socratic",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/kimi-k3.1-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_socratic/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_solution_correctness",
+      "path": "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/kimi-k3.1-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mathtutorbench_solution_correctness/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mmtutorbench",
+      "path": "reports/eval_suites/frontier_v1/mmtutorbench",
+      "exists": true,
+      "scored_files": 10,
+      "rows_total": 1000,
+      "unique_item_ids_sum": 1000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1000,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mmtutorbench/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mooccube_prereq",
+      "path": "reports/eval_suites/frontier_v1/mooccube_prereq",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/mooccube_prereq/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/kimi-k3.1-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/mooccube_prereq/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "p07_selfcheck",
+      "path": "reports/eval_suites/frontier_v1/p07_selfcheck",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 799,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/p07_selfcheck/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/kimi-k3.1-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p07_selfcheck/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "p08_calibration",
+      "path": "reports/eval_suites/frontier_v1/p08_calibration",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 800,
+      "unique_item_ids_sum": 800,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 800,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/p08_calibration/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/kimi-k3.1-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/p08_calibration/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "pedagogy_benchmark",
+      "path": "reports/eval_suites/frontier_v1/pedagogy_benchmark",
+      "exists": true,
+      "scored_files": 7,
+      "rows_total": 1400,
+      "unique_item_ids_sum": 1400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 1400,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/kimi-k3.1-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/pedagogy_benchmark/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "safe_child_llm",
+      "path": "reports/eval_suites/frontier_v1/safe_child_llm",
+      "exists": true,
+      "scored_files": 11,
+      "rows_total": 2200,
+      "unique_item_ids_sum": 2200,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 2185,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-minimax3/deepseek-v4-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/safe_child_llm/judge-minimax3/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "scivideobench",
+      "path": "reports/eval_suites/frontier_v1/scivideobench",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "student_risk_v2",
+      "path": "reports/eval_suites/frontier_v1/student_risk_v2",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "tutorbench",
+      "path": "reports/eval_suites/frontier_v1/tutorbench",
+      "exists": true,
+      "scored_files": 10,
+      "rows_total": 2000,
+      "unique_item_ids_sum": 2000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval_suites/frontier_v1/tutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval_suites/frontier_v1/tutorbench/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    }
+  ],
+  "full_eval_artifacts": [
+    {
+      "suite": "full_eval",
+      "benchmark": "asap_2",
+      "path": "reports/eval/asap_2",
+      "exists": true,
+      "scored_files": 15,
+      "rows_total": 96533,
+      "unique_item_ids_sum": 96533,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/asap_2/DeepSeek-R1-0528-Qwen3-8B/scored.jsonl",
+        "reports/eval/asap_2/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/asap_2/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/asap_2/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/asap_2/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/asap_2/claude-sonnet-4-6/scored.jsonl",
+        "reports/eval/asap_2/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/asap_2/deepseek-v4-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "ceval",
+      "path": "reports/eval/ceval",
+      "exists": true,
+      "scored_files": 10,
+      "rows_total": 13460,
+      "unique_item_ids_sum": 13460,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 13457,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/ceval/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/ceval/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/ceval/Qwen-Qwen3-8B/scored.jsonl",
+        "reports/eval/ceval/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/ceval/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/ceval/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/ceval/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/ceval/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "edubench",
+      "path": "reports/eval/edubench",
+      "exists": true,
+      "scored_files": 28,
+      "rows_total": 106316,
+      "unique_item_ids_sum": 106316,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 102308,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v3.2",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/edubench/judge-deepseek-v3.2/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/claude-sonnet-4-6/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/doubao-seed-2.0-lite/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/glm-5.1/scored.jsonl",
+        "reports/eval/edubench/judge-deepseek-v3.2/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "eduillustrate",
+      "path": "reports/eval/eduillustrate",
+      "exists": true,
+      "scored_files": 6,
+      "rows_total": 1380,
+      "unique_item_ids_sum": 1380,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/eduillustrate/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/eduillustrate/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/eduillustrate/judge-minimax3/doubao-seed-2.0-lite/scored.jsonl",
+        "reports/eval/eduillustrate/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/eduillustrate/judge-minimax3/kimi-k2.7-code/scored.jsonl",
+        "reports/eval/eduillustrate/judge-minimax3/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "interactscience",
+      "path": "reports/eval/interactscience",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "longtutor_diagnosis",
+      "path": "reports/eval/longtutor_diagnosis",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 8000,
+      "unique_item_ids_sum": 8000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 8000,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/longtutor_diagnosis/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/glm-5.2/scored.jsonl",
+        "reports/eval/longtutor_diagnosis/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "longtutor_evidence",
+      "path": "reports/eval/longtutor_evidence",
+      "exists": true,
+      "scored_files": 15,
+      "rows_total": 45000,
+      "unique_item_ids_sum": 45000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 45000,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/longtutor_evidence/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "longtutor_teaching",
+      "path": "reports/eval/longtutor_teaching",
+      "exists": true,
+      "scored_files": 15,
+      "rows_total": 15000,
+      "unique_item_ids_sum": 15000,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 14999,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/longtutor_teaching/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_mistake_correction",
+      "path": "reports/eval/mathtutorbench_mistake_correction",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 9018,
+      "unique_item_ids_sum": 9018,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 9017,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_mistake_correction/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_correction/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_mistake_location",
+      "path": "reports/eval/mathtutorbench_mistake_location",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 18036,
+      "unique_item_ids_sum": 18036,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 18036,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_mistake_location/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_mistake_location/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_pedagogy",
+      "path": "reports/eval/mathtutorbench_pedagogy",
+      "exists": true,
+      "scored_files": 17,
+      "rows_total": 19550,
+      "unique_item_ids_sum": 19550,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 19550,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/mathtutorbench_pedagogy/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_scaffolding",
+      "path": "reports/eval/mathtutorbench_scaffolding",
+      "exists": true,
+      "scored_files": 17,
+      "rows_total": 19550,
+      "unique_item_ids_sum": 19550,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 19550,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_scaffolding_hard",
+      "path": "reports/eval/mathtutorbench_scaffolding_hard",
+      "exists": true,
+      "scored_files": 17,
+      "rows_total": 5559,
+      "unique_item_ids_sum": 5559,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 5559,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/mathtutorbench_scaffolding_hard/judge-minimax3/MiniMax-M2.7/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_socratic",
+      "path": "reports/eval/mathtutorbench_socratic",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 10552,
+      "unique_item_ids_sum": 10552,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 10552,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_socratic/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/glm-5.2/scored.jsonl",
+        "reports/eval/mathtutorbench_socratic/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mathtutorbench_solution_correctness",
+      "path": "reports/eval/mathtutorbench_solution_correctness",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 18036,
+      "unique_item_ids_sum": 18036,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 18036,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/mathtutorbench_solution_correctness/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mathtutorbench_solution_correctness/glm-5.2/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mmtutorbench",
+      "path": "reports/eval/mmtutorbench",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 6930,
+      "unique_item_ids_sum": 6930,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 6928,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/mmtutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mmtutorbench/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "mooccube_prereq",
+      "path": "reports/eval/mooccube_prereq",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 2400,
+      "unique_item_ids_sum": 2400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 2400,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/mooccube_prereq/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/mooccube_prereq/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/mooccube_prereq/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/mooccube_prereq/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/mooccube_prereq/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/mooccube_prereq/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/mooccube_prereq/glm-5.2/scored.jsonl",
+        "reports/eval/mooccube_prereq/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "p07_selfcheck",
+      "path": "reports/eval/p07_selfcheck",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 4400,
+      "unique_item_ids_sum": 4400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 4396,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/p07_selfcheck/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/p07_selfcheck/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/p07_selfcheck/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/p07_selfcheck/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/p07_selfcheck/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/p07_selfcheck/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/p07_selfcheck/glm-5.2/scored.jsonl",
+        "reports/eval/p07_selfcheck/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "p08_calibration",
+      "path": "reports/eval/p08_calibration",
+      "exists": true,
+      "scored_files": 8,
+      "rows_total": 4400,
+      "unique_item_ids_sum": 4400,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 4399,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/p08_calibration/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/p08_calibration/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/p08_calibration/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/p08_calibration/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/p08_calibration/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/p08_calibration/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/p08_calibration/glm-5.2/scored.jsonl",
+        "reports/eval/p08_calibration/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "pedagogy_benchmark",
+      "path": "reports/eval/pedagogy_benchmark",
+      "exists": true,
+      "scored_files": 15,
+      "rows_total": 16785,
+      "unique_item_ids_sum": 16785,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 16785,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": [
+        "reports/eval/pedagogy_benchmark/DeepSeek-R1-0528-Qwen3-8B/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/claude-sonnet-4-6/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/deepseek-v4-flash/scored.jsonl",
+        "reports/eval/pedagogy_benchmark/deepseek-v4-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "safe_child_llm",
+      "path": "reports/eval/safe_child_llm",
+      "exists": true,
+      "scored_files": 13,
+      "rows_total": 2600,
+      "unique_item_ids_sum": 2600,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 2585,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/safe_child_llm/judge-deepseek-v4-flash/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-deepseek-v4-flash/deepseek-v4-pro/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-deepseek-v4-flash/glm-5.2/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-minimax3/MiniMax-M2.7/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/safe_child_llm/judge-minimax3/deepseek-v4-pro/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "scivideobench",
+      "path": "reports/eval/scivideobench",
+      "exists": false,
+      "scored_files": 0,
+      "rows_total": 0,
+      "unique_item_ids_sum": 0,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [],
+      "scored_file_samples": []
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "student_risk_v2",
+      "path": "reports/eval/student_risk_v2",
+      "exists": true,
+      "scored_files": 6,
+      "rows_total": 2184,
+      "unique_item_ids_sum": 2184,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 2184,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3"
+      ],
+      "scored_file_samples": [
+        "reports/eval/student_risk_v2/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/student_risk_v2/judge-minimax3/deepseek-v4.1-flash/scored.jsonl",
+        "reports/eval/student_risk_v2/judge-minimax3/doubao-seed-2.1-pro/scored.jsonl",
+        "reports/eval/student_risk_v2/judge-minimax3/glm-5.3/scored.jsonl",
+        "reports/eval/student_risk_v2/judge-minimax3/glm-5.3-flash/scored.jsonl",
+        "reports/eval/student_risk_v2/judge-minimax3/minimax3/scored.jsonl"
+      ]
+    },
+    {
+      "suite": "full_eval",
+      "benchmark": "tutorbench",
+      "path": "reports/eval/tutorbench",
+      "exists": true,
+      "scored_files": 9,
+      "rows_total": 13257,
+      "unique_item_ids_sum": 13257,
+      "duplicate_rows_sum": 0,
+      "boolean_correct_rows": 0,
+      "numeric_score_rows": 0,
+      "judge_models": [
+        "MiniMax-M3",
+        "deepseek-v4-flash"
+      ],
+      "scored_file_samples": [
+        "reports/eval/tutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/tutorbench/judge-deepseek-v4-flash/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/tutorbench/judge-deepseek-v4-flash/doubao-seed-2.0-pro/scored.jsonl",
+        "reports/eval/tutorbench/judge-deepseek-v4-flash/minimax3/scored.jsonl",
+        "reports/eval/tutorbench/judge-minimax3/MiniMax-M3.1-Flash-Preview/scored.jsonl",
+        "reports/eval/tutorbench/judge-minimax3/Qwen-Qwen3.5-4B/scored.jsonl",
+        "reports/eval/tutorbench/judge-minimax3/Qwen-Qwen3.8-27B/scored.jsonl",
+        "reports/eval/tutorbench/judge-minimax3/doubao-seed-2.0-pro/scored.jsonl"
+      ]
+    }
+  ],
+  "raw_sources": [
+    {
+      "source_dir": "sources/datasets/asap_2",
+      "exists": true,
+      "file_count": 7,
+      "structured_file_samples": [
+        "sources/datasets/asap_2/data/data_manifest.json",
+        "sources/datasets/asap_2/data/essays.jsonl",
+        "sources/datasets/asap_2/data/source_texts.json",
+        "sources/datasets/asap_2/github/test_x/ASAP_2_Final_github_test.csv",
+        "sources/datasets/asap_2/github/train_x/ASAP_2_Final_github_train.csv",
+        "sources/datasets/asap_2/github/train_x/__MACOSX/._ASAP_2_Final_github_train.csv",
+        "sources/datasets/asap_2/raw/ASAP2_train_sourcetexts.csv"
+      ],
+      "jsonl_rows": 24728,
+      "jsonl_unique_item_ids": 24728
+    },
+    {
+      "source_dir": "sources/datasets/ceval",
+      "exists": true,
+      "file_count": 4,
+      "structured_file_samples": [
+        "sources/datasets/ceval/data/dev.jsonl",
+        "sources/datasets/ceval/data/val.jsonl",
+        "sources/datasets/ceval/subject_mapping.json",
+        "sources/datasets/ceval/submission_example.json"
+      ],
+      "jsonl_rows": 1606,
+      "jsonl_unique_item_ids": 1606
+    },
+    {
+      "source_dir": "sources/datasets/edubench",
+      "exists": true,
+      "file_count": 21,
+      "structured_file_samples": [
+        "sources/datasets/edubench/data/all_data/en_data/AG.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/EC.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/ES.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/IP.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/PCC.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/PLS.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/Q&A.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/QG.jsonl",
+        "sources/datasets/edubench/data/all_data/en_data/TMG.jsonl",
+        "sources/datasets/edubench/data/all_data/model_eval_score/model_sampled_eval_scores.csv",
+        "sources/datasets/edubench/data/all_data/sampled_data/en_data_sampled.jsonl",
+        "sources/datasets/edubench/data/all_data/sampled_data/zh_data_sampled.jsonl"
+      ],
+      "jsonl_rows": 17154,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/eduillustrate",
+      "exists": false,
+      "file_count": 0,
+      "structured_file_samples": [],
+      "jsonl_rows": 0,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/interactscience",
+      "exists": true,
+      "file_count": 154,
+      "structured_file_samples": [
+        "sources/datasets/interactscience/data/interactscience.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Llama-3.1-70B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Llama-3.1-8B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen2.5-Coder-14B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen2.5-Coder-32B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen2.5-Coder-7B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen2.5-VL-72B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen2.5-VL-7B-Instruct.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen3-1.7B.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen3-14B.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen3-235B-A22B-Instruct-2507.jsonl",
+        "sources/datasets/interactscience/eval/interactscience_lm_Qwen3-235B-A22B-Thinking-2507.jsonl"
+      ],
+      "jsonl_rows": 26704,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/longtutor",
+      "exists": true,
+      "file_count": 9,
+      "structured_file_samples": [
+        "sources/datasets/longtutor/data/MOOCRadar/pipeline_an.jsonl",
+        "sources/datasets/longtutor/data/MOOCRadar/questions.jsonl",
+        "sources/datasets/longtutor/data/MOOCRadar/sequences_long.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/history_features_lastq_scale.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/human_an_updated.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/pipeline_an_scale.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/questions.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/sequences_long.jsonl",
+        "sources/datasets/longtutor/data_manifest.json"
+      ],
+      "jsonl_rows": 26367,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/longtutor",
+      "exists": true,
+      "file_count": 9,
+      "structured_file_samples": [
+        "sources/datasets/longtutor/data/MOOCRadar/pipeline_an.jsonl",
+        "sources/datasets/longtutor/data/MOOCRadar/questions.jsonl",
+        "sources/datasets/longtutor/data/MOOCRadar/sequences_long.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/history_features_lastq_scale.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/human_an_updated.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/pipeline_an_scale.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/questions.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/sequences_long.jsonl",
+        "sources/datasets/longtutor/data_manifest.json"
+      ],
+      "jsonl_rows": 26367,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/longtutor",
+      "exists": true,
+      "file_count": 9,
+      "structured_file_samples": [
+        "sources/datasets/longtutor/data/MOOCRadar/pipeline_an.jsonl",
+        "sources/datasets/longtutor/data/MOOCRadar/questions.jsonl",
+        "sources/datasets/longtutor/data/MOOCRadar/sequences_long.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/history_features_lastq_scale.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/human_an_updated.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/pipeline_an_scale.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/questions.jsonl",
+        "sources/datasets/longtutor/data/XES3G5M/sequences_long.jsonl",
+        "sources/datasets/longtutor/data_manifest.json"
+      ],
+      "jsonl_rows": 26367,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mathtutorbench",
+      "exists": true,
+      "file_count": 6,
+      "structured_file_samples": [
+        "sources/datasets/mathtutorbench/data/gsm8k_main.jsonl",
+        "sources/datasets/mathtutorbench/data/gsm8k_socratic.jsonl",
+        "sources/datasets/mathtutorbench/data/pref_test.jsonl",
+        "sources/datasets/mathtutorbench/data/stepverify.jsonl",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge.json",
+        "sources/datasets/mathtutorbench/datasets/mathdial_bridge_hard.json"
+      ],
+      "jsonl_rows": 4122,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mmtutorbench",
+      "exists": true,
+      "file_count": 2,
+      "structured_file_samples": [
+        "sources/datasets/mmtutorbench/data_manifest.json",
+        "sources/datasets/mmtutorbench/mmtutorbench.jsonl"
+      ],
+      "jsonl_rows": 770,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/mooccube",
+      "exists": true,
+      "file_count": 41,
+      "structured_file_samples": [
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/concept.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/course.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/paper.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_concept_paper.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_course_concept.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_course_video.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_field_concept.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_prerequisite_dependency.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_school_course.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_school_teacher.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_teacher_course.csv",
+        "sources/datasets/mooccube/MOOCCube/MOOCQA/tuples/rel_user_course.csv"
+      ],
+      "jsonl_rows": 300,
+      "jsonl_unique_item_ids": 300
+    },
+    {
+      "source_dir": "sources/datasets/p07_selfcheck",
+      "exists": false,
+      "file_count": 0,
+      "structured_file_samples": [],
+      "jsonl_rows": 0,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/p08_calibration",
+      "exists": false,
+      "file_count": 0,
+      "structured_file_samples": [],
+      "jsonl_rows": 0,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/pedagogy_benchmark",
+      "exists": true,
+      "file_count": 2,
+      "structured_file_samples": [
+        "sources/datasets/pedagogy_benchmark/data/examples.jsonl",
+        "sources/datasets/pedagogy_benchmark/data/questions.jsonl"
+      ],
+      "jsonl_rows": 1167,
+      "jsonl_unique_item_ids": 1143
+    },
+    {
+      "source_dir": "sources/datasets/safe_child_llm",
+      "exists": true,
+      "file_count": 2,
+      "structured_file_samples": [
+        "sources/datasets/safe_child_llm/data/prompts.jsonl",
+        "sources/datasets/safe_child_llm/data_manifest.json"
+      ],
+      "jsonl_rows": 200,
+      "jsonl_unique_item_ids": 200
+    },
+    {
+      "source_dir": "sources/datasets/scivideobench",
+      "exists": true,
+      "file_count": 1,
+      "structured_file_samples": [
+        "sources/datasets/scivideobench/scivideobench_1k.jsonl"
+      ],
+      "jsonl_rows": 1000,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/student_risk_v2",
+      "exists": false,
+      "file_count": 0,
+      "structured_file_samples": [],
+      "jsonl_rows": 0,
+      "jsonl_unique_item_ids": 0
+    },
+    {
+      "source_dir": "sources/datasets/tutorbench",
+      "exists": true,
+      "file_count": 2,
+      "structured_file_samples": [
+        "sources/datasets/tutorbench/data_manifest.json",
+        "sources/datasets/tutorbench/tutorbench.jsonl"
+      ],
+      "jsonl_rows": 1473,
+      "jsonl_unique_item_ids": 0
+    }
+  ],
+  "historical_error_and_analysis_reports": {
+    "frontier_selection": {
+      "path": "reports/frontier_selection_v1/selection_report.md",
+      "exists": true,
+      "sha256": "d18b38fa6f2582b7e3e580187beb945516c23874b9322169dc2196c1a601ab0a"
+    },
+    "frontier_validation": {
+      "path": "reports/frontier_selection_v1/validation_report.md",
+      "exists": true,
+      "sha256": "a9162617a2882609f912d583225a8a0acad29c36af00546f007603dc36f4f47c"
+    },
+    "mini_selection": {
+      "path": "reports/mini_selection_v2/selection_report.md",
+      "exists": true,
+      "sha256": "96dda517c5ff968329532d305da57e006208842c5727d9cbf8ef9bffe60a1d60"
+    },
+    "aggregate_index": {
+      "path": "reports/eval/_aggregate/index.md",
+      "exists": true,
+      "sha256": "11391a683d6ea6ea2662976150f0e57e38d7689b590e68a3ca92bef827233335"
+    },
+    "edubench_item_level": {
+      "path": "reports/eval/edubench/_analysis/item_level_analysis.json",
+      "exists": true,
+      "sha256": "77489e4e1dc39b782b72f6c23aad4778df828b2c0a681f27c5c3e3aee8e47436"
+    },
+    "edubench_judge_swap": {
+      "path": "reports/eval/edubench/_judge_swap/agreement.json",
+      "exists": true,
+      "sha256": "5cd7143331991d15427b6665b4e906456895ab65a862bf3e672943a897eb91af"
+    },
+    "student_risk_error_stats": {
+      "path": "reports/eval/student_risk_v2/_audit/codex-manual-error-stats.json",
+      "exists": true,
+      "sha256": "88e115766db97e3abbffe3b11cbcb02602b5ac9116445e54c955968509d60408"
+    },
+    "student_risk_type_analysis": {
+      "path": "reports/eval/student_risk_v2/_audit/codex-manual-type-analysis.md",
+      "exists": true,
+      "sha256": "73ca2443f22c0bbf684f0d1660494303de23f758db19d4badc47d91e83b37d01"
+    },
+    "existing_evidence_matrix": {
+      "path": "doc/edu_last_exam_evidence_matrix_2026-11-09.md",
+      "exists": true,
+      "sha256": "3e019b870cbdda833b27c566e7427afbf6dfafc1022adbebb81ca954bd07b8c2"
+    },
+    "frontier_failure_cases": {
+      "path": "reports/edubenchassistant/education-llm-frontier-failure-cases-2026-11-06.html",
+      "exists": true,
+      "sha256": "531301f2969f3d94988f63e122c4f3a4ddcc9459722a00c3a79f96b2ff5bdff9"
+    }
+  },
+  "historical_selection_stats": {
+    "frontier_v1": [
+      {
+        "benchmark": "mmlu_pro",
+        "items": 80,
+        "unanimous_failure": 28,
+        "mixed_outcome": 48,
+        "unanimous_pass": 4,
+        "mean_error_rate": 0.7033,
+        "mean_pairwise_disagreement": 0.37
+      },
+      {
+        "benchmark": "agieval",
+        "items": 80,
+        "unanimous_failure": 28,
+        "mixed_outcome": 52,
+        "unanimous_pass": 0,
+        "mean_error_rate": 0.7244,
+        "mean_pairwise_disagreement": 0.3946
+      },
+      {
+        "benchmark": "olympiadbench",
+        "items": 170,
+        "unanimous_failure": 59,
+        "mixed_outcome": 102,
+        "unanimous_pass": 9,
+        "mean_error_rate": 0.6655,
+        "mean_pairwise_disagreement": 0.3929
+      },
+      {
+        "benchmark": "asap_2",
+        "items": 150,
+        "unanimous_failure": 5,
+        "mixed_outcome": 138,
+        "unanimous_pass": 7,
+        "mean_error_rate": 0.4485,
+        "mean_pairwise_disagreement": 0.4427
+      },
+      {
+        "benchmark": "sas_bench",
+        "items": 250,
+        "unanimous_failure": 88,
+        "mixed_outcome": 150,
+        "unanimous_pass": 12,
+        "mean_error_rate": 0.652,
+        "mean_pairwise_disagreement": 0.6
+      },
+      {
+        "benchmark": "eduguard_sata",
+        "items": 150,
+        "unanimous_failure": 53,
+        "mixed_outcome": 90,
+        "unanimous_pass": 7,
+        "mean_error_rate": 0.7213,
+        "mean_pairwise_disagreement": 0.36
+      },
+      {
+        "benchmark": "edubench",
+        "items": 150,
+        "unanimous_failure": 0,
+        "mixed_outcome": 143,
+        "unanimous_pass": 7,
+        "mean_error_rate": 0.3177,
+        "mean_pairwise_disagreement": 0.3907
+      },
+      {
+        "benchmark": "longtutor_evidence",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.71,
+        "mean_pairwise_disagreement": 0.36
+      },
+      {
+        "benchmark": "longtutor_diagnosis",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.71,
+        "mean_pairwise_disagreement": 0.36
+      },
+      {
+        "benchmark": "longtutor_teaching",
+        "items": 100,
+        "unanimous_failure": 19,
+        "mixed_outcome": 76,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.5466,
+        "mean_pairwise_disagreement": 0.4567
+      },
+      {
+        "benchmark": "mathtutorbench_problem_solving",
+        "items": 69,
+        "unanimous_failure": 16,
+        "mixed_outcome": 48,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.4899,
+        "mean_pairwise_disagreement": 0.3246
+      },
+      {
+        "benchmark": "mathtutorbench_solution_correctness",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.684,
+        "mean_pairwise_disagreement": 0.36
+      },
+      {
+        "benchmark": "mathtutorbench_mistake_location",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.684,
+        "mean_pairwise_disagreement": 0.36
+      },
+      {
+        "benchmark": "mathtutorbench_mistake_correction",
+        "items": 100,
+        "unanimous_failure": 28,
+        "mixed_outcome": 67,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.6235,
+        "mean_pairwise_disagreement": 0.357
+      },
+      {
+        "benchmark": "mathtutorbench_socratic",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.6211,
+        "mean_pairwise_disagreement": 0.36
+      },
+      {
+        "benchmark": "mathtutorbench_pedagogy",
+        "items": 100,
+        "unanimous_failure": 11,
+        "mixed_outcome": 84,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.528,
+        "mean_pairwise_disagreement": 0.466
+      },
+      {
+        "benchmark": "mathtutorbench_scaffolding",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.722,
+        "mean_pairwise_disagreement": 0.358
+      },
+      {
+        "benchmark": "ceval",
+        "items": 150,
+        "unanimous_failure": 36,
+        "mixed_outcome": 107,
+        "unanimous_pass": 7,
+        "mean_error_rate": 0.5506,
+        "mean_pairwise_disagreement": 0.3562
+      },
+      {
+        "benchmark": "pedagogy_benchmark",
+        "items": 200,
+        "unanimous_failure": 53,
+        "mixed_outcome": 137,
+        "unanimous_pass": 10,
+        "mean_error_rate": 0.623,
+        "mean_pairwise_disagreement": 0.383
+      },
+      {
+        "benchmark": "mathvista",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.6733,
+        "mean_pairwise_disagreement": 0.4
+      },
+      {
+        "benchmark": "eduguard_adversarial",
+        "items": 150,
+        "unanimous_failure": 36,
+        "mixed_outcome": 107,
+        "unanimous_pass": 7,
+        "mean_error_rate": 0.5967,
+        "mean_pairwise_disagreement": 0.4756
+      },
+      {
+        "benchmark": "ifeval",
+        "items": 100,
+        "unanimous_failure": 6,
+        "mixed_outcome": 89,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.396,
+        "mean_pairwise_disagreement": 0.446
+      },
+      {
+        "benchmark": "mmtutorbench",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.6233,
+        "mean_pairwise_disagreement": 0.4
+      },
+      {
+        "benchmark": "k12vista",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.601,
+        "mean_pairwise_disagreement": 0.4
+      },
+      {
+        "benchmark": "k12bench",
+        "items": 200,
+        "unanimous_failure": 70,
+        "mixed_outcome": 120,
+        "unanimous_pass": 10,
+        "mean_error_rate": 0.7209,
+        "mean_pairwise_disagreement": 0.4
+      },
+      {
+        "benchmark": "tutorbench",
+        "items": 200,
+        "unanimous_failure": 70,
+        "mixed_outcome": 120,
+        "unanimous_pass": 10,
+        "mean_error_rate": 0.5586,
+        "mean_pairwise_disagreement": 0.4
+      },
+      {
+        "benchmark": "p07_selfcheck",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.6747,
+        "mean_pairwise_disagreement": 0.362
+      },
+      {
+        "benchmark": "p08_calibration",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.653,
+        "mean_pairwise_disagreement": 0.3587
+      },
+      {
+        "benchmark": "p08_abstention",
+        "items": 100,
+        "unanimous_failure": 22,
+        "mixed_outcome": 73,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.554,
+        "mean_pairwise_disagreement": 0.352
+      },
+      {
+        "benchmark": "mooccube_prereq",
+        "items": 100,
+        "unanimous_failure": 35,
+        "mixed_outcome": 60,
+        "unanimous_pass": 5,
+        "mean_error_rate": 0.718,
+        "mean_pairwise_disagreement": 0.31
+      },
+      {
+        "benchmark": "mathtutorbench_pedagogy_hard",
+        "items": 75,
+        "unanimous_failure": 4,
+        "mixed_outcome": 67,
+        "unanimous_pass": 4,
+        "mean_error_rate": 0.5347,
+        "mean_pairwise_disagreement": 0.4427
+      },
+      {
+        "benchmark": "mathtutorbench_scaffolding_hard",
+        "items": 75,
+        "unanimous_failure": 26,
+        "mixed_outcome": 45,
+        "unanimous_pass": 4,
+        "mean_error_rate": 0.6987,
+        "mean_pairwise_disagreement": 0.352
+      },
+      {
+        "benchmark": "mrbench_tutor",
+        "items": 60,
+        "unanimous_failure": 5,
+        "mixed_outcome": 52,
+        "unanimous_pass": 3,
+        "mean_error_rate": 0.43,
+        "mean_pairwise_disagreement": 0.49
+      },
+      {
+        "benchmark": "bea2025_tutor",
+        "items": 60,
+        "unanimous_failure": 12,
+        "mixed_outcome": 45,
+        "unanimous_pass": 3,
+        "mean_error_rate": 0.56,
+        "mean_pairwise_disagreement": 0.45
+      },
+      {
+        "benchmark": "mrbench_judge",
+        "items": 60,
+        "unanimous_failure": 21,
+        "mixed_outcome": 38,
+        "unanimous_pass": 1,
+        "mean_error_rate": 0.73,
+        "mean_pairwise_disagreement": 0.38
+      },
+      {
+        "benchmark": "bea2025_judge",
+        "items": 60,
+        "unanimous_failure": 21,
+        "mixed_outcome": 36,
+        "unanimous_pass": 3,
+        "mean_error_rate": 0.71,
+        "mean_pairwise_disagreement": 0.36
+      }
+    ],
+    "mini_v2": [
+      {
+        "benchmark": "mmlu_pro",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 80,
+        "full_items": 12032,
+        "selection_ratio": 0.7
+      },
+      {
+        "benchmark": "agieval",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 80,
+        "full_items": 7272,
+        "selection_ratio": 1.1
+      },
+      {
+        "benchmark": "olympiadbench",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 170,
+        "full_items": 6728,
+        "selection_ratio": 2.5
+      },
+      {
+        "benchmark": "asap_2",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 150,
+        "full_items": 7421,
+        "selection_ratio": 2.0
+      },
+      {
+        "benchmark": "sas_bench",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 250,
+        "full_items": 4109,
+        "selection_ratio": 6.1
+      },
+      {
+        "benchmark": "eduguard_sata",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 150,
+        "full_items": 5270,
+        "selection_ratio": 2.8
+      },
+      {
+        "benchmark": "edubench",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 150,
+        "full_items": 3797,
+        "selection_ratio": 4.0
+      },
+      {
+        "benchmark": "longtutor_evidence",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 3003,
+        "selection_ratio": 3.3
+      },
+      {
+        "benchmark": "longtutor_diagnosis",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1001,
+        "selection_ratio": 10.0
+      },
+      {
+        "benchmark": "longtutor_teaching",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1001,
+        "selection_ratio": 10.0
+      },
+      {
+        "benchmark": "mathtutorbench_problem_solving",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1319,
+        "selection_ratio": 7.6
+      },
+      {
+        "benchmark": "mathtutorbench_solution_correctness",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 2004,
+        "selection_ratio": 5.0
+      },
+      {
+        "benchmark": "mathtutorbench_mistake_location",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 2004,
+        "selection_ratio": 5.0
+      },
+      {
+        "benchmark": "mathtutorbench_mistake_correction",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1002,
+        "selection_ratio": 10.0
+      },
+      {
+        "benchmark": "mathtutorbench_socratic",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1319,
+        "selection_ratio": 7.6
+      },
+      {
+        "benchmark": "mathtutorbench_pedagogy",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1150,
+        "selection_ratio": 8.7
+      },
+      {
+        "benchmark": "mathtutorbench_scaffolding",
+        "profile": "core",
+        "role": "A",
+        "selected_items": 100,
+        "full_items": 1150,
+        "selection_ratio": 8.7
+      },
+      {
+        "benchmark": "ceval",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 150,
+        "full_items": 1346,
+        "selection_ratio": 11.1
+      },
+      {
+        "benchmark": "pedagogy_benchmark",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 200,
+        "full_items": 1119,
+        "selection_ratio": 17.9
+      },
+      {
+        "benchmark": "mathvista",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 100,
+        "full_items": 1000,
+        "selection_ratio": 10.0
+      },
+      {
+        "benchmark": "eduguard_adversarial",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 150,
+        "full_items": 801,
+        "selection_ratio": 18.7
+      },
+      {
+        "benchmark": "ifeval",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 100,
+        "full_items": 541,
+        "selection_ratio": 18.5
+      },
+      {
+        "benchmark": "mmtutorbench",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 100,
+        "full_items": 770,
+        "selection_ratio": 13.0
+      },
+      {
+        "benchmark": "k12vista",
+        "profile": "core",
+        "role": "B",
+        "selected_items": 100,
+        "full_items": 600,
+        "selection_ratio": 16.7
+      },
+      {
+        "benchmark": "k12bench",
+        "profile": "core",
+        "role": "synthetic_expansion",
+        "selected_items": 200,
+        "full_items": 23640,
+        "selection_ratio": 0.8
+      },
+      {
+        "benchmark": "tutorbench",
+        "profile": "core",
+        "role": "education_core",
+        "selected_items": 200,
+        "full_items": 1473,
+        "selection_ratio": 13.6
+      },
+      {
+        "benchmark": "p07_selfcheck",
+        "profile": "core",
+        "role": "diagnostic",
+        "selected_items": 100,
+        "full_items": 550,
+        "selection_ratio": 18.2
+      },
+      {
+        "benchmark": "p08_calibration",
+        "profile": "core",
+        "role": "diagnostic",
+        "selected_items": 100,
+        "full_items": 550,
+        "selection_ratio": 18.2
+      },
+      {
+        "benchmark": "p08_abstention",
+        "profile": "core",
+        "role": "diagnostic",
+        "selected_items": 100,
+        "full_items": 500,
+        "selection_ratio": 20.0
+      },
+      {
+        "benchmark": "mooccube_prereq",
+        "profile": "core",
+        "role": "diagnostic",
+        "selected_items": 100,
+        "full_items": 300,
+        "selection_ratio": 33.3
+      },
+      {
+        "benchmark": "mathtutorbench_pedagogy_hard",
+        "profile": "frontier",
+        "role": "frontier",
+        "selected_items": 75,
+        "full_items": 327,
+        "selection_ratio": 22.9
+      },
+      {
+        "benchmark": "mathtutorbench_scaffolding_hard",
+        "profile": "frontier",
+        "role": "frontier",
+        "selected_items": 75,
+        "full_items": 327,
+        "selection_ratio": 22.9
+      },
+      {
+        "benchmark": "mrbench_tutor",
+        "profile": "frontier",
+        "role": "frontier",
+        "selected_items": 60,
+        "full_items": 200,
+        "selection_ratio": 30.0
+      },
+      {
+        "benchmark": "bea2025_tutor",
+        "profile": "frontier",
+        "role": "frontier",
+        "selected_items": 60,
+        "full_items": 300,
+        "selection_ratio": 20.0
+      },
+      {
+        "benchmark": "mrbench_judge",
+        "profile": "judge",
+        "role": "A",
+        "selected_items": 60,
+        "full_items": 13240,
+        "selection_ratio": 0.5
+      },
+      {
+        "benchmark": "bea2025_judge",
+        "profile": "judge",
+        "role": "A",
+        "selected_items": 60,
+        "full_items": 9904,
+        "selection_ratio": 0.6
+      }
+    ]
+  },
+  "interpretation": [
+    "Existing scored files are inventory evidence; they do not establish item validity or human difficulty.",
+    "Frontier and mini selections are different samples; do not average their rates.",
+    "Judge-dependent scores require judge-swap or human review before promotion.",
+    "K12Bench old full outputs with duplicate identity must not be mined as all-wrong candidates until rerun with the repaired adapter."
+  ]
+}

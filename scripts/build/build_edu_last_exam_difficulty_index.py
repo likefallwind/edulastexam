@@ -18,6 +18,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SOURCE = ROOT.parent / "edubenchmark"
 MAP_PATH = ROOT / "data/edu_last_exam_difficulty_mining_v1/direction_mechanism_map.json"
+ROUTE_MATRIX_PATH = ROOT / "data/edu_last_exam_evidence_route_matrix_v1/route_matrix.json"
 
 ALLOWED_METADATA = {
     "buckets", "task", "field", "variant", "chance", "n_constraints",
@@ -104,13 +105,26 @@ def safe_metadata(row: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
-def direction_lookup(mapping: dict[str, Any], benchmark: str) -> list[str]:
+def direction_lookup(mapping: dict[str, Any], benchmark: str, route_matrix: dict[str, Any] | None = None) -> list[str]:
     hint = mapping.get("benchmark_hints", {}).get(benchmark, {})
-    ids = hint.get("direction_ids", [])
-    return [str(value) for value in ids]
+    ids = {str(value) for value in hint.get("direction_ids", [])}
+    if route_matrix:
+        for direction in route_matrix.get("directions", []):
+            if benchmark in direction.get("benchmarks", []):
+                ids.add(str(direction["direction_id"]))
+    return sorted(ids)
 
 
-def collect_benchmark(source: Path, suite: str, benchmark: str, mapping: dict[str, Any]) -> dict[str, Any]:
+def scoring_metadata(observations: list[tuple[str, bool, dict[str, Any]]]) -> dict[str, Any]:
+    judge_models = sorted({str(row["judge_model"]) for _, _, row in observations if row.get("judge_model")})
+    has_numeric_score = any(isinstance(row.get("score"), (int, float)) for _, _, row in observations)
+    return {
+        "scoring_mode": "judge_dependent" if judge_models else ("numeric_score" if has_numeric_score else "rule_or_exact"),
+        "judge_models": judge_models,
+    }
+
+
+def collect_benchmark(source: Path, suite: str, benchmark: str, mapping: dict[str, Any], route_matrix: dict[str, Any]) -> dict[str, Any]:
     list_path = item_list_path(source, suite, benchmark)
     if not list_path.exists():
         return {"suite": suite, "benchmark": benchmark, "status": "missing_item_list", "records": []}
@@ -155,11 +169,12 @@ def collect_benchmark(source: Path, suite: str, benchmark: str, mapping: dict[st
         else:
             outcome = "mixed_outcome"
         metadata = safe_metadata(observations[0][2]) if observations else {}
+        score_meta = scoring_metadata(observations)
         records.append({
             "suite": suite,
             "benchmark": benchmark,
             "item_id": item_id,
-            "direction_ids": direction_lookup(mapping, benchmark),
+            "direction_ids": direction_lookup(mapping, benchmark, route_matrix),
             "panel_models": model_names,
             "n_models": len(model_names),
             "n_scored": n_scored,
@@ -172,6 +187,7 @@ def collect_benchmark(source: Path, suite: str, benchmark: str, mapping: dict[st
             "gold_stability": "not_checked",
             "human_difficulty": "unmeasured",
             "mapping_status": "provisional_benchmark_hint",
+            **score_meta,
             "metadata": metadata,
         })
 
@@ -194,7 +210,7 @@ def collect_benchmark(source: Path, suite: str, benchmark: str, mapping: dict[st
     }
 
 
-def collect_full_eval(source: Path, benchmark: str, mapping: dict[str, Any]) -> dict[str, Any]:
+def collect_full_eval(source: Path, benchmark: str, mapping: dict[str, Any], route_matrix: dict[str, Any]) -> dict[str, Any]:
     """Aggregate the full item-level runs, when the source has canonical JSONL IDs."""
     source_items = full_item_source_path(source, benchmark)
     if not source_items.exists():
@@ -242,7 +258,7 @@ def collect_full_eval(source: Path, benchmark: str, mapping: dict[str, Any]) -> 
             "suite": "full_eval",
             "benchmark": benchmark,
             "item_id": item_id,
-            "direction_ids": direction_lookup(mapping, benchmark),
+            "direction_ids": direction_lookup(mapping, benchmark, route_matrix),
             "panel_models": model_names,
             "n_models": len(model_names),
             "n_scored": n_scored,
@@ -255,6 +271,7 @@ def collect_full_eval(source: Path, benchmark: str, mapping: dict[str, Any]) -> 
             "gold_stability": "not_checked",
             "human_difficulty": "unmeasured",
             "mapping_status": "provisional_benchmark_hint",
+            **scoring_metadata(observations),
             "metadata": safe_metadata(observations[0][2]) if observations else {},
         })
     outcome_counts = collections.Counter(row["outcome"] for row in records)
@@ -322,15 +339,16 @@ def main() -> int:
     args = parse_args()
     source = args.source_root.expanduser().resolve()
     mapping = read_json(MAP_PATH)
+    route_matrix = read_json(ROUTE_MATRIX_PATH)
     collections_out: list[dict[str, Any]] = []
     all_records: list[dict[str, Any]] = []
     for suite in args.suites:
         for benchmark in args.benchmarks:
-            result = collect_benchmark(source, suite, benchmark, mapping)
+            result = collect_benchmark(source, suite, benchmark, mapping, route_matrix)
             collections_out.append({key: value for key, value in result.items() if key != "records"})
             all_records.extend(result.get("records", []))
     for benchmark in args.full_benchmarks:
-        result = collect_full_eval(source, benchmark, mapping)
+        result = collect_full_eval(source, benchmark, mapping, route_matrix)
         collections_out.append({key: value for key, value in result.items() if key != "records"})
         all_records.extend(result.get("records", []))
 

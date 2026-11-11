@@ -7,20 +7,158 @@
     "frontier_v1"
   ],
   "benchmarks": [
+    "agieval",
+    "asap_2",
+    "bea2025_judge",
+    "bea2025_tutor",
     "ceval",
-    "mooccube_prereq"
+    "edubench",
+    "eduguard_adversarial",
+    "eduguard_sata",
+    "ifeval",
+    "k12bench",
+    "k12vista",
+    "longtutor_diagnosis",
+    "longtutor_evidence",
+    "longtutor_teaching",
+    "mathtutorbench_mistake_correction",
+    "mathtutorbench_mistake_location",
+    "mathtutorbench_pedagogy",
+    "mathtutorbench_pedagogy_hard",
+    "mathtutorbench_problem_solving",
+    "mathtutorbench_scaffolding",
+    "mathtutorbench_scaffolding_hard",
+    "mathtutorbench_socratic",
+    "mathtutorbench_solution_correctness",
+    "mathvista",
+    "mmlu_pro",
+    "mmtutorbench",
+    "mooccube_prereq",
+    "mrbench_judge",
+    "mrbench_tutor",
+    "olympiadbench",
+    "p07_selfcheck",
+    "p08_abstention",
+    "p08_calibration",
+    "pedagogy_benchmark",
+    "sas_bench",
+    "tutorbench"
   ],
   "full_benchmarks": [
     "ceval",
     "mooccube_prereq"
   ],
-  "n_records": 2146,
+  "n_records": 9855,
   "cross_suite_candidate_counts": {
-    "both_p_correct_le_0.25": 9,
-    "both_p_correct_le_0.50": 17,
-    "both_unanimous_failure": 8
+    "both_p_correct_le_0.50": 120,
+    "both_unanimous_failure": 67,
+    "both_p_correct_le_0.25": 64
   },
   "collections": [
+    {
+      "suite": "mini_v2",
+      "benchmark": "agieval",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/agieval_items_v2.txt",
+      "item_list_sha256": "cc098c56dcf22482b45da9b05e3f5e1324621457193b5c8842062762f0d2d993",
+      "n_items": 80,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 25,
+        "unanimous_failure": 2,
+        "unanimous_pass": 53
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 4,
+        "p_correct_le_0.50": 8
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "asap_2",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/asap_2_items_v2.txt",
+      "item_list_sha256": "ff73244155e96c33b7d6036fa2a6dc30fb5a95f23b7e3c0cf7b01a4a63e3443f",
+      "n_items": 150,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "incomplete_panel": 150
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "bea2025_judge",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/bea2025_judge_items_v2.txt",
+      "item_list_sha256": "cdc58aa9629af30acd6a06469af9a836f1e8bd13b1efa43d9831cedeac2c9fd1",
+      "n_items": 60,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 31,
+        "unanimous_failure": 6,
+        "unanimous_pass": 23
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 15,
+        "p_correct_le_0.50": 24
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "bea2025_tutor",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/bea2025_tutor_items_v2.txt",
+      "item_list_sha256": "846d8225d518704f5842fac6e31b4eda51aed1b66d6b06be1da41d3ba6998200",
+      "n_items": 60,
+      "panel_models": [
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 2,
+      "outcome_counts": {
+        "mixed_outcome": 14,
+        "unanimous_failure": 3,
+        "unanimous_pass": 43
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 3,
+        "p_correct_le_0.50": 17
+      }
+    },
     {
       "suite": "mini_v2",
       "benchmark": "ceval",
@@ -51,6 +189,516 @@
     },
     {
       "suite": "mini_v2",
+      "benchmark": "edubench",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/edubench_items_v2.txt",
+      "item_list_sha256": "c9c3ba71df9fea37c962e370b2c58a0f9edb632bbd845819a3ca85bac087cd8e",
+      "n_items": 150,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro"
+      ],
+      "n_panel_models": 2,
+      "outcome_counts": {
+        "incomplete_panel": 150
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "eduguard_adversarial",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/eduguard_adversarial_items_v2.txt",
+      "item_list_sha256": "65a67fa0eba70013365922f8ebce0c23a25c634440caa0bdb44f982777bef2dc",
+      "n_items": 150,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 103,
+        "unanimous_failure": 1,
+        "unanimous_pass": 46
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 17,
+        "p_correct_le_0.50": 73
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "eduguard_sata",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/eduguard_sata_items_v2.txt",
+      "item_list_sha256": "c8fd2a704dfdb4daa35923d76f06d55dc564c8a871258bc171d7a765fee5c81f",
+      "n_items": 150,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 69,
+        "unanimous_failure": 18,
+        "unanimous_pass": 63
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 34,
+        "p_correct_le_0.50": 45
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "ifeval",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/ifeval_items_v2.txt",
+      "item_list_sha256": "37f7cfaeb065e697ec68460f496ad7b920012760b6212d93104121aed673ab88",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 32,
+        "unanimous_failure": 1,
+        "unanimous_pass": 67
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 4,
+        "p_correct_le_0.50": 8
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "k12bench",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/k12bench_items_v2.txt",
+      "item_list_sha256": "085b20dbc93bfcf12e6d3ecc7334f67b0f9284afa0795d51ea3df88d171d65d4",
+      "n_items": 200,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "deepseek-v4-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 5,
+      "outcome_counts": {
+        "mixed_outcome": 75,
+        "unanimous_failure": 49,
+        "unanimous_pass": 76
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 68,
+        "p_correct_le_0.50": 84
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "k12vista",
+      "status": "missing_scored_runs",
+      "item_list": "data/mini_selection_v2/k12vista_items_v2.txt",
+      "item_list_sha256": "12b8fe5572e1ae21ef63792deb1f409c7acaa141557c8632e37ed7d85138a641",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "longtutor_diagnosis",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/longtutor_diagnosis_items_v2.txt",
+      "item_list_sha256": "f1030d5a6992460bae33eb86df712e7fe75fd215bdc76751858d278af0a7ec19",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M2.7",
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 44,
+        "p_correct_le_0.50": 73
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "longtutor_evidence",
+      "status": "missing_scored_runs",
+      "item_list": "data/mini_selection_v2/longtutor_evidence_items_v2.txt",
+      "item_list_sha256": "056232d16713e695e19b6878a80a83580fe1ee9bfa428d4a8da73c120eca359d",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "longtutor_teaching",
+      "status": "missing_scored_runs",
+      "item_list": "data/mini_selection_v2/longtutor_teaching_items_v2.txt",
+      "item_list_sha256": "cce130cc097706dd38816333a9fb97e22f8457ea5b28d23a954373ae726eef02",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_mistake_correction",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_mistake_correction_items_v2.txt",
+      "item_list_sha256": "b125c0c546c0d52c973c59cae1a43d49c9e186f00ada6ee172c3ba0049b574a4",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 29,
+        "unanimous_failure": 1,
+        "unanimous_pass": 70
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 6,
+        "p_correct_le_0.50": 10
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_mistake_location",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_mistake_location_items_v2.txt",
+      "item_list_sha256": "c31f464a7c280a9676e855760429eb0f4614ea0c19d81f5daf5beeeb586bbf4c",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 27,
+        "unanimous_failure": 13,
+        "unanimous_pass": 60
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 17,
+        "p_correct_le_0.50": 20
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_pedagogy",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_pedagogy_items_v2.txt",
+      "item_list_sha256": "d155171d1ab6fa400ebd407dd8ba7699dfd82d8b89cba6eb8cb8bac5bbd38d3b",
+      "n_items": 100,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 32,
+        "unanimous_failure": 8,
+        "unanimous_pass": 60
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 18,
+        "p_correct_le_0.50": 29
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_pedagogy_hard",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_pedagogy_hard_items_v2.txt",
+      "item_list_sha256": "54aac58524b675045a38fd54d93a6d323f44794c17f98d3a72a6aa18d79fe948",
+      "n_items": 75,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 32,
+        "unanimous_failure": 6,
+        "unanimous_pass": 37
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 15,
+        "p_correct_le_0.50": 22
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_problem_solving",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_problem_solving_items_v2.txt",
+      "item_list_sha256": "d1b0bae8935ec945211e403c944fd1a3ab4c1ee33545f00da7e5860abebc94d5",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 9,
+        "unanimous_pass": 91
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_scaffolding",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_scaffolding_items_v2.txt",
+      "item_list_sha256": "d2b640567e6bb34277842dc0d231dee24a5b197758d1df598bab135c6535b537",
+      "n_items": 100,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 47,
+        "unanimous_failure": 27,
+        "unanimous_pass": 26
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 41,
+        "p_correct_le_0.50": 63
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_scaffolding_hard",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_scaffolding_hard_items_v2.txt",
+      "item_list_sha256": "e0934a41c78e684818ace01d94c050f9b02caaf49696faed503037f1965825cd",
+      "n_items": 75,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 44,
+        "unanimous_failure": 22,
+        "unanimous_pass": 9
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 42,
+        "p_correct_le_0.50": 55
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_socratic",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_socratic_items_v2.txt",
+      "item_list_sha256": "53b9947f9a78a9bc83635ffee393322db563140fe1c39a2cbb8e90f9dd1963c1",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 34,
+        "unanimous_failure": 65,
+        "unanimous_pass": 1
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 85,
+        "p_correct_le_0.50": 92
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathtutorbench_solution_correctness",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathtutorbench_solution_correctness_items_v2.txt",
+      "item_list_sha256": "1f53ad7dfc289994d899cb57616a1c9789a94d701dfadf5970a70fbe6bbf092c",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 26,
+        "unanimous_failure": 1,
+        "unanimous_pass": 73
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 7,
+        "p_correct_le_0.50": 13
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mathvista",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mathvista_items_v2.txt",
+      "item_list_sha256": "55bbc6361486aed2a626763136f7bf594b5cc19e182aadd56acd50dc42cb2afa",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "doubao-seed-2.0-pro",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 6,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 26,
+        "unanimous_failure": 7,
+        "unanimous_pass": 66
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 9,
+        "p_correct_le_0.50": 16
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mmlu_pro",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mmlu_pro_items_v2.txt",
+      "item_list_sha256": "e8d14f7ea89f70e3f98c446880a244bce99a6060c95ad5382c6a88b9b6999837",
+      "n_items": 80,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 24,
+        "unanimous_failure": 2,
+        "unanimous_pass": 54
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 5,
+        "p_correct_le_0.50": 8
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mmtutorbench",
+      "status": "missing_scored_runs",
+      "item_list": "data/mini_selection_v2/mmtutorbench_items_v2.txt",
+      "item_list_sha256": "4ebac53185c9ba9b8c9b18f56901ac8e29961a0649c1068ffec5830201774a76",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "mini_v2",
       "benchmark": "mooccube_prereq",
       "status": "ok",
       "item_list": "data/mini_selection_v2/mooccube_prereq_items_v2.txt",
@@ -74,6 +722,348 @@
       },
       "threshold_counts": {
         "p_correct_le_0.25": 32,
+        "p_correct_le_0.50": 45
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mrbench_judge",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mrbench_judge_items_v2.txt",
+      "item_list_sha256": "a3aa1e0e6996f2fb340df14c2826488adea4fa9f7593cdb94adeb9b2d344cae8",
+      "n_items": 60,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 28,
+        "unanimous_failure": 5,
+        "unanimous_pass": 27
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 10,
+        "p_correct_le_0.50": 14
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "mrbench_tutor",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/mrbench_tutor_items_v2.txt",
+      "item_list_sha256": "88183ff69c47a129850d0a431b9bc6ac8b96218b54fb5b5f8821fbd954e9018e",
+      "n_items": 60,
+      "panel_models": [
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 2,
+      "outcome_counts": {
+        "mixed_outcome": 13,
+        "unanimous_failure": 5,
+        "unanimous_pass": 42
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 5,
+        "p_correct_le_0.50": 18
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "olympiadbench",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/olympiadbench_items_v2.txt",
+      "item_list_sha256": "57e503a9872f662bda3efa573ea52a3c223f148e960e86a7b341ae58fc519759",
+      "n_items": 170,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "incomplete_panel": 107,
+        "mixed_outcome": 24,
+        "unanimous_failure": 5,
+        "unanimous_pass": 34
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 22,
+        "p_correct_le_0.50": 42
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "p07_selfcheck",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/p07_selfcheck_items_v2.txt",
+      "item_list_sha256": "fbfb8877515e5faaea6a16678b50eaebbc23fbd79b2d48a9d00b02917c417815",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 49,
+        "unanimous_failure": 12,
+        "unanimous_pass": 39
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 24,
+        "p_correct_le_0.50": 33
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "p08_abstention",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/p08_abstention_items_v2.txt",
+      "item_list_sha256": "5e203fb5cde78dbcb16f32d579d98c298439cd0d439cc7949ae9b4520969a78a",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 27,
+        "unanimous_failure": 1,
+        "unanimous_pass": 72
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 5,
+        "p_correct_le_0.50": 8
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "p08_calibration",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/p08_calibration_items_v2.txt",
+      "item_list_sha256": "58167e146f35d2b03a11c6b0f7e5a5846e4cfe336e6b128f412787ecae34ff73",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 51,
+        "unanimous_failure": 16,
+        "unanimous_pass": 33
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 24,
+        "p_correct_le_0.50": 38
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "pedagogy_benchmark",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/pedagogy_benchmark_items_v2.txt",
+      "item_list_sha256": "62a330456b2679154ef088c05e9df04e2e9e899b57f8f119e2ddd4e70a394519",
+      "n_items": 200,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 76,
+        "unanimous_failure": 5,
+        "unanimous_pass": 119
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 13,
+        "p_correct_le_0.50": 29
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "sas_bench",
+      "status": "ok",
+      "item_list": "data/mini_selection_v2/sas_bench_items_v2.txt",
+      "item_list_sha256": "489fd6dd1026cedd74de97090a4ce4ec3ed32fc7c79ad0bc1742f8d577e26783",
+      "n_items": 250,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 35,
+        "unanimous_failure": 210,
+        "unanimous_pass": 5
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 221,
+        "p_correct_le_0.50": 227
+      }
+    },
+    {
+      "suite": "mini_v2",
+      "benchmark": "tutorbench",
+      "status": "missing_scored_runs",
+      "item_list": "data/mini_selection_v2/tutorbench_items_v2.txt",
+      "item_list_sha256": "9869f211e93f9f7c4c6f51ff8ab1193a338ba841c41754f688b3b6678e44100a",
+      "n_items": 200,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 200
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "agieval",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/agieval_frontier_items_v1.txt",
+      "item_list_sha256": "5a95436b63a256ba64d5676ee51224f60bcd625c960beb92eafabf6c60f8fba3",
+      "n_items": 80,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "incomplete_panel": 9,
+        "mixed_outcome": 52,
+        "unanimous_failure": 19
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 35,
+        "p_correct_le_0.50": 64
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "asap_2",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/asap_2_frontier_items_v1.txt",
+      "item_list_sha256": "81ce44e461885b4172ec178fa4a304fb5a69f8962ad892245f3a2c0e750e16c8",
+      "n_items": 150,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro"
+      ],
+      "n_panel_models": 7,
+      "outcome_counts": {
+        "incomplete_panel": 150
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "bea2025_judge",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/bea2025_judge_frontier_items_v1.txt",
+      "item_list_sha256": "6d253cf79a3a109f39f908f793a37f62dcb16cdba231259f3d55670ed6e5dd9b",
+      "n_items": 60,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 47,
+        "unanimous_failure": 10,
+        "unanimous_pass": 2
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 27,
+        "p_correct_le_0.50": 44
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "bea2025_tutor",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/bea2025_tutor_frontier_items_v1.txt",
+      "item_list_sha256": "b354c6cbe6c15eb5034465cc12ce0f887e734abd7dc432677d45b616ee400eee",
+      "n_items": 60,
+      "panel_models": [
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 2,
+      "outcome_counts": {
+        "mixed_outcome": 26,
+        "unanimous_failure": 19,
+        "unanimous_pass": 15
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 19,
         "p_correct_le_0.50": 45
       }
     },
@@ -109,6 +1099,524 @@
     },
     {
       "suite": "frontier_v1",
+      "benchmark": "edubench",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/edubench_frontier_items_v1.txt",
+      "item_list_sha256": "441020ea30d21c4ff166e27ebd041e33822421bda119f9e0183a4bd46a907f42",
+      "n_items": 150,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro"
+      ],
+      "n_panel_models": 2,
+      "outcome_counts": {
+        "incomplete_panel": 150
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "eduguard_adversarial",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/eduguard_adversarial_frontier_items_v1.txt",
+      "item_list_sha256": "fb3842e77ebd6e6a2b751d7775aa54889b9ab9eeb1f866d81fe89828a8f8be48",
+      "n_items": 150,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 129,
+        "unanimous_failure": 10,
+        "unanimous_pass": 11
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 41,
+        "p_correct_le_0.50": 115
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "eduguard_sata",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/eduguard_sata_frontier_items_v1.txt",
+      "item_list_sha256": "1d6d8db58d60315505e783953937638b04579b5998788ae5e88bbdef552358bb",
+      "n_items": 150,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "mixed_outcome": 98,
+        "unanimous_failure": 52
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 84,
+        "p_correct_le_0.50": 129
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "ifeval",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/ifeval_frontier_items_v1.txt",
+      "item_list_sha256": "06ae7d3361d3556775142e6eb8825642dc028e75f99275fd699f5b224f60bbf0",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 90,
+        "unanimous_failure": 6,
+        "unanimous_pass": 3
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 9,
+        "p_correct_le_0.50": 22
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "k12bench",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/k12bench_frontier_items_v1.txt",
+      "item_list_sha256": "879205e67ca5368a055a885a0cd0ca714ac73c76d19df25e669355d86be6d340",
+      "n_items": 200,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 106,
+        "unanimous_failure": 91,
+        "unanimous_pass": 2
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 137,
+        "p_correct_le_0.50": 173
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "k12vista",
+      "status": "missing_scored_runs",
+      "item_list": "data/frontier_selection_v1/k12vista_frontier_items_v1.txt",
+      "item_list_sha256": "ed866e8120b348668943a5f01e376209b7cc10308ebafffbe0ab029ab813eca0",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "longtutor_diagnosis",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/longtutor_diagnosis_frontier_items_v1.txt",
+      "item_list_sha256": "b839d318ce71a42e9c5eb4c2ccfea93f1431432fe394a508e1503ac475bbf212",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M2.7",
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 10,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 49,
+        "p_correct_le_0.50": 87
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "longtutor_evidence",
+      "status": "missing_scored_runs",
+      "item_list": "data/frontier_selection_v1/longtutor_evidence_frontier_items_v1.txt",
+      "item_list_sha256": "d52d16674a11c7b3164dec3a61432c0cd89f65c11b02d790e48a4547116e3bf9",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "longtutor_teaching",
+      "status": "missing_scored_runs",
+      "item_list": "data/frontier_selection_v1/longtutor_teaching_frontier_items_v1.txt",
+      "item_list_sha256": "941b2b9e501616821650ef49533240c7b36f80f7216f8768da0319d2b99d150d",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_mistake_correction",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_mistake_correction_frontier_items_v1.txt",
+      "item_list_sha256": "c49db6e079971b9cc9be4d0395e7bd56b39e0c57a7787c499b62c2775675c2ce",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 82,
+        "unanimous_failure": 14,
+        "unanimous_pass": 3
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 38,
+        "p_correct_le_0.50": 62
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_mistake_location",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_mistake_location_frontier_items_v1.txt",
+      "item_list_sha256": "d3dd1299e595712313f60514944bb2f6e010177c1783fb6a6f6979fa6696e6bb",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "mixed_outcome": 63,
+        "unanimous_failure": 32,
+        "unanimous_pass": 5
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 44,
+        "p_correct_le_0.50": 71
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_pedagogy",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_pedagogy_frontier_items_v1.txt",
+      "item_list_sha256": "b4a874a1f535b62a51eb6b56c90328f29ea60dbee7e0a6c49e14a8613a36e492",
+      "n_items": 100,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 81,
+        "unanimous_failure": 17,
+        "unanimous_pass": 2
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 37,
+        "p_correct_le_0.50": 74
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_pedagogy_hard",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_pedagogy_hard_frontier_items_v1.txt",
+      "item_list_sha256": "3cee55c6ca43c5f62dd41f93934b127d227bb963256f235640580b6bf69eaa35",
+      "n_items": 75,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 60,
+        "unanimous_failure": 15
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 34,
+        "p_correct_le_0.50": 63
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_problem_solving",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_problem_solving_frontier_items_v1.txt",
+      "item_list_sha256": "89cd9d3351c7e2973772f5eb0e9efcd7966e3667a87285ccd89ccd993deb3cfb",
+      "n_items": 69,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "glm-5.3-flash",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 9,
+      "outcome_counts": {
+        "mixed_outcome": 48,
+        "unanimous_failure": 14,
+        "unanimous_pass": 7
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 20,
+        "p_correct_le_0.50": 28
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_scaffolding",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_scaffolding_frontier_items_v1.txt",
+      "item_list_sha256": "0b94d52c6553cb4e84c2aab6e06236b392aac3004ff08f14465b3c0d5a9248f0",
+      "n_items": 100,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 64,
+        "unanimous_failure": 35,
+        "unanimous_pass": 1
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 39,
+        "p_correct_le_0.50": 98
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_scaffolding_hard",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_scaffolding_hard_frontier_items_v1.txt",
+      "item_list_sha256": "b0dc2b2938d5217dddc9c25c2b7910dafe19c9e841838da3d8f8ee4dd6f1079d",
+      "n_items": 75,
+      "panel_models": [
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 4,
+      "outcome_counts": {
+        "mixed_outcome": 45,
+        "unanimous_failure": 29,
+        "unanimous_pass": 1
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 38,
+        "p_correct_le_0.50": 65
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_socratic",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_socratic_frontier_items_v1.txt",
+      "item_list_sha256": "75ba851895f53306fa3dfbe708368dd5a4dfbb5c1deb6551fd0bd2795174edd5",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 65,
+        "unanimous_failure": 33,
+        "unanimous_pass": 2
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 55,
+        "p_correct_le_0.50": 88
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathtutorbench_solution_correctness",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathtutorbench_solution_correctness_frontier_items_v1.txt",
+      "item_list_sha256": "cd6f26938b31c247d7fbf6bf28b786be16f8a225f62aa496d37d49d70d958641",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 70,
+        "unanimous_failure": 25,
+        "unanimous_pass": 5
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 41,
+        "p_correct_le_0.50": 68
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mathvista",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mathvista_frontier_items_v1.txt",
+      "item_list_sha256": "28f26eb7c12e2c611e66f052bb55aedc62695205d2527fc90387a3e202796d17",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "doubao-seed-2.0-pro",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 6,
+      "outcome_counts": {
+        "incomplete_panel": 10,
+        "mixed_outcome": 64,
+        "unanimous_failure": 22,
+        "unanimous_pass": 4
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 38,
+        "p_correct_le_0.50": 69
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mmlu_pro",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mmlu_pro_frontier_items_v1.txt",
+      "item_list_sha256": "165e10bf6f833effd558ffa8735ad1d92bf2b967f767fc31db5ca6c5cd0f6254",
+      "n_items": 80,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "incomplete_panel": 9,
+        "mixed_outcome": 45,
+        "unanimous_failure": 22,
+        "unanimous_pass": 4
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 32,
+        "p_correct_le_0.50": 65
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mmtutorbench",
+      "status": "missing_scored_runs",
+      "item_list": "data/frontier_selection_v1/mmtutorbench_frontier_items_v1.txt",
+      "item_list_sha256": "fc3f8c76d67005e9a73e0cedb79204b9b262b5a193f456a5edd8dffbb46f0309",
+      "n_items": 100,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 100
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
+      }
+    },
+    {
+      "suite": "frontier_v1",
       "benchmark": "mooccube_prereq",
       "status": "ok",
       "item_list": "data/frontier_selection_v1/mooccube_prereq_frontier_items_v1.txt",
@@ -133,6 +1641,238 @@
       "threshold_counts": {
         "p_correct_le_0.25": 54,
         "p_correct_le_0.50": 80
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mrbench_judge",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mrbench_judge_frontier_items_v1.txt",
+      "item_list_sha256": "02ffc1aa6497b5debac382e3753f471b2492ca87b8618bf0c71e7e50c334f433",
+      "n_items": 60,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 48,
+        "unanimous_failure": 12
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 32,
+        "p_correct_le_0.50": 56
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "mrbench_tutor",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/mrbench_tutor_frontier_items_v1.txt",
+      "item_list_sha256": "b31cd01d0f748a05f3040cd53fea1c100f6188e8e35f7eea2a8d3ac7f1515088",
+      "n_items": 60,
+      "panel_models": [
+        "glm-5.2",
+        "minimax3"
+      ],
+      "n_panel_models": 2,
+      "outcome_counts": {
+        "mixed_outcome": 30,
+        "unanimous_failure": 14,
+        "unanimous_pass": 16
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 14,
+        "p_correct_le_0.50": 44
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "olympiadbench",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/olympiadbench_frontier_items_v1.txt",
+      "item_list_sha256": "e0776e641403937ee3db63cd05a8d41e46ff12e549875c0eae13a0231d62d79a",
+      "n_items": 170,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "incomplete_panel": 122,
+        "mixed_outcome": 33,
+        "unanimous_failure": 12,
+        "unanimous_pass": 3
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 66,
+        "p_correct_le_0.50": 121
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "p07_selfcheck",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/p07_selfcheck_frontier_items_v1.txt",
+      "item_list_sha256": "b155c63a88924d00084474b8d4980c9c2353afc934e67ec804df8787cf6699d8",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "incomplete_panel": 1,
+        "mixed_outcome": 66,
+        "unanimous_failure": 25,
+        "unanimous_pass": 8
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 41,
+        "p_correct_le_0.50": 79
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "p08_abstention",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/p08_abstention_frontier_items_v1.txt",
+      "item_list_sha256": "04aff0951d694ba2eaa9a78f74aaad446f54e20daaa537574f23c137f81d8ad2",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 85,
+        "unanimous_failure": 11,
+        "unanimous_pass": 4
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 35,
+        "p_correct_le_0.50": 57
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "p08_calibration",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/p08_calibration_frontier_items_v1.txt",
+      "item_list_sha256": "396cd088f44191f299a61ccd6d36bf6092bcc587b0d00a2aa438d1293419264e",
+      "n_items": 100,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 8,
+      "outcome_counts": {
+        "mixed_outcome": 67,
+        "unanimous_failure": 30,
+        "unanimous_pass": 3
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 41,
+        "p_correct_le_0.50": 77
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "pedagogy_benchmark",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/pedagogy_benchmark_frontier_items_v1.txt",
+      "item_list_sha256": "a86fca61000ea1e8ae9fcfec97555bb32d521193826a8d9c399c9d8f2f2f57a8",
+      "n_items": 200,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro",
+        "minimax3"
+      ],
+      "n_panel_models": 7,
+      "outcome_counts": {
+        "mixed_outcome": 156,
+        "unanimous_failure": 35,
+        "unanimous_pass": 9
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 64,
+        "p_correct_le_0.50": 115
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "sas_bench",
+      "status": "ok",
+      "item_list": "data/frontier_selection_v1/sas_bench_frontier_items_v1.txt",
+      "item_list_sha256": "3780cd8d37b3bd8a42b7be21a1d1c1129b534f64dd9a87e525bfe88bc876d7bd",
+      "n_items": 250,
+      "panel_models": [
+        "MiniMax-M3.1-Flash-Preview",
+        "Qwen-Qwen3.5-4B",
+        "Qwen-Qwen3.8-27B",
+        "deepseek-v4-pro",
+        "doubao-seed-2.0-pro",
+        "glm-5.2",
+        "kimi-k3.1-pro"
+      ],
+      "n_panel_models": 7,
+      "outcome_counts": {
+        "incomplete_panel": 250
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 110,
+        "p_correct_le_0.50": 149
+      }
+    },
+    {
+      "suite": "frontier_v1",
+      "benchmark": "tutorbench",
+      "status": "missing_scored_runs",
+      "item_list": "data/frontier_selection_v1/tutorbench_frontier_items_v1.txt",
+      "item_list_sha256": "3ed86618503eadfef69c73c0bc3c528eaa088dd341ccf14378e0fc88cc584394",
+      "n_items": 200,
+      "panel_models": [],
+      "n_panel_models": 0,
+      "outcome_counts": {
+        "incomplete_panel": 200
+      },
+      "threshold_counts": {
+        "p_correct_le_0.25": 0,
+        "p_correct_le_0.50": 0
       }
     },
     {

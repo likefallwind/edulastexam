@@ -1,0 +1,1308 @@
+{
+  "schema_version": "edu_last_exam_evidence_route_matrix_v1",
+  "status": "working_matrix",
+  "purpose": "把37个方向的原始任务、逐题结果、文献机制、环境和评分条件分开记录；候选来源不等于已证明的AI难题。",
+  "route_definitions": {
+    "reuse_original": {
+      "meaning": "有可追溯原题或公开示例，尽量保留原输入、任务、评分和环境。",
+      "promotion_gate": "source/task contract + gold/rubric audit + control + held-out model + required human/artifact check"
+    },
+    "benchmark_adaptation": {
+      "meaning": "有相邻benchmark可提供候选或协议，但需要改编到教育构念并明确改编边界。",
+      "promotion_gate": "benchmark validity audit + construct-fit review + neutral/control pair + held-out model"
+    },
+    "mechanism_authored": {
+      "meaning": "没有可直接复用原题，依据论文中明确失败条件自建；不得冒充论文原题。",
+      "promotion_gate": "paper locator + condition mapping + author offline check + independent rubric/human review + held-out model"
+    },
+    "blocked": {
+      "meaning": "缺原始人类难度、真实工具、长期状态、媒体或协议，不能用弱代理填空。",
+      "promotion_gate": "补齐缺口后再进入候选；当前只记录设计和阻塞原因"
+    }
+  },
+  "directions": [
+    {
+      "direction_id": "01",
+      "title": "真实学生数学解题纠错",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "MathEDU",
+        "MathTutorBench/mistake_location",
+        "MathTutorBench/mistake_correction"
+      ],
+      "benchmarks": [
+        "mathtutorbench_mistake_location",
+        "mathtutorbench_mistake_correction"
+      ],
+      "oracle_type": "rule_plus_teacher_error_label",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "error_depth"
+      ],
+      "controls": [
+        "correct_work",
+        "equivalent_solution",
+        "first_error_vs_later_error"
+      ],
+      "promotion_gate": "首错、可修复性、反馈内容分别评分；排除仅最终答案正确。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/01.json",
+      "task_ids": [
+        "ELE-SF-01-001",
+        "ELE-SF-01-002",
+        "ELE-SF-01-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Original classification and equation metrics; feedback metrics separately pending",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "02",
+      "title": "真实学生正确过程的误判控制",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "MathEDU",
+        "MathTutorBench/solution_correctness"
+      ],
+      "benchmarks": [
+        "mathtutorbench_solution_correctness"
+      ],
+      "oracle_type": "rule_plus_teacher_label",
+      "hardness_evidence": [
+        "equivalent_solution",
+        "historical_model_error"
+      ],
+      "controls": [
+        "nonstandard_but_correct",
+        "minimal_noise",
+        "wrong_solution"
+      ],
+      "promotion_gate": "教师确认等价正确，不能把形式差异当错误。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/02.json",
+      "task_ids": [
+        "ELE-SF-02-001",
+        "ELE-SF-02-002",
+        "ELE-SF-02-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Original classification and equation metrics; feedback metrics separately pending",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "03",
+      "title": "评分注入与空白获得学分",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LDA_grading"
+      ],
+      "benchmarks": [
+        "edubench"
+      ],
+      "oracle_type": "original_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "blank",
+        "prompt_injection",
+        "neutral_baseline"
+      ],
+      "promotion_gate": "原量尺、空白和注入分支均可审计；judge swap/人工一致后再冻结。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/03.json",
+      "task_ids": [
+        "ELE-SF-03-001",
+        "ELE-SF-03-002",
+        "ELE-SF-03-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Native normalized grade shifts and control-specific observables; halo minimum n=30",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "04",
+      "title": "学生反驳压力与中性复核对照",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LDA_grading"
+      ],
+      "benchmarks": [
+        "edubench"
+      ],
+      "oracle_type": "original_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "pressure_sensitivity",
+        "judge_dependent"
+      ],
+      "controls": [
+        "unsupported_appeal",
+        "neutral_recheck",
+        "evidence_based_appeal"
+      ],
+      "promotion_gate": "同一作品分支配对，评分变化必须有证据理由。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/04.json",
+      "task_ids": [
+        "ELE-SF-04-001",
+        "ELE-SF-04-002",
+        "ELE-SF-04-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Native normalized grade shifts and control-specific observables; halo minimum n=30",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "05",
+      "title": "教师已给分对反馈的锚定",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LDA_grading"
+      ],
+      "benchmarks": [
+        "edubench"
+      ],
+      "oracle_type": "original_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "label_swap",
+        "judge_dependent"
+      ],
+      "controls": [
+        "mark_swap",
+        "blind_feedback",
+        "same_work"
+      ],
+      "promotion_gate": "先验分数交换后按作品证据稳定；人工复核反馈是否覆盖量尺。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/05.json",
+      "task_ids": [
+        "ELE-SF-05-001",
+        "ELE-SF-05-002",
+        "ELE-SF-05-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Native tone difference per matched work; dmark/dtone pair; S=sum(dmark*dtone)/sum(dmark²), no tiny-sample bootstrap verdict",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "06",
+      "title": "同作业重测与题面呈现稳定性",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LDA_grading"
+      ],
+      "benchmarks": [
+        "edubench"
+      ],
+      "oracle_type": "original_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "repeatability",
+        "judge_dependent"
+      ],
+      "controls": [
+        "rewrap",
+        "whitespace",
+        "prompt_paraphrase"
+      ],
+      "promotion_gate": "非目标改写不改变评分；解析/格式失败单列。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/06.json",
+      "task_ids": [
+        "ELE-SF-06-001",
+        "ELE-SF-06-002",
+        "ELE-SF-06-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Native normalized grade shifts and control-specific observables; halo minimum n=30",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "07",
+      "title": "真实手写数学与电路识别",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "CIRCUIT"
+      ],
+      "benchmarks": [
+        "mmtutorbench"
+      ],
+      "oracle_type": "multimodal_evidence_plus_teacher_label",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "multimodal"
+      ],
+      "controls": [
+        "unit_change",
+        "topology_change",
+        "clear_static_image"
+      ],
+      "promotion_gate": "分离媒体送达/OCR失败与后续数学判断；需实际图像。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/07.json",
+      "task_ids": [
+        "ELE-SF-07-001",
+        "ELE-SF-07-002",
+        "ELE-SF-07-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Gemini2.5Pro discrepancy judge, strict exclusions, native SER/AEC",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "08",
+      "title": "多模态解题下一步教学",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "MMTutor"
+      ],
+      "benchmarks": [
+        "mmtutorbench"
+      ],
+      "oracle_type": "multimodal_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "multimodal"
+      ],
+      "controls": [
+        "preceding_frames",
+        "current_frame_only",
+        "next_operation_constraint"
+      ],
+      "promotion_gate": "实际帧可读取；下一步、认知要求和无答案泄漏分别评分。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/08.json",
+      "task_ids": [
+        "ELE-SF-08-001",
+        "ELE-SF-08-002",
+        "ELE-SF-08-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Original six binary criteria; o4-mini evaluator from evaluate.sh",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "09",
+      "title": "教师教学目的与学习者推理保持",
+      "source_status": "ready_mechanism",
+      "evidence_route": "mechanism_authored",
+      "source_ids": [
+        "Will_It_Teach_as_Intended",
+        "MathTutorBench/pedagogy"
+      ],
+      "benchmarks": [
+        "mathtutorbench_pedagogy"
+      ],
+      "oracle_type": "teacher_purpose_rubric_plus_judge_swap",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "direct_answer_pressure",
+        "purpose_preserving_prompt",
+        "student_state_branch"
+      ],
+      "promotion_gate": "原教师配置与学生状态可复现；人工量尺确认不是泛泛风格偏好。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/09.json",
+      "task_ids": [
+        "ELE-SF-09-001",
+        "ELE-SF-09-002"
+      ],
+      "source_fidelity_status": "ready_mechanism",
+      "source_decision_route": "mechanism_authored",
+      "original_task_available": false,
+      "scoring_contract_summary": "09 published four1–4 alignment dimensions;10 published binary failure codebook. Full original annotation protocol cannot be claimed as reproduced.",
+      "condition_mapping_count": 2
+    },
+    {
+      "direction_id": "10",
+      "title": "教师定义流程的执行、插问后恢复和收尾",
+      "source_status": "ready_mechanism",
+      "evidence_route": "mechanism_authored",
+      "source_ids": [
+        "EduWild"
+      ],
+      "benchmarks": [
+        "longtutor_teaching",
+        "mathtutorbench_scaffolding"
+      ],
+      "oracle_type": "multi_turn_state_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "stateful"
+      ],
+      "controls": [
+        "interruption",
+        "unanswered_contribution",
+        "premature_closure"
+      ],
+      "promotion_gate": "保存逐轮状态；流程恢复与结束条件需人工核验。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/10.json",
+      "task_ids": [
+        "ELE-SF-10-001",
+        "ELE-SF-10-002"
+      ],
+      "source_fidelity_status": "ready_mechanism",
+      "source_decision_route": "mechanism_authored",
+      "original_task_available": false,
+      "scoring_contract_summary": "09 published four1–4 alignment dimensions;10 published binary failure codebook. Full original annotation protocol cannot be claimed as reproduced.",
+      "condition_mapping_count": 2
+    },
+    {
+      "direction_id": "11",
+      "title": "学生行为挑战下的即时干预",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "TutorCaseBench"
+      ],
+      "benchmarks": [
+        "mathtutorbench_pedagogy",
+        "tutorbench"
+      ],
+      "oracle_type": "behavioral_teacher_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "behavioral_need",
+        "ordinary_content_request",
+        "matched_academic_tutoring"
+      ],
+      "promotion_gate": "行为目标和干预相称性独立于学科流畅度评分。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/11.json",
+      "task_ids": [
+        "ELE-SF-11-001",
+        "ELE-SF-11-101",
+        "ELE-SF-11-002",
+        "ELE-SF-11-102",
+        "ELE-SF-11-003",
+        "ELE-SF-11-103"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Open-ended original checklist ANY rule, Gemini3.1Pro; MCQ original answer key",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "12",
+      "title": "完整长期记录的证据检索、诊断和教学",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LongTutor",
+        "MisconceptionBench"
+      ],
+      "benchmarks": [
+        "longtutor_evidence",
+        "longtutor_diagnosis",
+        "longtutor_teaching"
+      ],
+      "oracle_type": "rule_extraction_plus_diagnosis_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "long_context",
+        "judge_dependent"
+      ],
+      "controls": [
+        "short_summary",
+        "false_premise_query",
+        "cross_session_history"
+      ],
+      "promotion_gate": "抽取、诊断、行动分开计分；长记录完整送达并保留证据跨度。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/12.json",
+      "task_ids": [
+        "ELE-SF-12-001",
+        "ELE-SF-12-002",
+        "ELE-SF-12-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Native exact-match fast path and GPT5 semantic fallback/content rubrics; no cross-view averaging",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "13",
+      "title": "实际多轮支架与认知要求",
+      "source_status": "blocked_environment",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "TutorMoments",
+        "MathTutorBench/scaffolding"
+      ],
+      "benchmarks": [
+        "mathtutorbench_scaffolding",
+        "mathtutorbench_scaffolding_hard"
+      ],
+      "oracle_type": "stateful_multi_turn_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "frozen_persona",
+        "reference_aware_student",
+        "overscaffold_control"
+      ],
+      "promotion_gate": "补齐冻结学生、逐轮环境和独立rubric；当前不能把单轮代理冻结。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/13.json",
+      "task_ids": [
+        "ELE-SF-13-001",
+        "ELE-SF-13-002"
+      ],
+      "source_fidelity_status": "blocked_environment",
+      "source_decision_route": "blocked_environment",
+      "original_task_available": true,
+      "scoring_contract_summary": "Original moment rubric scoring and action taxonomy; original scorer models retained",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "14",
+      "title": "诊断落实为补救材料",
+      "source_status": "blocked_environment",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "TeachArena_workflow"
+      ],
+      "benchmarks": [
+        "longtutor_diagnosis"
+      ],
+      "oracle_type": "artifact_and_file_execution",
+      "hardness_evidence": [
+        "paper_condition",
+        "artifact_execution"
+      ],
+      "controls": [
+        "existing_deck",
+        "target_KC",
+        "required_notification"
+      ],
+      "promotion_gate": "真实课件、图示、检查题和通知写入并可复核；没有环境不评分。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/14.json",
+      "task_ids": [],
+      "source_fidelity_status": "blocked_environment",
+      "source_decision_route": "preserve_original_await_native_environment",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "15",
+      "title": "构念保持的试题修订",
+      "source_status": "blocked_environment",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "TeachArena_exam_revision"
+      ],
+      "benchmarks": [
+        "pedagogy_benchmark"
+      ],
+      "oracle_type": "artifact_plus_recomputation",
+      "hardness_evidence": [
+        "paper_condition",
+        "artifact_execution"
+      ],
+      "controls": [
+        "parameter_change",
+        "same_KC",
+        "answer_recompute"
+      ],
+      "promotion_gate": "文件写入、答案重算和构念保持均通过；计划文本不能代替。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/15.json",
+      "task_ids": [],
+      "source_fidelity_status": "blocked_environment",
+      "source_decision_route": "preserve_original_await_native_environment",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "16",
+      "title": "题目构念与区分度判断",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "TeachArena_pedagogical_judgment"
+      ],
+      "benchmarks": [
+        "ceval",
+        "pedagogy_benchmark"
+      ],
+      "oracle_type": "item_analysis_plus_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "structural_challenge"
+      ],
+      "controls": [
+        "uniform_options",
+        "low_point_biserial",
+        "multiple_defensible_answers"
+      ],
+      "promotion_gate": "统计解释与题目内容复核同时通过；C-Eval只作候选，不作直接教学结论。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/16.json",
+      "task_ids": [
+        "ELE-SF-16-001"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "17",
+      "title": "既有试题对学生群体的难度预测",
+      "source_status": "blocked_source",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "DIFF",
+        "Cambridge"
+      ],
+      "benchmarks": [
+        "ceval"
+      ],
+      "oracle_type": "human_student_difficulty",
+      "hardness_evidence": [
+        "human_difficulty_unmeasured"
+      ],
+      "controls": [
+        "proficiency_strata",
+        "held_out_students",
+        "uncertainty_report"
+      ],
+      "promotion_gate": "补齐稳定学生作答/教师难度标签；模型正确率不能替代人类难度。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/17.json",
+      "task_ids": [],
+      "source_fidelity_status": "blocked_source",
+      "source_decision_route": "await_original_items_and_human_difficulty",
+      "original_task_available": false,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "18",
+      "title": "科学题干扰项生成",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "DIST",
+        "SciQ"
+      ],
+      "benchmarks": [
+        "ceval"
+      ],
+      "oracle_type": "expert_content_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "semantic_equivalence"
+      ],
+      "controls": [
+        "correct_option",
+        "near_miss",
+        "misconception_type"
+      ],
+      "promotion_gate": "专家确认干扰项错误、非重复且具诊断价值；BLEU不作为主分。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/18.json",
+      "task_ids": [
+        "ELE-SF-18-001",
+        "ELE-SF-18-002",
+        "ELE-SF-18-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "19",
+      "title": "图文与连续图解释一致性",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "EduIllustrate"
+      ],
+      "benchmarks": [
+        "eduillustrate"
+      ],
+      "oracle_type": "rendered_artifact_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "artifact_execution"
+      ],
+      "controls": [
+        "outline_only",
+        "scene_anchor",
+        "actual_render"
+      ],
+      "promotion_gate": "检查实际渲染、图文和跨图锚定；代码静态正确不够。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/19.json",
+      "task_ids": [
+        "ELE-SF-19-001",
+        "ELE-SF-19-002"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "20",
+      "title": "交互科学演示的语义正确性",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "InteractScience"
+      ],
+      "benchmarks": [
+        "interactscience"
+      ],
+      "oracle_type": "browser_execution_plus_science_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "artifact_execution"
+      ],
+      "controls": [
+        "parameter_change",
+        "button_state",
+        "static_code"
+      ],
+      "promotion_gate": "Playwright/实际交互和科学语义均通过；静态参数检查不能替代。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/20.json",
+      "task_ids": [
+        "ELE-SF-20-001",
+        "ELE-SF-20-002"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "21",
+      "title": "同作品能力标签与评分公平",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LDA_context_fairness"
+      ],
+      "benchmarks": [
+        "edubench"
+      ],
+      "oracle_type": "human_rubric_plus_judge_swap",
+      "hardness_evidence": [
+        "paper_condition",
+        "label_swap",
+        "judge_dependent"
+      ],
+      "controls": [
+        "low_label",
+        "high_label",
+        "neutral_context"
+      ],
+      "promotion_gate": "同作品标签交换的差异需独立人工核验；不把单judge差异冻结。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/21.json",
+      "task_ids": [
+        "ELE-SF-21-001",
+        "ELE-SF-21-002",
+        "ELE-SF-21-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "22",
+      "title": "作文整体评分",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "ASAP2"
+      ],
+      "benchmarks": [
+        "asap_2",
+        "edubench"
+      ],
+      "oracle_type": "human_writing_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "human_rubric"
+      ],
+      "controls": [
+        "surface_fluency",
+        "local_error",
+        "whole_essay_quality"
+      ],
+      "promotion_gate": "保留原文、任务、人工量尺和总分；局部语言分数不能代替整体构念。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/22.json",
+      "task_ids": [
+        "ELE-SF-22-001",
+        "ELE-SF-22-002",
+        "ELE-SF-22-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "23",
+      "title": "苏格拉底提问",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "MathTutorBench/Socratic"
+      ],
+      "benchmarks": [
+        "mathtutorbench_socratic"
+      ],
+      "oracle_type": "teacher_pedagogy_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "one_line_format",
+        "direct_answer",
+        "key_reasoning_steps"
+      ],
+      "promotion_gate": "用教学rubric复核问题是否推动推理；SacreBLEU只作辅助。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/23.json",
+      "task_ids": [
+        "ELE-SF-23-001",
+        "ELE-SF-23-002",
+        "ELE-SF-23-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "24",
+      "title": "先修关系与学习顺序推断",
+      "source_status": "ready_mechanism",
+      "evidence_route": "benchmark_adaptation",
+      "source_ids": [
+        "MOOCCube"
+      ],
+      "benchmarks": [
+        "mooccube_prereq"
+      ],
+      "oracle_type": "rule_topological_order_plus_graph_audit",
+      "hardness_evidence": [
+        "historical_model_error",
+        "structural_challenge"
+      ],
+      "controls": [
+        "multiple_valid_topological_orders",
+        "edge_direction",
+        "field_consistency"
+      ],
+      "promotion_gate": "先审图谱边、gold和合法序列；模型全错不能覆盖图谱缺陷。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/24.json",
+      "task_ids": [
+        "ELE-SF-24-001",
+        "ELE-SF-24-002",
+        "ELE-SF-24-003"
+      ],
+      "source_fidelity_status": "ready_mechanism",
+      "source_decision_route": "historical_protocol_replay",
+      "original_task_available": false,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "25",
+      "title": "自查与改错",
+      "source_status": "ready_mechanism",
+      "evidence_route": "benchmark_adaptation",
+      "source_ids": [
+        "p07_selfcheck"
+      ],
+      "benchmarks": [
+        "p07_selfcheck"
+      ],
+      "oracle_type": "rule_correctness_plus_transition_metrics",
+      "hardness_evidence": [
+        "historical_model_error",
+        "repeatability"
+      ],
+      "controls": [
+        "wrong_to_right",
+        "right_to_wrong",
+        "no_external_hint"
+      ],
+      "promotion_gate": "保留双向转移分母，不能只报错改对。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/25.json",
+      "task_ids": [
+        "ELE-SF-25-001",
+        "ELE-SF-25-002",
+        "ELE-SF-25-003"
+      ],
+      "source_fidelity_status": "ready_mechanism",
+      "source_decision_route": "historical_protocol_replay",
+      "original_task_available": false,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "26",
+      "title": "置信度校准",
+      "source_status": "ready_mechanism",
+      "evidence_route": "benchmark_adaptation",
+      "source_ids": [
+        "p08_calibration"
+      ],
+      "benchmarks": [
+        "p08_calibration"
+      ],
+      "oracle_type": "rule_probability_metrics",
+      "hardness_evidence": [
+        "historical_model_error",
+        "calibration_error"
+      ],
+      "controls": [
+        "mixed_difficulty",
+        "confidence_format",
+        "held_out_items"
+      ],
+      "promotion_gate": "报告ECE/Brier及正确性，避免把高准确率当校准。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/26.json",
+      "task_ids": [
+        "ELE-SF-26-001",
+        "ELE-SF-26-002",
+        "ELE-SF-26-003"
+      ],
+      "source_fidelity_status": "ready_mechanism",
+      "source_decision_route": "historical_protocol_replay",
+      "original_task_available": false,
+      "scoring_contract_summary": "见 task.scoring；原生统计不换算统一正确率",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "27",
+      "title": "完整课程生成与教学结构",
+      "source_status": "blocked_protocol",
+      "evidence_route": "benchmark_adaptation",
+      "source_ids": [
+        "LessonBench",
+        "LessonPlanLM"
+      ],
+      "benchmarks": [
+        "edubench",
+        "pedagogy_benchmark"
+      ],
+      "oracle_type": "structured_lesson_rubric_plus_human_review",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "Bloom_alignment",
+        "role_constraint",
+        "lesson_length"
+      ],
+      "promotion_gate": "补齐公开协议和独立教师量尺；不把结构缺失直接等于教学失败。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/27.json",
+      "task_ids": [
+        "ELE-SF-27-001"
+      ],
+      "source_fidelity_status": "blocked_protocol",
+      "source_decision_route": "original_task_with_protocol_gap",
+      "original_task_available": true,
+      "scoring_contract_summary": "Semantic/structural similarity and reverse-plan pedagogical alignment; unspecified evaluator implementation.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "28",
+      "title": "完整课件生成与长材料保真",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "PresentBench",
+        "SlidesGen"
+      ],
+      "benchmarks": [
+        "eduillustrate",
+        "edubench"
+      ],
+      "oracle_type": "artifact_grounding_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "artifact_execution"
+      ],
+      "controls": [
+        "long_context",
+        "dispersed_facts",
+        "rendered_slides"
+      ],
+      "promotion_gate": "实际课件渲染、事实覆盖和版面检查； judge需换裁判/人工复核。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/28.json",
+      "task_ids": [
+        "ELE-SF-28-001"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Five-category checklist and native judge; evaluator pending exact judge configuration.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "29",
+      "title": "完整教学工具工作流",
+      "source_status": "blocked_environment",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "TeachArena_long_chain"
+      ],
+      "benchmarks": [
+        "longtutor_teaching",
+        "tutorbench"
+      ],
+      "oracle_type": "stateful_tool_execution",
+      "hardness_evidence": [
+        "paper_condition",
+        "artifact_execution",
+        "stateful"
+      ],
+      "controls": [
+        "persistent_write",
+        "evidence_retrieval",
+        "communication_handoff"
+      ],
+      "promotion_gate": "真实LMS或等价可审计环境；计划文本不计完成。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/29.json",
+      "task_ids": [],
+      "source_fidelity_status": "blocked_environment",
+      "source_decision_route": "original_task_environment_blocked",
+      "original_task_available": true,
+      "scoring_contract_summary": "ENV × NL × GOAL × (0.5+0.5 CQ) × PROCESS, original evaluators retained.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "30",
+      "title": "长期学习效果与主动支持",
+      "source_status": "blocked_environment",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "EduClaw",
+        "StudentBench"
+      ],
+      "benchmarks": [
+        "longtutor_teaching"
+      ],
+      "oracle_type": "longitudinal_state_and_learning_measure",
+      "hardness_evidence": [
+        "paper_condition",
+        "human_learning_unmeasured",
+        "stateful"
+      ],
+      "controls": [
+        "multi_day_state",
+        "action_cost",
+        "pre_post_learning"
+      ],
+      "promotion_gate": "有真实或明确模拟的学习状态和结果；单轮对话不能代理。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/30.json",
+      "task_ids": [],
+      "source_fidelity_status": "blocked_environment",
+      "source_decision_route": "blocked_environment_not_proxy",
+      "original_task_available": "paper_only_for_EduClaw; public_human_StudentBench_records",
+      "scoring_contract_summary": "Original30day probe learning gains, proactive support metrics and judge panel; StudentBench real pre/post randomized outcomes.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "31",
+      "title": "编程作业多错误定位与修复反馈",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "PyMETA"
+      ],
+      "benchmarks": [
+        "mathtutorbench_mistake_location",
+        "mathtutorbench_mistake_correction"
+      ],
+      "oracle_type": "execution_plus_expert_error_label",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "repair_depth"
+      ],
+      "controls": [
+        "secondary_error",
+        "repair_then_recheck",
+        "correct_program"
+      ],
+      "promotion_gate": "执行结果、首错和修复后新错误分别核验；先审gold路径。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/31.json",
+      "task_ids": [
+        "ELE-SF-31-001",
+        "ELE-SF-31-002",
+        "ELE-SF-31-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Set exact match and sample F1 from paper; original parser; original gold retained.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "32",
+      "title": "数学证明过程核验",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LeanPRM"
+      ],
+      "benchmarks": [
+        "mathtutorbench_solution_correctness"
+      ],
+      "oracle_type": "Lean_execution_plus_proof_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "formal_execution"
+      ],
+      "controls": [
+        "first_invalid_step",
+        "incomplete_proof",
+        "locally_plausible_text"
+      ],
+      "promotion_gate": "优先使用原生Lean trajectory；自然语言孤立判断不能冒充形式验证。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/32.json",
+      "task_ids": [
+        "ELE-SF-32-001",
+        "ELE-SF-32-002",
+        "ELE-SF-32-003"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Unmodified verifier_task._score_one and frontier format normalization.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "33",
+      "title": "语言学习支持的情境适切性",
+      "source_status": "blocked_protocol",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "L2-Bench"
+      ],
+      "benchmarks": [
+        "edubench"
+      ],
+      "oracle_type": "context_consensus_universal_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "judge_dependent",
+        "human_rubric_unmeasured"
+      ],
+      "controls": [
+        "context_shift",
+        "consensus",
+        "universal_criterion"
+      ],
+      "promotion_gate": "补齐原始输入和三层rubric；judge swap与语言教师复核后再用。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/33.json",
+      "task_ids": [
+        "ELE-SF-33-001"
+      ],
+      "source_fidelity_status": "blocked_protocol",
+      "source_decision_route": "original_public_example",
+      "original_task_available": "public_examples_only",
+      "scoring_contract_summary": "Weighted criteria; original Claude Sonnet4.6 v1 reference-guided judge requires unpublished expert answer.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "34",
+      "title": "学生潜在风险识别与相称应对",
+      "source_status": "evidence_gap",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "student_risk_v2",
+        "SafeTutors"
+      ],
+      "benchmarks": [
+        "student_risk_v2",
+        "safe_child_llm"
+      ],
+      "oracle_type": "human_safety_rubric",
+      "hardness_evidence": [
+        "historical_model_error",
+        "human_rubric_unmeasured",
+        "safety"
+      ],
+      "controls": [
+        "genuine_risk",
+        "benign_near_match",
+        "severity_levels",
+        "false_positive"
+      ],
+      "promotion_gate": "先复核风险gold和误报类型；需要安全/教育人工量尺。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/34.json",
+      "task_ids": [
+        "ELE-SF-34-001",
+        "ELE-SF-34-002",
+        "ELE-SF-34-003"
+      ],
+      "source_fidelity_status": "evidence_gap",
+      "source_decision_route": "local_authored_measurement_audit",
+      "original_task_available": "local_authored_only",
+      "scoring_contract_summary": "Original v7 separate MiniMax-M3 recognition and intervention judges; pending independent adjudication.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "35",
+      "title": "教师边界与代做压力",
+      "source_status": "blocked_protocol",
+      "evidence_route": "blocked",
+      "source_ids": [
+        "SafeTutors",
+        "EduWild"
+      ],
+      "benchmarks": [
+        "mathtutorbench_pedagogy",
+        "safe_child_llm"
+      ],
+      "oracle_type": "multi_turn_teacher_boundary_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "judge_dependent"
+      ],
+      "controls": [
+        "clarification",
+        "hint",
+        "explicit_answer_pressure",
+        "student_owned_reasoning"
+      ],
+      "promotion_gate": "保留原多轮脚本和替代支持标准；不能只判拒答。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/35.json",
+      "task_ids": [
+        "ELE-SF-35-001"
+      ],
+      "source_fidelity_status": "blocked_protocol",
+      "source_decision_route": "original_public_example",
+      "original_task_available": "public_example",
+      "scoring_contract_summary": "Three-judge majority risk and separate pedagogical metrics; original templates retained.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "36",
+      "title": "内容适龄与多轮施压",
+      "source_status": "ready_mechanism",
+      "evidence_route": "mechanism_authored",
+      "source_ids": [
+        "age_values",
+        "SafeChild"
+      ],
+      "benchmarks": [
+        "safe_child_llm"
+      ],
+      "oracle_type": "age_safety_human_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "historical_model_error",
+        "safety"
+      ],
+      "controls": [
+        "age_matched_pair",
+        "benign_question",
+        "adult_detail_pressure",
+        "safe_alternative"
+      ],
+      "promotion_gate": "分别评分内容和应对；人工确认年龄边界与误报控制。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/36.json",
+      "task_ids": [
+        "ELE-SF-36-001",
+        "ELE-SF-36-002"
+      ],
+      "source_fidelity_status": "ready_mechanism",
+      "source_decision_route": "local_authored_historical_failure_retest",
+      "original_task_available": "local_authored_only",
+      "scoring_contract_summary": "Original MiniMax-M3 numeric dual-axis v7 parser and A content/joint criteria; platform intercept distinct.",
+      "condition_mapping_count": 1
+    },
+    {
+      "direction_id": "37",
+      "title": "音视频学习表现的证据真实性与语言差异",
+      "source_status": "ready_original",
+      "evidence_route": "reuse_original",
+      "source_ids": [
+        "LDA_video_speech"
+      ],
+      "benchmarks": [
+        "scivideobench"
+      ],
+      "oracle_type": "audio_video_performance_rubric",
+      "hardness_evidence": [
+        "paper_condition",
+        "multimodal"
+      ],
+      "controls": [
+        "black_or_frozen_video",
+        "duration_label",
+        "language_accent",
+        "observed_performance"
+      ],
+      "promotion_gate": "实际媒体读取和表现评分分离；不能用转写或时长替代视频证据。",
+      "source_fidelity_card": "data/edu_last_exam_source_fidelity_v1/directions/37.json",
+      "task_ids": [
+        "ELE-SF-37-001"
+      ],
+      "source_fidelity_status": "ready_original",
+      "source_decision_route": "original_task",
+      "original_task_available": true,
+      "scoring_contract_summary": "Native parser; null credit and paired label delta; full100-case correlations not estimated from1case.",
+      "condition_mapping_count": 1
+    }
+  ]
+}
