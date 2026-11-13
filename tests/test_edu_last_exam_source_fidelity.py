@@ -123,3 +123,21 @@ def test_secondary_model_is_only_an_explicit_original_scoring_role(tmp_path,monk
     assert "fake-private-credential" not in json.dumps(seen[0][0])
     with pytest.raises(ValueError,match="original scoring role"):
         caller(messages,purpose="prediction",model="MiniMax-M3")
+
+
+def test_source_fidelity_runner_can_select_one_case_without_changing_it():
+    from scripts.experiments import run_edu_last_exam_source_fidelity as runner
+    tasks = [{"case_id": "ELE-SF-05-001"}, {"case_id": "ELE-SF-05-002"}]
+    selected = runner.select_tasks(tasks, ["ELE-SF-05-002"])
+    assert selected == [{"case_id": "ELE-SF-05-002"}]
+    assert runner.select_tasks(tasks, None) == tasks
+    with pytest.raises(ValueError, match="Unknown requested"):
+        runner.select_tasks(tasks, ["ELE-SF-05-999"])
+
+
+def test_single_case_run_validates_only_the_selected_adapter():
+    audits, tasks, checks = core.load(core.ROOT, validation_case_ids=["ELE-SF-05-002"])
+    assert len(audits) == 37
+    assert len(tasks) > 1
+    assert checks
+    assert {check["case_id"] for check in checks} == {"ELE-SF-05-002"}

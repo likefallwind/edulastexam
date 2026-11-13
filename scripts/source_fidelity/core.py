@@ -135,7 +135,7 @@ def validate_task(task, root=ROOT):
     return {"case_id": ident, "passed": True, "checks": checks}
 
 
-def load(root=ROOT, require_all=True):
+def load(root=ROOT, require_all=True, validation_case_ids=None):
     root = Path(root)
     audits = [json.loads(path.read_text()) for path in sorted((root / AUDIT_REL / "directions").glob("[0-9][0-9].json"))]
     index_file = root / AUDIT_REL / "direction_index.json"
@@ -162,7 +162,13 @@ def load(root=ROOT, require_all=True):
         for task in tasks:
             if not any(task["case_id"] in a.get("task_ids", []) for a in audits):
                 raise ValueError(f"Task missing from direction audit: {task['case_id']}")
-    validations = [validate_task(task, root) for task in tasks]
+    validation_tasks = tasks
+    if validation_case_ids is not None:
+        requested = set(validation_case_ids)
+        validation_tasks = [task for task in tasks if task["case_id"] in requested]
+        if len(validation_tasks) != len(requested):
+            raise ValueError("Unknown case ID requested for adapter validation")
+    validations = [validate_task(task, root) for task in validation_tasks]
     return audits, tasks, validations
 
 

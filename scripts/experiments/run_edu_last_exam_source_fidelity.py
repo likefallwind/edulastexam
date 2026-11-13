@@ -26,6 +26,16 @@ def now():
     return datetime.now(timezone.utc).isoformat()
 
 
+def select_tasks(tasks, case_ids):
+    if not case_ids:
+        return tasks
+    requested = set(case_ids)
+    selected = [task for task in tasks if task["case_id"] in requested]
+    if len(selected) != len(requested):
+        raise ValueError("Unknown requested source-fidelity case ID")
+    return selected
+
+
 def code_identity(root):
     """Include imported transport code when validating a resumed run."""
     root = Path(root)
@@ -195,11 +205,12 @@ def main():
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument("--retries", type=int, default=2)
+    parser.add_argument("--case-id", action="append", help="Run only this source-fidelity case; repeatable")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     if args.model != "GLM-5.3-Flash" or not 1 <= args.concurrency <= 4:
         parser.error("This run is authorized for GLM-5.3-Flash with concurrency at most four")
-    audits, tasks, checks = core.load(ROOT)
+    audits, tasks, checks = core.load(ROOT, validation_case_ids=args.case_id)
     batch_manifest = json.loads((ROOT / core.BATCH_REL / "manifest.json").read_text())
     if batch_manifest["task_sha256"] != {t["case_id"]: core.digest(t) for t in tasks}:
         raise ValueError("Task export changed after offline validation")
@@ -207,6 +218,7 @@ def main():
         raise ValueError("Source audit changed after offline validation")
     if batch_manifest["protocol_sha256"] != core.digest((ROOT / core.AUDIT_REL / "protocol.md").read_bytes()):
         raise ValueError("Source fidelity protocol changed after offline validation")
+    tasks = select_tasks(tasks, args.case_id)
     if not tasks:
         raise ValueError("No source-verified executable tasks")
     if args.dry_run:
