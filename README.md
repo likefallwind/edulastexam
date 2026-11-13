@@ -6,10 +6,12 @@ Edu Last Exam 是一个独立维护的教育场景 benchmark 仓库。它要测�
 
 ## 当前状态
 
+- [37 方向机制驱动数据生成计划](docs/plans/edu_last_exam_37_direction_mechanism_generation_plan_2026-11-12.md)是当前生产主线：01–37 每方向都先分析任务要求、可能捷径和失效条件，再按机制生成不同材料与情境的题族。历史错例用于验证和修正机制，不是造数准入条件。机器可读蓝图见 [`data/edu_last_exam_mechanism_generation_v1/`](data/edu_last_exam_mechanism_generation_v1/)，生成队列由离线构建器导出。
+- [V2 第一批原创样本](private/edu_last_exam_v2_pilot/README.md)保留 5 个题族、11 个依赖版本及一次单模型探索运行；它是全方向流程中的部分子机制样本，不是后续只围绕五个错例深化的生产范围。
 - [全方向探索候选 v1](private/edu_last_exam_full_coverage_v1/README.md)已落实清单37个方向的38个基础案例、82个投递版本及评分协议。包括真实续轮、分支动作、隔离工作区、跨会话记忆、可渲染教学产物和真实媒体素材。阅读[题册](private/edu_last_exam_full_coverage_v1/questions.html)、[评分审阅册](private/edu_last_exam_full_coverage_v1/review.html)及[逐项测量边界](reports/full_coverage_v1/implementation_status.html)。这是全量探索候选；人审、当前模型难度和未覆盖子结论分别记录，不是冻结benchmark。
 - [中性题面对照](private/edu_last_exam_scenario_neutral_v1/README.md)保留原5包/12版本的附件、答案和rubric，仅移除系统及任务中的定向提示。可看[逐包题面对照](private/edu_last_exam_scenario_neutral_v1/prompt_comparison.html)。基线GLM试跑得到22份有效回答、2次图片接口拒绝；中性版结果独立记录，不将接口错误计作答题错误。
 - [场景研究首批候选题](private/edu_last_exam_scenario_v1/README.md)已完成作者离线核验：5个任务包、12个独立投递版本（含2个原图版本），覆盖首错/参考稿复核、真实手写作品审查、学习历史诊断。可直接读[题册](private/edu_last_exam_scenario_v1/questions.html)和[审阅册](private/edu_last_exam_scenario_v1/review.html)。当前模型难度未测、专家审核pending、未冻结。
-- 完整研究依据见 [AI 在教育应用中的薄弱点：文献与本仓库实验完整对照（2026-11-10）](docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md)，另有 [HTML 阅读版](reports/research/edu-last-exam-complete-evidence-inventory-2026-11-10.html)。清单逐项区分文献、本地实验、当前判断和未验证部分；它是研究证据快照，不是冻结 benchmark 结论。[首批易错场景与证据核验](docs/evidence/edu_last_exam_scenario_shortlist_2026-11-10.md)保留为前期记录。先核实具体失败场景与成功反例，再设计少量题目；原题复用、改编、自建按场景适配性选择，不设置复用优先级。
+- 完整研究依据见 [AI 在教育应用中的薄弱点：文献与本仓库实验完整对照（2026-11-10）](docs/evidence/edu_last_exam_complete_evidence_inventory_2026-11-10.md)，另有 [HTML 阅读版](reports/research/edu-last-exam-complete-evidence-inventory-2026-11-10.html)。清单逐项区分文献、本地实验、当前判断和未验证部分；它是研究证据快照，不是冻结 benchmark 结论。[首批易错场景与证据核验](docs/evidence/edu_last_exam_scenario_shortlist_2026-11-10.md)保留为前期记录。当前生成不因某方向尚无模型错例而跳过；原题复用、改编、自建按场景适配性选择，不设置复用优先级。
 - [11 月 9 日证据矩阵](docs/evidence/edu_last_exam_evidence_matrix_2026-11-09.md) 和 [11 月 8 日总体方案](docs/plans/edu_last_exam_integrated_plan_2026-11-08.md) 保留为前期研究记录，不要求按原子能力或 21 个方向凑齐题目。
 - `edu_last_exam_pilot_v1` 保留了原来的 12 题版本、题目规范和已跑过的 smoke 结果。
 - `challenge_v2` 是 21 个方向的研究启发式候选集，作者离线检查已通过，但人工审核和跨模型难度测量仍未完成；它不能被当作已经冻结的 Last Exam。
@@ -42,6 +44,8 @@ Edu Last Exam 是一个独立维护的教育场景 benchmark 仓库。它要测�
 
 ```bash
 python scripts/build/build_edu_last_exam_pilot_items.py --help
+python scripts/build/build_edu_last_exam_mechanism_generation.py --validate-only
+python scripts/build/build_edu_last_exam_v2_pilot.py --validate-only
 python scripts/build/build_edu_last_exam_challenge_items.py --validate-only
 python scripts/build/build_edu_last_exam_v1.py --validate-only
 python scripts/build/build_edu_last_exam_v1.py
@@ -61,8 +65,8 @@ python scripts/experiments/run_edu_last_exam_challenge_v2.py \
 
 ## 下一步
 
-1. 按[全方向计划](docs/plans/edu_last_exam_next_stage_plan_2026-11-10.md)用GLM-5.3-Flash并发4运行全部候选；逐方向保留错误、成功、接口未测与争议，完成后再决定深测范围。
-2. 对实际回答进行评分初审与独立教师复核；同模型语义评分仅作探索证据，17的连续指标单列，禁止混成一个总正确率。
-3. 按[研究待办](docs/plans/benchmark-todo.md)补未覆盖子结论、材料许可及评分校准；真实学习效果和自然课堂长期效度不由模拟互动替代。
+1. 按 [37 方向生成队列](reports/edu_last_exam_mechanism_generation_v1/direction_generation_queue.md)逐方向把机制蓝图转成 cards、独立材料、authored gold、controls 和 runtime；没有历史错例的方向同样进入生产。
+2. 对候选进行输入、gold、rubric、环境和 artifact 离线校验，再完成相应的独立教师、学科、安全或视觉审核；blocked 子结论保持可见，不用代理指标冒充直接测量。
+3. 在新批次、新输出目录中开展探索性试跑，用成功和失败回答检验、反驳或修正机制；不同构念不合成一个总正确率。
 4. 完成专家审核、对照/消融和跨模型验证后，才讨论正式版本和公开报告；通过的题可以转为回归或控制题。
 
