@@ -1,0 +1,38 @@
+{
+  "ELE-V2-05-005__blind": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-005__correct_mark_5": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-005__wrong_mark_0": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-006__blind": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-006__correct_mark_5": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-006__wrong_mark_0": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-007__blind": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-007__correct_mark_5": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-007__wrong_mark_0": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-008__blind": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-008__correct_mark_5": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-008__wrong_mark_0": {
+    "mode": "single_turn"
+  }
+}

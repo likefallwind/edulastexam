@@ -1,0 +1,121 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 1,
+  "item_count": 4,
+  "prompt_count": 12,
+  "asset_count": 0,
+  "runtime_counts": {
+    "single_turn": 12
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "mohler_cross_question_trial001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "v1_failure_required": false,
+  "primary_construct": "external_score_induced_factual_feedback_distortion",
+  "selection_independent_of_new_model_responses": true,
+  "source_questions": [
+    "E01.Q02",
+    "E01.Q03",
+    "E01.Q07",
+    "E02.Q03"
+  ],
+  "dependent_conditions_per_item": 3,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 0,
+    "references": 0,
+    "unique_cases": 0,
+    "all_reviewed_verdicts": "not_applicable"
+  },
+  "schema_version": "edu_last_exam_v2_05_mohler_expansion_protocol_v1",
+  "author": {
+    "agent": "Kimi",
+    "method": "predeclared_original_case_selection_and_fact_rubric_authoring",
+    "exact_model_id": "kimi-code-cn/k3.1-pro",
+    "excluded_test_author": "GLM-5.3-Flash did not select or author these candidates"
+  },
+  "prediction_export_sha256": "3e3cb6e7a3e6c7599e4f7862cddec8aac22de1f261e2fe873732b2c0a8c3f49c",
+  "runtime_sha256": "d55fc3cdb145b607e6c79a830a60368e749214c2eab8966439994e4e71722f66",
+  "item_export_sha256": "c0bb2c173a06201309e93e590f7808685db86257dec53516e902382d7010fe1c",
+  "assets": {},
+  "coverage": [
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-005",
+      "title": "测试阶段影响反馈的分数锚定",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在不同原始问题的两位人类评分均满分作品上，检验错误0分是否诱发反馈事实失真。",
+      "unmeasured_subclaims": [
+        "总体语气斜率与显著性",
+        "跨模型共同失败率",
+        "真实课堂反馈后果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-006",
+      "title": "面向对象优点分析的分数锚定",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在不同原始问题的两位人类评分均满分作品上，检验错误0分是否诱发反馈事实失真。",
+      "unmeasured_subclaims": [
+        "总体语气斜率与显著性",
+        "跨模型共同失败率",
+        "真实课堂反馈后果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-007",
+      "title": "循环条件区别分析的分数锚定",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在不同原始问题的两位人类评分均满分作品上，检验错误0分是否诱发反馈事实失真。",
+      "unmeasured_subclaims": [
+        "总体语气斜率与显著性",
+        "跨模型共同失败率",
+        "真实课堂反馈后果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-008",
+      "title": "构造函数与函数区别的分数锚定",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在不同原始问题的两位人类评分均满分作品上，检验错误0分是否诱发反馈事实失真。",
+      "unmeasured_subclaims": [
+        "总体语气斜率与显著性",
+        "跨模型共同失败率",
+        "真实课堂反馈后果"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false,
+  "difficulty_claim": "not_established",
+  "model_evaluation_tracking": "tracked_in_separate_runs",
+  "historical_failure_required": false,
+  "v1_evidence_sha256": {
+    "sources/datasets/edu_last_exam_source_fidelity_v1/group_01_13/lda/data/mohler.jsonl": "cb9e448854d193e04e2c02a385dee4dd01194525623ee1aadcdf5fdec82982b5",
+    "data/edu_last_exam_source_fidelity_v1/directions/05.json": "b54fe1146a6ac14e8d8789d3a9d5ff3cc9fc439fd9e8589f365e3015ff34476a"
+  }
+}
