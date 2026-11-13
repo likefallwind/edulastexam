@@ -34,12 +34,20 @@ def oracle_checks(batch, items):
     return checks
 
 
-def build(batch, validate_only=False, check=False, allow_partial=False):
-    items = load_items(batch, require_all=not allow_partial)
+def build(batch, validate_only=False, check=False, allow_partial=False, protocol=None):
+    protocol = protocol or {}
+    items = load_items(
+        batch,
+        require_all=not allow_partial,
+        item_glob=protocol.get("item_glob", "ELE-FC-*.json"),
+        item_id_pattern=protocol.get("item_id_pattern", r"ELE-FC-\d{2}-\d{3}"),
+        expected_item_ids=protocol.get("expected_item_ids"),
+    )
     oracles = oracle_checks(batch, items)
     prompts, runtimes, assets = [], {}, {}
-    question_lines = ["# Edu Last Exam 全方向探索题册", "", "作者候选，独立教师审阅待完成；题册不含评分金标。版本与基础案例分别计数。", ""]
-    review_lines = ["# Edu Last Exam 全方向评分与测量边界", "", "仅供审阅，禁止投递给被测模型。语义评分需独立复核，试跑不等于冻结。", ""]
+    question_lines = protocol.get("question_lines", ["# Edu Last Exam 全方向探索题册", "", "作者候选，独立教师审阅待完成；题册不含评分金标。版本与基础案例分别计数。", ""])
+    review_lines = protocol.get("review_lines", ["# Edu Last Exam 全方向评分与测量边界", "", "仅供审阅，禁止投递给被测模型。语义评分需独立复核，试跑不等于冻结。", ""])
+    report_dir = ROOT / protocol.get("report_directory", "reports/full_coverage_v1")
     summary_rows = []
     for item in items:
         item_id = item["item_id"]
@@ -59,27 +67,33 @@ def build(batch, validate_only=False, check=False, allow_partial=False):
             review_lines += [f"### 版本 {prompt['prompt_id']}", "", "```json", json.dumps(item["gold"]["per_prompt"][prompt["prompt_id"]], ensure_ascii=False, indent=2), "```", ""]
         review_lines += ["### Rubric、控制与环境", "", "```json", json.dumps({"rubric": item["rubric"], "controls": item["controls"], "runtime": item.get("runtime", {})}, ensure_ascii=False, indent=2), "```", ""]
         summary_rows.append({"direction_id": item["direction_id"], "item_id": item_id, "title": item["title"], "variants": len(item["prompts"]), "modes": sorted({runtime_for(item, p["prompt_id"])["mode"] for p in item["prompts"]}), "measurement_claim": item["measurement_claim"], "unmeasured_subclaims": item["unmeasured_subclaims"], "human_review": item["status"]["human_review"]})
+    expected_prompt_count = protocol.get("expected_prompt_count")
+    if expected_prompt_count is not None and len(prompts) != expected_prompt_count:
+        raise ValueError(f"Prompt count mismatch: expected {expected_prompt_count}, got {len(prompts)}")
     validation = {"status": "offline_validated_candidate", "direction_count": len({i["direction_id"] for i in items}), "item_count": len(items), "prompt_count": len(prompts), "asset_count": len(assets), "runtime_counts": dict(collections.Counter(r["mode"] for r in runtimes.values())), "artifact_oracles": oracles, "human_review": "pending", "difficulty": "not_established", "model_evaluation": "tracked_in_separate_runs", "complete_direct_measurement_all_subclaims": False}
+    validation.update(protocol.get("validation_extra", {}))
     exported = {
         batch / "items.jsonl": ''.join(json.dumps(i, ensure_ascii=False) + "\n" for i in items),
         batch / "prompts.jsonl": ''.join(json.dumps(p, ensure_ascii=False) + "\n" for p in prompts),
         batch / "runtimes.json": json.dumps(runtimes, ensure_ascii=False, indent=2) + "\n",
         batch / "questions.md": '\n'.join(question_lines) + "\n",
         batch / "review.md": '\n'.join(review_lines) + "\n",
-        batch / "questions.html": html_document('\n'.join(question_lines), "Edu Last Exam 全方向题册").decode(),
-        batch / "review.html": html_document('\n'.join(review_lines), "Edu Last Exam 评分审阅册").decode(),
+        batch / "questions.html": html_document('\n'.join(question_lines), protocol.get("questions_html_title", "Edu Last Exam 全方向题册")).decode(),
+        batch / "review.html": html_document('\n'.join(review_lines), protocol.get("review_html_title", "Edu Last Exam 评分审阅册")).decode(),
     }
     for item in items:
         exported[batch / "reference" / (item["item_id"] + ".json")] = json.dumps({k: item[k] for k in ("gold", "rubric", "controls", "measurement_claim", "unmeasured_subclaims")}, ensure_ascii=False, indent=2) + "\n"
-    manifest = {**validation, "schema_version": "edu_full_coverage_candidate_v1", "author": {"agent": "Codex", "method": "source_curation_and_assisted_authoring", "exact_model_id": "not_exposed_in_task", "excluded_test_author": "GLM-5.3-Flash did not author canonical content"}, "prediction_export_sha256": digest(exported[batch / "prompts.jsonl"].encode()), "runtime_sha256": digest(exported[batch / "runtimes.json"].encode()), "item_export_sha256": digest(exported[batch / "items.jsonl"].encode()), "assets": assets, "coverage": summary_rows, "canonical": False, "frozen": False}
+    default_author = {"agent": "Codex", "method": "source_curation_and_assisted_authoring", "exact_model_id": "not_exposed_in_task", "excluded_test_author": "GLM-5.3-Flash did not author canonical content"}
+    manifest = {**validation, "schema_version": protocol.get("schema_version", "edu_full_coverage_candidate_v1"), "author": protocol.get("author", default_author), "prediction_export_sha256": digest(exported[batch / "prompts.jsonl"].encode()), "runtime_sha256": digest(exported[batch / "runtimes.json"].encode()), "item_export_sha256": digest(exported[batch / "items.jsonl"].encode()), "assets": assets, "coverage": summary_rows, "canonical": False, "frozen": False}
+    manifest.update(protocol.get("manifest_extra", {}))
     exported[batch / "manifest.json"] = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
-    exported[ROOT / "reports/full_coverage_v1/offline_validation.json"] = json.dumps(validation, ensure_ascii=False, indent=2) + "\n"
-    coverage_lines = ["# 全方向候选实现状态", "", "本表由作者题包生成，不表示已完成独立教师审核或所有子构念的直接测量。", "", "|方向|题包|版本|环境|测量边界|尚未覆盖|", "|---|---|---:|---|---|---|"]
+    exported[report_dir / "offline_validation.json"] = json.dumps(validation, ensure_ascii=False, indent=2) + "\n"
+    coverage_lines = protocol.get("coverage_lines", ["# 全方向候选实现状态", "", "本表由作者题包生成，不表示已完成独立教师审核或所有子构念的直接测量。", "", "|方向|题包|版本|环境|测量边界|尚未覆盖|", "|---|---|---:|---|---|---|"])
     for row in summary_rows:
         values = [row["direction_id"], row["item_id"], str(row["variants"]), ", ".join(row["modes"]), row["measurement_claim"], "；".join(row["unmeasured_subclaims"])]
         coverage_lines.append("|" + "|".join(v.replace("|", "／").replace("\n", " ") for v in values) + "|")
-    exported[ROOT / "reports/full_coverage_v1/implementation_status.md"] = '\n'.join(coverage_lines) + "\n"
-    exported[ROOT / "reports/full_coverage_v1/implementation_status.html"] = html_document('\n'.join(coverage_lines), "全方向候选实现状态").decode()
+    exported[report_dir / "implementation_status.md"] = '\n'.join(coverage_lines) + "\n"
+    exported[report_dir / "implementation_status.html"] = html_document('\n'.join(coverage_lines), protocol.get("coverage_html_title", "全方向候选实现状态")).decode()
     if check:
         for path, content in exported.items():
             if not path.exists() or path.read_text(encoding="utf-8") != content:

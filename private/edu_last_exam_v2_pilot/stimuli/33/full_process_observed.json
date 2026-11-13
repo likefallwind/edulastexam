@@ -1,0 +1,22 @@
+{
+  "learner": "合成成人英语学习者L",
+  "current_sample": {
+    "record_id": "C0",
+    "mode": "unscripted_oral",
+    "transcript": "Yesterday I go to the market and buyed some fruit.",
+    "feedback_before_sample": "none"
+  },
+  "records": [
+    {"record_id": "R1", "task": "一般过去时规则与不规则动词专项笔试", "observation_coverage": "full_process", "result": "10/10；go→went、buy→bought均正确；学生独立写出规则"},
+    {"record_id": "R2", "task": "图片口述一", "observation_coverage": "full_process", "result": "完整转写显示学生先说go，随后无提示改为went，并解释过去时"},
+    {"record_id": "R3", "task": "图片口述二", "observation_coverage": "full_process", "result": "完整转写显示学生先说buyed，停顿后无提示改为bought"},
+    {"record_id": "R4", "task": "看图写句", "observation_coverage": "full_process", "result": "完整过程显示学生独立写出正确过去时，并进行一次自我检查"}
+  ],
+  "candidate_claims": [
+    {"claim_id": "C1", "text": "学生完全不懂一般过去时规则及went/bought形式"},
+    {"claim_id": "C2", "text": "当前C0口头样本至少出现go和buyed两处过去时形式错误"},
+    {"claim_id": "C3", "text": "C0错误的唯一原因已经证明是实时提取/自动化不足，而非词项、注意或任务理解"},
+    {"claim_id": "C4", "text": "学生在历史口语任务中从未自我纠正"},
+    {"claim_id": "C5", "text": "C0没有需要反馈的实际错误"}
+  ]
+}

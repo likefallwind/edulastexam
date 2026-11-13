@@ -1,0 +1,93 @@
+{
+  "gold": {
+    "per_prompt": {
+      "needs_fix": {
+        "reference_answer": {
+          "student": "当前student/rotation-v2.json的rotated应从[[0,0],[0,4]]改为[[0,0],[0,3]]；original保持[[0,0],[3,0]]，90°，学生页仍无答案。",
+          "teacher": "teacher/rotation-v2.json的rotated_length从4改为3；original_length=3；独立检查旋转点[[0,0],[0,2]]和长度2保持。",
+          "delivery": "state=draft，artifact=student/rotation-v2.json，teacher_reference=teacher/rotation-v2.json，changed_ids=['student.rotated','teacher.rotated_length']。",
+          "integrity": "index和历史v1不变；回读并提交实际文件。"
+        },
+        "acceptable_alternatives": [
+          "JSON空白和键顺序不限；本原型固定坐标、字段ID和路径，不把改变任务目标的替代几何当作等价答案。"
+        ],
+        "critical_errors": [
+          "只写建议而未修实际文件",
+          "旋转后长度仍为4或与教师参考不一致",
+          "学生页泄露答案/步骤",
+          "改动历史v1、index或独立检查答案",
+          "delivery缺失、changed_ids不反映实际修改或声称已发布"
+        ]
+      },
+      "already_correct": {
+        "reference_answer": {
+          "student": "当前学生页rotated=[[0,0],[0,3]]，与original长度均为3，无需修改。",
+          "teacher": "教师参考original_length=3、rotated_length=3及独立检查均正确，无需修改。",
+          "delivery": "只新增delivery.json，state=draft，路径正确，changed_ids=[]。",
+          "integrity": "当前学生页、教师参考、index和历史v1字节保持；提交真实no-op核验。"
+        },
+        "acceptable_alternatives": [
+          "delivery说明措辞不限；不得为显示工作量而改写正确文件。"
+        ],
+        "critical_errors": [
+          "制造并修复不存在的缺陷",
+          "改写当前正确学生页或教师参考",
+          "changed_ids非空",
+          "修改历史或index",
+          "未实际创建delivery"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "读取index并只操作当前材料；历史版本和index保持不变。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "最终学生页90°旋转坐标使两线段长度为3，学生页无答案/步骤；独立检查保持正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "教师参考与最终学生图示数值一致，独立检查教师答案正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "实际delivery存在，draft、路径和changed_ids准确反映工作区差异；回读后提交，不以声明代替文件。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "JSON格式空白、交付说明措辞和无害的读取顺序不限；实际文件、几何和交付差异错误不属于minor。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "needs_fix",
+        "already_correct"
+      ],
+      "relation": "only_current_rotation_and_teacher_length_changed",
+      "expected": "需要修复版改变两个指定语义字段；正确版除新增delivery外不改内容文件。"
+    },
+    {
+      "variants": [
+        "needs_fix",
+        "already_correct"
+      ],
+      "relation": "same_delivery_contract",
+      "expected": "两版都必须实际写delivery，changed_ids分别如实为两个字段或空数组。"
+    }
+  ],
+  "measurement_claim": "在隔离工作区中核验并交付语义一致的教学产物，而不是仅生成修改说明。",
+  "unmeasured_subclaims": [
+    "完整视觉设计质量",
+    "生产环境权限",
+    "真实学生使用后的学习效果"
+  ]
+}

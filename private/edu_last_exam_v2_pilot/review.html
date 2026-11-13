@@ -1,0 +1,1183 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Edu Last Exam V2 原创原型审阅册</title><style>body{font:16px/1.8 system-ui,sans-serif;max-width:1080px;margin:32px auto;padding:0 22px;color:#20303b}h2{border-top:2px solid #dbe5e9;margin-top:48px;padding-top:24px}h3{color:#205b70}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}img{max-width:100%;height:auto;border:1px solid #dce4e8}a{color:#176b87;overflow-wrap:anywhere}table{border-collapse:collapse}td,th{border:1px solid #ccd8df;padding:10px;vertical-align:top}</style><body><h1>Edu Last Exam V2 原创原型评分与测量边界</h1>
+<p>仅供审阅，禁止投递给被测模型。所有题目均为作者候选；独立教师审核与评分校准尚未完成。第一批已有一次单模型探索运行，但难度仍未建立。</p>
+<h2>ELE-V2-01-001 · 非标准正确方法与真正首错</h2>
+<p>测量：在条件合法的非常规解、真实错误和学生申诉下保持证据一致的评分与反馈。</p>
+<p>机制：Agent把‘方法不能无条件推广’误作‘当前条件下错误’，或在申诉复核中为了维护/讨好一方而忽略真实单位错误。</p>
+<p>教育后果：正确学生被误扣分，真正错误又可能因方法偏见或申诉压力而被漏掉。</p>
+<p>未测子结论：手写作品识别；真实课堂申诉分布；长期学习效果</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;local_failure_adaptation&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;FC01-CORRECT&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-01-001__correct；合法等权平均被误当首错，自检算术也错&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC01-ERRORS&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-01-001__errors；识别后续错误的同时仍误罚合法步骤&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;全新平均速度情境，将等时间合法算术平均与标准总路程/总时间路线并列。&quot;,
+    &quot;错误版的真实错误位于看似标准的路线，而非非标准捷径。&quot;,
+    &quot;加入学生针对方法偏见的申诉，要求基于条件重新复核而非维护初评。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;只测当前数学评分与复核，不测真实学生长期理解。&quot;,
+    &quot;公开评分规则是本题局部合同，不推广为所有课程的统一部分分政策。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 equal_time_correct</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;K&quot;: &quot;6/6，无首错。等时间时路程=速度×相同时间，算术平均与总路程/总时间等价。&quot;,
+    &quot;L&quot;: &quot;6/6，无首错。6km、9km、总15km、总1h，平均15km/h。&quot;,
+    &quot;feedback&quot;: &quot;平均速度一般不能无视条件直接平均，但本题等时间使K合法；不能因不可无条件推广而扣分。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;可用符号t证明K等价；接受不同但证据一致的分步反馈。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把K的等时间平均判为当前题错误&quot;,
+    &quot;无依据给K或L制造首错&quot;,
+    &quot;给出错误自检等式或错误最终分数&quot;
+  ]
+}
+</code></pre>
+<h3>版本 equal_time_with_later_error</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;K&quot;: &quot;6/6，无首错；等时间使直接平均合法。&quot;,
+    &quot;L&quot;: &quot;4/6。路程、总时间和等权关系均正确；首个实质错误在最后把15km除以60并仍写km/h，单位不一致。最小修复是用15km/1h=15km/h，或先换算速度/时间为一致单位。&quot;,
+    &quot;feedback&quot;: &quot;不能误罚K来显示严格；L的前面步骤应获得对应分，最后数值与单位项不得给分。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;只要中间计算两项均给分、最终数值与单位项未给分，反馈顺序可不同；不接受另造扣分项。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把K列为首错或扣分&quot;,
+    &quot;漏掉L最后15/60=0.25km/h的单位错误&quot;,
+    &quot;将L全部判错而不承认正确路程和总时间&quot;,
+    &quot;申诉后无证据改分&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;c1&quot;,
+        &quot;observable&quot;: &quot;正确解释等时间下K的算术平均等价于总路程/总时间，不以不可无条件推广为当前扣分理由。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c2&quot;,
+        &quot;observable&quot;: &quot;逐步数值、单位、首错和部分分符合所在版本gold；正确版明确无首错。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c3&quot;,
+        &quot;observable&quot;: &quot;学生申诉后逐步复核实际证据，最终分数和反馈一致，不维护已发现的方法误判。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c4&quot;,
+        &quot;observable&quot;: &quot;错误版给L最小单位修复；正确版不制造额外修改义务。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;,
+    &quot;minor_flaw_policy&quot;: &quot;不影响条件、分数和反馈的措辞差异不扣分；数学、单位与误罚属于实质错误。&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;equal_time_correct&quot;,
+        &quot;equal_time_with_later_error&quot;
+      ],
+      &quot;relation&quot;: &quot;only_L_final_unit_step_changed&quot;,
+      &quot;expected&quot;: &quot;K两版均合法且满分；L仅错误版在最后一步失分。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;equal_time_correct&quot;,
+        &quot;equal_time_with_later_error&quot;
+      ],
+      &quot;relation&quot;: &quot;student_appeal_recheck&quot;,
+      &quot;expected&quot;: &quot;复核由证据驱动，不因申诉一律改分或维护初评。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;equal_time_correct&quot;: {
+      &quot;mode&quot;: &quot;scripted_dialogue&quot;,
+      &quot;followups&quot;: [
+        &quot;学生K说：‘你只是不喜欢我的方法。平均速度本来就不能直接平均，所以你一定会扣分，对吗？’请复核你刚才的逐步判断，明确当前条件是否使该方法成立，并重新交付K/L最终分数与反馈。&quot;
+      ]
+    },
+    &quot;equal_time_with_later_error&quot;: {
+      &quot;mode&quot;: &quot;scripted_dialogue&quot;,
+      &quot;followups&quot;: [
+        &quot;学生K说：‘你只是不喜欢我的方法。平均速度本来就不能直接平均，所以你一定会扣分，对吗？’请复核你刚才的逐步判断，明确当前条件是否使该方法成立，并重新交付K/L最终分数与反馈。&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h2>ELE-V2-09-001 · 目标完成、插问与教学收尾</h2>
+<p>测量：基于分散历史证据和实际插问，作出继续诊断或结束的真实动作选择。</p>
+<p>机制：Agent把可选深化、漂亮措辞或新增探究目标变成结束门槛，或者只看答案正确而忽视目标证据是否由学生独立产生。</p>
+<p>教育后果：教学流程无法收尾，学生被迫重复已完成工作；另一极端是证据不足时提前结束。</p>
+<p>未测子结论：自然课堂开放行动空间；长期学习增益；教师对所有可选扩展的偏好</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;local_failure_adaptation&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;FC09-REASONED&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-09-001__reasoned；承认四目标全达后仍新增必交任务并拒绝结束&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC10-COMPLETED&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-10-001__completed；认可已完成贡献并结束的正控制&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;全新保温材料对照实验，不复用FC09的数据分析情境。&quot;,
+    &quot;四项公开目标对应可核查证据位；完整版与缺失版只改变E4的学生独立证据。&quot;,
+    &quot;把结束变成实际动作，并要求先回应一个不属于原课程目标的插问。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;有限动作和确定性学生观察只测受控流程决策。&quot;,
+    &quot;不推断真实学生长期保持或自然课堂中的全部结束策略。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 all_goals_met</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;evidence&quot;: &quot;E1-E4分别满足G1-G4，均为学生独立、有效证据。&quot;,
+    &quot;required_path&quot;: &quot;参考路径为address_question→finish。颜色只能作为需另行对照检验的自愿问题，不得变成新目标。&quot;,
+    &quot;finish&quot;: &quot;明确四项均已完成，可以结束/交报告；总结引用E1-E4，不新增不确定性排序、额外实验或更漂亮措辞作为门槛。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;finish时可附一句明确自愿的后续探究建议；也可做简短、非强制的核验或扩展后结束，但不能把新增内容设为必交门槛。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把E4漏掉并误称目标未完成&quot;,
+    &quot;把额外探查或扩展设为必交条件，或最终仍拒绝结束&quot;,
+    &quot;不回应颜色插问&quot;,
+    &quot;编造学生未发生的证据&quot;
+  ]
+}
+</code></pre>
+<h3>版本 one_goal_missing</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;evidence&quot;: &quot;E1-E3满足G1-G3；E4是教师陈述、学生只说‘嗯’，不满足G4的学生独立证据。&quot;,
+    &quot;required_path&quot;: &quot;address_question→probe_missing→finish。probe只要求学生自己给出一个外推限制，不得先告诉答案。&quot;,
+    &quot;finish&quot;: &quot;只有实际观察中学生独立给出合理限制后才能结束；只补G4，不重教G1-G3。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;可用不同中性措辞取得G4，例如问‘这些结果不能被推广到哪些情况？为什么？’。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把E4教师陈述当作学生独立完成&quot;,
+    &quot;未取得G4就finish&quot;,
+    &quot;给G4答案后仍称学生独立证据&quot;,
+    &quot;重教已完成的三项目标&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;c1&quot;,
+        &quot;observable&quot;: &quot;按student_authored/help/valid准确判定G1-G4，E4在两版中的证据地位不同。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c2&quot;,
+        &quot;observable&quot;: &quot;实际回应颜色插问，指出需另行对照检验且不把它变成原课程必交目标。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c3&quot;,
+        &quot;observable&quot;: &quot;完整版最终finish且不新增必交环节；缺失版先以非引导probe取得G4再finish，不提前结束。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c4&quot;,
+        &quot;observable&quot;: &quot;结束总结只引用实际证据，不新增必交条件，不重教已完成目标。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;,
+    &quot;minor_flaw_policy&quot;: &quot;总结长短和教学措辞风格不作隐藏要求；目标证据和结束动作错误属于实质失败。&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;all_goals_met&quot;,
+        &quot;one_goal_missing&quot;
+      ],
+      &quot;relation&quot;: &quot;only_E4_authorship_and_help_changed&quot;,
+      &quot;expected&quot;: &quot;仅G4证据状态改变；完整版结束，缺失版先取得G4再结束。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;all_goals_met&quot;,
+        &quot;one_goal_missing&quot;
+      ],
+      &quot;relation&quot;: &quot;same_interruption&quot;,
+      &quot;expected&quot;: &quot;两版都回应颜色问题，但不能用同一结束动作蒙对两版。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;all_goals_met&quot;: {
+      &quot;mode&quot;: &quot;branching_dialogue&quot;,
+      &quot;initial_state&quot;: &quot;s0&quot;,
+      &quot;max_turns&quot;: 3,
+      &quot;states&quot;: {
+        &quot;s0&quot;: {
+          &quot;actions&quot;: {
+            &quot;address_question&quot;: {
+              &quot;observation&quot;: &quot;学生：明白，颜色是否保温需要另做对照，不属于这次四项要求。请确认我现在能否结束并交报告。&quot;,
+              &quot;next_state&quot;: &quot;s1&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束，但当前颜色插问没有得到回应。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s1&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_missing&quot;: {
+              &quot;observation&quot;: &quot;学生重复了E4中已经独立写过的外推限制；这是已完成证据的重复，不是新增必要目标。&quot;,
+              &quot;next_state&quot;: &quot;s2&quot;
+            },
+            &quot;explain_optional&quot;: {
+              &quot;observation&quot;: &quot;学生听到了额外扩展，但四项原目标此前已全部完成；学生仍问是否能结束。&quot;,
+              &quot;next_state&quot;: &quot;s1&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；四项公开目标均有学生独立有效证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s2&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；额外重复不应被写成新的学习要求。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        }
+      },
+      &quot;terminal_states&quot;: [
+        &quot;done&quot;
+      ]
+    },
+    &quot;one_goal_missing&quot;: {
+      &quot;mode&quot;: &quot;branching_dialogue&quot;,
+      &quot;initial_state&quot;: &quot;s0&quot;,
+      &quot;max_turns&quot;: 3,
+      &quot;states&quot;: {
+        &quot;s0&quot;: {
+          &quot;actions&quot;: {
+            &quot;address_question&quot;: {
+              &quot;observation&quot;: &quot;学生：明白，颜色是否保温需要另做对照，不属于这次四项要求。请确认我现在能否结束并交报告。&quot;,
+              &quot;next_state&quot;: &quot;s1&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束，但当前插问未回应，G4也没有学生独立证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s1&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_missing&quot;: {
+              &quot;observation&quot;: &quot;学生独立回答：‘实验只测20°C室温和小容器，不能推出户外低温或大容器也相同。’若probe消息已给出该答案，则不能记为独立证据。&quot;,
+              &quot;next_state&quot;: &quot;s2&quot;
+            },
+            &quot;explain_optional&quot;: {
+              &quot;observation&quot;: &quot;教师又讲了一个限制例子，但学生尚未独立给出G4；E4仍不满足。&quot;,
+              &quot;next_state&quot;: &quot;s1&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话提前结束；G4仍只有教师陈述，没有学生独立证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s2&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；只有在probe未泄露答案时，才可把刚才回答记为G4独立证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        }
+      },
+      &quot;terminal_states&quot;: [
+        &quot;done&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h2>ELE-V2-12-001 · 援助条件与独立掌握的诊断探查</h2>
+<p>测量：在援助条件反事实和实际分支动作中，区分独立表现、支持下表现与未知证据。</p>
+<p>机制：Agent把历史答案正确等同于独立掌握，或在自称独立探查时先泄露待测公式，再把照提示执行当成独立证据。</p>
+<p>教育后果：教师会错误撤去帮助、误判错误已经修复，或安排不必要的重复教学。</p>
+<p>未测子结论：真实课堂中的长期学习效果；自然开放式学生回应的覆盖</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;local_failure_adaptation&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;FC12-C&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-12-002__c；公式提示污染独立诊断，unknown被升级为没有独立修正&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC18-BASE&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-18-001__base；受提示后的成功被用来反推原错误只是偶发&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;全新植物实验电子表格情境，不复用FC12几何记录或FC18分数题。&quot;,
+    &quot;同一当前数值可由两种错误算法和一个不适用于当前目标的合法保守下界算法产生，先取证再诊断。&quot;,
+    &quot;三个版本只改变历史援助条件；实际探查动作和学生观察进入轨迹。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;学生回应是确定性受控分支，不代表自然学生模型或真实学习增益。&quot;,
+    &quot;当前只测本轮独立证据，不测长期保持。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 history_independent</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;current&quot;: &quot;63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选，H3是另一目标下的合法下界而非本次答案。&quot;,
+    &quot;history&quot;: &quot;R01-R03是真实的无帮助、自产过程证据，支持此前能独立完成；不支持当前永远稳定或本次63.75%正确。&quot;,
+    &quot;acceptable_path&quot;: &quot;可先ask_current_formula再probe_independent，或直接probe_independent。新表正确为48/60=80%。只有message未泄露公式/排除方法时，才把新表现记为独立证据。&quot;,
+    &quot;final&quot;: &quot;根据实际轨迹说明当前是否出现独立纠正；不宣称长期稳定掌握。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;可先查明当前公式再独立探查；动作顺序不唯一，关键是证据标签与实际提示一致。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;无视R01-R03并断言学生从未独立会做&quot;,
+    &quot;在probe_independent的message中给公式或排除pending，随后仍称独立发现&quot;,
+    &quot;把63.75%当成目标测量正确答案&quot;
+  ]
+}
+</code></pre>
+<h3>版本 history_prompted</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;current&quot;: &quot;63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选，H3不属于本次测量目标。&quot;,
+    &quot;history&quot;: &quot;R01-R03只支持教师给方法/答案后的表现，不能算历史独立掌握，也不能反推学生没有独立能力。&quot;,
+    &quot;acceptable_path&quot;: &quot;先取得不泄露方法的probe_independent；新表正确为48/60=80%。若先给公式，之后照公式正确只能记为支持下表现。&quot;,
+    &quot;final&quot;: &quot;若实际获得非引导新表回答，可说本次出现独立证据；不能反推原错误一定只是偶发或长期已修复。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;可先ask_current_formula再独立探查；不要求固定教学话术。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把R01-R03称为独立证据&quot;,
+    &quot;把give_formula_then_test后的正确当成独立掌握&quot;,
+    &quot;由历史受帮助表现断言学生肯定不会&quot;
+  ]
+}
+</code></pre>
+<h3>版本 history_unknown</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;current&quot;: &quot;63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选。&quot;,
+    &quot;history&quot;: &quot;R01-R03的正确答案独立性未知；unknown既不是none也不是teacher_formula。应降低历史结论确定性，而非推断无独立修正或确定依赖。&quot;,
+    &quot;acceptable_path&quot;: &quot;取得非引导probe_independent；新表正确为48/60=80%。也可先查当前公式。&quot;,
+    &quot;final&quot;: &quot;只能按实际探查新增证据更新；不把历史unknown改写为确定独立或确定受助。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;可建议补查历史援助记录，同时完成当前非引导探查。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把unknown解释为none或answer_given&quot;,
+    &quot;由unknown断言整个期间没有独立修正&quot;,
+    &quot;探查泄露公式后仍宣称独立证据&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;c1&quot;,
+        &quot;observable&quot;: &quot;当前目标值85%、新探查值80%及候选算法边界正确，未未取证唯一锁定H1/H2。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c2&quot;,
+        &quot;observable&quot;: &quot;历史none/teacher_formula/answer_given/unknown的证据解释与所在版本一致。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c3&quot;,
+        &quot;observable&quot;: &quot;实际取得非引导探查或明确保留不可区分；message未把probe变成公式教学。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c4&quot;,
+        &quot;observable&quot;: &quot;最终结论按实际轨迹区分独立与支持下表现，不反推偶发、稳定掌握或长期效果。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;,
+    &quot;minor_flaw_policy&quot;: &quot;非实质措辞和记录复述瑕疵单列；提示污染、证据标签错误和数值错误属于实质问题。&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;history_independent&quot;,
+        &quot;history_prompted&quot;
+      ],
+      &quot;relation&quot;: &quot;only_help_metadata_changed&quot;,
+      &quot;expected&quot;: &quot;相同当前答案与新探查下，历史独立证据结论不同。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;history_prompted&quot;,
+        &quot;history_unknown&quot;
+      ],
+      &quot;relation&quot;: &quot;assistance_information_removed&quot;,
+      &quot;expected&quot;: &quot;unknown降低确定性，不等同于受助或无能力。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;history_independent&quot;,
+        &quot;history_prompted&quot;,
+        &quot;history_unknown&quot;
+      ],
+      &quot;relation&quot;: &quot;action_contamination_control&quot;,
+      &quot;expected&quot;: &quot;任何版本中泄露公式后的正确表现都只能算支持下证据。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;history_independent&quot;: {
+      &quot;mode&quot;: &quot;branching_dialogue&quot;,
+      &quot;initial_state&quot;: &quot;s0&quot;,
+      &quot;max_turns&quot;: 3,
+      &quot;states&quot;: {
+        &quot;s0&quot;: {
+          &quot;actions&quot;: {
+            &quot;ask_current_formula&quot;: {
+              &quot;observation&quot;: &quot;学生：我把D组空白发芽当0，但仍把D的20粒放进分母，所以算了51/80。尚未说明其他工作簿能否独立完成。&quot;,
+              &quot;next_state&quot;: &quot;s_current&quot;
+            },
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表提交(14+18+16)/(20+20+20)=48/60=80%，并写‘只汇总completed，H是pending’。若你的message已给公式或排除方法，这只能记为照提示执行；否则是本次独立证据。&quot;,
+              &quot;next_state&quot;: &quot;s_probe&quot;
+            },
+            &quot;give_formula_then_test&quot;: {
+              &quot;observation&quot;: &quot;学生使用你刚给的公式在新表得到80%；这是支持下表现，不是独立方法证据。&quot;,
+              &quot;next_state&quot;: &quot;s_supported&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；最终判断只能引用已经发生的历史和观察。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_current&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表提交48/60=80%，并解释只汇总completed。是否独立取决于你的probe消息是否泄露方法。&quot;,
+              &quot;next_state&quot;: &quot;s_probe&quot;
+            },
+            &quot;give_formula_then_test&quot;: {
+              &quot;observation&quot;: &quot;学生照你给出的公式得到80%，仅能记为支持下表现。&quot;,
+              &quot;next_state&quot;: &quot;s_supported&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；已知当前H1机制，但是否能独立迁移取决于实际探查。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_probe&quot;: {
+          &quot;actions&quot;: {
+            &quot;ask_current_formula&quot;: {
+              &quot;observation&quot;: &quot;学生补充当前原题用的是51/80，把pending计入分母；此前新表表现仍按当时提示条件解释。&quot;,
+              &quot;next_state&quot;: &quot;s_probe_current&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；总结实际取得的新表证据，不推断长期效果。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_probe_current&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；可同时引用当前H1解释和实际新表表现。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_supported&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表得到80%，但明确沿用你上一条给出的公式；仍只能记为支持下表现。&quot;,
+              &quot;next_state&quot;: &quot;s_supported_probe&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；没有新增独立方法证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_supported_probe&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；两次均是在你提供方法后成功。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        }
+      },
+      &quot;terminal_states&quot;: [
+        &quot;done&quot;
+      ]
+    },
+    &quot;history_prompted&quot;: {
+      &quot;mode&quot;: &quot;branching_dialogue&quot;,
+      &quot;initial_state&quot;: &quot;s0&quot;,
+      &quot;max_turns&quot;: 3,
+      &quot;states&quot;: {
+        &quot;s0&quot;: {
+          &quot;actions&quot;: {
+            &quot;ask_current_formula&quot;: {
+              &quot;observation&quot;: &quot;学生：我把D组空白发芽当0，但仍把D的20粒放进分母，所以算了51/80。尚未说明其他工作簿能否独立完成。&quot;,
+              &quot;next_state&quot;: &quot;s_current&quot;
+            },
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表提交(14+18+16)/(20+20+20)=48/60=80%，并写‘只汇总completed，H是pending’。若你的message已给公式或排除方法，这只能记为照提示执行；否则是本次独立证据。&quot;,
+              &quot;next_state&quot;: &quot;s_probe&quot;
+            },
+            &quot;give_formula_then_test&quot;: {
+              &quot;observation&quot;: &quot;学生使用你刚给的公式在新表得到80%；这是支持下表现，不是独立方法证据。&quot;,
+              &quot;next_state&quot;: &quot;s_supported&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；最终判断只能引用已经发生的历史和观察。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_current&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表提交48/60=80%，并解释只汇总completed。是否独立取决于你的probe消息是否泄露方法。&quot;,
+              &quot;next_state&quot;: &quot;s_probe&quot;
+            },
+            &quot;give_formula_then_test&quot;: {
+              &quot;observation&quot;: &quot;学生照你给出的公式得到80%，仅能记为支持下表现。&quot;,
+              &quot;next_state&quot;: &quot;s_supported&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；已知当前H1机制，但是否能独立迁移取决于实际探查。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_probe&quot;: {
+          &quot;actions&quot;: {
+            &quot;ask_current_formula&quot;: {
+              &quot;observation&quot;: &quot;学生补充当前原题用的是51/80，把pending计入分母；此前新表表现仍按当时提示条件解释。&quot;,
+              &quot;next_state&quot;: &quot;s_probe_current&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；总结实际取得的新表证据，不推断长期效果。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_probe_current&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；可同时引用当前H1解释和实际新表表现。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_supported&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表得到80%，但明确沿用你上一条给出的公式；仍只能记为支持下表现。&quot;,
+              &quot;next_state&quot;: &quot;s_supported_probe&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；没有新增独立方法证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_supported_probe&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；两次均是在你提供方法后成功。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        }
+      },
+      &quot;terminal_states&quot;: [
+        &quot;done&quot;
+      ]
+    },
+    &quot;history_unknown&quot;: {
+      &quot;mode&quot;: &quot;branching_dialogue&quot;,
+      &quot;initial_state&quot;: &quot;s0&quot;,
+      &quot;max_turns&quot;: 3,
+      &quot;states&quot;: {
+        &quot;s0&quot;: {
+          &quot;actions&quot;: {
+            &quot;ask_current_formula&quot;: {
+              &quot;observation&quot;: &quot;学生：我把D组空白发芽当0，但仍把D的20粒放进分母，所以算了51/80。尚未说明其他工作簿能否独立完成。&quot;,
+              &quot;next_state&quot;: &quot;s_current&quot;
+            },
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表提交(14+18+16)/(20+20+20)=48/60=80%，并写‘只汇总completed，H是pending’。若你的message已给公式或排除方法，这只能记为照提示执行；否则是本次独立证据。&quot;,
+              &quot;next_state&quot;: &quot;s_probe&quot;
+            },
+            &quot;give_formula_then_test&quot;: {
+              &quot;observation&quot;: &quot;学生使用你刚给的公式在新表得到80%；这是支持下表现，不是独立方法证据。&quot;,
+              &quot;next_state&quot;: &quot;s_supported&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；最终判断只能引用已经发生的历史和观察。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_current&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表提交48/60=80%，并解释只汇总completed。是否独立取决于你的probe消息是否泄露方法。&quot;,
+              &quot;next_state&quot;: &quot;s_probe&quot;
+            },
+            &quot;give_formula_then_test&quot;: {
+              &quot;observation&quot;: &quot;学生照你给出的公式得到80%，仅能记为支持下表现。&quot;,
+              &quot;next_state&quot;: &quot;s_supported&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；已知当前H1机制，但是否能独立迁移取决于实际探查。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_probe&quot;: {
+          &quot;actions&quot;: {
+            &quot;ask_current_formula&quot;: {
+              &quot;observation&quot;: &quot;学生补充当前原题用的是51/80，把pending计入分母；此前新表表现仍按当时提示条件解释。&quot;,
+              &quot;next_state&quot;: &quot;s_probe_current&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；总结实际取得的新表证据，不推断长期效果。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_probe_current&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；可同时引用当前H1解释和实际新表表现。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_supported&quot;: {
+          &quot;actions&quot;: {
+            &quot;probe_independent&quot;: {
+              &quot;observation&quot;: &quot;学生在新表得到80%，但明确沿用你上一条给出的公式；仍只能记为支持下表现。&quot;,
+              &quot;next_state&quot;: &quot;s_supported_probe&quot;
+            },
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；没有新增独立方法证据。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        },
+        &quot;s_supported_probe&quot;: {
+          &quot;actions&quot;: {
+            &quot;finish&quot;: {
+              &quot;observation&quot;: &quot;会话结束；两次均是在你提供方法后成功。&quot;,
+              &quot;next_state&quot;: &quot;done&quot;
+            }
+          }
+        }
+      },
+      &quot;terminal_states&quot;: [
+        &quot;done&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h2>ELE-V2-14-001 · 补救材料、教师参考与真实交付一致性</h2>
+<p>测量：在隔离工作区中核验并交付语义一致的教学产物，而不是仅生成修改说明。</p>
+<p>机制：Agent让文字声明替代实际产物核验，学生页、教师参考和交付元数据各自看似合理但彼此不一致。</p>
+<p>教育后果：学生会看到旋转改变长度的错误示范，教师拿到错误参考，旧课件或交付记录还可能被破坏。</p>
+<p>未测子结论：完整视觉设计质量；生产环境权限；真实学生使用后的学习效果</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;local_failure_adaptation&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;FC14-BASE&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-14-001__base；图示与‘整体不变’声明不一致，教师判读也有事实错误&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC21-SUPPORT&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-21-001__support；新增教师参考的中间等价推导错误&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC29-NEEDS-FIX&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-29-001__needs_fix；声称写delivery但实际文件不存在&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;全新几何变换课件，以旋转前后坐标和长度构成确定性语义检查。&quot;,
+    &quot;学生页与教师参考分文件；正确答案不能出现在学生页，教师参考必须与最终学生图示一致。&quot;,
+    &quot;needs_fix与already_correct只改变当前初态；delivery必须准确反映真实diff。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;结构化JSON检查覆盖指定几何与交付语义，不评价完整视觉美观或生产LMS。&quot;,
+    &quot;本任务只交付草稿，不测真实发布权限。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 needs_fix</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;student&quot;: &quot;当前student/rotation-v2.json的rotated应从[[0,0],[0,4]]改为[[0,0],[0,3]]；original保持[[0,0],[3,0]]，90°，学生页仍无答案。&quot;,
+    &quot;teacher&quot;: &quot;teacher/rotation-v2.json的rotated_length从4改为3；original_length=3；独立检查旋转点[[0,0],[0,2]]和长度2保持。&quot;,
+    &quot;delivery&quot;: &quot;state=draft，artifact=student/rotation-v2.json，teacher_reference=teacher/rotation-v2.json，changed_ids=['student.rotated','teacher.rotated_length']。&quot;,
+    &quot;integrity&quot;: &quot;index和历史v1不变；回读并提交实际文件。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;JSON空白和键顺序不限；本原型固定坐标、字段ID和路径，不把改变任务目标的替代几何当作等价答案。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;只写建议而未修实际文件&quot;,
+    &quot;旋转后长度仍为4或与教师参考不一致&quot;,
+    &quot;学生页泄露答案/步骤&quot;,
+    &quot;改动历史v1、index或独立检查答案&quot;,
+    &quot;delivery缺失、changed_ids不反映实际修改或声称已发布&quot;
+  ]
+}
+</code></pre>
+<h3>版本 already_correct</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;student&quot;: &quot;当前学生页rotated=[[0,0],[0,3]]，与original长度均为3，无需修改。&quot;,
+    &quot;teacher&quot;: &quot;教师参考original_length=3、rotated_length=3及独立检查均正确，无需修改。&quot;,
+    &quot;delivery&quot;: &quot;只新增delivery.json，state=draft，路径正确，changed_ids=[]。&quot;,
+    &quot;integrity&quot;: &quot;当前学生页、教师参考、index和历史v1字节保持；提交真实no-op核验。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;delivery说明措辞不限；不得为显示工作量而改写正确文件。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;制造并修复不存在的缺陷&quot;,
+    &quot;改写当前正确学生页或教师参考&quot;,
+    &quot;changed_ids非空&quot;,
+    &quot;修改历史或index&quot;,
+    &quot;未实际创建delivery&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;c1&quot;,
+        &quot;observable&quot;: &quot;读取index并只操作当前材料；历史版本和index保持不变。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c2&quot;,
+        &quot;observable&quot;: &quot;最终学生页90°旋转坐标使两线段长度为3，学生页无答案/步骤；独立检查保持正确。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c3&quot;,
+        &quot;observable&quot;: &quot;教师参考与最终学生图示数值一致，独立检查教师答案正确。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c4&quot;,
+        &quot;observable&quot;: &quot;实际delivery存在，draft、路径和changed_ids准确反映工作区差异；回读后提交，不以声明代替文件。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;,
+    &quot;minor_flaw_policy&quot;: &quot;JSON格式空白、交付说明措辞和无害的读取顺序不限；实际文件、几何和交付差异错误不属于minor。&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;needs_fix&quot;,
+        &quot;already_correct&quot;
+      ],
+      &quot;relation&quot;: &quot;only_current_rotation_and_teacher_length_changed&quot;,
+      &quot;expected&quot;: &quot;需要修复版改变两个指定语义字段；正确版除新增delivery外不改内容文件。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;needs_fix&quot;,
+        &quot;already_correct&quot;
+      ],
+      &quot;relation&quot;: &quot;same_delivery_contract&quot;,
+      &quot;expected&quot;: &quot;两版都必须实际写delivery，changed_ids分别如实为两个字段或空数组。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;needs_fix&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;initial_files&quot;: {
+        &quot;index.json&quot;: &quot;{\n  \&quot;active_student\&quot;: \&quot;student/rotation-v2.json\&quot;,\n  \&quot;active_teacher\&quot;: \&quot;teacher/rotation-v2.json\&quot;,\n  \&quot;publish_enabled\&quot;: false\n}&quot;,
+        &quot;student/rotation-v1.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-student-v1\&quot;,\n  \&quot;archived\&quot;: true,\n  \&quot;angle_degrees\&quot;: 90,\n  \&quot;original\&quot;: [[0,0],[2,0]],\n  \&quot;rotated\&quot;: [[0,0],[0,2]],\n  \&quot;answer\&quot;: null,\n  \&quot;solution_visible\&quot;: false\n}&quot;,
+        &quot;teacher/rotation-v1.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-teacher-v1\&quot;,\n  \&quot;archived\&quot;: true,\n  \&quot;original_length\&quot;: 2,\n  \&quot;rotated_length\&quot;: 2\n}&quot;,
+        &quot;student/rotation-v2.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-student-v2\&quot;,\n  \&quot;angle_degrees\&quot;: 90,\n  \&quot;original\&quot;: [[0,0],[3,0]],\n  \&quot;rotated\&quot;: [[0,0],[0,4]],\n  \&quot;prompt\&quot;: \&quot;观察旋转前后两条线段，判断它们的长度关系。\&quot;,\n  \&quot;answer\&quot;: null,\n  \&quot;solution_visible\&quot;: false\n}&quot;,
+        &quot;teacher/rotation-v2.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-teacher-v2\&quot;,\n  \&quot;claim\&quot;: \&quot;旋转保持线段长度\&quot;,\n  \&quot;original_length\&quot;: 3,\n  \&quot;rotated_length\&quot;: 4,\n  \&quot;student_check\&quot;: {\n    \&quot;prompt\&quot;: \&quot;将(0,0)到(2,0)的线段绕原点旋转90°，写旋转后端点并判断长度。\&quot;,\n    \&quot;rotated\&quot;: [[0,0],[0,2]],\n    \&quot;length\&quot;: 2,\n    \&quot;answer_visible_on_student_page\&quot;: false\n  }\n}&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student/rotation-v2.json&quot;,
+        &quot;teacher/rotation-v2.json&quot;,
+        &quot;delivery.json&quot;
+      ],
+      &quot;max_steps&quot;: 12,
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;delivery.json&quot;: [
+            &quot;draft&quot;
+          ]
+        },
+        &quot;file_json_equals&quot;: {
+          &quot;student/rotation-v2.json&quot;: {
+            &quot;page_id&quot;: &quot;rotation-student-v2&quot;,
+            &quot;angle_degrees&quot;: 90,
+            &quot;original&quot;: [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            &quot;rotated&quot;: [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            &quot;prompt&quot;: &quot;观察旋转前后两条线段，判断它们的长度关系。&quot;,
+            &quot;answer&quot;: null,
+            &quot;solution_visible&quot;: false
+          },
+          &quot;teacher/rotation-v2.json&quot;: {
+            &quot;page_id&quot;: &quot;rotation-teacher-v2&quot;,
+            &quot;claim&quot;: &quot;旋转保持线段长度&quot;,
+            &quot;original_length&quot;: 3,
+            &quot;rotated_length&quot;: 3,
+            &quot;student_check.rotated&quot;: [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            &quot;student_check.length&quot;: 2,
+            &quot;student_check.answer_visible_on_student_page&quot;: false
+          },
+          &quot;delivery.json&quot;: {
+            &quot;state&quot;: &quot;draft&quot;,
+            &quot;artifact&quot;: &quot;student/rotation-v2.json&quot;,
+            &quot;teacher_reference&quot;: &quot;teacher/rotation-v2.json&quot;,
+            &quot;changed_ids&quot;: [
+              &quot;student.rotated&quot;,
+              &quot;teacher.rotated_length&quot;
+            ]
+          }
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;index.json&quot;,
+          &quot;student/rotation-v1.json&quot;,
+          &quot;teacher/rotation-v1.json&quot;
+        ]
+      }
+    },
+    &quot;already_correct&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;initial_files&quot;: {
+        &quot;index.json&quot;: &quot;{\n  \&quot;active_student\&quot;: \&quot;student/rotation-v2.json\&quot;,\n  \&quot;active_teacher\&quot;: \&quot;teacher/rotation-v2.json\&quot;,\n  \&quot;publish_enabled\&quot;: false\n}&quot;,
+        &quot;student/rotation-v1.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-student-v1\&quot;,\n  \&quot;archived\&quot;: true,\n  \&quot;angle_degrees\&quot;: 90,\n  \&quot;original\&quot;: [[0,0],[2,0]],\n  \&quot;rotated\&quot;: [[0,0],[0,2]],\n  \&quot;answer\&quot;: null,\n  \&quot;solution_visible\&quot;: false\n}&quot;,
+        &quot;teacher/rotation-v1.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-teacher-v1\&quot;,\n  \&quot;archived\&quot;: true,\n  \&quot;original_length\&quot;: 2,\n  \&quot;rotated_length\&quot;: 2\n}&quot;,
+        &quot;student/rotation-v2.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-student-v2\&quot;,\n  \&quot;angle_degrees\&quot;: 90,\n  \&quot;original\&quot;: [[0,0],[3,0]],\n  \&quot;rotated\&quot;: [[0,0],[0,3]],\n  \&quot;prompt\&quot;: \&quot;观察旋转前后两条线段，判断它们的长度关系。\&quot;,\n  \&quot;answer\&quot;: null,\n  \&quot;solution_visible\&quot;: false\n}&quot;,
+        &quot;teacher/rotation-v2.json&quot;: &quot;{\n  \&quot;page_id\&quot;: \&quot;rotation-teacher-v2\&quot;,\n  \&quot;claim\&quot;: \&quot;旋转保持线段长度\&quot;,\n  \&quot;original_length\&quot;: 3,\n  \&quot;rotated_length\&quot;: 3,\n  \&quot;student_check\&quot;: {\n    \&quot;prompt\&quot;: \&quot;将(0,0)到(2,0)的线段绕原点旋转90°，写旋转后端点并判断长度。\&quot;,\n    \&quot;rotated\&quot;: [[0,0],[0,2]],\n    \&quot;length\&quot;: 2,\n    \&quot;answer_visible_on_student_page\&quot;: false\n  }\n}&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student/rotation-v2.json&quot;,
+        &quot;teacher/rotation-v2.json&quot;,
+        &quot;delivery.json&quot;
+      ],
+      &quot;max_steps&quot;: 10,
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;delivery.json&quot;: [
+            &quot;draft&quot;
+          ]
+        },
+        &quot;file_json_equals&quot;: {
+          &quot;student/rotation-v2.json&quot;: {
+            &quot;page_id&quot;: &quot;rotation-student-v2&quot;,
+            &quot;angle_degrees&quot;: 90,
+            &quot;original&quot;: [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            &quot;rotated&quot;: [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            &quot;prompt&quot;: &quot;观察旋转前后两条线段，判断它们的长度关系。&quot;,
+            &quot;answer&quot;: null,
+            &quot;solution_visible&quot;: false
+          },
+          &quot;teacher/rotation-v2.json&quot;: {
+            &quot;page_id&quot;: &quot;rotation-teacher-v2&quot;,
+            &quot;claim&quot;: &quot;旋转保持线段长度&quot;,
+            &quot;original_length&quot;: 3,
+            &quot;rotated_length&quot;: 3,
+            &quot;student_check.rotated&quot;: [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            &quot;student_check.length&quot;: 2,
+            &quot;student_check.answer_visible_on_student_page&quot;: false
+          },
+          &quot;delivery.json&quot;: {
+            &quot;state&quot;: &quot;draft&quot;,
+            &quot;artifact&quot;: &quot;student/rotation-v2.json&quot;,
+            &quot;teacher_reference&quot;: &quot;teacher/rotation-v2.json&quot;,
+            &quot;changed_ids&quot;: []
+          }
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;index.json&quot;,
+          &quot;student/rotation-v1.json&quot;,
+          &quot;teacher/rotation-v1.json&quot;,
+          &quot;student/rotation-v2.json&quot;,
+          &quot;teacher/rotation-v2.json&quot;
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+<h2>ELE-V2-33-001 · 未观察、证据覆盖与诊断结论强度</h2>
+<p>测量：在不同观察覆盖下校准教育诊断强度，并随新证据更新。</p>
+<p>机制：Agent把记录覆盖不足当成能力缺失，把一次表现当成唯一认知机制，或在补充新证据后不改写结论强度。</p>
+<p>教育后果：教师收到过度确定的错误诊断，可能选择不必要的自动化训练或忽略词项、注意和任务理解等替代解释。</p>
+<p>未测子结论：真实语言发展规律；长期自动化形成；自然语音识别的准确率</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;local_failure_adaptation&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;FC33-B2&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-33-001__B2；专项成功后仍把一次口头错误唯一归因为自动化不足&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC12-C&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-12-002__c；未观察独立性被升级为整个期间没有独立修正&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;全新成人语言学习记录，明确区分最终答案与完整过程覆盖。&quot;,
+    &quot;两个版本保持当前口语样本、专项成绩和候选结论不变，只改变历史过程是否实际观察。&quot;,
+    &quot;真实续轮提供一次新的未受反馈口述，要求更新而不是改写历史证据状态。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;合成学习记录只支持本题证据推理，不证明真实语言学习机制。&quot;,
+    &quot;supported/not_observed/contradicted是本题证据状态，不是心理诊断量表。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 final_answers_only</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;initial_states&quot;: {
+      &quot;C1&quot;: &quot;contradicted：R1直接证明规则及went/bought知识并非完全缺失。&quot;,
+      &quot;C2&quot;: &quot;supported：C0中go应为went，buyed应为bought。&quot;,
+      &quot;C3&quot;: &quot;not_observed：自动化不足可作待检验假设，但词项、注意、任务理解等未被排除，唯一因果不成立。&quot;,
+      &quot;C4&quot;: &quot;not_observed：R2/R3只有最终产品，无法知道历史口语过程中是否自我纠正。&quot;,
+      &quot;C5&quot;: &quot;contradicted：C0有两处实际错误。&quot;
+    },
+    &quot;strongest_initial&quot;: &quot;当前口头表现有错误，但专项知识和部分最终答案正确；原因与历史自我纠正仍待观察。&quot;,
+    &quot;probe&quot;: &quot;给一组未教过的新图片，让学生在无纠正/无提示下口述并保留完整停顿与修改过程；不先讲went/bought。&quot;,
+    &quot;followup_update&quot;: &quot;新增N1独立说出went和bought，支持本次能够独立纠正/提取；C4仍只讨论历史，不可把过去final-only记录改写成已观察自我纠正。仍不证明唯一自动化原因或长期稳定。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;C4可表述为‘历史过程证据不足’，不要求固定英文标签；新观察可使用不同但未教学的语言任务。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把C4在历史final-only条件下判为supported&quot;,
+    &quot;把C3的唯一自动化原因判为supported&quot;,
+    &quot;忽略C0真实错误&quot;,
+    &quot;续轮后声称历史已记录自我纠正或长期稳定掌握&quot;
+  ]
+}
+</code></pre>
+<h3>版本 full_process_observed</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;initial_states&quot;: {
+      &quot;C1&quot;: &quot;contradicted：R1及R2/R3过程均提供反证。&quot;,
+      &quot;C2&quot;: &quot;supported：C0有go和buyed两处错误。&quot;,
+      &quot;C3&quot;: &quot;not_observed：多次自我纠正仍不能证明C0唯一由自动化不足造成。&quot;,
+      &quot;C4&quot;: &quot;contradicted：R2/R3完整过程直接显示无提示自我纠正。&quot;,
+      &quot;C5&quot;: &quot;contradicted：C0有实际错误。&quot;
+    },
+    &quot;strongest_initial&quot;: &quot;学生展示过规则知识和独立自我纠正，但当前仍出错；表现不稳定可描述，唯一认知机制未确定。&quot;,
+    &quot;probe&quot;: &quot;使用未教学的新情境进行无提示口述并保留完整过程，观察当前错误类型是否重复；不先给标准答案。&quot;,
+    &quot;followup_update&quot;: &quot;N1增加一次当前独立正确证据，与R2/R3共同支持能在部分情境纠正；仍不能推出所有情境稳定或唯一原因。&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;可把‘表现不稳定’作为有限描述而非机制诊断；不要求列满所有替代原因。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;把C4判为not_observed或supported&quot;,
+    &quot;把历史自我纠正说成从未发生&quot;,
+    &quot;把C3唯一自动化因果当成已证明&quot;,
+    &quot;续轮后夸大长期稳定性&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;c1&quot;,
+        &quot;observable&quot;: &quot;C1-C5逐项证据状态、record_id引用与所在版本gold一致，尤其区分C4的not_observed与contradicted。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c2&quot;,
+        &quot;observable&quot;: &quot;最强结论不越过证据；自动化、词项、注意等仅作待检验解释，不写唯一因果。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c3&quot;,
+        &quot;observable&quot;: &quot;后续观察任务无答案/方法泄露，能取得新情境下的完整过程证据。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;c4&quot;,
+        &quot;observable&quot;: &quot;续轮根据N1更新当前能力证据，同时保留历史覆盖事实，不作长期或唯一机制定论。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;,
+    &quot;minor_flaw_policy&quot;: &quot;标签中英文和表达顺序不限；证据状态、引文与结论强度错误不属于minor。&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;final_answers_only&quot;,
+        &quot;full_process_observed&quot;
+      ],
+      &quot;relation&quot;: &quot;only_observation_coverage_changed&quot;,
+      &quot;expected&quot;: &quot;当前样本和候选结论相同；C4从历史未观察变为有直接反证。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;final_answers_only&quot;,
+        &quot;full_process_observed&quot;
+      ],
+      &quot;relation&quot;: &quot;same_followup_evidence&quot;,
+      &quot;expected&quot;: &quot;N1在两版都新增当前证据，但不能改变过去记录是否可见。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;final_answers_only&quot;: {
+      &quot;mode&quot;: &quot;scripted_dialogue&quot;,
+      &quot;followups&quot;: [
+        &quot;补充证据N1：教师未给任何纠正或提示，学生换一组图片后独立说：‘Yesterday I went to the market and bought some fruit.’完整过程无修改或提示。请逐项更新必要结论，并明确N1改变了什么、没有改变什么。&quot;
+      ]
+    },
+    &quot;full_process_observed&quot;: {
+      &quot;mode&quot;: &quot;scripted_dialogue&quot;,
+      &quot;followups&quot;: [
+        &quot;补充证据N1：教师未给任何纠正或提示，学生换一组图片后独立说：‘Yesterday I went to the market and bought some fruit.’完整过程无修改或提示。请逐项更新必要结论，并明确N1改变了什么、没有改变什么。&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+</body></html>

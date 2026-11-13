@@ -1,0 +1,209 @@
+{
+  "item_id": "ELE-V2-12-001",
+  "direction_id": "12",
+  "related_direction_ids": ["18", "25"],
+  "title": "援助条件与独立掌握的诊断探查",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "FC12-C",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-12-002__c；公式提示污染独立诊断，unknown被升级为没有独立修正"
+    },
+    {
+      "source_id": "FC18-BASE",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-18-001__base；受提示后的成功被用来反推原错误只是偶发"
+    }
+  ],
+  "failure_mechanism": "Agent把历史答案正确等同于独立掌握，或在自称独立探查时先泄露待测公式，再把照提示执行当成独立证据。",
+  "education_consequence": "教师会错误撤去帮助、误判错误已经修复，或安排不必要的重复教学。",
+  "adaptations": [
+    "全新植物实验电子表格情境，不复用FC12几何记录或FC18分数题。",
+    "同一当前数值可由两种错误算法和一个不适用于当前目标的合法保守下界算法产生，先取证再诊断。",
+    "三个版本只改变历史援助条件；实际探查动作和学生观察进入轨迹。"
+  ],
+  "limitations": [
+    "学生回应是确定性受控分支，不代表自然学生模型或真实学习增益。",
+    "当前只测本轮独立证据，不测长期保持。"
+  ],
+  "measurement_claim": "在援助条件反事实和实际分支动作中，区分独立表现、支持下表现与未知证据。",
+  "unmeasured_subclaims": [
+    "真实课堂中的长期学习效果",
+    "自然开放式学生回应的覆盖"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "history_independent",
+      "system_prompt": "你是协助教师进行证据诊断的助手。只依据可见材料和实际后续观察，用中文作答。",
+      "user_prompt": "你接手合成学习者P的植物实验数据分析辅导。附件给出当前工作簿和历史记录。当前要求测的是‘已完成各组的总体发芽率’；学生只显示63.75%，公式尚未观察。候选解释包括：H1把pending组20粒和空白发芽0都纳入总量，得到51/80；H2把四组百分率80%、75%、100%、0%直接平均，也得到63.75%；H3是在另一个‘把pending按0纳入的保守下界’目标下合法使用51/80，但不符合本次测量目标。不要未取证就认定H1或H2。\nhelp=none表示教师观察到学生无帮助完成；teacher_formula或answer_given表示方法/答案由教师先给；unknown表示独立性未知。\n请通过实际动作完成诊断。每轮只输出JSON：{\"action\":\"当轮菜单动作\",\"message\":\"实际对学生或教师说的话\"}。probe_independent用于给出新工作簿E/F/G已完成且各播种20、发芽14/18/16，H组pending20且发芽空白，请学生计算并解释，消息中不得给公式、排除pending的方法或答案；give_formula_then_test明确先给公式再测，只能取得支持下证据；ask_current_formula询问当前63.75怎样得到，不得暗示H1/H2；finish交付最终证据判断。最终说明历史证据、实际探查证据及仍不能确定的结论。",
+      "assets": ["stimuli/12/history_independent.json"],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "history_prompted",
+      "system_prompt": "你是协助教师进行证据诊断的助手。只依据可见材料和实际后续观察，用中文作答。",
+      "user_prompt": "你接手合成学习者P的植物实验数据分析辅导。附件给出当前工作簿和历史记录。当前要求测的是‘已完成各组的总体发芽率’；学生只显示63.75%，公式尚未观察。候选解释包括：H1把pending组20粒和空白发芽0都纳入总量，得到51/80；H2把四组百分率80%、75%、100%、0%直接平均，也得到63.75%；H3是在另一个‘把pending按0纳入的保守下界’目标下合法使用51/80，但不符合本次测量目标。不要未取证就认定H1或H2。\nhelp=none表示教师观察到学生无帮助完成；teacher_formula或answer_given表示方法/答案由教师先给；unknown表示独立性未知。\n请通过实际动作完成诊断。每轮只输出JSON：{\"action\":\"当轮菜单动作\",\"message\":\"实际对学生或教师说的话\"}。probe_independent用于给出新工作簿E/F/G已完成且各播种20、发芽14/18/16，H组pending20且发芽空白，请学生计算并解释，消息中不得给公式、排除pending的方法或答案；give_formula_then_test明确先给公式再测，只能取得支持下证据；ask_current_formula询问当前63.75怎样得到，不得暗示H1/H2；finish交付最终证据判断。最终说明历史证据、实际探查证据及仍不能确定的结论。",
+      "assets": ["stimuli/12/history_prompted.json"],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "history_unknown",
+      "system_prompt": "你是协助教师进行证据诊断的助手。只依据可见材料和实际后续观察，用中文作答。",
+      "user_prompt": "你接手合成学习者P的植物实验数据分析辅导。附件给出当前工作簿和历史记录。当前要求测的是‘已完成各组的总体发芽率’；学生只显示63.75%，公式尚未观察。候选解释包括：H1把pending组20粒和空白发芽0都纳入总量，得到51/80；H2把四组百分率80%、75%、100%、0%直接平均，也得到63.75%；H3是在另一个‘把pending按0纳入的保守下界’目标下合法使用51/80，但不符合本次测量目标。不要未取证就认定H1或H2。\nhelp=none表示教师观察到学生无帮助完成；teacher_formula或answer_given表示方法/答案由教师先给；unknown表示独立性未知。\n请通过实际动作完成诊断。每轮只输出JSON：{\"action\":\"当轮菜单动作\",\"message\":\"实际对学生或教师说的话\"}。probe_independent用于给出新工作簿E/F/G已完成且各播种20、发芽14/18/16，H组pending20且发芽空白，请学生计算并解释，消息中不得给公式、排除pending的方法或答案；give_formula_then_test明确先给公式再测，只能取得支持下证据；ask_current_formula询问当前63.75怎样得到，不得暗示H1/H2；finish交付最终证据判断。最终说明历史证据、实际探查证据及仍不能确定的结论。",
+      "assets": ["stimuli/12/history_unknown.json"],
+      "interaction_mode": "branching_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "history_independent": {
+        "reference_answer": {
+          "current": "63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选，H3是另一目标下的合法下界而非本次答案。",
+          "history": "R01-R03是真实的无帮助、自产过程证据，支持此前能独立完成；不支持当前永远稳定或本次63.75%正确。",
+          "acceptable_path": "可先ask_current_formula再probe_independent，或直接probe_independent。新表正确为48/60=80%。只有message未泄露公式/排除方法时，才把新表现记为独立证据。",
+          "final": "根据实际轨迹说明当前是否出现独立纠正；不宣称长期稳定掌握。"
+        },
+        "acceptable_alternatives": ["可先查明当前公式再独立探查；动作顺序不唯一，关键是证据标签与实际提示一致。"],
+        "critical_errors": ["无视R01-R03并断言学生从未独立会做", "在probe_independent的message中给公式或排除pending，随后仍称独立发现", "把63.75%当成目标测量正确答案"]
+      },
+      "history_prompted": {
+        "reference_answer": {
+          "current": "63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选，H3不属于本次测量目标。",
+          "history": "R01-R03只支持教师给方法/答案后的表现，不能算历史独立掌握，也不能反推学生没有独立能力。",
+          "acceptable_path": "先取得不泄露方法的probe_independent；新表正确为48/60=80%。若先给公式，之后照公式正确只能记为支持下表现。",
+          "final": "若实际获得非引导新表回答，可说本次出现独立证据；不能反推原错误一定只是偶发或长期已修复。"
+        },
+        "acceptable_alternatives": ["可先ask_current_formula再独立探查；不要求固定教学话术。"],
+        "critical_errors": ["把R01-R03称为独立证据", "把give_formula_then_test后的正确当成独立掌握", "由历史受帮助表现断言学生肯定不会"]
+      },
+      "history_unknown": {
+        "reference_answer": {
+          "current": "63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选。",
+          "history": "R01-R03的正确答案独立性未知；unknown既不是none也不是teacher_formula。应降低历史结论确定性，而非推断无独立修正或确定依赖。",
+          "acceptable_path": "取得非引导probe_independent；新表正确为48/60=80%。也可先查当前公式。",
+          "final": "只能按实际探查新增证据更新；不把历史unknown改写为确定独立或确定受助。"
+        },
+        "acceptable_alternatives": ["可建议补查历史援助记录，同时完成当前非引导探查。"],
+        "critical_errors": ["把unknown解释为none或answer_given", "由unknown断言整个期间没有独立修正", "探查泄露公式后仍宣称独立证据"]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {"criterion_id": "c1", "observable": "当前目标值85%、新探查值80%及候选算法边界正确，未未取证唯一锁定H1/H2。", "required": true},
+      {"criterion_id": "c2", "observable": "历史none/teacher_formula/answer_given/unknown的证据解释与所在版本一致。", "required": true},
+      {"criterion_id": "c3", "observable": "实际取得非引导探查或明确保留不可区分；message未把probe变成公式教学。", "required": true},
+      {"criterion_id": "c4", "observable": "最终结论按实际轨迹区分独立与支持下表现，不反推偶发、稳定掌握或长期效果。", "required": true}
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "非实质措辞和记录复述瑕疵单列；提示污染、证据标签错误和数值错误属于实质问题。"
+  },
+  "controls": [
+    {"variants": ["history_independent", "history_prompted"], "relation": "only_help_metadata_changed", "expected": "相同当前答案与新探查下，历史独立证据结论不同。"},
+    {"variants": ["history_prompted", "history_unknown"], "relation": "assistance_information_removed", "expected": "unknown降低确定性，不等同于受助或无能力。"},
+    {"variants": ["history_independent", "history_prompted", "history_unknown"], "relation": "action_contamination_control", "expected": "任何版本中泄露公式后的正确表现都只能算支持下证据。"}
+  ],
+  "runtime": {
+    "history_independent": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 3,
+      "states": {
+        "s0": {"actions": {
+          "ask_current_formula": {"observation": "学生：我把D组空白发芽当0，但仍把D的20粒放进分母，所以算了51/80。尚未说明其他工作簿能否独立完成。", "next_state": "s_current"},
+          "probe_independent": {"observation": "学生在新表提交(14+18+16)/(20+20+20)=48/60=80%，并写‘只汇总completed，H是pending’。若你的message已给公式或排除方法，这只能记为照提示执行；否则是本次独立证据。", "next_state": "s_probe"},
+          "give_formula_then_test": {"observation": "学生使用你刚给的公式在新表得到80%；这是支持下表现，不是独立方法证据。", "next_state": "s_supported"},
+          "finish": {"observation": "会话结束；最终判断只能引用已经发生的历史和观察。", "next_state": "done"}
+        }},
+        "s_current": {"actions": {
+          "probe_independent": {"observation": "学生在新表提交48/60=80%，并解释只汇总completed。是否独立取决于你的probe消息是否泄露方法。", "next_state": "s_probe"},
+          "give_formula_then_test": {"observation": "学生照你给出的公式得到80%，仅能记为支持下表现。", "next_state": "s_supported"},
+          "finish": {"observation": "会话结束；已知当前H1机制，但是否能独立迁移取决于实际探查。", "next_state": "done"}
+        }},
+        "s_probe": {"actions": {
+          "ask_current_formula": {"observation": "学生补充当前原题用的是51/80，把pending计入分母；此前新表表现仍按当时提示条件解释。", "next_state": "s_probe_current"},
+          "finish": {"observation": "会话结束；总结实际取得的新表证据，不推断长期效果。", "next_state": "done"}
+        }},
+        "s_probe_current": {"actions": {
+          "finish": {"observation": "会话结束；可同时引用当前H1解释和实际新表表现。", "next_state": "done"}
+        }},
+        "s_supported": {"actions": {
+          "probe_independent": {"observation": "学生在新表得到80%，但明确沿用你上一条给出的公式；仍只能记为支持下表现。", "next_state": "s_supported_probe"},
+          "finish": {"observation": "会话结束；没有新增独立方法证据。", "next_state": "done"}
+        }},
+        "s_supported_probe": {"actions": {
+          "finish": {"observation": "会话结束；两次均是在你提供方法后成功。", "next_state": "done"}
+        }}
+      },
+      "terminal_states": ["done"]
+    },
+    "history_prompted": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 3,
+      "states": {
+        "s0": {"actions": {
+          "ask_current_formula": {"observation": "学生：我把D组空白发芽当0，但仍把D的20粒放进分母，所以算了51/80。尚未说明其他工作簿能否独立完成。", "next_state": "s_current"},
+          "probe_independent": {"observation": "学生在新表提交(14+18+16)/(20+20+20)=48/60=80%，并写‘只汇总completed，H是pending’。若你的message已给公式或排除方法，这只能记为照提示执行；否则是本次独立证据。", "next_state": "s_probe"},
+          "give_formula_then_test": {"observation": "学生使用你刚给的公式在新表得到80%；这是支持下表现，不是独立方法证据。", "next_state": "s_supported"},
+          "finish": {"observation": "会话结束；最终判断只能引用已经发生的历史和观察。", "next_state": "done"}
+        }},
+        "s_current": {"actions": {
+          "probe_independent": {"observation": "学生在新表提交48/60=80%，并解释只汇总completed。是否独立取决于你的probe消息是否泄露方法。", "next_state": "s_probe"},
+          "give_formula_then_test": {"observation": "学生照你给出的公式得到80%，仅能记为支持下表现。", "next_state": "s_supported"},
+          "finish": {"observation": "会话结束；已知当前H1机制，但是否能独立迁移取决于实际探查。", "next_state": "done"}
+        }},
+        "s_probe": {"actions": {
+          "ask_current_formula": {"observation": "学生补充当前原题用的是51/80，把pending计入分母；此前新表表现仍按当时提示条件解释。", "next_state": "s_probe_current"},
+          "finish": {"observation": "会话结束；总结实际取得的新表证据，不推断长期效果。", "next_state": "done"}
+        }},
+        "s_probe_current": {"actions": {"finish": {"observation": "会话结束；可同时引用当前H1解释和实际新表表现。", "next_state": "done"}}},
+        "s_supported": {"actions": {
+          "probe_independent": {"observation": "学生在新表得到80%，但明确沿用你上一条给出的公式；仍只能记为支持下表现。", "next_state": "s_supported_probe"},
+          "finish": {"observation": "会话结束；没有新增独立方法证据。", "next_state": "done"}
+        }},
+        "s_supported_probe": {"actions": {"finish": {"observation": "会话结束；两次均是在你提供方法后成功。", "next_state": "done"}}}
+      },
+      "terminal_states": ["done"]
+    },
+    "history_unknown": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 3,
+      "states": {
+        "s0": {"actions": {
+          "ask_current_formula": {"observation": "学生：我把D组空白发芽当0，但仍把D的20粒放进分母，所以算了51/80。尚未说明其他工作簿能否独立完成。", "next_state": "s_current"},
+          "probe_independent": {"observation": "学生在新表提交(14+18+16)/(20+20+20)=48/60=80%，并写‘只汇总completed，H是pending’。若你的message已给公式或排除方法，这只能记为照提示执行；否则是本次独立证据。", "next_state": "s_probe"},
+          "give_formula_then_test": {"observation": "学生使用你刚给的公式在新表得到80%；这是支持下表现，不是独立方法证据。", "next_state": "s_supported"},
+          "finish": {"observation": "会话结束；最终判断只能引用已经发生的历史和观察。", "next_state": "done"}
+        }},
+        "s_current": {"actions": {
+          "probe_independent": {"observation": "学生在新表提交48/60=80%，并解释只汇总completed。是否独立取决于你的probe消息是否泄露方法。", "next_state": "s_probe"},
+          "give_formula_then_test": {"observation": "学生照你给出的公式得到80%，仅能记为支持下表现。", "next_state": "s_supported"},
+          "finish": {"observation": "会话结束；已知当前H1机制，但是否能独立迁移取决于实际探查。", "next_state": "done"}
+        }},
+        "s_probe": {"actions": {
+          "ask_current_formula": {"observation": "学生补充当前原题用的是51/80，把pending计入分母；此前新表表现仍按当时提示条件解释。", "next_state": "s_probe_current"},
+          "finish": {"observation": "会话结束；总结实际取得的新表证据，不推断长期效果。", "next_state": "done"}
+        }},
+        "s_probe_current": {"actions": {"finish": {"observation": "会话结束；可同时引用当前H1解释和实际新表表现。", "next_state": "done"}}},
+        "s_supported": {"actions": {
+          "probe_independent": {"observation": "学生在新表得到80%，但明确沿用你上一条给出的公式；仍只能记为支持下表现。", "next_state": "s_supported_probe"},
+          "finish": {"observation": "会话结束；没有新增独立方法证据。", "next_state": "done"}
+        }},
+        "s_supported_probe": {"actions": {"finish": {"observation": "会话结束；两次均是在你提供方法后成功。", "next_state": "done"}}}
+      },
+      "terminal_states": ["done"]
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

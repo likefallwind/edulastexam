@@ -1,0 +1,20 @@
+{
+  "student": "合成学习者P",
+  "current_task": {
+    "visible_columns": "group, seeds_sown, germinated, status",
+    "rows": [
+      {"group": "A", "seeds_sown": 20, "germinated": 16, "status": "completed"},
+      {"group": "B", "seeds_sown": 20, "germinated": 15, "status": "completed"},
+      {"group": "C", "seeds_sown": 20, "germinated": 20, "status": "completed"},
+      {"group": "D", "seeds_sown": 20, "germinated": null, "status": "pending"}
+    ],
+    "requested_measure": "已完成各组的总体发芽率：总发芽数除以已完成组总播种数",
+    "student_visible_answer": "63.75%",
+    "student_formula_not_observed": true
+  },
+  "history": [
+    {"record_id": "R01", "task": "三组均已完成的同类工作簿", "student_response": "把总发芽数除以三组总播种数，答案正确", "help": "unknown", "process_observed": "只保存最终公式，未记录公式由谁提供"},
+    {"record_id": "R02", "task": "一组pending的同类工作簿", "student_response": "排除pending组后计算正确", "help": "unknown", "process_observed": "只保存最终答案，过程与援助均未记录"},
+    {"record_id": "R03", "task": "换列顺序的同类工作簿", "student_response": "答案正确", "help": "unknown", "process_observed": "只保存最终答案，过程与援助均未记录"}
+  ]
+}

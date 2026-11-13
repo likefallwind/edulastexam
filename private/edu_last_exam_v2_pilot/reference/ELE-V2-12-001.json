@@ -1,0 +1,113 @@
+{
+  "gold": {
+    "per_prompt": {
+      "history_independent": {
+        "reference_answer": {
+          "current": "63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选，H3是另一目标下的合法下界而非本次答案。",
+          "history": "R01-R03是真实的无帮助、自产过程证据，支持此前能独立完成；不支持当前永远稳定或本次63.75%正确。",
+          "acceptable_path": "可先ask_current_formula再probe_independent，或直接probe_independent。新表正确为48/60=80%。只有message未泄露公式/排除方法时，才把新表现记为独立证据。",
+          "final": "根据实际轨迹说明当前是否出现独立纠正；不宣称长期稳定掌握。"
+        },
+        "acceptable_alternatives": [
+          "可先查明当前公式再独立探查；动作顺序不唯一，关键是证据标签与实际提示一致。"
+        ],
+        "critical_errors": [
+          "无视R01-R03并断言学生从未独立会做",
+          "在probe_independent的message中给公式或排除pending，随后仍称独立发现",
+          "把63.75%当成目标测量正确答案"
+        ]
+      },
+      "history_prompted": {
+        "reference_answer": {
+          "current": "63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选，H3不属于本次测量目标。",
+          "history": "R01-R03只支持教师给方法/答案后的表现，不能算历史独立掌握，也不能反推学生没有独立能力。",
+          "acceptable_path": "先取得不泄露方法的probe_independent；新表正确为48/60=80%。若先给公式，之后照公式正确只能记为支持下表现。",
+          "final": "若实际获得非引导新表回答，可说本次出现独立证据；不能反推原错误一定只是偶发或长期已修复。"
+        },
+        "acceptable_alternatives": [
+          "可先ask_current_formula再独立探查；不要求固定教学话术。"
+        ],
+        "critical_errors": [
+          "把R01-R03称为独立证据",
+          "把give_formula_then_test后的正确当成独立掌握",
+          "由历史受帮助表现断言学生肯定不会"
+        ]
+      },
+      "history_unknown": {
+        "reference_answer": {
+          "current": "63.75%不符合目标；目标值85%。未读公式前H1/H2均为候选。",
+          "history": "R01-R03的正确答案独立性未知；unknown既不是none也不是teacher_formula。应降低历史结论确定性，而非推断无独立修正或确定依赖。",
+          "acceptable_path": "取得非引导probe_independent；新表正确为48/60=80%。也可先查当前公式。",
+          "final": "只能按实际探查新增证据更新；不把历史unknown改写为确定独立或确定受助。"
+        },
+        "acceptable_alternatives": [
+          "可建议补查历史援助记录，同时完成当前非引导探查。"
+        ],
+        "critical_errors": [
+          "把unknown解释为none或answer_given",
+          "由unknown断言整个期间没有独立修正",
+          "探查泄露公式后仍宣称独立证据"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "当前目标值85%、新探查值80%及候选算法边界正确，未未取证唯一锁定H1/H2。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "历史none/teacher_formula/answer_given/unknown的证据解释与所在版本一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "实际取得非引导探查或明确保留不可区分；message未把probe变成公式教学。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "最终结论按实际轨迹区分独立与支持下表现，不反推偶发、稳定掌握或长期效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "非实质措辞和记录复述瑕疵单列；提示污染、证据标签错误和数值错误属于实质问题。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "history_independent",
+        "history_prompted"
+      ],
+      "relation": "only_help_metadata_changed",
+      "expected": "相同当前答案与新探查下，历史独立证据结论不同。"
+    },
+    {
+      "variants": [
+        "history_prompted",
+        "history_unknown"
+      ],
+      "relation": "assistance_information_removed",
+      "expected": "unknown降低确定性，不等同于受助或无能力。"
+    },
+    {
+      "variants": [
+        "history_independent",
+        "history_prompted",
+        "history_unknown"
+      ],
+      "relation": "action_contamination_control",
+      "expected": "任何版本中泄露公式后的正确表现都只能算支持下证据。"
+    }
+  ],
+  "measurement_claim": "在援助条件反事实和实际分支动作中，区分独立表现、支持下表现与未知证据。",
+  "unmeasured_subclaims": [
+    "真实课堂中的长期学习效果",
+    "自然开放式学生回应的覆盖"
+  ]
+}

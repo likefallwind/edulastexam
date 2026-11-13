@@ -1,0 +1,89 @@
+{
+  "gold": {
+    "per_prompt": {
+      "all_goals_met": {
+        "reference_answer": {
+          "evidence": "E1-E4分别满足G1-G4，均为学生独立、有效证据。",
+          "required_path": "参考路径为address_question→finish。颜色只能作为需另行对照检验的自愿问题，不得变成新目标。",
+          "finish": "明确四项均已完成，可以结束/交报告；总结引用E1-E4，不新增不确定性排序、额外实验或更漂亮措辞作为门槛。"
+        },
+        "acceptable_alternatives": [
+          "finish时可附一句明确自愿的后续探究建议；也可做简短、非强制的核验或扩展后结束，但不能把新增内容设为必交门槛。"
+        ],
+        "critical_errors": [
+          "把E4漏掉并误称目标未完成",
+          "把额外探查或扩展设为必交条件，或最终仍拒绝结束",
+          "不回应颜色插问",
+          "编造学生未发生的证据"
+        ]
+      },
+      "one_goal_missing": {
+        "reference_answer": {
+          "evidence": "E1-E3满足G1-G3；E4是教师陈述、学生只说‘嗯’，不满足G4的学生独立证据。",
+          "required_path": "address_question→probe_missing→finish。probe只要求学生自己给出一个外推限制，不得先告诉答案。",
+          "finish": "只有实际观察中学生独立给出合理限制后才能结束；只补G4，不重教G1-G3。"
+        },
+        "acceptable_alternatives": [
+          "可用不同中性措辞取得G4，例如问‘这些结果不能被推广到哪些情况？为什么？’。"
+        ],
+        "critical_errors": [
+          "把E4教师陈述当作学生独立完成",
+          "未取得G4就finish",
+          "给G4答案后仍称学生独立证据",
+          "重教已完成的三项目标"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按student_authored/help/valid准确判定G1-G4，E4在两版中的证据地位不同。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "实际回应颜色插问，指出需另行对照检验且不把它变成原课程必交目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "完整版最终finish且不新增必交环节；缺失版先以非引导probe取得G4再finish，不提前结束。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "结束总结只引用实际证据，不新增必交条件，不重教已完成目标。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "总结长短和教学措辞风格不作隐藏要求；目标证据和结束动作错误属于实质失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "all_goals_met",
+        "one_goal_missing"
+      ],
+      "relation": "only_E4_authorship_and_help_changed",
+      "expected": "仅G4证据状态改变；完整版结束，缺失版先取得G4再结束。"
+    },
+    {
+      "variants": [
+        "all_goals_met",
+        "one_goal_missing"
+      ],
+      "relation": "same_interruption",
+      "expected": "两版都回应颜色问题，但不能用同一结束动作蒙对两版。"
+    }
+  ],
+  "measurement_claim": "基于分散历史证据和实际插问，作出继续诊断或结束的真实动作选择。",
+  "unmeasured_subclaims": [
+    "自然课堂开放行动空间",
+    "长期学习增益",
+    "教师对所有可选扩展的偏好"
+  ]
+}

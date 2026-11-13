@@ -1,0 +1,31 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 5,
+  "item_count": 5,
+  "prompt_count": 11,
+  "asset_count": 7,
+  "runtime_counts": {
+    "scripted_dialogue": 4,
+    "branching_dialogue": 5,
+    "workspace": 2
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "wave001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "v1_failure_required": false,
+  "source_batch": "edu_last_exam_full_coverage_v1",
+  "new_contexts": 5,
+  "dependent_task_views": 11,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 5,
+    "references": 9,
+    "unique_cases": 8,
+    "all_reviewed_verdicts": "fail"
+  }
+}

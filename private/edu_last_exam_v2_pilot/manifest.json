@@ -1,0 +1,160 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 5,
+  "item_count": 5,
+  "prompt_count": 11,
+  "asset_count": 7,
+  "runtime_counts": {
+    "scripted_dialogue": 4,
+    "branching_dialogue": 5,
+    "workspace": 2
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "wave001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "v1_failure_required": false,
+  "source_batch": "edu_last_exam_full_coverage_v1",
+  "new_contexts": 5,
+  "dependent_task_views": 11,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 5,
+    "references": 9,
+    "unique_cases": 8,
+    "all_reviewed_verdicts": "fail"
+  },
+  "schema_version": "edu_last_exam_v2_pilot_protocol_v1",
+  "author": {
+    "agent": "Kimi",
+    "method": "37_direction_mechanism_driven_authoring_with_optional_historical_evidence",
+    "exact_model_id": "kimi-code-cn/k3.1-pro",
+    "excluded_test_author": "GLM-5.3-Flash did not author these candidates"
+  },
+  "prediction_export_sha256": "c57e1478005bf0b244736084eec59b69bdb6e635301037e06a962f4ec5b797a9",
+  "runtime_sha256": "878b2159b0802fbf89d4bc2526ac3b0b6ae2dc6942f7c8343d735ff540f657cf",
+  "item_export_sha256": "f4b9556ab4521b76240467919c2a26e5fe78895bb9bca1590891d46708b4f3a5",
+  "assets": {
+    "stimuli/09/goal_evidence_complete.json": {
+      "sha256": "7d22953eb447da2dc4664df1b4eb91698023767bf707df58631f2fe1bf7b16a9",
+      "bytes": 1397
+    },
+    "stimuli/09/goal_evidence_missing.json": {
+      "sha256": "a9ee1c81e2cf43d6f6fb7de10a0b764655d96a82d4e92027e6f89559d3cc6859",
+      "bytes": 1447
+    },
+    "stimuli/12/history_independent.json": {
+      "sha256": "1c16dc41a12b06cf975a2ebdf42f5b5c77dafa67b17cd96cebb2e4cbe3f983f5",
+      "bytes": 1309
+    },
+    "stimuli/12/history_prompted.json": {
+      "sha256": "95abfe3c343e2cebb91bc290187f48681c8743036ff31cdc002010047cf191fd",
+      "bytes": 1352
+    },
+    "stimuli/12/history_unknown.json": {
+      "sha256": "d184fd380c15b597cfad253cf060dc8145080f8514fa0692400f2ffae362a076",
+      "bytes": 1338
+    },
+    "stimuli/33/final_answers_only.json": {
+      "sha256": "cb209a9028f6a8eb4ef7e39eb6e7c3d694a8cbf7678199c019a5a61ed6e8102e",
+      "bytes": 1591
+    },
+    "stimuli/33/full_process_observed.json": {
+      "sha256": "7422043a22b320243f514933b1876cd3ec223372a109a74ae7fc664117a87796",
+      "bytes": 1536
+    }
+  },
+  "coverage": [
+    {
+      "direction_id": "01",
+      "item_id": "ELE-V2-01-001",
+      "title": "非标准正确方法与真正首错",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "在条件合法的非常规解、真实错误和学生申诉下保持证据一致的评分与反馈。",
+      "unmeasured_subclaims": [
+        "手写作品识别",
+        "真实课堂申诉分布",
+        "长期学习效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "09",
+      "item_id": "ELE-V2-09-001",
+      "title": "目标完成、插问与教学收尾",
+      "variants": 2,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "基于分散历史证据和实际插问，作出继续诊断或结束的真实动作选择。",
+      "unmeasured_subclaims": [
+        "自然课堂开放行动空间",
+        "长期学习增益",
+        "教师对所有可选扩展的偏好"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "12",
+      "item_id": "ELE-V2-12-001",
+      "title": "援助条件与独立掌握的诊断探查",
+      "variants": 3,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "在援助条件反事实和实际分支动作中，区分独立表现、支持下表现与未知证据。",
+      "unmeasured_subclaims": [
+        "真实课堂中的长期学习效果",
+        "自然开放式学生回应的覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "14",
+      "item_id": "ELE-V2-14-001",
+      "title": "补救材料、教师参考与真实交付一致性",
+      "variants": 2,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "在隔离工作区中核验并交付语义一致的教学产物，而不是仅生成修改说明。",
+      "unmeasured_subclaims": [
+        "完整视觉设计质量",
+        "生产环境权限",
+        "真实学生使用后的学习效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "33",
+      "item_id": "ELE-V2-33-001",
+      "title": "未观察、证据覆盖与诊断结论强度",
+      "variants": 2,
+      "modes": [
+        "scripted_dialogue"
+      ],
+      "measurement_claim": "在不同观察覆盖下校准教育诊断强度，并随新证据更新。",
+      "unmeasured_subclaims": [
+        "真实语言发展规律",
+        "长期自动化形成",
+        "自然语音识别的准确率"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false,
+  "difficulty_claim": "not_established",
+  "model_evaluation_tracking": "tracked_in_separate_runs",
+  "v1_evidence_is_candidate_rationale_not_v2_model_evidence": true,
+  "v1_evidence_sha256": {
+    "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl": "541f262e5f930770d54dbb270240181aa822809c15efd6494c6bb9d9c22d7d33"
+  }
+}

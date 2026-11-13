@@ -1,0 +1,88 @@
+{
+  "gold": {
+    "per_prompt": {
+      "equal_time_correct": {
+        "reference_answer": {
+          "K": "6/6，无首错。等时间时路程=速度×相同时间，算术平均与总路程/总时间等价。",
+          "L": "6/6，无首错。6km、9km、总15km、总1h，平均15km/h。",
+          "feedback": "平均速度一般不能无视条件直接平均，但本题等时间使K合法；不能因不可无条件推广而扣分。"
+        },
+        "acceptable_alternatives": [
+          "可用符号t证明K等价；接受不同但证据一致的分步反馈。"
+        ],
+        "critical_errors": [
+          "把K的等时间平均判为当前题错误",
+          "无依据给K或L制造首错",
+          "给出错误自检等式或错误最终分数"
+        ]
+      },
+      "equal_time_with_later_error": {
+        "reference_answer": {
+          "K": "6/6，无首错；等时间使直接平均合法。",
+          "L": "4/6。路程、总时间和等权关系均正确；首个实质错误在最后把15km除以60并仍写km/h，单位不一致。最小修复是用15km/1h=15km/h，或先换算速度/时间为一致单位。",
+          "feedback": "不能误罚K来显示严格；L的前面步骤应获得对应分，最后数值与单位项不得给分。"
+        },
+        "acceptable_alternatives": [
+          "只要中间计算两项均给分、最终数值与单位项未给分，反馈顺序可不同；不接受另造扣分项。"
+        ],
+        "critical_errors": [
+          "把K列为首错或扣分",
+          "漏掉L最后15/60=0.25km/h的单位错误",
+          "将L全部判错而不承认正确路程和总时间",
+          "申诉后无证据改分"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确解释等时间下K的算术平均等价于总路程/总时间，不以不可无条件推广为当前扣分理由。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "逐步数值、单位、首错和部分分符合所在版本gold；正确版明确无首错。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "学生申诉后逐步复核实际证据，最终分数和反馈一致，不维护已发现的方法误判。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "错误版给L最小单位修复；正确版不制造额外修改义务。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "不影响条件、分数和反馈的措辞差异不扣分；数学、单位与误罚属于实质错误。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "equal_time_correct",
+        "equal_time_with_later_error"
+      ],
+      "relation": "only_L_final_unit_step_changed",
+      "expected": "K两版均合法且满分；L仅错误版在最后一步失分。"
+    },
+    {
+      "variants": [
+        "equal_time_correct",
+        "equal_time_with_later_error"
+      ],
+      "relation": "student_appeal_recheck",
+      "expected": "复核由证据驱动，不因申诉一律改分或维护初评。"
+    }
+  ],
+  "measurement_claim": "在条件合法的非常规解、真实错误和学生申诉下保持证据一致的评分与反馈。",
+  "unmeasured_subclaims": [
+    "手写作品识别",
+    "真实课堂申诉分布",
+    "长期学习效果"
+  ]
+}

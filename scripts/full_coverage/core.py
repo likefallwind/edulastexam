@@ -128,13 +128,14 @@ def validate_runtime(runtime):
             safe_relative(name)
 
 
-def load_items(batch=BATCH, require_all=True):
-    items = [json.loads(p.read_text()) for p in sorted((batch / "authored").glob("ELE-FC-*.json"))]
+def load_items(batch=BATCH, require_all=True, item_glob="ELE-FC-*.json",
+               item_id_pattern=r"ELE-FC-\d{2}-\d{3}", expected_item_ids=None):
+    items = [json.loads(p.read_text()) for p in sorted((batch / "authored").glob(item_glob))]
     ids = set()
     directions = set()
     for item in items:
         ident = item["item_id"]
-        if not re.fullmatch(r"ELE-FC-\d{2}-\d{3}", ident) or ident in ids:
+        if not re.fullmatch(item_id_pattern, ident) or ident in ids:
             raise ValueError(f"Invalid/duplicate item {ident}")
         ids.add(ident)
         direction = item["direction_id"]
@@ -184,7 +185,9 @@ def load_items(batch=BATCH, require_all=True):
                     raise ValueError(f"{ident}: missing gold {key}")
             criteria_for_prompt(item, prompt["prompt_id"])
             validate_runtime(runtime_for(item, prompt["prompt_id"]))
-    if require_all and directions != {f"{i:02}" for i in range(1, 38)}:
+    if expected_item_ids is not None and ids != set(expected_item_ids):
+        raise ValueError(f"Item coverage mismatch: expected {sorted(expected_item_ids)}, got {sorted(ids)}")
+    if require_all and expected_item_ids is None and directions != {f"{i:02}" for i in range(1, 38)}:
         raise ValueError(f"Incomplete direction coverage: {sorted(directions)}")
     return items
 

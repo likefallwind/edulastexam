@@ -1,0 +1,16 @@
+{
+  "task": "合成学生的保温材料对照实验报告辅导",
+  "required_goals": [
+    {"goal_id": "G1", "description": "学生独立作出材料选择并给出控制变量理由"},
+    {"goal_id": "G2", "description": "学生正确完成热损失比较计算"},
+    {"goal_id": "G3", "description": "学生解释一个混杂因素"},
+    {"goal_id": "G4", "description": "学生独立说明一个外推限制"}
+  ],
+  "evidence_records": [
+    {"record_id": "E1", "goal_id": "G1", "student_authored": true, "help": "none", "valid": true, "content": "学生选择带盖泡沫杯，因为只改变保温材料，杯型和液体初温保持不变"},
+    {"record_id": "E2", "goal_id": "G2", "student_authored": true, "help": "none", "valid": true, "content": "学生计算A组10分钟降温8°C、B组降温14°C，并据此比较"},
+    {"record_id": "E3", "goal_id": "G3", "student_authored": true, "help": "none", "valid": true, "content": "学生指出两杯液量不同会同时影响降温，需改为相同液量"},
+    {"record_id": "E4", "goal_id": "G4", "student_authored": false, "help": "teacher_statement", "valid": true, "content": "教师写‘实验只测20°C室温和小容器，不能直接推广到所有环境’，学生只回答‘嗯’，尚未独立给出限制"}
+  ],
+  "current_student_message": "我还想问，如果把容器涂成黑色会不会更保温？另外，这次四项要求够我交报告了吗？"
+}

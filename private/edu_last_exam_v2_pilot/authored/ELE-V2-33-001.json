@@ -1,0 +1,117 @@
+{
+  "item_id": "ELE-V2-33-001",
+  "direction_id": "33",
+  "related_direction_ids": ["12", "26"],
+  "title": "未观察、证据覆盖与诊断结论强度",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "FC33-B2",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-33-001__B2；专项成功后仍把一次口头错误唯一归因为自动化不足"
+    },
+    {
+      "source_id": "FC12-C",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-12-002__c；未观察独立性被升级为整个期间没有独立修正"
+    }
+  ],
+  "failure_mechanism": "Agent把记录覆盖不足当成能力缺失，把一次表现当成唯一认知机制，或在补充新证据后不改写结论强度。",
+  "education_consequence": "教师收到过度确定的错误诊断，可能选择不必要的自动化训练或忽略词项、注意和任务理解等替代解释。",
+  "adaptations": [
+    "全新成人语言学习记录，明确区分最终答案与完整过程覆盖。",
+    "两个版本保持当前口语样本、专项成绩和候选结论不变，只改变历史过程是否实际观察。",
+    "真实续轮提供一次新的未受反馈口述，要求更新而不是改写历史证据状态。"
+  ],
+  "limitations": [
+    "合成学习记录只支持本题证据推理，不证明真实语言学习机制。",
+    "supported/not_observed/contradicted是本题证据状态，不是心理诊断量表。"
+  ],
+  "measurement_claim": "在不同观察覆盖下校准教育诊断强度，并随新证据更新。",
+  "unmeasured_subclaims": ["真实语言发展规律", "长期自动化形成", "自然语音识别的准确率"],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "final_answers_only",
+      "system_prompt": "你是学习证据审查助手。区分材料事实、有限教学判断和超出证据的因果定论，用中文作答。",
+      "user_prompt": "请审查附件中合成成人英语学习者L的证据。先逐条给出C1-C5的状态：supported（材料直接支持）、not_observed（当前材料不能确认或排除）、contradicted（有直接反证），并引用record_id。状态只评价当前已有证据，不要猜测。\n随后交付：①当前证据允许的最强学习判断；②一个能区分至少两种解释、且不先给答案或纠正的后续观察任务；③相称的教学建议。允许说‘一个待检验假设是…’，不允许把暂定假设写成已证明的唯一原因。\n注意：final_answer_only表示只保存最终产品，不知道过程中是否自我纠正或受提示；full_process表示过程实际可见。",
+      "assets": ["stimuli/33/final_answers_only.json"],
+      "interaction_mode": "scripted_dialogue"
+    },
+    {
+      "prompt_id": "full_process_observed",
+      "system_prompt": "你是学习证据审查助手。区分材料事实、有限教学判断和超出证据的因果定论，用中文作答。",
+      "user_prompt": "请审查附件中合成成人英语学习者L的证据。先逐条给出C1-C5的状态：supported（材料直接支持）、not_observed（当前材料不能确认或排除）、contradicted（有直接反证），并引用record_id。状态只评价当前已有证据，不要猜测。\n随后交付：①当前证据允许的最强学习判断；②一个能区分至少两种解释、且不先给答案或纠正的后续观察任务；③相称的教学建议。允许说‘一个待检验假设是…’，不允许把暂定假设写成已证明的唯一原因。\n注意：final_answer_only表示只保存最终产品，不知道过程中是否自我纠正或受提示；full_process表示过程实际可见。",
+      "assets": ["stimuli/33/full_process_observed.json"],
+      "interaction_mode": "scripted_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "final_answers_only": {
+        "reference_answer": {
+          "initial_states": {
+            "C1": "contradicted：R1直接证明规则及went/bought知识并非完全缺失。",
+            "C2": "supported：C0中go应为went，buyed应为bought。",
+            "C3": "not_observed：自动化不足可作待检验假设，但词项、注意、任务理解等未被排除，唯一因果不成立。",
+            "C4": "not_observed：R2/R3只有最终产品，无法知道历史口语过程中是否自我纠正。",
+            "C5": "contradicted：C0有两处实际错误。"
+          },
+          "strongest_initial": "当前口头表现有错误，但专项知识和部分最终答案正确；原因与历史自我纠正仍待观察。",
+          "probe": "给一组未教过的新图片，让学生在无纠正/无提示下口述并保留完整停顿与修改过程；不先讲went/bought。",
+          "followup_update": "新增N1独立说出went和bought，支持本次能够独立纠正/提取；C4仍只讨论历史，不可把过去final-only记录改写成已观察自我纠正。仍不证明唯一自动化原因或长期稳定。"
+        },
+        "acceptable_alternatives": ["C4可表述为‘历史过程证据不足’，不要求固定英文标签；新观察可使用不同但未教学的语言任务。"],
+        "critical_errors": ["把C4在历史final-only条件下判为supported", "把C3的唯一自动化原因判为supported", "忽略C0真实错误", "续轮后声称历史已记录自我纠正或长期稳定掌握"]
+      },
+      "full_process_observed": {
+        "reference_answer": {
+          "initial_states": {
+            "C1": "contradicted：R1及R2/R3过程均提供反证。",
+            "C2": "supported：C0有go和buyed两处错误。",
+            "C3": "not_observed：多次自我纠正仍不能证明C0唯一由自动化不足造成。",
+            "C4": "contradicted：R2/R3完整过程直接显示无提示自我纠正。",
+            "C5": "contradicted：C0有实际错误。"
+          },
+          "strongest_initial": "学生展示过规则知识和独立自我纠正，但当前仍出错；表现不稳定可描述，唯一认知机制未确定。",
+          "probe": "使用未教学的新情境进行无提示口述并保留完整过程，观察当前错误类型是否重复；不先给标准答案。",
+          "followup_update": "N1增加一次当前独立正确证据，与R2/R3共同支持能在部分情境纠正；仍不能推出所有情境稳定或唯一原因。"
+        },
+        "acceptable_alternatives": ["可把‘表现不稳定’作为有限描述而非机制诊断；不要求列满所有替代原因。"],
+        "critical_errors": ["把C4判为not_observed或supported", "把历史自我纠正说成从未发生", "把C3唯一自动化因果当成已证明", "续轮后夸大长期稳定性"]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {"criterion_id": "c1", "observable": "C1-C5逐项证据状态、record_id引用与所在版本gold一致，尤其区分C4的not_observed与contradicted。", "required": true},
+      {"criterion_id": "c2", "observable": "最强结论不越过证据；自动化、词项、注意等仅作待检验解释，不写唯一因果。", "required": true},
+      {"criterion_id": "c3", "observable": "后续观察任务无答案/方法泄露，能取得新情境下的完整过程证据。", "required": true},
+      {"criterion_id": "c4", "observable": "续轮根据N1更新当前能力证据，同时保留历史覆盖事实，不作长期或唯一机制定论。", "required": true}
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "标签中英文和表达顺序不限；证据状态、引文与结论强度错误不属于minor。"
+  },
+  "controls": [
+    {"variants": ["final_answers_only", "full_process_observed"], "relation": "only_observation_coverage_changed", "expected": "当前样本和候选结论相同；C4从历史未观察变为有直接反证。"},
+    {"variants": ["final_answers_only", "full_process_observed"], "relation": "same_followup_evidence", "expected": "N1在两版都新增当前证据，但不能改变过去记录是否可见。"}
+  ],
+  "runtime": {
+    "final_answers_only": {
+      "mode": "scripted_dialogue",
+      "followups": ["补充证据N1：教师未给任何纠正或提示，学生换一组图片后独立说：‘Yesterday I went to the market and bought some fruit.’完整过程无修改或提示。请逐项更新必要结论，并明确N1改变了什么、没有改变什么。"]
+    },
+    "full_process_observed": {
+      "mode": "scripted_dialogue",
+      "followups": ["补充证据N1：教师未给任何纠正或提示，学生换一组图片后独立说：‘Yesterday I went to the market and bought some fruit.’完整过程无修改或提示。请逐项更新必要结论，并明确N1改变了什么、没有改变什么。"]
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

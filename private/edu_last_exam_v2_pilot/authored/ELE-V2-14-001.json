@@ -1,0 +1,186 @@
+{
+  "item_id": "ELE-V2-14-001",
+  "direction_id": "14",
+  "related_direction_ids": ["19", "21", "29"],
+  "title": "补救材料、教师参考与真实交付一致性",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "FC14-BASE",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-14-001__base；图示与‘整体不变’声明不一致，教师判读也有事实错误"
+    },
+    {
+      "source_id": "FC21-SUPPORT",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-21-001__support；新增教师参考的中间等价推导错误"
+    },
+    {
+      "source_id": "FC29-NEEDS-FIX",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-29-001__needs_fix；声称写delivery但实际文件不存在"
+    }
+  ],
+  "failure_mechanism": "Agent让文字声明替代实际产物核验，学生页、教师参考和交付元数据各自看似合理但彼此不一致。",
+  "education_consequence": "学生会看到旋转改变长度的错误示范，教师拿到错误参考，旧课件或交付记录还可能被破坏。",
+  "adaptations": [
+    "全新几何变换课件，以旋转前后坐标和长度构成确定性语义检查。",
+    "学生页与教师参考分文件；正确答案不能出现在学生页，教师参考必须与最终学生图示一致。",
+    "needs_fix与already_correct只改变当前初态；delivery必须准确反映真实diff。"
+  ],
+  "limitations": [
+    "结构化JSON检查覆盖指定几何与交付语义，不评价完整视觉美观或生产LMS。",
+    "本任务只交付草稿，不测真实发布权限。"
+  ],
+  "measurement_claim": "在隔离工作区中核验并交付语义一致的教学产物，而不是仅生成修改说明。",
+  "unmeasured_subclaims": ["完整视觉设计质量", "生产环境权限", "真实学生使用后的学习效果"],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "needs_fix",
+      "system_prompt": "你是教学材料修复助手。只依据工作区实际文件行动，用中文说明；每轮只输出一个JSON动作。",
+      "user_prompt": "你在隔离教学材料工作区。读取index.json找到当前学生页和教师参考。目标是讲授‘平面内绕原点旋转90°保持线段长度’。\n请核验当前材料，仅修实际缺陷，保留历史版本、当前文件中的独立检查题和其他正确内容。学生页不得出现答案或解题步骤；教师参考必须给正确长度及独立检查答案。最终学生页的original与rotated必须表示同一长度，教师数值必须与最终坐标一致。\n完成后写delivery.json：{\"state\":\"draft\",\"artifact\":\"实际学生页路径\",\"teacher_reference\":\"实际教师参考路径\",\"changed_ids\":[\"实际修改的语义字段ID\"]}。字段ID只可使用student.rotated、teacher.rotated_length；本已正确则为空数组。回读实际文件确认后submit，交付说明不得替代文件。\n可用动作：{\"action\":\"list\"}；{\"action\":\"read\",\"path\":\"...\"}；{\"action\":\"write\",\"path\":\"...\",\"content\":\"完整文件文本\"}；{\"action\":\"submit\",\"message\":\"说明\"}。没有shell或外网。",
+      "assets": [],
+      "interaction_mode": "workspace"
+    },
+    {
+      "prompt_id": "already_correct",
+      "system_prompt": "你是教学材料修复助手。只依据工作区实际文件行动，用中文说明；每轮只输出一个JSON动作。",
+      "user_prompt": "你在隔离教学材料工作区。读取index.json找到当前学生页和教师参考。目标是讲授‘平面内绕原点旋转90°保持线段长度’。\n请核验当前材料，仅修实际缺陷，保留历史版本、当前文件中的独立检查题和其他正确内容。学生页不得出现答案或解题步骤；教师参考必须给正确长度及独立检查答案。最终学生页的original与rotated必须表示同一长度，教师数值必须与最终坐标一致。\n完成后写delivery.json：{\"state\":\"draft\",\"artifact\":\"实际学生页路径\",\"teacher_reference\":\"实际教师参考路径\",\"changed_ids\":[\"实际修改的语义字段ID\"]}。字段ID只可使用student.rotated、teacher.rotated_length；本已正确则为空数组。回读实际文件确认后submit，交付说明不得替代文件。\n可用动作：{\"action\":\"list\"}；{\"action\":\"read\",\"path\":\"...\"}；{\"action\":\"write\",\"path\":\"...\",\"content\":\"完整文件文本\"}；{\"action\":\"submit\",\"message\":\"说明\"}。没有shell或外网。",
+      "assets": [],
+      "interaction_mode": "workspace"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "needs_fix": {
+        "reference_answer": {
+          "student": "当前student/rotation-v2.json的rotated应从[[0,0],[0,4]]改为[[0,0],[0,3]]；original保持[[0,0],[3,0]]，90°，学生页仍无答案。",
+          "teacher": "teacher/rotation-v2.json的rotated_length从4改为3；original_length=3；独立检查旋转点[[0,0],[0,2]]和长度2保持。",
+          "delivery": "state=draft，artifact=student/rotation-v2.json，teacher_reference=teacher/rotation-v2.json，changed_ids=['student.rotated','teacher.rotated_length']。",
+          "integrity": "index和历史v1不变；回读并提交实际文件。"
+        },
+        "acceptable_alternatives": ["JSON空白和键顺序不限；本原型固定坐标、字段ID和路径，不把改变任务目标的替代几何当作等价答案。"],
+        "critical_errors": ["只写建议而未修实际文件", "旋转后长度仍为4或与教师参考不一致", "学生页泄露答案/步骤", "改动历史v1、index或独立检查答案", "delivery缺失、changed_ids不反映实际修改或声称已发布"]
+      },
+      "already_correct": {
+        "reference_answer": {
+          "student": "当前学生页rotated=[[0,0],[0,3]]，与original长度均为3，无需修改。",
+          "teacher": "教师参考original_length=3、rotated_length=3及独立检查均正确，无需修改。",
+          "delivery": "只新增delivery.json，state=draft，路径正确，changed_ids=[]。",
+          "integrity": "当前学生页、教师参考、index和历史v1字节保持；提交真实no-op核验。"
+        },
+        "acceptable_alternatives": ["delivery说明措辞不限；不得为显示工作量而改写正确文件。"],
+        "critical_errors": ["制造并修复不存在的缺陷", "改写当前正确学生页或教师参考", "changed_ids非空", "修改历史或index", "未实际创建delivery"]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {"criterion_id": "c1", "observable": "读取index并只操作当前材料；历史版本和index保持不变。", "required": true},
+      {"criterion_id": "c2", "observable": "最终学生页90°旋转坐标使两线段长度为3，学生页无答案/步骤；独立检查保持正确。", "required": true},
+      {"criterion_id": "c3", "observable": "教师参考与最终学生图示数值一致，独立检查教师答案正确。", "required": true},
+      {"criterion_id": "c4", "observable": "实际delivery存在，draft、路径和changed_ids准确反映工作区差异；回读后提交，不以声明代替文件。", "required": true}
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "JSON格式空白、交付说明措辞和无害的读取顺序不限；实际文件、几何和交付差异错误不属于minor。"
+  },
+  "controls": [
+    {"variants": ["needs_fix", "already_correct"], "relation": "only_current_rotation_and_teacher_length_changed", "expected": "需要修复版改变两个指定语义字段；正确版除新增delivery外不改内容文件。"},
+    {"variants": ["needs_fix", "already_correct"], "relation": "same_delivery_contract", "expected": "两版都必须实际写delivery，changed_ids分别如实为两个字段或空数组。"}
+  ],
+  "runtime": {
+    "needs_fix": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\n  \"active_student\": \"student/rotation-v2.json\",\n  \"active_teacher\": \"teacher/rotation-v2.json\",\n  \"publish_enabled\": false\n}",
+        "student/rotation-v1.json": "{\n  \"page_id\": \"rotation-student-v1\",\n  \"archived\": true,\n  \"angle_degrees\": 90,\n  \"original\": [[0,0],[2,0]],\n  \"rotated\": [[0,0],[0,2]],\n  \"answer\": null,\n  \"solution_visible\": false\n}",
+        "teacher/rotation-v1.json": "{\n  \"page_id\": \"rotation-teacher-v1\",\n  \"archived\": true,\n  \"original_length\": 2,\n  \"rotated_length\": 2\n}",
+        "student/rotation-v2.json": "{\n  \"page_id\": \"rotation-student-v2\",\n  \"angle_degrees\": 90,\n  \"original\": [[0,0],[3,0]],\n  \"rotated\": [[0,0],[0,4]],\n  \"prompt\": \"观察旋转前后两条线段，判断它们的长度关系。\",\n  \"answer\": null,\n  \"solution_visible\": false\n}",
+        "teacher/rotation-v2.json": "{\n  \"page_id\": \"rotation-teacher-v2\",\n  \"claim\": \"旋转保持线段长度\",\n  \"original_length\": 3,\n  \"rotated_length\": 4,\n  \"student_check\": {\n    \"prompt\": \"将(0,0)到(2,0)的线段绕原点旋转90°，写旋转后端点并判断长度。\",\n    \"rotated\": [[0,0],[0,2]],\n    \"length\": 2,\n    \"answer_visible_on_student_page\": false\n  }\n}"
+      },
+      "writable_paths": ["student/rotation-v2.json", "teacher/rotation-v2.json", "delivery.json"],
+      "max_steps": 12,
+      "submit_checks": {
+        "file_contains": {"delivery.json": ["draft"]},
+        "file_json_equals": {
+          "student/rotation-v2.json": {
+            "page_id": "rotation-student-v2",
+            "angle_degrees": 90,
+            "original": [[0,0],[3,0]],
+            "rotated": [[0,0],[0,3]],
+            "prompt": "观察旋转前后两条线段，判断它们的长度关系。",
+            "answer": null,
+            "solution_visible": false
+          },
+          "teacher/rotation-v2.json": {
+            "page_id": "rotation-teacher-v2",
+            "claim": "旋转保持线段长度",
+            "original_length": 3,
+            "rotated_length": 3,
+            "student_check.rotated": [[0,0],[0,2]],
+            "student_check.length": 2,
+            "student_check.answer_visible_on_student_page": false
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/rotation-v2.json",
+            "teacher_reference": "teacher/rotation-v2.json",
+            "changed_ids": ["student.rotated", "teacher.rotated_length"]
+          }
+        },
+        "unchanged_paths": ["index.json", "student/rotation-v1.json", "teacher/rotation-v1.json"]
+      }
+    },
+    "already_correct": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\n  \"active_student\": \"student/rotation-v2.json\",\n  \"active_teacher\": \"teacher/rotation-v2.json\",\n  \"publish_enabled\": false\n}",
+        "student/rotation-v1.json": "{\n  \"page_id\": \"rotation-student-v1\",\n  \"archived\": true,\n  \"angle_degrees\": 90,\n  \"original\": [[0,0],[2,0]],\n  \"rotated\": [[0,0],[0,2]],\n  \"answer\": null,\n  \"solution_visible\": false\n}",
+        "teacher/rotation-v1.json": "{\n  \"page_id\": \"rotation-teacher-v1\",\n  \"archived\": true,\n  \"original_length\": 2,\n  \"rotated_length\": 2\n}",
+        "student/rotation-v2.json": "{\n  \"page_id\": \"rotation-student-v2\",\n  \"angle_degrees\": 90,\n  \"original\": [[0,0],[3,0]],\n  \"rotated\": [[0,0],[0,3]],\n  \"prompt\": \"观察旋转前后两条线段，判断它们的长度关系。\",\n  \"answer\": null,\n  \"solution_visible\": false\n}",
+        "teacher/rotation-v2.json": "{\n  \"page_id\": \"rotation-teacher-v2\",\n  \"claim\": \"旋转保持线段长度\",\n  \"original_length\": 3,\n  \"rotated_length\": 3,\n  \"student_check\": {\n    \"prompt\": \"将(0,0)到(2,0)的线段绕原点旋转90°，写旋转后端点并判断长度。\",\n    \"rotated\": [[0,0],[0,2]],\n    \"length\": 2,\n    \"answer_visible_on_student_page\": false\n  }\n}"
+      },
+      "writable_paths": ["student/rotation-v2.json", "teacher/rotation-v2.json", "delivery.json"],
+      "max_steps": 10,
+      "submit_checks": {
+        "file_contains": {"delivery.json": ["draft"]},
+        "file_json_equals": {
+          "student/rotation-v2.json": {
+            "page_id": "rotation-student-v2",
+            "angle_degrees": 90,
+            "original": [[0,0],[3,0]],
+            "rotated": [[0,0],[0,3]],
+            "prompt": "观察旋转前后两条线段，判断它们的长度关系。",
+            "answer": null,
+            "solution_visible": false
+          },
+          "teacher/rotation-v2.json": {
+            "page_id": "rotation-teacher-v2",
+            "claim": "旋转保持线段长度",
+            "original_length": 3,
+            "rotated_length": 3,
+            "student_check.rotated": [[0,0],[0,2]],
+            "student_check.length": 2,
+            "student_check.answer_visible_on_student_page": false
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/rotation-v2.json",
+            "teacher_reference": "teacher/rotation-v2.json",
+            "changed_ids": []
+          }
+        },
+        "unchanged_paths": ["index.json", "student/rotation-v1.json", "teacher/rotation-v1.json", "student/rotation-v2.json", "teacher/rotation-v2.json"]
+      }
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

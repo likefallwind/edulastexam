@@ -1,0 +1,131 @@
+{
+  "item_id": "ELE-V2-09-001",
+  "direction_id": "09",
+  "related_direction_ids": ["10", "12", "13"],
+  "title": "目标完成、插问与教学收尾",
+  "material_origin": "local_failure_adaptation",
+  "source_evidence": [
+    {
+      "source_id": "FC09-REASONED",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-09-001__reasoned；承认四目标全达后仍新增必交任务并拒绝结束"
+    },
+    {
+      "source_id": "FC10-COMPLETED",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl",
+      "locator": "ELE-FC-10-001__completed；认可已完成贡献并结束的正控制"
+    }
+  ],
+  "failure_mechanism": "Agent把可选深化、漂亮措辞或新增探究目标变成结束门槛，或者只看答案正确而忽视目标证据是否由学生独立产生。",
+  "education_consequence": "教学流程无法收尾，学生被迫重复已完成工作；另一极端是证据不足时提前结束。",
+  "adaptations": [
+    "全新保温材料对照实验，不复用FC09的数据分析情境。",
+    "四项公开目标对应可核查证据位；完整版与缺失版只改变E4的学生独立证据。",
+    "把结束变成实际动作，并要求先回应一个不属于原课程目标的插问。"
+  ],
+  "limitations": [
+    "有限动作和确定性学生观察只测受控流程决策。",
+    "不推断真实学生长期保持或自然课堂中的全部结束策略。"
+  ],
+  "measurement_claim": "基于分散历史证据和实际插问，作出继续诊断或结束的真实动作选择。",
+  "unmeasured_subclaims": ["自然课堂开放行动空间", "长期学习增益", "教师对所有可选扩展的偏好"],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "all_goals_met",
+      "system_prompt": "你是教学流程决策助手。只根据公开目标和实际学生证据行动，用中文作答。",
+      "user_prompt": "附件是合成学生的保温材料对照实验辅导记录。四项公开目标G1-G4均为必要且足够的本次目标；额外的颜色、材料美观、更多敏感性分析都不是必交目标。只有student_authored=true、help=none且valid=true的记录才算该目标已取得的独立证据。\n请通过实际动作处理当前插问并决定是否结束。每轮只输出JSON：{\"action\":\"当轮菜单动作\",\"message\":\"实际对学生说的话\"}。address_question先回应当前颜色问题及能否交报告的问题；颜色不能被宣称为已知保温结论，也不能新增为课程目标。probe_missing用于在确有目标证据缺失时，让学生独立补充该证据，message不得直接给答案。explain_optional提供非必要扩展，但不能代替缺失证据。finish给出基于真实记录的结束总结，可在结束句中附明确自愿的小建议，不得新增必交条件。",
+      "assets": ["stimuli/09/goal_evidence_complete.json"],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "one_goal_missing",
+      "system_prompt": "你是教学流程决策助手。只根据公开目标和实际学生证据行动，用中文作答。",
+      "user_prompt": "附件是合成学生的保温材料对照实验辅导记录。四项公开目标G1-G4均为必要且足够的本次目标；额外的颜色、材料美观、更多敏感性分析都不是必交目标。只有student_authored=true、help=none且valid=true的记录才算该目标已取得的独立证据。\n请通过实际动作处理当前插问并决定是否结束。每轮只输出JSON：{\"action\":\"当轮菜单动作\",\"message\":\"实际对学生说的话\"}。address_question先回应当前颜色问题及能否交报告的问题；颜色不能被宣称为已知保温结论，也不能新增为课程目标。probe_missing用于在确有目标证据缺失时，让学生独立补充该证据，message不得直接给答案。explain_optional提供非必要扩展，但不能代替缺失证据。finish给出基于真实记录的结束总结，可在结束句中附明确自愿的小建议，不得新增必交条件。",
+      "assets": ["stimuli/09/goal_evidence_missing.json"],
+      "interaction_mode": "branching_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "all_goals_met": {
+        "reference_answer": {
+          "evidence": "E1-E4分别满足G1-G4，均为学生独立、有效证据。",
+          "required_path": "参考路径为address_question→finish。颜色只能作为需另行对照检验的自愿问题，不得变成新目标。",
+          "finish": "明确四项均已完成，可以结束/交报告；总结引用E1-E4，不新增不确定性排序、额外实验或更漂亮措辞作为门槛。"
+        },
+        "acceptable_alternatives": ["finish时可附一句明确自愿的后续探究建议；也可做简短、非强制的核验或扩展后结束，但不能把新增内容设为必交门槛。"],
+        "critical_errors": ["把E4漏掉并误称目标未完成", "把额外探查或扩展设为必交条件，或最终仍拒绝结束", "不回应颜色插问", "编造学生未发生的证据"]
+      },
+      "one_goal_missing": {
+        "reference_answer": {
+          "evidence": "E1-E3满足G1-G3；E4是教师陈述、学生只说‘嗯’，不满足G4的学生独立证据。",
+          "required_path": "address_question→probe_missing→finish。probe只要求学生自己给出一个外推限制，不得先告诉答案。",
+          "finish": "只有实际观察中学生独立给出合理限制后才能结束；只补G4，不重教G1-G3。"
+        },
+        "acceptable_alternatives": ["可用不同中性措辞取得G4，例如问‘这些结果不能被推广到哪些情况？为什么？’。"],
+        "critical_errors": ["把E4教师陈述当作学生独立完成", "未取得G4就finish", "给G4答案后仍称学生独立证据", "重教已完成的三项目标"]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {"criterion_id": "c1", "observable": "按student_authored/help/valid准确判定G1-G4，E4在两版中的证据地位不同。", "required": true},
+      {"criterion_id": "c2", "observable": "实际回应颜色插问，指出需另行对照检验且不把它变成原课程必交目标。", "required": true},
+      {"criterion_id": "c3", "observable": "完整版最终finish且不新增必交环节；缺失版先以非引导probe取得G4再finish，不提前结束。", "required": true},
+      {"criterion_id": "c4", "observable": "结束总结只引用实际证据，不新增必交条件，不重教已完成目标。", "required": true}
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "总结长短和教学措辞风格不作隐藏要求；目标证据和结束动作错误属于实质失败。"
+  },
+  "controls": [
+    {"variants": ["all_goals_met", "one_goal_missing"], "relation": "only_E4_authorship_and_help_changed", "expected": "仅G4证据状态改变；完整版结束，缺失版先取得G4再结束。"},
+    {"variants": ["all_goals_met", "one_goal_missing"], "relation": "same_interruption", "expected": "两版都回应颜色问题，但不能用同一结束动作蒙对两版。"}
+  ],
+  "runtime": {
+    "all_goals_met": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 3,
+      "states": {
+        "s0": {"actions": {
+          "address_question": {"observation": "学生：明白，颜色是否保温需要另做对照，不属于这次四项要求。请确认我现在能否结束并交报告。", "next_state": "s1"},
+          "finish": {"observation": "会话结束，但当前颜色插问没有得到回应。", "next_state": "done"}
+        }},
+        "s1": {"actions": {
+          "probe_missing": {"observation": "学生重复了E4中已经独立写过的外推限制；这是已完成证据的重复，不是新增必要目标。", "next_state": "s2"},
+          "explain_optional": {"observation": "学生听到了额外扩展，但四项原目标此前已全部完成；学生仍问是否能结束。", "next_state": "s1"},
+          "finish": {"observation": "会话结束；四项公开目标均有学生独立有效证据。", "next_state": "done"}
+        }},
+        "s2": {"actions": {"finish": {"observation": "会话结束；额外重复不应被写成新的学习要求。", "next_state": "done"}}}
+      },
+      "terminal_states": ["done"]
+    },
+    "one_goal_missing": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "max_turns": 3,
+      "states": {
+        "s0": {"actions": {
+          "address_question": {"observation": "学生：明白，颜色是否保温需要另做对照，不属于这次四项要求。请确认我现在能否结束并交报告。", "next_state": "s1"},
+          "finish": {"observation": "会话结束，但当前插问未回应，G4也没有学生独立证据。", "next_state": "done"}
+        }},
+        "s1": {"actions": {
+          "probe_missing": {"observation": "学生独立回答：‘实验只测20°C室温和小容器，不能推出户外低温或大容器也相同。’若probe消息已给出该答案，则不能记为独立证据。", "next_state": "s2"},
+          "explain_optional": {"observation": "教师又讲了一个限制例子，但学生尚未独立给出G4；E4仍不满足。", "next_state": "s1"},
+          "finish": {"observation": "会话提前结束；G4仍只有教师陈述，没有学生独立证据。", "next_state": "done"}
+        }},
+        "s2": {"actions": {"finish": {"observation": "会话结束；只有在probe未泄露答案时，才可把刚才回答记为G4独立证据。", "next_state": "done"}}}
+      },
+      "terminal_states": ["done"]
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "edu_last_exam_v2_pilot_protocol_v1",
+  "batch": "private/edu_last_exam_v2_pilot",
+  "generation_batch_id": "wave001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "item_glob": "ELE-V2-*.json",
+  "item_id_pattern": "ELE-V2-\\d{2}-\\d{3}",
+  "expected_item_ids": [
+    "ELE-V2-01-001",
+    "ELE-V2-09-001",
+    "ELE-V2-12-001",
+    "ELE-V2-14-001",
+    "ELE-V2-33-001"
+  ],
+  "expected_prompt_count": 11,
+  "report_directory": "reports/edu_last_exam_v2_pilot",
+  "question_lines": [
+    "# Edu Last Exam V2 原创原型题册",
+    "",
+    "37方向机制驱动数据生成的第一批样本：5个题族、11个依赖版本。V1失败是首批部分题目的历史依据，不是后续造数准入条件。题册不含评分金标，版本不是独立题目数量。",
+    ""
+  ],
+  "review_lines": [
+    "# Edu Last Exam V2 原创原型评分与测量边界",
+    "",
+    "仅供审阅，禁止投递给被测模型。所有题目均为作者候选；独立教师审核与评分校准尚未完成。第一批已有一次单模型探索运行，但难度仍未建立。",
+    ""
+  ],
+  "coverage_lines": [
+    "# V2原创原型实现状态",
+    "",
+    "本表由作者题包生成。5个题族不等于37方向全覆盖，也不等于5个方向的全部子构念覆盖；11个版本不是独立样本。",
+    "",
+    "|方向|题包|版本|环境|测量边界|尚未覆盖|",
+    "|---|---|---:|---|---|---|"
+  ],
+  "questions_html_title": "Edu Last Exam V2 原创原型题册",
+  "review_html_title": "Edu Last Exam V2 原创原型审阅册",
+  "coverage_html_title": "V2原创原型实现状态",
+  "author": {
+    "agent": "Kimi",
+    "method": "37_direction_mechanism_driven_authoring_with_optional_historical_evidence",
+    "exact_model_id": "kimi-code-cn/k3.1-pro",
+    "excluded_test_author": "GLM-5.3-Flash did not author these candidates"
+  },
+  "validation_extra": {
+    "prototype": true,
+    "generation_batch_id": "wave001",
+    "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+    "v1_failure_required": false,
+    "source_batch": "edu_last_exam_full_coverage_v1",
+    "new_contexts": 5,
+    "dependent_task_views": 11
+  },
+  "manifest_extra": {
+    "canonical": false,
+    "difficulty_claim": "not_established",
+    "model_evaluation_tracking": "tracked_in_separate_runs",
+    "v1_evidence_is_candidate_rationale_not_v2_model_evidence": true
+  }
+}
