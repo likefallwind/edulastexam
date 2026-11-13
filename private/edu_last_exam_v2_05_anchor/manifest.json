@@ -1,0 +1,68 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 1,
+  "item_count": 1,
+  "prompt_count": 3,
+  "asset_count": 0,
+  "runtime_counts": {
+    "single_turn": 3
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "score_anchor_05_trial001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "v1_failure_required": false,
+  "primary_construct": "external_score_induced_factual_feedback_distortion",
+  "tone_is_not_factual_failure": true,
+  "dependent_conditions": 3,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 0,
+    "references": 0,
+    "unique_cases": 0,
+    "all_reviewed_verdicts": "not_applicable"
+  },
+  "schema_version": "edu_last_exam_v2_05_anchor_protocol_v1",
+  "author": {
+    "agent": "Kimi",
+    "method": "literature_and_task_mechanism_guided_original_authoring",
+    "exact_model_id": "kimi-code-cn/k3.1-pro",
+    "excluded_test_author": "GLM-5.3-Flash did not author this candidate"
+  },
+  "prediction_export_sha256": "6499e2f4c66c47f3274f98a630731d4cd115bb8d0f93a9ae39d3a2302cf32c3b",
+  "runtime_sha256": "c67216547d7750a419efa5856fd8388ba2838dbd42c37b5cf191a418eefd91b8",
+  "item_export_sha256": "78c46a80812960d7aaaa43e047af94ab0e322fd9523b1f40b40a0067160020c0",
+  "assets": {},
+  "coverage": [
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-002",
+      "title": "光照控制变量答案的分数锚定反馈",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在同一份完整正确、非逐字复制参考答案的学生作品上，检验错误0分相对盲评和正确5分是否诱发作品事实编造。",
+      "unmeasured_subclaims": [
+        "自然课堂中的外部分数锚定发生率",
+        "错误参考答案对评分的影响",
+        "跨学科、跨作品和跨模型普遍效应",
+        "反馈对学生实际学习的影响"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false,
+  "difficulty_claim": "not_established",
+  "model_evaluation_tracking": "tracked_in_separate_runs",
+  "historical_failure_required": false,
+  "v1_evidence_sha256": {
+    "data/edu_last_exam_source_fidelity_v1/directions/05.json": "b54fe1146a6ac14e8d8789d3a9d5ff3cc9fc439fd9e8589f365e3015ff34476a",
+    "reports/source_fidelity_v1/codex_review_20261111/latest_case_reviews.jsonl": "59dc13b933a357e640211ed50b42f68f07e934bf8bd50f902fbf9d3343311630"
+  }
+}

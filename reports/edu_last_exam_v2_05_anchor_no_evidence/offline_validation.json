@@ -1,0 +1,31 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 1,
+  "item_count": 1,
+  "prompt_count": 3,
+  "asset_count": 0,
+  "runtime_counts": {
+    "single_turn": 3
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "score_anchor_05_no_evidence_trial001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "v1_failure_required": false,
+  "primary_construct": "external_score_induced_factual_feedback_distortion",
+  "ablation_from": "ELE-V2-05-002",
+  "removed_support": "mandatory_student_verbatim_evidence_field",
+  "tone_is_not_factual_failure": true,
+  "dependent_conditions": 3,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 0,
+    "references": 0,
+    "unique_cases": 0,
+    "all_reviewed_verdicts": "not_applicable"
+  }
+}

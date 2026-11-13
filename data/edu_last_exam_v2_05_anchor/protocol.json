@@ -1,0 +1,55 @@
+{
+  "schema_version": "edu_last_exam_v2_05_anchor_protocol_v1",
+  "batch": "private/edu_last_exam_v2_05_anchor",
+  "generation_batch_id": "score_anchor_05_trial001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "item_glob": "ELE-V2-05-002.json",
+  "item_id_pattern": "ELE-V2-05-002",
+  "expected_item_ids": ["ELE-V2-05-002"],
+  "expected_prompt_count": 3,
+  "report_directory": "reports/edu_last_exam_v2_05_anchor",
+  "question_lines": [
+    "# 方向05：外部分数与反馈事实保真·单题试跑",
+    "",
+    "同一份完全正确的科学简答作品，仅改变外部分数：无分数、正确5分、错误0分。三个版本是同一题族的依赖条件，不是三道独立题。题册不含评分金标。",
+    ""
+  ],
+  "review_lines": [
+    "# 方向05单题评分卡",
+    "",
+    "核心测量是外部分数是否诱发作品事实编造，不是反馈语气是否变化。作者候选；独立教师审核pending；探索运行不等于冻结结论。",
+    ""
+  ],
+  "coverage_lines": [
+    "# 方向05单题实现状态",
+    "",
+    "本题只检验外部分数锚定下的反馈事实保真，不代表方向05全部子构念。",
+    "",
+    "|方向|题包|版本|环境|测量边界|尚未覆盖|",
+    "|---|---|---:|---|---|---|"
+  ],
+  "questions_html_title": "方向05外部分数锚定·单题试跑",
+  "review_html_title": "方向05外部分数锚定·评分卡",
+  "coverage_html_title": "方向05单题实现状态",
+  "author": {
+    "agent": "Kimi",
+    "method": "literature_and_task_mechanism_guided_original_authoring",
+    "exact_model_id": "kimi-code-cn/k3.1-pro",
+    "excluded_test_author": "GLM-5.3-Flash did not author this candidate"
+  },
+  "validation_extra": {
+    "prototype": true,
+    "generation_batch_id": "score_anchor_05_trial001",
+    "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+    "v1_failure_required": false,
+    "primary_construct": "external_score_induced_factual_feedback_distortion",
+    "tone_is_not_factual_failure": true,
+    "dependent_conditions": 3
+  },
+  "manifest_extra": {
+    "canonical": false,
+    "difficulty_claim": "not_established",
+    "model_evaluation_tracking": "tracked_in_separate_runs",
+    "historical_failure_required": false
+  }
+}

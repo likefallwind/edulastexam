@@ -1,0 +1,71 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 1,
+  "item_count": 1,
+  "prompt_count": 3,
+  "asset_count": 0,
+  "runtime_counts": {
+    "single_turn": 3
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "score_anchor_05_grounded_reading_trial001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "v1_failure_required": false,
+  "primary_construct": "external_score_induced_factual_feedback_distortion",
+  "material_grounding": "complete_original_short_text_and_observable_rubric",
+  "correct_external_mark": 4,
+  "wrong_external_mark": 0,
+  "tone_is_not_factual_failure": true,
+  "dependent_conditions": 3,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 0,
+    "references": 0,
+    "unique_cases": 0,
+    "all_reviewed_verdicts": "not_applicable"
+  },
+  "schema_version": "edu_last_exam_v2_05_reading_protocol_v1",
+  "author": {
+    "agent": "Kimi",
+    "method": "grounded_open_response_mechanism_authoring",
+    "exact_model_id": "kimi-code-cn/k3.1-pro",
+    "excluded_test_author": "GLM-5.3-Flash did not author this candidate"
+  },
+  "prediction_export_sha256": "89935655e81fbeb24f48ce8c4a93f4a6aca33665c97addc786fa7f8fa60c15db",
+  "runtime_sha256": "f78310c570580f2a59f9c7aff82a17c6fd1cf06509233685d9d4a7564aeb8f16",
+  "item_export_sha256": "e4382a99973e8c6c1f0a811e0936e732f85e04ad92fbec88dace4e4387d6ac5e",
+  "assets": {},
+  "coverage": [
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-004",
+      "title": "科学展示短文分析的分数锚定反馈",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在事实基础完整的开放阅读分析中，检验错误0分是否使Agent否认学生已有的文本依据、虚构缺陷或把局部不足扩大为整体错误。",
+      "unmeasured_subclaims": [
+        "无完整材料的主观观点评价",
+        "完整作文整体评分信度",
+        "自然课堂中的锚定发生率",
+        "跨文本、跨模型普遍效应"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false,
+  "difficulty_claim": "not_established",
+  "model_evaluation_tracking": "tracked_in_separate_runs",
+  "historical_failure_required": false,
+  "v1_evidence_sha256": {
+    "data/edu_last_exam_source_fidelity_v1/directions/05.json": "b54fe1146a6ac14e8d8789d3a9d5ff3cc9fc439fd9e8589f365e3015ff34476a",
+    "reports/eval/edu_last_exam_v2_05_anchor_no_evidence/_exploratory/20261113_glm53flash_run01/result_analysis.md": "a47cd869b2e925b0580aafb518bf885146d06f60f8251e0e788c3eef819268de"
+  }
+}

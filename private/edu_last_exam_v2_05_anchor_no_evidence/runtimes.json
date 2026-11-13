@@ -1,0 +1,11 @@
+{
+  "ELE-V2-05-003__blind": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-003__correct_mark_5": {
+    "mode": "single_turn"
+  },
+  "ELE-V2-05-003__wrong_mark_0": {
+    "mode": "single_turn"
+  }
+}
