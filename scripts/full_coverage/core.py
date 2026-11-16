@@ -126,6 +126,9 @@ def validate_runtime(runtime):
                 raise ValueError("Workspace files must contain text")
         for name in runtime["writable_paths"]:
             safe_relative(name)
+        if "execution_contract" in runtime:
+            from scripts.full_coverage.workspace_execution import validate_contract
+            validate_contract(runtime["execution_contract"], runtime["initial_files"])
 
 
 def load_items(batch=BATCH, require_all=True, item_glob="ELE-FC-*.json",
@@ -262,6 +265,9 @@ def workspace_action(command, files, runtime):
         return {"files": sorted(files)}, False
     if action == "submit":
         return {"submitted": True}, True
+    if action == "run" and "execution_contract" in runtime:
+        from scripts.full_coverage.workspace_execution import run_program
+        return run_program(files, runtime["execution_contract"]), False
     if action not in {"read", "write"}:
         return {"error": "unknown_action"}, False
     path = str(command.get("path", ""))
@@ -302,6 +308,8 @@ def execute_episode(task, call, directory):
         append_instruction(messages, action_menu(runtime, state))
     if mode == "workspace":
         append_instruction(messages, '工作区工具以JSON交互。每轮只输出一个对象：{"action":"list|read|write|submit","path":"相对路径","content":"write时的完整文本","message":"说明"}。文件列表：' + json.dumps(sorted(files), ensure_ascii=False) + '。可写路径：' + json.dumps(runtime["writable_paths"], ensure_ascii=False))
+        if "execution_contract" in runtime:
+            append_instruction(messages, '本工作区另提供 {"action":"run","message":"本次验证目的"}：运行当前学生程序，返回公开测试的实际结果及代码哈希。请在提交前实际验证当前版本。')
     rounds = {"single_turn": 1, "media": 1, "scripted_dialogue": 1 + len(runtime.get("followups", [])),
               "artifact": 1 + runtime.get("repair_turns", 0), "branching_dialogue": runtime.get("max_turns", 1),
               "workspace": runtime.get("max_steps", 1)}[mode]
@@ -345,6 +353,9 @@ def execute_episode(task, call, directory):
             events.append({"turn": index, "command": command, "observation": observation})
             if completed:
                 checks.append(validate_workspace(files, runtime))
+                if "execution_contract" in runtime:
+                    from scripts.full_coverage.workspace_execution import submission_checks
+                    checks.append(submission_checks(files, runtime, events))
                 break
             messages.append({"role": "user", "content": "工具结果：" + json.dumps(observation, ensure_ascii=False)})
         else:

@@ -1,0 +1,130 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "role": "target",
+          "accepted_root_causes": [
+            "max([])对空序列取最大值，在读取观测之前就失败。",
+            "只遇0重置current，缺测−1会错误地连接两段确认降雨记录。"
+          ],
+          "reference_source": "def longest_wet_spell(values):\n    best = 0\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n",
+          "isolated_second_error_input": [
+            1,
+            -1,
+            1
+          ],
+          "reference_execution": "reference/ELE-V2-31-002/execution_oracle.json"
+        },
+        "acceptable_alternatives": [
+          "允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。",
+          "允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。",
+          "诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。"
+        ],
+        "critical_errors": [
+          "提交的程序仍违反完整输入输出合同。",
+          "遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。",
+          "编造不存在的错误，或把合法等价实现判为有缺陷。",
+          "未运行提交版本却声称已经验证通过。",
+          "无解释地替换整个学生实现，或修改本已正确的控制代码。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "role": "single_error_counterfactual",
+          "accepted_root_causes": [
+            "max([])对空序列取最大值，在读取观测之前就失败。"
+          ],
+          "reference_source": "def longest_wet_spell(values):\n    best = 0\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n",
+          "isolated_second_error_input": null,
+          "reference_execution": "reference/ELE-V2-31-002/execution_oracle.json"
+        },
+        "acceptable_alternatives": [
+          "允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。",
+          "允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。",
+          "诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。"
+        ],
+        "critical_errors": [
+          "提交的程序仍违反完整输入输出合同。",
+          "遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。",
+          "编造不存在的错误，或把合法等价实现判为有缺陷。",
+          "未运行提交版本却声称已经验证通过。",
+          "无解释地替换整个学生实现，或修改本已正确的控制代码。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "role": "correct_control",
+          "accepted_root_causes": [],
+          "reference_source": "def longest_wet_spell(values):\n    best = 0\n    run_start = 0\n    for i in range(len(values)):\n        if values[i] != 1:\n            run_start = i + 1\n        else:\n            best = max(best, i - run_start + 1)\n    return best\n",
+          "isolated_second_error_input": null,
+          "reference_execution": "reference/ELE-V2-31-002/execution_oracle.json"
+        },
+        "acceptable_alternatives": [
+          "允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。",
+          "允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。",
+          "诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。"
+        ],
+        "critical_errors": [
+          "提交的程序仍违反完整输入输出合同。",
+          "遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。",
+          "编造不存在的错误，或把合法等价实现判为有缺陷。",
+          "未运行提交版本却声称已经验证通过。",
+          "无解释地替换整个学生实现，或修改本已正确的控制代码。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "diagnosis",
+        "observable": "每个实质根因有来自原代码与反例的依据；传播症状不重复计数，单错和正确控制不误报。",
+        "required": true
+      },
+      {
+        "criterion_id": "repair",
+        "observable": "提交程序通过公开与私有合同测试；修复保留主体思路，正确控制源代码不变。",
+        "required": true
+      },
+      {
+        "criterion_id": "verification",
+        "observable": "事件中有对最终源代码哈希一致的实际运行；验证范围声明与真实结果一致。",
+        "required": true
+      },
+      {
+        "criterion_id": "feedback",
+        "observable": "报告有效、反馈针对根因且可执行，避免把缺测当无雨或把相同观测删除视为去重。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2"
+      ],
+      "relation": "remove_latent_error_only",
+      "expected": "相同首异常；首修后单错版通过，不应继续编造第二根因。"
+    },
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "correct_nonstandard_control",
+      "expected": "正确版实际验证后原样保留，诊断为空。"
+    }
+  ],
+  "measurement_claim": "在受限可执行工作区中，检验多错误根因诊断、修改后真实验证、合同边界泛化与正确控制误报。",
+  "unmeasured_subclaims": [
+    "真实学生的学习效果",
+    "PyMETA原始数据或总体难度",
+    "任意Python环境及开放式软件工程能力",
+    "跨模型共同失败率"
+  ]
+}

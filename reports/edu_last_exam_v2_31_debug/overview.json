@@ -1,0 +1,38 @@
+{
+  "status": "completed_exploratory_trial",
+  "direction_id": "31",
+  "material_instances": 2,
+  "dependent_conditions": 6,
+  "repeat_count": 2,
+  "observed_trajectories": 12,
+  "fixed_batch_manifest": true,
+  "fixed_prediction_identities": true,
+  "all_runs_completed_and_reviewed": true,
+  "functional_contract_passes": 12,
+  "target_root_cause_passes": 4,
+  "target_trajectories": 4,
+  "secondary_issues": [
+    {
+      "case_id": "ELE-V2-31-001__v1",
+      "run": 1,
+      "issue": "feedback_factual_error",
+      "detail": "final、total均不是Python内建名称，原学生程序也没有final变量。该提醒不影响根因集合或执行结果，不能作为多错误遮蔽机制复现的证据。"
+    },
+    {
+      "case_id": "ELE-V2-31-001__v2",
+      "run": 1,
+      "issue": "minor_counterexample_format",
+      "detail": "counterexample字段写成[[1,2,3]]，正文清楚说明输入为[1,2,3]，语义反例有效；不将这个可辨格式瑕疵认作目标机制错误。"
+    }
+  ],
+  "target_failure_mechanism_reproduced": false,
+  "independent_teacher_review": "pending",
+  "difficulty_claim": "not_established",
+  "canonical": false,
+  "frozen": false,
+  "same_model_judge_used": false,
+  "reports": [
+    "/personal_fast_storage/code/edulastexam/reports/edu_last_exam_v2_31_debug/20261113_glm53flash_run01",
+    "/personal_fast_storage/code/edulastexam/reports/edu_last_exam_v2_31_debug/20261113_glm53flash_run02"
+  ]
+}

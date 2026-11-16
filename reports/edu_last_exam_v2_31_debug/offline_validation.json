@@ -1,0 +1,28 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 1,
+  "item_count": 2,
+  "prompt_count": 6,
+  "asset_count": 10,
+  "runtime_counts": {
+    "workspace": 6
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "debug_masking_31_trial001",
+  "v1_failure_required": false,
+  "primary_construct": "dependency_aware_student_code_diagnosis",
+  "independent_material_instances": 2,
+  "dependent_conditions_per_item": 3,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 0,
+    "references": 0,
+    "unique_cases": 0,
+    "all_reviewed_verdicts": "not_applicable"
+  }
+}

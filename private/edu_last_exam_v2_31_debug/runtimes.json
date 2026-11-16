@@ -1,0 +1,346 @@
+{
+  "ELE-V2-31-001__v1": {
+    "mode": "workspace",
+    "max_steps": 18,
+    "initial_files": {
+      "student.py": "def trimmed_mean(values):\n    kept = [x for x in values if x > 0]\n    if len(kept) < 3:\n        return None\n    low = min(kept)\n    high = max(kept)\n    total = 0\n    count = 0\n    for i in range(len(kept) + 1):\n        x = kept[i]\n        if x != low and x != high:\n            total += x\n            count += 1\n    return total / count\n",
+      "assignment.md": "传感器读数values为长度0–20、元素−100到100的整数列表。先忽略所有小于等于0的读数；若剩余不足3个，返回None。否则恰好删除一个最小值观测和一个最大值观测，再返回其余观测的算术平均。相同数值的不同观测必须分别计数；即使所有正读数相同，也只删除两个观测。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\"diagnosis\":[{\"cause\":\"原程序问题；无问题时数组为空\",\"counterexample\":[0],\"explanation\":\"说明该输入如何暴露问题，以及是否需先修其他问题\"}],\"feedback\":\"给学生的简短反馈\",\"verification\":\"本次实际运行的结果和验证范围\"}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n",
+      "public_tests.json": "[\n  {\n    \"test_id\": \"P1\",\n    \"input\": [],\n    \"expected\": null\n  },\n  {\n    \"test_id\": \"P2\",\n    \"input\": [\n      1,\n      2,\n      3\n    ],\n    \"expected\": 2.0\n  },\n  {\n    \"test_id\": \"P3\",\n    \"input\": [\n      -2,\n      1,\n      3,\n      8,\n      10\n    ],\n    \"expected\": 5.5\n  }\n]\n"
+    },
+    "writable_paths": [
+      "student.py",
+      "report.json"
+    ],
+    "execution_contract": {
+      "engine": "restricted_python_ast_v1",
+      "source_path": "student.py",
+      "function_name": "trimmed_mean",
+      "public_tests": [
+        {
+          "test_id": "P1",
+          "input": [],
+          "expected": null
+        },
+        {
+          "test_id": "P2",
+          "input": [
+            1,
+            2,
+            3
+          ],
+          "expected": 2.0
+        },
+        {
+          "test_id": "P3",
+          "input": [
+            -2,
+            1,
+            3,
+            8,
+            10
+          ],
+          "expected": 5.5
+        }
+      ]
+    },
+    "submit_checks": {
+      "file_contains": {
+        "report.json": [
+          "\"diagnosis\"",
+          "\"feedback\"",
+          "\"verification\""
+        ]
+      },
+      "unchanged_paths": [
+        "assignment.md",
+        "public_tests.json"
+      ]
+    }
+  },
+  "ELE-V2-31-001__v2": {
+    "mode": "workspace",
+    "max_steps": 18,
+    "initial_files": {
+      "student.py": "def trimmed_mean(values):\n    kept = [x for x in values if x > 0]\n    if len(kept) < 3:\n        return None\n    low = min(kept)\n    high = max(kept)\n    total = 0\n    count = 0\n    low_left = True\n    high_left = True\n    for i in range(len(kept) + 1):\n        x = kept[i]\n        if x == low and low_left:\n            low_left = False\n        elif x == high and high_left:\n            high_left = False\n        else:\n            total += x\n            count += 1\n    return total / count\n",
+      "assignment.md": "传感器读数values为长度0–20、元素−100到100的整数列表。先忽略所有小于等于0的读数；若剩余不足3个，返回None。否则恰好删除一个最小值观测和一个最大值观测，再返回其余观测的算术平均。相同数值的不同观测必须分别计数；即使所有正读数相同，也只删除两个观测。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\"diagnosis\":[{\"cause\":\"原程序问题；无问题时数组为空\",\"counterexample\":[0],\"explanation\":\"说明该输入如何暴露问题，以及是否需先修其他问题\"}],\"feedback\":\"给学生的简短反馈\",\"verification\":\"本次实际运行的结果和验证范围\"}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n",
+      "public_tests.json": "[\n  {\n    \"test_id\": \"P1\",\n    \"input\": [],\n    \"expected\": null\n  },\n  {\n    \"test_id\": \"P2\",\n    \"input\": [\n      1,\n      2,\n      3\n    ],\n    \"expected\": 2.0\n  },\n  {\n    \"test_id\": \"P3\",\n    \"input\": [\n      -2,\n      1,\n      3,\n      8,\n      10\n    ],\n    \"expected\": 5.5\n  }\n]\n"
+    },
+    "writable_paths": [
+      "student.py",
+      "report.json"
+    ],
+    "execution_contract": {
+      "engine": "restricted_python_ast_v1",
+      "source_path": "student.py",
+      "function_name": "trimmed_mean",
+      "public_tests": [
+        {
+          "test_id": "P1",
+          "input": [],
+          "expected": null
+        },
+        {
+          "test_id": "P2",
+          "input": [
+            1,
+            2,
+            3
+          ],
+          "expected": 2.0
+        },
+        {
+          "test_id": "P3",
+          "input": [
+            -2,
+            1,
+            3,
+            8,
+            10
+          ],
+          "expected": 5.5
+        }
+      ]
+    },
+    "submit_checks": {
+      "file_contains": {
+        "report.json": [
+          "\"diagnosis\"",
+          "\"feedback\"",
+          "\"verification\""
+        ]
+      },
+      "unchanged_paths": [
+        "assignment.md",
+        "public_tests.json"
+      ]
+    }
+  },
+  "ELE-V2-31-001__v3": {
+    "mode": "workspace",
+    "max_steps": 18,
+    "initial_files": {
+      "student.py": "def trimmed_mean(values):\n    ordered = sorted(x for x in values if x > 0)\n    n = len(ordered)\n    if n < 3:\n        return None\n    return sum(ordered[i] for i in range(1, n - 1)) / (n - 2)\n",
+      "assignment.md": "传感器读数values为长度0–20、元素−100到100的整数列表。先忽略所有小于等于0的读数；若剩余不足3个，返回None。否则恰好删除一个最小值观测和一个最大值观测，再返回其余观测的算术平均。相同数值的不同观测必须分别计数；即使所有正读数相同，也只删除两个观测。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\"diagnosis\":[{\"cause\":\"原程序问题；无问题时数组为空\",\"counterexample\":[0],\"explanation\":\"说明该输入如何暴露问题，以及是否需先修其他问题\"}],\"feedback\":\"给学生的简短反馈\",\"verification\":\"本次实际运行的结果和验证范围\"}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n",
+      "public_tests.json": "[\n  {\n    \"test_id\": \"P1\",\n    \"input\": [],\n    \"expected\": null\n  },\n  {\n    \"test_id\": \"P2\",\n    \"input\": [\n      1,\n      2,\n      3\n    ],\n    \"expected\": 2.0\n  },\n  {\n    \"test_id\": \"P3\",\n    \"input\": [\n      -2,\n      1,\n      3,\n      8,\n      10\n    ],\n    \"expected\": 5.5\n  }\n]\n"
+    },
+    "writable_paths": [
+      "student.py",
+      "report.json"
+    ],
+    "execution_contract": {
+      "engine": "restricted_python_ast_v1",
+      "source_path": "student.py",
+      "function_name": "trimmed_mean",
+      "public_tests": [
+        {
+          "test_id": "P1",
+          "input": [],
+          "expected": null
+        },
+        {
+          "test_id": "P2",
+          "input": [
+            1,
+            2,
+            3
+          ],
+          "expected": 2.0
+        },
+        {
+          "test_id": "P3",
+          "input": [
+            -2,
+            1,
+            3,
+            8,
+            10
+          ],
+          "expected": 5.5
+        }
+      ]
+    },
+    "submit_checks": {
+      "file_contains": {
+        "report.json": [
+          "\"diagnosis\"",
+          "\"feedback\"",
+          "\"verification\""
+        ]
+      },
+      "unchanged_paths": [
+        "assignment.md",
+        "public_tests.json",
+        "student.py"
+      ]
+    }
+  },
+  "ELE-V2-31-002__v1": {
+    "mode": "workspace",
+    "max_steps": 18,
+    "initial_files": {
+      "student.py": "def longest_wet_spell(values):\n    best = max([])\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value == 0:\n            current = 0\n        best = max(best, current)\n    return best\n",
+      "assignment.md": "values为长度0–20的整数列表，每个值只能为−1、0、1。1表示当天确认降雨，0表示当天确认无雨，−1表示当天缺测。返回连续日历日中全部确认为降雨的最长区间长度。0和−1都会打断区间；缺测不能删除后把两侧日期接起来。空列表返回0。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\"diagnosis\":[{\"cause\":\"原程序问题；无问题时数组为空\",\"counterexample\":[0],\"explanation\":\"说明该输入如何暴露问题，以及是否需先修其他问题\"}],\"feedback\":\"给学生的简短反馈\",\"verification\":\"本次实际运行的结果和验证范围\"}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n",
+      "public_tests.json": "[\n  {\n    \"test_id\": \"P1\",\n    \"input\": [],\n    \"expected\": 0\n  },\n  {\n    \"test_id\": \"P2\",\n    \"input\": [\n      1,\n      1,\n      0,\n      1\n    ],\n    \"expected\": 2\n  },\n  {\n    \"test_id\": \"P3\",\n    \"input\": [\n      0,\n      0\n    ],\n    \"expected\": 0\n  }\n]\n"
+    },
+    "writable_paths": [
+      "student.py",
+      "report.json"
+    ],
+    "execution_contract": {
+      "engine": "restricted_python_ast_v1",
+      "source_path": "student.py",
+      "function_name": "longest_wet_spell",
+      "public_tests": [
+        {
+          "test_id": "P1",
+          "input": [],
+          "expected": 0
+        },
+        {
+          "test_id": "P2",
+          "input": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "expected": 2
+        },
+        {
+          "test_id": "P3",
+          "input": [
+            0,
+            0
+          ],
+          "expected": 0
+        }
+      ]
+    },
+    "submit_checks": {
+      "file_contains": {
+        "report.json": [
+          "\"diagnosis\"",
+          "\"feedback\"",
+          "\"verification\""
+        ]
+      },
+      "unchanged_paths": [
+        "assignment.md",
+        "public_tests.json"
+      ]
+    }
+  },
+  "ELE-V2-31-002__v2": {
+    "mode": "workspace",
+    "max_steps": 18,
+    "initial_files": {
+      "student.py": "def longest_wet_spell(values):\n    best = max([])\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n",
+      "assignment.md": "values为长度0–20的整数列表，每个值只能为−1、0、1。1表示当天确认降雨，0表示当天确认无雨，−1表示当天缺测。返回连续日历日中全部确认为降雨的最长区间长度。0和−1都会打断区间；缺测不能删除后把两侧日期接起来。空列表返回0。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\"diagnosis\":[{\"cause\":\"原程序问题；无问题时数组为空\",\"counterexample\":[0],\"explanation\":\"说明该输入如何暴露问题，以及是否需先修其他问题\"}],\"feedback\":\"给学生的简短反馈\",\"verification\":\"本次实际运行的结果和验证范围\"}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n",
+      "public_tests.json": "[\n  {\n    \"test_id\": \"P1\",\n    \"input\": [],\n    \"expected\": 0\n  },\n  {\n    \"test_id\": \"P2\",\n    \"input\": [\n      1,\n      1,\n      0,\n      1\n    ],\n    \"expected\": 2\n  },\n  {\n    \"test_id\": \"P3\",\n    \"input\": [\n      0,\n      0\n    ],\n    \"expected\": 0\n  }\n]\n"
+    },
+    "writable_paths": [
+      "student.py",
+      "report.json"
+    ],
+    "execution_contract": {
+      "engine": "restricted_python_ast_v1",
+      "source_path": "student.py",
+      "function_name": "longest_wet_spell",
+      "public_tests": [
+        {
+          "test_id": "P1",
+          "input": [],
+          "expected": 0
+        },
+        {
+          "test_id": "P2",
+          "input": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "expected": 2
+        },
+        {
+          "test_id": "P3",
+          "input": [
+            0,
+            0
+          ],
+          "expected": 0
+        }
+      ]
+    },
+    "submit_checks": {
+      "file_contains": {
+        "report.json": [
+          "\"diagnosis\"",
+          "\"feedback\"",
+          "\"verification\""
+        ]
+      },
+      "unchanged_paths": [
+        "assignment.md",
+        "public_tests.json"
+      ]
+    }
+  },
+  "ELE-V2-31-002__v3": {
+    "mode": "workspace",
+    "max_steps": 18,
+    "initial_files": {
+      "student.py": "def longest_wet_spell(values):\n    best = 0\n    run_start = 0\n    for i in range(len(values)):\n        if values[i] != 1:\n            run_start = i + 1\n        else:\n            best = max(best, i - run_start + 1)\n    return best\n",
+      "assignment.md": "values为长度0–20的整数列表，每个值只能为−1、0、1。1表示当天确认降雨，0表示当天确认无雨，−1表示当天缺测。返回连续日历日中全部确认为降雨的最长区间长度。0和−1都会打断区间；缺测不能删除后把两侧日期接起来。空列表返回0。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\"diagnosis\":[{\"cause\":\"原程序问题；无问题时数组为空\",\"counterexample\":[0],\"explanation\":\"说明该输入如何暴露问题，以及是否需先修其他问题\"}],\"feedback\":\"给学生的简短反馈\",\"verification\":\"本次实际运行的结果和验证范围\"}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n",
+      "public_tests.json": "[\n  {\n    \"test_id\": \"P1\",\n    \"input\": [],\n    \"expected\": 0\n  },\n  {\n    \"test_id\": \"P2\",\n    \"input\": [\n      1,\n      1,\n      0,\n      1\n    ],\n    \"expected\": 2\n  },\n  {\n    \"test_id\": \"P3\",\n    \"input\": [\n      0,\n      0\n    ],\n    \"expected\": 0\n  }\n]\n"
+    },
+    "writable_paths": [
+      "student.py",
+      "report.json"
+    ],
+    "execution_contract": {
+      "engine": "restricted_python_ast_v1",
+      "source_path": "student.py",
+      "function_name": "longest_wet_spell",
+      "public_tests": [
+        {
+          "test_id": "P1",
+          "input": [],
+          "expected": 0
+        },
+        {
+          "test_id": "P2",
+          "input": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "expected": 2
+        },
+        {
+          "test_id": "P3",
+          "input": [
+            0,
+            0
+          ],
+          "expected": 0
+        }
+      ]
+    },
+    "submit_checks": {
+      "file_contains": {
+        "report.json": [
+          "\"diagnosis\"",
+          "\"feedback\"",
+          "\"verification\""
+        ]
+      },
+      "unchanged_paths": [
+        "assignment.md",
+        "public_tests.json",
+        "student.py"
+      ]
+    }
+  }
+}

@@ -1,0 +1,3973 @@
+{
+  "function_name": "longest_wet_spell",
+  "roles": {
+    "v1": "target",
+    "v2": "single_error_counterfactual",
+    "v3": "correct_control"
+  },
+  "public_tests": [
+    {
+      "test_id": "P1",
+      "input": [],
+      "expected": 0
+    },
+    {
+      "test_id": "P2",
+      "input": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "P3",
+      "input": [
+        0,
+        0
+      ],
+      "expected": 0
+    }
+  ],
+  "hidden_tests": [
+    {
+      "test_id": "H1",
+      "input": [],
+      "expected": 0
+    },
+    {
+      "test_id": "H2",
+      "input": [
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H3",
+      "input": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H4",
+      "input": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H5",
+      "input": [
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H6",
+      "input": [
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H7",
+      "input": [
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H8",
+      "input": [
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H9",
+      "input": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H10",
+      "input": [
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H11",
+      "input": [
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H12",
+      "input": [
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H13",
+      "input": [
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H14",
+      "input": [
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H15",
+      "input": [
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H16",
+      "input": [
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H17",
+      "input": [
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H18",
+      "input": [
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H19",
+      "input": [
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H20",
+      "input": [
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H21",
+      "input": [
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H22",
+      "input": [
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H23",
+      "input": [
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H24",
+      "input": [
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H25",
+      "input": [
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H26",
+      "input": [
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H27",
+      "input": [
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H28",
+      "input": [
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H29",
+      "input": [
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H30",
+      "input": [
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H31",
+      "input": [
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H32",
+      "input": [
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H33",
+      "input": [
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H34",
+      "input": [
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H35",
+      "input": [
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H36",
+      "input": [
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H37",
+      "input": [
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H38",
+      "input": [
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H39",
+      "input": [
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H40",
+      "input": [
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H41",
+      "input": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H42",
+      "input": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H43",
+      "input": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H44",
+      "input": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H45",
+      "input": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H46",
+      "input": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H47",
+      "input": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H48",
+      "input": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H49",
+      "input": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H50",
+      "input": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H51",
+      "input": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H52",
+      "input": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H53",
+      "input": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H54",
+      "input": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H55",
+      "input": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H56",
+      "input": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H57",
+      "input": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H58",
+      "input": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H59",
+      "input": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H60",
+      "input": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H61",
+      "input": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H62",
+      "input": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H63",
+      "input": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H64",
+      "input": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H65",
+      "input": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H66",
+      "input": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H67",
+      "input": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H68",
+      "input": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H69",
+      "input": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H70",
+      "input": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H71",
+      "input": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H72",
+      "input": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H73",
+      "input": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H74",
+      "input": [
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H75",
+      "input": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H76",
+      "input": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H77",
+      "input": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H78",
+      "input": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H79",
+      "input": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H80",
+      "input": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H81",
+      "input": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H82",
+      "input": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H83",
+      "input": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H84",
+      "input": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H85",
+      "input": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H86",
+      "input": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H87",
+      "input": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H88",
+      "input": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H89",
+      "input": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H90",
+      "input": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H91",
+      "input": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H92",
+      "input": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H93",
+      "input": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H94",
+      "input": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H95",
+      "input": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H96",
+      "input": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H97",
+      "input": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H98",
+      "input": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H99",
+      "input": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H100",
+      "input": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H101",
+      "input": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H102",
+      "input": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H103",
+      "input": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H104",
+      "input": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H105",
+      "input": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H106",
+      "input": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H107",
+      "input": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H108",
+      "input": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H109",
+      "input": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H110",
+      "input": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H111",
+      "input": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H112",
+      "input": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H113",
+      "input": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H114",
+      "input": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H115",
+      "input": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H116",
+      "input": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H117",
+      "input": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H118",
+      "input": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H119",
+      "input": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H120",
+      "input": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H121",
+      "input": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "test_id": "H122",
+      "input": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H123",
+      "input": [
+        -1,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H124",
+      "input": [
+        -1,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H125",
+      "input": [
+        -1,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H126",
+      "input": [
+        -1,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H127",
+      "input": [
+        -1,
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H128",
+      "input": [
+        -1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H129",
+      "input": [
+        -1,
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H130",
+      "input": [
+        -1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H131",
+      "input": [
+        -1,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H132",
+      "input": [
+        -1,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H133",
+      "input": [
+        -1,
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H134",
+      "input": [
+        -1,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H135",
+      "input": [
+        -1,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H136",
+      "input": [
+        -1,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H137",
+      "input": [
+        -1,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H138",
+      "input": [
+        -1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H139",
+      "input": [
+        -1,
+        -1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H140",
+      "input": [
+        -1,
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H141",
+      "input": [
+        -1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H142",
+      "input": [
+        -1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H143",
+      "input": [
+        -1,
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H144",
+      "input": [
+        -1,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H145",
+      "input": [
+        -1,
+        -1,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H146",
+      "input": [
+        -1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H147",
+      "input": [
+        -1,
+        -1,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H148",
+      "input": [
+        -1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H149",
+      "input": [
+        -1,
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H150",
+      "input": [
+        -1,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H151",
+      "input": [
+        -1,
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H152",
+      "input": [
+        -1,
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H153",
+      "input": [
+        -1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H154",
+      "input": [
+        -1,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H155",
+      "input": [
+        -1,
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H156",
+      "input": [
+        -1,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H157",
+      "input": [
+        -1,
+        0,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H158",
+      "input": [
+        -1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H159",
+      "input": [
+        -1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H160",
+      "input": [
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H161",
+      "input": [
+        -1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H162",
+      "input": [
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H163",
+      "input": [
+        -1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H164",
+      "input": [
+        -1,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H165",
+      "input": [
+        -1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H166",
+      "input": [
+        -1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H167",
+      "input": [
+        -1,
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H168",
+      "input": [
+        -1,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H169",
+      "input": [
+        -1,
+        0,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H170",
+      "input": [
+        -1,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H171",
+      "input": [
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H172",
+      "input": [
+        -1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H173",
+      "input": [
+        -1,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H174",
+      "input": [
+        -1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H175",
+      "input": [
+        -1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H176",
+      "input": [
+        -1,
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H177",
+      "input": [
+        -1,
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H178",
+      "input": [
+        -1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H179",
+      "input": [
+        -1,
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H180",
+      "input": [
+        -1,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H181",
+      "input": [
+        -1,
+        1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H182",
+      "input": [
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H183",
+      "input": [
+        -1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H184",
+      "input": [
+        -1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H185",
+      "input": [
+        -1,
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H186",
+      "input": [
+        -1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H187",
+      "input": [
+        -1,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H188",
+      "input": [
+        -1,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H189",
+      "input": [
+        -1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H190",
+      "input": [
+        -1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H191",
+      "input": [
+        -1,
+        1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H192",
+      "input": [
+        -1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H193",
+      "input": [
+        -1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H194",
+      "input": [
+        -1,
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H195",
+      "input": [
+        -1,
+        1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H196",
+      "input": [
+        -1,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H197",
+      "input": [
+        -1,
+        1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H198",
+      "input": [
+        -1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H199",
+      "input": [
+        -1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H200",
+      "input": [
+        -1,
+        1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H201",
+      "input": [
+        -1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H202",
+      "input": [
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "test_id": "H203",
+      "input": [
+        0,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H204",
+      "input": [
+        0,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H205",
+      "input": [
+        0,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H206",
+      "input": [
+        0,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H207",
+      "input": [
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H208",
+      "input": [
+        0,
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H209",
+      "input": [
+        0,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H210",
+      "input": [
+        0,
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H211",
+      "input": [
+        0,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H212",
+      "input": [
+        0,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H213",
+      "input": [
+        0,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H214",
+      "input": [
+        0,
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H215",
+      "input": [
+        0,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H216",
+      "input": [
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H217",
+      "input": [
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H218",
+      "input": [
+        0,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H219",
+      "input": [
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H220",
+      "input": [
+        0,
+        -1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H221",
+      "input": [
+        0,
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H222",
+      "input": [
+        0,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H223",
+      "input": [
+        0,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H224",
+      "input": [
+        0,
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H225",
+      "input": [
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H226",
+      "input": [
+        0,
+        -1,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H227",
+      "input": [
+        0,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H228",
+      "input": [
+        0,
+        -1,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H229",
+      "input": [
+        0,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H230",
+      "input": [
+        0,
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H231",
+      "input": [
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H232",
+      "input": [
+        0,
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H233",
+      "input": [
+        0,
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H234",
+      "input": [
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H235",
+      "input": [
+        0,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H236",
+      "input": [
+        0,
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H237",
+      "input": [
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H238",
+      "input": [
+        0,
+        0,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H239",
+      "input": [
+        0,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H240",
+      "input": [
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H241",
+      "input": [
+        0,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H242",
+      "input": [
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H243",
+      "input": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H244",
+      "input": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H245",
+      "input": [
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H246",
+      "input": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H247",
+      "input": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H248",
+      "input": [
+        0,
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H249",
+      "input": [
+        0,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H250",
+      "input": [
+        0,
+        0,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H251",
+      "input": [
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H252",
+      "input": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H253",
+      "input": [
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H254",
+      "input": [
+        0,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H255",
+      "input": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H256",
+      "input": [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H257",
+      "input": [
+        0,
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H258",
+      "input": [
+        0,
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H259",
+      "input": [
+        0,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H260",
+      "input": [
+        0,
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H261",
+      "input": [
+        0,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H262",
+      "input": [
+        0,
+        1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H263",
+      "input": [
+        0,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H264",
+      "input": [
+        0,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H265",
+      "input": [
+        0,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H266",
+      "input": [
+        0,
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H267",
+      "input": [
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H268",
+      "input": [
+        0,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H269",
+      "input": [
+        0,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H270",
+      "input": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H271",
+      "input": [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H272",
+      "input": [
+        0,
+        1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H273",
+      "input": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H274",
+      "input": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H275",
+      "input": [
+        0,
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H276",
+      "input": [
+        0,
+        1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H277",
+      "input": [
+        0,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H278",
+      "input": [
+        0,
+        1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H279",
+      "input": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H280",
+      "input": [
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H281",
+      "input": [
+        0,
+        1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H282",
+      "input": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H283",
+      "input": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "test_id": "H284",
+      "input": [
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H285",
+      "input": [
+        1,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H286",
+      "input": [
+        1,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H287",
+      "input": [
+        1,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H288",
+      "input": [
+        1,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H289",
+      "input": [
+        1,
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H290",
+      "input": [
+        1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H291",
+      "input": [
+        1,
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H292",
+      "input": [
+        1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H293",
+      "input": [
+        1,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H294",
+      "input": [
+        1,
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H295",
+      "input": [
+        1,
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H296",
+      "input": [
+        1,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H297",
+      "input": [
+        1,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H298",
+      "input": [
+        1,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H299",
+      "input": [
+        1,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H300",
+      "input": [
+        1,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H301",
+      "input": [
+        1,
+        -1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H302",
+      "input": [
+        1,
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H303",
+      "input": [
+        1,
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H304",
+      "input": [
+        1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H305",
+      "input": [
+        1,
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H306",
+      "input": [
+        1,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H307",
+      "input": [
+        1,
+        -1,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H308",
+      "input": [
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H309",
+      "input": [
+        1,
+        -1,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H310",
+      "input": [
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H311",
+      "input": [
+        1,
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H312",
+      "input": [
+        1,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H313",
+      "input": [
+        1,
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H314",
+      "input": [
+        1,
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H315",
+      "input": [
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H316",
+      "input": [
+        1,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H317",
+      "input": [
+        1,
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H318",
+      "input": [
+        1,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H319",
+      "input": [
+        1,
+        0,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H320",
+      "input": [
+        1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H321",
+      "input": [
+        1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H322",
+      "input": [
+        1,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H323",
+      "input": [
+        1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H324",
+      "input": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H325",
+      "input": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H326",
+      "input": [
+        1,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H327",
+      "input": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H328",
+      "input": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H329",
+      "input": [
+        1,
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H330",
+      "input": [
+        1,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H331",
+      "input": [
+        1,
+        0,
+        1,
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H332",
+      "input": [
+        1,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H333",
+      "input": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H334",
+      "input": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "test_id": "H335",
+      "input": [
+        1,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H336",
+      "input": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H337",
+      "input": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H338",
+      "input": [
+        1,
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H339",
+      "input": [
+        1,
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H340",
+      "input": [
+        1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H341",
+      "input": [
+        1,
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H342",
+      "input": [
+        1,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H343",
+      "input": [
+        1,
+        1,
+        -1,
+        0,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H344",
+      "input": [
+        1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H345",
+      "input": [
+        1,
+        1,
+        -1,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H346",
+      "input": [
+        1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H347",
+      "input": [
+        1,
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H348",
+      "input": [
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H349",
+      "input": [
+        1,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H350",
+      "input": [
+        1,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H351",
+      "input": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H352",
+      "input": [
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H353",
+      "input": [
+        1,
+        1,
+        0,
+        1,
+        -1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H354",
+      "input": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H355",
+      "input": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "test_id": "H356",
+      "input": [
+        1,
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H357",
+      "input": [
+        1,
+        1,
+        1,
+        -1,
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H358",
+      "input": [
+        1,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H359",
+      "input": [
+        1,
+        1,
+        1,
+        0,
+        -1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H360",
+      "input": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H361",
+      "input": [
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "test_id": "H362",
+      "input": [
+        1,
+        1,
+        1,
+        1,
+        -1
+      ],
+      "expected": 4
+    },
+    {
+      "test_id": "H363",
+      "input": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "expected": 4
+    },
+    {
+      "test_id": "H364",
+      "input": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected": 5
+    },
+    {
+      "test_id": "H365",
+      "input": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "expected": 20
+    },
+    {
+      "test_id": "H366",
+      "input": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H367",
+      "input": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "test_id": "H368",
+      "input": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "expected": 1
+    }
+  ],
+  "reference_source": "def longest_wet_spell(values):\n    best = 0\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n",
+  "first_repair_source": "def longest_wet_spell(values):\n    best = 0\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value == 0:\n            current = 0\n        best = max(best, current)\n    return best\n",
+  "first_error": "ValueError",
+  "isolated_second_error_input": [
+    1,
+    -1,
+    1
+  ],
+  "first_cause": "max([])对空序列取最大值，在读取观测之前就失败。",
+  "latent_cause": "只遇0重置current，缺测−1会错误地连接两段确认降雨记录。"
+}

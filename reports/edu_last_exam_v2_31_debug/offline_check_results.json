@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-13T07:30:34.156926+00:00",
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_edu_last_exam_v2_31_debug.py",
+    "tests/test_edu_last_exam_full_coverage.py",
+    "tests/test_edu_last_exam_challenge_trial.py"
+  ],
+  "exit_code": 0,
+  "stdout": "...............................................                       [100%]\n47 passed, 3 subtests passed in 3.08s\n",
+  "stderr": "",
+  "python": "3.12.1",
+  "test_dependency_location": "/tmp/edu_last_exam_testdeps",
+  "earlier_broader_check": {
+    "status": "one_preexisting_missing_asset_failure",
+    "passed": 54,
+    "failed": 1,
+    "test": "tests/test_edu_last_exam_v2_pilot.py::test_default_full_coverage_loader_still_requires_the_original_38_packages",
+    "missing_asset": "private/edu_last_exam_full_coverage_v1/stimuli/07/worksheet.png"
+  },
+  "corrected_report_check_failures": [
+    "Comparison report string concatenation syntax corrected before report generation.",
+    "Quote validation now uses decoded JSON field values; regression added for literal double quotes."
+  ],
+  "prediction_runtime_affected_by_report_fixes": false,
+  "latest_report_identity_regression": {
+    "command": "PYTHONPATH=/tmp/edu_last_exam_testdeps:. python -m pytest -q tests/test_edu_last_exam_v2_31_debug.py",
+    "result": "12 passed",
+    "frozen_engine_drift_rejection_checked": true,
+    "literal_quote_validation_checked": true
+  }
+}

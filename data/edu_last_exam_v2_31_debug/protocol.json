@@ -1,0 +1,55 @@
+{
+  "schema_version": "edu_last_exam_v2_31_debug_protocol_v1",
+  "batch": "private/edu_last_exam_v2_31_debug",
+  "generation_batch_id": "debug_masking_31_trial001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "item_glob": "ELE-V2-31-*.json",
+  "item_id_pattern": "ELE-V2-31-\\d{3}",
+  "expected_item_ids": [
+    "ELE-V2-31-001",
+    "ELE-V2-31-002"
+  ],
+  "expected_prompt_count": 6,
+  "report_directory": "reports/edu_last_exam_v2_31_debug",
+  "question_lines": [
+    "# 方向31：学生程序多错误诊断与真实验证",
+    "",
+    "两类原创合成材料，各三依赖条件。版本角色与私有合同测试不进入被测输入。"
+  ],
+  "review_lines": [
+    "# 方向31：评分审阅册",
+    "",
+    "诊断、功能、实际验证和反馈分别记录；独立教师审核pending。"
+  ],
+  "coverage_lines": [
+    "# 方向31实现状态",
+    "",
+    "两个材料不代表方向31全部子构念。",
+    "",
+    "|方向|题包|版本|环境|测量边界|尚未覆盖|",
+    "|---|---|---:|---|---|---|"
+  ],
+  "questions_html_title": "方向31学生程序审核题册",
+  "review_html_title": "方向31评分审阅册",
+  "coverage_html_title": "方向31实现状态",
+  "author": {
+    "agent": "Codex",
+    "method": "mechanism_and_task_structure_guided_original_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "excluded_test_author": "GLM-5.3-Flash did not author these candidates"
+  },
+  "validation_extra": {
+    "prototype": true,
+    "generation_batch_id": "debug_masking_31_trial001",
+    "v1_failure_required": false,
+    "primary_construct": "dependency_aware_student_code_diagnosis",
+    "independent_material_instances": 2,
+    "dependent_conditions_per_item": 3
+  },
+  "manifest_extra": {
+    "canonical": false,
+    "difficulty_claim": "not_established",
+    "model_evaluation_tracking": "tracked_in_separate_runs",
+    "historical_failure_required": false
+  }
+}

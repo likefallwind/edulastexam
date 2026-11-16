@@ -1,0 +1,30 @@
+{
+  "status": "prespecified_before_api",
+  "generation_batch_id": "debug_masking_31_trial001",
+  "items": [
+    {
+      "item_id": "ELE-V2-31-001",
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ]
+    },
+    {
+      "item_id": "ELE-V2-31-002",
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ]
+    }
+  ],
+  "selection_independent_of_glm_responses": true,
+  "roles": {
+    "v1": "target",
+    "v2": "single_error_counterfactual",
+    "v3": "correct_control"
+  },
+  "repeats": "One initial run of all six conditions. One fixed repeat of the same full batch, regardless of outcome, checks sampling stability.",
+  "scoring": "Deterministic public/hidden execution plus separate author-related semantic review; no GLM self-judge."
+}

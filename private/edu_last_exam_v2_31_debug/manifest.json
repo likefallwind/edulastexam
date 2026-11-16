@@ -1,0 +1,126 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 1,
+  "item_count": 2,
+  "prompt_count": 6,
+  "asset_count": 10,
+  "runtime_counts": {
+    "workspace": 6
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "tracked_in_separate_runs",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "debug_masking_31_trial001",
+  "v1_failure_required": false,
+  "primary_construct": "dependency_aware_student_code_diagnosis",
+  "independent_material_instances": 2,
+  "dependent_conditions_per_item": 3,
+  "v1_failure_evidence": {
+    "required_for_all_items": false,
+    "items_with_v1_failure_evidence": 0,
+    "references": 0,
+    "unique_cases": 0,
+    "all_reviewed_verdicts": "not_applicable"
+  },
+  "schema_version": "edu_last_exam_v2_31_debug_protocol_v1",
+  "author": {
+    "agent": "Codex",
+    "method": "mechanism_and_task_structure_guided_original_authoring",
+    "exact_model_id": "not_exposed_in_task",
+    "excluded_test_author": "GLM-5.3-Flash did not author these candidates"
+  },
+  "prediction_export_sha256": "e36236a5fb1d76fc9ab5ede807fdf8b8271229ef8853071f4b98c5912b39630f",
+  "runtime_sha256": "bf1543835e4a5fee8b9f463f860a39c81d21b2bdd7a47713c5883206ac8798d4",
+  "item_export_sha256": "7036500273c9d50f1817a500427dbb9e6cf3ed19b2d0f70be4d9398e7593edec",
+  "assets": {
+    "stimuli/001/assignment.md": {
+      "sha256": "094c4f38eace1c75835b56ba2ae6d53ed30b47a224e3c18587d9c7a4f8e9f0ca",
+      "bytes": 1533
+    },
+    "stimuli/001/v1.py": {
+      "sha256": "d42b14fda54565a294249d4115b16e965294288efb4ce58e74794c23cf282514",
+      "bytes": 338
+    },
+    "stimuli/001/public_tests.json": {
+      "sha256": "08fefab9340727b5e85e917dbc4c8aa1d33029a1ed473c27b4beddf1f4ccdaf2",
+      "bytes": 287
+    },
+    "stimuli/001/v2.py": {
+      "sha256": "a2ec6ffb93f4c968ea54e65a688e4432891eddc33f003a937c9ebeca140e15af",
+      "bytes": 489
+    },
+    "stimuli/001/v3.py": {
+      "sha256": "0afda98395745725b74988128abd1b24ea636b98c9e5ab9f5d8b5ca7b63fc625",
+      "bytes": 192
+    },
+    "stimuli/002/assignment.md": {
+      "sha256": "1627083662450d1cf03cf49c0da3ead39431f2d86b934dea50dc525c7c8fe029",
+      "bytes": 1491
+    },
+    "stimuli/002/v1.py": {
+      "sha256": "54fb11a055dd12d56210332b9991c9fa648b7c4deee244b4bb7f2f5e40fa2d07",
+      "bytes": 238
+    },
+    "stimuli/002/public_tests.json": {
+      "sha256": "68aa56c548b772936797292e62023792b98f3eb47a028d830638a9a77be46d5f",
+      "bytes": 260
+    },
+    "stimuli/002/v2.py": {
+      "sha256": "dcf7a67f1e01d9612bbce488057fd778f30a249f80f0255f5169575b13964b77",
+      "bytes": 238
+    },
+    "stimuli/002/v3.py": {
+      "sha256": "55efd67344c14d76d2e83c8c9bdb71be23098a3493d8856998c21f67d2afe180",
+      "bytes": 230
+    }
+  },
+  "coverage": [
+    {
+      "direction_id": "31",
+      "item_id": "ELE-V2-31-001",
+      "title": "传感器统计中的逐次剔除与重复极值",
+      "variants": 3,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "在受限可执行工作区中，检验多错误根因诊断、修改后真实验证、合同边界泛化与正确控制误报。",
+      "unmeasured_subclaims": [
+        "真实学生的学习效果",
+        "PyMETA原始数据或总体难度",
+        "任意Python环境及开放式软件工程能力",
+        "跨模型共同失败率"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "31",
+      "item_id": "ELE-V2-31-002",
+      "title": "连续降雨记录中的缺测断点与状态更新",
+      "variants": 3,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "在受限可执行工作区中，检验多错误根因诊断、修改后真实验证、合同边界泛化与正确控制误报。",
+      "unmeasured_subclaims": [
+        "真实学生的学习效果",
+        "PyMETA原始数据或总体难度",
+        "任意Python环境及开放式软件工程能力",
+        "跨模型共同失败率"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false,
+  "difficulty_claim": "not_established",
+  "model_evaluation_tracking": "tracked_in_separate_runs",
+  "historical_failure_required": false,
+  "v1_evidence_sha256": {
+    "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json": "57d4cf2576f59b12825b791d4d6fb1a84d30390d23211cde88ed44772a4152ee",
+    "data/edu_last_exam_source_fidelity_v1/directions/31.json": "b26e693b43abfce0fd0e75442fd15cbb56ca753e7ec9c6d36fb1fc7c6482818b",
+    "reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl": "541f262e5f930770d54dbb270240181aa822809c15efd6494c6bb9d9c22d7d33"
+  }
+}

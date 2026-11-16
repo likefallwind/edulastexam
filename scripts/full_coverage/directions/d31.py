@@ -10,11 +10,11 @@ class ContinueLoop(Exception):pass
 class BreakLoop(Exception):pass
 
 class Interpreter:
-    def __init__(self,source):
+    def __init__(self,source,function_name='positive_mean'):
         self.tree=ast.parse(source)
         if len(self.tree.body)!=1 or not isinstance(self.tree.body[0],ast.FunctionDef):raise Unsupported('Submit exactly one function, without imports or top-level execution.')
         self.fn=self.tree.body[0]
-        if self.fn.name!='positive_mean' or self.fn.decorator_list or self.fn.args.defaults or self.fn.args.kw_defaults or self.fn.args.vararg or self.fn.args.kwarg or self.fn.args.kwonlyargs or self.fn.args.posonlyargs or len(self.fn.args.args)!=1:raise Unsupported('Function signature must be positive_mean(values), without decorators/defaults.')
+        if self.fn.name!=function_name or self.fn.decorator_list or self.fn.args.defaults or self.fn.args.kw_defaults or self.fn.args.vararg or self.fn.args.kwarg or self.fn.args.kwonlyargs or self.fn.args.posonlyargs or len(self.fn.args.args)!=1:raise Unsupported(f'Function signature must be {function_name}(values), without decorators/defaults.')
         bad=(ast.Import,ast.ImportFrom,ast.Attribute,ast.While,ast.Lambda,ast.ClassDef,ast.With,ast.Try,ast.Global,ast.Nonlocal,ast.Delete,ast.Await,ast.Yield,ast.YieldFrom,ast.AsyncFunctionDef,ast.NamedExpr)
         for node in ast.walk(self.tree):
             if isinstance(node,bad):raise Unsupported('Unsupported syntax: '+type(node).__name__)
@@ -71,7 +71,7 @@ class Interpreter:
             if not isinstance(target,(list,tuple,range,str)):raise Unsupported('Only sequence indexing supported.')
             return target[index]
         if isinstance(n,ast.Call):
-            funcs={'len':len,'sum':sum,'range':range,'min':min,'max':max,'abs':abs}
+            funcs={'len':len,'sum':sum,'range':range,'min':min,'max':max,'abs':abs,'sorted':sorted}
             if not isinstance(n.func,ast.Name) or n.func.id not in funcs or n.keywords:raise Unsupported('Only documented pure builtin calls are supported.')
             args=[self.expr(a,env) for a in n.args]
             return self.bounded(funcs[n.func.id](*args))

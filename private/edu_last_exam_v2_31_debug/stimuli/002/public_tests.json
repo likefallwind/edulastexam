@@ -1,0 +1,25 @@
+[
+  {
+    "test_id": "P1",
+    "input": [],
+    "expected": 0
+  },
+  {
+    "test_id": "P2",
+    "input": [
+      1,
+      1,
+      0,
+      1
+    ],
+    "expected": 2
+  },
+  {
+    "test_id": "P3",
+    "input": [
+      0,
+      0
+    ],
+    "expected": 0
+  }
+]

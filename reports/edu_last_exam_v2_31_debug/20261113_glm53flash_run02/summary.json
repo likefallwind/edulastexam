@@ -1,0 +1,91 @@
+{
+  "status": "exploratory_author_review_not_frozen",
+  "run": "/personal_fast_storage/code/edulastexam/reports/eval/edu_last_exam_v2_31_debug/_exploratory/20261113_glm53flash_run02/GLM-5.3-Flash",
+  "material_count": 2,
+  "dependent_condition_count": 6,
+  "prediction_status_counts": {
+    "generated": 6
+  },
+  "verdict_counts": {
+    "pass_author_reviewed": 6
+  },
+  "review_type": "author_related_offline_review",
+  "independent_teacher_review": "pending",
+  "same_model_judge_used": false,
+  "all_subclaims_directly_measured": false,
+  "provenance": {
+    "batch_manifest_sha256": "1dda599ce6ae29ab53e2ad3b3cfd8bd7dc5059976b30bc64a39184d9a434664b",
+    "runtime_engine": "restricted_python_ast_v1",
+    "expected_model": "GLM-5.3-Flash",
+    "scoring_code_sha256": "45dc88b5cb8475fe59d3222eaa6ff9a42e8e97da0a17aaf720b182da4f361872",
+    "execution_engine_sha256": {
+      "scripts/full_coverage/core.py": "d6cd86c700669b006f4564e526905deef9238f020240252b7db2b31eea6df755",
+      "scripts/full_coverage/workspace_execution.py": "d306650a15e56b09f07b49f6ae9eea3d6c4f9b7284263ab1e251c588f73564d8",
+      "scripts/full_coverage/directions/d31.py": "ffef452ae48123e98ba2f5ac8c2044290c375fbf4efe4ccf2dcd922727e16fd5"
+    },
+    "author_reviews_sha256": "4e04bda381ffb09d5b8916fffef46ee3233d446dd9515d13398fc9bd235d0d43",
+    "reference_oracles_sha256": {
+      "reference/ELE-V2-31-001/execution_oracle.json": "9bd20b1e3d8ae6dfeba56c73c2bec907f89b16b059607759714a1ba0a42219a8",
+      "reference/ELE-V2-31-002/execution_oracle.json": "fce75dfaed43d99d189baf59a4c6750717cee80a90864132efb06bcfc232240c"
+    },
+    "scoring_rule": "All observable delivery/execution checks and all four author-reviewed semantic criteria must pass; source identity and evidence quotes verified."
+  },
+  "no_population_failure_rate": true,
+  "completion_audit": {
+    "source_snapshot_hashes_valid": true,
+    "recorded_requests": 45,
+    "recorded_call_results": 45,
+    "token_ceiling_omitted": true,
+    "coding_plan_endpoint": true,
+    "all_calls_verified": true,
+    "returned_models": [
+      "glm-5.3-flash"
+    ],
+    "usage": {
+      "prompt_tokens": 69515,
+      "completion_tokens": 46280,
+      "total_tokens": 115795
+    },
+    "recorded_attempt_status_counts": {
+      "generated": 45
+    }
+  },
+  "summary.json": {
+    "updated_at": "2026-11-13T07:27:08.197509+00:00",
+    "started_at": "2026-11-13T07:18:25.020753+00:00",
+    "phase": "finished",
+    "finished": true,
+    "model": "GLM-5.3-Flash",
+    "concurrency": 2,
+    "total_batch_cases": 6,
+    "selected_cases": 6,
+    "prediction_results": 6,
+    "score_results": 0,
+    "status_counts": {
+      "generated": 6
+    },
+    "inflight": [],
+    "directions": {
+      "31": {
+        "cases": 6,
+        "generated": 6,
+        "unavailable": 0,
+        "verdicts": {}
+      }
+    },
+    "all_37_directions_selected": false,
+    "no_cross_scenario_accuracy": true,
+    "independent_teacher_review": "pending",
+    "all_subclaims_directly_measured": false,
+    "run_status": "selected_tasks_complete",
+    "full_batch_selected": true,
+    "judging": "not_run"
+  },
+  "finished.json": {
+    "at": "2026-11-13T07:27:08.198094+00:00",
+    "exit_code": 0,
+    "run_status": "selected_tasks_complete"
+  },
+  "exit_code.txt": 0,
+  "process_exit_code.txt": 0
+}

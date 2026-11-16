@@ -35,6 +35,8 @@ private/edu_last_exam_source_fidelity_v1/items.jsonl
 private/edu_last_exam_source_fidelity_v1/prompts.jsonl
 reports/source_fidelity_v1/source_audit.html
 reports/eval/edu_last_exam_source_fidelity_v1/
+# Direction31 raw exploratory calls and frozen execution snapshots remain local.
+reports/eval/edu_last_exam_v2_31_debug/
 # The local review book republishes full external inputs and raw response transcripts.
 reports/source_fidelity_v1/human_review_book_*/
 

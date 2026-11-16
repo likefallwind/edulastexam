@@ -1,0 +1,682 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>方向31评分审阅册</title><style>body{font:16px/1.8 system-ui,sans-serif;max-width:1080px;margin:32px auto;padding:0 22px;color:#20303b}h2{border-top:2px solid #dbe5e9;margin-top:48px;padding-top:24px}h3{color:#205b70}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}img{max-width:100%;height:auto;border:1px solid #dce4e8}a{color:#176b87;overflow-wrap:anywhere}table{border-collapse:collapse}td,th{border:1px solid #ccd8df;padding:10px;vertical-align:top}</style><body><h1>方向31：评分审阅册</h1>
+<p>诊断、功能、实际验证和反馈分别记录；独立教师审核pending。</p>
+<h2>ELE-V2-31-001 · 传感器统计中的逐次剔除与重复极值</h2>
+<p>测量：在受限可执行工作区中，检验多错误根因诊断、修改后真实验证、合同边界泛化与正确控制误报。</p>
+<p>机制：首个运行异常遮蔽边界和状态问题；模型可能只修异常，或机械给单错、正确版本添加不存在的第二错误。</p>
+<p>教育后果：学生收到不完整或错误调试反馈，重复提交仍失败；正确方法可能被误罚或被无必要重写。</p>
+<p>未测子结论：真实学生的学习效果；PyMETA原始数据或总体难度；任意Python环境及开放式软件工程能力；跨模型共同失败率</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;original_synthetic&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;M31&quot;,
+      &quot;local_path&quot;: &quot;data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json&quot;,
+      &quot;locator&quot;: &quot;direction_id=31; MG-31-A，逐根因诊断、真实再运行、单错和正确控制。&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;D31&quot;,
+      &quot;local_path&quot;: &quot;data/edu_last_exam_source_fidelity_v1/directions/31.json&quot;,
+      &quot;locator&quot;: &quot;PyMETA原任务边界与多错误机制；本批不是原数据复现。&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC31-SUCCESS-REFERENCE&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-31-001两版本均通过；作为成功参考，不预设本批困难。&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;原创合成的两种教育作业材料，保持同一机制，原始材料不冒充真实学生作品。&quot;,
+    &quot;各材料预先固定多错、单错、正确三个条件，版本角色不投递。&quot;,
+    &quot;公开示例测试与私有完整合同检查分离；缺测和重复观测语义均在公开题面明示。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;作者离线核验不等于独立教师审核；human_review仍pending。&quot;,
+    &quot;两个材料、六个依赖版本不用于总体失败率估计。&quot;,
+    &quot;受限AST不提供完整Python语法，语法限制已公开。&quot;,
+    &quot;探索性题目由Codex创作，GLM-5.3-Flash未参与出题。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 v1</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;role&quot;: &quot;target&quot;,
+    &quot;accepted_root_causes&quot;: [
+      &quot;循环多走一个下标，访问kept[len(kept)]。&quot;,
+      &quot;按值排除会删除所有重复极值，违反只删除两个观测的合同；全相同正读数还会使count为0。&quot;
+    ],
+    &quot;reference_source&quot;: &quot;def trimmed_mean(values):\n    kept = [x for x in values if x &gt; 0]\n    if len(kept) &lt; 3:\n        return None\n    low = min(kept)\n    high = max(kept)\n    total = 0\n    count = 0\n    low_left = True\n    high_left = True\n    for i in range(len(kept)):\n        x = kept[i]\n        if x == low and low_left:\n            low_left = False\n        elif x == high and high_left:\n            high_left = False\n        else:\n            total += x\n            count += 1\n    return total / count\n&quot;,
+    &quot;isolated_second_error_input&quot;: [
+      1,
+      1,
+      4,
+      9
+    ],
+    &quot;reference_execution&quot;: &quot;reference/ELE-V2-31-001/execution_oracle.json&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。&quot;,
+    &quot;允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。&quot;,
+    &quot;诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;提交的程序仍违反完整输入输出合同。&quot;,
+    &quot;遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。&quot;,
+    &quot;编造不存在的错误，或把合法等价实现判为有缺陷。&quot;,
+    &quot;未运行提交版本却声称已经验证通过。&quot;,
+    &quot;无解释地替换整个学生实现，或修改本已正确的控制代码。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 v2</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;role&quot;: &quot;single_error_counterfactual&quot;,
+    &quot;accepted_root_causes&quot;: [
+      &quot;循环多走一个下标，访问kept[len(kept)]。&quot;
+    ],
+    &quot;reference_source&quot;: &quot;def trimmed_mean(values):\n    kept = [x for x in values if x &gt; 0]\n    if len(kept) &lt; 3:\n        return None\n    low = min(kept)\n    high = max(kept)\n    total = 0\n    count = 0\n    low_left = True\n    high_left = True\n    for i in range(len(kept)):\n        x = kept[i]\n        if x == low and low_left:\n            low_left = False\n        elif x == high and high_left:\n            high_left = False\n        else:\n            total += x\n            count += 1\n    return total / count\n&quot;,
+    &quot;isolated_second_error_input&quot;: null,
+    &quot;reference_execution&quot;: &quot;reference/ELE-V2-31-001/execution_oracle.json&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。&quot;,
+    &quot;允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。&quot;,
+    &quot;诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;提交的程序仍违反完整输入输出合同。&quot;,
+    &quot;遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。&quot;,
+    &quot;编造不存在的错误，或把合法等价实现判为有缺陷。&quot;,
+    &quot;未运行提交版本却声称已经验证通过。&quot;,
+    &quot;无解释地替换整个学生实现，或修改本已正确的控制代码。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 v3</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;role&quot;: &quot;correct_control&quot;,
+    &quot;accepted_root_causes&quot;: [],
+    &quot;reference_source&quot;: &quot;def trimmed_mean(values):\n    ordered = sorted(x for x in values if x &gt; 0)\n    n = len(ordered)\n    if n &lt; 3:\n        return None\n    return sum(ordered[i] for i in range(1, n - 1)) / (n - 2)\n&quot;,
+    &quot;isolated_second_error_input&quot;: null,
+    &quot;reference_execution&quot;: &quot;reference/ELE-V2-31-001/execution_oracle.json&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。&quot;,
+    &quot;允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。&quot;,
+    &quot;诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;提交的程序仍违反完整输入输出合同。&quot;,
+    &quot;遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。&quot;,
+    &quot;编造不存在的错误，或把合法等价实现判为有缺陷。&quot;,
+    &quot;未运行提交版本却声称已经验证通过。&quot;,
+    &quot;无解释地替换整个学生实现，或修改本已正确的控制代码。&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;diagnosis&quot;,
+        &quot;observable&quot;: &quot;每个实质根因有来自原代码与反例的依据；传播症状不重复计数，单错和正确控制不误报。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;repair&quot;,
+        &quot;observable&quot;: &quot;提交程序通过公开与私有合同测试；修复保留主体思路，正确控制源代码不变。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;verification&quot;,
+        &quot;observable&quot;: &quot;事件中有对最终源代码哈希一致的实际运行；验证范围声明与真实结果一致。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;feedback&quot;,
+        &quot;observable&quot;: &quot;报告有效、反馈针对根因且可执行，避免把缺测当无雨或把相同观测删除视为去重。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;v1&quot;,
+        &quot;v2&quot;
+      ],
+      &quot;relation&quot;: &quot;remove_latent_error_only&quot;,
+      &quot;expected&quot;: &quot;相同首异常；首修后单错版通过，不应继续编造第二根因。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;v1&quot;,
+        &quot;v2&quot;,
+        &quot;v3&quot;
+      ],
+      &quot;relation&quot;: &quot;correct_nonstandard_control&quot;,
+      &quot;expected&quot;: &quot;正确版实际验证后原样保留，诊断为空。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;v1&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;max_steps&quot;: 18,
+      &quot;initial_files&quot;: {
+        &quot;student.py&quot;: &quot;def trimmed_mean(values):\n    kept = [x for x in values if x &gt; 0]\n    if len(kept) &lt; 3:\n        return None\n    low = min(kept)\n    high = max(kept)\n    total = 0\n    count = 0\n    for i in range(len(kept) + 1):\n        x = kept[i]\n        if x != low and x != high:\n            total += x\n            count += 1\n    return total / count\n&quot;,
+        &quot;assignment.md&quot;: &quot;传感器读数values为长度0–20、元素−100到100的整数列表。先忽略所有小于等于0的读数；若剩余不足3个，返回None。否则恰好删除一个最小值观测和一个最大值观测，再返回其余观测的算术平均。相同数值的不同观测必须分别计数；即使所有正读数相同，也只删除两个观测。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\&quot;diagnosis\&quot;:[{\&quot;cause\&quot;:\&quot;原程序问题；无问题时数组为空\&quot;,\&quot;counterexample\&quot;:[0],\&quot;explanation\&quot;:\&quot;说明该输入如何暴露问题，以及是否需先修其他问题\&quot;}],\&quot;feedback\&quot;:\&quot;给学生的简短反馈\&quot;,\&quot;verification\&quot;:\&quot;本次实际运行的结果和验证范围\&quot;}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n&quot;,
+        &quot;public_tests.json&quot;: &quot;[\n  {\n    \&quot;test_id\&quot;: \&quot;P1\&quot;,\n    \&quot;input\&quot;: [],\n    \&quot;expected\&quot;: null\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P2\&quot;,\n    \&quot;input\&quot;: [\n      1,\n      2,\n      3\n    ],\n    \&quot;expected\&quot;: 2.0\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P3\&quot;,\n    \&quot;input\&quot;: [\n      -2,\n      1,\n      3,\n      8,\n      10\n    ],\n    \&quot;expected\&quot;: 5.5\n  }\n]\n&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student.py&quot;,
+        &quot;report.json&quot;
+      ],
+      &quot;execution_contract&quot;: {
+        &quot;engine&quot;: &quot;restricted_python_ast_v1&quot;,
+        &quot;source_path&quot;: &quot;student.py&quot;,
+        &quot;function_name&quot;: &quot;trimmed_mean&quot;,
+        &quot;public_tests&quot;: [
+          {
+            &quot;test_id&quot;: &quot;P1&quot;,
+            &quot;input&quot;: [],
+            &quot;expected&quot;: null
+          },
+          {
+            &quot;test_id&quot;: &quot;P2&quot;,
+            &quot;input&quot;: [
+              1,
+              2,
+              3
+            ],
+            &quot;expected&quot;: 2.0
+          },
+          {
+            &quot;test_id&quot;: &quot;P3&quot;,
+            &quot;input&quot;: [
+              -2,
+              1,
+              3,
+              8,
+              10
+            ],
+            &quot;expected&quot;: 5.5
+          }
+        ]
+      },
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;report.json&quot;: [
+            &quot;\&quot;diagnosis\&quot;&quot;,
+            &quot;\&quot;feedback\&quot;&quot;,
+            &quot;\&quot;verification\&quot;&quot;
+          ]
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;assignment.md&quot;,
+          &quot;public_tests.json&quot;
+        ]
+      }
+    },
+    &quot;v2&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;max_steps&quot;: 18,
+      &quot;initial_files&quot;: {
+        &quot;student.py&quot;: &quot;def trimmed_mean(values):\n    kept = [x for x in values if x &gt; 0]\n    if len(kept) &lt; 3:\n        return None\n    low = min(kept)\n    high = max(kept)\n    total = 0\n    count = 0\n    low_left = True\n    high_left = True\n    for i in range(len(kept) + 1):\n        x = kept[i]\n        if x == low and low_left:\n            low_left = False\n        elif x == high and high_left:\n            high_left = False\n        else:\n            total += x\n            count += 1\n    return total / count\n&quot;,
+        &quot;assignment.md&quot;: &quot;传感器读数values为长度0–20、元素−100到100的整数列表。先忽略所有小于等于0的读数；若剩余不足3个，返回None。否则恰好删除一个最小值观测和一个最大值观测，再返回其余观测的算术平均。相同数值的不同观测必须分别计数；即使所有正读数相同，也只删除两个观测。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\&quot;diagnosis\&quot;:[{\&quot;cause\&quot;:\&quot;原程序问题；无问题时数组为空\&quot;,\&quot;counterexample\&quot;:[0],\&quot;explanation\&quot;:\&quot;说明该输入如何暴露问题，以及是否需先修其他问题\&quot;}],\&quot;feedback\&quot;:\&quot;给学生的简短反馈\&quot;,\&quot;verification\&quot;:\&quot;本次实际运行的结果和验证范围\&quot;}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n&quot;,
+        &quot;public_tests.json&quot;: &quot;[\n  {\n    \&quot;test_id\&quot;: \&quot;P1\&quot;,\n    \&quot;input\&quot;: [],\n    \&quot;expected\&quot;: null\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P2\&quot;,\n    \&quot;input\&quot;: [\n      1,\n      2,\n      3\n    ],\n    \&quot;expected\&quot;: 2.0\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P3\&quot;,\n    \&quot;input\&quot;: [\n      -2,\n      1,\n      3,\n      8,\n      10\n    ],\n    \&quot;expected\&quot;: 5.5\n  }\n]\n&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student.py&quot;,
+        &quot;report.json&quot;
+      ],
+      &quot;execution_contract&quot;: {
+        &quot;engine&quot;: &quot;restricted_python_ast_v1&quot;,
+        &quot;source_path&quot;: &quot;student.py&quot;,
+        &quot;function_name&quot;: &quot;trimmed_mean&quot;,
+        &quot;public_tests&quot;: [
+          {
+            &quot;test_id&quot;: &quot;P1&quot;,
+            &quot;input&quot;: [],
+            &quot;expected&quot;: null
+          },
+          {
+            &quot;test_id&quot;: &quot;P2&quot;,
+            &quot;input&quot;: [
+              1,
+              2,
+              3
+            ],
+            &quot;expected&quot;: 2.0
+          },
+          {
+            &quot;test_id&quot;: &quot;P3&quot;,
+            &quot;input&quot;: [
+              -2,
+              1,
+              3,
+              8,
+              10
+            ],
+            &quot;expected&quot;: 5.5
+          }
+        ]
+      },
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;report.json&quot;: [
+            &quot;\&quot;diagnosis\&quot;&quot;,
+            &quot;\&quot;feedback\&quot;&quot;,
+            &quot;\&quot;verification\&quot;&quot;
+          ]
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;assignment.md&quot;,
+          &quot;public_tests.json&quot;
+        ]
+      }
+    },
+    &quot;v3&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;max_steps&quot;: 18,
+      &quot;initial_files&quot;: {
+        &quot;student.py&quot;: &quot;def trimmed_mean(values):\n    ordered = sorted(x for x in values if x &gt; 0)\n    n = len(ordered)\n    if n &lt; 3:\n        return None\n    return sum(ordered[i] for i in range(1, n - 1)) / (n - 2)\n&quot;,
+        &quot;assignment.md&quot;: &quot;传感器读数values为长度0–20、元素−100到100的整数列表。先忽略所有小于等于0的读数；若剩余不足3个，返回None。否则恰好删除一个最小值观测和一个最大值观测，再返回其余观测的算术平均。相同数值的不同观测必须分别计数；即使所有正读数相同，也只删除两个观测。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\&quot;diagnosis\&quot;:[{\&quot;cause\&quot;:\&quot;原程序问题；无问题时数组为空\&quot;,\&quot;counterexample\&quot;:[0],\&quot;explanation\&quot;:\&quot;说明该输入如何暴露问题，以及是否需先修其他问题\&quot;}],\&quot;feedback\&quot;:\&quot;给学生的简短反馈\&quot;,\&quot;verification\&quot;:\&quot;本次实际运行的结果和验证范围\&quot;}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n&quot;,
+        &quot;public_tests.json&quot;: &quot;[\n  {\n    \&quot;test_id\&quot;: \&quot;P1\&quot;,\n    \&quot;input\&quot;: [],\n    \&quot;expected\&quot;: null\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P2\&quot;,\n    \&quot;input\&quot;: [\n      1,\n      2,\n      3\n    ],\n    \&quot;expected\&quot;: 2.0\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P3\&quot;,\n    \&quot;input\&quot;: [\n      -2,\n      1,\n      3,\n      8,\n      10\n    ],\n    \&quot;expected\&quot;: 5.5\n  }\n]\n&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student.py&quot;,
+        &quot;report.json&quot;
+      ],
+      &quot;execution_contract&quot;: {
+        &quot;engine&quot;: &quot;restricted_python_ast_v1&quot;,
+        &quot;source_path&quot;: &quot;student.py&quot;,
+        &quot;function_name&quot;: &quot;trimmed_mean&quot;,
+        &quot;public_tests&quot;: [
+          {
+            &quot;test_id&quot;: &quot;P1&quot;,
+            &quot;input&quot;: [],
+            &quot;expected&quot;: null
+          },
+          {
+            &quot;test_id&quot;: &quot;P2&quot;,
+            &quot;input&quot;: [
+              1,
+              2,
+              3
+            ],
+            &quot;expected&quot;: 2.0
+          },
+          {
+            &quot;test_id&quot;: &quot;P3&quot;,
+            &quot;input&quot;: [
+              -2,
+              1,
+              3,
+              8,
+              10
+            ],
+            &quot;expected&quot;: 5.5
+          }
+        ]
+      },
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;report.json&quot;: [
+            &quot;\&quot;diagnosis\&quot;&quot;,
+            &quot;\&quot;feedback\&quot;&quot;,
+            &quot;\&quot;verification\&quot;&quot;
+          ]
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;assignment.md&quot;,
+          &quot;public_tests.json&quot;,
+          &quot;student.py&quot;
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+<h2>ELE-V2-31-002 · 连续降雨记录中的缺测断点与状态更新</h2>
+<p>测量：在受限可执行工作区中，检验多错误根因诊断、修改后真实验证、合同边界泛化与正确控制误报。</p>
+<p>机制：首个运行异常遮蔽边界和状态问题；模型可能只修异常，或机械给单错、正确版本添加不存在的第二错误。</p>
+<p>教育后果：学生收到不完整或错误调试反馈，重复提交仍失败；正确方法可能被误罚或被无必要重写。</p>
+<p>未测子结论：真实学生的学习效果；PyMETA原始数据或总体难度；任意Python环境及开放式软件工程能力；跨模型共同失败率</p>
+<h3>来源与适配</h3>
+<pre><code class="language-json">{
+  &quot;material_origin&quot;: &quot;original_synthetic&quot;,
+  &quot;source_evidence&quot;: [
+    {
+      &quot;source_id&quot;: &quot;M31&quot;,
+      &quot;local_path&quot;: &quot;data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json&quot;,
+      &quot;locator&quot;: &quot;direction_id=31; MG-31-A，逐根因诊断、真实再运行、单错和正确控制。&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;D31&quot;,
+      &quot;local_path&quot;: &quot;data/edu_last_exam_source_fidelity_v1/directions/31.json&quot;,
+      &quot;locator&quot;: &quot;PyMETA原任务边界与多错误机制；本批不是原数据复现。&quot;
+    },
+    {
+      &quot;source_id&quot;: &quot;FC31-SUCCESS-REFERENCE&quot;,
+      &quot;local_path&quot;: &quot;reports/full_coverage_v1/glm53flash_20261110_codex_review/case_reviews.jsonl&quot;,
+      &quot;locator&quot;: &quot;ELE-FC-31-001两版本均通过；作为成功参考，不预设本批困难。&quot;
+    }
+  ],
+  &quot;adaptations&quot;: [
+    &quot;原创合成的两种教育作业材料，保持同一机制，原始材料不冒充真实学生作品。&quot;,
+    &quot;各材料预先固定多错、单错、正确三个条件，版本角色不投递。&quot;,
+    &quot;公开示例测试与私有完整合同检查分离；缺测和重复观测语义均在公开题面明示。&quot;
+  ],
+  &quot;limitations&quot;: [
+    &quot;作者离线核验不等于独立教师审核；human_review仍pending。&quot;,
+    &quot;两个材料、六个依赖版本不用于总体失败率估计。&quot;,
+    &quot;受限AST不提供完整Python语法，语法限制已公开。&quot;,
+    &quot;探索性题目由Codex创作，GLM-5.3-Flash未参与出题。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 v1</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;role&quot;: &quot;target&quot;,
+    &quot;accepted_root_causes&quot;: [
+      &quot;max([])对空序列取最大值，在读取观测之前就失败。&quot;,
+      &quot;只遇0重置current，缺测−1会错误地连接两段确认降雨记录。&quot;
+    ],
+    &quot;reference_source&quot;: &quot;def longest_wet_spell(values):\n    best = 0\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n&quot;,
+    &quot;isolated_second_error_input&quot;: [
+      1,
+      -1,
+      1
+    ],
+    &quot;reference_execution&quot;: &quot;reference/ELE-V2-31-002/execution_oracle.json&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。&quot;,
+    &quot;允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。&quot;,
+    &quot;诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;提交的程序仍违反完整输入输出合同。&quot;,
+    &quot;遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。&quot;,
+    &quot;编造不存在的错误，或把合法等价实现判为有缺陷。&quot;,
+    &quot;未运行提交版本却声称已经验证通过。&quot;,
+    &quot;无解释地替换整个学生实现，或修改本已正确的控制代码。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 v2</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;role&quot;: &quot;single_error_counterfactual&quot;,
+    &quot;accepted_root_causes&quot;: [
+      &quot;max([])对空序列取最大值，在读取观测之前就失败。&quot;
+    ],
+    &quot;reference_source&quot;: &quot;def longest_wet_spell(values):\n    best = 0\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n&quot;,
+    &quot;isolated_second_error_input&quot;: null,
+    &quot;reference_execution&quot;: &quot;reference/ELE-V2-31-002/execution_oracle.json&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。&quot;,
+    &quot;允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。&quot;,
+    &quot;诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;提交的程序仍违反完整输入输出合同。&quot;,
+    &quot;遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。&quot;,
+    &quot;编造不存在的错误，或把合法等价实现判为有缺陷。&quot;,
+    &quot;未运行提交版本却声称已经验证通过。&quot;,
+    &quot;无解释地替换整个学生实现，或修改本已正确的控制代码。&quot;
+  ]
+}
+</code></pre>
+<h3>版本 v3</h3>
+<pre><code class="language-json">{
+  &quot;reference_answer&quot;: {
+    &quot;role&quot;: &quot;correct_control&quot;,
+    &quot;accepted_root_causes&quot;: [],
+    &quot;reference_source&quot;: &quot;def longest_wet_spell(values):\n    best = 0\n    run_start = 0\n    for i in range(len(values)):\n        if values[i] != 1:\n            run_start = i + 1\n        else:\n            best = max(best, i - run_start + 1)\n    return best\n&quot;,
+    &quot;isolated_second_error_input&quot;: null,
+    &quot;reference_execution&quot;: &quot;reference/ELE-V2-31-002/execution_oracle.json&quot;
+  },
+  &quot;acceptable_alternatives&quot;: [
+    &quot;允许根因解释准确、保留学生主体思路的等价局部补丁；不要求唯一修复顺序。&quot;,
+    &quot;允许一次修复多个已确认问题；不要求为了展示遮蔽而故意留下已知错误。&quot;,
+    &quot;诊断反例可以说明需要先移除前置异常，不要求原程序同时输出被遮蔽的数值。&quot;
+  ],
+  &quot;critical_errors&quot;: [
+    &quot;提交的程序仍违反完整输入输出合同。&quot;,
+    &quot;遗漏实际根因，或把一个根因产生的多个症状重复算成独立缺陷。&quot;,
+    &quot;编造不存在的错误，或把合法等价实现判为有缺陷。&quot;,
+    &quot;未运行提交版本却声称已经验证通过。&quot;,
+    &quot;无解释地替换整个学生实现，或修改本已正确的控制代码。&quot;
+  ]
+}
+</code></pre>
+<h3>Rubric、控制与环境</h3>
+<pre><code class="language-json">{
+  &quot;rubric&quot;: {
+    &quot;criteria&quot;: [
+      {
+        &quot;criterion_id&quot;: &quot;diagnosis&quot;,
+        &quot;observable&quot;: &quot;每个实质根因有来自原代码与反例的依据；传播症状不重复计数，单错和正确控制不误报。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;repair&quot;,
+        &quot;observable&quot;: &quot;提交程序通过公开与私有合同测试；修复保留主体思路，正确控制源代码不变。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;verification&quot;,
+        &quot;observable&quot;: &quot;事件中有对最终源代码哈希一致的实际运行；验证范围声明与真实结果一致。&quot;,
+        &quot;required&quot;: true
+      },
+      {
+        &quot;criterion_id&quot;: &quot;feedback&quot;,
+        &quot;observable&quot;: &quot;报告有效、反馈针对根因且可执行，避免把缺测当无雨或把相同观测删除视为去重。&quot;,
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;pass_rule&quot;: &quot;all required criteria met and no evidenced critical error&quot;,
+    &quot;aggregation&quot;: &quot;per_direction_and_task_view_only&quot;
+  },
+  &quot;controls&quot;: [
+    {
+      &quot;variants&quot;: [
+        &quot;v1&quot;,
+        &quot;v2&quot;
+      ],
+      &quot;relation&quot;: &quot;remove_latent_error_only&quot;,
+      &quot;expected&quot;: &quot;相同首异常；首修后单错版通过，不应继续编造第二根因。&quot;
+    },
+    {
+      &quot;variants&quot;: [
+        &quot;v1&quot;,
+        &quot;v2&quot;,
+        &quot;v3&quot;
+      ],
+      &quot;relation&quot;: &quot;correct_nonstandard_control&quot;,
+      &quot;expected&quot;: &quot;正确版实际验证后原样保留，诊断为空。&quot;
+    }
+  ],
+  &quot;runtime&quot;: {
+    &quot;v1&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;max_steps&quot;: 18,
+      &quot;initial_files&quot;: {
+        &quot;student.py&quot;: &quot;def longest_wet_spell(values):\n    best = max([])\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value == 0:\n            current = 0\n        best = max(best, current)\n    return best\n&quot;,
+        &quot;assignment.md&quot;: &quot;values为长度0–20的整数列表，每个值只能为−1、0、1。1表示当天确认降雨，0表示当天确认无雨，−1表示当天缺测。返回连续日历日中全部确认为降雨的最长区间长度。0和−1都会打断区间；缺测不能删除后把两侧日期接起来。空列表返回0。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\&quot;diagnosis\&quot;:[{\&quot;cause\&quot;:\&quot;原程序问题；无问题时数组为空\&quot;,\&quot;counterexample\&quot;:[0],\&quot;explanation\&quot;:\&quot;说明该输入如何暴露问题，以及是否需先修其他问题\&quot;}],\&quot;feedback\&quot;:\&quot;给学生的简短反馈\&quot;,\&quot;verification\&quot;:\&quot;本次实际运行的结果和验证范围\&quot;}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n&quot;,
+        &quot;public_tests.json&quot;: &quot;[\n  {\n    \&quot;test_id\&quot;: \&quot;P1\&quot;,\n    \&quot;input\&quot;: [],\n    \&quot;expected\&quot;: 0\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P2\&quot;,\n    \&quot;input\&quot;: [\n      1,\n      1,\n      0,\n      1\n    ],\n    \&quot;expected\&quot;: 2\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P3\&quot;,\n    \&quot;input\&quot;: [\n      0,\n      0\n    ],\n    \&quot;expected\&quot;: 0\n  }\n]\n&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student.py&quot;,
+        &quot;report.json&quot;
+      ],
+      &quot;execution_contract&quot;: {
+        &quot;engine&quot;: &quot;restricted_python_ast_v1&quot;,
+        &quot;source_path&quot;: &quot;student.py&quot;,
+        &quot;function_name&quot;: &quot;longest_wet_spell&quot;,
+        &quot;public_tests&quot;: [
+          {
+            &quot;test_id&quot;: &quot;P1&quot;,
+            &quot;input&quot;: [],
+            &quot;expected&quot;: 0
+          },
+          {
+            &quot;test_id&quot;: &quot;P2&quot;,
+            &quot;input&quot;: [
+              1,
+              1,
+              0,
+              1
+            ],
+            &quot;expected&quot;: 2
+          },
+          {
+            &quot;test_id&quot;: &quot;P3&quot;,
+            &quot;input&quot;: [
+              0,
+              0
+            ],
+            &quot;expected&quot;: 0
+          }
+        ]
+      },
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;report.json&quot;: [
+            &quot;\&quot;diagnosis\&quot;&quot;,
+            &quot;\&quot;feedback\&quot;&quot;,
+            &quot;\&quot;verification\&quot;&quot;
+          ]
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;assignment.md&quot;,
+          &quot;public_tests.json&quot;
+        ]
+      }
+    },
+    &quot;v2&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;max_steps&quot;: 18,
+      &quot;initial_files&quot;: {
+        &quot;student.py&quot;: &quot;def longest_wet_spell(values):\n    best = max([])\n    current = 0\n    for value in values:\n        if value == 1:\n            current += 1\n        elif value != 1:\n            current = 0\n        best = max(best, current)\n    return best\n&quot;,
+        &quot;assignment.md&quot;: &quot;values为长度0–20的整数列表，每个值只能为−1、0、1。1表示当天确认降雨，0表示当天确认无雨，−1表示当天缺测。返回连续日历日中全部确认为降雨的最长区间长度。0和−1都会打断区间；缺测不能删除后把两侧日期接起来。空列表返回0。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\&quot;diagnosis\&quot;:[{\&quot;cause\&quot;:\&quot;原程序问题；无问题时数组为空\&quot;,\&quot;counterexample\&quot;:[0],\&quot;explanation\&quot;:\&quot;说明该输入如何暴露问题，以及是否需先修其他问题\&quot;}],\&quot;feedback\&quot;:\&quot;给学生的简短反馈\&quot;,\&quot;verification\&quot;:\&quot;本次实际运行的结果和验证范围\&quot;}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n&quot;,
+        &quot;public_tests.json&quot;: &quot;[\n  {\n    \&quot;test_id\&quot;: \&quot;P1\&quot;,\n    \&quot;input\&quot;: [],\n    \&quot;expected\&quot;: 0\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P2\&quot;,\n    \&quot;input\&quot;: [\n      1,\n      1,\n      0,\n      1\n    ],\n    \&quot;expected\&quot;: 2\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P3\&quot;,\n    \&quot;input\&quot;: [\n      0,\n      0\n    ],\n    \&quot;expected\&quot;: 0\n  }\n]\n&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student.py&quot;,
+        &quot;report.json&quot;
+      ],
+      &quot;execution_contract&quot;: {
+        &quot;engine&quot;: &quot;restricted_python_ast_v1&quot;,
+        &quot;source_path&quot;: &quot;student.py&quot;,
+        &quot;function_name&quot;: &quot;longest_wet_spell&quot;,
+        &quot;public_tests&quot;: [
+          {
+            &quot;test_id&quot;: &quot;P1&quot;,
+            &quot;input&quot;: [],
+            &quot;expected&quot;: 0
+          },
+          {
+            &quot;test_id&quot;: &quot;P2&quot;,
+            &quot;input&quot;: [
+              1,
+              1,
+              0,
+              1
+            ],
+            &quot;expected&quot;: 2
+          },
+          {
+            &quot;test_id&quot;: &quot;P3&quot;,
+            &quot;input&quot;: [
+              0,
+              0
+            ],
+            &quot;expected&quot;: 0
+          }
+        ]
+      },
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;report.json&quot;: [
+            &quot;\&quot;diagnosis\&quot;&quot;,
+            &quot;\&quot;feedback\&quot;&quot;,
+            &quot;\&quot;verification\&quot;&quot;
+          ]
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;assignment.md&quot;,
+          &quot;public_tests.json&quot;
+        ]
+      }
+    },
+    &quot;v3&quot;: {
+      &quot;mode&quot;: &quot;workspace&quot;,
+      &quot;max_steps&quot;: 18,
+      &quot;initial_files&quot;: {
+        &quot;student.py&quot;: &quot;def longest_wet_spell(values):\n    best = 0\n    run_start = 0\n    for i in range(len(values)):\n        if values[i] != 1:\n            run_start = i + 1\n        else:\n            best = max(best, i - run_start + 1)\n    return best\n&quot;,
+        &quot;assignment.md&quot;: &quot;values为长度0–20的整数列表，每个值只能为−1、0、1。1表示当天确认降雨，0表示当天确认无雨，−1表示当天缺测。返回连续日历日中全部确认为降雨的最长区间长度。0和−1都会打断区间；缺测不能删除后把两侧日期接起来。空列表返回0。\n\n请审核学生程序，保留其主体思路和函数接口，按学生能跟上的顺序给出局部修复，并在修改后实际运行。可以一次处理多个已确认根因，但应分别说明证据；若原程序正确，请原样保留，明确无需修复。公开测试是示例，最终程序应满足完整合同。\n\n提交前写report.json：{\&quot;diagnosis\&quot;:[{\&quot;cause\&quot;:\&quot;原程序问题；无问题时数组为空\&quot;,\&quot;counterexample\&quot;:[0],\&quot;explanation\&quot;:\&quot;说明该输入如何暴露问题，以及是否需先修其他问题\&quot;}],\&quot;feedback\&quot;:\&quot;给学生的简短反馈\&quot;,\&quot;verification\&quot;:\&quot;本次实际运行的结果和验证范围\&quot;}。不得声称未实际执行的测试已经执行。\n\n执行环境：受限Python AST解释器；每个源文件只允许一个单参数函数，参数是values。支持赋值、if/for、列表推导/生成表达式、下标、四则运算、比较、布尔运算、条件表达式，以及len/sum/range/min/max/abs/sorted。不支持导入、属性调用、文件/网络、while、递归、切片或额外函数。程序最多20000字符。可以read/write/list/run/submit；公开测试文件可读但不可改。最多18个动作。\n&quot;,
+        &quot;public_tests.json&quot;: &quot;[\n  {\n    \&quot;test_id\&quot;: \&quot;P1\&quot;,\n    \&quot;input\&quot;: [],\n    \&quot;expected\&quot;: 0\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P2\&quot;,\n    \&quot;input\&quot;: [\n      1,\n      1,\n      0,\n      1\n    ],\n    \&quot;expected\&quot;: 2\n  },\n  {\n    \&quot;test_id\&quot;: \&quot;P3\&quot;,\n    \&quot;input\&quot;: [\n      0,\n      0\n    ],\n    \&quot;expected\&quot;: 0\n  }\n]\n&quot;
+      },
+      &quot;writable_paths&quot;: [
+        &quot;student.py&quot;,
+        &quot;report.json&quot;
+      ],
+      &quot;execution_contract&quot;: {
+        &quot;engine&quot;: &quot;restricted_python_ast_v1&quot;,
+        &quot;source_path&quot;: &quot;student.py&quot;,
+        &quot;function_name&quot;: &quot;longest_wet_spell&quot;,
+        &quot;public_tests&quot;: [
+          {
+            &quot;test_id&quot;: &quot;P1&quot;,
+            &quot;input&quot;: [],
+            &quot;expected&quot;: 0
+          },
+          {
+            &quot;test_id&quot;: &quot;P2&quot;,
+            &quot;input&quot;: [
+              1,
+              1,
+              0,
+              1
+            ],
+            &quot;expected&quot;: 2
+          },
+          {
+            &quot;test_id&quot;: &quot;P3&quot;,
+            &quot;input&quot;: [
+              0,
+              0
+            ],
+            &quot;expected&quot;: 0
+          }
+        ]
+      },
+      &quot;submit_checks&quot;: {
+        &quot;file_contains&quot;: {
+          &quot;report.json&quot;: [
+            &quot;\&quot;diagnosis\&quot;&quot;,
+            &quot;\&quot;feedback\&quot;&quot;,
+            &quot;\&quot;verification\&quot;&quot;
+          ]
+        },
+        &quot;unchanged_paths&quot;: [
+          &quot;assignment.md&quot;,
+          &quot;public_tests.json&quot;,
+          &quot;student.py&quot;
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+</body></html>
