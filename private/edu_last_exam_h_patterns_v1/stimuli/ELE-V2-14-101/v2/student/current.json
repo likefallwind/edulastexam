@@ -1,0 +1,30 @@
+{
+  "page1": {
+    "unit_length": 12,
+    "bars": [
+      {
+        "fraction": [
+          2,
+          3
+        ],
+        "whole_length": 12,
+        "shaded_length": 8
+      },
+      {
+        "fraction": [
+          3,
+          4
+        ],
+        "whole_length": 12,
+        "shaded_length": 9
+      }
+    ],
+    "prompt": "比较两条阴影代表的分数，解释依据。",
+    "answer": null
+  },
+  "page2": {
+    "prompt": "比较5/6与7/8并解释理由。",
+    "answer": null,
+    "hint": null
+  }
+}

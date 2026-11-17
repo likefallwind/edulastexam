@@ -1,0 +1,11 @@
+{
+  "page1": {
+    "slope": 2,
+    "intercept": 1
+  },
+  "page2": {
+    "y_at_4": 10,
+    "slope": 3,
+    "intercept": -2
+  }
+}

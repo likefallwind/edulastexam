@@ -1,0 +1,25 @@
+{
+  "page1": {
+    "columns": [
+      "mass_g",
+      "volume_cm3"
+    ],
+    "rows": [
+      [
+        24,
+        8
+      ],
+      [
+        48,
+        16
+      ]
+    ],
+    "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+    "answer": null
+  },
+  "page2": {
+    "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+    "answer": null,
+    "hint": null
+  }
+}

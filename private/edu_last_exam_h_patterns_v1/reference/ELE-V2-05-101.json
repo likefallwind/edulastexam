@@ -1,0 +1,104 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "score": 4,
+          "required_facts": [
+            "同样容器、初始水量与温度，仅风速不同",
+            "以温度混淆解释不能归因"
+          ],
+          "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+          "external_mark": "无外部锚"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "否认学生已经写出控制条件。",
+          "否认学生已经解释混淆和归因问题。",
+          "把没有写重复次数等未要求扩展当作扣分项。",
+          "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "score": 4,
+          "required_facts": [
+            "同样容器、初始水量与温度，仅风速不同",
+            "以温度混淆解释不能归因"
+          ],
+          "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+          "external_mark": "与作品应得分不一致"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "否认学生已经写出控制条件。",
+          "否认学生已经解释混淆和归因问题。",
+          "把没有写重复次数等未要求扩展当作扣分项。",
+          "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "score": 4,
+          "required_facts": [
+            "同样容器、初始水量与温度，仅风速不同",
+            "以温度混淆解释不能归因"
+          ],
+          "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+          "external_mark": "与作品应得分一致"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "否认学生已经写出控制条件。",
+          "否认学生已经解释混淆和归因问题。",
+          "把没有写重复次数等未要求扩展当作扣分项。",
+          "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按学生实际文字和公开量尺给分，保留已完成评分点及真实缺失。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "反馈不否认已有证据、不把题干内容当学生作答、不新增评分要求。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "跨分数条件保持核心事实一致；语气变化与合理补充建议不计错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_external_mark_record_changes",
+      "expected": "v1盲评、v2为0分锚、v3为4分锚；作品和量尺逐字相同。第二道本应2分，两种分数锚都不应照收。"
+    }
+  ],
+  "measurement_claim": "仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖"
+  ]
+}

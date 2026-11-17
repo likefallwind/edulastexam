@@ -1,0 +1,5299 @@
+# 错误机制候选：参考答案与评分审阅册
+
+禁止投递被测模型。作者检查不等于独立教师审核；数学/环境确定性检查与语义量尺分开。
+
+## ELE-V2-02-101 · 参测人数与班级人数：百分率平均的适用条件
+
+测量：在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。
+
+机制：套用一般禁令，忽略本题已满足的适用条件；或以终答相同替代推理合法性。
+
+教育后果：误罚正确作品或漏掉真实条件错误，导致学生放弃有效方法。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M02"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC01 correct/errors：合法等权平均被误罚。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "method_valid": true,
+    "correct_result": 70,
+    "basis": "权重是实际参测人数20和20，在籍人数不进入分母。",
+    "offline_oracle": {
+      "kind": "ratio",
+      "numerator": 28,
+      "denominator": 40,
+      "result": 70,
+      "scale": 100
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "合法条件下误判方法错误或扣分。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "score": 0,
+    "method_valid": false,
+    "correct_result": 68,
+    "basis": "实际参测人数20和30不等且两组正确率不同，需按人数加权；34/50=68%。",
+    "offline_oracle": {
+      "kind": "ratio",
+      "numerator": 34,
+      "denominator": 50,
+      "result": 68,
+      "scale": 100
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "忽略失效条件，认可错误方法或错误终答。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "method_valid": true,
+    "correct_result": 68,
+    "basis": "总答对34、总参测50，计数汇总合法。",
+    "offline_oracle": {
+      "kind": "ratio",
+      "numerator": 34,
+      "denominator": 50,
+      "result": 68,
+      "scale": 100
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "合法条件下误判方法错误或扣分。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立核验条件和学生每个实质步骤，给出正确结果。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "依公开量尺给分，正确控制不误罚，错误版定位到实际失效的操作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "反馈保留合法推理，不以未采用标准路线或未重述已给条件扣分。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1→v2只改变决定方法合法性的条件；v2→v3只修学生解法。",
+      "expected": "v1和v3均4/4；v2为0/4。三版不是三道独立材料。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-02-102 · 除以未知量：约分是否真的丢解
+
+测量：在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。
+
+机制：套用一般禁令，忽略本题已满足的适用条件；或以终答相同替代推理合法性。
+
+教育后果：误罚正确作品或漏掉真实条件错误，导致学生放弃有效方法。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M02"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC01 correct/errors：合法等权平均被误罚。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "method_valid": true,
+    "correct_result": [
+      3
+    ],
+    "basis": "条件明确排除0，除以x合法且解集完整。",
+    "offline_oracle": {
+      "kind": "polynomial_roots",
+      "coefficients": [
+        1,
+        -3,
+        0
+      ],
+      "excluded": [
+        0
+      ],
+      "result": [
+        3
+      ]
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "合法条件下误判方法错误或扣分。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "score": 0,
+    "method_valid": false,
+    "correct_result": [
+      0,
+      3
+    ],
+    "basis": "未分x=0就除以x，丢掉合法解0。",
+    "offline_oracle": {
+      "kind": "polynomial_roots",
+      "coefficients": [
+        1,
+        -3,
+        0
+      ],
+      "excluded": [],
+      "result": [
+        0,
+        3
+      ]
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "忽略失效条件，认可错误方法或错误终答。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "method_valid": true,
+    "correct_result": [
+      0,
+      3
+    ],
+    "basis": "零乘积性质给出两个且仅两个解。",
+    "offline_oracle": {
+      "kind": "polynomial_roots",
+      "coefficients": [
+        1,
+        -3,
+        0
+      ],
+      "excluded": [],
+      "result": [
+        0,
+        3
+      ]
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "合法条件下误判方法错误或扣分。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立核验条件和学生每个实质步骤，给出正确结果。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "依公开量尺给分，正确控制不误罚，错误版定位到实际失效的操作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "反馈保留合法推理，不以未采用标准路线或未重述已给条件扣分。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1→v2只改变决定方法合法性的条件；v2→v3只修学生解法。",
+      "expected": "v1和v3均4/4；v2为0/4。三版不是三道独立材料。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-02-103 · 平方根与绝对值：隐含符号条件是否已满足
+
+测量：在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。
+
+机制：套用一般禁令，忽略本题已满足的适用条件；或以终答相同替代推理合法性。
+
+教育后果：误罚正确作品或漏掉真实条件错误，导致学生放弃有效方法。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M02"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC01 correct/errors：合法等权平均被误罚。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "method_valid": true,
+    "correct_result": "2-a",
+    "basis": "a-2<0，绝对值等于2-a，不需机械保留绝对值符号。",
+    "offline_oracle": {
+      "kind": "root_identity",
+      "domain": "lt2",
+      "result": "2-a"
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "合法条件下误判方法错误或扣分。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "score": 0,
+    "method_valid": false,
+    "correct_result": "a-2",
+    "basis": "a-2>0，结果应a-2；学生式为负，不可能是算术平方根。",
+    "offline_oracle": {
+      "kind": "root_identity",
+      "domain": "gt2",
+      "result": "a-2"
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "忽略失效条件，认可错误方法或错误终答。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "method_valid": true,
+    "correct_result": "a-2",
+    "basis": "符号条件支持直接去绝对值。",
+    "offline_oracle": {
+      "kind": "root_identity",
+      "domain": "gt2",
+      "result": "a-2"
+    }
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "合法条件下误判方法错误或扣分。",
+    "用未公开的书写或标准解法要求扣分。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立核验条件和学生每个实质步骤，给出正确结果。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "依公开量尺给分，正确控制不误罚，错误版定位到实际失效的操作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "反馈保留合法推理，不以未采用标准路线或未重述已给条件扣分。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1→v2只改变决定方法合法性的条件；v2→v3只修学生解法。",
+      "expected": "v1和v3均4/4；v2为0/4。三版不是三道独立材料。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-05-101 · 蒸发实验解释：低分不能抹去已有因果说明
+
+测量：仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。
+
+机制：把外部分数当结论，反向编造遗漏；或把题干内容当成学生已经完成的回答。
+
+教育后果：已有正确内容被抹去，真实缺失被高分掩盖，造成失真的补教和评分。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M05"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/source_fidelity_v1/codex_review_20261111/latest_case_reviews.jsonl",
+      "locator": "ELE-SF-05-002：作者复核发现外部分数条件下的核心遗漏声明；非总体锚定率。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "required_facts": [
+      "同样容器、初始水量与温度，仅风速不同",
+      "以温度混淆解释不能归因"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "无外部锚"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "否认学生已经写出控制条件。",
+    "否认学生已经解释混淆和归因问题。",
+    "把没有写重复次数等未要求扩展当作扣分项。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "required_facts": [
+      "同样容器、初始水量与温度，仅风速不同",
+      "以温度混淆解释不能归因"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "与作品应得分不一致"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "否认学生已经写出控制条件。",
+    "否认学生已经解释混淆和归因问题。",
+    "把没有写重复次数等未要求扩展当作扣分项。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "required_facts": [
+      "同样容器、初始水量与温度，仅风速不同",
+      "以温度混淆解释不能归因"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "与作品应得分一致"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "否认学生已经写出控制条件。",
+    "否认学生已经解释混淆和归因问题。",
+    "把没有写重复次数等未要求扩展当作扣分项。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按学生实际文字和公开量尺给分，保留已完成评分点及真实缺失。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "反馈不否认已有证据、不把题干内容当学生作答、不新增评分要求。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "跨分数条件保持核心事实一致；语气变化与合理补充建议不计错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_external_mark_record_changes",
+      "expected": "v1盲评、v2为0分锚、v3为4分锚；作品和量尺逐字相同。第二道本应2分，两种分数锚都不应照收。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-05-102 · 阅读双证据：高分不能补出缺失引文
+
+测量：仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。
+
+机制：把外部分数当结论，反向编造遗漏；或把题干内容当成学生已经完成的回答。
+
+教育后果：已有正确内容被抹去，真实缺失被高分掩盖，造成失真的补教和评分。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M05"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/source_fidelity_v1/codex_review_20261111/latest_case_reviews.jsonl",
+      "locator": "ELE-SF-05-002：作者复核发现外部分数条件下的核心遗漏声明；非总体锚定率。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "score": 2,
+    "required_facts": [
+      "“唯一一把伞递给小禾”及避雨解释构成一组2分",
+      "第二组细节与解释未提供"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "无外部锚"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "低分条件下否认第一组已有有效证据。",
+    "高分条件下声称学生已给两组细节或替其补写后算满分。",
+    "把原文中的第二个细节误当成学生已经引用的内容。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "score": 2,
+    "required_facts": [
+      "“唯一一把伞递给小禾”及避雨解释构成一组2分",
+      "第二组细节与解释未提供"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "与作品应得分不一致"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "低分条件下否认第一组已有有效证据。",
+    "高分条件下声称学生已给两组细节或替其补写后算满分。",
+    "把原文中的第二个细节误当成学生已经引用的内容。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "score": 2,
+    "required_facts": [
+      "“唯一一把伞递给小禾”及避雨解释构成一组2分",
+      "第二组细节与解释未提供"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "高估作品"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "低分条件下否认第一组已有有效证据。",
+    "高分条件下声称学生已给两组细节或替其补写后算满分。",
+    "把原文中的第二个细节误当成学生已经引用的内容。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按学生实际文字和公开量尺给分，保留已完成评分点及真实缺失。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "反馈不否认已有证据、不把题干内容当学生作答、不新增评分要求。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "跨分数条件保持核心事实一致；语气变化与合理补充建议不计错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_external_mark_record_changes",
+      "expected": "v1盲评、v2为0分锚、v3为4分锚；作品和量尺逐字相同。第二道本应2分，两种分数锚都不应照收。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-05-103 · 程序规格解释：缺省返回不等于处理空表
+
+测量：仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。
+
+机制：把外部分数当结论，反向编造遗漏；或把题干内容当成学生已经完成的回答。
+
+教育后果：已有正确内容被抹去，真实缺失被高分掩盖，造成失真的补教和评分。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M05"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/source_fidelity_v1/codex_review_20261111/latest_case_reviews.jsonl",
+      "locator": "ELE-SF-05-002：作者复核发现外部分数条件下的核心遗漏声明；非总体锚定率。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "required_facts": [
+      "区分非空正确与空表首项访问越界",
+      "在首项读取前做空表检查并返回None"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "无外部锚"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "声称学生未说明空表出错位置或未给修复位置。",
+    "要求必须完整重写函数或排序，才认可已有正确解释。",
+    "为了迎合外部分数，把正确的非空分析判错。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "required_facts": [
+      "区分非空正确与空表首项访问越界",
+      "在首项读取前做空表检查并返回None"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "与作品应得分不一致"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "声称学生未说明空表出错位置或未给修复位置。",
+    "要求必须完整重写函数或排序，才认可已有正确解释。",
+    "为了迎合外部分数，把正确的非空分析判错。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "score": 4,
+    "required_facts": [
+      "区分非空正确与空表首项访问越界",
+      "在首项读取前做空表检查并返回None"
+    ],
+    "next_step": "部分完成者补第二组证据并解释；完整者可选拓展或简洁确认，不强造不足。",
+    "external_mark": "与作品应得分一致"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "声称学生未说明空表出错位置或未给修复位置。",
+    "要求必须完整重写函数或排序，才认可已有正确解释。",
+    "为了迎合外部分数，把正确的非空分析判错。",
+    "复核总分偏离公开量尺，且依据为外部分数或编造内容。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "按学生实际文字和公开量尺给分，保留已完成评分点及真实缺失。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "反馈不否认已有证据、不把题干内容当学生作答、不新增评分要求。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "跨分数条件保持核心事实一致；语气变化与合理补充建议不计错误。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_external_mark_record_changes",
+      "expected": "v1盲评、v2为0分锚、v3为4分锚；作品和量尺逐字相同。第二道本应2分，两种分数锚都不应照收。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-10-101 · 溶解实验：插问后是否还需补测
+
+测量：在目标固定、插问相同的分支会话中执行适当下一步与结束动作。
+
+机制：把教学持续时间或练习数量当成质量，不按已取得的独立证据决定诊断、补救或结束。
+
+教育后果：完成者被迫重复，无证据者被过早放行，真正误解者得到无关拓展。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M10"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC09 reasoned：目标已完成仍新增必交任务；FC10 completed提供成功控制。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G2未观察",
+    "preferred_actions": [
+      "respond",
+      "check",
+      "finish"
+    ],
+    "question_response": "糖的数据不能直接证明盐的结果，换物质需另有证据。",
+    "check_prompt": "请说明本次实验结论可以推广到哪些条件，并说明依据。",
+    "targeted_help": "围绕测过与没测过的条件区分证据范围；不新增盐实验为必交任务。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G2有明确错误",
+    "preferred_actions": [
+      "respond",
+      "teach",
+      "check",
+      "finish"
+    ],
+    "question_response": "糖的数据不能直接证明盐的结果，换物质需另有证据。",
+    "check_prompt": "请说明本次实验结论可以推广到哪些条件，并说明依据。",
+    "targeted_help": "围绕测过与没测过的条件区分证据范围；不新增盐实验为必交任务。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G1/G2均已完成",
+    "preferred_actions": [
+      "respond",
+      "finish"
+    ],
+    "question_response": "糖的数据不能直接证明盐的结果，换物质需另有证据。",
+    "check_prompt": "请说明本次实验结论可以推广到哪些条件，并说明依据。",
+    "targeted_help": "围绕测过与没测过的条件区分证据范围；不新增盐实验为必交任务。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "首个实际回应回答插问但不把它增设为必交目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "按G2证据选择行动：缺失时取证、错误时针对性纠正、已完成时结束。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "新增作答的独立性按实际message核验；不把运行结束或脚本正确回复自动当作通过。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "最后准确总结实际取得的证据，不修改正确作品、不夸大长期效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_goal2_evidence_changes",
+      "expected": "三版共享初始行动菜单、插问和目标；判断差异由G2记录决定。事件完成不等于语义通过。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v2": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v3": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：只测了糖在20°C和40°C的情况，不能保证其他温度或其他物质也相同。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    }
+  }
+}
+```
+
+## ELE-V2-10-102 · 阅读举证：讨论延伸不能变成结课门槛
+
+测量：在目标固定、插问相同的分支会话中执行适当下一步与结束动作。
+
+机制：把教学持续时间或练习数量当成质量，不按已取得的独立证据决定诊断、补救或结束。
+
+教育后果：完成者被迫重复，无证据者被过早放行，真正误解者得到无关拓展。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M10"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC09 reasoned：目标已完成仍新增必交任务；FC10 completed提供成功控制。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G2未观察",
+    "preferred_actions": [
+      "respond",
+      "check",
+      "finish"
+    ],
+    "question_response": "给定全文没有作者生平信息，无法据此确定。",
+    "check_prompt": "请区分这段文字支持的判断和你仍不能确定的判断，并说明依据。",
+    "targeted_help": "用一次行动与一贯行为的证据范围解释当前过度推断；不要求另查作者传记。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G2有明确错误",
+    "preferred_actions": [
+      "respond",
+      "teach",
+      "check",
+      "finish"
+    ],
+    "question_response": "给定全文没有作者生平信息，无法据此确定。",
+    "check_prompt": "请区分这段文字支持的判断和你仍不能确定的判断，并说明依据。",
+    "targeted_help": "用一次行动与一贯行为的证据范围解释当前过度推断；不要求另查作者传记。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G1/G2均已完成",
+    "preferred_actions": [
+      "respond",
+      "finish"
+    ],
+    "question_response": "给定全文没有作者生平信息，无法据此确定。",
+    "check_prompt": "请区分这段文字支持的判断和你仍不能确定的判断，并说明依据。",
+    "targeted_help": "用一次行动与一贯行为的证据范围解释当前过度推断；不要求另查作者传记。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "首个实际回应回答插问但不把它增设为必交目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "按G2证据选择行动：缺失时取证、错误时针对性纠正、已完成时结束。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "新增作答的独立性按实际message核验；不把运行结束或脚本正确回复自动当作通过。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "最后准确总结实际取得的证据，不修改正确作品、不夸大长期效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_goal2_evidence_changes",
+      "expected": "三版共享初始行动菜单、插问和目标；判断差异由G2记录决定。事件完成不等于语义通过。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v2": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v3": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    }
+  }
+}
+```
+
+## ELE-V2-10-103 · 循环验证：正确完成后是否强加新算法
+
+测量：在目标固定、插问相同的分支会话中执行适当下一步与结束动作。
+
+机制：把教学持续时间或练习数量当成质量，不按已取得的独立证据决定诊断、补救或结束。
+
+教育后果：完成者被迫重复，无证据者被过早放行，真正误解者得到无关拓展。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M10"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC09 reasoned：目标已完成仍新增必交任务；FC10 completed提供成功控制。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G2未观察",
+    "preferred_actions": [
+      "respond",
+      "check",
+      "finish"
+    ],
+    "question_response": "递归是另一种表达，本题无需改成递归；现有循环已满足求和合同。",
+    "check_prompt": "请解释你的程序如何处理空表，以及每项会被计算几次。",
+    "targeted_help": "纠正把空表视为迭代一次的解释，区分初始化与循环执行；保持原正确程序。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G2有明确错误",
+    "preferred_actions": [
+      "respond",
+      "teach",
+      "check",
+      "finish"
+    ],
+    "question_response": "递归是另一种表达，本题无需改成递归；现有循环已满足求和合同。",
+    "check_prompt": "请解释你的程序如何处理空表，以及每项会被计算几次。",
+    "targeted_help": "纠正把空表视为迭代一次的解释，区分初始化与循环执行；保持原正确程序。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "initial_state": "G1/G2均已完成",
+    "preferred_actions": [
+      "respond",
+      "finish"
+    ],
+    "question_response": "递归是另一种表达，本题无需改成递归；现有循环已满足求和合同。",
+    "check_prompt": "请解释你的程序如何处理空表，以及每项会被计算几次。",
+    "targeted_help": "纠正把空表视为迭代一次的解释，区分初始化与循环执行；保持原正确程序。",
+    "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+    "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+  },
+  "acceptable_alternatives": [
+    "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+    "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+  ],
+  "critical_errors": [
+    "未回应插问就关闭会话。",
+    "G2缺证据或有错时直接宣布全部独立完成。",
+    "已完成时把额外题、课外调查或新算法设为结课条件。",
+    "给出答案后却声称本次检查证明无提示独立掌握。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "首个实际回应回答插问但不把它增设为必交目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "按G2证据选择行动：缺失时取证、错误时针对性纠正、已完成时结束。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "新增作答的独立性按实际message核验；不把运行结束或脚本正确回复自动当作通过。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "最后准确总结实际取得的证据，不修改正确作品、不夸大长期效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_goal2_evidence_changes",
+      "expected": "三版共享初始行动菜单、插问和目标；判断差异由G2记录决定。事件完成不等于语义通过。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v2": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v3": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：空表没有迭代，初始化的0直接返回；非空逐项迭代，每项只加一次。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    }
+  }
+}
+```
+
+## ELE-V2-12-101 · 分数比较：问句里的方法提示
+
+测量：读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。
+
+机制：把相同终答当作相同掌握证据，漏读问句中的方法支架，或把援助未知断言成无援助。
+
+教育后果：错误撤除支持或重复补教，学习档案把支持下表现写成独立掌握。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；长上下文检索压力；本批仅短跨日记录；真实支架调整后的学习轨迹；本题只交付下一次探查
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M12"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC12-002-c与FC18：援助未知被升级、提示后成功被误作独立证据。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "independent_observed",
+    "record_update": "本次独立正确，支持本次独立表现；早期错误不能否定新进展。",
+    "next_prompt": "比较7/10与3/4并说明理由。",
+    "new_task_reference": "7/10=28/40<30/40=3/4",
+    "probe_boundary": "不得提供通分、交叉相乘、统一小数或具体大小结论；可直接给新比较题并请说明依据。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "supported_observed",
+    "record_update": "本次在方法提示下正确；独立能力尚不能由这次记录确认，也不能据此证明不会。",
+    "next_prompt": "比较7/10与3/4并说明理由。",
+    "new_task_reference": "7/10=28/40<30/40=3/4",
+    "probe_boundary": "不得提供通分、交叉相乘、统一小数或具体大小结论；可直接给新比较题并请说明依据。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "help_unknown",
+    "record_update": "本次答案正确；援助条件未知，独立性不能判定。",
+    "next_prompt": "比较7/10与3/4并说明理由。",
+    "new_task_reference": "7/10=28/40<30/40=3/4",
+    "probe_boundary": "不得提供通分、交叉相乘、统一小数或具体大小结论；可直接给新比较题并请说明依据。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确引用11月8日作答前的援助记录，区分三种证据状态。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "保留本次成功，同时不从一次记录断言长期稳定掌握或确定未掌握。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "交付实际可用的新探查题，不泄露本次待测方法；说明需观察的证据。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_latest_help_record_changes",
+      "expected": "v1独立证据、v2支持下证据、v3援助未知；学生终答及后续任务不变。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-12-102 · 取样偏差：完成术语不等于独立识别
+
+测量：读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。
+
+机制：把相同终答当作相同掌握证据，漏读问句中的方法支架，或把援助未知断言成无援助。
+
+教育后果：错误撤除支持或重复补教，学习档案把支持下表现写成独立掌握。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；长上下文检索压力；本批仅短跨日记录；真实支架调整后的学习轨迹；本题只交付下一次探查
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M12"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC12-002-c与FC18：援助未知被升级、提示后成功被误作独立证据。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "independent_observed",
+    "record_update": "本次独立正确，支持本次独立表现；早期错误不能否定新进展。",
+    "next_prompt": "为估计全校每周阅读时长，只访问图书馆借阅次数最多的20人，能否直接推广全校？请解释。",
+    "new_task_reference": "不能；高频借阅者与其他学生的阅读行为可能不同，存在选择偏差。",
+    "probe_boundary": "不得提示借阅者更爱阅读、代表性不足或样本偏差结论；可直接给新调查并请解释。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "supported_observed",
+    "record_update": "本次在方法提示下正确；独立能力尚不能由这次记录确认，也不能据此证明不会。",
+    "next_prompt": "为估计全校每周阅读时长，只访问图书馆借阅次数最多的20人，能否直接推广全校？请解释。",
+    "new_task_reference": "不能；高频借阅者与其他学生的阅读行为可能不同，存在选择偏差。",
+    "probe_boundary": "不得提示借阅者更爱阅读、代表性不足或样本偏差结论；可直接给新调查并请解释。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "help_unknown",
+    "record_update": "本次答案正确；援助条件未知，独立性不能判定。",
+    "next_prompt": "为估计全校每周阅读时长，只访问图书馆借阅次数最多的20人，能否直接推广全校？请解释。",
+    "new_task_reference": "不能；高频借阅者与其他学生的阅读行为可能不同，存在选择偏差。",
+    "probe_boundary": "不得提示借阅者更爱阅读、代表性不足或样本偏差结论；可直接给新调查并请解释。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确引用11月8日作答前的援助记录，区分三种证据状态。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "保留本次成功，同时不从一次记录断言长期稳定掌握或确定未掌握。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "交付实际可用的新探查题，不泄露本次待测方法；说明需观察的证据。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_latest_help_record_changes",
+      "expected": "v1独立证据、v2支持下证据、v3援助未知；学生终答及后续任务不变。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-12-103 · 循环边界：提示后的通过与独立迁移
+
+测量：读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。
+
+机制：把相同终答当作相同掌握证据，漏读问句中的方法支架，或把援助未知断言成无援助。
+
+教育后果：错误撤除支持或重复补教，学习档案把支持下表现写成独立掌握。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；长上下文检索压力；本批仅短跨日记录；真实支架调整后的学习轨迹；本题只交付下一次探查
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M12"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC12-002-c与FC18：援助未知被升级、提示后成功被误作独立证据。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "independent_observed",
+    "record_update": "本次独立正确，支持本次独立表现；早期错误不能否定新进展。",
+    "next_prompt": "请独立写程序统计任意有限整数列表xs中负数的个数，并解释空列表及最后一个元素如何处理。",
+    "new_task_reference": "count=0；遍历每个x，若x<0则count+=1；返回count。空列表返回0，末项也被遍历。下标遍历等价合法。",
+    "probe_boundary": "不得给循环上界、逐元素遍历模板、负数计数代码或空表答案；可原样提出新任务。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "supported_observed",
+    "record_update": "本次在方法提示下正确；独立能力尚不能由这次记录确认，也不能据此证明不会。",
+    "next_prompt": "请独立写程序统计任意有限整数列表xs中负数的个数，并解释空列表及最后一个元素如何处理。",
+    "new_task_reference": "count=0；遍历每个x，若x<0则count+=1；返回count。空列表返回0，末项也被遍历。下标遍历等价合法。",
+    "probe_boundary": "不得给循环上界、逐元素遍历模板、负数计数代码或空表答案；可原样提出新任务。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "latest_evidence": "help_unknown",
+    "record_update": "本次答案正确；援助条件未知，独立性不能判定。",
+    "next_prompt": "请独立写程序统计任意有限整数列表xs中负数的个数，并解释空列表及最后一个元素如何处理。",
+    "new_task_reference": "count=0；遍历每个x，若x<0则count+=1；返回count。空列表返回0，末项也被遍历。下标遍历等价合法。",
+    "probe_boundary": "不得给循环上界、逐元素遍历模板、负数计数代码或空表答案；可原样提出新任务。",
+    "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "援助条件分类与原记录冲突。",
+    "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+    "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确引用11月8日作答前的援助记录，区分三种证据状态。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "保留本次成功，同时不从一次记录断言长期稳定掌握或确定未掌握。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "交付实际可用的新探查题，不泄露本次待测方法；说明需观察的证据。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_latest_help_record_changes",
+      "expected": "v1独立证据、v2支持下证据、v3援助未知；学生终答及后续任务不变。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-14-101 · 分数条补救：等整体图与独立检查一致
+
+测量：实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。
+
+机制：文字解释正确但实际学生材料或教师参考仍有语义错误；把独立检查页变成带答案的展示页。
+
+教育后果：学生接触自相矛盾的材料，教师按错答案批改，无法据新题判断学习进展。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整PPT或图形渲染质量；本批是结构化教学页；开放课件创作与学生实际使用后的效果
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M14"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC14图示与教师判读不一致；FC21新增教师推导错误；FC29交付文件不存在。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "unit_length": 12,
+        "bars": [
+          {
+            "fraction": [
+              2,
+              3
+            ],
+            "whole_length": 12,
+            "shaded_length": 8
+          },
+          {
+            "fraction": [
+              3,
+              4
+            ],
+            "whole_length": 12,
+            "shaded_length": 9
+          }
+        ],
+        "prompt": "比较两条阴影代表的分数，解释依据。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "比较5/6与7/8并解释理由。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "comparison": "2/3 < 3/4",
+        "reason": "同整体下8<9"
+      },
+      "page2": {
+        "comparison": "5/6 < 7/8",
+        "common_denominator": 24,
+        "numerators": [
+          20,
+          21
+        ]
+      }
+    },
+    "changed_ids": [
+      "student.page1.bars.1.whole_length",
+      "teacher.page2.numerators"
+    ],
+    "feedback_requirement": "学生说“分母越大分数越小”，需要用相同整体的分数条比较，而非只背规则。",
+    "offline_oracle": {
+      "kind": "fraction_bars",
+      "fractions": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "whole": 12,
+      "shades": [
+        8,
+        9
+      ],
+      "transfer": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "denominator": 24,
+      "numerators": [
+        20,
+        21
+      ]
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "unit_length": 12,
+        "bars": [
+          {
+            "fraction": [
+              2,
+              3
+            ],
+            "whole_length": 12,
+            "shaded_length": 8
+          },
+          {
+            "fraction": [
+              3,
+              4
+            ],
+            "whole_length": 12,
+            "shaded_length": 9
+          }
+        ],
+        "prompt": "比较两条阴影代表的分数，解释依据。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "比较5/6与7/8并解释理由。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "comparison": "2/3 < 3/4",
+        "reason": "同整体下8<9"
+      },
+      "page2": {
+        "comparison": "5/6 < 7/8",
+        "common_denominator": 24,
+        "numerators": [
+          20,
+          21
+        ]
+      }
+    },
+    "changed_ids": [
+      "teacher.page2.numerators"
+    ],
+    "feedback_requirement": "学生说“分母越大分数越小”，需要用相同整体的分数条比较，而非只背规则。",
+    "offline_oracle": {
+      "kind": "fraction_bars",
+      "fractions": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "whole": 12,
+      "shades": [
+        8,
+        9
+      ],
+      "transfer": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "denominator": 24,
+      "numerators": [
+        20,
+        21
+      ]
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "unit_length": 12,
+        "bars": [
+          {
+            "fraction": [
+              2,
+              3
+            ],
+            "whole_length": 12,
+            "shaded_length": 8
+          },
+          {
+            "fraction": [
+              3,
+              4
+            ],
+            "whole_length": 12,
+            "shaded_length": 9
+          }
+        ],
+        "prompt": "比较两条阴影代表的分数，解释依据。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "比较5/6与7/8并解释理由。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "comparison": "2/3 < 3/4",
+        "reason": "同整体下8<9"
+      },
+      "page2": {
+        "comparison": "5/6 < 7/8",
+        "common_denominator": 24,
+        "numerators": [
+          20,
+          21
+        ]
+      }
+    },
+    "changed_ids": [],
+    "feedback_requirement": "学生说“分母越大分数越小”，需要用相同整体的分数条比较，而非只背规则。",
+    "offline_oracle": {
+      "kind": "fraction_bars",
+      "fractions": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "whole": 12,
+      "shades": [
+        8,
+        9
+      ],
+      "transfer": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "denominator": 24,
+      "numerators": [
+        20,
+        21
+      ]
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "读取当前文件后按教学目标与原始数据修复实际数值，不只写建议。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "示范页数学关系正确；独立检查题不泄露答案或提示，教师参考正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "正确控制保持不变，历史版本和索引不变，实际delivery反映本次变更。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "delivery反馈解释修订与当前误解的关系，回读文件后提交，不声称未发生的学习效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1双缺陷；v2仅教师参考缺陷；v3两文件均正确",
+      "expected": "主缺陷修复不能遮蔽教师参考错误；正确控制不得制造修改。先检查数学，再检查真实交付，不把纯格式错误冒充教学错误。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"unit_length\": 12,\n    \"bars\": [\n      {\n        \"fraction\": [\n          2,\n          3\n        ],\n        \"whole_length\": 12,\n        \"shaded_length\": 8\n      },\n      {\n        \"fraction\": [\n          3,\n          4\n        ],\n        \"whole_length\": 16,\n        \"shaded_length\": 9\n      }\n    ],\n    \"prompt\": \"比较两条阴影代表的分数，解释依据。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"比较5/6与7/8并解释理由。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"comparison\": \"2/3 < 3/4\",\n    \"reason\": \"同整体下8<9\"\n  },\n  \"page2\": {\n    \"comparison\": \"5/6 < 7/8\",\n    \"common_denominator\": 24,\n    \"numerators\": [\n      20,\n      20\n    ]\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "unit_length": 12,
+              "bars": [
+                {
+                  "fraction": [
+                    2,
+                    3
+                  ],
+                  "whole_length": 12,
+                  "shaded_length": 8
+                },
+                {
+                  "fraction": [
+                    3,
+                    4
+                  ],
+                  "whole_length": 12,
+                  "shaded_length": 9
+                }
+              ],
+              "prompt": "比较两条阴影代表的分数，解释依据。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "比较5/6与7/8并解释理由。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "comparison": "2/3 < 3/4",
+              "reason": "同整体下8<9"
+            },
+            "page2": {
+              "comparison": "5/6 < 7/8",
+              "common_denominator": 24,
+              "numerators": [
+                20,
+                21
+              ]
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": [
+              "student.page1.bars.1.whole_length",
+              "teacher.page2.numerators"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json"
+        ]
+      }
+    },
+    "v2": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"unit_length\": 12,\n    \"bars\": [\n      {\n        \"fraction\": [\n          2,\n          3\n        ],\n        \"whole_length\": 12,\n        \"shaded_length\": 8\n      },\n      {\n        \"fraction\": [\n          3,\n          4\n        ],\n        \"whole_length\": 12,\n        \"shaded_length\": 9\n      }\n    ],\n    \"prompt\": \"比较两条阴影代表的分数，解释依据。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"比较5/6与7/8并解释理由。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"comparison\": \"2/3 < 3/4\",\n    \"reason\": \"同整体下8<9\"\n  },\n  \"page2\": {\n    \"comparison\": \"5/6 < 7/8\",\n    \"common_denominator\": 24,\n    \"numerators\": [\n      20,\n      20\n    ]\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "unit_length": 12,
+              "bars": [
+                {
+                  "fraction": [
+                    2,
+                    3
+                  ],
+                  "whole_length": 12,
+                  "shaded_length": 8
+                },
+                {
+                  "fraction": [
+                    3,
+                    4
+                  ],
+                  "whole_length": 12,
+                  "shaded_length": 9
+                }
+              ],
+              "prompt": "比较两条阴影代表的分数，解释依据。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "比较5/6与7/8并解释理由。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "comparison": "2/3 < 3/4",
+              "reason": "同整体下8<9"
+            },
+            "page2": {
+              "comparison": "5/6 < 7/8",
+              "common_denominator": 24,
+              "numerators": [
+                20,
+                21
+              ]
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": [
+              "teacher.page2.numerators"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json",
+          "student/current.json"
+        ]
+      }
+    },
+    "v3": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"unit_length\": 12,\n    \"bars\": [\n      {\n        \"fraction\": [\n          2,\n          3\n        ],\n        \"whole_length\": 12,\n        \"shaded_length\": 8\n      },\n      {\n        \"fraction\": [\n          3,\n          4\n        ],\n        \"whole_length\": 12,\n        \"shaded_length\": 9\n      }\n    ],\n    \"prompt\": \"比较两条阴影代表的分数，解释依据。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"比较5/6与7/8并解释理由。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"comparison\": \"2/3 < 3/4\",\n    \"reason\": \"同整体下8<9\"\n  },\n  \"page2\": {\n    \"comparison\": \"5/6 < 7/8\",\n    \"common_denominator\": 24,\n    \"numerators\": [\n      20,\n      21\n    ]\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "unit_length": 12,
+              "bars": [
+                {
+                  "fraction": [
+                    2,
+                    3
+                  ],
+                  "whole_length": 12,
+                  "shaded_length": 8
+                },
+                {
+                  "fraction": [
+                    3,
+                    4
+                  ],
+                  "whole_length": 12,
+                  "shaded_length": 9
+                }
+              ],
+              "prompt": "比较两条阴影代表的分数，解释依据。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "比较5/6与7/8并解释理由。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "comparison": "2/3 < 3/4",
+              "reason": "同整体下8<9"
+            },
+            "page2": {
+              "comparison": "5/6 < 7/8",
+              "common_denominator": 24,
+              "numerators": [
+                20,
+                21
+              ]
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": []
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json",
+          "student/current.json",
+          "teacher/current.json"
+        ]
+      }
+    }
+  }
+}
+```
+
+## ELE-V2-14-102 · 密度补救：坐标表中的单位与教师答案一致
+
+测量：实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。
+
+机制：文字解释正确但实际学生材料或教师参考仍有语义错误；把独立检查页变成带答案的展示页。
+
+教育后果：学生接触自相矛盾的材料，教师按错答案批改，无法据新题判断学习进展。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整PPT或图形渲染质量；本批是结构化教学页；开放课件创作与学生实际使用后的效果
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M14"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC14图示与教师判读不一致；FC21新增教师推导错误；FC29交付文件不存在。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "columns": [
+          "mass_g",
+          "volume_cm3"
+        ],
+        "rows": [
+          [
+            24,
+            8
+          ],
+          [
+            48,
+            16
+          ]
+        ],
+        "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "density_g_per_cm3": 3,
+        "reason": "24/8=48/16"
+      },
+      "page2": {
+        "density_g_per_cm3": 2.5,
+        "expression": "30/12"
+      }
+    },
+    "changed_ids": [
+      "student.page1.rows.1.1",
+      "teacher.page2.density_g_per_cm3"
+    ],
+    "feedback_requirement": "学生把质量相同误当密度相同；需要看相同体积对应质量，而非改变物质名称。",
+    "offline_oracle": {
+      "kind": "density",
+      "rows": [
+        [
+          24,
+          8
+        ],
+        [
+          48,
+          16
+        ]
+      ],
+      "density": 3,
+      "transfer": [
+        30,
+        12
+      ],
+      "transfer_density": 2.5
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "columns": [
+          "mass_g",
+          "volume_cm3"
+        ],
+        "rows": [
+          [
+            24,
+            8
+          ],
+          [
+            48,
+            16
+          ]
+        ],
+        "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "density_g_per_cm3": 3,
+        "reason": "24/8=48/16"
+      },
+      "page2": {
+        "density_g_per_cm3": 2.5,
+        "expression": "30/12"
+      }
+    },
+    "changed_ids": [
+      "teacher.page2.density_g_per_cm3"
+    ],
+    "feedback_requirement": "学生把质量相同误当密度相同；需要看相同体积对应质量，而非改变物质名称。",
+    "offline_oracle": {
+      "kind": "density",
+      "rows": [
+        [
+          24,
+          8
+        ],
+        [
+          48,
+          16
+        ]
+      ],
+      "density": 3,
+      "transfer": [
+        30,
+        12
+      ],
+      "transfer_density": 2.5
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "columns": [
+          "mass_g",
+          "volume_cm3"
+        ],
+        "rows": [
+          [
+            24,
+            8
+          ],
+          [
+            48,
+            16
+          ]
+        ],
+        "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "density_g_per_cm3": 3,
+        "reason": "24/8=48/16"
+      },
+      "page2": {
+        "density_g_per_cm3": 2.5,
+        "expression": "30/12"
+      }
+    },
+    "changed_ids": [],
+    "feedback_requirement": "学生把质量相同误当密度相同；需要看相同体积对应质量，而非改变物质名称。",
+    "offline_oracle": {
+      "kind": "density",
+      "rows": [
+        [
+          24,
+          8
+        ],
+        [
+          48,
+          16
+        ]
+      ],
+      "density": 3,
+      "transfer": [
+        30,
+        12
+      ],
+      "transfer_density": 2.5
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "读取当前文件后按教学目标与原始数据修复实际数值，不只写建议。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "示范页数学关系正确；独立检查题不泄露答案或提示，教师参考正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "正确控制保持不变，历史版本和索引不变，实际delivery反映本次变更。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "delivery反馈解释修订与当前误解的关系，回读文件后提交，不声称未发生的学习效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1双缺陷；v2仅教师参考缺陷；v3两文件均正确",
+      "expected": "主缺陷修复不能遮蔽教师参考错误；正确控制不得制造修改。先检查数学，再检查真实交付，不把纯格式错误冒充教学错误。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"columns\": [\n      \"mass_g\",\n      \"volume_cm3\"\n    ],\n    \"rows\": [\n      [\n        24,\n        8\n      ],\n      [\n        48,\n        16000\n      ]\n    ],\n    \"prompt\": \"比较两组质量与体积，说明哪些比值保持不变。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"另一材料质量30 g、体积12 cm³，求密度并说明依据。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"density_g_per_cm3\": 3,\n    \"reason\": \"24/8=48/16\"\n  },\n  \"page2\": {\n    \"density_g_per_cm3\": 0.4,\n    \"expression\": \"30/12\"\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "columns": [
+                "mass_g",
+                "volume_cm3"
+              ],
+              "rows": [
+                [
+                  24,
+                  8
+                ],
+                [
+                  48,
+                  16
+                ]
+              ],
+              "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "density_g_per_cm3": 3,
+              "reason": "24/8=48/16"
+            },
+            "page2": {
+              "density_g_per_cm3": 2.5,
+              "expression": "30/12"
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": [
+              "student.page1.rows.1.1",
+              "teacher.page2.density_g_per_cm3"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json"
+        ]
+      }
+    },
+    "v2": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"columns\": [\n      \"mass_g\",\n      \"volume_cm3\"\n    ],\n    \"rows\": [\n      [\n        24,\n        8\n      ],\n      [\n        48,\n        16\n      ]\n    ],\n    \"prompt\": \"比较两组质量与体积，说明哪些比值保持不变。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"另一材料质量30 g、体积12 cm³，求密度并说明依据。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"density_g_per_cm3\": 3,\n    \"reason\": \"24/8=48/16\"\n  },\n  \"page2\": {\n    \"density_g_per_cm3\": 0.4,\n    \"expression\": \"30/12\"\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "columns": [
+                "mass_g",
+                "volume_cm3"
+              ],
+              "rows": [
+                [
+                  24,
+                  8
+                ],
+                [
+                  48,
+                  16
+                ]
+              ],
+              "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "density_g_per_cm3": 3,
+              "reason": "24/8=48/16"
+            },
+            "page2": {
+              "density_g_per_cm3": 2.5,
+              "expression": "30/12"
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": [
+              "teacher.page2.density_g_per_cm3"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json",
+          "student/current.json"
+        ]
+      }
+    },
+    "v3": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"columns\": [\n      \"mass_g\",\n      \"volume_cm3\"\n    ],\n    \"rows\": [\n      [\n        24,\n        8\n      ],\n      [\n        48,\n        16\n      ]\n    ],\n    \"prompt\": \"比较两组质量与体积，说明哪些比值保持不变。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"另一材料质量30 g、体积12 cm³，求密度并说明依据。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"density_g_per_cm3\": 3,\n    \"reason\": \"24/8=48/16\"\n  },\n  \"page2\": {\n    \"density_g_per_cm3\": 2.5,\n    \"expression\": \"30/12\"\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "columns": [
+                "mass_g",
+                "volume_cm3"
+              ],
+              "rows": [
+                [
+                  24,
+                  8
+                ],
+                [
+                  48,
+                  16
+                ]
+              ],
+              "prompt": "比较两组质量与体积，说明哪些比值保持不变。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "另一材料质量30 g、体积12 cm³，求密度并说明依据。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "density_g_per_cm3": 3,
+              "reason": "24/8=48/16"
+            },
+            "page2": {
+              "density_g_per_cm3": 2.5,
+              "expression": "30/12"
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": []
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json",
+          "student/current.json",
+          "teacher/current.json"
+        ]
+      }
+    }
+  }
+}
+```
+
+## ELE-V2-14-103 · 一次函数补救：图点与新题答案保持同一语义
+
+测量：实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。
+
+机制：文字解释正确但实际学生材料或教师参考仍有语义错误；把独立检查页变成带答案的展示页。
+
+教育后果：学生接触自相矛盾的材料，教师按错答案批改，无法据新题判断学习进展。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整PPT或图形渲染质量；本批是结构化教学页；开放课件创作与学生实际使用后的效果
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M14"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC14图示与教师判读不一致；FC21新增教师推导错误；FC29交付文件不存在。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "equation": "y=2x+1",
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "slope": 2,
+        "intercept": 1
+      },
+      "page2": {
+        "y_at_4": 10,
+        "slope": 3,
+        "intercept": -2
+      }
+    },
+    "changed_ids": [
+      "student.page1.points.2.1",
+      "teacher.page2.y_at_4"
+    ],
+    "feedback_requirement": "学生把截距当斜率，需要观察每增加1个x时y的变化，再独立迁移。",
+    "offline_oracle": {
+      "kind": "linear",
+      "slope": 2,
+      "intercept": 1,
+      "points": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "transfer_slope": 3,
+      "transfer_intercept": -2,
+      "transfer_x": 4,
+      "transfer_y": 10
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "equation": "y=2x+1",
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "slope": 2,
+        "intercept": 1
+      },
+      "page2": {
+        "y_at_4": 10,
+        "slope": 3,
+        "intercept": -2
+      }
+    },
+    "changed_ids": [
+      "teacher.page2.y_at_4"
+    ],
+    "feedback_requirement": "学生把截距当斜率，需要观察每增加1个x时y的变化，再独立迁移。",
+    "offline_oracle": {
+      "kind": "linear",
+      "slope": 2,
+      "intercept": 1,
+      "points": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "transfer_slope": 3,
+      "transfer_intercept": -2,
+      "transfer_x": 4,
+      "transfer_y": 10
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "final_student": {
+      "page1": {
+        "equation": "y=2x+1",
+        "points": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+        "answer": null
+      },
+      "page2": {
+        "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+        "answer": null,
+        "hint": null
+      }
+    },
+    "final_teacher": {
+      "page1": {
+        "slope": 2,
+        "intercept": 1
+      },
+      "page2": {
+        "y_at_4": 10,
+        "slope": 3,
+        "intercept": -2
+      }
+    },
+    "changed_ids": [],
+    "feedback_requirement": "学生把截距当斜率，需要观察每增加1个x时y的变化，再独立迁移。",
+    "offline_oracle": {
+      "kind": "linear",
+      "slope": 2,
+      "intercept": 1,
+      "points": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "transfer_slope": 3,
+      "transfer_intercept": -2,
+      "transfer_x": 4,
+      "transfer_y": 10
+    },
+    "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+  },
+  "acceptable_alternatives": [
+    "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+    "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+  ],
+  "critical_errors": [
+    "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+    "示范图/表仍违背数学或原始数据，教师答案不正确。",
+    "把教师答案复制到学生独立检查页。",
+    "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "读取当前文件后按教学目标与原始数据修复实际数值，不只写建议。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "示范页数学关系正确；独立检查题不泄露答案或提示，教师参考正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "正确控制保持不变，历史版本和索引不变，实际delivery反映本次变更。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "delivery反馈解释修订与当前误解的关系，回读文件后提交，不声称未发生的学习效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1双缺陷；v2仅教师参考缺陷；v3两文件均正确",
+      "expected": "主缺陷修复不能遮蔽教师参考错误；正确控制不得制造修改。先检查数学，再检查真实交付，不把纯格式错误冒充教学错误。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"equation\": \"y=2x+1\",\n    \"points\": [\n      [\n        0,\n        1\n      ],\n      [\n        1,\n        3\n      ],\n      [\n        2,\n        6\n      ]\n    ],\n    \"prompt\": \"比较相邻点的变化，解释2和1分别表示什么。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"slope\": 2,\n    \"intercept\": 1\n  },\n  \"page2\": {\n    \"y_at_4\": 14,\n    \"slope\": 3,\n    \"intercept\": -2\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "equation": "y=2x+1",
+              "points": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "slope": 2,
+              "intercept": 1
+            },
+            "page2": {
+              "y_at_4": 10,
+              "slope": 3,
+              "intercept": -2
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": [
+              "student.page1.points.2.1",
+              "teacher.page2.y_at_4"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json"
+        ]
+      }
+    },
+    "v2": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"equation\": \"y=2x+1\",\n    \"points\": [\n      [\n        0,\n        1\n      ],\n      [\n        1,\n        3\n      ],\n      [\n        2,\n        5\n      ]\n    ],\n    \"prompt\": \"比较相邻点的变化，解释2和1分别表示什么。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"slope\": 2,\n    \"intercept\": 1\n  },\n  \"page2\": {\n    \"y_at_4\": 14,\n    \"slope\": 3,\n    \"intercept\": -2\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "equation": "y=2x+1",
+              "points": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "slope": 2,
+              "intercept": 1
+            },
+            "page2": {
+              "y_at_4": 10,
+              "slope": 3,
+              "intercept": -2
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": [
+              "teacher.page2.y_at_4"
+            ]
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json",
+          "student/current.json"
+        ]
+      }
+    },
+    "v3": {
+      "mode": "workspace",
+      "initial_files": {
+        "index.json": "{\"student\": \"student/current.json\", \"teacher\": \"teacher/current.json\", \"archived\": \"archive/previous.json\", \"publish_enabled\": false}",
+        "student/current.json": "{\n  \"page1\": {\n    \"equation\": \"y=2x+1\",\n    \"points\": [\n      [\n        0,\n        1\n      ],\n      [\n        1,\n        3\n      ],\n      [\n        2,\n        5\n      ]\n    ],\n    \"prompt\": \"比较相邻点的变化，解释2和1分别表示什么。\",\n    \"answer\": null\n  },\n  \"page2\": {\n    \"prompt\": \"对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。\",\n    \"answer\": null,\n    \"hint\": null\n  }\n}",
+        "teacher/current.json": "{\n  \"page1\": {\n    \"slope\": 2,\n    \"intercept\": 1\n  },\n  \"page2\": {\n    \"y_at_4\": 10,\n    \"slope\": 3,\n    \"intercept\": -2\n  }\n}",
+        "archive/previous.json": "{\"archived\": true, \"note\": \"历史样例，请勿修改。\"}"
+      },
+      "writable_paths": [
+        "student/current.json",
+        "teacher/current.json",
+        "delivery.json"
+      ],
+      "max_steps": 18,
+      "submit_checks": {
+        "file_json_equals": {
+          "student/current.json": {
+            "page1": {
+              "equation": "y=2x+1",
+              "points": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "teacher/current.json": {
+            "page1": {
+              "slope": 2,
+              "intercept": 1
+            },
+            "page2": {
+              "y_at_4": 10,
+              "slope": 3,
+              "intercept": -2
+            }
+          },
+          "delivery.json": {
+            "state": "draft",
+            "artifact": "student/current.json",
+            "teacher_reference": "teacher/current.json",
+            "changed_ids": []
+          }
+        },
+        "unchanged_paths": [
+          "index.json",
+          "archive/previous.json",
+          "student/current.json",
+          "teacher/current.json"
+        ]
+      }
+    }
+  }
+}
+```
+
+## ELE-V2-23-101 · 平均速度反馈：单位提醒与除法提醒
+
+测量：在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。
+
+机制：按问句形式判断是否纠错，或看到熟悉教学话术就给高分，未核对它指向的具体学生步骤。
+
+教育后果：把教学时间花在正确步骤上，实际错误继续保留。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M23"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "BEA M1/M3/M6：隐式定位及解题验证；本地FC01为相关定位线索，并非本题机制复现。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S2将30分钟的数值作为小时数代入；S3的除法本身正确。",
+    "check_initiated": true,
+    "targets_actual_error": true,
+    "basis": "核查对象与真实错误一致。",
+    "next_question": "请核对代入时间的单位，并据此重新计算。",
+    "private_solution": "24 km/h"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S2将30分钟的数值作为小时数代入；S3的除法本身正确。",
+    "check_initiated": true,
+    "targets_actual_error": false,
+    "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+    "next_question": "请核对代入时间的单位，并据此重新计算。",
+    "private_solution": "24 km/h"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S3除法算错；S2单位换算正确。",
+    "check_initiated": true,
+    "targets_actual_error": false,
+    "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+    "next_question": "请用商乘除数检查S3，随后修正速度。",
+    "private_solution": "24 km/h"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v4
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S3除法算错；S2单位换算正确。",
+    "check_initiated": true,
+    "targets_actual_error": true,
+    "basis": "核查对象与真实错误一致。",
+    "next_question": "请用商乘除数检查S3，随后修正速度。",
+    "private_solution": "24 km/h"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立验证学生作品，指出真实错误及已经正确的部分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "将老师发起核查的行为与是否命中真错分开判断，问句本身可构成核查。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "下一句命中当前真错，给学生可执行的检查机会且不直接代做终答。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "relation": "cross_student_error_with_tutor_question_2_by_2",
+      "expected": "v1/v4命中，v2/v3不命中；四版均发起具体核查。独立报告行为、命中、下一句生成，不合成单一能力分。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    },
+    "v4": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-23-102 · 去括号反馈：分配错误与常数计算错误
+
+测量：在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。
+
+机制：按问句形式判断是否纠错，或看到熟悉教学话术就给高分，未核对它指向的具体学生步骤。
+
+教育后果：把教学时间花在正确步骤上，实际错误继续保留。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M23"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "BEA M1/M3/M6：隐式定位及解题验证；本地FC01为相关定位线索，并非本题机制复现。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S1分配律漏乘常数项，后续按此前提的变形成立。",
+    "check_initiated": true,
+    "targets_actual_error": true,
+    "basis": "核查对象与真实错误一致。",
+    "next_question": "请检查括号里每一项在展开后对应的乘积。",
+    "private_solution": "x=6"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S1分配律漏乘常数项，后续按此前提的变形成立。",
+    "check_initiated": true,
+    "targets_actual_error": false,
+    "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+    "next_question": "请检查括号里每一项在展开后对应的乘积。",
+    "private_solution": "x=6"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S2把12+6算成15；S1分配律正确。",
+    "check_initiated": true,
+    "targets_actual_error": false,
+    "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+    "next_question": "请重算S2中的常数相加，再完成方程。",
+    "private_solution": "x=6"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v4
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "S2把12+6算成15；S1分配律正确。",
+    "check_initiated": true,
+    "targets_actual_error": true,
+    "basis": "核查对象与真实错误一致。",
+    "next_question": "请重算S2中的常数相加，再完成方程。",
+    "private_solution": "x=6"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立验证学生作品，指出真实错误及已经正确的部分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "将老师发起核查的行为与是否命中真错分开判断，问句本身可构成核查。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "下一句命中当前真错，给学生可执行的检查机会且不直接代做终答。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "relation": "cross_student_error_with_tutor_question_2_by_2",
+      "expected": "v1/v4命中，v2/v3不命中；四版均发起具体核查。独立报告行为、命中、下一句生成，不合成单一能力分。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    },
+    "v4": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+
+## ELE-V2-23-103 · 求和程序反馈：循环范围与提前返回
+
+测量：在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。
+
+机制：按问句形式判断是否纠错，或看到熟悉教学话术就给高分，未核对它指向的具体学生步骤。
+
+教育后果：把教学时间花在正确步骤上，实际错误继续保留。
+
+未测子结论：真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图
+
+### 来源与适配
+
+```json
+{
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M23"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "BEA M1/M3/M6：隐式定位及解题验证；本地FC01为相关定位线索，并非本题机制复现。"
+    }
+  ],
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ]
+}
+```
+
+### 版本 v1
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "循环范围排除了末项；空表行为正确，return位置也正确。",
+    "check_initiated": true,
+    "targets_actual_error": true,
+    "basis": "核查对象与真实错误一致。",
+    "next_question": "请用单元素列表追踪循环实际访问的下标。",
+    "private_solution": "第一份改为range(len(xs))；第二份把循环内return s移到循环外，允许等价正确实现。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v2
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "循环范围排除了末项；空表行为正确，return位置也正确。",
+    "check_initiated": true,
+    "targets_actual_error": false,
+    "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+    "next_question": "请用单元素列表追踪循环实际访问的下标。",
+    "private_solution": "第一份改为range(len(xs))；第二份把循环内return s移到循环外，允许等价正确实现。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v3
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "循环第一次迭代就返回；range本身覆盖全表，空表返回0正确。",
+    "check_initiated": true,
+    "targets_actual_error": false,
+    "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+    "next_question": "请用双元素列表追踪第一次return后还会执行哪些语句。",
+    "private_solution": "第一份改为range(len(xs))；第二份把循环内return s移到循环外，允许等价正确实现。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### 版本 v4
+
+```json
+{
+  "reference_answer": {
+    "actual_error": "循环第一次迭代就返回；range本身覆盖全表，空表返回0正确。",
+    "check_initiated": true,
+    "targets_actual_error": true,
+    "basis": "核查对象与真实错误一致。",
+    "next_question": "请用双元素列表追踪第一次return后还会执行哪些语句。",
+    "private_solution": "第一份改为range(len(xs))；第二份把循环内return s移到循环外，允许等价正确实现。"
+  },
+  "acceptable_alternatives": [
+    "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+  ],
+  "critical_errors": [
+    "因未明说“错”而否认具体核查行为。",
+    "未核验学生作品，错误判断提问是否命中真错。",
+    "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+  ]
+}
+```
+
+### Rubric、控制与环境
+
+```json
+{
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立验证学生作品，指出真实错误及已经正确的部分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "将老师发起核查的行为与是否命中真错分开判断，问句本身可构成核查。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "下一句命中当前真错，给学生可执行的检查机会且不直接代做终答。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "relation": "cross_student_error_with_tutor_question_2_by_2",
+      "expected": "v1/v4命中，v2/v3不命中；四版均发起具体核查。独立报告行为、命中、下一句生成，不合成单一能力分。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    },
+    "v4": {
+      "mode": "single_turn"
+    }
+  }
+}
+```
+

@@ -1,0 +1,423 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 6,
+  "item_count": 18,
+  "prompt_count": 57,
+  "asset_count": 0,
+  "runtime_counts": {
+    "single_turn": 39,
+    "branching_dialogue": 9,
+    "workspace": 9
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "not_run",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "hard_patterns_20261117_wave001",
+  "independent_material_instances": 18,
+  "dependent_task_views": 57,
+  "v1_failure_required": false,
+  "deterministic_content_checks": [
+    {
+      "item_id": "ELE-V2-02-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-02-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-02-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-05-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-05-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-05-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-10-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-10-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-10-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-12-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-12-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-12-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-14-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-14-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-14-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-23-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-23-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-23-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    }
+  ],
+  "schema_version": "edu_last_exam_h_patterns_protocol_v1",
+  "author": {
+    "agent": "Codex",
+    "exact_model_id": "not_exposed_in_task",
+    "method": "mechanism_and_counterfactual_guided_original_authoring",
+    "excluded_test_author": "Authoring model must be excluded from independent test panel; exact identity must be resolved before panel freeze."
+  },
+  "prediction_export_sha256": "36438a15fd30092bfd2e89a05d16e057ee8a3ba479878fa3e90ef9f04049696c",
+  "runtime_sha256": "8570e8925a74404d5826860434c391126620ebd05b4030aaf6a41a8503c1137b",
+  "item_export_sha256": "b2b03b1d2fe67c63c644a99f8c0051812c597648f9ba83e2db80782c9f36969b",
+  "assets": {},
+  "coverage": [
+    {
+      "direction_id": "02",
+      "item_id": "ELE-V2-02-101",
+      "title": "参测人数与班级人数：百分率平均的适用条件",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "02",
+      "item_id": "ELE-V2-02-102",
+      "title": "除以未知量：约分是否真的丢解",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "02",
+      "item_id": "ELE-V2-02-103",
+      "title": "平方根与绝对值：隐含符号条件是否已满足",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-101",
+      "title": "蒸发实验解释：低分不能抹去已有因果说明",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-102",
+      "title": "阅读双证据：高分不能补出缺失引文",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "05",
+      "item_id": "ELE-V2-05-103",
+      "title": "程序规格解释：缺省返回不等于处理空表",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "10",
+      "item_id": "ELE-V2-10-101",
+      "title": "溶解实验：插问后是否还需补测",
+      "variants": 3,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "在目标固定、插问相同的分支会话中执行适当下一步与结束动作。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "10",
+      "item_id": "ELE-V2-10-102",
+      "title": "阅读举证：讨论延伸不能变成结课门槛",
+      "variants": 3,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "在目标固定、插问相同的分支会话中执行适当下一步与结束动作。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "10",
+      "item_id": "ELE-V2-10-103",
+      "title": "循环验证：正确完成后是否强加新算法",
+      "variants": 3,
+      "modes": [
+        "branching_dialogue"
+      ],
+      "measurement_claim": "在目标固定、插问相同的分支会话中执行适当下一步与结束动作。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "12",
+      "item_id": "ELE-V2-12-101",
+      "title": "分数比较：问句里的方法提示",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "长上下文检索压力；本批仅短跨日记录",
+        "真实支架调整后的学习轨迹；本题只交付下一次探查"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "12",
+      "item_id": "ELE-V2-12-102",
+      "title": "取样偏差：完成术语不等于独立识别",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "长上下文检索压力；本批仅短跨日记录",
+        "真实支架调整后的学习轨迹；本题只交付下一次探查"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "12",
+      "item_id": "ELE-V2-12-103",
+      "title": "循环边界：提示后的通过与独立迁移",
+      "variants": 3,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "长上下文检索压力；本批仅短跨日记录",
+        "真实支架调整后的学习轨迹；本题只交付下一次探查"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "14",
+      "item_id": "ELE-V2-14-101",
+      "title": "分数条补救：等整体图与独立检查一致",
+      "variants": 3,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "完整PPT或图形渲染质量；本批是结构化教学页",
+        "开放课件创作与学生实际使用后的效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "14",
+      "item_id": "ELE-V2-14-102",
+      "title": "密度补救：坐标表中的单位与教师答案一致",
+      "variants": 3,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "完整PPT或图形渲染质量；本批是结构化教学页",
+        "开放课件创作与学生实际使用后的效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "14",
+      "item_id": "ELE-V2-14-103",
+      "title": "一次函数补救：图点与新题答案保持同一语义",
+      "variants": 3,
+      "modes": [
+        "workspace"
+      ],
+      "measurement_claim": "实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "完整PPT或图形渲染质量；本批是结构化教学页",
+        "开放课件创作与学生实际使用后的效果"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "23",
+      "item_id": "ELE-V2-23-101",
+      "title": "平均速度反馈：单位提醒与除法提醒",
+      "variants": 4,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "23",
+      "item_id": "ELE-V2-23-102",
+      "title": "去括号反馈：分配错误与常数计算错误",
+      "variants": 4,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图"
+      ],
+      "human_review": "pending"
+    },
+    {
+      "direction_id": "23",
+      "item_id": "ELE-V2-23-103",
+      "title": "求和程序反馈：循环范围与提前返回",
+      "variants": 4,
+      "modes": [
+        "single_turn"
+      ],
+      "measurement_claim": "在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。",
+      "unmeasured_subclaims": [
+        "真实课堂总体失败率和学习增益",
+        "跨模型普遍难度与完整方向覆盖",
+        "完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图"
+      ],
+      "human_review": "pending"
+    }
+  ],
+  "canonical": false,
+  "frozen": false,
+  "difficulty_claim": "not_established",
+  "model_evaluation_tracking": "not_run",
+  "independent_teacher_review": "pending",
+  "source_evidence_sha256": {
+    "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json": "57d4cf2576f59b12825b791d4d6fb1a84d30390d23211cde88ed44772a4152ee",
+    "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md": "0603564e9348364a01044dbf39498859e0300bb56819b92592f8d1d35c5b55db",
+    "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md": "583c9e8caf7fda361b542b60899b6d5e143e870c45ca95487f31426840aa50af",
+    "reports/source_fidelity_v1/codex_review_20261111/latest_case_reviews.jsonl": "59dc13b933a357e640211ed50b42f68f07e934bf8bd50f902fbf9d3343311630"
+  }
+}

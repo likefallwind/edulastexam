@@ -1,0 +1,73 @@
+{
+  "schema_version": "edu_last_exam_h_patterns_protocol_v1",
+  "batch": "private/edu_last_exam_h_patterns_v1",
+  "generation_batch_id": "hard_patterns_20261117_wave001",
+  "mechanism_generation_protocol": "data/edu_last_exam_mechanism_generation_v1/protocol.json",
+  "item_glob": "ELE-V2-*.json",
+  "item_id_pattern": "ELE-V2-\\d{2}-\\d{3}",
+  "expected_item_ids": [
+    "ELE-V2-02-101",
+    "ELE-V2-02-102",
+    "ELE-V2-02-103",
+    "ELE-V2-05-101",
+    "ELE-V2-05-102",
+    "ELE-V2-05-103",
+    "ELE-V2-10-101",
+    "ELE-V2-10-102",
+    "ELE-V2-10-103",
+    "ELE-V2-12-101",
+    "ELE-V2-12-102",
+    "ELE-V2-12-103",
+    "ELE-V2-14-101",
+    "ELE-V2-14-102",
+    "ELE-V2-14-103",
+    "ELE-V2-23-101",
+    "ELE-V2-23-102",
+    "ELE-V2-23-103"
+  ],
+  "expected_prompt_count": 57,
+  "report_directory": "reports/edu_last_exam_h_patterns_v1",
+  "question_lines": [
+    "# Edu Last Exam 错误机制候选题册（2026-11-17）",
+    "",
+    "六类18个基础材料、57个依赖版本。均为原创合成候选；独立人审pending，模型未试跑，难度未测。版本独立投递，不把整本题册作为一个请求。工作区初始文件见[材料索引](workspace_inputs.md)（仅用于人工审阅）。",
+    ""
+  ],
+  "review_lines": [
+    "# 错误机制候选：参考答案与评分审阅册",
+    "",
+    "禁止投递被测模型。作者检查不等于独立教师审核；数学/环境确定性检查与语义量尺分开。",
+    ""
+  ],
+  "coverage_lines": [
+    "# 错误机制候选实现状态",
+    "",
+    "18个基础材料、57个依赖版本；六个主方向各3个材料，不计交叉方向覆盖。",
+    "",
+    "|方向|题包|版本|环境|测量边界|尚未覆盖|",
+    "|---|---|---:|---|---|---|"
+  ],
+  "questions_html_title": "错误机制候选题册",
+  "review_html_title": "错误机制候选审阅册",
+  "coverage_html_title": "错误机制候选实现状态",
+  "author": {
+    "agent": "Codex",
+    "exact_model_id": "not_exposed_in_task",
+    "method": "mechanism_and_counterfactual_guided_original_authoring",
+    "excluded_test_author": "Authoring model must be excluded from independent test panel; exact identity must be resolved before panel freeze."
+  },
+  "validation_extra": {
+    "model_evaluation": "not_run",
+    "prototype": true,
+    "generation_batch_id": "hard_patterns_20261117_wave001",
+    "independent_material_instances": 18,
+    "dependent_task_views": 57,
+    "v1_failure_required": false
+  },
+  "manifest_extra": {
+    "canonical": false,
+    "difficulty_claim": "not_established",
+    "model_evaluation_tracking": "not_run",
+    "independent_teacher_review": "pending"
+  }
+}

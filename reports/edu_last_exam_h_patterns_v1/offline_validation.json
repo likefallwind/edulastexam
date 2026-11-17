@@ -1,0 +1,114 @@
+{
+  "status": "offline_validated_candidate",
+  "direction_count": 6,
+  "item_count": 18,
+  "prompt_count": 57,
+  "asset_count": 0,
+  "runtime_counts": {
+    "single_turn": 39,
+    "branching_dialogue": 9,
+    "workspace": 9
+  },
+  "artifact_oracles": [],
+  "human_review": "pending",
+  "difficulty": "not_established",
+  "model_evaluation": "not_run",
+  "complete_direct_measurement_all_subclaims": false,
+  "prototype": true,
+  "generation_batch_id": "hard_patterns_20261117_wave001",
+  "independent_material_instances": 18,
+  "dependent_task_views": 57,
+  "v1_failure_required": false,
+  "deterministic_content_checks": [
+    {
+      "item_id": "ELE-V2-02-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-02-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-02-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-05-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-05-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-05-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-10-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-10-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-10-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-12-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-12-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-12-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-14-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-14-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-14-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-23-101",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-23-102",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    },
+    {
+      "item_id": "ELE-V2-23-103",
+      "status": "passed",
+      "scope": "deterministic_content_and_runtime_only"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "initial_state": "G2未观察",
+          "preferred_actions": [
+            "respond",
+            "check",
+            "finish"
+          ],
+          "question_response": "递归是另一种表达，本题无需改成递归；现有循环已满足求和合同。",
+          "check_prompt": "请解释你的程序如何处理空表，以及每项会被计算几次。",
+          "targeted_help": "纠正把空表视为迭代一次的解释，区分初始化与循环执行；保持原正确程序。",
+          "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+          "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+        },
+        "acceptable_alternatives": [
+          "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+          "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+        ],
+        "critical_errors": [
+          "未回应插问就关闭会话。",
+          "G2缺证据或有错时直接宣布全部独立完成。",
+          "已完成时把额外题、课外调查或新算法设为结课条件。",
+          "给出答案后却声称本次检查证明无提示独立掌握。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "initial_state": "G2有明确错误",
+          "preferred_actions": [
+            "respond",
+            "teach",
+            "check",
+            "finish"
+          ],
+          "question_response": "递归是另一种表达，本题无需改成递归；现有循环已满足求和合同。",
+          "check_prompt": "请解释你的程序如何处理空表，以及每项会被计算几次。",
+          "targeted_help": "纠正把空表视为迭代一次的解释，区分初始化与循环执行；保持原正确程序。",
+          "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+          "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+        },
+        "acceptable_alternatives": [
+          "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+          "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+        ],
+        "critical_errors": [
+          "未回应插问就关闭会话。",
+          "G2缺证据或有错时直接宣布全部独立完成。",
+          "已完成时把额外题、课外调查或新算法设为结课条件。",
+          "给出答案后却声称本次检查证明无提示独立掌握。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "initial_state": "G1/G2均已完成",
+          "preferred_actions": [
+            "respond",
+            "finish"
+          ],
+          "question_response": "递归是另一种表达，本题无需改成递归；现有循环已满足求和合同。",
+          "check_prompt": "请解释你的程序如何处理空表，以及每项会被计算几次。",
+          "targeted_help": "纠正把空表视为迭代一次的解释，区分初始化与循环执行；保持原正确程序。",
+          "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+          "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+        },
+        "acceptable_alternatives": [
+          "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+          "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+        ],
+        "critical_errors": [
+          "未回应插问就关闭会话。",
+          "G2缺证据或有错时直接宣布全部独立完成。",
+          "已完成时把额外题、课外调查或新算法设为结课条件。",
+          "给出答案后却声称本次检查证明无提示独立掌握。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "首个实际回应回答插问但不把它增设为必交目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "按G2证据选择行动：缺失时取证、错误时针对性纠正、已完成时结束。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "新增作答的独立性按实际message核验；不把运行结束或脚本正确回复自动当作通过。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "最后准确总结实际取得的证据，不修改正确作品、不夸大长期效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_goal2_evidence_changes",
+      "expected": "三版共享初始行动菜单、插问和目标；判断差异由G2记录决定。事件完成不等于语义通过。"
+    }
+  ],
+  "measurement_claim": "在目标固定、插问相同的分支会话中执行适当下一步与结束动作。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖"
+  ]
+}

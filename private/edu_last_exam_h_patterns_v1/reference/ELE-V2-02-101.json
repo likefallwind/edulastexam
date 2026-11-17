@@ -1,0 +1,110 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "score": 4,
+          "method_valid": true,
+          "correct_result": 70,
+          "basis": "权重是实际参测人数20和20，在籍人数不进入分母。",
+          "offline_oracle": {
+            "kind": "ratio",
+            "numerator": 28,
+            "denominator": 40,
+            "result": 70,
+            "scale": 100
+          }
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "合法条件下误判方法错误或扣分。",
+          "用未公开的书写或标准解法要求扣分。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "score": 0,
+          "method_valid": false,
+          "correct_result": 68,
+          "basis": "实际参测人数20和30不等且两组正确率不同，需按人数加权；34/50=68%。",
+          "offline_oracle": {
+            "kind": "ratio",
+            "numerator": 34,
+            "denominator": 50,
+            "result": 68,
+            "scale": 100
+          }
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "忽略失效条件，认可错误方法或错误终答。",
+          "用未公开的书写或标准解法要求扣分。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "score": 4,
+          "method_valid": true,
+          "correct_result": 68,
+          "basis": "总答对34、总参测50，计数汇总合法。",
+          "offline_oracle": {
+            "kind": "ratio",
+            "numerator": 34,
+            "denominator": 50,
+            "result": 68,
+            "scale": 100
+          }
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "合法条件下误判方法错误或扣分。",
+          "用未公开的书写或标准解法要求扣分。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立核验条件和学生每个实质步骤，给出正确结果。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "依公开量尺给分，正确控制不误罚，错误版定位到实际失效的操作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "反馈保留合法推理，不以未采用标准路线或未重述已给条件扣分。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1→v2只改变决定方法合法性的条件；v2→v3只修学生解法。",
+      "expected": "v1和v3均4/4；v2为0/4。三版不是三道独立材料。"
+    }
+  ],
+  "measurement_claim": "在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖"
+  ]
+}

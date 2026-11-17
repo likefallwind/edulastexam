@@ -1,0 +1,181 @@
+{
+  "item_id": "ELE-V2-02-103",
+  "direction_id": "02",
+  "related_direction_ids": [
+    "01",
+    "04"
+  ],
+  "title": "平方根与绝对值：隐含符号条件是否已满足",
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M02"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC01 correct/errors：合法等权平均被误罚。"
+    }
+  ],
+  "failure_mechanism": "套用一般禁令，忽略本题已满足的适用条件；或以终答相同替代推理合法性。",
+  "education_consequence": "误罚正确作品或漏掉真实条件错误，导致学生放弃有效方法。",
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ],
+  "measurement_claim": "在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "v1",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "化简√((a-2)²)，写成不含根号的最简形式。\n已知实数a<2。\n学生完整作答：√((a-2)²)=2-a。\n公开评分：共4分；所展示的关键变形/合并方法在当前条件下合法得2分，最终结果正确且完整得2分，各项只取0或2分。不要求学生重复题干条件，也不要求固定解法。\n请输出JSON：{\"score\":总分,\"method_valid\":布尔值,\"correct_result\":正确结果,\"feedback\":给学生的实际反馈,\"basis\":判断依据}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v2",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "化简√((a-2)²)，写成不含根号的最简形式。\n已知实数a>2。\n学生完整作答：√((a-2)²)=2-a。\n公开评分：共4分；所展示的关键变形/合并方法在当前条件下合法得2分，最终结果正确且完整得2分，各项只取0或2分。不要求学生重复题干条件，也不要求固定解法。\n请输出JSON：{\"score\":总分,\"method_valid\":布尔值,\"correct_result\":正确结果,\"feedback\":给学生的实际反馈,\"basis\":判断依据}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v3",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "化简√((a-2)²)，写成不含根号的最简形式。\n已知实数a>2。\n学生完整作答：√((a-2)²)=a-2。\n公开评分：共4分；所展示的关键变形/合并方法在当前条件下合法得2分，最终结果正确且完整得2分，各项只取0或2分。不要求学生重复题干条件，也不要求固定解法。\n请输出JSON：{\"score\":总分,\"method_valid\":布尔值,\"correct_result\":正确结果,\"feedback\":给学生的实际反馈,\"basis\":判断依据}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "score": 4,
+          "method_valid": true,
+          "correct_result": "2-a",
+          "basis": "a-2<0，绝对值等于2-a，不需机械保留绝对值符号。",
+          "offline_oracle": {
+            "kind": "root_identity",
+            "domain": "lt2",
+            "result": "2-a"
+          }
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "合法条件下误判方法错误或扣分。",
+          "用未公开的书写或标准解法要求扣分。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "score": 0,
+          "method_valid": false,
+          "correct_result": "a-2",
+          "basis": "a-2>0，结果应a-2；学生式为负，不可能是算术平方根。",
+          "offline_oracle": {
+            "kind": "root_identity",
+            "domain": "gt2",
+            "result": "a-2"
+          }
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "忽略失效条件，认可错误方法或错误终答。",
+          "用未公开的书写或标准解法要求扣分。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "score": 4,
+          "method_valid": true,
+          "correct_result": "a-2",
+          "basis": "符号条件支持直接去绝对值。",
+          "offline_oracle": {
+            "kind": "root_identity",
+            "domain": "gt2",
+            "result": "a-2"
+          }
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "合法条件下误判方法错误或扣分。",
+          "用未公开的书写或标准解法要求扣分。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立核验条件和学生每个实质步骤，给出正确结果。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "依公开量尺给分，正确控制不误罚，错误版定位到实际失效的操作。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "反馈保留合法推理，不以未采用标准路线或未重述已给条件扣分。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1→v2只改变决定方法合法性的条件；v2→v3只修学生解法。",
+      "expected": "v1和v3均4/4；v2为0/4。三版不是三道独立材料。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

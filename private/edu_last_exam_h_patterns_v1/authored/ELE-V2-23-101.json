@@ -1,0 +1,204 @@
+{
+  "item_id": "ELE-V2-23-101",
+  "direction_id": "23",
+  "related_direction_ids": [
+    "01"
+  ],
+  "title": "平均速度反馈：单位提醒与除法提醒",
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M23"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "BEA M1/M3/M6：隐式定位及解题验证；本地FC01为相关定位线索，并非本题机制复现。"
+    }
+  ],
+  "failure_mechanism": "按问句形式判断是否纠错，或看到熟悉教学话术就给高分，未核对它指向的具体学生步骤。",
+  "education_consequence": "把教学时间花在正确步骤上，实际错误继续保留。",
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ],
+  "measurement_claim": "在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖",
+    "完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "v1",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "题目：骑行12 km用时30 min，求平均速度，单位km/h。\n学生完整作品：\nS1：速度=路程/时间。S2：代入12/30。S3：12/30=0.4。S4：答案0.4 km/h。\n老师最新回复：“你代入分母的时间量，使用的是什么单位？它与最后速度的单位一致吗？”\n请分别判断：老师是否发起了具体步骤核查；这次核查是否指向学生已经展示的真实错误。‘指向真错’要求核查对象确有错误；仅提醒重查一个正确步骤不计命中。不要按是否出现‘你错了’来判定。随后写一句给该学生的下一步提问，使其自己完成修正，不直接给最终答案。\n输出JSON：{\"actual_error\":实际错误及位置,\"check_initiated\":布尔值,\"targets_actual_error\":布尔值,\"basis\":依据,\"next_question\":实际提问}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v2",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "题目：骑行12 km用时30 min，求平均速度，单位km/h。\n学生完整作品：\nS1：速度=路程/时间。S2：代入12/30。S3：12/30=0.4。S4：答案0.4 km/h。\n老师最新回复：“请把除法所得的商乘回除数，能回到被除数吗？”\n请分别判断：老师是否发起了具体步骤核查；这次核查是否指向学生已经展示的真实错误。‘指向真错’要求核查对象确有错误；仅提醒重查一个正确步骤不计命中。不要按是否出现‘你错了’来判定。随后写一句给该学生的下一步提问，使其自己完成修正，不直接给最终答案。\n输出JSON：{\"actual_error\":实际错误及位置,\"check_initiated\":布尔值,\"targets_actual_error\":布尔值,\"basis\":依据,\"next_question\":实际提问}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v3",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "题目：骑行12 km用时30 min，求平均速度，单位km/h。\n学生完整作品：\nS1：速度=路程/时间。S2：30 min=0.5 h，代入12/0.5。S3：12/0.5=6。S4：答案6 km/h。\n老师最新回复：“你代入分母的时间量，使用的是什么单位？它与最后速度的单位一致吗？”\n请分别判断：老师是否发起了具体步骤核查；这次核查是否指向学生已经展示的真实错误。‘指向真错’要求核查对象确有错误；仅提醒重查一个正确步骤不计命中。不要按是否出现‘你错了’来判定。随后写一句给该学生的下一步提问，使其自己完成修正，不直接给最终答案。\n输出JSON：{\"actual_error\":实际错误及位置,\"check_initiated\":布尔值,\"targets_actual_error\":布尔值,\"basis\":依据,\"next_question\":实际提问}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v4",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "题目：骑行12 km用时30 min，求平均速度，单位km/h。\n学生完整作品：\nS1：速度=路程/时间。S2：30 min=0.5 h，代入12/0.5。S3：12/0.5=6。S4：答案6 km/h。\n老师最新回复：“请把除法所得的商乘回除数，能回到被除数吗？”\n请分别判断：老师是否发起了具体步骤核查；这次核查是否指向学生已经展示的真实错误。‘指向真错’要求核查对象确有错误；仅提醒重查一个正确步骤不计命中。不要按是否出现‘你错了’来判定。随后写一句给该学生的下一步提问，使其自己完成修正，不直接给最终答案。\n输出JSON：{\"actual_error\":实际错误及位置,\"check_initiated\":布尔值,\"targets_actual_error\":布尔值,\"basis\":依据,\"next_question\":实际提问}。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "actual_error": "S2将30分钟的数值作为小时数代入；S3的除法本身正确。",
+          "check_initiated": true,
+          "targets_actual_error": true,
+          "basis": "核查对象与真实错误一致。",
+          "next_question": "请核对代入时间的单位，并据此重新计算。",
+          "private_solution": "24 km/h"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "actual_error": "S2将30分钟的数值作为小时数代入；S3的除法本身正确。",
+          "check_initiated": true,
+          "targets_actual_error": false,
+          "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+          "next_question": "请核对代入时间的单位，并据此重新计算。",
+          "private_solution": "24 km/h"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "actual_error": "S3除法算错；S2单位换算正确。",
+          "check_initiated": true,
+          "targets_actual_error": false,
+          "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+          "next_question": "请用商乘除数检查S3，随后修正速度。",
+          "private_solution": "24 km/h"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      },
+      "v4": {
+        "reference_answer": {
+          "actual_error": "S3除法算错；S2单位换算正确。",
+          "check_initiated": true,
+          "targets_actual_error": true,
+          "basis": "核查对象与真实错误一致。",
+          "next_question": "请用商乘除数检查S3，随后修正速度。",
+          "private_solution": "24 km/h"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立验证学生作品，指出真实错误及已经正确的部分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "将老师发起核查的行为与是否命中真错分开判断，问句本身可构成核查。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "下一句命中当前真错，给学生可执行的检查机会且不直接代做终答。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "relation": "cross_student_error_with_tutor_question_2_by_2",
+      "expected": "v1/v4命中，v2/v3不命中；四版均发起具体核查。独立报告行为、命中、下一句生成，不合成单一能力分。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    },
+    "v4": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

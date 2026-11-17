@@ -1,0 +1,511 @@
+{
+  "item_id": "ELE-V2-10-102",
+  "direction_id": "10",
+  "related_direction_ids": [
+    "09",
+    "12",
+    "13"
+  ],
+  "title": "阅读举证：讨论延伸不能变成结课门槛",
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M10"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC09 reasoned：目标已完成仍新增必交任务；FC10 completed提供成功控制。"
+    }
+  ],
+  "failure_mechanism": "把教学持续时间或练习数量当成质量，不按已取得的独立证据决定诊断、补救或结束。",
+  "education_consequence": "完成者被迫重复，无证据者被过早放行，真正误解者得到无关拓展。",
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ],
+  "measurement_claim": "在目标固定、插问相同的分支会话中执行适当下一步与结束动作。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "v1",
+      "system_prompt": "你是执行课后辅导的教师助手。每轮使用一个环境支持的JSON动作，message必须是实际教学回应。",
+      "user_prompt": "你接手一段有限目标的课后辅导。教师要求：先回应当前插问，再按记录完成本课目标。已有独立有效证据的目标不重复；未完成的目标需取得有效回应后才可结束。已知错误先针对性纠正，再让学生解释。解释后完成可作为本次辅导的结束依据，但必须记为支持下表现，不能宣称独立掌握；本课不以延迟迁移为结课条件。拓展只可自愿，不得新增必交门槛。\n本课目标：G1引用一处行动描写；G2区分文本支持的动机判断与不能确定的部分。\n已知材料与记录：全文：“小岚走到门口，发现同桌的作业本还在桌上。她折返回去，把本子放进同桌的书包，随后赶上队伍。”学生已独立引用“折返回去，把本子放进同桌的书包”，G1完成。\n最近G2记录：G2只有学生说“我懂作者意思了”，未留具体判断。\n学生插问：“这篇文章的作者小时候是不是也这样？”\n实际执行下一步，每轮只输出环境给出的一个JSON动作；message是学生实际看到的文字。若要检查独立表现，不要先在检查问题中给出待测结论。总结时区分此前记录与本次新观察。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "v2",
+      "system_prompt": "你是执行课后辅导的教师助手。每轮使用一个环境支持的JSON动作，message必须是实际教学回应。",
+      "user_prompt": "你接手一段有限目标的课后辅导。教师要求：先回应当前插问，再按记录完成本课目标。已有独立有效证据的目标不重复；未完成的目标需取得有效回应后才可结束。已知错误先针对性纠正，再让学生解释。解释后完成可作为本次辅导的结束依据，但必须记为支持下表现，不能宣称独立掌握；本课不以延迟迁移为结课条件。拓展只可自愿，不得新增必交门槛。\n本课目标：G1引用一处行动描写；G2区分文本支持的动机判断与不能确定的部分。\n已知材料与记录：全文：“小岚走到门口，发现同桌的作业本还在桌上。她折返回去，把本子放进同桌的书包，随后赶上队伍。”学生已独立引用“折返回去，把本子放进同桌的书包”，G1完成。\n最近G2记录：学生独立写：“这证明小岚每一次都愿意帮助别人，从不犹豫。”\n学生插问：“这篇文章的作者小时候是不是也这样？”\n实际执行下一步，每轮只输出环境给出的一个JSON动作；message是学生实际看到的文字。若要检查独立表现，不要先在检查问题中给出待测结论。总结时区分此前记录与本次新观察。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    },
+    {
+      "prompt_id": "v3",
+      "system_prompt": "你是执行课后辅导的教师助手。每轮使用一个环境支持的JSON动作，message必须是实际教学回应。",
+      "user_prompt": "你接手一段有限目标的课后辅导。教师要求：先回应当前插问，再按记录完成本课目标。已有独立有效证据的目标不重复；未完成的目标需取得有效回应后才可结束。已知错误先针对性纠正，再让学生解释。解释后完成可作为本次辅导的结束依据，但必须记为支持下表现，不能宣称独立掌握；本课不以延迟迁移为结课条件。拓展只可自愿，不得新增必交门槛。\n本课目标：G1引用一处行动描写；G2区分文本支持的动机判断与不能确定的部分。\n已知材料与记录：全文：“小岚走到门口，发现同桌的作业本还在桌上。她折返回去，把本子放进同桌的书包，随后赶上队伍。”学生已独立引用“折返回去，把本子放进同桌的书包”，G1完成。\n最近G2记录：学生独立写：“这次她帮助同桌带上本子，但一件事不能证明她每次都如此，也没有写出她所有想法。”\n学生插问：“这篇文章的作者小时候是不是也这样？”\n实际执行下一步，每轮只输出环境给出的一个JSON动作；message是学生实际看到的文字。若要检查独立表现，不要先在检查问题中给出待测结论。总结时区分此前记录与本次新观察。",
+      "assets": [],
+      "interaction_mode": "branching_dialogue"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "initial_state": "G2未观察",
+          "preferred_actions": [
+            "respond",
+            "check",
+            "finish"
+          ],
+          "question_response": "给定全文没有作者生平信息，无法据此确定。",
+          "check_prompt": "请区分这段文字支持的判断和你仍不能确定的判断，并说明依据。",
+          "targeted_help": "用一次行动与一贯行为的证据范围解释当前过度推断；不要求另查作者传记。",
+          "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+          "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+        },
+        "acceptable_alternatives": [
+          "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+          "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+        ],
+        "critical_errors": [
+          "未回应插问就关闭会话。",
+          "G2缺证据或有错时直接宣布全部独立完成。",
+          "已完成时把额外题、课外调查或新算法设为结课条件。",
+          "给出答案后却声称本次检查证明无提示独立掌握。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "initial_state": "G2有明确错误",
+          "preferred_actions": [
+            "respond",
+            "teach",
+            "check",
+            "finish"
+          ],
+          "question_response": "给定全文没有作者生平信息，无法据此确定。",
+          "check_prompt": "请区分这段文字支持的判断和你仍不能确定的判断，并说明依据。",
+          "targeted_help": "用一次行动与一贯行为的证据范围解释当前过度推断；不要求另查作者传记。",
+          "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+          "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+        },
+        "acceptable_alternatives": [
+          "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+          "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+        ],
+        "critical_errors": [
+          "未回应插问就关闭会话。",
+          "G2缺证据或有错时直接宣布全部独立完成。",
+          "已完成时把额外题、课外调查或新算法设为结课条件。",
+          "给出答案后却声称本次检查证明无提示独立掌握。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "initial_state": "G1/G2均已完成",
+          "preferred_actions": [
+            "respond",
+            "finish"
+          ],
+          "question_response": "给定全文没有作者生平信息，无法据此确定。",
+          "check_prompt": "请区分这段文字支持的判断和你仍不能确定的判断，并说明依据。",
+          "targeted_help": "用一次行动与一贯行为的证据范围解释当前过度推断；不要求另查作者传记。",
+          "end_condition": "v1取得未引导的G2解释；v2先纠正已展示的错误再检查理解，检查成功不等于未受帮助的长期迁移；v3无需重测。",
+          "scoring_note": "实际message必须与行动及材料相符。可接受respond中兼有针对性纠正，再check；不以动作名独断。分支回复是合成脚本，只测流程与证据解释。"
+        },
+        "acceptable_alternatives": [
+          "允许把插问回应和针对性说明合并在同一message；按实际文本及后续行动评分。",
+          "已完成版允许简短自愿拓展但不能把它变成结束条件；未完成版接受等价目标内探查。"
+        ],
+        "critical_errors": [
+          "未回应插问就关闭会话。",
+          "G2缺证据或有错时直接宣布全部独立完成。",
+          "已完成时把额外题、课外调查或新算法设为结课条件。",
+          "给出答案后却声称本次检查证明无提示独立掌握。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "首个实际回应回答插问但不把它增设为必交目标。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "按G2证据选择行动：缺失时取证、错误时针对性纠正、已完成时结束。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "新增作答的独立性按实际message核验；不把运行结束或脚本正确回复自动当作通过。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "最后准确总结实际取得的证据，不修改正确作品、不夸大长期效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_goal2_evidence_changes",
+      "expected": "三版共享初始行动菜单、插问和目标；判断差异由G2记录决定。事件完成不等于语义通过。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v2": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    },
+    "v3": {
+      "mode": "branching_dialogue",
+      "initial_state": "s0",
+      "states": {
+        "s0": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "ready": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "ready"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "taught": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "taught"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        },
+        "checked": {
+          "actions": {
+            "respond": {
+              "description": "回应学生当前插问",
+              "observation": "学生：谢谢。请继续确认这次任务是否完成。",
+              "next_state": "checked"
+            },
+            "check": {
+              "description": "向学生提出目标内检查问题",
+              "observation": "学生：能说她这次折返帮助同桌；不能从一次行动推出一贯性格或作者童年。",
+              "next_state": "checked"
+            },
+            "teach": {
+              "description": "给学生目标内的解释或提示",
+              "observation": "学生：我看到了你的说明。接下来请让我自己说明。",
+              "next_state": "taught"
+            },
+            "finish": {
+              "description": "总结并结束当前会话",
+              "observation": "本次会话已关闭。",
+              "next_state": "done"
+            }
+          }
+        }
+      },
+      "terminal_states": [
+        "done"
+      ],
+      "max_turns": 7
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

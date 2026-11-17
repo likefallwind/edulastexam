@@ -1,0 +1,118 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "actual_error": "S1分配律漏乘常数项，后续按此前提的变形成立。",
+          "check_initiated": true,
+          "targets_actual_error": true,
+          "basis": "核查对象与真实错误一致。",
+          "next_question": "请检查括号里每一项在展开后对应的乘积。",
+          "private_solution": "x=6"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "actual_error": "S1分配律漏乘常数项，后续按此前提的变形成立。",
+          "check_initiated": true,
+          "targets_actual_error": false,
+          "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+          "next_question": "请检查括号里每一项在展开后对应的乘积。",
+          "private_solution": "x=6"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "actual_error": "S2把12+6算成15；S1分配律正确。",
+          "check_initiated": true,
+          "targets_actual_error": false,
+          "basis": "核查的是本作品已正确的步骤，未命中实际错误。",
+          "next_question": "请重算S2中的常数相加，再完成方程。",
+          "private_solution": "x=6"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      },
+      "v4": {
+        "reference_answer": {
+          "actual_error": "S2把12+6算成15；S1分配律正确。",
+          "check_initiated": true,
+          "targets_actual_error": true,
+          "basis": "核查对象与真实错误一致。",
+          "next_question": "请重算S2中的常数相加，再完成方程。",
+          "private_solution": "x=6"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "因未明说“错”而否认具体核查行为。",
+          "未核验学生作品，错误判断提问是否命中真错。",
+          "下一句追问继续指向正确步骤、给出错误内容，或直接代做最终答案。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "独立验证学生作品，指出真实错误及已经正确的部分。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "将老师发起核查的行为与是否命中真错分开判断，问句本身可构成核查。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "下一句命中当前真错，给学生可执行的检查机会且不直接代做终答。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "relation": "cross_student_error_with_tutor_question_2_by_2",
+      "expected": "v1/v4命中，v2/v3不命中；四版均发起具体核查。独立报告行为、命中、下一句生成，不合成单一能力分。"
+    }
+  ],
+  "measurement_claim": "在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖",
+    "完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图"
+  ]
+}

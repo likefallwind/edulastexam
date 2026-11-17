@@ -1,0 +1,161 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>错误机制候选实现状态</title><style>body{font:16px/1.8 system-ui,sans-serif;max-width:1080px;margin:32px auto;padding:0 22px;color:#20303b}h2{border-top:2px solid #dbe5e9;margin-top:48px;padding-top:24px}h3{color:#205b70}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f7;padding:16px}img{max-width:100%;height:auto;border:1px solid #dce4e8}a{color:#176b87;overflow-wrap:anywhere}table{border-collapse:collapse}td,th{border:1px solid #ccd8df;padding:10px;vertical-align:top}</style><body><h1>错误机制候选实现状态</h1>
+<p>18个基础材料、57个依赖版本；六个主方向各3个材料，不计交叉方向覆盖。</p>
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>题包</th>
+<th style="text-align:right">版本</th>
+<th>环境</th>
+<th>测量边界</th>
+<th>尚未覆盖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>02</td>
+<td>ELE-V2-02-101</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>02</td>
+<td>ELE-V2-02-102</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>02</td>
+<td>ELE-V2-02-103</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>在明确条件与局部评分合同下复核非常规解，区分当前合法与不具普遍性。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>05</td>
+<td>ELE-V2-05-101</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>05</td>
+<td>ELE-V2-05-102</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>05</td>
+<td>ELE-V2-05-103</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>仅改变外部评分，检验事实反馈与公开量尺评分的稳定性；包含部分完成作品防止一律唱反调。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ELE-V2-10-101</td>
+<td style="text-align:right">3</td>
+<td>branching_dialogue</td>
+<td>在目标固定、插问相同的分支会话中执行适当下一步与结束动作。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ELE-V2-10-102</td>
+<td style="text-align:right">3</td>
+<td>branching_dialogue</td>
+<td>在目标固定、插问相同的分支会话中执行适当下一步与结束动作。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ELE-V2-10-103</td>
+<td style="text-align:right">3</td>
+<td>branching_dialogue</td>
+<td>在目标固定、插问相同的分支会话中执行适当下一步与结束动作。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖</td>
+</tr>
+<tr>
+<td>12</td>
+<td>ELE-V2-12-101</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；长上下文检索压力；本批仅短跨日记录；真实支架调整后的学习轨迹；本题只交付下一次探查</td>
+</tr>
+<tr>
+<td>12</td>
+<td>ELE-V2-12-102</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；长上下文检索压力；本批仅短跨日记录；真实支架调整后的学习轨迹；本题只交付下一次探查</td>
+</tr>
+<tr>
+<td>12</td>
+<td>ELE-V2-12-103</td>
+<td style="text-align:right">3</td>
+<td>single_turn</td>
+<td>读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；长上下文检索压力；本批仅短跨日记录；真实支架调整后的学习轨迹；本题只交付下一次探查</td>
+</tr>
+<tr>
+<td>14</td>
+<td>ELE-V2-14-101</td>
+<td style="text-align:right">3</td>
+<td>workspace</td>
+<td>实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整PPT或图形渲染质量；本批是结构化教学页；开放课件创作与学生实际使用后的效果</td>
+</tr>
+<tr>
+<td>14</td>
+<td>ELE-V2-14-102</td>
+<td style="text-align:right">3</td>
+<td>workspace</td>
+<td>实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整PPT或图形渲染质量；本批是结构化教学页；开放课件创作与学生实际使用后的效果</td>
+</tr>
+<tr>
+<td>14</td>
+<td>ELE-V2-14-103</td>
+<td style="text-align:right">3</td>
+<td>workspace</td>
+<td>实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整PPT或图形渲染质量；本批是结构化教学页；开放课件创作与学生实际使用后的效果</td>
+</tr>
+<tr>
+<td>23</td>
+<td>ELE-V2-23-101</td>
+<td style="text-align:right">4</td>
+<td>single_turn</td>
+<td>在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图</td>
+</tr>
+<tr>
+<td>23</td>
+<td>ELE-V2-23-102</td>
+<td style="text-align:right">4</td>
+<td>single_turn</td>
+<td>在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图</td>
+</tr>
+<tr>
+<td>23</td>
+<td>ELE-V2-23-103</td>
+<td style="text-align:right">4</td>
+<td>single_turn</td>
+<td>在学生错误位置与隐式提问的2×2对照中判断针对性，并交付下一句可执行提问。</td>
+<td>真实课堂总体失败率和学习增益；跨模型普遍难度与完整方向覆盖；完整多轮苏格拉底教学效果；本题是反馈评价与单句生成视图</td>
+</tr>
+</tbody>
+</table>
+</body></html>

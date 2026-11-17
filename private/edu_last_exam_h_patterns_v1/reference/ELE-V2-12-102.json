@@ -1,0 +1,100 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "latest_evidence": "independent_observed",
+          "record_update": "本次独立正确，支持本次独立表现；早期错误不能否定新进展。",
+          "next_prompt": "为估计全校每周阅读时长，只访问图书馆借阅次数最多的20人，能否直接推广全校？请解释。",
+          "new_task_reference": "不能；高频借阅者与其他学生的阅读行为可能不同，存在选择偏差。",
+          "probe_boundary": "不得提示借阅者更爱阅读、代表性不足或样本偏差结论；可直接给新调查并请解释。",
+          "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "援助条件分类与原记录冲突。",
+          "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+          "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "latest_evidence": "supported_observed",
+          "record_update": "本次在方法提示下正确；独立能力尚不能由这次记录确认，也不能据此证明不会。",
+          "next_prompt": "为估计全校每周阅读时长，只访问图书馆借阅次数最多的20人，能否直接推广全校？请解释。",
+          "new_task_reference": "不能；高频借阅者与其他学生的阅读行为可能不同，存在选择偏差。",
+          "probe_boundary": "不得提示借阅者更爱阅读、代表性不足或样本偏差结论；可直接给新调查并请解释。",
+          "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "援助条件分类与原记录冲突。",
+          "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+          "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "latest_evidence": "help_unknown",
+          "record_update": "本次答案正确；援助条件未知，独立性不能判定。",
+          "next_prompt": "为估计全校每周阅读时长，只访问图书馆借阅次数最多的20人，能否直接推广全校？请解释。",
+          "new_task_reference": "不能；高频借阅者与其他学生的阅读行为可能不同，存在选择偏差。",
+          "probe_boundary": "不得提示借阅者更爱阅读、代表性不足或样本偏差结论；可直接给新调查并请解释。",
+          "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "援助条件分类与原记录冲突。",
+          "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+          "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确引用11月8日作答前的援助记录，区分三种证据状态。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "保留本次成功，同时不从一次记录断言长期稳定掌握或确定未掌握。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "交付实际可用的新探查题，不泄露本次待测方法；说明需观察的证据。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_latest_help_record_changes",
+      "expected": "v1独立证据、v2支持下证据、v3援助未知；学生终答及后续任务不变。"
+    }
+  ],
+  "measurement_claim": "读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖",
+    "长上下文检索压力；本批仅短跨日记录",
+    "真实支架调整后的学习轨迹；本题只交付下一次探查"
+  ]
+}

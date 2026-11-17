@@ -1,0 +1,177 @@
+{
+  "item_id": "ELE-V2-12-101",
+  "direction_id": "12",
+  "related_direction_ids": [
+    "13",
+    "23"
+  ],
+  "title": "分数比较：问句里的方法提示",
+  "material_origin": "original_synthetic",
+  "source_evidence": [
+    {
+      "source_id": "direction-blueprint",
+      "local_path": "data/edu_last_exam_mechanism_generation_v1/direction_blueprints.json",
+      "locator": "M12"
+    },
+    {
+      "source_id": "H-patterns",
+      "local_path": "docs/evidence/edubenchmark_partial_failure_hard_patterns_2026-11-17.md",
+      "locator": "§6–8；模式归类为作者离线检查，跨模型判分为历史试跑。"
+    },
+    {
+      "source_id": "local-evidence",
+      "local_path": "reports/full_coverage_v1/glm53flash_20261110_codex_review/review.md",
+      "locator": "FC12-002-c与FC18：援助未知被升级、提示后成功被误作独立证据。"
+    }
+  ],
+  "failure_mechanism": "把相同终答当作相同掌握证据，漏读问句中的方法支架，或把援助未知断言成无援助。",
+  "education_consequence": "错误撤除支持或重复补教，学习档案把支持下表现写成独立掌握。",
+  "adaptations": [
+    "原创合成教学材料，不冒充真实学生；同题对照单独运行，不把版本角色投递给模型。",
+    "参考答案允许语义等价表达；各维度单列，不用语气或最终数值抵消实质错误。"
+  ],
+  "limitations": [
+    "独立教师审核pending；本批模型评测not_run；历史错例不构成本批难度证据。",
+    "作者为Codex；不得由参与本批出题的模型充当独立被测面板或独立审核者。"
+  ],
+  "measurement_claim": "读取跨日短记录，区分本次独立、支持下和援助未知；设计不泄露方法的后续取证。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖",
+    "长上下文检索压力；本批仅短跨日记录",
+    "真实支架调整后的学习轨迹；本题只交付下一次探查"
+  ],
+  "status": {
+    "stage": "authored_candidate",
+    "human_review": "pending",
+    "frozen": false,
+    "model_evaluation": "not_run"
+  },
+  "prompts": [
+    {
+      "prompt_id": "v1",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "教学目标：独立比较异分母分数并解释依据。\n学习记录：\n11月2日：学生比较3/5与2/3写“3>2，所以3/5更大”。11月3日老师完整讲解了这道题。\n11月4日独立算对2/7+3/7；11月5日按时交作业；11月6日独立画对1/2圆形阴影；11月7日完成整数乘法。\n11月8日任务：比较5/8与2/3并说明理由\n作答条件记录：全程记录确认：学生作答前没有教师、同伴或工具提示；学生未看答案或范例。\n学生作答：5/8=15/24，2/3=16/24，所以5/8<2/3。\n11月9日：尚无新作答。教师准备一次新的独立检查，可用题目为：比较7/10与3/4并说明理由。\n请输出JSON：{\"latest_evidence\":\"independent_observed或supported_observed或help_unknown\",\"record_update\":学习记录更新,\"evidence\":记录依据,\"next_prompt\":实际给学生的新检查题,\"interpretation_rule\":收到新回答后如何更新判断}。目前只拟下一次检查，不假设它已经发生；一次作答只记录本次表现。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v2",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "教学目标：独立比较异分母分数并解释依据。\n学习记录：\n11月2日：学生比较3/5与2/3写“3>2，所以3/5更大”。11月3日老师完整讲解了这道题。\n11月4日独立算对2/7+3/7；11月5日按时交作业；11月6日独立画对1/2圆形阴影；11月7日完成整数乘法。\n11月8日任务：比较5/8与2/3并说明理由\n作答条件记录：全程记录确认：学生作答前老师问：“能不能先把两边改成相同分母，再看分子？”；之后未再追加提示。\n学生作答：5/8=15/24，2/3=16/24，所以5/8<2/3。\n11月9日：尚无新作答。教师准备一次新的独立检查，可用题目为：比较7/10与3/4并说明理由。\n请输出JSON：{\"latest_evidence\":\"independent_observed或supported_observed或help_unknown\",\"record_update\":学习记录更新,\"evidence\":记录依据,\"next_prompt\":实际给学生的新检查题,\"interpretation_rule\":收到新回答后如何更新判断}。目前只拟下一次检查，不假设它已经发生；一次作答只记录本次表现。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    },
+    {
+      "prompt_id": "v3",
+      "system_prompt": "你是协助教师审核学生学习证据与教学反馈的助手。依据公开材料用中文完成任务；不要假设未给出的学生背景。",
+      "user_prompt": "教学目标：独立比较异分母分数并解释依据。\n学习记录：\n11月2日：学生比较3/5与2/3写“3>2，所以3/5更大”。11月3日老师完整讲解了这道题。\n11月4日独立算对2/7+3/7；11月5日按时交作业；11月6日独立画对1/2圆形阴影；11月7日完成整数乘法。\n11月8日任务：比较5/8与2/3并说明理由\n作答条件记录：系统仅存题目及学生最终作答；作答前的音频与工具记录缺失，是否获得提示未知。\n学生作答：5/8=15/24，2/3=16/24，所以5/8<2/3。\n11月9日：尚无新作答。教师准备一次新的独立检查，可用题目为：比较7/10与3/4并说明理由。\n请输出JSON：{\"latest_evidence\":\"independent_observed或supported_observed或help_unknown\",\"record_update\":学习记录更新,\"evidence\":记录依据,\"next_prompt\":实际给学生的新检查题,\"interpretation_rule\":收到新回答后如何更新判断}。目前只拟下一次检查，不假设它已经发生；一次作答只记录本次表现。",
+      "assets": [],
+      "interaction_mode": "single_turn"
+    }
+  ],
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "latest_evidence": "independent_observed",
+          "record_update": "本次独立正确，支持本次独立表现；早期错误不能否定新进展。",
+          "next_prompt": "比较7/10与3/4并说明理由。",
+          "new_task_reference": "7/10=28/40<30/40=3/4",
+          "probe_boundary": "不得提供通分、交叉相乘、统一小数或具体大小结论；可直接给新比较题并请说明依据。",
+          "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "援助条件分类与原记录冲突。",
+          "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+          "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "latest_evidence": "supported_observed",
+          "record_update": "本次在方法提示下正确；独立能力尚不能由这次记录确认，也不能据此证明不会。",
+          "next_prompt": "比较7/10与3/4并说明理由。",
+          "new_task_reference": "7/10=28/40<30/40=3/4",
+          "probe_boundary": "不得提供通分、交叉相乘、统一小数或具体大小结论；可直接给新比较题并请说明依据。",
+          "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "援助条件分类与原记录冲突。",
+          "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+          "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "latest_evidence": "help_unknown",
+          "record_update": "本次答案正确；援助条件未知，独立性不能判定。",
+          "next_prompt": "比较7/10与3/4并说明理由。",
+          "new_task_reference": "7/10=28/40<30/40=3/4",
+          "probe_boundary": "不得提供通分、交叉相乘、统一小数或具体大小结论；可直接给新比较题并请说明依据。",
+          "interpretation_rule": "只在实际取得新作答并核对援助条件后更新；单次成功不证明长期稳定。"
+        },
+        "acceptable_alternatives": [
+          "接受不改变事实、评分和证据边界的等价表达；不要求固定话术。"
+        ],
+        "critical_errors": [
+          "援助条件分类与原记录冲突。",
+          "next_prompt先给出待测方法或答案，却把随后的作答记作独立能力。",
+          "把未观察推成明确不会，或凭一次成功断言长期掌握。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "正确引用11月8日作答前的援助记录，区分三种证据状态。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "保留本次成功，同时不从一次记录断言长期稳定掌握或确定未掌握。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "交付实际可用的新探查题，不泄露本次待测方法；说明需观察的证据。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "only_latest_help_record_changes",
+      "expected": "v1独立证据、v2支持下证据、v3援助未知；学生终答及后续任务不变。"
+    }
+  ],
+  "runtime": {
+    "v1": {
+      "mode": "single_turn"
+    },
+    "v2": {
+      "mode": "single_turn"
+    },
+    "v3": {
+      "mode": "single_turn"
+    }
+  },
+  "gold_is_test_input": false,
+  "atomic_abilities": []
+}

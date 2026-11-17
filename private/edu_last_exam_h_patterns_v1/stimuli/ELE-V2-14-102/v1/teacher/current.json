@@ -1,0 +1,10 @@
+{
+  "page1": {
+    "density_g_per_cm3": 3,
+    "reason": "24/8=48/16"
+  },
+  "page2": {
+    "density_g_per_cm3": 0.4,
+    "expression": "30/12"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "review_scope": "author_related_offline_review",
+  "independent_teacher_review": false,
+  "frozen": false,
+  "run": "reports/eval/edu_last_exam_h_patterns_v1/_exploratory/20261117_043407_glm53flash_c3/GLM-5.3-Flash",
+  "reviewed_cases": 57,
+  "base_items": 18,
+  "classification_counts": {
+    "no_target_error_observed": 50,
+    "disputed": 2,
+    "target_error": 2,
+    "collateral_error": 3
+  },
+  "target_error_cases": [
+    "ELE-V2-10-102__v1",
+    "ELE-V2-12-101__v1"
+  ],
+  "target_error_base_items": 2,
+  "format_issue_cases": 10,
+  "no_cross_construct_accuracy": true
+}

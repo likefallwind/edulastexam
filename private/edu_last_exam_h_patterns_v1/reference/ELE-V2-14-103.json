@@ -1,0 +1,287 @@
+{
+  "gold": {
+    "per_prompt": {
+      "v1": {
+        "reference_answer": {
+          "final_student": {
+            "page1": {
+              "equation": "y=2x+1",
+              "points": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "final_teacher": {
+            "page1": {
+              "slope": 2,
+              "intercept": 1
+            },
+            "page2": {
+              "y_at_4": 10,
+              "slope": 3,
+              "intercept": -2
+            }
+          },
+          "changed_ids": [
+            "student.page1.points.2.1",
+            "teacher.page2.y_at_4"
+          ],
+          "feedback_requirement": "学生把截距当斜率，需要观察每增加1个x时y的变化，再独立迁移。",
+          "offline_oracle": {
+            "kind": "linear",
+            "slope": 2,
+            "intercept": 1,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "transfer_slope": 3,
+            "transfer_intercept": -2,
+            "transfer_x": 4,
+            "transfer_y": 10
+          },
+          "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+        },
+        "acceptable_alternatives": [
+          "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+          "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+        ],
+        "critical_errors": [
+          "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+          "示范图/表仍违背数学或原始数据，教师答案不正确。",
+          "把教师答案复制到学生独立检查页。",
+          "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+        ]
+      },
+      "v2": {
+        "reference_answer": {
+          "final_student": {
+            "page1": {
+              "equation": "y=2x+1",
+              "points": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "final_teacher": {
+            "page1": {
+              "slope": 2,
+              "intercept": 1
+            },
+            "page2": {
+              "y_at_4": 10,
+              "slope": 3,
+              "intercept": -2
+            }
+          },
+          "changed_ids": [
+            "teacher.page2.y_at_4"
+          ],
+          "feedback_requirement": "学生把截距当斜率，需要观察每增加1个x时y的变化，再独立迁移。",
+          "offline_oracle": {
+            "kind": "linear",
+            "slope": 2,
+            "intercept": 1,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "transfer_slope": 3,
+            "transfer_intercept": -2,
+            "transfer_x": 4,
+            "transfer_y": 10
+          },
+          "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+        },
+        "acceptable_alternatives": [
+          "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+          "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+        ],
+        "critical_errors": [
+          "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+          "示范图/表仍违背数学或原始数据，教师答案不正确。",
+          "把教师答案复制到学生独立检查页。",
+          "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+        ]
+      },
+      "v3": {
+        "reference_answer": {
+          "final_student": {
+            "page1": {
+              "equation": "y=2x+1",
+              "points": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  5
+                ]
+              ],
+              "prompt": "比较相邻点的变化，解释2和1分别表示什么。",
+              "answer": null
+            },
+            "page2": {
+              "prompt": "对y=3x-2，求x=4时的y，并解释3和-2分别表示什么。",
+              "answer": null,
+              "hint": null
+            }
+          },
+          "final_teacher": {
+            "page1": {
+              "slope": 2,
+              "intercept": 1
+            },
+            "page2": {
+              "y_at_4": 10,
+              "slope": 3,
+              "intercept": -2
+            }
+          },
+          "changed_ids": [],
+          "feedback_requirement": "学生把截距当斜率，需要观察每增加1个x时y的变化，再独立迁移。",
+          "offline_oracle": {
+            "kind": "linear",
+            "slope": 2,
+            "intercept": 1,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "transfer_slope": 3,
+            "transfer_intercept": -2,
+            "transfer_x": 4,
+            "transfer_y": 10
+          },
+          "integrity": "索引、历史和未修改文件保持原样；学生检查页无答案/提示；delivery真实存在。"
+        },
+        "acceptable_alternatives": [
+          "JSON键顺序及修改文件的空白不限；未修改文件必须保留原样。",
+          "固定坐标、数据与题面构成此题的修订合同；不同正确教学话术均可，不要求改写整页。"
+        ],
+        "critical_errors": [
+          "只声明修复而未写文件；修改不应修改的正确材料或历史。",
+          "示范图/表仍违背数学或原始数据，教师答案不正确。",
+          "把教师答案复制到学生独立检查页。",
+          "changed_ids与实际差异不一致，或虚称发布/学习提升。"
+        ]
+      }
+    }
+  },
+  "rubric": {
+    "criteria": [
+      {
+        "criterion_id": "c1",
+        "observable": "读取当前文件后按教学目标与原始数据修复实际数值，不只写建议。",
+        "required": true
+      },
+      {
+        "criterion_id": "c2",
+        "observable": "示范页数学关系正确；独立检查题不泄露答案或提示，教师参考正确。",
+        "required": true
+      },
+      {
+        "criterion_id": "c3",
+        "observable": "正确控制保持不变，历史版本和索引不变，实际delivery反映本次变更。",
+        "required": true
+      },
+      {
+        "criterion_id": "c4",
+        "observable": "delivery反馈解释修订与当前误解的关系，回读文件后提交，不声称未发生的学习效果。",
+        "required": true
+      }
+    ],
+    "pass_rule": "all required criteria met and no evidenced critical error",
+    "aggregation": "per_direction_and_task_view_only",
+    "minor_flaw_policy": "等价措辞、合理教学建议、键顺序不扣分；格式或运行故障单列，不冒充目标机制失败。"
+  },
+  "controls": [
+    {
+      "variants": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "relation": "v1双缺陷；v2仅教师参考缺陷；v3两文件均正确",
+      "expected": "主缺陷修复不能遮蔽教师参考错误；正确控制不得制造修改。先检查数学，再检查真实交付，不把纯格式错误冒充教学错误。"
+    }
+  ],
+  "measurement_claim": "实际修复结构化两页学生材料与教师参考，保留独立作答机会并交付准确变更清单。",
+  "unmeasured_subclaims": [
+    "真实课堂总体失败率和学习增益",
+    "跨模型普遍难度与完整方向覆盖",
+    "完整PPT或图形渲染质量；本批是结构化教学页",
+    "开放课件创作与学生实际使用后的效果"
+  ]
+}
